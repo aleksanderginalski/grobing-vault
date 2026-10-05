@@ -25,8 +25,8 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     pierwszymi danymi;
   - pozostałe spike'i: [[SPIKE-001-map-source-offline]] i [[SPIKE-002-tree-on-a-phone]], przed widokami,
     których dotyczą;
-  - przed pierwszym pushem muszą być zamknięte [[NT-008-publication-review]] i
-    [[ISSUE-006-setup-family-data-guard]].
+  - przed pierwszym pushem musi być zamknięte [[NT-008-publication-review]]. Zostały w nim wybór dla
+    vaulta i przegląd `git log -p`; strażnik danych rodziny już działa.
 - ⚠️ **Przed pierwszymi prawdziwymi danymi w aplikacji:** `grobing-code` ma dziś domyślne
   `allowBackup=true`. Android skopiowałby dane do swojej kopii w chmurze i przy transferze na nowy
   telefon, co zmierzył [[SPIKE-003-backup-and-restore]] (M7). Poprawka należy do pozycji produkcyjnej
@@ -50,11 +50,11 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
 - Poza kodem: *patrz `backlog/non-tech/`*.
 - Odłożone: *patrz `backlog/deferred/`*.
 - Wymagania: *patrz `03_REQUIREMENTS/`* (EPIC-i, FR, NFR); architektura i ADR-y: *patrz `04_ARCHITECTURE/`*.
-- **Przed pierwszym pushem (repo publiczne):** [[ISSUE-006-setup-family-data-guard]] +
-  [[NT-008-publication-review]] — twardy warunek z `family-data.md`.
+- **Przed pierwszym pushem (repo publiczne):** [[NT-008-publication-review]] — twardy warunek z
+  `family-data.md` ([[ISSUE-006-setup-family-data-guard]] już zamknięte).
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **3**. Co **10** → retro + pytanie o 3-5 nośnych faktów
+- Zamknięte pozycje od ostatniego retro: **4**. Co **10** → retro + pytanie o 3-5 nośnych faktów
   (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**; podbija go `docs` przy zamknięciu.
 
 ## Parked (waiting on someone outside the session)
@@ -62,6 +62,17 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   (zdarzenie) · data zapytania`. **Odpowiedź z faktami o rodzinie trafia do aplikacji, nie tutaj.**
 
 ## Recently done
+- 2026-10-05 — [[ISSUE-006-setup-family-data-guard]] zamknięte. Strażnik danych rodziny działa:
+  - hook `PreToolUse` w `grobing-agents` odmawia zapisu baz, kopii `age`/`tar`, eksportów HTML/PDF,
+    zdjęć i filmów w trzech repo. Odmawia też `git add`/`commit`, gdy taki plik mógłby wejść do commita;
+  - przy własnym błędzie blokuje;
+  - ten sam blok jest w `.gitignore` trzech repo, bo to jedyna ochrona commitów autora z VS Code;
+  - nie widzi treści: nazwisko w tekście to sprawa [[ISSUE-003-setup-quality-critic]].
+
+  **Dla autora:** obraz albo PDF wklejony w Obsidianie **nie wejdzie do commita** vaulta (ignorowany po
+  cichu). Wyjątek dopisuje pozycja, przy której pojawi się pierwszy taki plik, np. `05_DESIGN/`. Hook
+  dokłada czas do każdego wywołania narzędzia (pomiar: ISSUE-006 → *Verification*). Werdykt `qa`:
+  APPROVED (self-check, z uwagami); kroki stopu #2 autor oddał agentowi.
 - 2026-10-05 — [[SPIKE-003-backup-and-restore]] zamknięty, [[ADR-004-backup-format-encryption-destination]]
   `accepted`:
   - kopia to jeden plik `age` w Dysku autora, zapisany przez systemowe okno zapisu pliku. Dysk nie działa

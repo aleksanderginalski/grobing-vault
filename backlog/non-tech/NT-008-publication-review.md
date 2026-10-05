@@ -19,8 +19,8 @@ zaszyfrowanej kopii i w eksporcie u rodziny). Ta pozycja zamyka trzy rzeczy, kt�
 nie załatwia — **przed pierwszym pushem, bo push do publicznego repo jest nieodwracalny** (historia
 gita i indeksy wyszukiwarek zostają).
 
-1. **Twarda blokada plików z danymi rodziny działa** — [[ISSUE-006-setup-family-data-guard]] zamknięte
-   (dziś chronią tylko reguła i `.gitignore`).
+1. **Twarda blokada plików z danymi rodziny działa** — [[ISSUE-006-setup-family-data-guard]] zamknięte.
+   ✅ 2026-10-05 (wcześniej chroniły tylko reguła i `.gitignore`).
 2. **Zapis kick-offu nie mówi więcej o rodzinie, niż autor chce pokazać publicznie.** Przejrzyj
    `00_START_HERE/kickoff/PROJECT_BRIEF.md` i `SESSION_STATE.md`: cytaty o babci (w tym o tym, ile
    może jeszcze żyć), struktura rodziny, objętość notatek. Zostaw, przeredaguj albo przenieś — decyzja
@@ -49,7 +49,11 @@ aplikacji musi być ograniczony do pakietu i certyfikatu podpisu (§Security).
 - ⚠️ **Granica tego przeglądu:** obejmuje stan plików, nie historię. Treść tego typu dopisana **po**
   pierwszym commicie zostaje w historii nawet po usunięciu — przed pierwszym pushem przejrzyj też
   `git log -p`, nie tylko bieżące pliki.
-- Otwarte: punkt 1 ([[ISSUE-006-setup-family-data-guard]]) · wybór dla vaulta.
+- **2026-10-05 — punkt 1 zrobiony:** [[ISSUE-006-setup-family-data-guard]] zamknięte. Hook `PreToolUse`
+  w `grobing-agents` odmawia zapisu i `git add`/`commit` baz, kopii `age`/`tar`, eksportów HTML/PDF,
+  zdjęć i filmów; ten sam blok jest w `.gitignore` trzech repo. Granice (treść, commit autora z VS Code)
+  są w `family-data.md`.
+- Otwarte: **wybór dla vaulta** · przed samym pushem przegląd `git log -p` (granica wyżej).
 
 ## Resolution (fill when done — this is the DoD)
 [ISSUE-006 zamknięte · przegląd 2 i 3 zrobiony (co zmieniono — bez cytowania danych) · wybór dla vaulta ·

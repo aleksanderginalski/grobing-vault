@@ -1,7 +1,7 @@
 ---
 title: "ISSUE-006 — PreToolUse guard that refuses family-data files in any repo"
 type: issue
-status: in-progress
+status: done
 delivery-style: task-level
 priority: MUST
 ideal_days: 0.5
@@ -28,11 +28,11 @@ wpisanego w kod albo dokumentację nie zauważy — tę połowę pilnuje krytyk 
 repo", [[ISSUE-003-setup-quality-critic]]).
 
 ## Acceptance Criteria
-- [ ] Skrypt istnieje; dopiero potem hook. Brak skryptu → `exit 2`, nigdy cisza.
-- [ ] Zero ścieżek absolutnych; repo rozpoznawane z `project-config.md`.
-- [ ] **Uruchomiony raz naprawdę:** próba zapisu `test.db` w `grobing-code` została odrzucona z
+- [x] Skrypt istnieje; dopiero potem hook. Brak skryptu → `exit 2`, nigdy cisza.
+- [x] Zero ścieżek absolutnych; repo rozpoznawane z `project-config.md`.
+- [x] **Uruchomiony raz naprawdę:** próba zapisu `test.db` w `grobing-code` została odrzucona z
       czytelnym komunikatem.
-- [ ] Granica (plik, nie treść) zapisana w `family-data.md` — status mechanizmu z „plan" na „działa".
+- [x] Granica (plik, nie treść) zapisana w `family-data.md` — status mechanizmu z „plan" na „działa".
 
 ## Implementation plan
 > `planning`, 2026-10-05. Pozycja nie dotyka warstwy danych aplikacji, więc test migracji, próbne
@@ -190,3 +190,23 @@ zakres D2–D4 w teście 106/106, AC-4 w diffie `family-data.md`). Uwagi:
 
 Brak wiersza w `TRACEABILITY.md`, więc kolumny Quality Verdict nie ma gdzie wpisać (pozycja startowa,
 patrz nagłówek planu).
+
+## Closure
+`docs`, 2026-10-05. Commity: `grobing-agents` bf70669 · `grobing-vault` 0a319e3 · `grobing-code` 1a67014
++ commit zamknięcia w vaulcie. **Bez pusha** (warunek: [[NT-008-publication-review]]).
+
+**Checklista zamknięcia (z planu):**
+- ✅ [[NT-008-publication-review]] → *Progress*: punkt 1 zamknięty; otwarty zostaje wybór dla vaulta.
+- ✅ `CURRENT_STATE.md`: z warunków przed pierwszym pushem zostaje NT-008.
+- ✅ Paczka objęła trzy repo, bez pusha.
+
+**DoD ISSUE (MVP):**
+- testy dla każdego AC: 106/106;
+- ręczna weryfikacja: kroki oddane agentowi; pominięcia i zastępcze dowody są zapisane w *Verification*,
+  cisza nie została uznana za „pomiń”;
+- zero danych rodziny w zmianach;
+- nowych folderów w vaulcie brak (hook i test żyją w `grobing-agents`).
+
+Warstwy danych aplikacji pozycja nie dotyka, więc odtworzenie z kopii i migracja nie mają zastosowania.
+Opis w *What to build* (`*.grobing-backup`) zostaje jako zapis pierwotnej pozycji; obowiązującą listę
+podają plan (D2) i `family-data.md`.
