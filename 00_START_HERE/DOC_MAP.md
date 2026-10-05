@@ -33,6 +33,7 @@ updated: 2026-10-05
 | `03_REQUIREMENTS/` | Wymagania kanoniczne: EPIC · US · AC · FR · NFR | ISSUE-001 — pierwsze wymaganie do spisania |
 | `03_REQUIREMENTS/epics/` | EPIC-NNN — jeden etap procesu genealoga; **EPIC-i żyją tylko tutaj**, nie w `backlog/` | ISSUE-001 AC-3 |
 | `03_REQUIREMENTS/functional/` | FR-NNN — trwałe reguły systemu (przeżywają każdą US), jeden `epic:` | ISSUE-001 AC-3c |
+| `03_REQUIREMENTS/user-stories/` | US-NNN — jedna rzecz, którą Zbierający robi od początku do końca; **AC w pliku US** (Given/When/Then), lista ISSUE we frontmatterze | rozpisanie EPIC-001 (2026-10-05) — pierwsza US |
 | `03_REQUIREMENTS/non-functional/` | NFR-NNN — miara · cel · metoda · trigger weryfikacji; `epic:` jako lista | ISSUE-001 AC-3c |
 | `04_ARCHITECTURE/` | Architektura: model danych (`data-model.md` — żywy dom modelu), formaty kopii i eksportu | ISSUE-001 — pierwszy model danych |
 | `04_ARCHITECTURE/decisions/` | ADR-NNN — ≥3 opcje, append-only po akceptacji | ISSUE-001 AC-4 — pierwsza decyzja architektoniczna |

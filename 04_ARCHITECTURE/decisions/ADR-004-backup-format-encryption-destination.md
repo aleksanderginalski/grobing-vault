@@ -122,3 +122,6 @@ bez zmian.*
     - widoczne w aplikacji „ostatnia udana kopia: kiedy”;
     - instrukcję odtworzenia: na świeżym telefonie folder Dysku w oknie systemowym bywa pusty, a pliki
       znajduje wyszukiwarka okna.
+  - **2026-10-05 — pozycja produkcyjna kopii** to [[US-001-kopia-z-odtworzeniem]]:
+    [[ISSUE-007-data-layer]] (baza, której kopia potrzebuje) → [[ISSUE-008-backup-write]] (pkt 1-4) →
+    [[ISSUE-009-restore]] (pkt 5-6 i uwagi `qa`).

@@ -6,7 +6,7 @@ moscow: [M1, M8]
 persona: "[[P1-zbierajacy]]"
 FR: ["[[FR-001-provenance]]", "[[FR-002-rodzina-jako-rekord]]", "[[FR-003-wiele-osob-w-grobie]]", "[[FR-004-data-z-dopiskiem]]", "[[FR-005-nazwisko-rodowe]]"]
 NFR: ["[[NFR-002-odtworzenie-na-nowym-telefonie]]", "[[NFR-003-migracje-schematu]]", "[[NFR-005-dane-nie-opuszczaja-telefonu]]"]
-user-stories: []
+user-stories: ["[[US-001-kopia-z-odtworzeniem]]", "[[US-002-przepisanie-grobu]]", "[[US-003-przepisanie-rodziny]]", "[[US-004-fakt-od-babci]]", "[[US-005-zdjecia]]", "[[US-006-eksport-dla-rodziny]]"]
 quality-verdict: pending
 verdict-date: null
 verdict-reviewer: null
@@ -40,6 +40,29 @@ modelem (MD2): ten EPIC jest pierwszy.
 - ⚠️ **Kolejność wewnątrz EPIC-a (MD2):** kopia + odtwarzanie **przed masowym przepisywaniem** — od
   pierwszej przepisanej osoby telefon jest jedyną cyfrową kopią, czyli problem papieru od nowa.
 
+## User stories (in order)
+> Rozpisane 2026-10-05 (`docs`, decyzja autora po `pm`: **najpierw baza, potem kopia**).
+
+| # | US | MoSCoW | FR |
+|---|---|---|---|
+| 1 | [[US-001-kopia-z-odtworzeniem]] → [[ISSUE-007-data-layer]], [[ISSUE-008-backup-write]], [[ISSUE-009-restore]] | M8 | — (NFR-002, 003, 005) |
+| 2 | [[US-002-przepisanie-grobu]] (⚠️ OPEN niżej) | M1 | FR-001, 003, 004, 005 |
+| 3 | [[US-003-przepisanie-rodziny]] | M1 | FR-001, 002, 004 |
+| 4 | [[US-004-fakt-od-babci]] | M1 | FR-001 |
+| 5 | [[US-005-zdjecia]] | M1 | — |
+| 6 | [[US-006-eksport-dla-rodziny]] | M8 | — |
+
+Status każdej US: we frontmatterze US i w `TRACEABILITY.md` (kolumna *Story Status*).
+
+- **Kolejność:** US-001 przed US-002…005, bo kopia ma działać przed pierwszymi prawdziwymi danymi (MD2).
+  US-006 po danych, przed przekazaniem rodzinie.
+- **Każde FR EPIC-a ma ≥1 US** (DoD EPIC-a): FR-001 → US-002, 003, 004 · FR-002 → US-003 · FR-003 → US-002 ·
+  FR-004 → US-002, 003 · FR-005 → US-002.
+- **AC żyją w pliku US** (sekcja *Acceptance Criteria*, Given/When/Then), nie w osobnych plikach AC-NNN.
+  Przy jednym autorze osobny plik na każde AC nic nie dodaje; gdyby FR zaczęły linkować pojedyncze AC,
+  wydzielenie jest tanie.
+- Notka przekazania (M8, G2) nie jest US: to [[NT-007-hand-over-note]], poza kodem.
+
 ## Out of scope
 - Widoki wizyty (M2-M7) → [[EPIC-002-wizyta]]; widok 5 (M9-M11) → [[EPIC-003-zrozumienie]].
 - S4 opłata za grób + przypomnienie · S5 wyszukiwanie · C2 eksport GEDCOM · C5 cofanie / brak cichego
@@ -50,7 +73,7 @@ modelem (MD2): ten EPIC jest pierwszy.
 ## Dependencies
 | Dependency | Type | Status |
 |---|---|---|
-| [[SPIKE-003-backup-and-restore]] → [[ADR-004-backup-format-encryption-destination]] | technical | ✅ spike `done`, ADR `accepted` (2026-10-05). Produkcyjna funkcja kopii to US/ISSUE z rozpisania tego EPIC-a; **przed pierwszymi prawdziwymi danymi** (ADR-004 → *Follow-ups*) |
+| [[SPIKE-003-backup-and-restore]] → [[ADR-004-backup-format-encryption-destination]] | technical | ✅ spike `done`, ADR `accepted` (2026-10-05). Produkcyjna funkcja kopii to [[US-001-kopia-z-odtworzeniem]] (rozpisane 2026-10-05); **przed pierwszymi prawdziwymi danymi** (ADR-004 → *Follow-ups*) |
 | [[ADR-001-local-first]] · [[ADR-002-flutter-pinned]] | technical | `accepted` |
 | `04_ARCHITECTURE/data-model.md` | technical | przyjęty w kick-offie |
 | [[ISSUE-002-bootstrap-code-repo]] | technical | `done` (2026-10-05) |

@@ -4,7 +4,7 @@ type: functional-requirement
 status: draft
 epic: "[[EPIC-001-zabezpiecz-i-przepisz]]"
 used-by: ["[[EPIC-003-zrozumienie]]"]
-user-stories: []
+user-stories: ["[[US-002-przepisanie-grobu]]", "[[US-003-przepisanie-rodziny]]"]
 NFR: []
 quality-verdict: pending
 verdict-date: null

@@ -36,9 +36,13 @@ updated: 2026-10-05
 | n/a — widok 5 (zestaw funkcji): drzewo | §5 M9 | [[EPIC-003-zrozumienie]] | | | | | |
 | n/a — widok 5: suwak czasu | §5 M10 | [[EPIC-003-zrozumienie]] | | | | | |
 | n/a — widok 5: ścieżka między dowolnymi dwiema osobami | §5 M11 | [[EPIC-003-zrozumienie]] | | | | | |
-| n/a — poza ścieżką (warunek kroku 1): wprowadzanie danych całymi rodzinami | §5 M1 | [[EPIC-001-zabezpiecz-i-przepisz]] | | | | | |
+| n/a — poza ścieżką (warunek kroku 1): przepisanie grobu z osobami | §5 M1 | [[EPIC-001-zabezpiecz-i-przepisz]] | [[US-002-przepisanie-grobu]] | | draft (⚠️ OPEN — Open gaps 1) | | |
+| n/a — poza ścieżką (warunek kroku 1): wprowadzanie całymi rodzinami | §5 M1 · G6 | [[EPIC-001-zabezpiecz-i-przepisz]] | [[US-003-przepisanie-rodziny]] | | ready | | |
+| n/a — poza ścieżką (warunek kroku 1): fakty od babci obok notatek | §2 · §5 M1 | [[EPIC-001-zabezpiecz-i-przepisz]] | [[US-004-fakt-od-babci]] | | ready | | |
+| n/a — poza ścieżką (warunek kroku 1): zdjęcia nagrobka i osoby | §5 M1 | [[EPIC-001-zabezpiecz-i-przepisz]] | [[US-005-zdjecia]] | | ready | | |
 | n/a — poza ścieżką (NFR): działa bez zasięgu | §5 M7 | [[EPIC-002-wizyta]] ([[NFR-001-offline]]) | | | | | |
-| n/a — poza ścieżką: kopia z odtworzeniem + eksport + notka przekazania | §5 M8 | [[EPIC-001-zabezpiecz-i-przepisz]] | | [[SPIKE-003-backup-and-restore]] (spike: mechanizm kopii → [[ADR-004-backup-format-encryption-destination]]) | | done | APPROVED (self-check, 2026-10-05; stop #2 pominięty) |
+| n/a — poza ścieżką: kopia z odtworzeniem | §5 M8 · G1 | [[EPIC-001-zabezpiecz-i-przepisz]] | [[US-001-kopia-z-odtworzeniem]] | [[SPIKE-003-backup-and-restore]] (spike: mechanizm kopii → [[ADR-004-backup-format-encryption-destination]]) · [[ISSUE-007-data-layer]] | ready | SPIKE-003 done · ISSUE-007 in-progress | SPIKE-003: APPROVED (self-check, 2026-10-05; stop #2 pominięty) · ISSUE-007: APPROVED (self-check, 2026-10-05; stop #2 ok) |
+| n/a — poza ścieżką: eksport czytelny bez aplikacji (+ notka przekazania [[NT-007-hand-over-note]], poza kodem) | §5 M8 · G2 · A4 | [[EPIC-001-zabezpiecz-i-przepisz]] | [[US-006-eksport-dla-rodziny]] | | ready | | |
 
 > Jedna US może pokrywać 1-3 kolejne kroki — wpisz ją raz i zaznacz zakres. Każda US musi mieć brief §
 > w górę i ≥1 issue w dół. Pusta komórka „Brief §" albo „Issue(s)" to luka.
@@ -47,6 +51,10 @@ updated: 2026-10-05
 - **Kolumny US i Issue są puste — tak ma być** do rozpisania EPIC-ów na US.
   [[ISSUE-001-materialize-backlog]] AC-3b (2026-10-05): **każdy wiersz ma EPIC; żaden krok nie został bez <!-- placeholder-ok: real wikilink -->
   EPIC-a.** Gdyby został — trafiłby tutaj z nazwy.
+  - ✅ 2026-10-05: [[EPIC-001-zabezpiecz-i-przepisz]] rozpisany. Wiersze M1 i M8 podzielone na jeden wiersz
+    na US. **Kolumna Issue(s) w wierszach EPIC-001 czeka na `planning`**: ISSUE-007…009 pod US-001 już
+    istnieją w `backlog/issues/`, a wpisuje je `planning` przy planowaniu każdego z nich. EPIC-002 i
+    EPIC-003 bez US.
 - **1 — ⚠️ OPEN: gałąź UJ-001 „grób bez pinezki" po korekcie autora** (2026-10-05, [[EPIC-002-wizyta]]).
   Brief §4a zakłada adres kwatery z notatek; **notatki go nie mają**. Przy pierwszej wizycie taki grób nie
   ma ani pinezki, ani adresu, ani zdjęcia nagrobka — krok 2 może pokazać co najwyżej link do Grobonetu

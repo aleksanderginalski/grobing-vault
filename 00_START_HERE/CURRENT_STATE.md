@@ -18,11 +18,15 @@ updated: 2026-10-05
 MVP — od startu, cały produkt (Meta-decyzja 4).
 
 ## In progress
-- nic. Następne kroki:
+- [[ISSUE-007-data-layer]] — następna do planowania (`planning`). [[EPIC-001-zabezpiecz-i-przepisz]]
+  rozpisany na US 2026-10-05. Pierwsza jest [[US-001-kopia-z-odtworzeniem]], w kolejności ISSUE-007
+  (baza) → [[ISSUE-008-backup-write]] (kopia) → [[ISSUE-009-restore]] (odtworzenie). Baza idzie
+  pierwsza, bo kopia z ADR-004 zapisuje bazę, której w `grobing-code` jeszcze nie ma (decyzja autora po
+  `pm`).
+- Pozostałe następne kroki:
   - [[NT-001-photograph-the-notes]]: poza kodem, nadal najtańsze zabezpieczenie;
-  - rozpisanie [[EPIC-001-zabezpiecz-i-przepisz]] na US. **Produkcyjna kopia jest pierwsza**: mechanizm
-    jest już rozstrzygnięty w [[ADR-004-backup-format-encryption-destination]], a musi działać przed
-    pierwszymi danymi;
+  - **przed planowaniem [[US-002-przepisanie-grobu]] — pytanie do autora:** czy grób z notatek to
+    cmentarz + osoby, z adresem, pinezką i zdjęciem opcjonalnymi (⚠️ OPEN w US-002);
   - pozostałe spike'i: [[SPIKE-001-map-source-offline]] i [[SPIKE-002-tree-on-a-phone]], przed widokami,
     których dotyczą;
   - przed pierwszym pushem musi być zamknięte [[NT-008-publication-review]]. Zostały w nim wybór dla
@@ -30,7 +34,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
 - ⚠️ **Przed pierwszymi prawdziwymi danymi w aplikacji:** `grobing-code` ma dziś domyślne
   `allowBackup=true`. Android skopiowałby dane do swojej kopii w chmurze i przy transferze na nowy
   telefon, co zmierzył [[SPIKE-003-backup-and-restore]] (M7). Poprawka należy do pozycji produkcyjnej
-  kopii (ADR-004 → *Follow-ups*).
+  kopii: [[ISSUE-008-backup-write]] (ADR-004 → *Follow-ups*).
 - **Budowa bez terminu** (decyzja autora 2026-10-05). 1 listopada niczego nie wyznacza; przy wizytach
   autor robi zdjęcia nagrobków z lokalizacją → `TRACEABILITY.md` → *Open gaps* 2.
 - **Weryfikacja na emulatorze do MVP** (decyzja autora 2026-10-05). Na telefon trafi dopiero MVP, jako
@@ -49,7 +53,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
 - Spike'i: *patrz `backlog/spikes/`* — trzy niewiadome, na których stoi architektura.
 - Poza kodem: *patrz `backlog/non-tech/`*.
 - Odłożone: *patrz `backlog/deferred/`*.
-- Wymagania: *patrz `03_REQUIREMENTS/`* (EPIC-i, FR, NFR); architektura i ADR-y: *patrz `04_ARCHITECTURE/`*.
+- Wymagania: *patrz `03_REQUIREMENTS/`* (EPIC-i, US, FR, NFR); architektura i ADR-y: *patrz `04_ARCHITECTURE/`*.
 - **Przed pierwszym pushem (repo publiczne):** [[NT-008-publication-review]] — twardy warunek z
   `family-data.md` ([[ISSUE-006-setup-family-data-guard]] już zamknięte).
 
@@ -62,6 +66,9 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   (zdarzenie) · data zapytania`. **Odpowiedź z faktami o rodzinie trafia do aplikacji, nie tutaj.**
 
 ## Recently done
+- 2026-10-05 — [[EPIC-001-zabezpiecz-i-przepisz]] rozpisany na US (`docs`). Nowy folder
+  `03_REQUIREMENTS/user-stories/`, ISSUE-007…009 pod US-001. Każde FR EPIC-a ma US. To rozpisanie, nie
+  zamknięta pozycja, więc licznik retro bez zmian.
 - 2026-10-05 — [[ISSUE-006-setup-family-data-guard]] zamknięte. Strażnik danych rodziny działa:
   - hook `PreToolUse` w `grobing-agents` odmawia zapisu baz, kopii `age`/`tar`, eksportów HTML/PDF,
     zdjęć i filmów w trzech repo. Odmawia też `git add`/`commit`, gdy taki plik mógłby wejść do commita;
