@@ -24,6 +24,9 @@ OpenStreetMap wprost zabraniają użycia offline (§6 N5).
 ## Steps
 1. Grobonet: wyszukaj 10 cmentarzy autora — które mają mapę grobów (tylko liczba i nazwy cmentarzy w
    notatce; **żadnych nazwisk**). Dla pokrytych: czy da się linkować do strony grobu (→ NT-004).
+   > ⚠️ **Do rozstrzygnięcia przy planowaniu (2026-10-05):** repo mają być publiczne — **nazwy
+   > cmentarzy** w notatce vaulta mówią, gdzie leży rodzina autora. Do decyzji razem z wyborem dla
+   > vaulta w [[NT-008-publication-review]]; do tego czasu w vaulcie tylko liczba.
 2. 2-3 kandydatów na źródło satelitarne z prawem offline: warunki, limity, koszt dla 1 użytkownika i
    10 małych obszarów; zgodność licencji z Flutterem (uwaga: popularna wtyczka bulk-download do
    `flutter_map` jest GPL).

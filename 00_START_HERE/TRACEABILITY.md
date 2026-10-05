@@ -26,24 +26,33 @@ updated: 2026-10-05
 
 | Journey step | Brief § | EPIC | US | Issue(s) | Story Status | Issue Status | Quality Verdict |
 |---|---|---|---|---|---|---|---|
-| UJ-001 · 1 — mapa Polski z cmentarzami rodziny; wybór, dokąd jechać | §4a · §5 M2 | | | | | | |
-| UJ-001 · 2 — na miejscu: mapa cmentarza, pinezki, adres zarządcy, link do Grobonetu | §4a · §5 M3 | | | | | | |
-| UJ-001 · 3 — dojście do pinezki; porównanie ze zdjęciem nagrobka | §4a · §5 M3/M4 | | | | | | |
-| UJ-001 · 4 — grób: wszyscy pochowani, zdjęcie + imię | §4a · §5 M4 | | | | | | |
-| UJ-001 · 5 — osoba: kim była, pokrewieństwa, ścieżka do „ja" | §4a · §5 M5 | | | | | | |
-| UJ-001 · 6 — poprawa na miejscu: pinezka, nowe zdjęcie, imię z tablicy | §4a · §5 M6 | | | | | | |
-| UJ-001 · 7 — powrót na mapę cmentarza → następny grób | §4a · §5 M3 | | | | | | |
-| n/a — widok 5 (zestaw funkcji): drzewo | §5 M9 | | | | | | |
-| n/a — widok 5: suwak czasu | §5 M10 | | | | | | |
-| n/a — widok 5: ścieżka między dowolnymi dwiema osobami | §5 M11 | | | | | | |
-| n/a — poza ścieżką (warunek kroku 1): wprowadzanie danych całymi rodzinami | §5 M1 | | | | | | |
-| n/a — poza ścieżką (NFR): działa bez zasięgu | §5 M7 | | | | | | |
-| n/a — poza ścieżką: kopia z odtworzeniem + eksport + notka przekazania | §5 M8 | | | | | | |
+| UJ-001 · 1 — mapa Polski z cmentarzami rodziny; wybór, dokąd jechać | §4a · §5 M2 | [[EPIC-002-wizyta]] | | | | | |
+| UJ-001 · 2 — na miejscu: mapa cmentarza, pinezki, adres zarządcy, link do Grobonetu | §4a · §5 M3 | [[EPIC-002-wizyta]] | | | | | |
+| UJ-001 · 3 — dojście do pinezki; porównanie ze zdjęciem nagrobka | §4a · §5 M3/M4 | [[EPIC-002-wizyta]] | | | | | |
+| UJ-001 · 4 — grób: wszyscy pochowani, zdjęcie + imię | §4a · §5 M4 | [[EPIC-002-wizyta]] | | | | | |
+| UJ-001 · 5 — osoba: kim była, pokrewieństwa, ścieżka do „ja" | §4a · §5 M5 | [[EPIC-002-wizyta]] | | | | | |
+| UJ-001 · 6 — poprawa na miejscu: pinezka, nowe zdjęcie, imię z tablicy | §4a · §5 M6 | [[EPIC-002-wizyta]] | | | | | |
+| UJ-001 · 7 — powrót na mapę cmentarza → następny grób | §4a · §5 M3 | [[EPIC-002-wizyta]] | | | | | |
+| n/a — widok 5 (zestaw funkcji): drzewo | §5 M9 | [[EPIC-003-zrozumienie]] | | | | | |
+| n/a — widok 5: suwak czasu | §5 M10 | [[EPIC-003-zrozumienie]] | | | | | |
+| n/a — widok 5: ścieżka między dowolnymi dwiema osobami | §5 M11 | [[EPIC-003-zrozumienie]] | | | | | |
+| n/a — poza ścieżką (warunek kroku 1): wprowadzanie danych całymi rodzinami | §5 M1 | [[EPIC-001-zabezpiecz-i-przepisz]] | | | | | |
+| n/a — poza ścieżką (NFR): działa bez zasięgu | §5 M7 | [[EPIC-002-wizyta]] ([[NFR-001-offline]]) | | | | | |
+| n/a — poza ścieżką: kopia z odtworzeniem + eksport + notka przekazania | §5 M8 | [[EPIC-001-zabezpiecz-i-przepisz]] | | | | | |
 
 > Jedna US może pokrywać 1-3 kolejne kroki — wpisz ją raz i zaznacz zakres. Każda US musi mieć brief §
 > w górę i ≥1 issue w dół. Pusta komórka „Brief §" albo „Issue(s)" to luka.
 
 ## Open gaps
-- W dniu materializacji żaden wiersz nie ma US ani Issue — **tak ma być**.
-  [[ISSUE-001-materialize-backlog]] AC-3b przypisuje każdy krok do EPIC-a; krok bez EPIC-a trafia <!-- placeholder-ok: real wikilink -->
-  tutaj z nazwy.
+- **Kolumny US i Issue są puste — tak ma być** do rozpisania EPIC-ów na US.
+  [[ISSUE-001-materialize-backlog]] AC-3b (2026-10-05): **każdy wiersz ma EPIC; żaden krok nie został bez <!-- placeholder-ok: real wikilink -->
+  EPIC-a.** Gdyby został — trafiłby tutaj z nazwy.
+- **1 — ⚠️ OPEN: gałąź UJ-001 „grób bez pinezki" po korekcie autora** (2026-10-05, [[EPIC-002-wizyta]]).
+  Brief §4a zakłada adres kwatery z notatek; **notatki go nie mają**. Przy pierwszej wizycie taki grób nie
+  ma ani pinezki, ani adresu, ani zdjęcia nagrobka — krok 2 może pokazać co najwyżej link do Grobonetu
+  (jeśli cmentarz jest pokryty), a krok 3 nie ma z czym porównać. **Jak Zbierający znajduje go na miejscu?** Dotyka też M1 („grób: adres kwatery, zdjęcie,
+  pinezka" — przy przepisywaniu nie ma żadnego z trzech, [[EPIC-001-zabezpiecz-i-przepisz]]) i `glossary.md`
+  → *pinezka* („prawdą o położeniu jest adres zarządcy" — dla takiego grobu pinezka jest jedynym
+  wskaźnikiem). **Decyzja autora**; nie zmienia przypisania kroków do EPIC-ów.
+- **2 — nierozstrzygnięte: grób ze zdjęcia z galerii** (pinezka z lokalizacji zdjęcia) — funkcja spoza M1,
+  zależna od decyzji o 1 listopada: `01_INBOX/2026-10-05-1-listopada-zbieranie.md`. Poza EPIC-ami do decyzji.

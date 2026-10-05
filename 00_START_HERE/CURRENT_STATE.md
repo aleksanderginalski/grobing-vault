@@ -18,22 +18,26 @@ updated: 2026-10-05
 MVP — od startu, cały produkt (Meta-decyzja 4).
 
 ## In progress
-- nic — świeży kick-off. Pierwsze kroki: [[ISSUE-001-materialize-backlog]] (dokumentacja), <!-- placeholder-ok: real wikilink, identical to the template's -->
-  [[NT-008-publication-review]] przed pierwszym pushem (repo publiczne),
+- nic. Następne kroki: [[NT-008-publication-review]] przed pierwszym pushem (repo publiczne),
   [[NT-001-photograph-the-notes]] (dziś, poza kodem), [[ISSUE-002-bootstrap-code-repo]], potem
-  spike'i z `backlog/spikes/`.
+  spike'i z `backlog/spikes/` i rozpisanie [[EPIC-001-zabezpiecz-i-przepisz]] na US (najpierw kopia i
+  odtwarzanie).
+- **Przed ISSUE-002 — pytanie do autora:** jak wykorzystać 1 listopada (aparat z GPS vs kawałek
+  aplikacji) → `01_INBOX/2026-10-05-1-listopada-zbieranie.md`.
+- **Przed rozpisaniem [[EPIC-002-wizyta]] na US — pytanie do autora:** jak znaleźć przy pierwszej wizycie
+  grób bez pinezki, adresu kwatery i zdjęcia → `TRACEABILITY.md` → *Open gaps* 1.
 
 ## Backlog at a glance
 - Zadania: *patrz `backlog/issues/`*.
 - Spike'i: *patrz `backlog/spikes/`* — trzy niewiadome, na których stoi architektura.
 - Poza kodem: *patrz `backlog/non-tech/`*.
 - Odłożone: *patrz `backlog/deferred/`*.
-- Meta: [[ISSUE-001-materialize-backlog]] — generuje resztę z `PROJECT_BRIEF.md`. <!-- placeholder-ok: real wikilink -->
+- Wymagania: *patrz `03_REQUIREMENTS/`* (EPIC-i, FR, NFR); architektura i ADR-y: *patrz `04_ARCHITECTURE/`*.
 - **Przed pierwszym pushem (repo publiczne):** [[ISSUE-006-setup-family-data-guard]] +
   [[NT-008-publication-review]] — twardy warunek z `family-data.md`.
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **0**. Co **10** → retro + pytanie o 3-5 nośnych faktów
+- Zamknięte pozycje od ostatniego retro: **1**. Co **10** → retro + pytanie o 3-5 nośnych faktów
   (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**; podbija go `docs` przy zamknięciu.
 
 ## Parked (waiting on someone outside the session)
@@ -41,6 +45,9 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   (zdarzenie) · data zapytania`. **Odpowiedź z faktami o rodzinie trafia do aplikacji, nie tutaj.**
 
 ## Recently done
+- 2026-10-05 — [[ISSUE-001-materialize-backlog]] zamknięte: persona P1, EPIC-i, FR i NFR w <!-- placeholder-ok: real wikilink -->
+  `03_REQUIREMENTS/`, ADR-001…004 i model danych w `04_ARCHITECTURE/`, EPIC przypisany w każdym wierszu
+  macierzy. Werdykt `qa`: APPROVED (self-check, po poprawkach).
 - 2026-10-05 — [[NT-008-publication-review]] pkt 2-3: zapis kick-offu przeredagowany przed pierwszym
   commitem (pozycja otwarta — czeka na ISSUE-006 i wybór dla vaulta).
 - 2026-10-05 — kick-off NPG zamknięty; przestrzeń zmaterializowana (3 repo).
