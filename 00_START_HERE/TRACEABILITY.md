@@ -38,7 +38,7 @@ updated: 2026-10-05
 | n/a — widok 5: ścieżka między dowolnymi dwiema osobami | §5 M11 | [[EPIC-003-zrozumienie]] | | | | | |
 | n/a — poza ścieżką (warunek kroku 1): wprowadzanie danych całymi rodzinami | §5 M1 | [[EPIC-001-zabezpiecz-i-przepisz]] | | | | | |
 | n/a — poza ścieżką (NFR): działa bez zasięgu | §5 M7 | [[EPIC-002-wizyta]] ([[NFR-001-offline]]) | | | | | |
-| n/a — poza ścieżką: kopia z odtworzeniem + eksport + notka przekazania | §5 M8 | [[EPIC-001-zabezpiecz-i-przepisz]] | | | | | |
+| n/a — poza ścieżką: kopia z odtworzeniem + eksport + notka przekazania | §5 M8 | [[EPIC-001-zabezpiecz-i-przepisz]] | | [[SPIKE-003-backup-and-restore]] (spike: mechanizm kopii) | | in-progress | APPROVED (self-check, 2026-10-05; stop #2 pominięty) |
 
 > Jedna US może pokrywać 1-3 kolejne kroki — wpisz ją raz i zaznacz zakres. Każda US musi mieć brief §
 > w górę i ≥1 issue w dół. Pusta komórka „Brief §" albo „Issue(s)" to luka.
