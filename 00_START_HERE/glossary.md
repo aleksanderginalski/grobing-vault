@@ -17,7 +17,7 @@ updated: 2026-10-05
 |---|---|
 | EPIC | Jeden etap procesu genealoga z własną wartością (np. *Zabezpiecz i przepisz*, *Wizyta*, *Zrozumienie*). Dokument wymagań, nie wielka karta backlogu. |
 | US (User Story) | Jedna rzecz, którą Zbierający robi od początku do końca, wyprowadzona z 1-3 kolejnych kroków ścieżki wizyty (UJ-001) — albo z jednej funkcji widoku 5. |
-| ISSUE | Jeden komponent US, **do kliknięcia w telefonie**, ~0,5-1 dnia (`delivery-style: task-level`). |
+| ISSUE | Jeden komponent US, **do kliknięcia w aplikacji** (do MVP na emulatorze — `DEFINITION_OF_DONE.md`), ~0,5-1 dnia (`delivery-style: task-level`). |
 | SPIKE | Pytanie z limitem czasu i warunkiem wyjścia; kod z eksperymentu **nie zostaje**. |
 | NT (non-tech item) | Sprawa poza kodem: prawna, koszt, przekazanie rodzinie, przepisywanie notatek. |
 | DEF (deferred item) | Wymóg odłożony z **triggerem-zdarzeniem**, nie datą. |

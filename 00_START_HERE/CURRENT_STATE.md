@@ -18,12 +18,17 @@ updated: 2026-10-05
 MVP — od startu, cały produkt (Meta-decyzja 4).
 
 ## In progress
-- nic. Następne kroki: [[NT-008-publication-review]] przed pierwszym pushem (repo publiczne),
-  [[NT-001-photograph-the-notes]] (dziś, poza kodem), [[ISSUE-002-bootstrap-code-repo]], potem
-  spike'i z `backlog/spikes/` i rozpisanie [[EPIC-001-zabezpiecz-i-przepisz]] na US (najpierw kopia i
-  odtwarzanie).
+- nic. Następne kroki: [[NT-001-photograph-the-notes]] (poza kodem, najtańsze zabezpieczenie),
+  spike'i z `backlog/spikes/` (najpierw [[SPIKE-003-backup-and-restore]]: kopia i odtwarzanie przed
+  pierwszymi danymi), potem rozpisanie [[EPIC-001-zabezpiecz-i-przepisz]] na US.
+  [[NT-008-publication-review]] i [[ISSUE-006-setup-family-data-guard]] muszą być zamknięte przed
+  pierwszym pushem.
 - **Budowa bez terminu** (decyzja autora 2026-10-05). 1 listopada niczego nie wyznacza; przy wizytach
   autor robi zdjęcia nagrobków z lokalizacją → `TRACEABILITY.md` → *Open gaps* 2.
+- **Weryfikacja na emulatorze do MVP** (decyzja autora 2026-10-05). Na telefon trafi dopiero MVP, jako
+  build release; wyjątki są w `DEFINITION_OF_DONE.md`.
+- **Autor, poza sesją:** kopia klucza wydania (`.jks` + hasła) w zaszyfrowanym miejscu przed pierwszymi
+  danymi; opcjonalnie zmiana hasła klucza (README `grobing-code` → *Podpis wydania*).
 - **Przed rozpisaniem [[EPIC-002-wizyta]] na US — pytanie do autora:** jak znaleźć przy pierwszej wizycie
   grób bez pinezki, adresu kwatery i zdjęcia → `TRACEABILITY.md` → *Open gaps* 1. Kandydat: plany
   cmentarzy z kwaterami → `01_INBOX/2026-10-05-plany-cmentarzy.md` (rozstrzyga SPIKE-001).
@@ -38,7 +43,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   [[NT-008-publication-review]] — twardy warunek z `family-data.md`.
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **1**. Co **10** → retro + pytanie o 3-5 nośnych faktów
+- Zamknięte pozycje od ostatniego retro: **2**. Co **10** → retro + pytanie o 3-5 nośnych faktów
   (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**; podbija go `docs` przy zamknięciu.
 
 ## Parked (waiting on someone outside the session)
@@ -46,6 +51,13 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   (zdarzenie) · data zapytania`. **Odpowiedź z faktami o rodzinie trafia do aplikacji, nie tutaj.**
 
 ## Recently done
+- 2026-10-05 — [[ISSUE-002-bootstrap-code-repo]] zamknięte. Projekt Flutter w `grobing-code`:
+  - Flutter przypięty na 3.41.1 przez `pubspec`;
+  - pakiet `com.grobing.app`;
+  - ciemny ekran startowy w stylu B;
+  - podpis wydania kluczem spoza drzewa projektu.
+
+  Na emulatorze działa build release. Werdykt `qa`: APPROVED (self-check).
 - 2026-10-05 — [[ISSUE-001-materialize-backlog]] zamknięte: persona P1, EPIC-i, FR i NFR w <!-- placeholder-ok: real wikilink -->
   `03_REQUIREMENTS/`, ADR-001…004 i model danych w `04_ARCHITECTURE/`, EPIC przypisany w każdym wierszu
   macierzy. Werdykt `qa`: APPROVED (self-check, po poprawkach).

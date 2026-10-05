@@ -50,7 +50,14 @@ SQLite, nie magazyn klucz-wartość; własny klucz podpisu poza każdym drzewem 
   `analysis_options.yaml` / `flutter_lints`, rytuał zamknięcia, sekcja „Project Identity" — jako wzorce,
   nie pliki · Firebase, klucz podpisu innej aplikacji, Hive, kopia folderu innej aplikacji — **nie**.
 - **Follow-ups:**
-  - ⚠️ **OPEN — mechanizm przypięcia** (menedżer wersji albo zapisana wersja + sprawdzenie) →
-    [[ISSUE-002-bootstrap-code-repo]] wybiera jeden, opisuje w README `grobing-code` i **dopisuje tu
-    datowaną linię**.
-  - ⚠️ **OPEN — nazwa pakietu Androida** → ISSUE-002, wpis wyłącznie w `project-config.example.md`.
+  - ✅ **2026-10-05 — mechanizm przypięcia** ([[ISSUE-002-bootstrap-code-repo]]): zapisana wersja +
+    sprawdzenie. Wersję deklaruje `project-config.example.md`, a sprawdza ją
+    `grobing-code/pubspec.yaml` → `environment.flutter: 3.41.1`. **Zmierzone:** `pub get` odmawia
+    każdej innej wersji, łącznie z górną granicą zakresu. FVM odłożony do pierwszego konfliktu wersji z
+    drugą aplikacją. Opis jest w README `grobing-code`. Zmiana wersji to obie linie w jednej paczce plus
+    nowa linia tutaj.
+  - ✅ **2026-10-05 — nazwa pakietu: `com.grobing.app`** (decyzja autora, ISSUE-002; wzorzec jego
+    wcześniejszej aplikacji). Wartość jest wpisana wyłącznie w `project-config.example.md`.
+    **Nieodwracalna:** inna nazwa albo inny klucz podpisu to dla Androida inna aplikacja, która nie widzi
+    bazy z telefonu. Klucz wydania leży poza drzewem projektu (`release_keystore_dir` w lokalnym
+    `project-config.md`).

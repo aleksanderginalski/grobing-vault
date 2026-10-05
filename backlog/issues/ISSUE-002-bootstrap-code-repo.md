@@ -1,7 +1,7 @@
 ---
 title: "ISSUE-002 — Bootstrap grobing-code (fresh Flutter project, pinned SDK, no Firebase)"
 type: issue
-status: in-progress
+status: done
 delivery-style: task-level
 priority: MUST
 ideal_days: 0.5
@@ -19,21 +19,22 @@ updated: 2026-10-05
 telefonie autora jako pusty ekran startowy w stylu B — fundament pod wszystkie kolejne zadania.
 
 ## Acceptance Criteria
-- [ ] `flutter create` w `grobing-code` (platforma: **android**), na wersji z
+- [x] `flutter create` w `grobing-code` (platforma: **android**), na wersji z
       `project-config.example.md` (`flutter_version_pinned`). **Globalny Flutter nie jest
       aktualizowany** — współdzieli go wydana aplikacja autora.
-- [ ] Wersja przypięta per projekt (menedżer wersji albo zapis + sprawdzenie) — jeden sposób, opisany
+- [x] Wersja przypięta per projekt (menedżer wersji albo zapis + sprawdzenie) — jeden sposób, opisany
       w README repo.
-- [ ] Nazwa pakietu ustalona z autorem i wpisana **wyłącznie** w `project-config.example.md`
+- [x] Nazwa pakietu ustalona z autorem i wpisana **wyłącznie** w `project-config.example.md`
       (`android_package`).
-- [ ] Domyślny `.gitignore` Fluttera **dołączony pod** istniejący blok (dane rodziny + sekrety
+- [x] Domyślny `.gitignore` Fluttera **dołączony pod** istniejący blok (dane rodziny + sekrety
       zostają na górze).
-- [ ] **Brak Firebase** i jakichkolwiek SDK wysyłających dane z telefonu.
-- [ ] Lints/`analysis_options.yaml` jak we wcześniejszej aplikacji autora (wzorzec, nie kopia pliku).
-- [ ] Własny keystore wydania **poza drzewem projektu**, ścieżka w lokalnym `project-config.md`
+- [x] **Brak Firebase** i jakichkolwiek SDK wysyłających dane z telefonu.
+- [x] Lints/`analysis_options.yaml` jak we wcześniejszej aplikacji autora (wzorzec, nie kopia pliku).
+- [x] Własny keystore wydania **poza drzewem projektu**, ścieżka w lokalnym `project-config.md`
       (`release_keystore_dir`); w repo nic.
-- [ ] `flutter analyze` i `flutter test` przechodzą; aplikacja startuje na telefonie z ciemnym ekranem
-      startowym (styl B).
+- [x] `flutter analyze` i `flutter test` przechodzą; aplikacja startuje na telefonie z ciemnym ekranem
+      startowym (styl B). *(Spełnione na emulatorze, build release — decyzja autora 2026-10-05: telefon
+      dopiero przy MVP; patrz Verification.)*
 
 ## Out of Scope
 - Model danych, ekrany, mapy — kolejne zadania i spike'i.
@@ -187,6 +188,15 @@ kluczem debug.
 | ADR-002 (Flutter, pinned) | technical | decyzja zapadła w kick-offie; plik powstaje w ISSUE-001 |
 
 ## Definition of Done
-- [ ] DoD ISSUE (MVP) z `00_START_HERE/DEFINITION_OF_DONE.md`
-- [ ] Ręczna weryfikacja w telefonie: aplikacja się instaluje i startuje
-- [ ] **INVEST self-check**
+- [x] DoD ISSUE (MVP) z `00_START_HERE/DEFINITION_OF_DONE.md` (warstwa danych i fakty o rodzinie: nie
+      dotyczy)
+- [x] Ręczna weryfikacja ~~w telefonie~~ **na emulatorze** (decyzja autora 2026-10-05): aplikacja się
+      instaluje i startuje
+- [x] **INVEST self-check** (`docs`, 2026-10-05). Pozycja jest niezależna i nie zależy od spike'ów. Była
+      negocjowalna: D1-D3 ustalone na stopie #1. Jej wartość to fundament: sama nie wnosi wartości dla
+      użytkownika, ale bez niej żadna pozycja nie ruszy. Dała się oszacować i była mała (0,5 dnia, jedno
+      podejście). Jest sprawdzalna: 7 testów, a stop #2 zakończył się „ok”.
+
+## Closure
+`docs`, 2026-10-05. Commity: `grobing-code` 986f54b · `grobing-vault` 91ea769 · `grobing-agents` b5f5bc9.
+Bez pusha (warunek: [[ISSUE-006-setup-family-data-guard]] + [[NT-008-publication-review]]).
