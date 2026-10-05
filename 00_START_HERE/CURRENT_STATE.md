@@ -18,11 +18,9 @@ updated: 2026-10-05
 MVP — od startu, cały produkt (Meta-decyzja 4).
 
 ## In progress
-- [[ISSUE-007-data-layer]] — następna do planowania (`planning`). [[EPIC-001-zabezpiecz-i-przepisz]]
-  rozpisany na US 2026-10-05. Pierwsza jest [[US-001-kopia-z-odtworzeniem]], w kolejności ISSUE-007
-  (baza) → [[ISSUE-008-backup-write]] (kopia) → [[ISSUE-009-restore]] (odtworzenie). Baza idzie
-  pierwsza, bo kopia z ADR-004 zapisuje bazę, której w `grobing-code` jeszcze nie ma (decyzja autora po
-  `pm`).
+- [[US-001-kopia-z-odtworzeniem]] w toku: [[ISSUE-007-data-layer]] ✅ → **[[ISSUE-008-backup-write]] —
+  następna do planowania** (`planning`) → [[ISSUE-009-restore]]. Baza ze schematem v1 i ekranem „Stan
+  danych" już jest; kopia zapisuje ją przez `VACUUM INTO` ([[ADR-005-sqlite-package]]).
 - Pozostałe następne kroki:
   - [[NT-001-photograph-the-notes]]: poza kodem, nadal najtańsze zabezpieczenie;
   - **przed planowaniem [[US-002-przepisanie-grobu]] — pytanie do autora:** czy grób z notatek to
@@ -58,7 +56,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   `family-data.md` ([[ISSUE-006-setup-family-data-guard]] już zamknięte).
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **4**. Co **10** → retro + pytanie o 3-5 nośnych faktów
+- Zamknięte pozycje od ostatniego retro: **5**. Co **10** → retro + pytanie o 3-5 nośnych faktów
   (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**; podbija go `docs` przy zamknięciu.
 
 ## Parked (waiting on someone outside the session)
@@ -66,6 +64,16 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   (zdarzenie) · data zapytania`. **Odpowiedź z faktami o rodzinie trafia do aplikacji, nie tutaj.**
 
 ## Recently done
+- 2026-10-05 — [[ISSUE-007-data-layer]] zamknięte. Warstwa danych w `grobing-code`:
+  - `drift` na `sqlite3` z dołączonym SQLite 3.53.4, więc `VACUUM INTO` działa niezależnie od wersji
+    Androida ([[ADR-005-sqlite-package]]);
+  - schemat v1 bez *Assertion*, która przyjdzie jako v2 przy [[US-002-przepisanie-grobu]];
+  - ekran „Stan danych" z odciskiem danych, czyli miarą dla kopii i odtworzenia;
+  - wymyślone dane tylko w buildzie debug.
+
+  **Dla autora:** przypięty Flutter zamraża parę `drift`/`drift_dev` na 2.34.0, więc zmiana SDK rusza też
+  je ([[ADR-002-flutter-pinned]] → *Follow-ups*). Pierwszy build na nowej maszynie potrzebuje sieci (hook
+  pobiera SQLite). Werdykt `qa`: APPROVED (self-check, z uwagami); stop #2 „ok”.
 - 2026-10-05 — [[EPIC-001-zabezpiecz-i-przepisz]] rozpisany na US (`docs`). Nowy folder
   `03_REQUIREMENTS/user-stories/`, ISSUE-007…009 pod US-001. Każde FR EPIC-a ma US. To rozpisanie, nie
   zamknięta pozycja, więc licznik retro bez zmian.

@@ -1,7 +1,7 @@
 ---
 title: "US-001 — Backup that restores (kopia z odtworzeniem)"
 type: user-story
-status: ready
+status: in-progress
 epic: "[[EPIC-001-zabezpiecz-i-przepisz]]"
 persona: "[[P1-zbierajacy]]"
 moscow: [M8]

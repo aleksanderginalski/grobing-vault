@@ -26,6 +26,9 @@ kopią (G1).
 | **Verification trigger** | każda pozycja dotykająca warstwy danych (DoD) · pytanie o fakty co 10 zamkniętych pozycji: *„czy ostatnie odtworzenie naprawdę zadziałało?"* |
 
 ## Notes
+- **Odcisk danych w kodzie** (2026-10-05, [[ISSUE-007-data-layer]]): ekran „Stan danych”. Definicja
+  (z treści, nie z pliku; `VACUUM INTO` go nie zmienia) jest w README `grobing-code` → *Baza danych*.
+  Zmiana definicji unieważnia wcześniej zapisane odciski.
 - Kopia ≠ eksport (`glossary.md`): kopia jest pełna, zaszyfrowana, do odtworzenia; eksport jest czytelny
   bez aplikacji, dla rodziny. To NFR dotyczy kopii.
 - **Sama kopia Androida się nie liczy** — limit 25 MB na aplikację czyni ją cicho niepełną ze zdjęciami

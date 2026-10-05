@@ -1,7 +1,7 @@
 ---
 title: "ISSUE-007 — Data layer: SQLite package (ADR-005), schema v1, \"Stan danych\" screen"
 type: issue
-status: in-progress
+status: done
 delivery-style: task-level
 priority: MUST
 epic: "[[EPIC-001-zabezpiecz-i-przepisz]]"
@@ -310,3 +310,25 @@ sprawdził `dev` (zrzut ekranu, *Dev report*); autor tego kroku nie powtarzał.
 - rozjazdu `drift_schema_v1.json` ze schematem w kodzie (weryfikator + `cmp`);
 - zmiany odcisku po `VACUUM INTO`;
 - ścieżki „usuń i stwórz od nowa” w migracji (`onUpgrade` kończy się błędem).
+
+## Closure
+`docs`, 2026-10-05. Commity: `grobing-code` b3b7309 (kod + testy) · `grobing-vault` e662592 (rozpisanie
+EPIC-001, plan, raport dev, weryfikacja) + commit zamknięcia.
+
+**Checklista zamknięcia:**
+- ✅ [[ADR-005-sqlite-package]] `accepted`: 5 opcji, decyzja z falsyfikatorem (AC-1 domknięte).
+- ✅ `data-model.md` → *In code*: v1 bez *Assertion*, S4 i statusu mapy offline (krok 8 planu).
+- ✅ [[ADR-002-flutter-pinned]] → *Follow-ups*: przypięty SDK zamraża parę `drift`/`drift_dev`.
+- ✅ [[NFR-002-odtworzenie-na-nowym-telefonie]] → *Notes*: gdzie żyje definicja odcisku danych.
+- ✅ `TRACEABILITY.md`: Issue Status `done`; [[US-001-kopia-z-odtworzeniem]] `in-progress`.
+- ✅ `CURRENT_STATE.md`: następna [[ISSUE-008-backup-write]], licznik retro +1.
+
+**Poza checklistą, do wiadomości:**
+- obserwacja `dev` o `com.grobing.spike003` na `Medium_Phone` (*Dev report* → *For qa*). Rozjazd z
+  SPIKE-003 → *Cleanup* nie został poprawiony w spike'u, bo pozycja jest `done`. Decyzja autora:
+  odinstalować i zapisać snapshot emulatora.
+
+**INVEST / DoD ISSUE:** zakres jednego komponentu; test happy-path dla każdego AC (21/21); ręczna
+weryfikacja na emulatorze „ok”; README `grobing-code` zaktualizowany. Folder nie powstał, więc DOC_MAP bez
+zmian (`drift_schemas/` jest w repo kodu, nie w vaulcie). Zero danych rodziny. Test migracji i próbne
+odtworzenie: n/a z powodów zapisanych w *Verification*.

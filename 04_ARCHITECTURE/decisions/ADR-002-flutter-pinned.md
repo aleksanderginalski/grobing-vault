@@ -61,3 +61,7 @@ SQLite, nie magazyn klucz-wartość; własny klucz podpisu poza każdym drzewem 
     **Nieodwracalna:** inna nazwa albo inny klucz podpisu to dla Androida inna aplikacja, która nie widzi
     bazy z telefonu. Klucz wydania leży poza drzewem projektu (`release_keystore_dir` w lokalnym
     `project-config.md`).
+  - **2026-10-05 — przypięcie ogranicza paczki** ([[ISSUE-007-data-layer]], [[ADR-005-sqlite-package]]).
+    Przypięty SDK trzyma `analyzer` na 10.x, więc `drift` i `drift_dev` są przypięte parą na 2.34.0, a
+    `sqlite3` stoi na 3.5.x. **Zmiana wersji Fluttera rusza też tę parę**, potem `drift_dev schema dump`
+    i pełne testy. Wcześniej to samo ograniczenie odrzuciło `dartage` ([[SPIKE-003-backup-and-restore]]).
