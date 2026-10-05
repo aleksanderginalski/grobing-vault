@@ -50,10 +50,10 @@ modelem (MD2): ten EPIC jest pierwszy.
 ## Dependencies
 | Dependency | Type | Status |
 |---|---|---|
-| [[SPIKE-003-backup-and-restore]] → [[ADR-004-backup-format-encryption-destination]] | technical | ADR `proposed` — mechanizm kopii zamyka spike |
+| [[SPIKE-003-backup-and-restore]] → [[ADR-004-backup-format-encryption-destination]] | technical | ✅ spike `done`, ADR `accepted` (2026-10-05). Produkcyjna funkcja kopii to US/ISSUE z rozpisania tego EPIC-a; **przed pierwszymi prawdziwymi danymi** (ADR-004 → *Follow-ups*) |
 | [[ADR-001-local-first]] · [[ADR-002-flutter-pinned]] | technical | `accepted` |
 | `04_ARCHITECTURE/data-model.md` | technical | przyjęty w kick-offie |
-| [[ISSUE-002-bootstrap-code-repo]] | technical | `ready` |
+| [[ISSUE-002-bootstrap-code-repo]] | technical | `done` (2026-10-05) |
 | [[NT-003-verify-household-exemption]] | legal (hipoteza) | `open` — wpływa na miejsce kopii |
 
 ## Open questions

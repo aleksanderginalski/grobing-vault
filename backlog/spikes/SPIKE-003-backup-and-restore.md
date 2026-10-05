@@ -1,7 +1,7 @@
 ---
 title: "SPIKE-003 — Encrypted backup to the author's cloud via the system picker, and a real restore"
 type: spike
-status: in-progress
+status: done
 priority: MUST
 time-box: "1 day"
 precedes: "mass transcription (NT-002) — backup + restore must exist first (MD2)"
@@ -38,8 +38,10 @@ spike poprzedza masowe przepisywanie.
 → decyzja autora o alternatywie.
 
 ## Definition of Done
-- [ ] Odpowiedź zapisana · kod eksperymentu usunięty · **odtworzenie wykonane naprawdę**, nie tylko
-      zaprojektowane.
+- [x] Odpowiedź zapisana · kod eksperymentu usunięty · **odtworzenie wykonane naprawdę**, nie tylko
+      zaprojektowane. *(`docs`, 2026-10-05: odpowiedź w *Findings* i w
+      [[ADR-004-backup-format-encryption-destination]] `accepted`; kod usunięty, *Verification* →
+      *Cleanup*; odtworzenie przez Dysk na drugim emulatorze. Stop #2 autor pominął, zapisane.)*
 
 ## Implementation plan
 > `planning`, 2026-10-05. **DoR (SPIKE):** pytanie ✓ · limit czasu ✓ (1 dzień) · warunek wyjścia ✓.
@@ -328,3 +330,29 @@ naprawdę (DoD pozycji).
   `Medium_Phone` nietknięte.
 - `Grobing_Restore` zostaje jako urządzenie do próbnych odtworzeń, z zalogowanym kontem Google autora.
 - **Autor:** usuwa folder `Grobing-spike` na Dysku i dwa pliki `grobing-*.age` z Pobranych na PC.
+
+## Closure
+`docs`, 2026-10-05. Commity: `grobing-vault` 93ef306 (plan, pomiary, weryfikacja) + commit zamknięcia.
+`grobing-code` bez zmian, bo kod spike'a żył poza repo i został usunięty.
+
+**Status hipotezy:** potwierdzona z zastrzeżeniem. Okno systemowe wystarcza: kopia jest automatyczna,
+szyfrowana w telefonie, trafia do chmury autora bez kluczy API i OAuth i odtwarza się na drugim
+urządzeniu. Zastrzeżenie: działa to tylko jako **jeden plik**, nie folder, więc każda kopia wysyła całość.
+
+**Checklista zamknięcia (z planu):**
+- ✅ [[ADR-004-backup-format-encryption-destination]] `accepted`: *Decision* z *Findings*, 7 opcji, w tym
+  odrzucony folder.
+- ✅ ⚠️ OPEN o kopii sprzed migracji zdjęty w ADR-004 i w [[NFR-003-migracje-schematu]].
+- ✅ [[NFR-002-odtworzenie-na-nowym-telefonie]] → *Method*: `Grobing_Restore` jako stałe urządzenie,
+  odcisk danych jako miara.
+- ✅ [[EPIC-001-zabezpiecz-i-przepisz]] → *Dependencies*: wiersz ISSUE-002 poprawiony na `done`; wiersz
+  SPIKE-003 zaktualizowany.
+- ✅ `vault-as-sot.md` (repo agentów): wiersz własności dla *Findings* w spike'ach.
+- ✅ Kod eksperymentu usunięty (*Verification* → *Cleanup*).
+- Poza checklistą: [[NFR-005-dane-nie-opuszczaja-telefonu]] (decyzja o `allowBackup` zamknięta, kanał
+  w kodzie wciąż otwarty) · [[NT-007-hand-over-note]] (wkład: trzy rzeczy do odtworzenia).
+
+**INVEST / DoD SPIKE:** pytanie, limit czasu i warunek wyjścia były zdefiniowane. Odpowiedź jest
+zapisana, kod usunięty, status hipotezy zaktualizowany. **Limit czasu (1 dzień) dotrzymany:** cały spike
+trwał ~3 h, razem z czekaniem na logowanie autora i na zadanie w tle (M2a). Kroki 1-2 zmieściły się w
+progu ~4 h z planu, mimo odstępstwa od D2.

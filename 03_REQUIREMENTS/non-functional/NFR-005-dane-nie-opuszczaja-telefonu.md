@@ -34,6 +34,10 @@ SDK wysyłających dane z telefonu (np. Firebase).
   zewnętrznej przeglądarce (bez WebView z danymi użytkownika).
 - **Androidowa automatyczna kopia (`allowBackup`)** domyślnie kopiuje dane aplikacji na Dysk Google — to
   też kanał wychodzący. **Decyzja świadoma, nie dziedziczona** → [[ADR-004-backup-format-encryption-destination]].
+  ✅ 2026-10-05: zamknięte w ADR-004 (pkt 4). `allowBackup="false"` **i** `dataExtractionRules`, bo samo
+  `allowBackup="false"` nie zamyka transferu między urządzeniami (D2D). Zmierzone w
+  [[SPIKE-003-backup-and-restore]], M7. ⚠️ `grobing-code` ma dziś domyślne ustawienie, więc kanał jest
+  otwarty do czasu pozycji produkcyjnej kopii.
 - Eksport nie jest szyfrowany z założenia (czytelność jest jego celem) — dlatego żyje offline, nie w chmurze
   (§Security).
 - Hipoteza prawna (wyłączenie domowe RODO) jest najmocniejsza, gdy chmura trzyma tylko szyfrogram →

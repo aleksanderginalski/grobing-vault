@@ -22,7 +22,7 @@ kopią (G1).
 |---|---|
 | **Metric** | kompletność danych po odtworzeniu na drugim urządzeniu względem źródła |
 | **Target** | **wszystko** — brief: *„a restore onto a new phone recovers everything"* |
-| **Method** | próbne odtworzenie z kopii na emulatorze / drugim urządzeniu, na **wymyślonych** danych (DoD ISSUE); plik kopii walidowany **przed** nadpisaniem czegokolwiek (§Security floor) |
+| **Method** | próbne odtworzenie z kopii na **drugim emulatorze `Grobing_Restore`** (stałe urządzenie do odtworzeń, z kontem Google autora; od [[SPIKE-003-backup-and-restore]]), na **wymyślonych** danych (DoD ISSUE). Plik kopii walidowany **przed** nadpisaniem czegokolwiek (§Security floor). Zgodność mierzona **odciskiem danych** (SHA-256 treści tabel i zdjęć) przed kopią i po odtworzeniu, czyli jedną liczbą zamiast porównywania rekordów |
 | **Verification trigger** | każda pozycja dotykająca warstwy danych (DoD) · pytanie o fakty co 10 zamkniętych pozycji: *„czy ostatnie odtworzenie naprawdę zadziałało?"* |
 
 ## Notes
@@ -31,3 +31,6 @@ kopią (G1).
 - **Sama kopia Androida się nie liczy** — limit 25 MB na aplikację czyni ją cicho niepełną ze zdjęciami
   (§Security) → [[ADR-004-backup-format-encryption-destination]].
 - Pierwsze prawdziwe odtworzenie: [[SPIKE-003-backup-and-restore]] — **przed masowym przepisywaniem** (MD2).
+  ✅ 2026-10-05: wykonane przez Dysk na drugim emulatorze, odcisk danych zgodny. Mechanizm:
+  [[ADR-004-backup-format-encryption-destination]]. Spike sprawdził mechanizm, a nie funkcję w aplikacji.
+  NFR jest spełniona dopiero, gdy pozycja produkcyjna kopii przejdzie to samo odtworzenie.

@@ -23,5 +23,22 @@ hasło = utracona kopia** (§Security).
 > Treść notki to dane rodziny i sekret — **nie w repo**. W vaulcie tylko fakt, że notka istnieje i
 > kiedy była ostatnio sprawdzona.
 
+## Input from SPIKE-003 (2026-10-05) — what the note must cover
+Mechanizm: [[ADR-004-backup-format-encryption-destination]]. Do odtworzenia potrzebne są **trzy rzeczy**,
+nie dwie:
+1. **plik kopii** (w Dysku autora);
+2. **plik klucza** (obok kopii; w środku klucz prywatny zaszyfrowany hasłem);
+3. **hasło**.
+
+Utrata pliku klucza = utracona kopia, nawet z hasłem. Dlatego notka (fizyczna, nie w tej samej chmurze)
+powinna mieć **hasło i sam klucz prywatny** wydrukowany (ciąg `AGE-SECRET-KEY-1…`, 74 znaki; wygodniej
+jako kod QR).
+
+Notka powinna też powiedzieć:
+- **Jak otworzyć kopię bez Grobing**, gdyby aplikacji już nie było: `age` (age-encryption.org) → `tar` →
+  baza SQLite i zdjęcia.
+- Że na świeżym telefonie folder Dysku w systemowym oknie wyboru bywa przez pierwsze minuty pusty, a pliki
+  znajduje **wyszukiwarka** tego okna.
+
 ## Resolution (fill when done — this is the DoD)
 [notka przekazana (komu — rola, nie nazwisko) · data · data ostatniego sprawdzenia]

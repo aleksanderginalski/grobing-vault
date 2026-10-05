@@ -27,5 +27,7 @@ niezastępowalne i będą żyć latami — aktualizacja aplikacji ze złą migra
 ## Notes
 - Dotyczy każdego EPIC-a, który dokłada pole albo encję — stąd trzy EPIC-i w `epic:`.
 - Razem z [[NFR-002-odtworzenie-na-nowym-telefonie]]: kopia sprzed migracji musi dać się odtworzyć w
-  nowej wersji — ⚠️ **OPEN:** brief tego nie rozstrzyga wprost; do [[ADR-004-backup-format-encryption-destination]]
-  (format kopii).
+  nowej wersji. ✅ **Rozstrzygnięte 2026-10-05** ([[ADR-004-backup-format-encryption-destination]], pkt 5;
+  zmierzone w [[SPIKE-003-backup-and-restore]], krok 5): odtworzenie przepuszcza starszą kopię przez
+  **zwykłe migracje** aplikacji, a kopię z nowszego schematu odrzuca. Wynika z tego, że **test migracji
+  z tej NFR obejmuje też odtworzenie kopii**: ta sama ścieżka kodu.
