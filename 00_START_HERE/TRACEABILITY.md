@@ -54,5 +54,12 @@ updated: 2026-10-05
   pinezka" — przy przepisywaniu nie ma żadnego z trzech, [[EPIC-001-zabezpiecz-i-przepisz]]) i `glossary.md`
   → *pinezka* („prawdą o położeniu jest adres zarządcy" — dla takiego grobu pinezka jest jedynym
   wskaźnikiem). **Decyzja autora**; nie zmienia przypisania kroków do EPIC-ów.
-- **2 — nierozstrzygnięte: grób ze zdjęcia z galerii** (pinezka z lokalizacji zdjęcia) — funkcja spoza M1,
-  zależna od decyzji o 1 listopada: `01_INBOX/2026-10-05-1-listopada-zbieranie.md`. Poza EPIC-ami do decyzji.
+- **2 — nierozstrzygnięte: grób ze zdjęcia z galerii** (pinezka z lokalizacji zdjęcia) — funkcja spoza M1.
+  **Decyzja autora (2026-10-05): budowa bez terminu**, 1 listopada niczego nie wyznacza. Przy wizytach
+  autor robi zdjęcia nagrobków aparatem z włączoną lokalizacją, co nie wymaga żadnej budowy. Kopię w
+  Zdjęciach Google trzeba wtedy wstrzymać, bo wysłałaby zdjęcia i położenia **niezaszyfrowane**
+  (brief §Security). Sama funkcja **nie jest planowana teraz** i zależy od tego, które źródła położenia
+  wybierze [[SPIKE-001-map-source-offline]] (patrz `01_INBOX/2026-10-05-plany-cmentarzy.md`).
+  *Nota techniczna:* systemowy picker zdjęć Androida domyślnie usuwa lokalizację. Odczyt wymaga
+  `ACCESS_MEDIA_LOCATION` i poproszenia o oryginał pliku albo nowego API pickera (mainline 08.2026), w
+  którym użytkownik sam zgadza się przekazać lokalizację. Poza EPIC-ami do decyzji.

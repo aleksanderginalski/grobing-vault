@@ -24,6 +24,10 @@ OpenStreetMap wprost zabraniają użycia offline (§6 N5).
 ## Steps
 1. Grobonet: wyszukaj 10 cmentarzy autora — które mają mapę grobów (tylko liczba i nazwy cmentarzy w
    notatce; **żadnych nazwisk**). Dla pokrytych: czy da się linkować do strony grobu (→ NT-004).
+   > ⚠️ **Pytanie poszerzone przez pomysł autora (2026-10-05), do decyzji przy planowaniu:** przy okazji
+   > policz też, ile z 10 cmentarzy ma **plan z kwaterami** (Grobonet, strona zarządcy, tablica przy
+   > bramie). Taki plan to kandydat na trzecie źródło położenia obok satelity i GPS →
+   > `01_INBOX/2026-10-05-plany-cmentarzy.md`.
    > ⚠️ **Do rozstrzygnięcia przy planowaniu (2026-10-05):** repo mają być publiczne — **nazwy
    > cmentarzy** w notatce vaulta mówią, gdzie leży rodzina autora. Do decyzji razem z wyborem dla
    > vaulta w [[NT-008-publication-review]]; do tego czasu w vaulcie tylko liczba.

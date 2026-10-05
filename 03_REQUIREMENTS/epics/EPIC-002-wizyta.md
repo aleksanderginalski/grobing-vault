@@ -46,7 +46,8 @@ dokładnością ([[FR-001-provenance]]).
 - C1 „odwiedzony w tym roku" · C4 wskazówki dojścia do grobu · S5 wyszukiwanie · W3 kopiowanie danych
   Grobonetu · W6 rocznice śmierci.
 - **Grób ze zdjęcia z galerii (pinezka z lokalizacji zdjęcia)** — nierozstrzygnięte, poza zakresem do
-  decyzji autora: `01_INBOX/2026-10-05-1-listopada-zbieranie.md`.
+  decyzji autora po [[SPIKE-001-map-source-offline]]: `TRACEABILITY.md` → *Open gaps* 2. Kandydat
+  na trzecie źródło położenia (plan zarządcy z kwaterami): `01_INBOX/2026-10-05-plany-cmentarzy.md`.
 
 ## Dependencies
 | Dependency | Type | Status |

@@ -22,10 +22,11 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   [[NT-001-photograph-the-notes]] (dziś, poza kodem), [[ISSUE-002-bootstrap-code-repo]], potem
   spike'i z `backlog/spikes/` i rozpisanie [[EPIC-001-zabezpiecz-i-przepisz]] na US (najpierw kopia i
   odtwarzanie).
-- **Przed ISSUE-002 — pytanie do autora:** jak wykorzystać 1 listopada (aparat z GPS vs kawałek
-  aplikacji) → `01_INBOX/2026-10-05-1-listopada-zbieranie.md`.
+- **Budowa bez terminu** (decyzja autora 2026-10-05). 1 listopada niczego nie wyznacza; przy wizytach
+  autor robi zdjęcia nagrobków z lokalizacją → `TRACEABILITY.md` → *Open gaps* 2.
 - **Przed rozpisaniem [[EPIC-002-wizyta]] na US — pytanie do autora:** jak znaleźć przy pierwszej wizycie
-  grób bez pinezki, adresu kwatery i zdjęcia → `TRACEABILITY.md` → *Open gaps* 1.
+  grób bez pinezki, adresu kwatery i zdjęcia → `TRACEABILITY.md` → *Open gaps* 1. Kandydat: plany
+  cmentarzy z kwaterami → `01_INBOX/2026-10-05-plany-cmentarzy.md` (rozstrzyga SPIKE-001).
 
 ## Backlog at a glance
 - Zadania: *patrz `backlog/issues/`*.
