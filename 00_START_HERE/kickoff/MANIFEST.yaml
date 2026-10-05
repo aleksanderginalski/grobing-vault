@@ -1,0 +1,49 @@
+# Grobing — kick-off manifest
+#
+# WHAT THIS FILE IS: the kick-off decisions as DATA, so spaces can be compared with each other.
+# The brief says WHY each choice was made; this file says WHAT was chosen, in a shape a script
+# can line up across spaces. One home each -- never restate the brief's prose here.
+#
+# WHAT THIS FILE IS NOT -- three things, and each of them already has a home:
+#   - run state (lifecycle, phase coverage, decision log)  -> SESSION_STATE.md
+#   - product state numbers (issues, what is in flight)    -> CURRENT_STATE.md
+#   - anything a script can measure off the disk           -> the registry's measured block
+# A number in this file is a bug. A paragraph in this file is a bug.
+#
+# IT DECLARES INTENT -- IT DOES NOT SUMMARISE THE RESULT.
+# Written by npg-materializer at step 4.2b, from the approved PROJECT_BRIEF, BEFORE the rest of
+# the space existed (2026-10-05). When disk and manifest disagree, THE MANIFEST DOES NOT MOVE:
+# the gap is the finding, closing it is a backlog item.
+#
+# DO NOT ADD A FIELD THAT NOTHING READS. No `version:` field -- provenance comes from git.
+
+npg-manifest: 1                  # signature. Reader: refresh-registry.ps1
+
+slug: grobing                    # ties this space to its registry entry (entries/grobing.md).
+                                 # Reader: refresh-registry.ps1
+
+typ: A                           # product type (Meta-decision 3a)
+                                 # Readers: npg-recon step 0.3 (hypothesis), registry
+
+etap: MVP                        # maturity stage at materialization (Meta-decision 4).
+                                 # Readers: npg-recon step 0.3, npg-audit, registry
+
+hierarchia: COMPONENT            # backlog hierarchy (Meta-decision 2). Non-FLAT -> TRACEABILITY.md
+                                 # must exist. Readers: schema-check, npg-audit
+
+warstwy-artefaktow: [wizja, persona, sciezka-uzytkownika, historie-uzytkownika, kryteria-akceptacji, wymagania-funkcjonalne, wymagania-niefunkcjonalne, slownik, adr, traceability, definicja-ukonczenia]
+                                 # artefact layers chosen to exist (Meta-decision 2, D-060).
+                                 # Only `traceability` maps to a file today; the rest is
+                                 # comparison material. Readers: schema-check (traceability), npg-audit
+
+agenci: [pm, planning, dev, qa, docs]
+                                 # the agents actually selected (Meta-decision 3) -- the set.
+                                 # Each must have .claude/skills/{name}/ in grobing-agents.
+                                 # Readers: schema-check, registry
+
+spec-z-dnia: 2026-08-06          # last commit touching materialization-spec/ in NPG-Vault, read
+                                 # with: git -C {npg_vault} log -1 --format=%cd --date=short -- materialization-spec/
+                                 # Reader: npg-audit
+
+zmaterializowano: 2026-10-05     # the day this space was created. Written once, never touched.
+                                 # Reader: registry

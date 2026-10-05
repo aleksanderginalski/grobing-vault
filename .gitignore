@@ -1,0 +1,10 @@
+# Obsidian workspace state (per machine)
+.obsidian/workspace*.json
+
+# Family data must never land in the vault (grobing-agents/.claude/rules/family-data.md)
+*.db
+*.sqlite
+*.sqlite3
+*.grobing-backup
+exports/
+backups/
