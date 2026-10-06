@@ -7,7 +7,7 @@ time-box: "1 day of work + the on-site check on the next cemetery visit"
 hypotheses: [H3]
 covers-non-tech: [N5]
 created: 2026-10-05
-updated: 2026-10-05
+updated: 2026-10-06
 ---
 
 # SPIKE-001 — Map source + offline (S-MAP)
@@ -34,6 +34,13 @@ OpenStreetMap wprost zabraniają użycia offline (§6 N5).
 2. 2-3 kandydatów na źródło satelitarne z prawem offline: warunki, limity, koszt dla 1 użytkownika i
    10 małych obszarów; zgodność licencji z Flutterem (uwaga: popularna wtyczka bulk-download do
    `flutter_map` jest GPL).
+   > **Z briefu (§Security), dopisane przy przeglądzie `kickoff/` (retro 1, R4, 2026-10-06):**
+   > - **klucz API dostawcy**, jeśli jest potrzebny: poza repo (lokalna, gitignorowana konfiguracja),
+   >   ograniczony do pakietu `com.grobing.app` i certyfikatu podpisu (*Hard floors* → *No secrets in
+   >   the repo*);
+   > - **sieć:** pobranie regionu offline wymaga sieci, a APK release **nie ma dziś uprawnienia
+   >   `INTERNET`** ([[NFR-005-dane-nie-opuszczaja-telefonu]], [[ISSUE-008-backup-write]]). Dodanie go
+   >   wchodzi do ADR-003 razem z tym, co aplikacja wysyła i dokąd (tylko HTTPS — *Hard floors*).
 3. Prototyp jednorazowy: jeden cmentarz offline w trybie samolotowym.
 4. **Na miejscu (zaparkowane do najbliższej wizyty, np. 1 listopada):** 3 pinezki postawione wcześniej
    ze zdjęcia satelitarnego — czy prowadzą do właściwego grobu?

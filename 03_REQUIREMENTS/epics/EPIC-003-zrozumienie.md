@@ -13,7 +13,7 @@ verdict-date: null
 verdict-reviewer: null
 source: "PROJECT_BRIEF §5 M9-M11 · §3b H4, H5, H7 · MD4"
 created: 2026-10-05
-updated: 2026-10-05
+updated: 2026-10-06
 ---
 
 # EPIC-003 — Zrozumienie
@@ -44,6 +44,14 @@ User stories wyprowadza się z **tych trzech funkcji**, nie ze ścieżki wizyty 
 - C3 nazwanie ścieżki polskimi terminami pokrewieństwa (teść, szwagier…) — H8, DEFER.
 - A6 podwójne datowanie sprzed 1918 r. (juliański / gregoriański) — Won't (now); kwalifikator daty +
   źródło uniosą to, jeśli się pojawi.
+
+## Prior art
+Przegląd z kick-offu (`kickoff/SESSION_STATE.md` → *Prior-art scan*, 2026-10-05): **ścieżka między
+dwiema osobami (M11)** jest w **Gramps** (filtr „Relationship path between…”; gramplet Deep Connections,
+który według użytkowników się zawiesza albo idzie drzewem w złą stronę), w **FamilySearch** i w
+**MyHeritage**. Drzewa te narzędzia rysują na komputerze albo w przeglądarce i zwykle tylko w liniach
+krwi (brief §3b H4). [[SPIKE-002-tree-on-a-phone]] i US tego EPIC-a zaczynają od nich. Dopisane przy
+przeglądzie `kickoff/` (retro 1, R4, 2026-10-06).
 
 ## Dependencies
 | Dependency | Type | Status |

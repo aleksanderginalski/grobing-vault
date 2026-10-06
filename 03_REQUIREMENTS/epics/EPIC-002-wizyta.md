@@ -13,7 +13,7 @@ verdict-date: null
 verdict-reviewer: null
 source: "PROJECT_BRIEF §4a · §5 M2-M7 · §3b H3, H9"
 created: 2026-10-05
-updated: 2026-10-05
+updated: 2026-10-06
 ---
 
 # EPIC-002 — Wizyta
@@ -48,6 +48,13 @@ dokładnością ([[FR-001-provenance]]).
 - **Grób ze zdjęcia z galerii (pinezka z lokalizacji zdjęcia)** — nierozstrzygnięte, poza zakresem do
   decyzji autora po [[SPIKE-001-map-source-offline]]: `TRACEABILITY.md` → *Open gaps* 2. Kandydat
   na trzecie źródło położenia (plan zarządcy z kwaterami): `01_INBOX/2026-10-05-plany-cmentarzy.md`.
+
+## Prior art
+Przegląd z kick-offu (`kickoff/SESSION_STATE.md` → *Prior-art scan*, 2026-10-05): każdy widok istnieje
+osobno. Widoki 1–2: **Grobonet** (mapa cmentarza, adres sektor/rząd/miejsce) i **BillionGraves** (zdjęcia
+nagrobków z GPS na mapie). Widok 3: **Graveyard Navigator** (linie do grobów rodziny w jednym
+cmentarzu). Widok 4: dowolne narzędzie do drzewa i **Geneteka** (indeksy akt PTG). Planując US tego
+EPIC-a, zacznij od nich. Dopisane przy przeglądzie `kickoff/` (retro 1, R4, 2026-10-06).
 
 ## Dependencies
 | Dependency | Type | Status |

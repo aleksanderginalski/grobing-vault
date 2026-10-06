@@ -20,8 +20,6 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
 ## In progress
 - [[US-002-przepisanie-grobu]] w toku: [[ISSUE-011-schema-v2-assertions]] zamknięte (schemat v2 z
   twierdzeniami). Zostały [[ISSUE-014-home-map-of-poland]] i [[ISSUE-012-transcribe-grave-screen]].
-- **⏭ Na początku następnej sesji:** `docs` jednorazowo przegląda `kickoff/` pod kątem rzeczy
-  wspomnianych, a niezapisanych w vaulcie, tak jak było z obrazami stylu B (retro 1, R4, ok. 15 min).
 - **Następne kroki, w tej kolejności (decyzja autora 2026-10-06, *„ok plan brzmi dobrze”*):**
   1. [[ISSUE-014-home-map-of-poland]] — ekran główny: mapa Polski z wbudowanego konturu (Natural Earth,
      offline, bez dostawcy), znicze cmentarzy, dodanie cmentarza. Na start falsyfikator: czy kontur rysuje
@@ -79,14 +77,34 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
 - Zamknięte pozycje od ostatniego retro: **0** (ostatnie retro: [[2026-10-06-retro-01]]). Co **10** →
   retro + pytanie o 3–5 nośnych faktów (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**;
   podbija go `docs` przy zamknięciu, a zeruje go retro.
-- Do retro (zebrane po drodze, bez decyzji): brak. Tematy z poprzedniego okresu rozliczyło
-  [[2026-10-06-retro-01]] (R1–R10).
+- Do retro (zebrane po drodze, bez decyzji):
+  - **agent `architect`** — kick-off (MD3c) dał mu sygnał „decyzja wymagająca ADR-a poza kick-offem”. Ten
+    sygnał już był: [[ADR-005-sqlite-package]] i [[ADR-006-claimed-value-separate-structures]] powstały w
+    łańcuchu (`planning` → `docs`), bez osobnego agenta, i [[ISSUE-014-home-map-of-poland]] doda kolejny.
+    Według R9 sygnał z kick-offu wygrywa. **Decyzja autora:** zbudować `architect` albo zapisać, że ADR-y
+    zostają w łańcuchu. Wykrył to przegląd `kickoff/` (R4); do tego czasu ADR-y robi łańcuch jak dotąd.
+  
+  Tematy z poprzedniego okresu rozliczyło [[2026-10-06-retro-01]] (R1–R10).
 
 ## Parked (waiting on someone outside the session)
 - brak. Format wpisu: `źródło (babcia / cmentarz X) · pytanie bez danych rodziny · warunek obudzenia
   (zdarzenie) · data zapytania`. **Odpowiedź z faktami o rodzinie trafia do aplikacji, nie tutaj.**
 
 ## Recently done
+- 2026-10-06 — **przegląd `kickoff/`** (retro 1, R4; `docs`): brief, stan sesji, manifest i profil
+  porównane z vaultem. Decyzje kick-offu mają dom (ISSUE-001 zmaterializował je w EPIC-ach, FR, NFR,
+  ADR-ach i backlogu). Rozjechały się albo zgubiły cztery rzeczy, poprawione:
+  - **numer ADR dystrybucji:** brief rezerwował ADR-005, a zajął go ADR-005 (SQLite) → [[NT-005-distribution-decision]]
+    dostanie następny wolny numer;
+  - **minima bezpieczeństwa dla mapy:** klucz API poza repo i ograniczony do pakietu, a pobranie mapy
+    offline wymaga uprawnienia `INTERNET`, którego APK dziś nie ma → [[SPIKE-001-map-source-offline]] krok 2;
+  - **prior art sprzed kick-offu** (Grobonet, BillionGraves, Graveyard Navigator, Gramps…) był tylko w
+    notatkach sesji → sekcje *Prior art* w [[EPIC-002-wizyta]] i [[EPIC-003-zrozumienie]];
+  - **agent `architect` na sygnał** zgubił się z listy w `grobing-agents/CLAUDE.md` → dopisany; decyzja
+    autora wyżej (*Do retro*).
+  
+  `kickoff/MANIFEST.yaml` wymienia 5 agentów, na dysku jest 6 (`ui` na sygnał MD3c). Manifest z zasady
+  się nie zmienia. To nie zamknięcie pozycji, więc licznik retro bez zmian.
 - 2026-10-06 — **retro 1** ([[2026-10-06-retro-01]], nowy folder `07_RETRO/`): licznik 10 → 0. Decyzje
   autora R1–R10:
   - **commit bez pytania, po checkliście; push tylko po „go”** (R1);
