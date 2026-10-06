@@ -22,9 +22,11 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   odtworzenie także przez Dysk na drugim urządzeniu; format v1: `04_ARCHITECTURE/backup-format.md`.
 - Następne kroki:
   - [[NT-001-photograph-the-notes]]: poza kodem, nadal najtańsze zabezpieczenie;
-  - [[US-002-przepisanie-grobu]] gotowa do rozpisania na ISSUE (pytanie zamknięte 2026-10-06: wpis w
-    notatkach = jeden nagrobek z osobami). Pierwszy ekran do wpisywania danych i schemat v2 z
-    twierdzeniami; do pierwszego ekranu — agent `ui` i wytyczne stylu B ([[NT-006-visual-guidelines]]);
+  - [[US-002-przepisanie-grobu]] rozpisana na dwa ISSUE (decyzja autora 2026-10-06): najpierw
+    [[ISSUE-011-schema-v2-assertions]] (schemat v2 z twierdzeniami, pierwsza prawdziwa migracja, ADR-006:
+    „Event czy Assertion” — od kanonu GEDCOM 7 i falsyfikatora z US-004), potem
+    [[ISSUE-012-transcribe-grave-screen]] (pierwszy ekran do wpisywania danych; przed nim agent `ui` i
+    wytyczne stylu B — [[NT-006-visual-guidelines]]). Po zamknięciu obu licznik retro dochodzi do 10;
   - pozostałe spike'i: [[SPIKE-001-map-source-offline]] i [[SPIKE-002-tree-on-a-phone]], przed widokami,
     których dotyczą;
   - przed pierwszym pushem musi być zamknięte [[NT-008-publication-review]]. Zostały w nim wybór dla
@@ -71,6 +73,9 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   (zdarzenie) · data zapytania`. **Odpowiedź z faktami o rodzinie trafia do aplikacji, nie tutaj.**
 
 ## Recently done
+- 2026-10-06 — [[US-002-przepisanie-grobu]] rozpisana na [[ISSUE-011-schema-v2-assertions]] i
+  [[ISSUE-012-transcribe-grave-screen]] (`docs`). To rozpisanie, nie zamknięta pozycja, więc licznik retro
+  bez zmian. Kolumnę Issue(s) w `TRACEABILITY.md` wpisuje `planning` przy planowaniu każdego ISSUE.
 - 2026-10-06 — [[ISSUE-010-background-backup]] zamknięte, a z nim **[[US-001-kopia-z-odtworzeniem]]**
   (werdykt US: APPROVED, niezależny przegląd, z uwagami). Kopia w tle w `grobing-code`:
   - kopię zamawia **zapis danych**; robi się **raz po sesji** — po 10 min bez zmian, najpóźniej godzinę od
