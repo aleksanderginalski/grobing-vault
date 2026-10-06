@@ -1,7 +1,7 @@
 ---
 title: "US-002 — Transcribe a grave from the notes (przepisanie grobu)"
 type: user-story
-status: draft
+status: ready
 epic: "[[EPIC-001-zabezpiecz-i-przepisz]]"
 persona: "[[P1-zbierajacy]]"
 moscow: [M1]
@@ -14,7 +14,7 @@ verdict-date: null
 verdict-reviewer: null
 source: "PROJECT_BRIEF §5 M1 · data-model.md (Cemetery, Grave, Burial, Person, Event, Assertion)"
 created: 2026-10-05
-updated: 2026-10-05
+updated: 2026-10-06
 ---
 
 # US-002 — Przepisanie grobu z notatek
@@ -36,7 +36,7 @@ takimi, jakie są w notatkach, **żeby** grób z papieru istniał w aplikacji ra
   ([[FR-001-provenance]]).
 - **AC-5 — grób bez adresu, pinezki i zdjęcia.** *Given* notatki nie mają adresu kwatery *When* zapisuję
   grób tylko z cmentarzem i osobami *Then* grób się zapisuje, a brak adresu i pinezki jest widoczny
-  (⚠️ OPEN niżej).
+  (potwierdzone przez autora 2026-10-06 — *Open questions*).
 
 ## Out of scope
 - Rodzice, małżeństwa, dzieci → [[US-003-przepisanie-rodziny]].
@@ -45,8 +45,14 @@ takimi, jakie są w notatkach, **żeby** grób z papieru istniał w aplikacji ra
 - Pinezka i jej poprawa na miejscu → [[EPIC-002-wizyta]] (M6).
 
 ## Open questions
-- ⚠️ **OPEN — grób bez adresu kwatery, pinezki i zdjęcia** ([[EPIC-001-zabezpiecz-i-przepisz]] →
-  *Open questions*, `TRACEABILITY.md` → *Open gaps* 1). AC-5 to **propozycja do potwierdzenia przez
-  autora**: grób z notatek to cmentarz + osoby, a reszta jest opcjonalna i uzupełniana przy wizycie.
-  Pytanie, jak taki grób znaleźć na miejscu, należy do EPIC-002 i tej US nie blokuje. **Decyzja autora
-  przed planowaniem pierwszego ISSUE tej US** — dlatego `status: draft`.
+- ✅ **Zamknięte — grób bez adresu kwatery, pinezki i zdjęcia.** **Decyzja autora (2026-10-06): jeden wpis w notatkach = jeden nagrobek i osoby w nim.** Grób z notatek
+  to więc cmentarz + osoby; adres kwatery, pinezka i zdjęcie są opcjonalne i dochodzą przy wizycie.
+  Model danych bez zmian (pochówek wymaga grobu).
+  - **Rozważone opcje:** (A) grób = cmentarz + osoby — **wybrana**; (B) osobny poziom „miejsce rodziny”
+    między cmentarzem a grobem — odrzucona, nic w notatkach go nie wymaga; (C) pochówek = osoba +
+    cmentarz, grób opcjonalny (wzorzec Find a Grave: wpis osoby na cmentarzu, kwatera i GPS później) —
+    niepotrzebna, bo notatki zawsze mówią, kto leży razem.
+  - **Wraca do decyzji, gdy** przy przepisywaniu pojawi się wpis, który nie jest jednym nagrobkiem (kilka
+    grobów rodziny obok siebie albo osoba przy cmentarzu bez grobu). Wtedy opcja C, migracją schematu.
+  - Pytanie, jak taki grób znaleźć na miejscu, należy do [[EPIC-002-wizyta]] (`TRACEABILITY.md` → *Open
+    gaps* 1) i tej US nie blokuje.

@@ -36,7 +36,7 @@ updated: 2026-10-06
 | n/a — widok 5 (zestaw funkcji): drzewo | §5 M9 | [[EPIC-003-zrozumienie]] | | | | | |
 | n/a — widok 5: suwak czasu | §5 M10 | [[EPIC-003-zrozumienie]] | | | | | |
 | n/a — widok 5: ścieżka między dowolnymi dwiema osobami | §5 M11 | [[EPIC-003-zrozumienie]] | | | | | |
-| n/a — poza ścieżką (warunek kroku 1): przepisanie grobu z osobami | §5 M1 | [[EPIC-001-zabezpiecz-i-przepisz]] | [[US-002-przepisanie-grobu]] | | draft (⚠️ OPEN — Open gaps 1) | | |
+| n/a — poza ścieżką (warunek kroku 1): przepisanie grobu z osobami | §5 M1 | [[EPIC-001-zabezpiecz-i-przepisz]] | [[US-002-przepisanie-grobu]] | | ready | | |
 | n/a — poza ścieżką (warunek kroku 1): wprowadzanie całymi rodzinami | §5 M1 · G6 | [[EPIC-001-zabezpiecz-i-przepisz]] | [[US-003-przepisanie-rodziny]] | | ready | | |
 | n/a — poza ścieżką (warunek kroku 1): fakty od babci obok notatek | §2 · §5 M1 | [[EPIC-001-zabezpiecz-i-przepisz]] | [[US-004-fakt-od-babci]] | | ready | | |
 | n/a — poza ścieżką (warunek kroku 1): zdjęcia nagrobka i osoby | §5 M1 | [[EPIC-001-zabezpiecz-i-przepisz]] | [[US-005-zdjecia]] | | ready | | |
@@ -62,6 +62,9 @@ updated: 2026-10-06
   pinezka" — przy przepisywaniu nie ma żadnego z trzech, [[EPIC-001-zabezpiecz-i-przepisz]]) i `glossary.md`
   → *pinezka* („prawdą o położeniu jest adres zarządcy" — dla takiego grobu pinezka jest jedynym
   wskaźnikiem). **Decyzja autora**; nie zmienia przypisania kroków do EPIC-ów.
+  - ✅ **Część M1 zamknięta (2026-10-06):** jeden wpis w notatkach = jeden nagrobek z osobami, więc grób z
+    notatek to cmentarz + osoby, reszta opcjonalna ([[US-002-przepisanie-grobu]] → *Open questions*).
+    **Otwarte zostaje tylko pytanie wizyty:** jak taki grób znaleźć na miejscu (EPIC-002, SPIKE-001).
 - **2 — nierozstrzygnięte: grób ze zdjęcia z galerii** (pinezka z lokalizacji zdjęcia) — funkcja spoza M1.
   **Decyzja autora (2026-10-05): budowa bez terminu**, 1 listopada niczego nie wyznacza. Przy wizytach
   autor robi zdjęcia nagrobków aparatem z włączoną lokalizacją, co nie wymaga żadnej budowy. Kopię w

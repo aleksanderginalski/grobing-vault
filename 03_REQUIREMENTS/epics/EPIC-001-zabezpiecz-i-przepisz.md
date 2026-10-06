@@ -46,7 +46,7 @@ modelem (MD2): ten EPIC jest pierwszy.
 | # | US | MoSCoW | FR |
 |---|---|---|---|
 | 1 | [[US-001-kopia-z-odtworzeniem]] → [[ISSUE-007-data-layer]], [[ISSUE-008-backup-write]], [[ISSUE-009-restore]], [[ISSUE-010-background-backup]] | M8 | — (NFR-002, 003, 005) |
-| 2 | [[US-002-przepisanie-grobu]] (⚠️ OPEN niżej) | M1 | FR-001, 003, 004, 005 |
+| 2 | [[US-002-przepisanie-grobu]] | M1 | FR-001, 003, 004, 005 |
 | 3 | [[US-003-przepisanie-rodziny]] | M1 | FR-001, 002, 004 |
 | 4 | [[US-004-fakt-od-babci]] | M1 | FR-001 |
 | 5 | [[US-005-zdjecia]] | M1 | — |
@@ -80,9 +80,11 @@ Status każdej US: we frontmatterze US i w `TRACEABILITY.md` (kolumna *Story Sta
 | [[NT-003-verify-household-exemption]] | legal (hipoteza) | `open` — wpływa na miejsce kopii |
 
 ## Open questions
-- ⚠️ **OPEN — grób bez adresu kwatery i bez pinezki.** Korekta autora (2026-10-05): notatki **nie
-  zawierają adresów kwater**. M1 zakłada „grób: adres kwatery, zdjęcie nagrobka, pinezka" — przy
-  przepisywaniu nie ma żadnego z trzech. Grób przepisany z notatek to więc: cmentarz + osoby w nim.
-  Patrz `00_START_HERE/TRACEABILITY.md` → *Open gaps* 1. Decyzja autora.
+- ✅ **Zamknięte (2026-10-06) — grób bez adresu kwatery i bez pinezki.** Korekta autora (2026-10-05):
+  notatki **nie zawierają adresów kwater**. **Decyzja autora (2026-10-06): jeden wpis w notatkach = jeden nagrobek i osoby w nim.** Grób z notatek
+  to więc cmentarz + osoby; adres kwatery, pinezka i zdjęcie są opcjonalne i dochodzą przy wizycie.
+  Model danych bez zmian (pochówek wymaga grobu). Szczegóły i warunek
+  powrotu do decyzji: [[US-002-przepisanie-grobu]] → *Open questions*. Jak taki grób znaleźć na miejscu —
+  nadal otwarte w [[EPIC-002-wizyta]] (`TRACEABILITY.md` → *Open gaps* 1).
 - Ziarnistość źródeł (twierdzenia na datach, relacjach i miejscu pochówku; „kim była" — jedna linia
   źródła) jest decyzją kosztową z kick-offu — patrz [[FR-001-provenance]].

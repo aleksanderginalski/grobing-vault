@@ -22,8 +22,9 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   odtworzenie także przez Dysk na drugim urządzeniu; format v1: `04_ARCHITECTURE/backup-format.md`.
 - Następne kroki:
   - [[NT-001-photograph-the-notes]]: poza kodem, nadal najtańsze zabezpieczenie;
-  - **przed planowaniem [[US-002-przepisanie-grobu]] — pytanie do autora:** czy grób z notatek to
-    cmentarz + osoby, z adresem, pinezką i zdjęciem opcjonalnymi (⚠️ OPEN w US-002);
+  - [[US-002-przepisanie-grobu]] gotowa do rozpisania na ISSUE (pytanie zamknięte 2026-10-06: wpis w
+    notatkach = jeden nagrobek z osobami). Pierwszy ekran do wpisywania danych i schemat v2 z
+    twierdzeniami; do pierwszego ekranu — agent `ui` i wytyczne stylu B ([[NT-006-visual-guidelines]]);
   - pozostałe spike'i: [[SPIKE-001-map-source-offline]] i [[SPIKE-002-tree-on-a-phone]], przed widokami,
     których dotyczą;
   - przed pierwszym pushem musi być zamknięte [[NT-008-publication-review]]. Zostały w nim wybór dla
