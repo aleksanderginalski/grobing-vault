@@ -26,7 +26,7 @@ updated: 2026-10-06
 
 | Journey step | Brief § | EPIC | US | Issue(s) | Story Status | Issue Status | Quality Verdict |
 |---|---|---|---|---|---|---|---|
-| UJ-001 · 1 — mapa Polski z cmentarzami rodziny; wybór, dokąd jechać | §4a · §5 M2 | [[EPIC-002-wizyta]] | | | | | |
+| UJ-001 · 1 — mapa Polski z cmentarzami rodziny; wybór, dokąd jechać | §4a · §5 M2 | [[EPIC-002-wizyta]] | | [[ISSUE-014-home-map-of-poland]] (pod US-002: mapa jako ekran główny) | | ISSUE-014 done | ISSUE-014: APPROVED (self-check, 2026-10-06, z uwagami) |
 | UJ-001 · 2 — na miejscu: mapa cmentarza, pinezki, adres zarządcy, link do Grobonetu | §4a · §5 M3 | [[EPIC-002-wizyta]] | | | | | |
 | UJ-001 · 3 — dojście do pinezki; porównanie ze zdjęciem nagrobka | §4a · §5 M3/M4 | [[EPIC-002-wizyta]] | | | | | |
 | UJ-001 · 4 — grób: wszyscy pochowani, zdjęcie + imię | §4a · §5 M4 | [[EPIC-002-wizyta]] | | | | | |
@@ -36,7 +36,7 @@ updated: 2026-10-06
 | n/a — widok 5 (zestaw funkcji): drzewo | §5 M9 | [[EPIC-003-zrozumienie]] | | | | | |
 | n/a — widok 5: suwak czasu | §5 M10 | [[EPIC-003-zrozumienie]] | | | | | |
 | n/a — widok 5: ścieżka między dowolnymi dwiema osobami | §5 M11 | [[EPIC-003-zrozumienie]] | | | | | |
-| n/a — poza ścieżką (warunek kroku 1): przepisanie grobu z osobami | §5 M1 | [[EPIC-001-zabezpiecz-i-przepisz]] | [[US-002-przepisanie-grobu]] | [[ISSUE-011-schema-v2-assertions]] | in-progress | ISSUE-011 done | ISSUE-011: APPROVED (self-check, 2026-10-06, z uwagami; stop #2 oddany agentowi — aktualizacja v1→v2 na emulatorze sprawdzona przez agenta, odtworzenie kopii v1 tylko na hoście) |
+| n/a — poza ścieżką (warunek kroku 1): przepisanie grobu z osobami | §5 M1 | [[EPIC-001-zabezpiecz-i-przepisz]] | [[US-002-przepisanie-grobu]] | [[ISSUE-011-schema-v2-assertions]] · [[ISSUE-014-home-map-of-poland]] | in-progress | ISSUE-011 done · ISSUE-014 done | ISSUE-011: APPROVED (self-check, 2026-10-06, z uwagami; stop #2 oddany agentowi — aktualizacja v1→v2 na emulatorze sprawdzona przez agenta, odtworzenie kopii v1 tylko na hoście) · ISSUE-014: APPROVED (self-check, 2026-10-06, z uwagami; przegląd `ui` — BLOCKER w krokach poprawiony; stop #2 „ok”, kroki 4–5 pominięte przez autora, pokryte testami i agentem) |
 | n/a — poza ścieżką (warunek kroku 1): wprowadzanie całymi rodzinami | §5 M1 · G6 | [[EPIC-001-zabezpiecz-i-przepisz]] | [[US-003-przepisanie-rodziny]] | | ready | | |
 | n/a — poza ścieżką (warunek kroku 1): fakty od babci obok notatek | §2 · §5 M1 | [[EPIC-001-zabezpiecz-i-przepisz]] | [[US-004-fakt-od-babci]] | | ready | | |
 | n/a — poza ścieżką (warunek kroku 1): zdjęcia nagrobka i osoby | §5 M1 | [[EPIC-001-zabezpiecz-i-przepisz]] | [[US-005-zdjecia]] | | ready | | |

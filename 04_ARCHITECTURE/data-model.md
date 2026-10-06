@@ -79,6 +79,10 @@ erDiagram
   dostały twierdzenie „notatki, przeniesione z v1”. Diagram i wiersze *Burial* / *Assertion* wyżej
   poprawione według ADR-006, więc to **korekta modelu**, nie tylko stan wdrożenia. Twierdzenia przy
   relacjach (diagram: „US-003”) jeszcze nie są w kodzie.
+- **2026-10-06 — punkt cmentarza ma pisarza** ([[ISSUE-014-home-map-of-poland]]): `center_lat` / `center_lon`
+  (od v1) zapisuje i poprawia ekran główny przez `grobing-code/lib/data/cemeteries.dart`; cmentarz bez punktu
+  nie ma znicza na mapie. Bez zmiany schematu. Cmentarz to miejsce, a nie fakt o osobie, więc nie ma
+  twierdzeń ([[FR-001-provenance]]).
 
 ## Known consequence — not a model change
 

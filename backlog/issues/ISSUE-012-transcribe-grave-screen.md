@@ -21,7 +21,10 @@ updated: 2026-10-06
 > agenta `ui` (`CLAUDE.md` → *Na sygnał*) i warunek obudzenia [[NT-006-visual-guidelines]].
 
 ## What to build
-1. **Cmentarz:** wybór istniejącego albo dodanie nowego (nazwa, miejscowość).
+1. **Cmentarz:** wybór i dodanie zrobiła [[ISSUE-014-home-map-of-poland]] (mapa, wyszukiwarka, dodanie
+   ręczne), a dodanie z bazy robi [[ISSUE-015-add-cemetery-from-database]]. **Tu: „Otwórz cmentarz” w arkuszu
+   mapy** ([[cmentarze]] element 7) prowadzi do ekranu cmentarza — przeniesione z ISSUE-014 decyzją autora
+   (ISSUE-014 → *Decisions for stop #1* D5, 2026-10-06).
 2. **Grób na cmentarzu**, zapisywany bez adresu kwatery, pinezki i zdjęcia. Brak adresu i pinezki widać
    przy grobie ([[US-002-przepisanie-grobu]] AC-5).
 3. **Osoby w grobie, jedna po drugiej:** imiona, nazwisko, nazwisko rodowe, „kim była” z jedną linią
@@ -37,6 +40,8 @@ updated: 2026-10-06
 - [ ] US-002 AC-4: daty i pochówek zapisane z ekranu mają źródło (domyślnie „notatki”) i status
       `CLAIMED`; „kim była” ma jedną linię źródła.
 - [ ] US-002 AC-5: grób z samym cmentarzem i osobami się zapisuje, a brak adresu i pinezki jest widoczny.
+- [ ] Arkusz cmentarza na mapie ma „Otwórz cmentarz”, który otwiera ekran cmentarza (przeniesione z
+      ISSUE-014 AC-4, D5).
 - [ ] Ekran stosuje wytyczne stylu B z [[NT-006-visual-guidelines]].
 - [ ] Zapis z ekranu zamawia kopię w tle tak samo jak każdy zapis danych ([[ISSUE-010-background-backup]]).
 

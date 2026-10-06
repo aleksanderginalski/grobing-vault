@@ -28,9 +28,9 @@ słaby albo żaden, a ścieżka, która go potrzebuje, zawodzi dokładnie tam, g
 - Baza w telefonie jest źródłem prawdy, sieć jest opcjonalna ([[ADR-001-local-first]]).
 - **Mapy offline zależą od warunków dostawcy**, nie od frameworka — publiczne kafelki OSM zabraniają
   użycia offline (brief §6 N5) → [[SPIKE-001-map-source-offline]], [[ADR-003-map-source-offline]].
-- ⚠️ **OPEN — krok 1 offline:** cel „wszystkie kroki" obejmuje mapę Polski (krok 1), a
-  [[SPIKE-001-map-source-offline]] / [[ADR-003-map-source-offline]] pytają tylko o ~10 obszarów wielkości
-  cmentarza. Brief §4a wymaga bez zasięgu kroków 2-7; czy krok 1 musi działać offline (wybór, dokąd jechać)
-  — do rozstrzygnięcia przy planowaniu SPIKE-001.
+- ✅ **Krok 1 offline — rozstrzygnięte 2026-10-06** ([[ADR-007-poland-map-bundled-data]]): mapa Polski działa
+  bez zasięgu z danych wbudowanych w aplikację (Natural Earth). Sprawdzone na emulatorze w trybie
+  samolotowym ([[ISSUE-014-home-map-of-poland]], stop #2). Kroki 2–7 dalej czekają na
+  [[SPIKE-001-map-source-offline]] / [[ADR-003-map-source-offline]].
 - Link do Grobonetu (krok 2) z natury wymaga sieci — to zewnętrzna strona w przeglądarce; brak zasięgu
   nie może blokować reszty kroku.

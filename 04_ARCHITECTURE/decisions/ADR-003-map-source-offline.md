@@ -46,6 +46,7 @@ warunki **pozwalają** jednej osobie trzymać offline ok. 10 małych obszarów; 
 ## Consequences
 - **Positive:** po decyzji widoki 1-2 mogą ruszyć (spike'i przed widokami, których dotyczą — A5).
 - **Negative / trade-offs:** możliwy koszt zewnętrzny; ewentualna licencja wtyczki (GPL) do oceny.
-- **Follow-ups:** ⚠️ **OPEN — mapa Polski (krok 1) offline czy nie** — pytanie spike'a obejmuje tylko
-  obszary cmentarzy; [[NFR-001-offline]] → *Notes*. · [[SPIKE-001-map-source-offline]] krok 4 (pinezki ze zdjęcia satelitarnego) jest podważony
+- **Follow-ups:** ✅ **Zamknięte 2026-10-06 — mapa Polski (krok 1) działa offline** z wbudowanych danych
+  Natural Earth, bez kafelków ([[ADR-007-poland-map-bundled-data]], [[ISSUE-014-home-map-of-poland]]). Ten ADR
+  dotyczy już tylko zdjęcia satelitarnego ~10 cmentarzy (R2). · [[SPIKE-001-map-source-offline]] krok 4 (pinezki ze zdjęcia satelitarnego) jest podważony
   korektą autora — notatki nie mają adresów kwater; do przeformułowania przy planowaniu spike'a.

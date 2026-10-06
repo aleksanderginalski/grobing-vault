@@ -141,8 +141,9 @@ updated: 2026-10-06
 - **Dolna nawigacja: Mapa · Osoby · Drzewo.** Pojawia się, gdy istnieją co najmniej dwa z tych celów.
 - Cmentarz → mapa cmentarza z arkuszem grobu (R2) → widok grobu (R4 lewy) → osoba (R4 prawy) → drzewo i
   ścieżka (R3).
-- Do czasu mapy ([[SPIKE-001-map-source-offline]], EPIC-002) wejściem jest **lista cmentarzy** z kartami
-  w treści arkusza R1 („6 grobów · 14 osób”) — [[cmentarze]].
+- **Mapa Polski jest ekranem głównym od startu** (decyzja autora 2026-10-06): kontur z wbudowanych danych,
+  bez dostawcy kafelków ([[ISSUE-014-home-map-of-poland]], [[cmentarze]]). Na zdjęcie satelitarne czeka tylko
+  mapa cmentarza (R2, [[SPIKE-001-map-source-offline]]).
 
 ## Where the images are
 **`05_DESIGN/brand/references/`, lokalnie** (decyzja autora 2026-10-06: obrazy położył w

@@ -39,3 +39,8 @@ wpisywać je ręcznie.** Pytania do [[SPIKE-001-map-source-offline]]:
 
 Do tego czasu [[ISSUE-014-home-map-of-poland]] dodaje cmentarz ręcznie: nazwa, miejscowość i punkt
 dotknięciem na mapie.
+
+> **2026-10-06 — baza cmentarzy wyszła z tej notatki do [[ISSUE-015-add-cemetery-from-database]]** (decyzja autora
+> na stopie #1 ISSUE-014). Falsyfikator: wbudowany wyciąg OpenStreetMap (ODbL), 8 z 8 cmentarzy autora w bazie
+> (ISSUE-014 → *Stop #1 — round 1*). **„Import mapy” cmentarza** (granice, zdjęcie satelitarne) i plany z
+> kwaterami zostają tutaj i w [[SPIKE-001-map-source-offline]].

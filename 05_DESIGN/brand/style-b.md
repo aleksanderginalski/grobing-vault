@@ -1,5 +1,5 @@
 ---
-title: "Style B — visual guidelines (v1.2)"
+title: "Style B — visual guidelines (v1.4)"
 type: design-guidelines
 status: active
 owner: ui
@@ -33,8 +33,8 @@ autor, też używają znicza (reguła 8).
 | tekst | `GrobingColors.text` | treść, wartości, imiona i nazwiska, tytuły | — |
 | tekst pomocniczy | `GrobingColors.textMuted` | lata, adres, liczby („6 grobów · 14 osób”), etykiety, podpowiedzi, „bez adresu kwatery”, źródło, nieaktywne zakładki | jedyny nośnik ważnej informacji na ekranie wizyty (patrz *Thresholds*) |
 | akcent | `GrobingColors.amber` | **jeden kolor, wiele ról** (reguła 1): główne działanie (wypełnione), pinezki, znicz, aktywna zakładka i segment, zaznaczenie, fokus, ikony działań i nagłówków sekcji, wyróżnione imiona na ścieżce, link zewnętrzny | treść ciągła (akapity), duże dekoracyjne plamy, ostrzeżenia i błędy |
-| obrys *(nowy — [[ISSUE-012-transcribe-grave-screen]])* | proponowany `GrobingColors.outline` | ramka pola wpisu, przycisk z obrysem, linia podziału | tekst |
-| błąd *(nowy — ISSUE-012)* | proponowany `GrobingColors.error` | komunikat błędu pod polem, jego ikona, ramka pola z błędem | cokolwiek poza błędem |
+| obrys *(nowy — wchodzi z [[ISSUE-014-home-map-of-poland]], zaproponowany przy [[ISSUE-012-transcribe-grave-screen]])* | proponowany `GrobingColors.outline` | ramka pola wpisu, przycisk z obrysem, linia podziału, granica na mapie (reguła 13) | tekst |
+| błąd *(nowy — wchodzi z ISSUE-014)* | proponowany `GrobingColors.error` | komunikat błędu pod polem, jego ikona, ramka pola z błędem | cokolwiek poza błędem |
 
 ### State colours — beyond the accent
 Poza akcentem występują tylko **kolory stanu**. Każdy pojawia się zawsze razem z ikoną albo tekstem, nigdy
@@ -42,7 +42,7 @@ sam (SC 1.4.1):
 
 | Stan | Skąd | Kiedy wchodzi |
 |---|---|---|
-| błąd | czerwień złagodzona (propozycja `#E07A6F`, pomiar niżej) | ISSUE-012 |
+| błąd | czerwień złagodzona (propozycja `#E07A6F`, pomiar niżej) | ISSUE-014 |
 | offline gotowy („Offline ✓”) | zieleń — R2 | pierwszy ekran wizyty (M7, EPIC-002): wartość i pomiar wtedy |
 | „tu jesteś” | niebieska kropka — konwencja map, R2 | mapa cmentarza (EPIC-002) |
 
@@ -85,6 +85,9 @@ pomocniczym albo ten token trzeba rozjaśnić. Do rozstrzygnięcia przy pierwszy
    - **drugorzędne:** przycisk z obrysem (obrys, promień 12 dp), z **ikoną w akcencie** i napisem w kolorze
      tekstu, np. „Dodaj zdjęcie”, „Dodaj osobę” (R4). Kilka obok siebie tworzy rząd działań;
    - **w oknie dialogowym:** przyciski tekstowe, a potwierdzające w akcencie (wzorzec okien Material);
+   - **przycisk tekstowy poza oknem** (v1.4): w akcencie, gdy jest jedynym działaniem dalej (np. „Dodaj
+     ręcznie” pod wynikami); w kolorze tekstu, gdy stoi obok wypełnionego (np. „Zapisz bez punktu” obok
+     „Zapisz”), żeby akcent miało tylko główne działanie;
    - **link zewnętrzny:** tekst w akcencie, podkreślony, ze strzałką „↗” (np. „Grobonet ↗”, R2).
 2. **Głębia subtelna:** tło → powierzchnia (zaokrąglone karty, promień 12–16 dp, i dolny arkusz). Głównemu
    przyciskowi i zaznaczonemu elementowi (wybrana pinezka, węzeł na ścieżce) wolno mieć **delikatną
@@ -123,6 +126,19 @@ pomocniczym albo ten token trzeba rozjaśnić. Do rozstrzygnięcia przy pierwszy
 12. **Nawigacja docelowa** ([[references]] → *Target app structure*): dolny pasek Mapa · Osoby · Drzewo
     (aktywna zakładka ma ikonę, podpis i podkreślenie w akcencie). Pojawia się, gdy istnieją co najmniej dwa
     z tych celów. Ustawienia, w tym „Stan danych”, są pod kołem zębatym w pasku ekranu głównego.
+13. **Mapy** (R1, R2; pierwsza: [[cmentarze]]). Mapa nie ma własnej palety, tylko tokeny i kolory stanu:
+    - **ląd** — powierzchnia; **poza krajem** — tło; **granica** — obrys, bo kształt kraju niesie położenie
+      zniczy (≥ 3:1, SC 1.4.11);
+    - **rzeki** i inne tło mapy — cienki obrys z przezroczystością. To dekoracja, a SC 1.4.11 obejmuje tylko
+      grafikę potrzebną do zrozumienia treści. Nic, co coś znaczy, nie może mieć formy dekoracji;
+    - **podpisy miast** — tekst pomocniczy ≥ 13 sp na lądzie (5,01:1), **z obwódką 2–3 dp w kolorze lądu**, żeby granica, wybrzeże i rzeki nie przecinały liter (standard kartograficzny, v1.4);
+    - **znicz-pinezka** — bursztyn z sylwetką znicza w kolorze tła (8,81:1), cel dotyku ≥ 48 dp. Wybrany jest
+      większy, z poświatą (reguła 2). Znicze, których cele nachodzą na siebie, łączą się w znicz z liczbą.
+      **Cyfra plakietki ≥ 11 sp** i rośnie z systemowym rozmiarem tekstu — wyjątek od 13 sp, jak plakietka
+      (Badge) w Material 3, bo plakietka to liczba, a nie tekst do czytania (v1.4).
+      **Znicz w obrysie** (bursztynowy kontur, wnętrze w kolorze lądu) oznacza miejsce jeszcze nie zapisane,
+      np. podgląd cmentarza z bazy przed dodaniem;
+    - **kolory stanu** tylko z *State colours* (zieleń offline, niebieska kropka „tu jesteś” — mapa cmentarza).
 
 ## Sunlight — [[NFR-004-czytelnosc-w-sloncu]]
 **Nie sprawdzone.** Test wymaga prawdziwego telefonu, buildu release i pełnego słońca
@@ -139,8 +155,9 @@ wysokokontrastowy, bez rezygnacji ze stylu B. Wynik i data trafiają tutaj i do
   (widoczny przycisk tekstowy ma 40 dp). `shrinkWrap` obniżyłby cel do 40 dp, więc ekrany go nie używają.
 - **Nazwa grobu** „Grób rodzinny Nowaków” (R2, R4) wymaga odmiany nazwiska w dopełniaczu liczby mnogiej
   albo pola „nazwa grobu” w schemacie. Patrz [[grob]] → *Open*.
-- **Ikona znicza** nie istnieje w Material Icons. Wymaga własnej, cienkiej ikony wektorowej, zrobionej
-  raz i używanej wszędzie. Powstaje z pierwszym ekranem, który jej potrzebuje.
+- **Ikona znicza** nie istnieje w Material Icons. Własna ikona wektorowa, jedna na całą aplikację (wersja
+  liniowa i wypełniona), powstaje z [[ISSUE-014-home-map-of-poland]]; sylwetka i wersje: [[cmentarze]] →
+  *Style B rules applied*.
 
 ## Changelog
 - 2026-10-06 — v1 (`ui`, pierwsze uruchomienie, [[ISSUE-013-setup-ui-agent]] przy
@@ -162,3 +179,11 @@ wysokokontrastowy, bez rezygnacji ze stylu B. Wynik i data trafiają tutaj i do
   
   Wyjątek „kreska pod nazwą jako znak marki” z v1.1 jest **zastąpiony**: znakiem marki jest znicz +
   „Grobing” (R1), a kreska znika razem z ekranem startowym ([[cmentarze]] → *Navigation*).
+- 2026-10-06 — **v1.3, mapa Polski** ([[ISSUE-014-home-map-of-poland]], `ui`):
+  - nowa reguła 13 (mapy): role kolorów na mapie, znicz-pinezka i znicz w obrysie (miejsce jeszcze nie
+    zapisane — podgląd cmentarza z bazy, po stopie #1);
+  - obrys i błąd wchodzą z ISSUE-014, która idzie przed ISSUE-012;
+  - ikona znicza ma sylwetkę i dwie wersje.
+- 2026-10-06 — **v1.4, po pierwszym przeglądzie mapy** (`ui` jako subagent `qa`, [[ISSUE-014-home-map-of-poland]]):
+  - reguła 1: przycisk tekstowy poza oknem (akcent albo kolor tekstu);
+  - reguła 13: obwódka podpisów miast; cyfra plakietki ≥ 11 sp jako wyjątek.

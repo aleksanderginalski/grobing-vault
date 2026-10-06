@@ -18,22 +18,25 @@ updated: 2026-10-06
 MVP — od startu, cały produkt (Meta-decyzja 4).
 
 ## In progress
-- [[US-002-przepisanie-grobu]] w toku: [[ISSUE-011-schema-v2-assertions]] zamknięte (schemat v2 z
-  twierdzeniami). Zostały [[ISSUE-014-home-map-of-poland]] i [[ISSUE-012-transcribe-grave-screen]].
-- **Następne kroki, w tej kolejności (decyzja autora 2026-10-06, *„ok plan brzmi dobrze”*):**
-  1. [[ISSUE-014-home-map-of-poland]] — ekran główny: mapa Polski z wbudowanego konturu (Natural Earth,
-     offline, bez dostawcy), znicze cmentarzy, dodanie cmentarza. Na start falsyfikator: czy kontur rysuje
-     się offline na przypiętym Flutterze;
-  2. [[ISSUE-012-transcribe-grave-screen]] — cmentarz jak R2, ale bez zdjęcia satelitarnego; grób jak R4
+- [[US-002-przepisanie-grobu]] w toku: [[ISSUE-011-schema-v2-assertions]] (schemat v2) i
+  [[ISSUE-014-home-map-of-poland]] (mapa Polski jako ekran główny) zamknięte. Zostały
+  [[ISSUE-015-add-cemetery-from-database]] i [[ISSUE-012-transcribe-grave-screen]].
+- **Następne kroki, w tej kolejności (decyzja autora 2026-10-06, *„ok plan brzmi dobrze”*; ISSUE-015 dołożona
+  na stopie #1 ISSUE-014, *„wygląda dobrze”*):**
+  1. ~~[[ISSUE-014-home-map-of-poland]]~~ — zamknięte 2026-10-06;
+  2. [[ISSUE-015-add-cemetery-from-database]] — dodanie cmentarza z wbudowanej bazy OpenStreetMap (offline),
+     z podglądem i linkiem do zdjęcia satelitarnego. Ręczne dodanie zostaje zapasem;
+  3. [[ISSUE-012-transcribe-grave-screen]] — „Otwórz cmentarz” w arkuszu mapy (z ISSUE-014, D5); cmentarz jak
+     R2, ale bez zdjęcia satelitarnego; grób jak R4
      z nazwą grobu (migracja v2→v3); formularz osoby z biografią. Zapis faktów jest gotowy w
      `grobing-code/lib/data/claims.dart`;
-  3. [[US-005-zdjecia]] — zdjęcia grobu i osoby;
-  4. [[US-003-przepisanie-rodziny]] — relacje w formularzu osoby;
-  5. [[SPIKE-001-map-source-offline]] — zdjęcie satelitarne cmentarza i znicze na grobach; także
-     „baza cmentarzy z importem mapy” (`01_INBOX/2026-10-05-plany-cmentarzy.md`).
+  4. [[US-005-zdjecia]] — zdjęcia grobu i osoby;
+  5. [[US-003-przepisanie-rodziny]] — relacje w formularzu osoby;
+  6. [[SPIKE-001-map-source-offline]] — zdjęcie satelitarne cmentarza, znicze na grobach, plany z kwaterami
+     (`01_INBOX/2026-10-05-plany-cmentarzy.md`). Baza cmentarzy przeszła do ISSUE-015.
   
   **Każda pozycja z ekranem: `ui` → `planning`** (`autonomous-flow.md`). Wygląd: `05_DESIGN/brand/`
-  (wytyczne v1.2 i referencje R1–R4 z kick-offu).
+  (wytyczne v1.4 i referencje R1–R4 z kick-offu).
 - Poza tą kolejnością:
   - [[NT-001-photograph-the-notes]]: zdjęcia zrobione (33). Zostało: zaszyfrowane miejsce, sprawdzenie
     kopii w WhatsAppie i otwarcie kopii — *Resolution*;
@@ -74,10 +77,20 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   `family-data.md` ([[ISSUE-006-setup-family-data-guard]] już zamknięte).
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **0** (ostatnie retro: [[2026-10-06-retro-01]]). Co **10** →
+- Zamknięte pozycje od ostatniego retro: **1** (ostatnie retro: [[2026-10-06-retro-01]]). Co **10** →
   retro + pytanie o 3–5 nośnych faktów (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**;
   podbija go `docs` przy zamknięciu, a zeruje go retro.
 - Do retro (zebrane po drodze, bez decyzji):
+  - **po czytaniu `family_data_dir` grep obowiązkowy** ([[ISSUE-014-home-map-of-poland]] → *Self-check*):
+    `ui` wpisał do specyfikacji trzy prawdziwe przykłady zaraz po porównaniu z listą autora. Złapane przed
+    commitem, bo strażnik nie widzi treści. Do decyzji: krok w regule `family-data.md` albo w checkliście R1;
+  - **`git rm --cached` przez `dev`** (ISSUE-014 → *Dev report* → *Deviations* 5): zmiana indeksu poza commitem
+    po checkliście. Zgłoszone od razu, skutek bez znaczenia (ta sama zmiana weszła do commita). Do decyzji:
+    czy reguła ma wprost wymieniać `git rm` i `git restore`;
+  - **zawieszony przebieg testów** (ISSUE-014 → *Verification*): drift zamyka strumień na timerze fałszywego
+    czasu testu. Wzorzec sprzątania jest w testach; czy dopisać go do README `grobing-code` → testy;
+  - **polskie `MaterialLocalizations`** (przegląd `ui`, uwaga 11): systemowe podpowiedzi są po angielsku —
+    kandydat na małą pozycję;
   - **agent `architect`** — kick-off (MD3c) dał mu sygnał „decyzja wymagająca ADR-a poza kick-offem”. Ten
     sygnał już był: [[ADR-005-sqlite-package]] i [[ADR-006-claimed-value-separate-structures]] powstały w
     łańcuchu (`planning` → `docs`), bez osobnego agenta, i [[ISSUE-014-home-map-of-poland]] doda kolejny.
@@ -91,6 +104,24 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   (zdarzenie) · data zapytania`. **Odpowiedź z faktami o rodzinie trafia do aplikacji, nie tutaj.**
 
 ## Recently done
+- 2026-10-06 — [[ISSUE-014-home-map-of-poland]] zamknięte. **Ekran główny to mapa Polski**, działająca bez sieci
+  od pierwszego uruchomienia:
+  - kontur, rzeki i 9 miast z Natural Earth są w aplikacji; `flutter_map` rysuje bez kafelków
+    ([[ADR-007-poland-map-bundled-data]]), aplikacja dalej bez `INTERNET`. Krok 1 UJ-001 offline — `⚠️ OPEN`
+    w NFR-001 i ADR-003 zamknięty;
+  - znicz na każdym cmentarzu z punktem, a nachodzące łączą się w znicz z liczbą; arkusz z liczbą grobów i
+    osób i ikonką edycji; wyszukiwarka bez polskich znaków i końcówek; ręczne dodanie (okno → dotknięcie
+    na mapie) i poprawa;
+  - na stopie #1 autor dołożył **bazę cmentarzy** — falsyfikator na wyciągu OpenStreetMap: 8 z 8 jego
+    cmentarzy jest w bazie → [[ISSUE-015-add-cemetery-from-database]] zaraz po tej pozycji;
+  - „Otwórz cmentarz” przeszło do [[ISSUE-012-transcribe-grave-screen]] (decyzja autora, D5).
+  
+  Werdykt `qa`: APPROVED (self-check, z uwagami); przegląd `ui` (BLOCKER w krokach poprawiony); stop #2 „ok”
+  — kroki 4–5 (znicz z liczbą, cmentarz bez punktu) autor pominął, pokryte testami i sprawdzeniem agenta.
+  Testy: 286.
+
+  **Dla autora:** emulator `Medium_Phone` ma teraz świeżą instalację buildu release — testowa konfiguracja
+  kopii z wcześniejszych pozycji zniknęła; przy następnej pozycji z kopią trzeba ją ustawić od nowa.
 - 2026-10-06 — **przegląd `kickoff/`** (retro 1, R4; `docs`): brief, stan sesji, manifest i profil
   porównane z vaultem. Decyzje kick-offu mają dom (ISSUE-001 zmaterializował je w EPIC-ach, FR, NFR,
   ADR-ach i backlogu). Rozjechały się albo zgubiły cztery rzeczy, poprawione:
