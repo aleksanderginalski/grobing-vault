@@ -41,6 +41,11 @@ SDK wysyłających dane z telefonu (np. Firebase).
 - **Kanał kopii (2026-10-06, [[ISSUE-008-backup-write]]):** aplikacja nie ma uprawnienia `INTERNET`
   (sprawdzone `aapt` na APK release) — plik kopii wysyła aplikacja Dysk. Nowe zależności `cryptography` i
   `pointycastle` przejrzane: czysty Dart, bez kodu sieciowego.
+- **Kopia w tle (2026-10-06, [[ISSUE-010-background-backup]]):** nowa zależność `androidx.work` 2.11.2
+  (Jetpack) przejrzana: dokłada `androidx.room`, `androidx.sqlite`, `androidx.startup` i uprawnienia
+  `WAKE_LOCK`, `ACCESS_NETWORK_STATE`, `RECEIVE_BOOT_COMPLETED`, `FOREGROUND_SERVICE` — **bez `INTERNET`**
+  (`aapt` na APK release), bez bibliotek sieciowych. Własna baza WorkManagera trzyma tylko listę zadań,
+  bez danych rodziny.
 - Eksport nie jest szyfrowany z założenia (czytelność jest jego celem) — dlatego żyje offline, nie w chmurze
   (§Security).
 - Hipoteza prawna (wyłączenie domowe RODO) jest najmocniejsza, gdy chmura trzyma tylko szyfrogram →

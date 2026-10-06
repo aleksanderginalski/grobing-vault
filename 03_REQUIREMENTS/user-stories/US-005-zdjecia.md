@@ -43,5 +43,12 @@ notatki bez zdjęć przestały być jedynym zapisem, a zdjęcia przeżyły telef
   zdjęć nie są jedną transakcją. Dziś zdjęcia dodaje tylko przycisk debug. Gdy zdjęcie da się usunąć,
   usunięcie w trakcie kopii zostawi w kopii wpis bez pliku — do rozstrzygnięcia przy planowaniu
   (`04_ARCHITECTURE/backup-format.md` → *Known limits*).
+- **Kopia w tle a zdjęcia (2026-10-06, [[ISSUE-010-background-backup]]):** kopia powstaje raz po sesji
+  (10 min ciszy, najpóźniej 60 min od pierwszej zmiany) i zawsze wysyła całość. Przy pierwszych zdjęciach
+  te dwie liczby wracają do decyzji razem z rozdzielczością. Do tego:
+  - zadanie w tle ma ~10 min — kopia rzędu kilku GB wymagałaby zadania na pierwszym planie;
+  - stempel zmian widzi zdjęcie po rozmiarze i czasie pliku, nie po treści — zdjęcie zmienione „w
+    miejscu” (ten sam rozmiar, przywrócony czas) nie wyzwoli kopii. Dziś aplikacja zdjęć w miejscu nie
+    edytuje.
 - Kopię w Zdjęciach Google trzeba wstrzymać dla zdjęć nagrobków, bo wysłałaby je niezaszyfrowane
   (`TRACEABILITY.md` → *Open gaps* 2).

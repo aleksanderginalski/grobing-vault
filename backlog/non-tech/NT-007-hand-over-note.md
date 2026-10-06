@@ -66,5 +66,12 @@ Notka powinna też powiedzieć:
 - Stary telefon po zmianie: wyłączyć mu kopię, inaczej dwa telefony nadpisują jeden plik
   (`04_ARCHITECTURE/backup-format.md` → *Known limits*).
 
+## Input from US-001 closure (2026-10-06)
+- Drogi z notki — **`age -d -i grobing-klucz.age grobing-kopia.age`, z hasłem wpisanym w terminalu** —
+  nikt jeszcze nie wykonał w tej postaci (bramka ISSUE-008 otworzyła plik klucza przez
+  `age-plugin-batchpass`). Przy pisaniu notki przejść ją raz, na wymyślonych danych.
+- Kopia robi się sama ok. 10 min po ostatniej zmianie ([[ISSUE-010-background-backup]]); dla rodziny nic
+  się przez to nie zmienia — odtworzenie nadal = plik kopii + plik klucza + hasło.
+
 ## Resolution (fill when done — this is the DoD)
 [notka przekazana (komu — rola, nie nazwisko) · data · data ostatniego sprawdzenia]

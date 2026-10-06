@@ -140,3 +140,16 @@ bez zmian.*
     człowiek** (stop #2 „ok”, odcisk zgodny na dwóch emulatorach). Po odtworzeniu na świeżym telefonie
     kopia zapisuje dalej tym samym kluczem do tego samego pliku (D3), więc pkt 3 nie wymaga nowego klucza
     przy zmianie telefonu.
+  - **2026-10-06 — kopia w tle zamknięta w kodzie** ([[ISSUE-010-background-backup]]). Pkt 3 działa tak, jak
+    zakładał: przebieg w tle szyfruje do klucza publicznego, bez hasła. Mechanizm:
+    - jednorazowe zadanie `androidx.work` uruchamia bezgłowy silnik Fluttera z kanałem Dysku (bez paczki
+      `workmanager`, która nie widzi własnych kanałów aplikacji);
+    - kopię zamawia **zapis danych**: wyzwalacz przy wyjściu z aplikacji przegrywał wyścig z wyrzuceniem
+      jej z ostatnich (stop #2);
+    - **jedna kopia po sesji:** 10 min ciszy, najpóźniej 60 min od pierwszej zmiany;
+    - kopia w tle, przycisk, konfiguracja i odtworzenie mają wspólny zamek.
+
+    Zmierzone: gdy proces aplikacji żyje, kopia rusza punktualnie po ciszy. Gdy jest zamrożony albo
+    martwy, termin wyznacza JobScheduler (zadanie gotowe > 3,5 min bez startu; M2a: > 44 min). Zadanie ma
+    ~10 min, czyli przy ~8 MB/s szyfrowania kopie rzędu kilku GB; dłuższe wymagałyby zadania na
+    pierwszym planie (decyzja przy [[US-005-zdjecia]]).

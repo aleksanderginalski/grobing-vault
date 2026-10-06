@@ -1,12 +1,12 @@
 ---
 title: "ISSUE-010 — Background backup: after data changes, without the passphrase"
 type: issue
-status: in-progress
+status: done
 delivery-style: task-level
 priority: MUST
 epic: "[[EPIC-001-zabezpiecz-i-przepisz]]"
 user-story: "[[US-001-kopia-z-odtworzeniem]]"
-ideal_days: 1
+ideal_days: 1.5
 quality-verdict: APPROVED
 verdict-date: 2026-10-06
 verdict-reviewer: self-check
@@ -484,3 +484,40 @@ znalazł błąd (wyścig wyzwalacza), poprawiony w rundzie 2 i sprawdzony tym sa
    zdjęć nie edytuje w miejscu — do pamiętania przy [[US-005-zdjecia]].
 6. Środowisko: `am kill` i aktualizacja pakietu sprawiają, że WorkManager przeplanowuje zadanie pod nowym
    numerem; przed wymuszeniem trzeba sprawdzić numer (README → *Do testów*).
+
+## Closure
+`docs`, 2026-10-06. Commity: `grobing-code` e13e94b (kod + testy + README) · `grobing-vault` 6d14652 (plan,
+raport dev, weryfikacja) + commit zamknięcia.
+
+**Checklista zamknięcia (z planu):**
+- [[US-001-kopia-z-odtworzeniem]]: AC-1 pokryte, wszystkie cztery ISSUE przyjęte → zamknięcie US według
+  DoD US — osobno, z werdyktem na poziomie US (*Notes* w US-001).
+- ✅ [[ADR-004-backup-format-encryption-destination]] → *Follow-ups*: datowana linia — kopia w tle
+  zamknięta w kodzie (D1-D3), zmierzone terminy, limit ~10 min na zadanie.
+- ✅ [[NFR-005-dane-nie-opuszczaja-telefonu]] → *Notes*: `androidx.work` przejrzane, uprawnienia z APK
+  release, nadal bez `INTERNET`.
+- ✅ [[US-005-zdjecia]] → *Notes*: cisza i limit D2 do ponownej decyzji przy pierwszych zdjęciach; stempel
+  nie widzi zdjęcia zmienionego w miejscu (uwaga 5 `qa`).
+- ✅ `CURRENT_STATE.md`: przed pierwszymi prawdziwymi danymi zostaje [[NT-007-hand-over-note]] (+ kopia
+  klucza wydania).
+- ✅ `ideal_days: 1.5` (D4; runda 2 po stopie #2 zmieściła się w tym zapasie).
+- ✅ Bez pusha: [[NT-008-publication-review]] otwarte.
+
+**Uwagi z werdyktu — gdzie trafiły:**
+- 1 (termin przy zamkniętej aplikacji wyznacza JobScheduler) → ADR-004 → *Follow-ups* (zmierzone) i
+  `CURRENT_STATE.md` → *Dla autora*.
+- 2 (po wyczerpaniu ponowień kopia czeka na następne użycie, błąd widać tylko na „Stanie danych”) →
+  `CURRENT_STATE.md` → *Retro* (pytanie do retro, zgodnie z *Self-check* `planning`).
+- 3 (funkcja wejścia z argumentem w AOT sprawdzona buildem profile, nie release) → `CURRENT_STATE.md` →
+  *Dla autora*: pierwszy build release na telefon i tak przejdzie stop #2; zostaje w *Verification*.
+- 4 (limit 60 min wybrał `dev`) → zostaje w planie (*Stop #2* w nagłówku) i w README `grobing-code`.
+- 5 (zdjęcie zmienione w miejscu) → US-005 → *Notes*.
+- 6 (WorkManager zmienia numer zadania po `am kill` i aktualizacji) → README `grobing-code` → *Do testów*
+  i pamięć agentów (środowisko, nie produkt).
+
+**INVEST / DoD ISSUE:** jeden komponent (kopia: w tle), ~1,5 dnia zgodnie z D4. Test happy-path dla
+każdego AC (248 testów, w tym 36 nowych). Ręczna weryfikacja: podejście 1 znalazło błąd (wyścig
+wyzwalacza), podejście 2 „ok”, sprawdzone na emulatorze. Próbne odtworzenie kopii zrobionej w tle: test na
+hoście + stop #2 krok 6. Test migracji: n/a (schemat v1 bez zmian; przebieg w tle nie migruje — test).
+Źródło faktu: n/a. README `grobing-code` → *Kopia w tle*. Folder nie powstał, więc DOC_MAP bez zmian. Zero
+danych rodziny.
