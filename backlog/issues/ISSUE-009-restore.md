@@ -1,12 +1,12 @@
 ---
 title: "ISSUE-009 — Restore from the backup file on a fresh install, validated before any overwrite"
 type: issue
-status: in-progress
+status: done
 delivery-style: task-level
 priority: MUST
 epic: "[[EPIC-001-zabezpiecz-i-przepisz]]"
 user-story: "[[US-001-kopia-z-odtworzeniem]]"
-ideal_days: 1
+ideal_days: 1.5
 quality-verdict: APPROVED
 verdict-date: 2026-10-06
 verdict-reviewer: self-check
@@ -77,7 +77,8 @@ updated: 2026-10-06
 ## Definition of Done
 Według `DEFINITION_OF_DONE.md` → *ISSUE* (MVP): test happy-path dla każdego AC · ręczna weryfikacja na
 emulatorze (dwa urządzenia) · próbne odtworzenie przechodzi · zero danych rodziny w zmianach · INVEST
-self-check. Po przyjęciu tego ISSUE [[US-001-kopia-z-odtworzeniem]] może przejść do zamknięcia.
+self-check. Po przyjęciu tego ISSUE w [[US-001-kopia-z-odtworzeniem]] zostaje
+[[ISSUE-010-background-backup]] (poprawione przy zamknięciu: od podziału D1 w ISSUE-008 US ma cztery ISSUE).
 
 ## Implementation plan
 > `planning`, 2026-10-06. **DoR:** jasny zakres ✅ (ADR-004 pkt 5-6 + uwagi `qa` ze SPIKE-003) · powiązana
@@ -439,3 +440,41 @@ pozycji przypadki. Odtworzenie przez Dysk na drugim urządzeniu obejrzał człow
    importuje oba, musi użyć `show`/`hide` (tak robi `test/support/backup_fakes.dart`). Kosmetyka dla `dev`.
 5. Czasu odtworzenia w buildzie release (scrypt) nie mierzyłem; w debug ~21 s dla 70 KB.
 6. Tekst „Zapisana w Dysku na telefonie” stoi także przy pliku w Pobranych (znane z ISSUE-008, uwaga 3).
+
+## Closure
+`docs`, 2026-10-06. Commity: `grobing-code` 66eeebe (kod + testy) · `grobing-vault` 6f0d1cb (plan, raport
+dev, weryfikacja) + commit zamknięcia.
+
+**Checklista zamknięcia (z planu):**
+- ✅ [[ADR-004-backup-format-encryption-destination]] → *Follow-ups*: datowana linia — odzyskanie po
+  awarii, limit (D2) i instrukcja z wyszukiwarką zamknięte w kodzie; odtworzenie przez Dysk obejrzane.
+- ✅ [[NFR-002-odtworzenie-na-nowym-telefonie]] → *Notes*: pozycja produkcyjna przeszła odtworzenie na
+  drugim urządzeniu (stop #2 „ok”).
+- ✅ [[US-001-kopia-z-odtworzeniem]] → *Notes*: AC-3 i AC-4 pokryte, odtworzenie obejrzał człowiek. US
+  zostaje `in-progress` do [[ISSUE-010-background-backup]]. Linia *Definition of Done* tej pozycji
+  poprawiona (stała tam „US-001 może przejść do zamknięcia”).
+- ✅ [[NT-007-hand-over-note]] → *Input from ISSUE-009*: kroki odtworzenia, wyszukiwarka okna, opóźnienie
+  Dysku (uwaga 2 `qa`), D3 — po zmianie telefonu klucz i notka zostają ważne.
+- ✅ `04_ARCHITECTURE/backup-format.md` → *Known limits*: dwa telefony piszące do jednego pliku (D3) i brak
+  historii kopii poza (niesprawdzoną) historią wersji Dysku (*Self-check* `planning`).
+- ✅ `ideal_days: 1.5` (D1).
+- ✅ Bez pusha: [[NT-008-publication-review]] otwarte.
+
+**Uwagi z werdyktu — gdzie trafiły:**
+- 1 (snapshoty emulatorów, RAM na jeden emulator naraz) — środowisko, nie produkt; zapisane w pamięci
+  agentów, nie w vaulcie.
+- 2 (opóźnienie Dysku) → NT-007.
+- 3 (foldery `Grobing-dev-009`, `Grobing-proba` w Dysku) → `CURRENT_STATE.md` → *Autor, poza sesją*.
+- 4 (`DatabaseOpener` jak w `drift`), 5 (czas odtworzenia w release niezmierzony), 6 (tekst „Zapisana w
+  Dysku”) — zostają w *Verification*; żadna nie blokuje i żadna nie ma pozycji, do której by należała.
+
+**Poza checklistą:** [[ISSUE-010-background-backup]] → *Input from ISSUE-009*: kopia w tle a odtworzenie
+(odtworzenie zamyka bazę; silnik w tle musi najpierw wywołać `completePendingRestore` albo nie ruszać
+bazy przy znaczniku). *Dependencies* ISSUE-010: wiersz ISSUE-009 → `done`.
+
+**INVEST / DoD ISSUE:** jeden komponent (kopia: odtworzenie), ~1,5 dnia zgodnie z D1. Test happy-path dla
+każdego AC (212 testów, w tym 65 nowych). Ręczna weryfikacja: „ok”, sprawdzona na emulatorach (z
+dokończonym krokiem 6). Próbne odtworzenie: to jest ta pozycja — przez Dysk na `Grobing_Restore`, odcisk
+zgodny ze źródłem. Test migracji: ścieżka przez odtworzenie, syntetyczna v2 (schemat bez zmian). Źródło
+faktu: n/a. README `grobing-code` → *Kopia* → *Odtworzenie*. Folder nie powstał, więc DOC_MAP bez zmian.
+Zero danych rodziny.

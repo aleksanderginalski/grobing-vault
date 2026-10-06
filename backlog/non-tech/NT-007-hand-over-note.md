@@ -50,8 +50,21 @@ Notka powinna też powiedzieć:
   nie pokazuje.
 - **„Skonfiguruj kopię od nowa” w aplikacji tworzy nowy klucz:** po każdej ponownej konfiguracji notka
   jest nieaktualna i trzeba ją wymienić.
-- Warunek obudzenia się przybliża: kopia działa (na przycisk), odtworzenie to [[ISSUE-009-restore]],
-  eksport to [[US-006-eksport-dla-rodziny]].
+- Warunek obudzenia się przybliża: kopia działa (na przycisk), odtworzenie to [[ISSUE-009-restore]]
+  (✅ 2026-10-06), eksport to [[US-006-eksport-dla-rodziny]].
+
+## Input from ISSUE-009 (2026-10-06) — restore exists in the app
+- **Odtworzenie w Grobing:** „Stan danych” → „Odtwórz z kopii” → plik kopii, plik klucza (systemowe okno
+  wyboru pliku) → hasło. Zła kopia albo złe hasło niczego w telefonie nie zmienia.
+- Na świeżym telefonie folder Dysku w oknie bywa przez kilka minut pusty — **lupa u góry okna, wpisać
+  „grobing”**. Plików o tej samej nazwie może być kilka; aplikacja pokazuje po odtworzeniu datę kopii.
+- **Najświeższej kopii może jeszcze nie być w chmurze:** Dysk wysyła plik z opóźnieniem (w teście:
+  kilkanaście minut). Kopia sprzed chwili ze starego telefonu nie musi być tą, którą zobaczy nowy.
+- **Po zmianie telefonu notka zostaje ważna:** odtworzona aplikacja robi dalej kopie tym samym kluczem do
+  tego samego pliku (ISSUE-009, D3). Nieaktualna robi się dopiero po „Skonfiguruj kopię od nowa” (nowy
+  klucz) — albo gdy Dysk nie pozwoli pisać do pliku (aplikacja mówi to wprost po odtworzeniu).
+- Stary telefon po zmianie: wyłączyć mu kopię, inaczej dwa telefony nadpisują jeden plik
+  (`04_ARCHITECTURE/backup-format.md` → *Known limits*).
 
 ## Resolution (fill when done — this is the DoD)
 [notka przekazana (komu — rola, nie nazwisko) · data · data ostatniego sprawdzenia]

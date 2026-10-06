@@ -19,11 +19,10 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
 
 ## In progress
 - [[US-001-kopia-z-odtworzeniem]] w toku: [[ISSUE-007-data-layer]] ✅ → [[ISSUE-008-backup-write]] ✅ →
-  **[[ISSUE-009-restore]] — następna do planowania** (`planning`) → [[ISSUE-010-background-backup]]
-  (kopia w tle, wydzielona z ISSUE-008). Kopia na przycisk działa; format v1:
-  `04_ARCHITECTURE/backup-format.md`.
-  - ⚠️ **Stopu #2 w ISSUE-009 nie pomijać.** Pominięte były już dwa (SPIKE-003, ISSUE-008), a zapis do
-    Dysku **kodem produkcyjnym** nie był jeszcze sprawdzony — ISSUE-009 sprawdzi go pierwszy.
+  [[ISSUE-009-restore]] ✅ → **[[ISSUE-010-background-backup]] — następna do planowania** (`planning`;
+  kopia w tle, ostatnia pozycja US-001). Kopia na przycisk i odtworzenie działają, także przez Dysk na
+  drugim urządzeniu; format v1: `04_ARCHITECTURE/backup-format.md`.
+  - Dla ISSUE-010: kopia w tle a odtworzenie → ISSUE-010 → *Input from ISSUE-009*.
 - Pozostałe następne kroki:
   - [[NT-001-photograph-the-notes]]: poza kodem, nadal najtańsze zabezpieczenie;
   - **przed planowaniem [[US-002-przepisanie-grobu]] — pytanie do autora:** czy grób z notatek to
@@ -32,8 +31,8 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     których dotyczą;
   - przed pierwszym pushem musi być zamknięte [[NT-008-publication-review]]. Zostały w nim wybór dla
     vaulta i przegląd `git log -p`; strażnik danych rodziny już działa.
-- **Przed pierwszymi prawdziwymi danymi w aplikacji:** cała [[US-001-kopia-z-odtworzeniem]] (zostały
-  ISSUE-009 i ISSUE-010) oraz hasło i miejsce pliku klucza w notce przekazania
+- **Przed pierwszymi prawdziwymi danymi w aplikacji:** cała [[US-001-kopia-z-odtworzeniem]] (zostało
+  ISSUE-010) oraz hasło i miejsce pliku klucza w notce przekazania
   ([[NT-007-hand-over-note]]): utrata któregoś z nich = utrata kopii.
 - **Budowa bez terminu** (decyzja autora 2026-10-05). 1 listopada niczego nie wyznacza; przy wizytach
   autor robi zdjęcia nagrobków z lokalizacją → `TRACEABILITY.md` → *Open gaps* 2.
@@ -43,7 +42,9 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   - kopia klucza wydania (`.jks` + hasła) w zaszyfrowanym miejscu przed pierwszymi danymi;
   - opcjonalnie zmiana hasła klucza (README `grobing-code` → *Podpis wydania*);
   - po SPIKE-003: usunąć folder `Grobing-spike` na Dysku i dwa pliki `grobing-*.age` z Pobranych na PC
-    (wymyślone dane, zaszyfrowane).
+    (wymyślone dane, zaszyfrowane);
+  - po ISSUE-009: usunąć foldery `Grobing-dev-009` i `Grobing-proba` na Dysku (wymyślone dane, hasła
+    testowe). Pliki o tej samej nazwie w kilku folderach mylą wyszukiwarkę okna przy odtworzeniu.
 - **Przed rozpisaniem [[EPIC-002-wizyta]] na US — pytanie do autora:** jak znaleźć przy pierwszej wizycie
   grób bez pinezki, adresu kwatery i zdjęcia → `TRACEABILITY.md` → *Open gaps* 1. Kandydat: plany
   cmentarzy z kwaterami → `01_INBOX/2026-10-05-plany-cmentarzy.md` (rozstrzyga SPIKE-001).
@@ -58,7 +59,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   `family-data.md` ([[ISSUE-006-setup-family-data-guard]] już zamknięte).
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **6**. Co **10** → retro + pytanie o 3-5 nośnych faktów
+- Zamknięte pozycje od ostatniego retro: **7**. Co **10** → retro + pytanie o 3-5 nośnych faktów
   (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**; podbija go `docs` przy zamknięciu.
 
 ## Parked (waiting on someone outside the session)
@@ -66,6 +67,23 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   (zdarzenie) · data zapytania`. **Odpowiedź z faktami o rodzinie trafia do aplikacji, nie tutaj.**
 
 ## Recently done
+- 2026-10-06 — [[ISSUE-009-restore]] zamknięte. Odtworzenie w `grobing-code`:
+  - „Stan danych” → „Odtwórz z kopii”: plik kopii i plik klucza z systemowego okna otwarcia pliku, hasło;
+  - **nic w telefonie nie zmienia się przed sprawdzeniem całej kopii** (hasło, ścisły `tar`, manifest,
+    SHA-256, `integrity_check`, liczby, odcisk danych); starsza kopia przechodzi migracje, nowsza jest
+    odrzucana;
+  - podmiana ze znacznikiem: przerwanie w dowolnym miejscu daje przy starcie stare albo nowe dane;
+  - limit = wolne miejsce (2 × rozmiar kopii + 200 MB), bez sufitu w GB (D2);
+  - telefon z danymi dostaje ostrzeżenie i „Zastąp dane” (D4).
+
+  **Pierwszy zapis do Dysku i pierwsze odtworzenie z Dysku kodem produkcyjnym obejrzał człowiek**: odcisk
+  zgodny na `Medium_Phone` i `Grobing_Restore` (release). Werdykt `qa`: APPROVED (self-check, z uwagami);
+  stop #2 „ok”, sprawdzony na emulatorach.
+
+  **Dla autora:** po zmianie telefonu kopia idzie dalej **tym samym kluczem** do tego samego pliku (D3),
+  więc notka przekazania zostaje ważna. Stary telefon trzeba wtedy wyłączyć z kopii: dwa telefony
+  nadpisują jeden plik. Plik w Dysku jest jeden i nadpisywany — historii kopii nie ma poza (niesprawdzoną)
+  historią wersji Dysku.
 - 2026-10-06 — [[ISSUE-008-backup-write]] zamknięte. Kopia w `grobing-code`:
   - konfiguracja raz: hasło, plik klucza i plik kopii zapisane przez systemowe okno zapisu (do Dysku);
     w telefonie zostaje tylko klucz publiczny;

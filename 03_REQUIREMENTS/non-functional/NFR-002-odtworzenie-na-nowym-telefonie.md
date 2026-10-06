@@ -8,7 +8,7 @@ verdict-date: null
 verdict-reviewer: null
 source: "PROJECT_BRIEF §5 M8 · §5a G1 · MD2 (NFR example) · §Security (backup vs export)"
 created: 2026-10-05
-updated: 2026-10-05
+updated: 2026-10-06
 ---
 
 # NFR-002 — Odtworzenie na nowym telefonie
@@ -40,3 +40,7 @@ kopią (G1).
   ✅ 2026-10-05: wykonane przez Dysk na drugim emulatorze, odcisk danych zgodny. Mechanizm:
   [[ADR-004-backup-format-encryption-destination]]. Spike sprawdził mechanizm, a nie funkcję w aplikacji.
   NFR jest spełniona dopiero, gdy pozycja produkcyjna kopii przejdzie to samo odtworzenie.
+- ✅ **2026-10-06 — pozycja produkcyjna przeszła to samo odtworzenie** ([[ISSUE-009-restore]]): kopia
+  zapisana do Dysku na `Medium_Phone`, odtworzona z Dysku na `Grobing_Restore` (build release, czysta
+  instalacja), odcisk danych zgodny; obejrzał człowiek (stop #2 „ok”). Odtworzenie sprawdza wynik tą samą
+  liczbą przed podmianą danych — zła kopia niczego nie zmienia.

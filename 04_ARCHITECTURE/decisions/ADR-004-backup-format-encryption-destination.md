@@ -9,7 +9,7 @@ verdict-reviewer: null
 decided-by: "[[SPIKE-003-backup-and-restore]]"
 source: "PROJECT_BRIEF §Security → The off-phone copy · §Architecture → shape · Sufficiency A4 · §5 M8"
 created: 2026-10-05
-updated: 2026-10-05
+updated: 2026-10-06
 ---
 
 # ADR-004 — Kopia: format, szyfrowanie, miejsce
@@ -119,11 +119,13 @@ bez zmian.*
     i brak `dataExtractionRules`. Zmierzone na `com.grobing.app`: kopia Androida i D2D przechodzą.
     Pozycja produkcyjna kopii wprowadza pkt 4.
   - Pozycja produkcyjna dostaje z uwag `qa` (SPIKE-003 → *Verification*):
-    - odzyskanie stanu po awarii w trakcie podmiany danych (dwa `rename` nie są atomowe);
-    - limit rozmiaru i sprawdzenie wolnego miejsca przed rozpakowaniem kopii;
+    - odzyskanie stanu po awarii w trakcie podmiany danych (dwa `rename` nie są atomowe) — ✅ 2026-10-06,
+      [[ISSUE-009-restore]];
+    - limit rozmiaru i sprawdzenie wolnego miejsca przed rozpakowaniem kopii — ✅ 2026-10-06,
+      [[ISSUE-009-restore]] (D2: limitem jest wolne miejsce, bez sufitu w GB);
     - widoczne w aplikacji „ostatnia udana kopia: kiedy” — ✅ 2026-10-06, [[ISSUE-008-backup-write]];
     - instrukcję odtworzenia: na świeżym telefonie folder Dysku w oknie systemowym bywa pusty, a pliki
-      znajduje wyszukiwarka okna.
+      znajduje wyszukiwarka okna — ✅ 2026-10-06, [[ISSUE-009-restore]] (tekst na ekranie odtworzenia).
   - **2026-10-05 — pozycja produkcyjna kopii** to [[US-001-kopia-z-odtworzeniem]]:
     [[ISSUE-007-data-layer]] (baza, której kopia potrzebuje) → [[ISSUE-008-backup-write]] (pkt 1-4) →
     [[ISSUE-009-restore]] (pkt 5-6 i uwagi `qa`).
@@ -132,3 +134,9 @@ bez zmian.*
     zapis) i trzy pola ponad listę z pkt 2 — `created_at`, `data_fingerprint`, `size` każdego pliku.
     Własny moduł `age` przeszedł 92 oficjalne wektory C2SP i bramkę zgodności z CLI w obie strony.
   - **2026-10-06 — kopia w tle** wydzielona do [[ISSUE-010-background-backup]] (D1 ISSUE-008).
+  - **2026-10-06 — pkt 5-6 zamknięte w kodzie** ([[ISSUE-009-restore]]): walidacja przed nadpisaniem w
+    kolejności z pkt 6, starsza kopia przez zwykłe migracje, nowsza odrzucana (pkt 5), podmiana ze
+    znacznikiem i odzyskaniem przy starcie. **Odtworzenie przez Dysk kodem produkcyjnym obejrzał
+    człowiek** (stop #2 „ok”, odcisk zgodny na dwóch emulatorach). Po odtworzeniu na świeżym telefonie
+    kopia zapisuje dalej tym samym kluczem do tego samego pliku (D3), więc pkt 3 nie wymaga nowego klucza
+    przy zmianie telefonu.

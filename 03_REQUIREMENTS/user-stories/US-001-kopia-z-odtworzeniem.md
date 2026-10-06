@@ -71,5 +71,8 @@ czyli problemem papieru od nowa. Mechanizm jest rozstrzygnięty w
 - US jest `done` dopiero, gdy wszystkie cztery ISSUE są przyjęte, a odtworzenie obejrzał człowiek. W
   [[SPIKE-003-backup-and-restore]] stop #2 został pominięty; uwaga `qa`: pierwsze odtworzenie, które
   obejrzy człowiek, wypada tutaj ([[ISSUE-009-restore]]).
+  ✅ **2026-10-06:** obejrzane — [[ISSUE-009-restore]] zamknięte, stop #2 „ok”: kopia zapisana do Dysku na
+  `Medium_Phone`, odtworzona z Dysku na `Grobing_Restore`, odcisk zgodny. **AC-3 i AC-4 tej US pokryte.**
+  Zostało AC-1 (kopia sama, bez przycisku) → [[ISSUE-010-background-backup]].
 - [[NT-003-verify-household-exemption]] (`open`) nie blokuje: ADR-004 wybrał wariant, w którym chmura
   trzyma tylko szyfrogram, a hipoteza prawna jest wtedy najmocniejsza.

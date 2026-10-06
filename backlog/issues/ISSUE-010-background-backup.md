@@ -45,6 +45,20 @@ SPIKE-003 sprawdził natywny zapis do Dysku w tle, a nie szyfrowanie w tle (*Fol
   rejestruje `MainActivity`, więc silnik Fluttera uruchomiony w tle go nie zobaczy bez osobnej rejestracji.
 - **Dwa połączenia z bazą naraz:** otwarta aplikacja i kopia w tle (`VACUUM INTO` z drugiego połączenia).
 
+## Input from ISSUE-009 (2026-10-06)
+- **Kopia w tle a odtworzenie:** odtworzenie zamyka bazę aplikacji tuż przed podmianą, a podmianę
+  zatwierdza znacznik `restore.json` w katalogu danych (`lib/backup/restore_swap.dart`). Silnik w tle,
+  który sam otwiera bazę, musi **najpierw** wywołać `completePendingRestore` (jak `main.dart`) albo nie
+  ruszać bazy, dopóki znacznik istnieje. Kopia w tle nie może też biec w trakcie odtworzenia — dziś pilnuje
+  tego tylko ekran (jedna operacja naraz).
+- **Trzecie połączenie z bazą:** w trakcie odtworzenia aplikacja otwiera dodatkowo migawkę w katalogu
+  tymczasowym (tylko do odczytu) — nie dotyczy żywej bazy, ale warto o nim wiedzieć przy „dwóch
+  połączeniach naraz” wyżej.
+- **Po odtworzeniu na świeżym telefonie** kopia jest już skonfigurowana (ten sam klucz, ten sam plik —
+  D3). Pierwsza kopia w tle nadpisze plik w Dysku danymi odtworzonymi, czyli tymi samymi.
+- `RestoreService.databaseClosed` i nowy klucz `GrobingApp` po odtworzeniu: wszystko, co trzyma
+  `GrobingDatabase` (także przyszły harmonogram kopii w tle), musi się otworzyć od nowa po przeładowaniu.
+
 ## Out of Scope
 - Odtworzenie → [[ISSUE-009-restore]].
 - Kopia przyrostowa (ADR-004, *Options*: niewykonalna przez okno systemowe) · powiadomienia.
@@ -53,7 +67,7 @@ SPIKE-003 sprawdził natywny zapis do Dysku w tle, a nie szyfrowanie w tle (*Fol
 | Dependency | Type | Status |
 |---|---|---|
 | [[ISSUE-008-backup-write]] | technical | `done` |
-| [[ISSUE-009-restore]] | kolejność w US-001 | `ready` — najpierw domknięta pętla „kopia → odtworzenie" (G1: kopia, której nikt nie odtworzył, nie jest kopią), potem automatyzacja |
+| [[ISSUE-009-restore]] | kolejność w US-001 | `done` (2026-10-06) — najpierw domknięta pętla „kopia → odtworzenie" (G1: kopia, której nikt nie odtworzył, nie jest kopią), potem automatyzacja |
 
 ## Definition of Done
 Według `DEFINITION_OF_DONE.md` → *ISSUE* (MVP): test happy-path dla każdego AC · ręczna weryfikacja na

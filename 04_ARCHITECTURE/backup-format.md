@@ -76,6 +76,12 @@ sprawdza manifest (rozmiary, SHA-256, liczby, odcisk).
 - „Ostatnia udana kopia” znaczy: Dysk w telefonie przyjął plik, a nie: plik jest już w chmurze.
 - Migawka bazy i odczyt zdjęć nie są jedną transakcją — do rozstrzygnięcia przy
   [[US-005-zdjecia]], zanim zdjęcia będzie można usuwać.
+- **Dwa działające telefony piszą do jednego pliku** (po odtworzeniu kopia idzie dalej tym samym kluczem
+  do tego samego pliku — [[ISSUE-009-restore]], D3): wygrywa ostatni zapis, dane z drugiego telefonu
+  znikają z kopii. Po zmianie telefonu stary trzeba wyłączyć z kopii albo skonfigurować na nim kopię od
+  nowa.
+- **Brak historii kopii:** plik jest nadpisywany, więc kopia zepsutych danych zastępuje dobrą. Poprzednia
+  wersja istnieje najwyżej w historii wersji Dysku — **niesprawdzone** (pytanie do retro).
 
 ## Evidence
 Zgodność z oficjalnym CLI `age` v1.3.2 w obie strony, 92 oficjalne wektory testowe C2SP i plik kopii z
