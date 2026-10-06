@@ -1,7 +1,7 @@
 ---
 title: "ISSUE-008 — Production backup: encrypted on the phone, one age file in the author's Drive"
 type: issue
-status: in-progress
+status: done
 delivery-style: task-level
 priority: MUST
 epic: "[[EPIC-001-zabezpiecz-i-przepisz]]"
@@ -69,7 +69,7 @@ updated: 2026-10-06
 ## Dependencies
 | Dependency | Type | Status |
 |---|---|---|
-| [[ISSUE-007-data-layer]] | technical | `ready` |
+| [[ISSUE-007-data-layer]] | technical | `done` |
 | [[ADR-004-backup-format-encryption-destination]] | technical | `accepted` |
 | emulator `Grobing_Restore` z kontem Google autora | technical | istnieje (SPIKE-003) |
 
@@ -408,3 +408,34 @@ Bramka zgodności przeszła na plikach z emulatora, M7 powtórzone, APK release 
 4. W buildzie debug konfiguracja trwa ~40 s (scrypt w niezoptymalizowanym Darcie). W release spike
    zmierzył ~14 s; tu release niezmierzony, bo konfiguracja w release nie powstała.
 
+## Closure
+`docs`, 2026-10-06. Commity: `grobing-code` e28aabf (kod + testy) · `grobing-vault` a3863f0 (plan, raport
+dev, weryfikacja) + commit zamknięcia.
+
+**Checklista zamknięcia (z planu):**
+- ✅ [[ISSUE-010-background-backup]] założone: pkt 3 i AC-2 tej pozycji, trzy niewiadome, nowa zależność
+  do przeglądu. W [[US-001-kopia-z-odtworzeniem]] jako czwarte, po [[ISSUE-009-restore]].
+- ✅ `04_ARCHITECTURE/backup-format.md`: format v1 (D2) i otwarcie kopii bez Grobing; do niego ma linkować
+  [[NT-007-hand-over-note]]. [[ADR-004-backup-format-encryption-destination]] → *Follow-ups*: datowane linie.
+- ✅ *Dependencies* tej pozycji: wiersz ISSUE-007 poprawiony na `done`.
+- ✅ [[NFR-005-dane-nie-opuszczaja-telefonu]] → *Notes* i `CURRENT_STATE.md`: kanał kopii Androida
+  zamknięty w kodzie, ⚠️ o `allowBackup=true` zdjęte.
+- ✅ Bez pusha: [[NT-008-publication-review]] otwarte.
+
+**Uwagi z werdyktu — gdzie trafiły:**
+- Dysk z kodem produkcyjnym niesprawdzony (stop #2 pominięty) → [[ISSUE-009-restore]] → *Technical Notes*
+  i `CURRENT_STATE.md`.
+- Limit work factor przy odtwarzaniu w telefonie i los `backup.json` przy odtworzeniu → ISSUE-009 →
+  *Technical Notes*.
+- Migawka bazy a zdjęcia (nie jedna transakcja) → [[US-005-zdjecia]] → *Notes* i `backup-format.md` →
+  *Known limits*.
+- `tool/fingerprint.dart` jako metoda na PC → [[NFR-002-odtworzenie-na-nowym-telefonie]] → *Notes*.
+
+**Poza checklistą:** [[NT-007-hand-over-note]] → *Input from ISSUE-008*: nazwy plików, link do
+`backup-format.md`, wyjęcie klucza prywatnego na PC oraz to, że ponowna konfiguracja unieważnia notkę.
+
+**INVEST / DoD ISSUE:** jeden komponent (kopia: zapis), po podziale D1 w rozmiarze ISSUE. Test happy-path
+dla każdego AC (147 testów). Ręczna weryfikacja: „pomiń”, zapisana z tym, czego przez to nie sprawdzono.
+Próbne odtworzenie: oficjalnym CLI na PC, odcisk zgodny z ekranem. Test migracji i źródło faktu: n/a
+(*Verification*). README `grobing-code` → *Kopia*. Folder nie powstał, więc DOC_MAP bez nowego wiersza (w
+wierszu `04_ARCHITECTURE/` dopisany plik formatu). Zero danych rodziny.

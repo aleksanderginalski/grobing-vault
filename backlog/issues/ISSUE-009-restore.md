@@ -11,7 +11,7 @@ quality-verdict: pending
 verdict-date: null
 verdict-reviewer: null
 created: 2026-10-05
-updated: 2026-10-05
+updated: 2026-10-06
 ---
 
 # ISSUE-009 — Kopia: odtworzenie
@@ -55,11 +55,23 @@ updated: 2026-10-05
 ## Technical Notes
 - **Stop #2 tym razem nie pomijać** (uwaga `qa` ze SPIKE-003): pierwsze odtworzenie, które obejrzy
   człowiek, wypada tutaj. W spike'u złe hasło na drugim urządzeniu nie było sprawdzone.
+- **2026-10-06, z zamknięcia [[ISSUE-008-backup-write]]:**
+  - **Dysk z kodem produkcyjnym nie był jeszcze sprawdzony** (stop #2 ISSUE-008 pominięty; kanał
+    działał z Pobranymi emulatora, Dysk tylko z kodem spike'a). Tutaj kopia powstaje w Dysku na
+    `Medium_Phone` i jest czytana z Dysku na `Grobing_Restore` — pierwszy raz kodem produkcyjnym. To
+    drugi powód, żeby stopu #2 nie pomijać.
+  - **Limit work factor przy odtwarzaniu w telefonie:** `ScryptIdentity` domyślnie przyjmuje do 22, jak
+    oficjalne CLI, a 22 to ~4 GB pamięci. Nasze pliki klucza mają 18 — warto przekazać niższy limit.
+  - **`backup.json` leży obok bazy** (stan kopii: klucz publiczny, plik w Dysku, czasy). Odtworzenie musi
+    zdecydować, czy go zachowuje (ten sam telefon) i czym jest na świeżym telefonie (brak konfiguracji).
+  - **Gotowe do użycia:** odszyfrowanie w module `age` (92 oficjalne wektory) · `BackupManifest.fromJson` ·
+    w manifeście `size` (wolne miejsce przed rozpakowaniem) i `data_fingerprint` (sprawdzenie wyniku jedną
+    liczbą) · `tool/fingerprint.dart` na PC. Format: `04_ARCHITECTURE/backup-format.md`.
 
 ## Dependencies
 | Dependency | Type | Status |
 |---|---|---|
-| [[ISSUE-008-backup-write]] | technical | `ready` |
+| [[ISSUE-008-backup-write]] | technical | `done` |
 | emulator `Grobing_Restore` | technical | istnieje (SPIKE-003) |
 
 ## Definition of Done

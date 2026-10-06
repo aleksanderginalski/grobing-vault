@@ -45,7 +45,7 @@ modelem (MD2): ten EPIC jest pierwszy.
 
 | # | US | MoSCoW | FR |
 |---|---|---|---|
-| 1 | [[US-001-kopia-z-odtworzeniem]] → [[ISSUE-007-data-layer]], [[ISSUE-008-backup-write]], [[ISSUE-009-restore]] | M8 | — (NFR-002, 003, 005) |
+| 1 | [[US-001-kopia-z-odtworzeniem]] → [[ISSUE-007-data-layer]], [[ISSUE-008-backup-write]], [[ISSUE-009-restore]], [[ISSUE-010-background-backup]] | M8 | — (NFR-002, 003, 005) |
 | 2 | [[US-002-przepisanie-grobu]] (⚠️ OPEN niżej) | M1 | FR-001, 003, 004, 005 |
 | 3 | [[US-003-przepisanie-rodziny]] | M1 | FR-001, 002, 004 |
 | 4 | [[US-004-fakt-od-babci]] | M1 | FR-001 |

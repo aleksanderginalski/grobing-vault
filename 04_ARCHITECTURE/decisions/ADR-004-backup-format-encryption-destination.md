@@ -113,15 +113,22 @@ bez zmian.*
   - ✅ **2026-10-05 — kopia sprzed migracji schematu** (było ⚠️ OPEN): zmierzone w spike'u, krok 5. Kopia
     v1 odtworzona w aplikacji v2 przeszła migrację z identycznym odciskiem danych; kopia v2 w aplikacji v1
     odrzucona. Decyzja w pkt 5 wyżej.
-  - ⚠️ **Przed pierwszymi prawdziwymi danymi:** `grobing-code` ma dziś **domyślne `allowBackup=true`**
+  - ✅ **2026-10-06 — zamknięte w kodzie** ([[ISSUE-008-backup-write]]; M7 powtórzone na buildzie release:
+    kopia Androida *„Backup is not allowed"*, D2D odrzucone). Było: ⚠️ **Przed pierwszymi prawdziwymi
+    danymi:** `grobing-code` ma dziś **domyślne `allowBackup=true`**
     i brak `dataExtractionRules`. Zmierzone na `com.grobing.app`: kopia Androida i D2D przechodzą.
     Pozycja produkcyjna kopii wprowadza pkt 4.
   - Pozycja produkcyjna dostaje z uwag `qa` (SPIKE-003 → *Verification*):
     - odzyskanie stanu po awarii w trakcie podmiany danych (dwa `rename` nie są atomowe);
     - limit rozmiaru i sprawdzenie wolnego miejsca przed rozpakowaniem kopii;
-    - widoczne w aplikacji „ostatnia udana kopia: kiedy”;
+    - widoczne w aplikacji „ostatnia udana kopia: kiedy” — ✅ 2026-10-06, [[ISSUE-008-backup-write]];
     - instrukcję odtworzenia: na świeżym telefonie folder Dysku w oknie systemowym bywa pusty, a pliki
       znajduje wyszukiwarka okna.
   - **2026-10-05 — pozycja produkcyjna kopii** to [[US-001-kopia-z-odtworzeniem]]:
     [[ISSUE-007-data-layer]] (baza, której kopia potrzebuje) → [[ISSUE-008-backup-write]] (pkt 1-4) →
     [[ISSUE-009-restore]] (pkt 5-6 i uwagi `qa`).
+  - **2026-10-06 — format v1 przypięty** w `04_ARCHITECTURE/backup-format.md` ([[ISSUE-008-backup-write]],
+    D2). Pkt 2 bez zmian; doszły szczegóły: manifest na końcu archiwum (sumy w tym samym przebiegu co
+    zapis) i trzy pola ponad listę z pkt 2 — `created_at`, `data_fingerprint`, `size` każdego pliku.
+    Własny moduł `age` przeszedł 92 oficjalne wektory C2SP i bramkę zgodności z CLI w obie strony.
+  - **2026-10-06 — kopia w tle** wydzielona do [[ISSUE-010-background-backup]] (D1 ISSUE-008).

@@ -36,8 +36,11 @@ SDK wysyłających dane z telefonu (np. Firebase).
   też kanał wychodzący. **Decyzja świadoma, nie dziedziczona** → [[ADR-004-backup-format-encryption-destination]].
   ✅ 2026-10-05: zamknięte w ADR-004 (pkt 4). `allowBackup="false"` **i** `dataExtractionRules`, bo samo
   `allowBackup="false"` nie zamyka transferu między urządzeniami (D2D). Zmierzone w
-  [[SPIKE-003-backup-and-restore]], M7. ⚠️ `grobing-code` ma dziś domyślne ustawienie, więc kanał jest
-  otwarty do czasu pozycji produkcyjnej kopii.
+  [[SPIKE-003-backup-and-restore]], M7. ✅ 2026-10-06: zamknięte w kodzie ([[ISSUE-008-backup-write]]):
+  `allowBackup="false"` + `dataExtractionRules` wykluczające wszystko; M7 powtórzone na buildzie release.
+- **Kanał kopii (2026-10-06, [[ISSUE-008-backup-write]]):** aplikacja nie ma uprawnienia `INTERNET`
+  (sprawdzone `aapt` na APK release) — plik kopii wysyła aplikacja Dysk. Nowe zależności `cryptography` i
+  `pointycastle` przejrzane: czysty Dart, bez kodu sieciowego.
 - Eksport nie jest szyfrowany z założenia (czytelność jest jego celem) — dlatego żyje offline, nie w chmurze
   (§Security).
 - Hipoteza prawna (wyłączenie domowe RODO) jest najmocniejsza, gdy chmura trzyma tylko szyfrogram →

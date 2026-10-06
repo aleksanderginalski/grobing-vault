@@ -29,6 +29,9 @@ kopią (G1).
 - **Odcisk danych w kodzie** (2026-10-05, [[ISSUE-007-data-layer]]): ekran „Stan danych”. Definicja
   (z treści, nie z pliku; `VACUUM INTO` go nie zmienia) jest w README `grobing-code` → *Baza danych*.
   Zmiana definicji unieważnia wcześniej zapisane odciski.
+- **Odcisk w kopii i na PC** (2026-10-06, [[ISSUE-008-backup-write]]): manifest kopii niesie
+  `data_fingerprint`, więc odtworzenie sprawdza wynik jedną liczbą. Na PC tę samą liczbę z rozpakowanej
+  kopii liczy `tool/fingerprint.dart` (tą samą funkcją co ekran) — format: `04_ARCHITECTURE/backup-format.md`.
 - Kopia ≠ eksport (`glossary.md`): kopia jest pełna, zaszyfrowana, do odtworzenia; eksport jest czytelny
   bez aplikacji, dla rodziny. To NFR dotyczy kopii.
 - **Sama kopia Androida się nie liczy** — limit 25 MB na aplikację czyni ją cicho niepełną ze zdjęciami

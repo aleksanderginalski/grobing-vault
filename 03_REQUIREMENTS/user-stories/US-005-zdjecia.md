@@ -39,5 +39,9 @@ notatki bez zdjęć przestały być jedynym zapisem, a zdjęcia przeżyły telef
 ## Notes
 - **Rozdzielczość zdjęć w aplikacji** jest nierozstrzygnięta (poza zakresem [[SPIKE-003-backup-and-restore]]).
   Waży, bo każda kopia wysyła całość (ADR-004, *Consequences*). Decyzja przy planowaniu pierwszego ISSUE.
+- **Kopia a zdjęcia (2026-10-06, [[ISSUE-008-backup-write]]):** migawka bazy (`VACUUM INTO`) i odczyt plików
+  zdjęć nie są jedną transakcją. Dziś zdjęcia dodaje tylko przycisk debug. Gdy zdjęcie da się usunąć,
+  usunięcie w trakcie kopii zostawi w kopii wpis bez pliku — do rozstrzygnięcia przy planowaniu
+  (`04_ARCHITECTURE/backup-format.md` → *Known limits*).
 - Kopię w Zdjęciach Google trzeba wstrzymać dla zdjęć nagrobków, bo wysłałaby je niezaszyfrowane
   (`TRACEABILITY.md` → *Open gaps* 2).

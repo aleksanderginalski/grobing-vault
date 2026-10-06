@@ -3,7 +3,7 @@ title: "Grobing — Current State"
 type: meta
 status: active
 created: 2026-10-05
-updated: 2026-10-05
+updated: 2026-10-06
 ---
 
 # Grobing — Current State
@@ -18,9 +18,12 @@ updated: 2026-10-05
 MVP — od startu, cały produkt (Meta-decyzja 4).
 
 ## In progress
-- [[US-001-kopia-z-odtworzeniem]] w toku: [[ISSUE-007-data-layer]] ✅ → **[[ISSUE-008-backup-write]] —
-  następna do planowania** (`planning`) → [[ISSUE-009-restore]]. Baza ze schematem v1 i ekranem „Stan
-  danych" już jest; kopia zapisuje ją przez `VACUUM INTO` ([[ADR-005-sqlite-package]]).
+- [[US-001-kopia-z-odtworzeniem]] w toku: [[ISSUE-007-data-layer]] ✅ → [[ISSUE-008-backup-write]] ✅ →
+  **[[ISSUE-009-restore]] — następna do planowania** (`planning`) → [[ISSUE-010-background-backup]]
+  (kopia w tle, wydzielona z ISSUE-008). Kopia na przycisk działa; format v1:
+  `04_ARCHITECTURE/backup-format.md`.
+  - ⚠️ **Stopu #2 w ISSUE-009 nie pomijać.** Pominięte były już dwa (SPIKE-003, ISSUE-008), a zapis do
+    Dysku **kodem produkcyjnym** nie był jeszcze sprawdzony — ISSUE-009 sprawdzi go pierwszy.
 - Pozostałe następne kroki:
   - [[NT-001-photograph-the-notes]]: poza kodem, nadal najtańsze zabezpieczenie;
   - **przed planowaniem [[US-002-przepisanie-grobu]] — pytanie do autora:** czy grób z notatek to
@@ -29,10 +32,9 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     których dotyczą;
   - przed pierwszym pushem musi być zamknięte [[NT-008-publication-review]]. Zostały w nim wybór dla
     vaulta i przegląd `git log -p`; strażnik danych rodziny już działa.
-- ⚠️ **Przed pierwszymi prawdziwymi danymi w aplikacji:** `grobing-code` ma dziś domyślne
-  `allowBackup=true`. Android skopiowałby dane do swojej kopii w chmurze i przy transferze na nowy
-  telefon, co zmierzył [[SPIKE-003-backup-and-restore]] (M7). Poprawka należy do pozycji produkcyjnej
-  kopii: [[ISSUE-008-backup-write]] (ADR-004 → *Follow-ups*).
+- **Przed pierwszymi prawdziwymi danymi w aplikacji:** cała [[US-001-kopia-z-odtworzeniem]] (zostały
+  ISSUE-009 i ISSUE-010) oraz hasło i miejsce pliku klucza w notce przekazania
+  ([[NT-007-hand-over-note]]): utrata któregoś z nich = utrata kopii.
 - **Budowa bez terminu** (decyzja autora 2026-10-05). 1 listopada niczego nie wyznacza; przy wizytach
   autor robi zdjęcia nagrobków z lokalizacją → `TRACEABILITY.md` → *Open gaps* 2.
 - **Weryfikacja na emulatorze do MVP** (decyzja autora 2026-10-05). Na telefon trafi dopiero MVP, jako
@@ -56,7 +58,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   `family-data.md` ([[ISSUE-006-setup-family-data-guard]] już zamknięte).
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **5**. Co **10** → retro + pytanie o 3-5 nośnych faktów
+- Zamknięte pozycje od ostatniego retro: **6**. Co **10** → retro + pytanie o 3-5 nośnych faktów
   (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**; podbija go `docs` przy zamknięciu.
 
 ## Parked (waiting on someone outside the session)
@@ -64,6 +66,21 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   (zdarzenie) · data zapytania`. **Odpowiedź z faktami o rodzinie trafia do aplikacji, nie tutaj.**
 
 ## Recently done
+- 2026-10-06 — [[ISSUE-008-backup-write]] zamknięte. Kopia w `grobing-code`:
+  - konfiguracja raz: hasło, plik klucza i plik kopii zapisane przez systemowe okno zapisu (do Dysku);
+    w telefonie zostaje tylko klucz publiczny;
+  - „Zrób kopię teraz” i „Ostatnia udana kopia” na ekranie „Stan danych”;
+  - własny moduł `age`: 92 oficjalne wektory C2SP i zgodność z oficjalnym CLI w obie strony; kopię z
+    emulatora otworzył na PC oficjalny `age`, z odciskiem zgodnym z ekranem;
+  - kopia Androida i transfer D2D wyłączone; aplikacja bez uprawnienia `INTERNET`.
+
+  Kopia w tle wyszła do [[ISSUE-010-background-backup]] (decyzja autora, stop #1). Werdykt `qa`: APPROVED
+  (self-check, z uwagami); stop #2 autor pominął.
+
+  **Dla autora:** zapisu do Dysku kodem produkcyjnym nikt jeszcze nie wykonał (sprawdzony był zapis do
+  Pobranych emulatora i Dysk z kodem spike'a). „Skonfiguruj kopię od nowa” tworzy **nowy** klucz: stary
+  plik klucza nie otworzy nowych kopii. Kopię da się otworzyć bez Grobing:
+  `04_ARCHITECTURE/backup-format.md` → *Opening a backup without Grobing*.
 - 2026-10-05 — [[ISSUE-007-data-layer]] zamknięte. Warstwa danych w `grobing-code`:
   - `drift` na `sqlite3` z dołączonym SQLite 3.53.4, więc `VACUUM INTO` działa niezależnie od wersji
     Androida ([[ADR-005-sqlite-package]]);
