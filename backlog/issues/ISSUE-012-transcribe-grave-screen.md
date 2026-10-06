@@ -96,6 +96,9 @@ planem każdej z tych pozycji.
   z wierszem w DOC_MAP. Zakłada go `docs`, kiedy praca nad ekranem albo NT-006 go potrzebuje.
 - Sprawdzić, czy zamówienie kopii przy zapisie (ISSUE-010) obejmuje zapisy z nowego ekranu, a nie tylko
   drogi istniejące w chwili ISSUE-010.
+- **Kopia zaraz po migracji v2→v3** (retro 1, R6): po udanej migracji schematu aplikacja zamawia kopię w
+  tle od razu, a nie dopiero przy wyjściu albo następnym starcie ([[ISSUE-011-schema-v2-assertions]] →
+  *Verification*, uwaga 2).
 - Dane do pokazania i testów są wymyślone i istnieją tylko w buildzie debug ([[ISSUE-007-data-layer]]).
 
 ## Dependencies

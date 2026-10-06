@@ -39,6 +39,7 @@ updated: 2026-10-06
 | `04_ARCHITECTURE/decisions/` | ADR-NNN — ≥3 opcje, append-only po akceptacji | ISSUE-001 AC-4 — pierwsza decyzja architektoniczna |
 | `05_DESIGN/` | Specyfikacje ekranów — jeden żywy plik na ekran (szablon w skillu `ui`); pisze agent `ui`. Makiety HTML i zrzuty **nie** trafiają do vaulta (katalog tymczasowy sesji) | [[ISSUE-013-setup-ui-agent]] — pierwszy ekran do zaprojektowania ([[ISSUE-012-transcribe-grave-screen]]) |
 | `05_DESIGN/brand/` | Styl B: wytyczne (`style-b.md` — role tokenów, progi ze źródłem, pomiar, reguły; wartości kolorów żyją w `grobing-code/lib/app/theme.dart`) i referencje z kick-offu (`references.md` — prompty i opisy R1–R4). Obrazy R1–R4 leżą obok w `references/` **tylko lokalnie**: `.gitignore` (`*.png`) je pomija, więc w repo tego podfolderu nie ma. Pisze `ui` | [[ISSUE-013-setup-ui-agent]] — pierwsza warstwa wizualna ([[NT-006-visual-guidelines]]) |
+| `07_RETRO/` | Retro co 10 zamkniętych pozycji: pytanie o nośne fakty (bez danych rodziny), decyzje R1…Rn z miejscem zapisu, co zadziałało i co nie | retro 1 (2026-10-06) — pierwsze retro |
 | `backlog/` | Pozycje pracy: ISSUE · SPIKE · NT · DEF (EPIC-i — w `03_REQUIREMENTS/epics/`) | kickoff |
 | `backlog/issues/` | Zadania (ISSUE-NNN), w tym zadania konfiguracji mechanizmów | kickoff |
 | `backlog/spikes/` | Eksperymenty z pytaniem, limitem czasu i warunkiem wyjścia (SPIKE-NNN) | kickoff — trzy niewiadome architektury (A5) |

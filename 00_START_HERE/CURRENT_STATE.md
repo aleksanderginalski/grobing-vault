@@ -20,7 +20,8 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
 ## In progress
 - [[US-002-przepisanie-grobu]] w toku: [[ISSUE-011-schema-v2-assertions]] zamknięte (schemat v2 z
   twierdzeniami). Zostały [[ISSUE-014-home-map-of-poland]] i [[ISSUE-012-transcribe-grave-screen]].
-- **⏭ Najpierw retro** — licznik doszedł do 10 (niżej). `pm` proponuje je przed każdą następną pozycją.
+- **⏭ Na początku następnej sesji:** `docs` jednorazowo przegląda `kickoff/` pod kątem rzeczy
+  wspomnianych, a niezapisanych w vaulcie, tak jak było z obrazami stylu B (retro 1, R4, ok. 15 min).
 - **Następne kroki, w tej kolejności (decyzja autora 2026-10-06, *„ok plan brzmi dobrze”*):**
   1. [[ISSUE-014-home-map-of-poland]] — ekran główny: mapa Polski z wbudowanego konturu (Natural Earth,
      offline, bez dostawcy), znicze cmentarzy, dodanie cmentarza. Na start falsyfikator: czy kontur rysuje
@@ -36,7 +37,8 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   **Każda pozycja z ekranem: `ui` → `planning`** (`autonomous-flow.md`). Wygląd: `05_DESIGN/brand/`
   (wytyczne v1.2 i referencje R1–R4 z kick-offu).
 - Poza tą kolejnością:
-  - [[NT-001-photograph-the-notes]]: poza kodem, nadal najtańsze zabezpieczenie;
+  - [[NT-001-photograph-the-notes]]: zdjęcia zrobione (33). Zostało: zaszyfrowane miejsce, sprawdzenie
+    kopii w WhatsAppie i otwarcie kopii — *Resolution*;
   - [[SPIKE-002-tree-on-a-phone]]: przed drzewem (widok 5);
   - przed pierwszym pushem musi być zamknięte [[NT-008-publication-review]]. Zostały w nim wybór dla
     vaulta i przegląd `git log -p`; strażnik danych rodziny już działa.
@@ -49,7 +51,12 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
 - **Weryfikacja na emulatorze do MVP** (decyzja autora 2026-10-05). Na telefon trafi dopiero MVP, jako
   build release; wyjątki są w `DEFINITION_OF_DONE.md`.
 - **Autor, poza sesją:**
-  - kopia klucza wydania (`.jks` + hasła) w zaszyfrowanym miejscu przed pierwszymi danymi;
+  - kopia klucza wydania (`.jks` + oba hasła) w zaszyfrowanym miejscu przed pierwszymi danymi. To **nie**
+    klucz kopii z testów. Klucz wydania (`release_keystore_dir` w `project-config.md`) podpisuje build, a
+    bez niego telefon z danymi nie przyjmie aktualizacji bez odinstalowania, które kasuje bazę (retro 1,
+    fakt 4);
+  - **notatki rodziny na PC** leżą w `family_data_dir` (`project-config.md`), poza repo. Docelowo
+    zdjęcia stron trafiają do zaszyfrowanego miejsca (NT-001);
   - opcjonalnie zmiana hasła klucza (README `grobing-code` → *Podpis wydania*);
   - po SPIKE-003: usunąć folder `Grobing-spike` na Dysku i dwa pliki `grobing-*.age` z Pobranych na PC
     (wymyślone dane, zaszyfrowane);
@@ -69,35 +76,26 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   `family-data.md` ([[ISSUE-006-setup-family-data-guard]] już zamknięte).
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **10** → **⏭ SYGNAŁ DLA `pm`: retro + pytanie o 3–5 nośnych
-  faktów przed następną pozycją.** Co **10** → retro (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko
-  tutaj**; podbija go `docs` przy zamknięciu, a zeruje go retro.
-- Do retro (zebrane po drodze, bez decyzji):
-  - kopia w tle po wyczerpaniu ponowień (np. Dysk wylogowany) czeka na następne użycie aplikacji, a błąd
-    widać tylko na „Stanie danych” — czy to wystarcza przy rzadkim używaniu? ([[ISSUE-010-background-backup]]);
-  - czy kopia AC-2 potrzebuje stałego testu z oficjalnym `age`/`tar` ([[US-001-kopia-z-odtworzeniem]] →
-    *Verification*, uwaga 1)?
-  - po aktualizacji aplikacji kopia nowego schematu jest zamawiana dopiero przy wyjściu z aplikacji albo
-    przy następnym starcie, a nie w chwili migracji — czy to wystarcza? (wniosek z kodu, niezmierzony —
-    [[ISSUE-011-schema-v2-assertions]] → *Verification*, uwaga 2);
-  - stop #2 dla autora tylko przy UI/UX (decyzja 2026-10-06, `DEFINITION_OF_DONE.md` → *Kto sprawdza*) —
-    czy przy pierwszym ekranie te kroki dają to, czego autor szukał?
-  - `pm` zarekomendował odłożenie agenta `ui` do drugiego ekranu (reguła „nie generalizuj przed dwiema
-    instancjami”); autor wybrał budowę teraz, zgodnie z kick-offem (3c). Czy ta reguła pasuje do agentów,
-    których trigger kick-off już ustalił? ([[ISSUE-013-setup-ui-agent]])
-  - **obrazy i prompty stylu B z kick-offu nie trafiły do vaulta** — brief zapisał je jednym zdaniem, a
-    wytyczne v1 rozjechały się z obrazami w pięciu miejscach. Wyszło dopiero wtedy, gdy autor sam pokazał
-    obrazy. Czego jeszcze kick-off nie przeniósł do vaulta? ([[ISSUE-013-setup-ui-agent]] → *Stop #2, runda 2*);
-  - makieta przed kodem zmieniła strukturę ekranów (mapa od startu, R2, R4) — kolejność backlogu
-    przestawiona na tej podstawie. Czy US-002 (przepisanie) i EPIC-002 (wizyta) nie powinny być jednym
-    przepływem ekranów od początku?
-  - stop #1 przy pozycjach z ekranem jest cięższy (plan + specyfikacja + makieta) — czy nadal „lekko”?
+- Zamknięte pozycje od ostatniego retro: **0** (ostatnie retro: [[2026-10-06-retro-01]]). Co **10** →
+  retro + pytanie o 3–5 nośnych faktów (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**;
+  podbija go `docs` przy zamknięciu, a zeruje go retro.
+- Do retro (zebrane po drodze, bez decyzji): brak. Tematy z poprzedniego okresu rozliczyło
+  [[2026-10-06-retro-01]] (R1–R10).
 
 ## Parked (waiting on someone outside the session)
 - brak. Format wpisu: `źródło (babcia / cmentarz X) · pytanie bez danych rodziny · warunek obudzenia
   (zdarzenie) · data zapytania`. **Odpowiedź z faktami o rodzinie trafia do aplikacji, nie tutaj.**
 
 ## Recently done
+- 2026-10-06 — **retro 1** ([[2026-10-06-retro-01]], nowy folder `07_RETRO/`): licznik 10 → 0. Decyzje
+  autora R1–R10:
+  - **commit bez pytania, po checkliście; push tylko po „go”** (R1);
+  - na końcu sesji: co dalej i „możesz kończyć” (R2);
+  - dane rodziny na PC w `family_data_dir`, poza repo (R3);
+  - stop #1 przy ekranach dokładny (R5);
+  - kopia zaraz po migracji w ISSUE-012 (R6).
+  
+  Notatki rodziny, które autor położył w vaulcie, przeniesione poza repo, zanim trafiły do historii.
 - 2026-10-06 — [[ISSUE-013-setup-ui-agent]] zamknięte. **Agent `ui` działa i jest w łańcuchu:**
   - `ui` → `planning` przy każdej pozycji z ekranem; specyfikacja ekranu idzie na stop #1, bez nowego
     punktu stopu;
