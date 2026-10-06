@@ -1,7 +1,7 @@
 ---
 title: "US-002 — Transcribe a grave from the notes (przepisanie grobu)"
 type: user-story
-status: ready
+status: in-progress
 epic: "[[EPIC-001-zabezpiecz-i-przepisz]]"
 persona: "[[P1-zbierajacy]]"
 moscow: [M1]

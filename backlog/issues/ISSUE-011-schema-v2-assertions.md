@@ -1,12 +1,12 @@
 ---
 title: "ISSUE-011 — Schema v2: assertions (provenance) and the first real migration v1→v2"
 type: issue
-status: in-progress
+status: done
 delivery-style: task-level
 priority: MUST
 epic: "[[EPIC-001-zabezpiecz-i-przepisz]]"
 user-story: "[[US-002-przepisanie-grobu]]"
-ideal_days: null
+ideal_days: 1
 quality-verdict: APPROVED
 verdict-date: 2026-10-06
 verdict-reviewer: self-check
@@ -391,3 +391,33 @@ oknie odtworzenia, a hasło zna tylko autor. Pokrywa je test na hoście (AC-4) z
    [[US-004-fakt-od-babci]].
 4. Build release (AOT) nie był uruchamiany; migracja nie ma kodu zależnego od `vm:entry-point`. Telefon
    dostanie dopiero MVP.
+
+## Closure
+`docs`, 2026-10-06. Commity: `grobing-code` 4bf1f3a (kod + testy + README) · `grobing-vault` 9dcf63d (plan,
+raport dev, weryfikacja) + commit zamknięcia.
+
+**Checklista zamknięcia (z planu):**
+- ✅ [[ADR-006-claimed-value-separate-structures]] `accepted`: *Prior art* GEDCOM 7.0.18, 4 warianty z
+  falsyfikatora, D1-D6 (D2 decyzją autora). AC-1 domknięte.
+- ✅ `data-model.md`: diagram i wiersze *Burial* / *Assertion* według ADR-006, linia v2 w *In code* z
+  odpowiedzią „Event czy Assertion”. AC-6 domknięte.
+- ✅ [[FR-003-wiele-osob-w-grobie]] → *Rules*: datowane doprecyzowanie D2 (pochówek jako fakt, nie wiersz).
+- ✅ [[NFR-003-migracje-schematu]] → *Notes*: dwie zasady z pierwszej migracji (krok nie usuwa tabel ani
+  wierszy; wszystko z `user_version` w jednej transakcji).
+- ✅ [[ADR-005-sqlite-package]] → *Follow-ups*: datowana linia — *Assertion* w v2, narzędzie migracji
+  `drift` sprawdzone na przypiętym 2.34.0.
+- ✅ **Decyzja autora o stopie #2** (UI/UX dla autora, warstwa danych dla agenta) zapisana w
+  `DEFINITION_OF_DONE.md` → *Kto sprawdza* i w `grobing-agents/.claude/rules/autonomous-flow.md` (stop #2).
+- ✅ [[US-002-przepisanie-grobu]]: AC-4 pokryte na poziomie danych; US zostaje otwarta do
+  [[ISSUE-012-transcribe-grave-screen]].
+- ✅ `ideal_days: 1`.
+- ✅ Bez pusha: [[NT-008-publication-review]] otwarte.
+
+**Uwagi z werdyktu — gdzie trafiły:**
+- 1 (zapis kopii czyta migawkę w wersji aplikacji) → zostaje w *Verification*. To ograniczenie mechanizmu,
+  które dziś niczego nie psuje; ważne dopiero dla kogoś, kto chciałby zapisać kopię starszej bazy.
+- 2 (kopia v2 po aktualizacji przy wyjściu z aplikacji albo przy następnym starcie) →
+  `CURRENT_STATE.md` → *Retro* (razem z pytaniem o kopię w tle z ISSUE-010).
+- 3 (`contradicted` ustawiają dziś tylko testy) → [[ADR-006-claimed-value-separate-structures]] →
+  *Follow-ups* (US-004).
+- 4 (build release niesprawdzony) → zostaje w *Verification*; telefon dostanie dopiero MVP.

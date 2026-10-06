@@ -3,7 +3,7 @@ title: "Grobing — Definition of Ready / Done"
 type: contract
 status: active
 created: 2026-10-05
-updated: 2026-10-05
+updated: 2026-10-06
 ---
 
 # Grobing — Definition of Ready / Done
@@ -35,6 +35,13 @@ updated: 2026-10-05
 > które sprawdzi tylko prawdziwy telefon w prawdziwym miejscu:** GPS na miejscu, czytelność w pełnym
 > słońcu ([[NFR-004-czytelnosc-w-sloncu]]), offline na cmentarzu ([[NFR-001-offline]]). Pozycje, które
 > ich dotyczą, mają w planie krok na telefonie i jasno mówią, że wymaga on buildu release.
+>
+> **Kto sprawdza — decyzja autora 2026-10-06 (stop #2 w [[ISSUE-011-schema-v2-assertions]]).** Kroki
+> dla autora dotyczą **UI/UX: przepływu, który użytkownik czuje** (ekrany, dotknięcia, czytelność). Gdy
+> pozycja nie ma nowego ekranu (schemat, migracja, mechanizm kopii), ręczną weryfikację na emulatorze
+> robi **agent** (`adb`: instalacja, dotknięcia, zrzut ekranu, odczyt bazy) i zapisuje ją w
+> *Verification* jako „kroki oddane agentowi”, a nie jako „ok” autora. Krok, którego agent nie może
+> wykonać, bo wymaga sekretu autora (hasło), pokrywa test automatyczny, nazwany wprost.
 
 ## DoD scaling by maturity stage (current: MVP)
 

@@ -9,7 +9,7 @@ verdict-reviewer: null
 decided-by: "[[ISSUE-007-data-layer]]"
 source: "ADR-001 (local SQLite = SoT) · ADR-004 (VACUUM INTO, user_version, migrations on restore) · NFR-003 · PROJECT_BRIEF §Stack („SQLite (e.g. drift)”)"
 created: 2026-10-05
-updated: 2026-10-05
+updated: 2026-10-06
 ---
 
 # ADR-005 — Paczka SQLite
@@ -77,3 +77,8 @@ Zmierzone w falsyfikatorze (build release, emulator API 36, x86_64):
     `drift_dev schema dump` (porównanie z zapisanym schematem) i pełne testy.
   - Encja *Assertion* przyjdzie jako schemat v2 przy [[US-002-przepisanie-grobu]], z pierwszym prawdziwym
     testem migracji (ISSUE-007, D2).
+    - ✅ **2026-10-06:** schemat v2 w [[ISSUE-011-schema-v2-assertions]], kształt w
+      [[ADR-006-claimed-value-separate-structures]]. Pierwsza migracja zrobiona narzędziem `drift`
+      (`make-migrations`, `stepByStep`, `TableMigration` dla przebudowy `burials`) na przypiętym 2.34.0:
+      weryfikator i test z danymi przechodzą. Wszystkie kroki i `user_version` w jednej transakcji, bo
+      `drift` zapisuje wersję dopiero po migracji.

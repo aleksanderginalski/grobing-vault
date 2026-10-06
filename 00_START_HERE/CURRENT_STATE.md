@@ -18,15 +18,14 @@ updated: 2026-10-06
 MVP — od startu, cały produkt (Meta-decyzja 4).
 
 ## In progress
-- Nic w toku. [[US-001-kopia-z-odtworzeniem]] **zamknięta** (2026-10-06): kopia na przycisk i w tle,
-  odtworzenie także przez Dysk na drugim urządzeniu; format v1: `04_ARCHITECTURE/backup-format.md`.
+- [[US-002-przepisanie-grobu]] w toku: [[ISSUE-011-schema-v2-assertions]] zamknięte (schemat v2 z
+  twierdzeniami), zostało [[ISSUE-012-transcribe-grave-screen]] — pierwszy ekran do wpisywania danych.
 - Następne kroki:
   - [[NT-001-photograph-the-notes]]: poza kodem, nadal najtańsze zabezpieczenie;
-  - [[US-002-przepisanie-grobu]] rozpisana na dwa ISSUE (decyzja autora 2026-10-06): najpierw
-    [[ISSUE-011-schema-v2-assertions]] (schemat v2 z twierdzeniami, pierwsza prawdziwa migracja, ADR-006:
-    „Event czy Assertion” — od kanonu GEDCOM 7 i falsyfikatora z US-004), potem
-    [[ISSUE-012-transcribe-grave-screen]] (pierwszy ekran do wpisywania danych; przed nim agent `ui` i
-    wytyczne stylu B — [[NT-006-visual-guidelines]]). Po zamknięciu obu licznik retro dochodzi do 10;
+  - [[ISSUE-012-transcribe-grave-screen]]: przed planem ekranu agent `ui` (sygnał: pierwszy ekran do
+    wpisywania danych) i wytyczne stylu B ([[NT-006-visual-guidelines]]). Zapis faktów jest gotowy w
+    `grobing-code/lib/data/claims.dart`. Stop #2 tej pozycji to pierwszy test UI/UX dla autora. Po jej
+    zamknięciu licznik retro dochodzi do 10;
   - pozostałe spike'i: [[SPIKE-001-map-source-offline]] i [[SPIKE-002-tree-on-a-phone]], przed widokami,
     których dotyczą;
   - przed pierwszym pushem musi być zamknięte [[NT-008-publication-review]]. Zostały w nim wybór dla
@@ -60,19 +59,39 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   `family-data.md` ([[ISSUE-006-setup-family-data-guard]] już zamknięte).
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **8**. Co **10** → retro + pytanie o 3-5 nośnych faktów
+- Zamknięte pozycje od ostatniego retro: **9**. Co **10** → retro + pytanie o 3-5 nośnych faktów
   (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**; podbija go `docs` przy zamknięciu.
 - Do retro (zebrane po drodze, bez decyzji):
   - kopia w tle po wyczerpaniu ponowień (np. Dysk wylogowany) czeka na następne użycie aplikacji, a błąd
     widać tylko na „Stanie danych” — czy to wystarcza przy rzadkim używaniu? ([[ISSUE-010-background-backup]]);
   - czy kopia AC-2 potrzebuje stałego testu z oficjalnym `age`/`tar` ([[US-001-kopia-z-odtworzeniem]] →
     *Verification*, uwaga 1)?
+  - po aktualizacji aplikacji kopia nowego schematu jest zamawiana dopiero przy wyjściu z aplikacji albo
+    przy następnym starcie, a nie w chwili migracji — czy to wystarcza? (wniosek z kodu, niezmierzony —
+    [[ISSUE-011-schema-v2-assertions]] → *Verification*, uwaga 2);
+  - stop #2 dla autora tylko przy UI/UX (decyzja 2026-10-06, `DEFINITION_OF_DONE.md` → *Kto sprawdza*) —
+    czy przy pierwszym ekranie te kroki dają to, czego autor szukał?
 
 ## Parked (waiting on someone outside the session)
 - brak. Format wpisu: `źródło (babcia / cmentarz X) · pytanie bez danych rodziny · warunek obudzenia
   (zdarzenie) · data zapytania`. **Odpowiedź z faktami o rodzinie trafia do aplikacji, nie tutaj.**
 
 ## Recently done
+- 2026-10-06 — [[ISSUE-011-schema-v2-assertions]] zamknięte. Schemat v2 w `grobing-code`:
+  - **każda data i każdy pochówek ma źródło i status** (twierdzenie: rodzaj źródła, szczegół, status,
+    kiedy). Sprzeczna wartość z innego źródła to osobny wiersz, a pokazuje się pierwszy — jak w GEDCOM 7
+    ([[ADR-006-claimed-value-separate-structures]]);
+  - pochówek: każdy grób podany przez jakieś źródło to osobny wiersz (FR-003 doprecyzowane decyzją
+    autora);
+  - pierwsza prawdziwa migracja (v1→v2) w jednej transakcji; dane z v1 dostały źródło „notatki,
+    przeniesione z v1”.
+
+  Aktualizację na emulatorze (nowa wersja wgrana na starą, bez odinstalowania) sprawdził agent: wszystkie
+  dane v1 identyczne wiersz w wiersz. Werdykt `qa`: APPROVED (self-check, z uwagami); stop #2 autor oddał
+  agentowi i zdecydował, że jego kroki mają dotyczyć UI/UX (`DEFINITION_OF_DONE.md` → *Kto sprawdza*).
+
+  **Dla autora:** odtworzenia starej kopii (v1) w nowej wersji nie sprawdzono na emulatorze, bo wymaga
+  hasła testowego. Pokrywa je test na prawdziwym archiwum v1.
 - 2026-10-06 — [[US-002-przepisanie-grobu]] rozpisana na [[ISSUE-011-schema-v2-assertions]] i
   [[ISSUE-012-transcribe-grave-screen]] (`docs`). To rozpisanie, nie zamknięta pozycja, więc licznik retro
   bez zmian. Kolumnę Issue(s) w `TRACEABILITY.md` wpisuje `planning` przy planowaniu każdego ISSUE.
