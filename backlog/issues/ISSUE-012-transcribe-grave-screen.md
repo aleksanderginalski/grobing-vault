@@ -48,6 +48,45 @@ updated: 2026-10-06
 - **Poprawianie i usuwanie wpisu:** US-002 ich nie wymienia. `planning` ustala, czy wchodzi minimum
   (poprawa literówki przy przepisywaniu), i mówi to na stopie #1. Bez tego zakres się nie poszerza.
 
+## Input from the author (2026-10-06, po makiecie z [[ISSUE-013-setup-ui-agent]])
+Autor ocenił pierwsze specyfikacje `ui` (`05_DESIGN/`) obok obrazów z kick-offu
+(`05_DESIGN/brand/references.md`, R1–R4). Uwagi, blisko słów autora:
+1. **Ekran główny = mapa Polski od startu**, także pusta, bez cmentarzy. Cmentarz dodaje się z pola
+   **„Szukaj osoby lub cmentarza”**: gdy nic nie ma, można dodać nowy — *„lub znaleźć go w bazie cmentarzy,
+   żeby potem zaimportować jego mapę?”* (pytanie autora, nowy pomysł). Każdy zapisany cmentarz jest na
+   mapie Polski **zniczem**, jak w R1.
+2. **Cmentarz jak R2:** po wejściu widać groby (kwatery) zaznaczone zniczami. Po wybraniu znicza arkusz
+   pokazuje: miejsce na zdjęcie, lokalizację, ile osób tam leży i **nazwę grobowca**. Przycisk „Pokaż
+   grób”.
+3. **Grób jak R4:** zdjęcie grobu, nazwa, kto tam leży (zdjęcie, imię i nazwisko, daty urodzenia i
+   śmierci), dodawanie zdjęć i nowych osób, wejście w szczegóły osoby.
+4. **Formularz osoby** (ramki 5–6 makiety) może zostać jako dodawanie i poprawa osoby, ale brakuje mu:
+   **zdjęcia, krótkiej biografii i informacji, z kim osoba jest związana (pokrewieństwo, powinowactwo).**
+
+**Co to dotyka poza tą pozycją:**
+- mapy → [[EPIC-002-wizyta]] (M2, M3) i [[SPIKE-001-map-source-offline]] / [[ADR-003-map-source-offline]];
+- zdjęcia → [[US-005-zdjecia]];
+- relacje → [[US-003-przepisanie-rodziny]];
+- szczegóły osoby → M5;
+- nazwa grobu → zmiana schematu (`05_DESIGN/grob.md` → *Open* 1);
+- „baza cmentarzy z importem mapy” → pomysł spoza backlogu, obok `01_INBOX/2026-10-05-plany-cmentarzy.md`.
+
+**Decyzja autora (2026-10-06, *„ok plan brzmi dobrze”*) — kolejność:**
+1. [[ISSUE-014-home-map-of-poland]]: mapa Polski z wbudowanego konturu, znicze cmentarzy, dodanie
+   cmentarza. **Przejmuje punkt 1 *What to build* tej pozycji;**
+2. **ta pozycja:**
+   - cmentarz jak R2, ale bez zdjęcia satelitarnego — arkusz z grobami, z pinezką i bez;
+   - **grób jak R4 z nazwą grobu** (opcjonalne pole, czyli zmiana schematu: migracja v2→v3 z testem,
+     NFR-003);
+   - formularz osoby z biografią — dzisiejsze „kim była” z linią źródła;
+3. [[US-005-zdjecia]] — zdjęcia grobu i osoby (formularz i R4);
+4. [[US-003-przepisanie-rodziny]] — relacje w formularzu osoby;
+5. [[SPIKE-001-map-source-offline]] — zdjęcie satelitarne cmentarza i znicze na grobach.
+
+Groby z notatek nie mają położenia, więc znicze na mapie cmentarza pojawią się dopiero po postawieniu
+pinezki. Specyfikacje w `05_DESIGN/` (`cmentarze.md`, `cmentarz.md`, `grob.md`) przebuduje `ui` przed
+planem każdej z tych pozycji.
+
 ## Technical Notes
 - **Tempo przepisywania** to miara ekranu: około 100 osób i 50 grobów całymi wpisami
   ([[NT-002-transcribe-the-notes]], G6). Każde dodatkowe pytanie na osobę mnoży się przez 100.
@@ -62,9 +101,10 @@ updated: 2026-10-06
 ## Dependencies
 | Dependency | Type | Status |
 |---|---|---|
-| [[ISSUE-011-schema-v2-assertions]] (twierdzenia w schemacie) | technical | `ready` |
-| [[NT-006-visual-guidelines]] (wytyczne stylu B) | design | `open` — ten ekran go budzi |
-| agent `ui` w `grobing-agents` | process | nie istnieje — ten ekran to jego sygnał |
+| [[ISSUE-011-schema-v2-assertions]] (twierdzenia w schemacie) | technical | `done` |
+| [[NT-006-visual-guidelines]] (wytyczne stylu B) | design | `open` — ten ekran go budzi. Wytyczne v1 powstają w [[ISSUE-013-setup-ui-agent]] |
+| agent `ui` w `grobing-agents` | process | [[ISSUE-013-setup-ui-agent]] (`done`). Pierwsze uruchomienie dało specyfikacje i uwagi autora (*Input from the author*) |
+| [[ISSUE-014-home-map-of-poland]] (ekran główny, wybór i dodanie cmentarza) | product | `ready` — najpierw ona (decyzja autora 2026-10-06) |
 | [[ISSUE-010-background-backup]] (kopia zamawiana przy zapisie) | technical | `done` |
 
 ## Definition of Done

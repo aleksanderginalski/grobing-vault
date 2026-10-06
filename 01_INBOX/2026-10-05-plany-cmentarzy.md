@@ -26,3 +26,16 @@ cmentarzy (patrz ostrzeżenie w SPIKE-001 krok 1).
 ## Where it goes when answered
 Wynik SPIKE-001 trafia do [[ADR-003-map-source-offline]] razem z decyzją autora o źródłach położenia.
 Potem idzie do modelu danych i glosariusza, a ta notatka znika z INBOX.
+
+## Related idea — a cemetery database with map import (author, 2026-10-06)
+Przy uwagach do makiety ([[ISSUE-012-transcribe-grave-screen]] → *Input from the author*) autor zapytał,
+czy nowy cmentarz dałoby się *„znaleźć w bazie cmentarzy, żeby potem zaimportować jego mapę”*. To ta
+sama rodzina pytań co plany z kwaterami: **skąd brać dane o cmentarzu (położenie, granice, mapę), zamiast
+wpisywać je ręcznie.** Pytania do [[SPIKE-001-map-source-offline]]:
+- czy istnieje źródło listy cmentarzy w Polsce z położeniem, którego warunki pozwalają użyć go offline
+  przez jedną osobę (np. dane OpenStreetMap — licencja ODbL, do sprawdzenia, a nie z pamięci);
+- czy „import mapy” cmentarza to po prostu obszar offline wybranego źródła satelitarnego, czyli
+  dokładnie pytanie spike'a.
+
+Do tego czasu [[ISSUE-014-home-map-of-poland]] dodaje cmentarz ręcznie: nazwa, miejscowość i punkt
+dotknięciem na mapie.

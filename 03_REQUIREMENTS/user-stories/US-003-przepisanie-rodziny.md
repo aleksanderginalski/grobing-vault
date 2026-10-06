@@ -41,5 +41,11 @@ osób z notatek było szybkie (G6), a relacje wynikały z rodzin, nie z pojedync
 - Sprzeczne twierdzenia o relacji → [[US-004-fakt-od-babci]].
 
 ## Notes
-- Szybkość wprowadzania (G6) brief zostawił projektowi wprowadzania. Formularz zaprojektuje agent `ui`
-  przy pierwszym ekranie (trigger z `CLAUDE.md`; styl B potrzebuje wytycznych [[NT-006-visual-guidelines]]).
+- Szybkość wprowadzania (G6) brief zostawił projektowi wprowadzania. Formularz projektuje agent `ui` w
+  łańcuchu przed `planning` ([[ISSUE-013-setup-ui-agent]]), na wytycznych `05_DESIGN/brand/style-b.md`.
+  Punkt wyjścia to formularz osoby z [[ISSUE-012-transcribe-grave-screen]] (`05_DESIGN/wpis-osoby.md`,
+  tempo liczone w akcjach na rekord).
+- **Uwaga autora (2026-10-06):** w formularzu osoby brakuje mu informacji, *„z kim osoba jest związana
+  (pokrewieństwo, powinowactwo)”*. Kolejność: ta US zaraz po [[US-005-zdjecia]], przed przepisywaniem
+  notatek (ISSUE-012 → *Input from the author*). Czy relacje wpisuje się z formularza osoby, czy
+  formularzem rodziny (AC-1), czy obiema drogami, rozstrzyga `ui` z autorem przed planem.

@@ -19,15 +19,25 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
 
 ## In progress
 - [[US-002-przepisanie-grobu]] w toku: [[ISSUE-011-schema-v2-assertions]] zamknięte (schemat v2 z
-  twierdzeniami), zostało [[ISSUE-012-transcribe-grave-screen]] — pierwszy ekran do wpisywania danych.
-- Następne kroki:
+  twierdzeniami). Zostały [[ISSUE-014-home-map-of-poland]] i [[ISSUE-012-transcribe-grave-screen]].
+- **⏭ Najpierw retro** — licznik doszedł do 10 (niżej). `pm` proponuje je przed każdą następną pozycją.
+- **Następne kroki, w tej kolejności (decyzja autora 2026-10-06, *„ok plan brzmi dobrze”*):**
+  1. [[ISSUE-014-home-map-of-poland]] — ekran główny: mapa Polski z wbudowanego konturu (Natural Earth,
+     offline, bez dostawcy), znicze cmentarzy, dodanie cmentarza. Na start falsyfikator: czy kontur rysuje
+     się offline na przypiętym Flutterze;
+  2. [[ISSUE-012-transcribe-grave-screen]] — cmentarz jak R2, ale bez zdjęcia satelitarnego; grób jak R4
+     z nazwą grobu (migracja v2→v3); formularz osoby z biografią. Zapis faktów jest gotowy w
+     `grobing-code/lib/data/claims.dart`;
+  3. [[US-005-zdjecia]] — zdjęcia grobu i osoby;
+  4. [[US-003-przepisanie-rodziny]] — relacje w formularzu osoby;
+  5. [[SPIKE-001-map-source-offline]] — zdjęcie satelitarne cmentarza i znicze na grobach; także
+     „baza cmentarzy z importem mapy” (`01_INBOX/2026-10-05-plany-cmentarzy.md`).
+  
+  **Każda pozycja z ekranem: `ui` → `planning`** (`autonomous-flow.md`). Wygląd: `05_DESIGN/brand/`
+  (wytyczne v1.2 i referencje R1–R4 z kick-offu).
+- Poza tą kolejnością:
   - [[NT-001-photograph-the-notes]]: poza kodem, nadal najtańsze zabezpieczenie;
-  - [[ISSUE-012-transcribe-grave-screen]]: przed planem ekranu agent `ui` (sygnał: pierwszy ekran do
-    wpisywania danych) i wytyczne stylu B ([[NT-006-visual-guidelines]]). Zapis faktów jest gotowy w
-    `grobing-code/lib/data/claims.dart`. Stop #2 tej pozycji to pierwszy test UI/UX dla autora. Po jej
-    zamknięciu licznik retro dochodzi do 10;
-  - pozostałe spike'i: [[SPIKE-001-map-source-offline]] i [[SPIKE-002-tree-on-a-phone]], przed widokami,
-    których dotyczą;
+  - [[SPIKE-002-tree-on-a-phone]]: przed drzewem (widok 5);
   - przed pierwszym pushem musi być zamknięte [[NT-008-publication-review]]. Zostały w nim wybór dla
     vaulta i przegląd `git log -p`; strażnik danych rodziny już działa.
 - **Przed pierwszymi prawdziwymi danymi w aplikacji:** kopia jest gotowa (US-001 ✅). Zostały hasło i
@@ -59,8 +69,9 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   `family-data.md` ([[ISSUE-006-setup-family-data-guard]] już zamknięte).
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **9**. Co **10** → retro + pytanie o 3-5 nośnych faktów
-  (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**; podbija go `docs` przy zamknięciu.
+- Zamknięte pozycje od ostatniego retro: **10** → **⏭ SYGNAŁ DLA `pm`: retro + pytanie o 3–5 nośnych
+  faktów przed następną pozycją.** Co **10** → retro (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko
+  tutaj**; podbija go `docs` przy zamknięciu, a zeruje go retro.
 - Do retro (zebrane po drodze, bez decyzji):
   - kopia w tle po wyczerpaniu ponowień (np. Dysk wylogowany) czeka na następne użycie aplikacji, a błąd
     widać tylko na „Stanie danych” — czy to wystarcza przy rzadkim używaniu? ([[ISSUE-010-background-backup]]);
@@ -71,12 +82,39 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     [[ISSUE-011-schema-v2-assertions]] → *Verification*, uwaga 2);
   - stop #2 dla autora tylko przy UI/UX (decyzja 2026-10-06, `DEFINITION_OF_DONE.md` → *Kto sprawdza*) —
     czy przy pierwszym ekranie te kroki dają to, czego autor szukał?
+  - `pm` zarekomendował odłożenie agenta `ui` do drugiego ekranu (reguła „nie generalizuj przed dwiema
+    instancjami”); autor wybrał budowę teraz, zgodnie z kick-offem (3c). Czy ta reguła pasuje do agentów,
+    których trigger kick-off już ustalił? ([[ISSUE-013-setup-ui-agent]])
+  - **obrazy i prompty stylu B z kick-offu nie trafiły do vaulta** — brief zapisał je jednym zdaniem, a
+    wytyczne v1 rozjechały się z obrazami w pięciu miejscach. Wyszło dopiero wtedy, gdy autor sam pokazał
+    obrazy. Czego jeszcze kick-off nie przeniósł do vaulta? ([[ISSUE-013-setup-ui-agent]] → *Stop #2, runda 2*);
+  - makieta przed kodem zmieniła strukturę ekranów (mapa od startu, R2, R4) — kolejność backlogu
+    przestawiona na tej podstawie. Czy US-002 (przepisanie) i EPIC-002 (wizyta) nie powinny być jednym
+    przepływem ekranów od początku?
+  - stop #1 przy pozycjach z ekranem jest cięższy (plan + specyfikacja + makieta) — czy nadal „lekko”?
 
 ## Parked (waiting on someone outside the session)
 - brak. Format wpisu: `źródło (babcia / cmentarz X) · pytanie bez danych rodziny · warunek obudzenia
   (zdarzenie) · data zapytania`. **Odpowiedź z faktami o rodzinie trafia do aplikacji, nie tutaj.**
 
 ## Recently done
+- 2026-10-06 — [[ISSUE-013-setup-ui-agent]] zamknięte. **Agent `ui` działa i jest w łańcuchu:**
+  - `ui` → `planning` przy każdej pozycji z ekranem; specyfikacja ekranu idzie na stop #1, bez nowego
+    punktu stopu;
+  - przegląd zbudowanego ekranu robi subagent dla `qa` przed stopem #2;
+  - `05_DESIGN/` należy do `ui`.
+  
+  Pierwsze uruchomienie (na ISSUE-012) dało:
+  - wytyczne stylu B (v1.2) i referencje z kick-offu (`05_DESIGN/brand/`, obrazy R1–R4 tylko lokalnie);
+  - cztery pierwsze specyfikacje i makietę;
+  - przegląd ekranu startowego.
+  
+  Na makiecie autor zmienił strukturę ekranów, zanim powstał kod (mapa od startu, cmentarz jak R2, grób
+  jak R4). Stąd nowa [[ISSUE-014-home-map-of-poland]] i kolejność wyżej. Werdykt `qa`: APPROVED
+  (self-check, z uwagami); stop #2 w dwóch rundach.
+- 2026-10-06 — założona [[ISSUE-013-setup-ui-agent]] (`docs`, decyzja autora w `/pm`): agent `ui` przed
+  pierwszym ekranem, zamiast projektowania ekranu przez `planning`. To założenie pozycji, nie zamknięcie,
+  więc licznik retro bez zmian.
 - 2026-10-06 — [[ISSUE-011-schema-v2-assertions]] zamknięte. Schemat v2 w `grobing-code`:
   - **każda data i każdy pochówek ma źródło i status** (twierdzenie: rodzaj źródła, szczegół, status,
     kiedy). Sprzeczna wartość z innego źródła to osobny wiersz, a pokazuje się pierwszy — jak w GEDCOM 7

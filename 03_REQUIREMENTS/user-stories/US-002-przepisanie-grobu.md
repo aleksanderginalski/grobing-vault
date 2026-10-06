@@ -8,7 +8,7 @@ moscow: [M1]
 journey-steps: "n/a — poza ścieżką (M1, warunek kroku 1 UJ-001)"
 FR: ["[[FR-001-provenance]]", "[[FR-003-wiele-osob-w-grobie]]", "[[FR-004-data-z-dopiskiem]]", "[[FR-005-nazwisko-rodowe]]"]
 NFR: ["[[NFR-003-migracje-schematu]]"]
-issues: ["[[ISSUE-011-schema-v2-assertions]]", "[[ISSUE-012-transcribe-grave-screen]]"]
+issues: ["[[ISSUE-011-schema-v2-assertions]]", "[[ISSUE-014-home-map-of-poland]]", "[[ISSUE-012-transcribe-grave-screen]]"]
 quality-verdict: pending
 verdict-date: null
 verdict-reviewer: null

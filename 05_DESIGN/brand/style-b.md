@@ -1,0 +1,164 @@
+---
+title: "Style B — visual guidelines (v1.2)"
+type: design-guidelines
+status: active
+owner: ui
+source: "PROJECT_BRIEF §6a (Style B, chosen by the author 2026-10-05) · references.md (R1–R4, the kick-off images) · grobing-code/lib/app/theme.dart · WCAG 2.2 · Android accessibility"
+non-tech-item: "[[NT-006-visual-guidelines]]"
+created: 2026-10-06
+updated: 2026-10-06
+---
+
+# Styl B — wytyczne wizualne
+
+> Właściciel: agent `ui`. Każdy ekran Grobing stoi na tym pliku; specyfikacje ekranów w `05_DESIGN/`
+> mówią, które reguły stosują. **Kanonem wyglądu są obrazy z kick-offu — [[references]] (R1–R4)**; ten plik
+> tłumaczy je na reguły, progi i pomiar. **Wartości kolorów mają jeden dom:
+> `grobing-code/lib/app/theme.dart`.** Tu jest rola tokenu, reguła, próg i pomiar, a nie druga kopia wartości
+> do utrzymania.
+
+## Style — verbatim (brief §6a)
+> *modern, minimal, dark mode — near-black background, soft grey text, one accent colour: warm amber like
+> candlelight. Thin line icons, clean sans-serif type, subtle depth, calm and dignified, nothing gloomy.*
+
+Trzy przymiotniki: **nowoczesny · minimalistyczny · godny**. Odrzucony styl A (jasny, ciepła biel) jest
+zapisany w briefie jako świadomy wybór. **Odróżnia go od B jasność, nie znicz.** Obrazy B, które wybrał
+autor, też używają znicza (reguła 8).
+
+## Token roles
+| Rola | Token w `theme.dart` | Do czego (według R1–R4) | Nigdy |
+|---|---|---|---|
+| tło | `GrobingColors.background` | tło każdego ekranu i paska aplikacji | — |
+| powierzchnia | `GrobingColors.surface` | **karty** (osoba, grób, cmentarz), dolny arkusz, wyszukiwarka, okno, menu, chip, przycisk pływający | granica pola wpisu (tło–powierzchnia ma ok. 1,1:1, więc granicę niesie obrys) |
+| tekst | `GrobingColors.text` | treść, wartości, imiona i nazwiska, tytuły | — |
+| tekst pomocniczy | `GrobingColors.textMuted` | lata, adres, liczby („6 grobów · 14 osób”), etykiety, podpowiedzi, „bez adresu kwatery”, źródło, nieaktywne zakładki | jedyny nośnik ważnej informacji na ekranie wizyty (patrz *Thresholds*) |
+| akcent | `GrobingColors.amber` | **jeden kolor, wiele ról** (reguła 1): główne działanie (wypełnione), pinezki, znicz, aktywna zakładka i segment, zaznaczenie, fokus, ikony działań i nagłówków sekcji, wyróżnione imiona na ścieżce, link zewnętrzny | treść ciągła (akapity), duże dekoracyjne plamy, ostrzeżenia i błędy |
+| obrys *(nowy — [[ISSUE-012-transcribe-grave-screen]])* | proponowany `GrobingColors.outline` | ramka pola wpisu, przycisk z obrysem, linia podziału | tekst |
+| błąd *(nowy — ISSUE-012)* | proponowany `GrobingColors.error` | komunikat błędu pod polem, jego ikona, ramka pola z błędem | cokolwiek poza błędem |
+
+### State colours — beyond the accent
+Poza akcentem występują tylko **kolory stanu**. Każdy pojawia się zawsze razem z ikoną albo tekstem, nigdy
+sam (SC 1.4.1):
+
+| Stan | Skąd | Kiedy wchodzi |
+|---|---|---|
+| błąd | czerwień złagodzona (propozycja `#E07A6F`, pomiar niżej) | ISSUE-012 |
+| offline gotowy („Offline ✓”) | zieleń — R2 | pierwszy ekran wizyty (M7, EPIC-002): wartość i pomiar wtedy |
+| „tu jesteś” | niebieska kropka — konwencja map, R2 | mapa cmentarza (EPIC-002) |
+
+## Thresholds — with source
+| Próg | Wartość | Źródło |
+|---|---|---|
+| kontrast tekstu | **≥ 4,5:1** | [WCAG 2.2](https://www.w3.org/TR/WCAG22/) SC 1.4.3 Contrast (Minimum), AA: *„text … has a contrast ratio of at least 4.5:1”* |
+| kontrast elementów interfejsu (ramka pola, obrys przycisku, ikona, która coś znaczy) | **≥ 3:1** wobec sąsiedniego koloru | WCAG 2.2 SC 1.4.11 Non-text Contrast, AA |
+| kolor jako nośnik | **nigdy jedyny**: błąd, brak, wybór i stan mają też tekst albo ikonę | WCAG 2.2 SC 1.4.1 Use of Color, A |
+| cel dotyku | **≥ 48 × 48 dp** | [Android — Make apps more accessible](https://developer.android.com/guide/topics/ui/accessibility/apps) → *Use large, simple controls*: *„at least 48dp×48dp”* |
+| rozmiary tekstu | treść i tekst wpisywany **≥ 16 sp**; drobny tekst pomocniczy ≥ 13 sp; etykieta przycisku 14–16 sp, waga 500 | decyzja projektowa (nie norma) — dane wpisuje się szybko i trzeba je odczytać bez mrużenia oczu |
+| **kandydat** dla ekranów wizyty | **≥ 7:1** dla tekstu | WCAG 2.2 SC 1.4.6 Contrast (Enhanced), AAA. **Nie obowiązuje jeszcze:** propozycja miary dla [[NFR-004-czytelnosc-w-sloncu]] (`⚠️ OPEN` tam), decyzja przy pierwszym ekranie wizyty |
+
+## Measurement — 2026-10-06
+Kontrast według wzoru WCAG (luminancja względna), wartości z `theme.dart` w dniu pomiaru. Pomiar
+pochodzi z [[ISSUE-013-setup-ui-agent]] → *Technical Notes*; kandydaci na nowe tokeny zmierzeni tym samym
+wzorem. **Przelicz przy każdej zmianie tokenów.**
+
+| Para | Na tle | Na powierzchni | Próg | Wynik |
+|---|---|---|---|---|
+| tekst | 10,98 | 10,02 | 4,5 (AA) · 7 (AAA) | ✅ AA · ✅ AAA |
+| tekst pomocniczy | 5,50 | 5,01 | 4,5 (AA) · 7 (AAA) | ✅ AA · ❌ AAA |
+| akcent jako tekst, ikona albo ramka | 8,81 | 8,04 | 4,5 / 3 | ✅ |
+| tło na akcencie (napis na przycisku głównym) | 8,81 | — | 4,5 | ✅ |
+| obrys *(kandydat `6B6862`)* | 3,40 | 3,10 | 3 (SC 1.4.11) | ✅ |
+| błąd *(kandydat `E07A6F`)* | 6,45 | 5,89 | 4,5 | ✅ |
+
+**Wniosek:** wszystkie pary spełniają AA, a tekst pomocniczy nie spełnia kandydata 7:1. Jeśli ekrany
+wizyty przyjmą 7:1, informacja potrzebna na cmentarzu (adres kwatery, lata) nie może być w kolorze
+pomocniczym albo ten token trzeba rozjaśnić. Do rozstrzygnięcia przy pierwszym ekranie wizyty.
+
+## Rules
+1. **Jeden kolor akcentu, jedno główne działanie.** Bursztyn to jedyny kolor akcentu, ale ma wiele ról
+   (*Token roles*, jak w R1–R4). Na ekranie jest **najwyżej jeden wypełniony bursztynowy przycisk**, czyli
+   główne działanie. Forma działań:
+   - **główne:** przycisk wypełniony (tło w akcencie, napis w kolorze tła, 8,81:1) w kształcie
+     zaokrąglonego prostokąta (promień 12–16 dp), wysokość ≥ 52 dp. Delikatna poświata dozwolona (reguła 2).
+     Na liście albo formularzu jest przypięty na dole na pełną szerokość, a na karcie albo arkuszu stoi w
+     karcie (R1, R2);
+   - **drugorzędne:** przycisk z obrysem (obrys, promień 12 dp), z **ikoną w akcencie** i napisem w kolorze
+     tekstu, np. „Dodaj zdjęcie”, „Dodaj osobę” (R4). Kilka obok siebie tworzy rząd działań;
+   - **w oknie dialogowym:** przyciski tekstowe, a potwierdzające w akcencie (wzorzec okien Material);
+   - **link zewnętrzny:** tekst w akcencie, podkreślony, ze strzałką „↗” (np. „Grobonet ↗”, R2).
+2. **Głębia subtelna:** tło → powierzchnia (zaokrąglone karty, promień 12–16 dp, i dolny arkusz). Głównemu
+   przyciskowi i zaznaczonemu elementowi (wybrana pinezka, węzeł na ścieżce) wolno mieć **delikatną
+   bursztynową poświatę**. Bez twardych cieni i bez gradientów tła.
+3. **Ikony cienkie:** warianty `outlined` z Material Icons. Ikona jest w kolorze tekstu pomocniczego, a
+   **w akcencie wtedy, gdy oznacza działanie albo nagłówek sekcji** (R4: „Rodzina”, „Dodaj osobę”). Ikona,
+   która niesie znaczenie, ma podpis albo `tooltip`.
+4. **Krój:** systemowy bezszeryfowy (Roboto na Androidzie), bez własnych fontów w aplikacji. **Tytuły i
+   imiona półgrube (waga 500–600)**, jak w R1–R4. Treść ma wagę regularną. Krój szeryfowy z R2 był
+   przypadkiem generatora i nie obowiązuje.
+5. **Odstępy:** siatka 8 dp. Na ekranach z listą albo formularzem margines boczny 16 dp, odstęp między
+   grupami 24 dp, wewnątrz grupy 8–12 dp, a między kartami 8 dp. Kompozycje wyśrodkowane (pusty stan,
+   nagłówek osoby z R4) biorą większe odstępy z tej samej siatki.
+6. **Formaty po polsku:**
+   - lata życia: `1921–1987`, a z dopiskiem `ok. 1890 – 14.03.1951` (spacje wokół kreski, gdy którakolwiek
+     strona ma więcej niż sam rok);
+   - daty: `14.03.1951`, `03.1951`, `1890`; dopiski: `ok. 1890`, `przed 1920`, `po 1945`, `między 1893 a 1895`;
+   - nazwisko rodowe w tej samej linii co nazwisko: `Maria Nowak z d. Kowalska`;
+   - adres pełnymi słowami: `Kwatera B · Rząd 4 · Miejsce 12`; liczby: `6 grobów · 14 osób`, `3 osoby`
+     (z odmianą).
+7. **Ton tekstów:** spokojny i rzeczowy. Bez wykrzykników, bez „Sukces!”, bez emotikonów. Brak czegoś
+   opisujemy faktem i tym, kiedy się uzupełni („Bez adresu kwatery · uzupełnisz przy wizycie”), a nie
+   ostrzeżeniem.
+8. **Znicz to znak aplikacji** (R1–R3). Występuje w logo (znicz + „Grobing”), w pinezce (znicz w kształcie
+   pinezki), na głównym działaniu prowadzącym do miejsca pamięci („Otwórz cmentarz”, „Pokaż grób”) i jako
+   znacznik osoby zmarłej (węzeł drzewa, R3). **Znicz oznacza miejsce i pamięć**, a nie zwykłe działania:
+   „Zapisz” i „Dodaj” go nie mają. **Krzyż ani inne symbole religijne nie pojawiają się w interfejsie** —
+   są tylko na zdjęciach, czyli w treści użytkownika (R4). Gałązki wokół portretu (R4, osoba) to opcja
+   widoku osoby, rozstrzygana przy tym ekranie.
+9. **Puste stany** mówią, co tu będzie, i dają jedno działanie. Bez ilustracji.
+10. **Potwierdzenia ciche:** zapis kończy się widokiem tego, co zapisano, a nie komunikatem w okienku.
+    Okno dialogowe tylko wtedy, gdy coś może przepaść (niezapisany wpis).
+11. **Listy jako karty:** element, który prowadzi dalej (osoba, grób, cmentarz), to karta na powierzchni z
+    chevronem „›”. Miniatura zdjęcia z lewej, gdy zdjęcie jest ([[US-005-zdjecia]]). **Bez zastępczych
+    obrazków**: brak zdjęcia oznacza brak miniatury.
+12. **Nawigacja docelowa** ([[references]] → *Target app structure*): dolny pasek Mapa · Osoby · Drzewo
+    (aktywna zakładka ma ikonę, podpis i podkreślenie w akcencie). Pojawia się, gdy istnieją co najmniej dwa
+    z tych celów. Ustawienia, w tym „Stan danych”, są pod kołem zębatym w pasku ekranu głównego.
+
+## Sunlight — [[NFR-004-czytelnosc-w-sloncu]]
+**Nie sprawdzone.** Test wymaga prawdziwego telefonu, buildu release i pełnego słońca
+(`DEFINITION_OF_DONE.md` → wyjątki). Gdy wypadnie źle, zgodnie z NFR-004 powstaje wariant
+wysokokontrastowy, bez rezygnacji ze stylu B. Wynik i data trafiają tutaj i do
+[[NT-006-visual-guidelines]] → *Resolution*.
+
+## Known gaps
+- **Widoczność fokusu przycisku** (klawiatura fizyczna, sterowanie przełącznikami): domyślna nakładka
+  Material 3 daje ok. 1,17:1 wobec tła, poniżej 3:1 (SC 1.4.11). Przy dotyku i TalkBacku (własna ramka)
+  bez znaczenia. Wraca, gdy pojawi się taki sposób sterowania (zmierzone w pierwszym przeglądzie,
+  2026-10-06).
+- **Cel dotyku 48 dp przycisków** zapewnia domyślne `MaterialTapTargetSize.padded` motywu na Androidzie
+  (widoczny przycisk tekstowy ma 40 dp). `shrinkWrap` obniżyłby cel do 40 dp, więc ekrany go nie używają.
+- **Nazwa grobu** „Grób rodzinny Nowaków” (R2, R4) wymaga odmiany nazwiska w dopełniaczu liczby mnogiej
+  albo pola „nazwa grobu” w schemacie. Patrz [[grob]] → *Open*.
+- **Ikona znicza** nie istnieje w Material Icons. Wymaga własnej, cienkiej ikony wektorowej, zrobionej
+  raz i używanej wszędzie. Powstaje z pierwszym ekranem, który jej potrzebuje.
+
+## Changelog
+- 2026-10-06 — v1 (`ui`, pierwsze uruchomienie, [[ISSUE-013-setup-ui-agent]] przy
+  [[ISSUE-012-transcribe-grave-screen]]): role tokenów, progi ze źródłem, pomiar, reguły 1–10. Nowe tokeny
+  obrysu i błędu zaproponowane w specyfikacji [[wpis-osoby]].
+- 2026-10-06 — v1.1, po pierwszym przeglądzie `ui` (ekran startowy): forma głównego działania, etykieta
+  przycisku, odstępy kompozycji wyśrodkowanych, *Known gaps*.
+- 2026-10-06 — **v1.2, wyrównanie do referencji z kick-offu** ([[references]], dostarczone przez autora po
+  stopie #2). v1 powstała z samego zdania briefu, bez obrazów, i rozjechała się z nimi w pięciu miejscach.
+  Poprawki:
+  - reguła 8 **odwrócona**: znicz to znak aplikacji, a nie symbol zakazany;
+  - reguła 1: jeden *kolor* akcentu o wielu rolach zamiast „jednego bursztynowego elementu”, plus forma
+    przycisków drugorzędnych i linku;
+  - reguła 2: karty i delikatna poświata;
+  - reguła 4: tytuły półgrube zamiast wagi 300;
+  - reguła 6: lata życia i adres pełnymi słowami;
+  - nowe reguły 11 (karty) i 12 (nawigacja docelowa);
+  - kolory stanu (zieleń offline, niebieska kropka).
+  
+  Wyjątek „kreska pod nazwą jako znak marki” z v1.1 jest **zastąpiony**: znakiem marki jest znicz +
+  „Grobing” (R1), a kreska znika razem z ekranem startowym ([[cmentarze]] → *Navigation*).
