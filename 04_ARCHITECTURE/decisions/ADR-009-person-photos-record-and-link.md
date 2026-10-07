@@ -73,6 +73,7 @@ w tej samej pozycji (test migracji z danymi F2, odtworzenie kopii v3 w v4 F3, mi
     każdej zmianie schematu).
 - **Follow-ups:**
   - **Kadr profilowego** (`CROP` przy łączu, kolumny w `person_media`, schemat v5 przez `addColumn`) — decyzja autora
-    na stopie #2 ISSUE-017: następna pozycja, [[ISSUE-018-profile-photo-crop]].
+    na stopie #2 ISSUE-017: następna pozycja, [[ISSUE-018-profile-photo-crop]]. **2026-10-07 — zrobione:**
+    [[ADR-010-profile-photo-crop-pixels]] (cztery kolumny `crop_*` przy łączu, piksele kopii dostępowej, schemat v5).
   - Podpis zdjęcia (`TITL`, np. „Ślub, 1948”) i źródło rozpoznania osoby na zdjęciu — kolumny łącza, gdy pojawi się
     potrzeba.

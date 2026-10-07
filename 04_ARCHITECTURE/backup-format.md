@@ -4,7 +4,7 @@ type: architecture
 status: active
 source: "ADR-004 pkt 1-3 · ISSUE-008 D2 (format v1, 2026-10-06)"
 created: 2026-10-06
-updated: 2026-10-06
+updated: 2026-10-07
 ---
 
 # Format kopii — v1
@@ -42,7 +42,7 @@ updated: 2026-10-06
 | Ścieżka | Co to jest |
 |---|---|
 | `grobing.db` | migawka bazy SQLite (`VACUUM INTO`) — schemat: `data-model.md`, wersja w `PRAGMA user_version` |
-| `media/<ścieżka>` | każdy plik zdjęcia z prywatnego katalogu aplikacji, ścieżka względna jak w tabeli `media`: `groby/…` (nagrobki) i od schematu v4 `zdjecia/…` (zdjęcia osób). Łącza osoba–zdjęcie są w tabeli `person_media` w `grobing.db` ([[ADR-009-person-photos-record-and-link]]) — format v1 bez zmian |
+| `media/<ścieżka>` | każdy plik zdjęcia z prywatnego katalogu aplikacji, ścieżka względna jak w tabeli `media`: `groby/…` (nagrobki) i od schematu v4 `zdjecia/…` (zdjęcia osób). Łącza osoba–zdjęcie są w tabeli `person_media` w `grobing.db` ([[ADR-009-person-photos-record-and-link]]), od schematu v5 z kadrem profilowego w kolumnach `crop_*` ([[ADR-010-profile-photo-crop-pixels]]) — kadr jest w bazie i w odcisku danych, plik zdjęcia się nie zmienia; format v1 bez zmian |
 | `manifest.json` | opis kopii (niżej) — ostatni, bo sumy liczone są w tym samym przebiegu, w którym plik trafia do archiwum |
 
 ## manifest.json

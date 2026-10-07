@@ -50,3 +50,7 @@ niezastępowalne i będą żyć latami — aktualizacja aplikacji ze złą migra
 
   Test z danymi v3→v4 i wygenerowane v1→v4, v2→v4. Kopia v3 ze zdjęciami osób odtwarza się w v4 (test na prawdziwym
   archiwum). Na emulatorze build v4 wgrany na v3 z danymi: liczby wierszy bez zmian, kopia w tle po migracji.
+- **2026-10-07 — czwarta migracja** (v4→v5, [[ISSUE-018-profile-photo-crop]], [[ADR-010-profile-photo-crop-pixels]]): kadr
+  profilowego przy łączu, cztery `addColumn` w `person_media` — bez zmiany wierszy i bez przebudowy. Test z danymi v4→v5
+  (łącza i pozycje bez zmian, kolumny kadru puste) i wygenerowane v1…v4→v5. Kopia v4 odtwarza się w v5 (test). Na dwóch
+  emulatorach build v5 wgrany na starsze dane: liczby wierszy bez zmian, kopia w tle przeszła na v5.

@@ -1,6 +1,6 @@
 ---
 screen: "Zdjęcia osoby — baza zdjęć jednej osoby"
-items: ["[[ISSUE-017-person-photos]]"]
+items: ["[[ISSUE-017-person-photos]]", "[[ISSUE-018-profile-photo-crop]]"]
 us: "[[US-005-zdjecia]]"
 journey-step: "n/a — M1 (przepisywanie i zbieranie u babci); docelowo część widoku osoby (M5, R4 prawy)"
 mockup: "katalog tymczasowy sesji 2026-10-07: makieta-zdjecia-osoby.html (ramki 1–9)"
@@ -18,6 +18,10 @@ updated: 2026-10-07
 > *„osoby chciałbym, aby miały «swoją bazę zdjęć» (lub dzieloną, jeżeli na zdjęciu jest kilka osób) i możliwość
 > wybierania z nich «profilowego»”*. Ten ekran to ta baza. Podgląd jednego zdjęcia i wybór osób na zdjęciu są w
 > [[zdjecie]] (B w trybie osoby, D), a wejście z formularza w [[wpis-osoby]] v4 (element 1a).
+>
+> **Wersja 1.1 (2026-10-07, przed planem [[ISSUE-018-profile-photo-crop]]):** nagłówek (element 2) pokazuje profilowe
+> **w kadrze** z [[kadr-profilowego]]; profilowe bez kadru — jak dotąd, ze środka. Kadr ustawia się z podglądu
+> ([[zdjecie]] v1.4, B4'), a jego zmiana pokazuje linię zapisu (element 6). Siatka bez zmian.
 
 ## Purpose
 Wszystkie zdjęcia jednej osoby w jednym miejscu: tu się je dodaje (z galerii kilka naraz albo aparatem), wybiera
@@ -46,11 +50,11 @@ rozstrzyga ADR w `planning`. Ekran zakłada tylko te trzy rzeczy: łącze, kolej
 | # | Element | Typ | Klawiatura / akcja | Domyślnie | Walidacja | Źródło |
 |---|---|---|---|---|---|---|
 | 1 | **Pasek:** wstecz; tytuł „Zdjęcia” (16 sp, półgruby); podtytuł — imiona i nazwisko osoby jak w formularzu w tej chwili (14 sp, tekst pomocniczy, jedna linia, ucięta); bez imion i nazwiska: „Nowa osoba” | pasek | wstecz → [[wpis-osoby]] | — | — | decyzja projektowa |
-| 2 | **Profilowe** — nagłówek wyśrodkowany: okrąg **96 dp** z profilowym (pierwsze łącze), przycięty ze środka; pod nim „Profilowe” (13 sp, tekst pomocniczy); odstęp 24 dp od paska i 24 dp do siatki. Opis dla czytnika: „Zdjęcie profilowe — otwórz” | obraz-przycisk (cel 96 dp) | dotknięcie → [[zdjecie]] B na tym zdjęciu | pierwsze zdjęcie osoby | — | ISSUE-017 AC 4 · R4 prawy · D2 |
+| 2 | **Profilowe** — nagłówek wyśrodkowany: okrąg **96 dp** z profilowym (pierwsze łącze), w kadrze łącza ([[kadr-profilowego]], v1.1), a bez kadru przycięty ze środka; pod nim „Profilowe” (13 sp, tekst pomocniczy); odstęp 24 dp od paska i 24 dp do siatki. Opis dla czytnika: „Zdjęcie profilowe — otwórz” | obraz-przycisk (cel 96 dp) | dotknięcie → [[zdjecie]] B na tym zdjęciu | pierwsze zdjęcie osoby | — | ISSUE-017 AC 4 · R4 prawy · D2 |
 | 3 | **Nagłówek sekcji:** „Wszystkie zdjęcia · 3” — ikona `photo_library_outlined` w akcencie (reguła 3: nagłówek sekcji), tekst 14 sp półgruby w kolorze tekstu; sama liczba po kropce, bez rzeczownika, więc bez odmiany | tekst | — | — | — | decyzja projektowa · R4 (nagłówki sekcji z ikoną) |
 | 4 | **Siatka zdjęć** — 3 kolumny, kwadraty z zaokrągleniem 8 dp, odstęp 8 dp, marginesy 16 dp; zdjęcie przycięte ze środka. **Kolejność łączy:** profilowe pierwsze, dalej w kolejności dodania. Nic na zdjęciach (reguła 14) — profilowe w siatce nie ma znacznika, bo pokazuje je element 2. Opis każdej komórki dla czytnika: „Zdjęcie 2 z 3 — otwórz”, a przy pierwszym „Zdjęcie 1 z 3, profilowe — otwórz” | siatka obrazów-przycisków (komórka ok. 104 dp przy 360 dp szerokości, ok. 121 dp przy 411) | dotknięcie → [[zdjecie]] B na tym zdjęciu | — | — | ISSUE-017 AC 4 · US-005 AC-1 · D3 · [[style-b]] reguła 14 (v1.9) |
 | 5 | **Kafelek „Dodaj zdjęcie”** — ostatnia komórka siatki, tej samej wielkości: obrys 1 dp w kolorze obrysu na tle (bez wypełnienia), zaokrąglenie 8 dp, w środku `add_a_photo_outlined` (28 dp, akcent) i pod nią „Dodaj zdjęcie” (14 sp, półgruby 500, kolor tekstu, do 2 linii). Opis dla czytnika „Dodaj zdjęcie osoby” | przycisk | → [[zdjecie]] A (galeria — kilka zdjęć, aparat — jedno) | — | — | US-005 AC-1 · D4 · D5 · [[grob]] D12 (działanie tam, gdzie pojawi się wynik) |
-| 6 | **Linia zapisu** pod siatką: „Zmiany zdjęć zapiszą się razem z wpisem osoby.” (13 sp, tekst pomocniczy) — tylko gdy na tym ekranie albo w podglądzie coś zmieniono, a wpis nie jest jeszcze zapisany | tekst | — | ukryta | — | D1 · [[style-b]] reguła 7 |
+| 6 | **Linia zapisu** pod siatką: „Zmiany zdjęć zapiszą się razem z wpisem osoby.” (13 sp, tekst pomocniczy) — tylko gdy na tym ekranie, w podglądzie albo w kadrze coś zmieniono, a wpis nie jest jeszcze zapisany | tekst | — | ukryta | — | D1 · [[style-b]] reguła 7 |
 
 **Dane, których ekran potrzebuje** (dla `planning`):
 - zdjęcia osoby w kolejności łączy, czyli zapisane łącza plus zmiany z tej edycji formularza;

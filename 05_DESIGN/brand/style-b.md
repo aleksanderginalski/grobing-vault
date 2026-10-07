@@ -1,5 +1,5 @@
 ---
-title: "Style B — visual guidelines (v1.9)"
+title: "Style B — visual guidelines (v1.10)"
 type: design-guidelines
 status: active
 owner: ui
@@ -154,13 +154,18 @@ pomocniczym albo ten token trzeba rozjaśnić. Do rozstrzygnięcia przy pierwszy
     - **bez filtrów i tonowania** — sepia z R4 jest w samych starych zdjęciach, a nie w aplikacji. Krzyż, znicze
       i napisy na nagrobku to treść zdjęcia (reguła 8);
     - **nic na zdjęciu:** licznik, podpis i przyciski stoją obok zdjęcia, nie na nim — kontrastu tekstu na zdjęciu
-      nie da się zagwarantować (SC 1.4.3);
+      nie da się zagwarantować (SC 1.4.3). **Jedyny wyjątek: ramka kadru** (v1.10, [[kadr-profilowego]]), bo ekran
+      kadru wybiera część zdjęcia. Ramka nie ma tekstu: pierścień 2 dp w akcencie, z obu stron linia 1 dp w kolorze tła
+      (akcent–tło 8,81:1 na każdym zdjęciu; sam akcent na białym ok. 2,1:1), poza okręgiem zdjęcie przyciemnione kolorem
+      tła (krycie 72%), linie pomocnicze w kolorze tekstu (krycie 60%) z cieniem w kolorze tła (krycie 50 %);
     - **kształt mówi, co to jest:** osoba — okrąg, i to tylko jej **profilowe** (miniatura w karcie 40 dp, zdjęcie w
       formularzu 80 dp, nagłówek bazy zdjęć 96 dp; R3, R4); nagrobek — zaokrąglony prostokąt (duże zdjęcie: promień
       16 dp; miniatura w karcie: kwadrat 56 dp, promień 8 dp; R2, R4); **zdjęcia w bazie zdjęć osoby** — kwadraty w
       siatce, promień 8 dp, bo bywają grupowe, a okrąg ucina najwięcej (v1.9, [[zdjecia-osoby]]);
     - **przycięcie tylko w miniaturze, na liście i w siatce**, ze środka; całe zdjęcie, bez przycinania i z
-      przybliżeniem — w podglądzie na tle;
+      przybliżeniem — w podglądzie na tle. **Okrąg profilowego pokazuje kadr łącza osoba–zdjęcie** (v1.10,
+      [[kadr-profilowego]]), a bez kadru — największy kwadrat ze środka. Każdy przyszły okrąg profilowego (widok osoby
+      R4, węzeł drzewa R3) też;
     - **stan zdjęcia (np. „profilowe”) nie jest znacznikiem na zdjęciu:** niesie go miejsce (nagłówek, pierwsza
       pozycja), tekst obok albo opis dla czytnika (v1.9);
     - **puste miejsce na zdjęcie istnieje tylko jako przycisk** (obrys, ikona w akcencie, podpis — np. „Dodaj
@@ -242,3 +247,7 @@ wysokokontrastowy, bez rezygnacji ze stylu B. Wynik i data trafiają tutaj i do
   14 — okrąg tylko dla profilowego osoby (także nagłówek bazy, 96 dp), zdjęcia w bazie jako kwadraty w siatce
   (bywają grupowe), stan zdjęcia nie jest znacznikiem na zdjęciu. Tokeny bez zmian, więc pomiar z 2026-10-06
   obowiązuje; obrys pustego pola wyboru to tekst pomocniczy na tle (5,50:1, SC 1.4.11 ✅).
+- 2026-10-07 — **v1.10, kadr profilowego** (`ui` przed planem [[ISSUE-018-profile-photo-crop]], [[kadr-profilowego]]):
+  reguła 14 — okrąg profilowego pokazuje kadr łącza (bez kadru: środek); ramka kadru to jedyny wyjątek od „nic na
+  zdjęciu”, bez tekstu, z pierścieniem w akcencie między liniami w kolorze tła. Tokeny bez zmian, więc pomiar z
+  2026-10-06 obowiązuje; pierścień to istniejąca para akcent/tło (8,81:1).

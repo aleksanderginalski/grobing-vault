@@ -1,6 +1,6 @@
 ---
 screen: "Wpis osoby w grobie — formularz"
-items: ["[[ISSUE-012-transcribe-grave-screen]]", "[[ISSUE-017-person-photos]]"]
+items: ["[[ISSUE-012-transcribe-grave-screen]]", "[[ISSUE-017-person-photos]]", "[[ISSUE-018-profile-photo-crop]]"]
 us: "[[US-002-przepisanie-grobu]] · [[US-005-zdjecia]]"
 journey-step: "n/a — M1 (warunek kroku 1 UJ-001)"
 mockup: "katalog tymczasowy sesji 2026-10-07: makieta-cmentarz-grob-osoba.html (ramki 3–4, ISSUE-012) · makieta-zdjecia.html (ramki 7–8 — kierunek sprzed stopu #1 ISSUE-016) · makieta-zdjecia-osoby.html (ramki 1–2, ISSUE-017)"
@@ -61,6 +61,10 @@ updated: 2026-10-07
 >
 > Wszystkie zmiany zdjęć (dodanie, profilowe, osoby na zdjęciu, usunięcie z osoby) zapisują się z „Zapisz”, razem
 > z wpisem (D-zdjęcie-2, rozszerzone). D-zdjęcie-1 zastępuje D-zdjęcie-4.
+>
+> **Wersja 4.1 (2026-10-07, przed planem [[ISSUE-018-profile-photo-crop]]):** okrąg 1a pokazuje profilowe **w kadrze**
+> z [[kadr-profilowego]]; bez kadru — jak dotąd, ze środka. D-zdjęcie-3 („bez kadrowania”) obalone na stopie #2
+> ISSUE-017. Formularz poza tym bez zmian; kadr zapisuje się z „Zapisz”, jak pozostałe zmiany zdjęć.
 
 ## Purpose
 Wpisanie jednej osoby pochowanej w grobie, tak jak stoi w notatkach: zdjęcie (gdy jest), imiona, nazwisko,
@@ -84,7 +88,7 @@ nazwisko rodowe, daty urodzenia i zgonu z dopiskiem oraz **krótka biografia (�
 | # | Element | Typ | Klawiatura / akcja | Domyślnie | Walidacja | Źródło |
 |---|---|---|---|---|---|---|
 | 1 | Pasek: „Osoba w grobie” (w poprawie: „Poprawa wpisu”); podtytuł (tekst pomocniczy, jedna linia): w trybie „nowy grób” — „Cmentarz Wymyślony · nowy grób”; w trybie „kolejna osoba” i w poprawie — nazwa grobu, a bez nazwy nazwa cmentarza, i „· w grobie: 2 osoby” | tytuł | — | — | — | decyzja projektowa · [[grob]] D1 |
-| 1a | **Zdjęcia osoby** (v4) — wyśrodkowane, okrąg **80 dp**, odstęp 24 dp do „Imiona”. **Bez zdjęć:** jak v3 — okrąg z obrysem 1 dp (kolor obrysu), w środku `add_a_photo_outlined` (28 dp, akcent), pod okręgiem „Dodaj zdjęcie” (14 sp, kolor tekstu); opis dla czytnika „Dodaj zdjęcie osoby”. **Ze zdjęciami:** **profilowe** (pierwsze łącze) przycięte do okręgu ze środka, a pod okręgiem liczba zdjęć z odmianą — „1 zdjęcie” · „3 zdjęcia” · „5 zdjęć” (14 sp, tekst pomocniczy, `plural`); opis „Zdjęcia osoby: 3 — otwórz”. W obu stanach cała grupa (okrąg z podpisem) to jeden przycisk | przycisk (cel ≥ 80 dp) | dotknięcie → [[zdjecie]] A w trybie osoby (bez zdjęć) albo [[zdjecia-osoby]] (ze zdjęciami). **Poza kolejnością `next`, nie bierze fokusu** | bez zdjęć; w poprawie — profilowe i liczba zdjęć osoby | — | US-005 AC-1 · ISSUE-017 AC 4 · R4 prawy · D-zdjęcie-2…4 |
+| 1a | **Zdjęcia osoby** (v4) — wyśrodkowane, okrąg **80 dp**, odstęp 24 dp do „Imiona”. **Bez zdjęć:** jak v3 — okrąg z obrysem 1 dp (kolor obrysu), w środku `add_a_photo_outlined` (28 dp, akcent), pod okręgiem „Dodaj zdjęcie” (14 sp, kolor tekstu); opis dla czytnika „Dodaj zdjęcie osoby”. **Ze zdjęciami:** **profilowe** (pierwsze łącze) w kadrze łącza ([[kadr-profilowego]], v4.1), a bez kadru przycięte do okręgu ze środka; pod okręgiem liczba zdjęć z odmianą — „1 zdjęcie” · „3 zdjęcia” · „5 zdjęć” (14 sp, tekst pomocniczy, `plural`); opis „Zdjęcia osoby: 3 — otwórz”. W obu stanach cała grupa (okrąg z podpisem) to jeden przycisk | przycisk (cel ≥ 80 dp) | dotknięcie → [[zdjecie]] A w trybie osoby (bez zdjęć) albo [[zdjecia-osoby]] (ze zdjęciami). **Poza kolejnością `next`, nie bierze fokusu** | bez zdjęć; w poprawie — profilowe i liczba zdjęć osoby | — | US-005 AC-1 · ISSUE-017 AC 4 · R4 prawy · D-zdjęcie-2…4 |
 | 2 | **Imiona** | pole tekstowe, wielka litera na początku słów | `next`; **fokus i klawiatura od razu po wejściu** w trybach „nowy grób” i „kolejna osoba”; w poprawie bez fokusu (v2.1) | pusto | imiona albo nazwisko, co najmniej jedno: „Podaj imiona albo nazwisko.” | AC-2 |
 | 3 | **Nazwisko** | pole tekstowe, wielka litera na początku słów | `next` | w trybie „kolejna osoba”: nazwisko ostatnio wpisanej osoby w tym grobie, **zaznaczone** (pisanie je zastępuje) | jak 2 | AC-2 · decyzja (tempo) |
 | 4 | **Nazwisko rodowe** — etykieta „Nazwisko rodowe (z domu)” | pole tekstowe, wielka litera na początku słów | `next` | pusto | — | AC-2 · [[FR-005-nazwisko-rodowe]] |
@@ -270,7 +274,7 @@ zgonu, bez daty pochówku, krótkie „kim była”.
 | ~~**D-zdjęcie-1 — jedno zdjęcie na osobę** (v3)~~ — **nieaktualne:** decyzja autora na stopie #1 ISSUE-016 — baza zdjęć osoby z „profilowym” ([[ISSUE-017-person-photos]]) | R4 prawy pokazuje jeden portret, a karta w [[grob]] ma miejsce na jedną miniaturę. Kilka zdjęć osoby (np. z różnych lat) to treść widoku osoby (M5), którego jeszcze nie ma | autor przy przepisywaniu chce dołączyć do osoby kilka zdjęć — wtedy galeria w widoku osoby (M5), nie w formularzu |
 | **D-zdjęcie-2 — zdjęcia zapisują się z „Zapisz”**, a nie od razu (v3; **v4: wszystkie zmiany bazy zdjęć**) | „zapis jest całością” (v2): osoba i jej zdjęcia powstają razem albo wcale, a „Odrzuć” cofa także zdjęcia. v4: to samo dotyczy zmian w [[zdjecia-osoby]] i [[zdjecie]] (tryb osoby) — dodania, profilowego, osób na zdjęciu (także łączy **innych** osób) i usunięcia z osoby; ten sam przepływ działa przy nowej osobie, której jeszcze nie ma w bazie ([[zdjecia-osoby]] D1). Inaczej niż w [[grob]], gdzie zdjęcie nagrobka zapisuje się od razu — tam nie ma formularza, który by je zatwierdził | autor gubi zmiany zdjęć albo czuje dwie zasady (nagrobek od razu, osoba z „Zapisz”) — [[zdjecia-osoby]] D1 |
 | **D-zdjęcie-4 — baza zdjęć na osobnym ekranie, wejście z 1a** (v4) | formularz to ok. 100 wpisów, a większość osób z notatek zdjęć nie ma: galeria w formularzu zabierałaby miejsce przy każdym wpisie. Okrąg z profilowym i liczbą mówi, że zdjęcia są i ile; siatka potrzebuje szerokości ekranu. Ten sam ekran przyjmie widok osoby (M5) | autor przy poprawie chce widzieć wszystkie zdjęcia w formularzu → pasek miniatur pod 1a |
-| **D-zdjęcie-3 — bez kadrowania** (v3) | wybrane zdjęcie przycina się do okręgu ze środka; całość widać w podglądzie. Twarz ze zdjęcia grupowego wymagałaby kadrowania, które jest poza zakresem ([[ISSUE-016-photos-grave-and-person]] → *Out of Scope*) | na stopie #2 środek zdjęcia nie trafia w twarz na typowych starych zdjęciach — wtedy kadrowanie jako osobna pozycja |
+| ~~**D-zdjęcie-3 — bez kadrowania** (v3)~~ — **obalone** na stopie #2 ISSUE-017 (uwaga autora o zdjęciu grupowym) → [[kadr-profilowego]], [[ISSUE-018-profile-photo-crop]] | wybrane zdjęcie przycina się do okręgu ze środka; całość widać w podglądzie. Twarz ze zdjęcia grupowego wymagałaby kadrowania, które jest poza zakresem ([[ISSUE-016-photos-grave-and-person]] → *Out of Scope*) | na stopie #2 środek zdjęcia nie trafia w twarz na typowych starych zdjęciach — wtedy kadrowanie jako osobna pozycja |
 
 ## Open
 v3: zdjęcie osoby — **przeprojektowane w v4** (baza zdjęć: [[zdjecia-osoby]]; dzielenie i profilowe: [[zdjecie]] v1.3).

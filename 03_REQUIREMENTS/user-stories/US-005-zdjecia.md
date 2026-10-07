@@ -93,7 +93,9 @@ Granica: bez porównania z notatkami rodziny, bo `family_data_dir` nie był czyt
 1. ~~Aparat bez testu happy-path~~ — **poprawione w paczce ISSUE-017** (dwa testy widżetu: grób i baza zdjęć osoby).
 2. **AC-3 dla osób bez próbnego odtworzenia na urządzeniu.** Brakowało hasła testowego z poprzedniej sesji, a nie
    sekretu autora. Test „end to end” sprawdza teraz łącza i profilowe wprost (poprawione w paczce). Odtworzenie na
-   drugim emulatorze — przy następnej pozycji z kopią, z nowym hasłem testowym.
+   drugim emulatorze — przy następnej pozycji z kopią, z nowym hasłem testowym. **2026-10-07 — wykonane w
+   [[ISSUE-018-profile-photo-crop]]** (F4): kopia ze zdjęciami osób, łączami i kadrami z `Medium_Phone`, nowe hasło
+   testowe, odtworzona na `Grobing_Restore` z odciskiem zgodnym.
 3. **Przy zdjęciach osób autor ocenił niewiele.** Nieocenione: „Ustaw jako profilowe”, odczucie siatki i okręgu,
    zapis przez „Zapisz” (D3) i lista „Kto jest na zdjęciu?”.
 4. **Kadr profilowego** — [[ISSUE-018-profile-photo-crop]], następna pozycja (decyzja autora). Bez niej AC są

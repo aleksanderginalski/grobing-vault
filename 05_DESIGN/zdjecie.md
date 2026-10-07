@@ -1,9 +1,9 @@
 ---
 screen: "Zdjęcie — wybór źródła i podgląd na pełnym ekranie"
-items: ["[[ISSUE-016-photos-grave-and-person]]", "[[ISSUE-017-person-photos]]"]
+items: ["[[ISSUE-016-photos-grave-and-person]]", "[[ISSUE-017-person-photos]]", "[[ISSUE-018-profile-photo-crop]]"]
 us: "[[US-005-zdjecia]]"
 journey-step: "n/a — M1; docelowo krok 3 UJ-001 (porównanie zdjęcia nagrobka z tym, co przed tobą — brief §4a)"
-mockup: "katalog tymczasowy sesji 2026-10-07: makieta-zdjecia.html (ramki 3, 5, 6 — wersja przed stopem #1 ISSUE-016) · makieta-zdjecia-osoby.html (ramki 5–8 — tryb osoby, ISSUE-017)"
+mockup: "katalog tymczasowy sesji 2026-10-07: makieta-zdjecia.html (ramki 3, 5, 6 — wersja przed stopem #1 ISSUE-016) · makieta-zdjecia-osoby.html (ramki 5–8 — tryb osoby, ISSUE-017) · makieta-kadr-profilowego.html (ramki 1, 4 — B4' z kadrem, ISSUE-018)"
 updated: 2026-10-07
 ---
 
@@ -33,6 +33,14 @@ updated: 2026-10-07
 > - **nowa część D:** „Kto jest na zdjęciu?”.
 >
 > Tryb grobu bez zmian. Zmiany w trybie osoby zapisują się z „Zapisz” formularza osoby ([[zdjecia-osoby]] D1).
+>
+> **Wersja 1.4 (2026-10-07, przed planem [[ISSUE-018-profile-photo-crop]]) — kadr profilowego.** Tylko tryb osoby, B:
+> - **B4' „Ustaw jako profilowe”** otwiera [[kadr-profilowego]], a zdjęcie staje się profilowym dopiero po „Gotowe” —
+>   razem z kadrem ([[kadr-profilowego]] D2);
+> - **na profilowym** dolny pasek ma **„Popraw kadr”** w miejscu tekstu „✓ Profilowe”, a stan „profilowe” niesie
+>   podtytuł paska B1: „Zdjęcie profilowe” zamiast „Zdjęcie osoby” ([[kadr-profilowego]] D8).
+>
+> Podgląd dalej pokazuje całe zdjęcie, bez kadru.
 
 ## Purpose
 Dodanie zdjęcia nagrobka do grobu (US-005 AC-1) i obejrzenie go w całości, z przybliżeniem. Zdjęcie nagrobka ma
@@ -80,10 +88,10 @@ zwróci je okno systemowe (D8).
 | B3 | **Poprzednie / następne** (tryb osoby, v1.3; tylko gdy osoba ma więcej niż jedno zdjęcie) — rząd pod zdjęciem, wyśrodkowany: `chevron_left` · „2 z 5” (14 sp, tekst pomocniczy) · `chevron_right`; przyciski-ikony w kolorze tekstu, cel 48 × 48 dp, `tooltip` „Poprzednie zdjęcie” / „Następne zdjęcie”; na pierwszym i ostatnim zdjęciu odpowiedni przycisk nieaktywny. **Przesunięcie w bok** zmienia zdjęcie tylko bez przybliżenia (z przybliżeniem przesuwa zdjęcie). **W trybie grobu nie ma** — nagrobek ma jedno zdjęcie | przyciski-ikony + gest | dotknięcie · przesunięcie | zdjęcie, które dotknięto w [[zdjecia-osoby]] | — | WCAG 2.2 SC 2.5.1 · [[style-b]] reguła 14 (nic na zdjęciu) |
 | B5 | **Na zdjęciu** (tryb osoby, v1.3) — pod zdjęciem, nad B3: „Na zdjęciu:” (14 sp, tekst pomocniczy) i imiona i nazwiska osób z łączem do tego zdjęcia, po przecinku, **ta osoba pierwsza** (14 sp, kolor tekstu, zawijane, bez „z d.”); na końcu przycisk tekstowy w linii treści **„Zmień”** (akcent, reguła 1 v1.6, cel ≥ 48 dp) | tekst + przycisk tekstowy | „Zmień” → D | — | — | ISSUE-017 AC 5 · D6 ([[zdjecia-osoby]]) |
 | B4 | **Działania** w dolnym pasku: **„Zmień zdjęcie”** — przycisk tekstowy w akcencie, ikona `photo_library_outlined` → A; po wyborze nowe zdjęcie zastępuje stare i podgląd je pokazuje (D5). **„Usuń zdjęcie”** — przycisk tekstowy z ikoną `delete_outline`, oba w kolorze tekstu → C | przyciski tekstowe | dotknięcie | — | — | decyzja autora (stop #1 ISSUE-016) · D5 |
-| B4' | **Działania w trybie osoby** (v1.3), dolny pasek: **„Ustaw jako profilowe”** — przycisk tekstowy w akcencie, ikona `account_circle_outlined`; po dotknięciu zdjęcie staje się pierwszym łączem tej osoby, a na miejscu przycisku pojawia się stan. **Stan, gdy to już profilowe:** „Profilowe” z ikoną `check` (14 sp, tekst pomocniczy) — tekst, nie przycisk, ten sam stan dla czytnika. **„Usuń z tej osoby”** — przycisk tekstowy z ikoną `delete_outline`, w kolorze tekstu → C. **Bez „Zmień zdjęcie”**: w bazie się dodaje i usuwa, a nie podmienia | przyciski tekstowe | dotknięcie | — | — | ISSUE-017 AC 4, 6 · GEDCOM 7 („the first is the most-preferred value”) · D9 |
+| B4' | **Działania w trybie osoby** (v1.3), dolny pasek: **„Ustaw jako profilowe”** — przycisk tekstowy w akcencie, ikona `account_circle_outlined`; po dotknięciu zdjęcie staje się pierwszym łączem tej osoby, a na miejscu przycisku pojawia się stan. **Stan, gdy to już profilowe:** „Profilowe” z ikoną `check` (14 sp, tekst pomocniczy) — tekst, nie przycisk, ten sam stan dla czytnika. **„Usuń z tej osoby”** — przycisk tekstowy z ikoną `delete_outline`, w kolorze tekstu → C. **Bez „Zmień zdjęcie”**: w bazie się dodaje i usuwa, a nie podmienia. **v1.4:** „Ustaw jako profilowe” → [[kadr-profilowego]]; zdjęcie staje się profilowym po „Gotowe”, z kadrem. **Na profilowym zamiast stanu „✓ Profilowe”: „Popraw kadr”** — przycisk tekstowy w akcencie, ikona `crop_outlined` → [[kadr-profilowego]]; stan niesie podtytuł B1 („Zdjęcie profilowe”) | przyciski tekstowe | dotknięcie | — | — | ISSUE-017 AC 4, 6 · GEDCOM 7 („the first is the most-preferred value”) · D9 · ISSUE-018 AC 1, 3 ([[kadr-profilowego]] D2, D8) |
 
 **B1 w trybie osoby (v1.3):** tytuł — imiona i nazwisko osoby, której bazę oglądamy (bez imion i nazwiska: „Nowa
-osoba”); podtytuł „Zdjęcie osoby”. Kolejność pod zdjęciem: B5, B3, B4'.
+osoba”); podtytuł „Zdjęcie osoby”, **a na profilowym „Zdjęcie profilowe”** (v1.4). Kolejność pod zdjęciem: B5, B3, B4'.
 
 ### C — okno „Usunąć zdjęcie?”
 | # | Element | Typ | Klawiatura / akcja | Domyślnie | Walidacja | Źródło |
@@ -125,7 +133,7 @@ Wszystko zapisuje się z „Zapisz” formularza ([[zdjecia-osoby]] D1).
 | C — otwarte | okno nad podglądem |
 | C — nieudane usunięcie | w oknie pod treścią: `error_outline` + „Nie udało się usunąć zdjęcia. Spróbuj jeszcze raz.” (kolor błędu); okno zostaje. **W trybie osoby nie występuje** — usunięcie łącza zapisuje się z „Zapisz” formularza, a jego błąd pokazuje formularz („nieudany zapis”) |
 | B — tryb osoby, jedno zdjęcie | B1, B2, B5, B4' — bez B3 |
-| B — tryb osoby, profilowe | w B4' zamiast „Ustaw jako profilowe” stan „✓ Profilowe” (tekst pomocniczy) |
+| B — tryb osoby, profilowe | v1.4: podtytuł B1 „Zdjęcie profilowe”; w B4' zamiast „Ustaw jako profilowe” przycisk „Popraw kadr” ([[kadr-profilowego]] D8). Do v1.3: stan „✓ Profilowe” (tekst pomocniczy) |
 | B — tryb osoby, zdjęcie dopiero wybrane | jak wypełniony: plik przygotowany w katalogu roboczym, jeszcze nie w magazynie aplikacji ([[ADR-008-photos-access-copy-and-backup-consistency]]); dla autora bez różnicy |
 | D — otwarte | D1–D6, klawiatura schowana; zaznaczone osoby, które mają łącze do zdjęcia |
 | D — filtr | sekcje pokazują tylko pasujące wiersze; nagłówek sekcji bez pasujących wierszy znika; zaznaczenia ukrytych wierszy zostają |
@@ -195,7 +203,7 @@ Rekordem jest **zdjęcie nagrobka**: ok. 50 grobów (G6, [[NT-002-transcribe-the
 - **Zmiana:** zdjęcie → „Zmień zdjęcie” → „Wybierz z galerii” → zdjęcie → „Gotowe” = 5 dotknięć.
 
 **Tryb osoby (v1.3)** — rachunek na całą bazę: [[zdjecia-osoby]] → *Tempo*. Tutaj:
-- **profilowe:** „Ustaw jako profilowe” = 1 dotknięcie w podglądzie;
+- **profilowe:** „Ustaw jako profilowe” = 1 dotknięcie w podglądzie; **v1.4:** + „Gotowe” w [[kadr-profilowego]] = 2 i gesty kadru;
 - **osoba na zdjęciu z tego samego grobu:** „Zmień” → wiersz → „Gotowe” = 3 dotknięcia; z innego grobu — plus
   przewinięcie albo kilka liter w D3;
 - **usunięcie z osoby:** „Usuń z tej osoby” → „Usuń” = 2.
@@ -230,7 +238,8 @@ Rekordem jest **zdjęcie nagrobka**: ok. 50 grobów (G6, [[NT-002-transcribe-the
 | ISSUE-016: zmiana i usunięcie (decyzja autora) | B4, C | „Zmień zdjęcie” → nowe zdjęcie; „Usuń zdjęcie” → okno → zdjęcia nie ma |
 | ISSUE-016: styl B | całość | reguły wyżej; przegląd `ui` przed stopem #2 |
 | US-005 AC-1 (osoba, v1.3) | A (tryb osoby) → [[zdjecia-osoby]] | zdjęcia z galerii (kilka) albo aparatu pojawiają się w bazie osoby |
-| ISSUE-017: jedno zdjęcie profilowe | B4' | „Ustaw jako profilowe” → stan „✓ Profilowe”; profilowe w [[zdjecia-osoby]], [[wpis-osoby]] 1a i karcie w [[grob]] |
+| ISSUE-017: jedno zdjęcie profilowe | B4' | „Ustaw jako profilowe” → (v1.4: [[kadr-profilowego]] → „Gotowe”) → podtytuł „Zdjęcie profilowe”; profilowe w [[zdjecia-osoby]], [[wpis-osoby]] 1a i karcie w [[grob]] |
+| ISSUE-018: kadr profilowego, poprawa kadru (v1.4) | B4' → [[kadr-profilowego]] | „Ustaw jako profilowe” i „Popraw kadr” otwierają kadr; po „Gotowe” okręgi profilowego pokazują wycinek |
 | ISSUE-017: zdjęcie u kilku osób, jeden plik | B5 → D | zaznaczona osoba ma to zdjęcie w swojej bazie; plik w magazynie jeden |
 | ISSUE-017: usunięcie u jednej osoby nie usuwa innym | B4' → C1' | treść okna mówi, u kogo zdjęcie zostaje; po zapisie zdjęcie jest dalej w bazie tamtej osoby |
 

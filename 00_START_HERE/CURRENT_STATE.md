@@ -18,18 +18,17 @@ updated: 2026-10-07
 MVP — od startu, cały produkt (Meta-decyzja 4).
 
 ## In progress
-- **[[ISSUE-017-person-photos]] zamknięta 2026-10-07, a z nią [[US-005-zdjecia]]** (werdykt US: APPROVED, niezależny
-  przegląd, z uwagami). Następna: **[[ISSUE-018-profile-photo-crop]]** — kadr profilowego ze zdjęcia grupowego (decyzja
-  autora na stopie #2 ISSUE-017: *„tak zróbmy”*, przed US-003). Pierwszy krok: `ui` projektuje ekran kadru (okrąg z
-  liniami pomocniczymi), potem `planning` z ADR o zapisie kadru (piksele jak `CROP` w GEDCOM 7 albo ułamki boków).
+- **[[ISSUE-018-profile-photo-crop]] zamknięta 2026-10-07** (kadr profilowego, schemat v5). Następna według kolejności
+  autora: **[[US-003-przepisanie-rodziny]]** — relacje w formularzu osoby. Pierwszy krok: rozpisanie US na ISSUE
+  (`docs`), potem `ui` → `planning` przy ekranie.
 - **Następne kroki, w tej kolejności (decyzja autora 2026-10-06, *„ok plan brzmi dobrze”*; ISSUE-015 dołożona
   na stopie #1 ISSUE-014, *„wygląda dobrze”*):**
   1. ~~[[ISSUE-014-home-map-of-poland]]~~ — zamknięte 2026-10-06;
   2. ~~[[ISSUE-015-add-cemetery-from-database]]~~ — zamknięte 2026-10-07;
   3. ~~[[ISSUE-012-transcribe-grave-screen]]~~ — zamknięte 2026-10-07;
   4. ~~[[US-005-zdjecia]]~~ — zamknięta 2026-10-07 (~~ISSUE-016~~, ~~ISSUE-017~~);
-     **4a. [[ISSUE-018-profile-photo-crop]]** — kadr profilowego (decyzja autora 2026-10-07, stop #2 ISSUE-017);
-  5. [[US-003-przepisanie-rodziny]] — relacje w formularzu osoby;
+     ~~4a. [[ISSUE-018-profile-photo-crop]]~~ — zamknięte 2026-10-07;
+  5. **[[US-003-przepisanie-rodziny]]** — relacje w formularzu osoby (następna);
   6. [[SPIKE-001-map-source-offline]] — zdjęcie satelitarne cmentarza, znicze na grobach, plany z kwaterami
      (`01_INBOX/2026-10-05-plany-cmentarzy.md`). Baza cmentarzy przeszła do ISSUE-015.
   
@@ -85,7 +84,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   paczki (decyzja autora 2026-10-07); przegląd imion na wychodzących zmianach czeka na retro (*Do retro*).
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **6** (ostatnie retro: [[2026-10-06-retro-01]]). Co **10** →
+- Zamknięte pozycje od ostatniego retro: **7** (ostatnie retro: [[2026-10-06-retro-01]]). Co **10** →
   retro + pytanie o 3–5 nośnych faktów (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**;
   podbija go `docs` przy zamknięciu, a zeruje go retro.
 - Do retro (zebrane po drodze, bez decyzji):
@@ -119,7 +118,8 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   - **stop #2 w praktyce: autor robi część kroków** ([[ISSUE-017-person-photos]] → *Manual*): z 7 kroków autor wykonał
     2 (stan urządzenia), odpowiedział „względnie ok” z nową prośbą, a kroki funkcjonalne zrobił agent. To kolejna
     instancja po ISSUE-008, ISSUE-009, ISSUE-012 i ISSUE-014 (stop #2 tamtych pozycji: kroki pominięte albo „ok” bez
-    śladu w stanie urządzenia). Kandydat: stop #2 z 2–3 krokami
+    śladu w stanie urządzenia). **Kolejna w [[ISSUE-018-profile-photo-crop]]:** autor wykonał krok 1 (bez „Gotowe”), dał
+    odczucie z prośbą o zmianę i napisał *„nie planowałem więcej testować”*; kroki 2–3 zrobił agent. Kandydat: stop #2 z 2–3 krokami
     odczucia, a resztę od razu robi agent;
   - **agent `architect`** — kick-off (MD3c) dał mu sygnał „decyzja wymagająca ADR-a poza kick-offem”. Ten
     sygnał już był: [[ADR-005-sqlite-package]] i [[ADR-006-claimed-value-separate-structures]] powstały w
@@ -134,6 +134,35 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   (zdarzenie) · data zapytania`. **Odpowiedź z faktami o rodzinie trafia do aplikacji, nie tutaj.**
 
 ## Recently done
+- 2026-10-07 — [[ISSUE-018-profile-photo-crop]] zamknięte. **Profilowe pokazuje twarz osoby, a nie środek zdjęcia
+  grupowego:**
+  - ekran „Kadr profilowego” ([[kadr-profilowego]] v1.2): okrąg stoi, pod nim przesuwa się i przybliża zdjęcie (decyzja
+    autora D2 na stopie #1), linie trójpodziału, samo „Gotowe”. Przybliżenie: dwa palce albo **podwójne dotknięcie**, a
+    dotknięcie twarzy stawia ją na środku. Wejście: „Ustaw jako profilowe” (przez kadr, D3) i „Popraw kadr” na
+    profilowym; w podglądzie stan „Zdjęcie profilowe” w pasku ([[zdjecie]] v1.4);
+  - **kadr należy do łącza osoby**, więc każda osoba na zdjęciu grupowym ma własny, a plik się nie zmienia. Pokazują go
+    okrąg w formularzu, karta w widoku grobu i nagłówek zdjęć osoby;
+  - **schemat v5:** `CROP` z GEDCOM 7 w pikselach kopii dostępowej, cztery kolumny przy łączu —
+    [[ADR-010-profile-photo-crop-pixels]]; migracja v4→v5 z testem, kopia v4 odtwarza się w v5. Kadr przeżywa każdą
+    późniejszą edycję zdjęć osoby;
+  - **odtworzenie zdjęć osób na drugim emulatorze — wykonane** (zaległe z US-005): kopia z kadrami, nowe hasło testowe,
+    odcisk zgodny.
+
+  Stop #1: D1–D4 „ok”. Przegląd `ui`: 0 BLOCKER, 0 MAJOR, 6 MINOR — poprawione; test znalazł błąd zamykania ekranu
+  kadru (poprawiony). Stop #2: autor ustawił kadr na zdjęciu grupowym i poprosił o ekran **bez lup i podpowiedzi** →
+  opcja A: przybliżanie podwójnym dotknięciem (próg SC 2.5.1 zostaje). Kroki 2–3 zrobił agent. Werdykt `qa`: APPROVED
+  (self-check, z uwagami). Testy: 429.
+
+  **Dla autora:**
+  - nieocenione: odczucie podwójnego dotknięcia i ok. 0,3 s, które czeka pojedyncze dotknięcie;
+  - czytnikiem ekranu nie da się przesunąć ani przybliżyć zdjęcia na ekranie kadru — nazwana luka ([[kadr-profilowego]]
+    K2);
+  - pamięć okręgów z małym kadrem zmierzyć na telefonie przy MVP (emulator nie pokazuje pamięci grafiki —
+    ADR-010 → *Follow-ups*);
+  - na `Medium_Phone` (release v5) kopia jest skonfigurowana od nowa z hasłem testowym do Pobranych emulatora
+    (`grobing-klucz-018.age`, `grobing-kopia-018.age`, wymyślone dane); w galerii wymyślone obrazy `wymyslone-duze-1…4.jpg`
+    i `wymyslone-grupowe.jpg`; Ewa i Zofia mają profilowe z kadrem ze zdjęcia grupowego. `Grobing_Restore` ma dane z tej
+    kopii.
 - 2026-10-07 — [[ISSUE-017-person-photos]] zamknięte, a z nim **[[US-005-zdjecia]]** (werdykt US: APPROVED, niezależny
   przegląd, z uwagami). **Osoba ma bazę zdjęć z „profilowym”, a jedno zdjęcie może należeć do kilku osób:**
   - w formularzu osoby okrąg z profilowym i liczbą zdjęć → ekran „Zdjęcia” ([[zdjecia-osoby]]): profilowe, siatka,
