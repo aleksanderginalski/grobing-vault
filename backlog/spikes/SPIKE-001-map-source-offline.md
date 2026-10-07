@@ -7,7 +7,7 @@ time-box: "1 day of work + the on-site check on the next cemetery visit"
 hypotheses: [H3]
 covers-non-tech: [N5]
 created: 2026-10-05
-updated: 2026-10-06
+updated: 2026-10-07
 ---
 
 # SPIKE-001 — Map source + offline (S-MAP)
@@ -28,9 +28,10 @@ OpenStreetMap wprost zabraniają użycia offline (§6 N5).
    > policz też, ile z 10 cmentarzy ma **plan z kwaterami** (Grobonet, strona zarządcy, tablica przy
    > bramie). Taki plan to kandydat na trzecie źródło położenia obok satelity i GPS →
    > `01_INBOX/2026-10-05-plany-cmentarzy.md`.
-   > ⚠️ **Do rozstrzygnięcia przy planowaniu (2026-10-05):** repo mają być publiczne — **nazwy
-   > cmentarzy** w notatce vaulta mówią, gdzie leży rodzina autora. Do decyzji razem z wyborem dla
-   > vaulta w [[NT-008-publication-review]]; do tego czasu w vaulcie tylko liczba.
+   > **Nazwy cmentarzy autora w vaulcie — rozstrzygnięte 2026-10-07:** autor wybrał w
+   > [[NT-008-publication-review]] publiczny vault, więc nazwa cmentarza autora mówiłaby publicznie, gdzie
+   > leży jego rodzina. W vaulcie **tylko liczba** (tak jak falsyfikator w [[ISSUE-015-add-cemetery-from-database]]).
+   > Nazwy zostają w odpowiedzi agenta i w aplikacji.
 2. 2-3 kandydatów na źródło satelitarne z prawem offline: warunki, limity, koszt dla 1 użytkownika i
    10 małych obszarów; zgodność licencji z Flutterem (uwaga: popularna wtyczka bulk-download do
    `flutter_map` jest GPL).

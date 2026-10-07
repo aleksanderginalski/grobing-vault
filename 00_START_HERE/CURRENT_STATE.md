@@ -3,7 +3,7 @@ title: "Grobing — Current State"
 type: meta
 status: active
 created: 2026-10-05
-updated: 2026-10-06
+updated: 2026-10-07
 ---
 
 # Grobing — Current State
@@ -41,8 +41,12 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   - [[NT-001-photograph-the-notes]]: zdjęcia zrobione (33). Zostało: zaszyfrowane miejsce, sprawdzenie
     kopii w WhatsAppie i otwarcie kopii — *Resolution*;
   - [[SPIKE-002-tree-on-a-phone]]: przed drzewem (widok 5);
-  - przed pierwszym pushem musi być zamknięte [[NT-008-publication-review]]. Zostały w nim wybór dla
-    vaulta i przegląd `git log -p`; strażnik danych rodziny już działa.
+  - **push na GitHuba odblokowany:** [[NT-008-publication-review]] zamknięte 2026-10-07, wszystkie trzy repo
+    publiczne. Zostało:
+    1. autor zakłada trzy **puste** publiczne repo, bez README, licencji i `.gitignore` (pierwszy push nie
+       będzie wtedy wymagał scalania);
+    2. agent dodaje remote i robi push dopiero po „go” (stop #3), pokazując wcześniej, co wychodzi;
+    3. przy pierwszym pushu budzi się [[DEF-005-push-gate]].
 - **Przed pierwszymi prawdziwymi danymi w aplikacji:** kopia jest gotowa (US-001 ✅). Zostały hasło i
   miejsce pliku klucza w notce przekazania ([[NT-007-hand-over-note]]): utrata któregoś z nich = utrata
   kopii. Notkę sprawdzić raz jej własną drogą (`age -d -i …` z hasłem w terminalu — NT-007 → *Input from
@@ -73,14 +77,20 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
 - Poza kodem: *patrz `backlog/non-tech/`*.
 - Odłożone: *patrz `backlog/deferred/`*.
 - Wymagania: *patrz `03_REQUIREMENTS/`* (EPIC-i, US, FR, NFR); architektura i ADR-y: *patrz `04_ARCHITECTURE/`*.
-- **Przed pierwszym pushem (repo publiczne):** [[NT-008-publication-review]] — twardy warunek z
-  `family-data.md` ([[ISSUE-006-setup-family-data-guard]] już zamknięte).
+- **Przed pierwszym pushem (repo publiczne):** twardy warunek z `family-data.md` spełniony —
+  [[ISSUE-006-setup-family-data-guard]] i [[NT-008-publication-review]] zamknięte. Push tylko po „go”.
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **1** (ostatnie retro: [[2026-10-06-retro-01]]). Co **10** →
+- Zamknięte pozycje od ostatniego retro: **2** (ostatnie retro: [[2026-10-06-retro-01]]). Co **10** →
   retro + pytanie o 3–5 nośnych faktów (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**;
   podbija go `docs` przy zamknięciu, a zeruje go retro.
 - Do retro (zebrane po drodze, bez decyzji):
+  - **przegląd imion przy każdym pushu** ([[NT-008-publication-review]] → *Progress* 2026-10-07): przegląd
+    historii objął commity do 2026-10-07. Każdy kolejny push publikuje nowe commity, a treść pilnuje tylko
+    uwaga agenta, dopóki nie ma [[ISSUE-003-setup-quality-critic]]. Kandydat: ten sam przegląd imion na
+    wychodzących zmianach przy każdym „go”. Dziś to niemożliwe bez prośby autora w sesji, bo agent nie czyta
+    `family_data_dir` sam. Do decyzji: zmiana w `family-data.md` (np. lista rdzeni imion w `family_data_dir`,
+    czytana tylko przy „go”) albo prośba autora przy każdym pushu;
   - **po czytaniu `family_data_dir` grep obowiązkowy** ([[ISSUE-014-home-map-of-poland]] → *Self-check*):
     `ui` wpisał do specyfikacji trzy prawdziwe przykłady zaraz po porównaniu z listą autora. Złapane przed
     commitem, bo strażnik nie widzi treści. Do decyzji: krok w regule `family-data.md` albo w checkliście R1;
@@ -104,6 +114,16 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   (zdarzenie) · data zapytania`. **Odpowiedź z faktami o rodzinie trafia do aplikacji, nie tutaj.**
 
 ## Recently done
+- 2026-10-07 — [[NT-008-publication-review]] zamknięte. **Push na GitHuba odblokowany**, choć jeszcze się nie
+  odbył:
+  - agent przeszukał historię trzech repo (41 commitów, razem z opisami) imionami, nazwiskami i miejscami z
+    notatek rodziny, za zgodą autora w sesji. Przegląd nie znalazł w historii danych rodziny. Liczby i granice przeglądu są w
+    NT-008 → *Progress*, bez żadnego imienia;
+  - jedną linię (prompt R3 w `05_DESIGN/brand/references.md`) autor potwierdził jako wymyśloną;
+  - wybór autora: **wszystkie trzy repo publiczne**. Skutek dla [[SPIKE-001-map-source-offline]]: nazwy
+    cmentarzy autora nigdy nie trafiają do vaulta, tylko liczby.
+  
+  Kroki do pushu są w *In progress*. Przegląd imion przy kolejnych pushach czeka na retro.
 - 2026-10-06 — [[ISSUE-014-home-map-of-poland]] zamknięte. **Ekran główny to mapa Polski**, działająca bez sieci
   od pierwszego uruchomienia:
   - kontur, rzeki i 9 miast z Natural Earth są w aplikacji; `flutter_map` rysuje bez kafelków

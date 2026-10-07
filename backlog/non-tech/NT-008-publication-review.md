@@ -1,13 +1,13 @@
 ---
 title: "NT-008 — Publication review before the first public push"
 type: non-code-item
-status: open
+status: done
 category: legal
 priority: MUST
 source: "materialization 4.6 — the author chose PUBLIC GitHub repos as a portfolio (2026-10-05)"
 wake-condition: "before the first push of ANY Grobing repo to a public remote"
 created: 2026-10-05
-updated: 2026-10-05
+updated: 2026-10-07
 ---
 
 # NT-008 — Przegląd przed pierwszym publicznym pushem
@@ -53,8 +53,39 @@ aplikacji musi być ograniczony do pakietu i certyfikatu podpisu (§Security).
   w `grobing-agents` odmawia zapisu i `git add`/`commit` baz, kopii `age`/`tar`, eksportów HTML/PDF,
   zdjęć i filmów; ten sam blok jest w `.gitignore` trzech repo. Granice (treść, commit autora z VS Code)
   są w `family-data.md`.
-- Otwarte: **wybór dla vaulta** · przed samym pushem przegląd `git log -p` (granica wyżej).
+- **2026-10-07 — przegląd historii zrobiony** (`/pm`, za zgodą autora w sesji). Agent przeczytał
+  `family_data_dir` (33 zdjęcia notatek i listę cmentarzy) i przeszukał tym `git log --all -p` trzech repo,
+  razem z opisami commitów: 41 commitów (`grobing-agents` 9, `grobing-vault` 23, `grobing-code` 9). Imiona,
+  nazwiska i miejsca zostały w odpowiedzi agenta; **tutaj tylko liczby**:
+
+  | Czego szukano | Trafienia | Ocena |
+  |---|---|---|
+  | nazwiska z notatek, z wariantami odmiany i pisowni | 0 | — |
+  | miejsca z notatek i z listy cmentarzy | 9 | wszystkie w publicznych danych mapy Polski (Natural Earth) i jej testach — nie dane rodziny |
+  | imiona z notatek | 17 | 16: wymyślone osoby (`Wymyślony`, `Próbna`, `Testowy`, `Nowak`/`Kowalska`) albo zwykłe słowa; 1 linia (prompt R3 w `05_DESIGN/brand/references.md`, ścieżka relacji) sprawdzona z autorem — **wymyślona, zostaje** |
+  | fakty z notatek bez imion (lata, zawody, miejsca pracy, wydarzenia) | 0 | — |
+  | adresy, kody pocztowe, numery PESEL, współrzędne | 0 | — |
+  | numery kwater | kilka | tylko wymyślony przykład ze specyfikacji |
+  | sekrety | 3 klucze `age` | publiczne wektory testowe C2SP i przykład ze specyfikacji `age` |
+  | klucz podpisu innej aplikacji autora (pkt 3) | 0 | redakcja z 2026-10-05 trzyma |
+  | prawdziwa miejscowość w promptach z kick-offu | 0 | od pierwszego commita w historii jest tylko `[miejscowość]` |
+  | pliki z danymi (bazy, kopie, zdjęcia, keystore, `key.properties`, folder notatek) | 0 | w historii są tylko ikony aplikacji w `res/` |
+
+  Drobiazg bez zmiany: [[ISSUE-002-bootstrap-code-repo]] → D3 podaje katalog klucza wydania Grobing na PC
+  autora — bez klucza i haseł, więc nie sekret.
+
+  **Granica przeglądu:** nazwiska trudne do odczytania z pisma sprawdzone w kilku wariantach; zdrobnień
+  spoza notatek nic nie łapie; przegląd obejmuje historię do 2026-10-07, nie kolejne pushe (temat do retro
+  w `CURRENT_STATE.md`).
+- **2026-10-07 — wybór dla vaulta (autor):** **wszystkie trzy repo publiczne.**
 
 ## Resolution (fill when done — this is the DoD)
-[ISSUE-006 zamknięte · przegląd 2 i 3 zrobiony (co zmieniono — bez cytowania danych) · wybór dla vaulta ·
-data] → dopiero wtedy budzi się [[DEF-005-push-gate]].
+- [[ISSUE-006-setup-family-data-guard]] zamknięte — 2026-10-05.
+- Przegląd 2 i 3 (zapis kick-offu) — 2026-10-05, przed pierwszym commitem: okno czasowe źródła bez
+  szacunku, odwołanie do prywatnego rejestru i niezwiązana przestrzeń usunięte, szczegół podpisu innej
+  aplikacji usunięty (w dwóch miejscach).
+- Przegląd historii `git log -p` — 2026-10-07: zero danych rodziny w historii trzech repo (tabela wyżej).
+- Wybór dla vaulta — 2026-10-07: wszystkie trzy repo publiczne.
+
+**Zamknięte 2026-10-07.** Warunek pierwszego pushu z `family-data.md` jest spełniony. Push dalej tylko po
+„go” (stop #3). Przy pierwszym pushu budzi się [[DEF-005-push-gate]].
