@@ -6,7 +6,7 @@ source: "PROJECT_BRIEF §Architecture → Data model (accepted by the author, 20
 FR: ["[[FR-001-provenance]]", "[[FR-002-rodzina-jako-rekord]]", "[[FR-003-wiele-osob-w-grobie]]", "[[FR-004-data-z-dopiskiem]]", "[[FR-005-nazwisko-rodowe]]"]
 ADR: ["[[ADR-001-local-first]]", "[[ADR-006-claimed-value-separate-structures]]"]
 created: 2026-10-05
-updated: 2026-10-07
+updated: 2026-10-08
 ---
 
 # Grobing — Data model
@@ -33,8 +33,8 @@ erDiagram
     PERSON ||--o{ BURIAL : "buried in (one per claimed grave)"
     EVENT ||--|{ ASSERTION : "cited by"
     BURIAL ||--|{ ASSERTION : "cited by"
-    FAMILY_PARTNER ||--|{ ASSERTION : "cited by (US-003)"
-    FAMILY_CHILD ||--|{ ASSERTION : "cited by (US-003)"
+    FAMILY ||--o{ ASSERTION : "cited by (the union, ADR-011)"
+    FAMILY_CHILD ||--o{ ASSERTION : "cited by (the child's link, ADR-011)"
     MEDIA }o--o| PERSON : shows
     MEDIA }o--o| GRAVE : shows
 ```
@@ -44,12 +44,12 @@ erDiagram
 | Entity | Carries | Why this shape |
 |---|---|---|
 | **Person** | imiona · nazwisko · **nazwisko rodowe** · kim była (tekst) · `is_living` | nazwisko rodowe — [[FR-005-nazwisko-rodowe]]; `is_living` steruje prywatnością w eksporcie |
-| **Family** | 1-2 partnerów · dzieci · własne zdarzenia małżeństwa / końca | osoba może być partnerem w kilku rodzinach → powtórne małżeństwo działa z konstrukcji ([[FR-002-rodzina-jako-rekord]]) |
+| **Family** | **związek** (małżeństwo albo nie): 1-2 partnerów · dzieci (**według daty urodzenia**, bez daty na końcu — GEDCOM 7 „chronological by birth”, [[ISSUE-019-family-relations]] D4) · własne zdarzenia ślubu / końca; twierdzenie o parze przy rodzinie, o dziecku przy jego łączu ([[ADR-011-relation-claims-family-and-child-link]]) | osoba może być partnerem w kilku rodzinach → powtórne małżeństwo działa z konstrukcji ([[FR-002-rodzina-jako-rekord]]) |
 | **Event** | typ · **data + kwalifikator** (dokładnie / około / przed / po / między) · miejsce | „ok. 1890" i „przed 1920" to normalne dane ([[FR-004-data-z-dopiskiem]]). Typy: osoby — urodzenie, zgon, **pochówek** (`glossary.md` → *pochówek*: data pochówku to Event, nie cecha powiązania); rodziny — małżeństwo, koniec. Diagram z briefu wymienia tylko birth, death |
 | **Cemetery** | nazwa · miejscowość · punkt środka · link do Grobonetu (jeśli pokryty) · status mapy offline | widok 1; dwa ostatnie pola wypełnia SPIKE-001 / [[ADR-003-map-source-offline]] |
 | **Grave** | **nazwa grobu** (`name`, opcjonalna, wpisuje autor — schemat v3, [[ISSUE-012-transcribe-grave-screen]]) · **kwatera / rząd / miejsce** (`sector` / `row` / `plot`) · pozycja + **jak ją uzyskano** (pinezka ze zdjęcia satelitarnego / GPS na miejscu) + dokładność · zdjęcia nagrobka · opłata ważna do (S4) | adres zarządcy jest prawdą, pinezka pomocą |
 | **Burial** | grób ↔ osoba, wiele na grób; osoba ma osobny wiersz dla każdego grobu, który podaje dla niej jakieś źródło | grób rodzinny mieści kilka osób ([[FR-003-wiele-osob-w-grobie]]); człowiek leży w jednym miejscu, ale źródła mogą się różnić ([[ADR-006-claimed-value-separate-structures]] D2) |
-| **Assertion** (provenance) | **źródło** (nagrobek / notatki / babcia / krewny / akt) + szczegół (kto, który akt) · **status** `CLAIMED / CONFIRMED / CONTRADICTED / UNKNOWN` · kiedy — **przy wierszu *Event* albo *Burial***, którego wartość potwierdza; wartość („co twierdzimy”) żyje w tym wierszu | cytowanie źródła jak w GEDCOM 7; **dwa sprzeczne twierdzenia współistnieją** jako dwa wiersze, każdy ze swoim twierdzeniem ([[FR-001-provenance]], [[ADR-006-claimed-value-separate-structures]]) |
+| **Assertion** (provenance) | **źródło** (nagrobek / notatki / babcia / krewny / akt) + szczegół (kto, który akt) · **status** `CLAIMED / CONFIRMED / CONTRADICTED / UNKNOWN` · kiedy — **przy wierszu *Event* albo *Burial***, którego wartość potwierdza, **albo przy rodzinie i łączu dziecka** (relacje, schemat v6 — [[ADR-011-relation-claims-family-and-child-link]]); wartość („co twierdzimy”) żyje w tym wierszu | cytowanie źródła jak w GEDCOM 7; **dwa sprzeczne twierdzenia współistnieją** jako dwa wiersze, każdy ze swoim twierdzeniem ([[FR-001-provenance]], [[ADR-006-claimed-value-separate-structures]]) |
 | **Media** | **zdjęcie jako rekord** (jak `MULTIMEDIA_RECORD` w GEDCOM 7): plik w prywatnym magazynie aplikacji i, dla nagrobka, grób. **Zdjęcie = kopia dostępowa:** JPEG 2048 px, bez EXIF ([[ADR-008-photos-access-copy-and-backup-consistency]]); pliki `media/groby/<id>/<czas>-<losowe>.jpg` i `media/zdjecia/<czas>-<losowe>.jpg` (zdjęcia osób, bez id osoby — bywają wspólne). **Grób — najwyżej jedno zdjęcie** (pierwsze = najniższe `id`). Usunięcie kasuje wiersz, plik usuwa sprzątanie (ADR-008 pkt 3). Wiersz bez grobu i bez łącza znika w tej samej transakcji ([[ADR-009-person-photos-record-and-link]]) | oryginał zostaje w galerii albo na papierze |
 | **PersonMedia** (łącze zdjęcia) | osoba ↔ zdjęcie z **pozycją** (jak `OBJE` w GEDCOM 7) — schemat v4, [[ISSUE-017-person-photos]]. **Profilowe = pierwsze łącze osoby**, osobno dla każdej osoby; jedno zdjęcie (np. grupowe) ma łącza od wielu osób, a plik jest jeden. Zmiany zdjęć osoby zapisują się w transakcji jej wpisu ([[ADR-009-person-photos-record-and-link]]) | kto jest na zdjęciu — bez źródła ([[FR-001-provenance]]: daty, relacje, pochówek; łącze w GEDCOM 7 nie ma `SOUR`). **Kadr profilowego** (schemat v5): `CROP` przy łączu — cztery kolumny `crop_*` w pikselach pliku zdjęcia; brak = środek; każda osoba na zdjęciu ma własny ([[ADR-010-profile-photo-crop-pixels]]) |
 | **Setting: „ja"** | która osoba to autor | kotwica „jak łączą się ze mną" (M5) |
@@ -84,6 +84,13 @@ erDiagram
   (od v1) zapisuje i poprawia ekran główny przez `grobing-code/lib/data/cemeteries.dart`; cmentarz bez punktu
   nie ma znicza na mapie. Bez zmiany schematu. Cmentarz to miejsce, a nie fakt o osobie, więc nie ma
   twierdzeń ([[FR-001-provenance]]).
+- **2026-10-08 — schemat v6** ([[ISSUE-019-family-relations]], [[ADR-011-relation-claims-family-and-child-link]]): twierdzenia przy
+  relacjach są w kodzie — `assertions.family_id` (para) i `assertions.family_child_id` (łącze dziecka, które dostało `id`);
+  `CHECK`: twierdzenie cytuje dokładnie jeden wiersz. Zapis i usuwanie rodziny przez `grobing-code/lib/data/families.dart`
+  (`saveFamily`, `deleteFamily`), w jednej transakcji, z regułami arkusza (1–2 osoby w parze, co najmniej dwie osoby,
+  nikt dwa razy, dziecko w jednej rodzinie rodziców). Migracja v5→v6 nie dodała wierszy (rodziny sprzed v6 — tylko z
+  danych debug — dostają twierdzenie przy pierwszym zapisie). **Płci w modelu nie ma** (decyzja autora); nazwy relacji
+  na ekranie są neutralne.
 
 ## Known consequence — not a model change
 

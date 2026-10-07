@@ -9,7 +9,7 @@ verdict-reviewer: null
 decided-by: "[[ISSUE-011-schema-v2-assertions]]"
 source: "FR-001 (provenance) · FR-003 · FR-004 · US-004 AC-1 · data-model.md → In code (ISSUE-007 D2) · GEDCOM 7.0.18 · ADR-004 pkt 5 (restore migrates older backups)"
 created: 2026-10-06
-updated: 2026-10-06
+updated: 2026-10-08
 ---
 
 # ADR-006 — Gdzie żyje wartość twierdzenia
@@ -92,3 +92,8 @@ Status z FR-001 (`CLAIMED` · `CONFIRMED` · `CONTRADICTED` · `UNKNOWN`) zostaj
     oznaczenie sporu w widokach.
   - Gdyby trzeba było wskazać ten sam dokument (np. jeden akt) z wielu faktów i poprawiać go w jednym
     miejscu, przyjdzie tabela źródeł migracją (D4).
+  - **2026-10-08 — D6 doprecyzowany w [[ADR-011-relation-claims-family-and-child-link]]** ([[ISSUE-019-family-relations]]):
+    twierdzenie o parze stoi przy rodzinie (para to jeden fakt, jak cytowanie `FAM` w GEDCOM 7), a o dziecku — przy jego
+    łączu (jak `ChildRef` w Gramps). Sprzeczna relacja to osobny wiersz: inny partner — inna rodzina, inni rodzice —
+    inne łącze dziecka (to drugie zostaje [[US-004-fakt-od-babci]]). Migracja v5→v6 nie dopisała twierdzeń rodzinom
+    sprzed v6 — inaczej niż D5 przy v1→v2, bo `assertions` nie była już nową tabelą.

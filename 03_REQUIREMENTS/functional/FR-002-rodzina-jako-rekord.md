@@ -11,7 +11,7 @@ verdict-date: null
 verdict-reviewer: null
 source: "PROJECT_BRIEF Step 0 (family group sheet) · §5a G6 · Data model → Family"
 created: 2026-10-05
-updated: 2026-10-05
+updated: 2026-10-08
 ---
 
 # FR-002 — Rodzina jako rekord
@@ -37,3 +37,16 @@ zostaje tani, choć go nie budujemy.
 ## Why entry by family
 Kanon: arkusz rodziny (*family group sheet*) — wprowadzanie rodziny naraz jest szybsze niż po osobie
 (odpowiedź na G6 — szybkie przepisywanie ~100 osób) i strukturalnie zapobiega pułapce krawędzi.
+
+## In the app (2026-10-08, [[ISSUE-019-family-relations]])
+- **Wpisywanie arkuszem rodziny** ([[rodzina]] A): para, dzieci, ślub i koniec związku naraz; nowe osoby powstają przy
+  okazji, a osobę już wpisaną wskazuje się z listy (najpierw szukaj, potem twórz). Arkusz otwiera się z sekcji „Rodzina”
+  formularza osoby („Dodaj związek”, „Dodaj rodziców”, ✎).
+- **Widok przy osobie** ([[wpis-osoby]] 9a): rodzice i każdy związek z dziećmi jako chipy „Rodzic”, „Partner”,
+  „Dziecko”, które otwierają wpis krewnego — także osoby bez grobu.
+- **Rodzina to związek, nie tylko małżeństwo** (uwaga autora na stopie #1): po rozstaniu albo owdowieniu kolejny związek
+  to kolejna rodzina ze swoimi dziećmi; owdowienie to zgon partnera, bez osobnej daty końca.
+- **Reguły w warstwie danych:** 1–2 osoby w parze, co najmniej dwie osoby, nikt dwa razy, dziecko w jednej rodzinie
+  rodziców. Źródło relacji: [[ADR-011-relation-claims-family-and-child-link]].
+- **Poza zakresem:** kontrola cykli (ktoś w parze ze swoim dzieckiem — obserwacja ze stopu #2), rodzaj więzi dziecka
+  (przysposobienie), druga rodzina rodziców.

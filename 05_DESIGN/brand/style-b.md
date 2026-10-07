@@ -1,5 +1,5 @@
 ---
-title: "Style B — visual guidelines (v1.10)"
+title: "Style B — visual guidelines (v1.11)"
 type: design-guidelines
 status: active
 owner: ui
@@ -133,7 +133,10 @@ pomocniczym albo ten token trzeba rozjaśnić. Do rozstrzygnięcia przy pierwszy
     Okno dialogowe tylko wtedy, gdy coś może przepaść (niezapisany wpis).
 11. **Listy jako karty:** element, który prowadzi dalej (osoba, grób, cmentarz), to karta na powierzchni z
     chevronem „›”. Miniatura zdjęcia z lewej, gdy zdjęcie jest ([[US-005-zdjecia]]). **Bez zastępczych
-    obrazków**: brak zdjęcia oznacza brak miniatury.
+    obrazków**: brak zdjęcia oznacza brak miniatury. **Wyjątek — chip relacji** (v1.11, R4 prawy, [[wpis-osoby]]
+    9a): osoba w sekcji „Rodzina” to chip „Partner: Jan” z ikoną osoby w akcencie, bez chevronu. Prowadzi do wpisu tej
+    osoby, więc ma obrys (granica na tle 3,40:1), cel dotyku 48 dp i opis dla czytnika kończący się „otwórz wpis”.
+    Chip stoi tylko tam, gdzie osób jest kilka obok siebie; lista osób dalej składa się z kart.
 12. **Nawigacja docelowa** ([[references]] → *Target app structure*): dolny pasek Mapa · Osoby · Drzewo
     (aktywna zakładka ma ikonę, podpis i podkreślenie w akcencie). Pojawia się, gdy istnieją co najmniej dwa
     z tych celów. Ustawienia, w tym „Stan danych”, są pod kołem zębatym w pasku ekranu głównego.
@@ -251,3 +254,7 @@ wysokokontrastowy, bez rezygnacji ze stylu B. Wynik i data trafiają tutaj i do
   reguła 14 — okrąg profilowego pokazuje kadr łącza (bez kadru: środek); ramka kadru to jedyny wyjątek od „nic na
   zdjęciu”, bez tekstu, z pierścieniem w akcencie między liniami w kolorze tła. Tokeny bez zmian, więc pomiar z
   2026-10-06 obowiązuje; pierścień to istniejąca para akcent/tło (8,81:1).
+- 2026-10-07 — **v1.11, rodzina** (`ui` przed planem [[ISSUE-019-family-relations]], [[rodzina]], [[wpis-osoby]] v5):
+  reguła 11 — chip relacji z R4 prawego jako wyjątek od „karta z chevronem”. Tokeny bez zmian, więc pomiar z 2026-10-06
+  obowiązuje: obrys chipu na tle 3,40:1, napis chipu na powierzchni 10,02:1. Przycisk segmentowy dla pola płci wypadł
+  razem z polem na stopie #1 (decyzja autora: bez płci), więc reguły dla niego nie ma — bez instancji byłaby na zapas.

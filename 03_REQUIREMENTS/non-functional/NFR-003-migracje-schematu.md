@@ -8,7 +8,7 @@ verdict-date: null
 verdict-reviewer: null
 source: "PROJECT_BRIEF §Architecture → Sufficiency pass A1 · DoD ISSUE"
 created: 2026-10-05
-updated: 2026-10-07
+updated: 2026-10-08
 ---
 
 # NFR-003 — Migracje schematu
@@ -54,3 +54,10 @@ niezastępowalne i będą żyć latami — aktualizacja aplikacji ze złą migra
   profilowego przy łączu, cztery `addColumn` w `person_media` — bez zmiany wierszy i bez przebudowy. Test z danymi v4→v5
   (łącza i pozycje bez zmian, kolumny kadru puste) i wygenerowane v1…v4→v5. Kopia v4 odtwarza się w v5 (test). Na dwóch
   emulatorach build v5 wgrany na starsze dane: liczby wierszy bez zmian, kopia w tle przeszła na v5.
+- **2026-10-08 — piąta migracja** (v5→v6, [[ISSUE-019-family-relations]], [[ADR-011-relation-claims-family-and-child-link]]):
+  twierdzenia przy rodzinie i łączu dziecka. Przebudowa `family_children` (stary `rowid` to `id`) i `assertions` (nowy
+  `CHECK`), `PRAGMA foreign_key_check` na końcu. **Pierwsza migracja, która świadomie nie dopisuje wierszy do istniejącej
+  tabeli:** twierdzenia dla rodzin sprzed v6 zmieniłyby liczbę wierszy `assertions` i odtworzenie kopii v5 z rodzinami
+  by odmówiło. Zasada dla kolejnych: **krok dopisuje wiersze tylko do tabeli, której starsza kopia nie ma.** Test z danymi
+  v5→v6 i wygenerowane v1…v5→v6; kopia v5 z rodzinami odtwarza się w v6 (test). Na dwóch emulatorach build v6 wgrany na
+  v5: liczby wierszy bez zmian.

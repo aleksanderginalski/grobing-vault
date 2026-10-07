@@ -3,7 +3,7 @@ title: "Grobing — Glossary"
 type: meta
 status: active
 created: 2026-10-05
-updated: 2026-10-07
+updated: 2026-10-08
 ---
 
 # Grobing — Glossary
@@ -36,7 +36,8 @@ updated: 2026-10-07
 | **nazwa grobu** | opcjonalny tytuł grobu nadany przez autora, np. „Grób rodzinny Nowaków” ([[ISSUE-012-transcribe-grave-screen]], schemat v3) | nazwiskiem osób — aplikacja nie wylicza jej z nazwisk, bo odmiana bywa błędna; bez nazwy grób ma tytuł „Grób” |
 | **pochówek** (Burial) | powiązanie osoba ↔ grób (wiele na jeden grób) | zdarzeniem z datą (data pochówku to Event) |
 | **pinezka** | pozycja grobu na mapie **ze źródłem** (zdjęcie satelitarne / GPS na miejscu) i dokładnością | prawdą o położeniu — prawdą jest adres zarządcy |
-| **rodzina** (Family) | rekord: 1-2 partnerów + dzieci; osoba może być partnerem w kilku rodzinach | „krawędzią" między dwiema osobami — to psuje się przy pierwszym powtórnym małżeństwie |
+| **rodzina** (Family) | rekord: **związek** (małżeństwo albo nie) 1-2 partnerów + dzieci; osoba może być partnerem w kilku rodzinach — kolejny związek po rozstaniu albo owdowieniu to kolejna rodzina ([[ISSUE-019-family-relations]]) | „krawędzią" między dwiema osobami — to psuje się przy pierwszym powtórnym małżeństwie |
+| **arkusz rodziny** | ekran, na którym wpisuje się jedną rodzinę naraz: parę, dzieci, ślub i koniec związku ([[rodzina]] A; kanon: *family group sheet*). Otwiera się z sekcji „Rodzina” formularza osoby, zapisuje się sam | formularzem osoby — relacji nie wpisuje się po jednej przy osobie, tylko widać je tam jako chipy |
 | **nazwisko rodowe** | nazwisko z urodzenia (panieńskie) | nazwiskiem po ślubie |
 | **data z dopiskiem** | data + kwalifikator: dokładnie / około / przed / po / między | błędem — „ok. 1890" to normalna dana |
 | **twierdzenie** (Assertion) | fakt **ze źródłem** (nagrobek / notatki / babcia / krewny / akt) i statusem | gołą wartością pola |

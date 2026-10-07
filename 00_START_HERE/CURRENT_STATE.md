@@ -3,7 +3,7 @@ title: "Grobing — Current State"
 type: meta
 status: active
 created: 2026-10-05
-updated: 2026-10-07
+updated: 2026-10-08
 ---
 
 # Grobing — Current State
@@ -18,9 +18,10 @@ updated: 2026-10-07
 MVP — od startu, cały produkt (Meta-decyzja 4).
 
 ## In progress
-- **[[ISSUE-018-profile-photo-crop]] zamknięta 2026-10-07** (kadr profilowego, schemat v5). Następna według kolejności
-  autora: **[[US-003-przepisanie-rodziny]]** — relacje w formularzu osoby. Pierwszy krok: rozpisanie US na ISSUE
-  (`docs`), potem `ui` → `planning` przy ekranie.
+- **[[ISSUE-019-family-relations]] zamknięta 2026-10-08** (relacje w rodzinie, schemat v6), a z nią
+  [[US-003-przepisanie-rodziny]]. Następna według kolejności autora: **[[SPIKE-001-map-source-offline]]** — zdjęcie
+  satelitarne cmentarza, znicze na grobach, plany z kwaterami. Pierwszy krok: `planning` (spike bez ekranu do
+  zaprojektowania przed planem).
 - **Następne kroki, w tej kolejności (decyzja autora 2026-10-06, *„ok plan brzmi dobrze”*; ISSUE-015 dołożona
   na stopie #1 ISSUE-014, *„wygląda dobrze”*):**
   1. ~~[[ISSUE-014-home-map-of-poland]]~~ — zamknięte 2026-10-06;
@@ -28,8 +29,8 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   3. ~~[[ISSUE-012-transcribe-grave-screen]]~~ — zamknięte 2026-10-07;
   4. ~~[[US-005-zdjecia]]~~ — zamknięta 2026-10-07 (~~ISSUE-016~~, ~~ISSUE-017~~);
      ~~4a. [[ISSUE-018-profile-photo-crop]]~~ — zamknięte 2026-10-07;
-  5. **[[US-003-przepisanie-rodziny]]** — relacje w formularzu osoby (następna);
-  6. [[SPIKE-001-map-source-offline]] — zdjęcie satelitarne cmentarza, znicze na grobach, plany z kwaterami
+  5. ~~[[US-003-przepisanie-rodziny]]~~ — zamknięta 2026-10-08 (~~ISSUE-019~~);
+  6. **[[SPIKE-001-map-source-offline]]** (następna) — zdjęcie satelitarne cmentarza, znicze na grobach, plany z kwaterami
      (`01_INBOX/2026-10-05-plany-cmentarzy.md`). Baza cmentarzy przeszła do ISSUE-015.
   
   **Każda pozycja z ekranem: `ui` → `planning`** (`autonomous-flow.md`). Wygląd: `05_DESIGN/brand/`
@@ -47,6 +48,13 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     ([[ISSUE-015-add-cemetery-from-database]]) mają opis dla czytnika, ale bez akcji dotknięcia. Switch Access i
     Voice Access ich nie naciśną. Poprawka: dwie linie i test na ekran. Autor nie zdecydował (pytanie na stopie #2
     ISSUE-017) — kandydat na małą pozycję;
+  - **kontrola cykli w rodzinie** ([[ISSUE-019-family-relations]] → *Manual*): aplikacja pozwala, by osoba była w parze ze
+    swoim dzieckiem albo była swoim przodkiem — zobaczone w danych testowych autora na stopie #2. Poza zakresem ISSUE-019
+    ([[ADR-011-relation-claims-family-and-child-link]] → *Follow-ups*). Kandydat na małą pozycję, gdy zdarzy się przy
+    prawdziwym przepisywaniu;
+  - **data początku związku bez ślubu** (przegląd US-003, uwaga 4): arkusz ma „Ślub” i „Koniec związku”, a uwaga autora do
+    O1 mówiła o związkach „w danym okresie”. Związek bez ślubu da się zapisać, ale bez daty początku. **Decyzja autora**,
+    gdy pojawi się w notatkach: osobne pole „Początek związku” albo „Ślub” z innym podpisem;
   - **[[DEF-005-push-gate]] obudzony** pierwszym pushem (2026-10-07). Bramka potrzebuje pipeline'u CI,
     którego nie ma (`ci` na sygnał), a pipeline budzi też [[DEF-003-dependency-scanning]]. **Decyzja autora:**
     wdrożyć teraz albo zostawić do PRODUKCJA (DEF-005 → *Wake*). Do tego czasu status `deferred`.
@@ -84,7 +92,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   paczki (decyzja autora 2026-10-07); przegląd imion na wychodzących zmianach czeka na retro (*Do retro*).
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **7** (ostatnie retro: [[2026-10-06-retro-01]]). Co **10** →
+- Zamknięte pozycje od ostatniego retro: **8** (ostatnie retro: [[2026-10-06-retro-01]]). Co **10** →
   retro + pytanie o 3–5 nośnych faktów (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**;
   podbija go `docs` przy zamknięciu, a zeruje go retro.
 - Do retro (zebrane po drodze, bez decyzji):
@@ -120,7 +128,12 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     instancja po ISSUE-008, ISSUE-009, ISSUE-012 i ISSUE-014 (stop #2 tamtych pozycji: kroki pominięte albo „ok” bez
     śladu w stanie urządzenia). **Kolejna w [[ISSUE-018-profile-photo-crop]]:** autor wykonał krok 1 (bez „Gotowe”), dał
     odczucie z prośbą o zmianę i napisał *„nie planowałem więcej testować”*; kroki 2–3 zrobił agent. Kandydat: stop #2 z 2–3 krokami
-    odczucia, a resztę od razu robi agent;
+    odczucia, a resztę od razu robi agent. **[[ISSUE-019-family-relations]] przeszła już tak (3 kroki):** autor zrobił krok 1 z
+    nadmiarem (rodzice, koniec związku), krok 2 pominął i odpowiedział „ok” bez uwag — stan sprawdził agent na urządzeniu;
+  - **emulator przed testami łapie to, czego testy nie widzą** ([[ISSUE-019-family-relations]] → *Dev report* → *Deviations*):
+    przejście `dev` przez ekrany znalazło dwa błędy przy zielonych testach — współdzielony strumień drift (uśpiony też w widoku
+    grobu od ISSUE-012) i „dalej” przeskakujące pole. Oba mają teraz testy. Do decyzji: czy przejście `dev` na emulatorze
+    przed `qa` ma być krokiem reguły;
   - **agent `architect`** — kick-off (MD3c) dał mu sygnał „decyzja wymagająca ADR-a poza kick-offem”. Ten
     sygnał już był: [[ADR-005-sqlite-package]] i [[ADR-006-claimed-value-separate-structures]] powstały w
     łańcuchu (`planning` → `docs`), bez osobnego agenta, i [[ISSUE-014-home-map-of-poland]] doda kolejny.
@@ -134,6 +147,37 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   (zdarzenie) · data zapytania`. **Odpowiedź z faktami o rodzinie trafia do aplikacji, nie tutaj.**
 
 ## Recently done
+- 2026-10-08 — [[ISSUE-019-family-relations]] zamknięte, a z nim **[[US-003-przepisanie-rodziny]]** (werdykt US: APPROVED,
+  niezależny przegląd, z uwagami). **Rodzinę wpisuje się naraz, a relacje widać przy osobie:**
+  - w formularzu osoby (poprawa) sekcja **„Rodzina”** ([[wpis-osoby]] v5.2): rodzice i każdy **związek** z dziećmi jako
+    chipy „Rodzic”, „Partner”, „Dziecko”, które otwierają wpis krewnego, także osoby bez grobu; „Dodaj rodziców”,
+    „Dodaj związek”, ✎;
+  - **arkusz rodziny** ([[rodzina]] v1.2): para, ślub, koniec związku (rozwód albo rozstanie; owdowienie to zgon), dzieci
+    według daty urodzenia; nowa osoba wpisana w arkuszu albo wybrana — **najpierw szukaj, potem twórz**; „Usuń rodzinę”;
+  - **schemat v6:** twierdzenie o parze przy rodzinie, o dziecku przy jego łączu — [[ADR-011-relation-claims-family-and-child-link]];
+    migracja v5→v6 z testem, bez dopisywania wierszy (kopie v5 odtwarzają się bez zmian); kopia z rodzinami odtworzona na
+    drugim emulatorze z odciskiem zgodnym;
+  - **decyzje autora na stopie #1:** bez płci (nazwy neutralne), bez rodzeństwa przy osobie, „związek” zamiast
+    „małżeństwo” (rozstania, owdowienia, nowe związki), dzieci według urodzenia.
+
+  Przegląd `ui`: 0 BLOCKER, 1 MAJOR (komunikat błędu daty pod „Zapisz” przy otwartej klawiaturze — także w formularzu
+  osoby, wspólny blok daty) poprawiony przed stopem #2, 4 MINOR poprawione. `dev` znalazł na emulatorze dwa błędy przy
+  zielonych testach (współdzielony strumień drift, uśpiony też w widoku grobu; „dalej” przeskakujące pole) — poprawione, z
+  testami. Werdykt `qa`: APPROVED (self-check, z uwagami); stop #2 „ok” (krok 2 pominięty, sprawdzony przez agenta).
+  Testy: 458.
+
+  **Dla autora:**
+  - u Ewy Wymyslonej na `Medium_Phone` są Twoje dane testowe ze stopu #2 (rodzice Stefan i Anna, związek z Janem), a w nich
+    cykl: Stefan jest dzieckiem Anny i jednocześnie rodzicem z nią Ewy — aplikacja na to pozwala (kandydat wyżej);
+  - kopia na `Medium_Phone` skonfigurowana od nowa z hasłem testowym do Pobranych (`grobing-klucz-019.age`,
+    `grobing-kopia-019.age`, wymyślone dane); `Grobing_Restore` ma dane z tej kopii;
+  - pomiar podpowiedzi płci z imienia (rejestr PESEL: 0,066% pomyłek wśród zmarłych) czeka w ISSUE-019 → *Prior art*,
+    gdyby płeć wróciła z drzewem.
+- 2026-10-07 — [[US-003-przepisanie-rodziny]] rozpisana na **jedną** pozycję, [[ISSUE-019-family-relations]] (`docs`,
+  auto-flow po `pm`). Schemat v6 (źródło i status przy przynależności partnerów i dzieci, AC-4) idzie razem z ekranem,
+  jak w ISSUE-016…018. Ten podział zaproponował łańcuch, nie autor, więc na stopie #1 autor może pozycję podzielić.
+  Tabele rodzin są od v1, a zdarzenia rodziny z twierdzeniami od v2, więc daty małżeństwa nie zmieniają schematu. To
+  rozpisanie, nie zamknięcie, więc licznik retro bez zmian. Rozpisanie wejdzie do commita paczki ISSUE-019.
 - 2026-10-07 — [[ISSUE-018-profile-photo-crop]] zamknięte. **Profilowe pokazuje twarz osoby, a nie środek zdjęcia
   grupowego:**
   - ekran „Kadr profilowego” ([[kadr-profilowego]] v1.2): okrąg stoi, pod nim przesuwa się i przybliża zdjęcie (decyzja

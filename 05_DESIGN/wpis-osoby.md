@@ -1,9 +1,9 @@
 ---
 screen: "Wpis osoby w grobie — formularz"
-items: ["[[ISSUE-012-transcribe-grave-screen]]", "[[ISSUE-017-person-photos]]", "[[ISSUE-018-profile-photo-crop]]"]
-us: "[[US-002-przepisanie-grobu]] · [[US-005-zdjecia]]"
+items: ["[[ISSUE-012-transcribe-grave-screen]]", "[[ISSUE-017-person-photos]]", "[[ISSUE-018-profile-photo-crop]]", "[[ISSUE-019-family-relations]]"]
+us: "[[US-002-przepisanie-grobu]] · [[US-005-zdjecia]] · [[US-003-przepisanie-rodziny]]"
 journey-step: "n/a — M1 (warunek kroku 1 UJ-001)"
-mockup: "katalog tymczasowy sesji 2026-10-07: makieta-cmentarz-grob-osoba.html (ramki 3–4, ISSUE-012) · makieta-zdjecia.html (ramki 7–8 — kierunek sprzed stopu #1 ISSUE-016) · makieta-zdjecia-osoby.html (ramki 1–2, ISSUE-017)"
+mockup: "katalog tymczasowy sesji 2026-10-07: makieta-cmentarz-grob-osoba.html (ramki 3–4, ISSUE-012) · makieta-zdjecia.html (ramki 7–8 — kierunek sprzed stopu #1 ISSUE-016) · makieta-zdjecia-osoby.html (ramki 1–2, ISSUE-017) · makieta-rodzina.html (ramki 1–2, ISSUE-019)"
 updated: 2026-10-07
 ---
 
@@ -65,6 +65,28 @@ updated: 2026-10-07
 > **Wersja 4.1 (2026-10-07, przed planem [[ISSUE-018-profile-photo-crop]]):** okrąg 1a pokazuje profilowe **w kadrze**
 > z [[kadr-profilowego]]; bez kadru — jak dotąd, ze środka. D-zdjęcie-3 („bez kadrowania”) obalone na stopie #2
 > ISSUE-017. Formularz poza tym bez zmian; kadr zapisuje się z „Zapisz”, jak pozostałe zmiany zdjęć.
+>
+> **Wersja 5 (2026-10-07, przed planem [[ISSUE-019-family-relations]]) — relacje.** Uwaga autora z 2026-10-06: w
+> formularzu brakuje, *„z kim osoba jest związana (pokrewieństwo, powinowactwo)”*. Według rekomendacji z
+> [[rodzina]] → *Open* (decyzja autora na stopie #1):
+> - **9a „Rodzina”** pod biografią, w miejscu wskazanym w v2: chipy relacji jak w R4 prawym, które prowadzą do wpisu
+>   krewnego, i wejścia do arkusza rodziny ([[rodzina]]). **Tylko w poprawie** — arkusz potrzebuje zapisanej osoby;
+> - **4a „Płeć”** (Kobieta · Mężczyzna), podpowiedziana z imienia — od niej zależą nazwy relacji ([[rodzina]] →
+>   *Open* 2). Poza `next`;
+> - **poprawa osoby bez grobu** — wpis otwarty z chipu krewnego, który nie ma pochówku (np. dziecko dodane
+>   arkuszem). Zapis wraca tam, skąd go otwarto.
+>
+> Kierunek z v2 („relacje w formularzu”) i jego warunek obalający („arkusz → relacje nie trafiają do formularza”)
+> godzi podział: **wpisywanie w arkuszu, widok w formularzu** (*Decisions* → „Zdjęcie i relacje później”).
+>
+> **Wersja 5.1 (2026-10-07, stop #1 ISSUE-019 — decyzje autora):** **bez płci** — elementu 4a nie ma, a chipy mają
+> nazwy neutralne („Rodzic”, „Partner”, „Dziecko”, [[rodzina]] → *Role names*); **bez rodzeństwa** (9a c); **„Związek”**
+> zamiast „Małżeństwo” i **„Dodaj związek”** (uwaga autora: rozstania, owdowienia, nowe związki); dzieci w 9a
+> **według daty urodzenia**.
+>
+> **Wersja 5.2 (2026-10-07, przegląd `ui` ISSUE-019):** blok daty z błędem przewija się cały, z linią komunikatu nad
+> przypiętym „Zapisz” — dotyczy też „Urodzenie” i „Zgon” (wspólny `DateBlock`); *Navigation* bez słów sprzed v5.1; chip
+> „co najmniej 32 dp”.
 
 ## Purpose
 Wpisanie jednej osoby pochowanej w grobie, tak jak stoi w notatkach: zdjęcie (gdy jest), imiona, nazwisko,
@@ -83,6 +105,15 @@ nazwisko rodowe, daty urodzenia i zgonu z dopiskiem oraz **krótka biografia (�
   Powrót z arkusza, systemowego okna albo bazy wraca do formularza z wpisanymi danymi, bez zmiany fokusu na pole.
 - **Okno „Odrzucić wpis?” przy zmianach zdjęć (v4):** treść „Wpisane dane i zmiany zdjęć nie zostaną zapisane.”, gdy
   w tej edycji zmieniono zdjęcia (także gdy pól nie ruszano). Bez zmian zdjęć treść jak dotąd.
+- **Rodzina (9a, v5):**
+  - chip krewnego → [[wpis-osoby]] w trybie „poprawa” **tej osoby**, położony na obecny formularz, który zostaje pod
+    spodem z wpisanymi danymi. **Zapis albo wstecz wraca do formularza pod spodem**, a ten odświeża sekcję
+    „Rodzina” (krewny mógł zmienić imię);
+  - ✎ przy grupie, „Dodaj rodziców”, „Dodaj związek” → [[rodzina]] A. Arkusz zapisuje się sam ([[rodzina]] D1),
+    a po powrocie sekcja się odświeża. Niezapisane pola formularza zostają.
+- **Poprawa osoby bez grobu (v5):** podtytuł paska „bez grobu w aplikacji”; „Zapisz” wraca tam, skąd otwarto wpis
+  (nie do [[grob]]). W „Kto jest na zdjęciu?” ([[zdjecie]] D4) sekcja „W tym grobie” ma tylko tę osobę.
+- **Zapis wpisu otwartego z chipu** (z grobem albo bez) też wraca tam, skąd go otwarto, a nie do [[grob]].
 
 ## Elements in order
 | # | Element | Typ | Klawiatura / akcja | Domyślnie | Walidacja | Źródło |
@@ -92,11 +123,13 @@ nazwisko rodowe, daty urodzenia i zgonu z dopiskiem oraz **krótka biografia (�
 | 2 | **Imiona** | pole tekstowe, wielka litera na początku słów | `next`; **fokus i klawiatura od razu po wejściu** w trybach „nowy grób” i „kolejna osoba”; w poprawie bez fokusu (v2.1) | pusto | imiona albo nazwisko, co najmniej jedno: „Podaj imiona albo nazwisko.” | AC-2 |
 | 3 | **Nazwisko** | pole tekstowe, wielka litera na początku słów | `next` | w trybie „kolejna osoba”: nazwisko ostatnio wpisanej osoby w tym grobie, **zaznaczone** (pisanie je zastępuje) | jak 2 | AC-2 · decyzja (tempo) |
 | 4 | **Nazwisko rodowe** — etykieta „Nazwisko rodowe (z domu)” | pole tekstowe, wielka litera na początku słów | `next` | pusto | — | AC-2 · [[FR-005-nazwisko-rodowe]] |
+| ~~4a~~ | ~~**Płeć**~~ — **nie wchodzi** (v5.1, decyzja autora na stopie #1 ISSUE-019: *„nie czuję potrzeby dawania płci”*). W v5 był tu segment „Kobieta · Mężczyzna” podpowiadany z imienia | — | — | — | — | [[rodzina]] → *Open* 2 |
 | 5 | **Urodzenie** | blok daty (niżej) | `next` | dopisek „dokładnie”, data pusta | blok daty | AC-3 · [[FR-004-data-z-dopiskiem]] |
 | 6 | **Zgon** | blok daty | `next` | jak 5 | jak 5 | AC-3 |
 | 7 | ~~**Pochówek** (data pochówku)~~ — **usunięte w v2.2** (decyzja autora, stop #2 ISSUE-012) | — | — | — | — | AC-3 (bez pochówku) |
 | 8 | **Kim była** — krótka biografia. Pole wielowierszowe: **3 linie od startu**, rośnie do 6, potem przewija się w środku. Podpowiedź w pustym polu: „Krótka biografia — np. zawód, miejsce, co warto zapamiętać” (tekst pomocniczy, znika przy pisaniu) | pole wielowierszowe, wielka litera na początku zdania | Enter = nowa linia | pusto | — | AC-2 · uwaga autora 4 (biografia) · *Decisions* → „Biografia = „kim była”” |
 | 9 | **Źródło „kim była”** — linia pod polem 8: „Źródło: notatki” (tekst pomocniczy) + „Zmień” | tekst + dotknięcie; „Zmień” odsłania jedno pole tekstowe w tym miejscu | dotknięcie | „notatki” | niepuste, gdy „kim była” jest wypełnione: „Podaj źródło — kto to powiedział albo skąd to wiesz.” | AC-4 · [[FR-001-provenance]] |
+| 9a | **Rodzina** (v5) — **tylko w poprawie**; elementy niżej (*Sekcja „Rodzina”*). Odstęp 24 dp od 9 | sekcja | chip → wpis krewnego; ✎ i przyciski → [[rodzina]] A. **Poza `next`** | — | — | US-003 AC-1, AC-2 · R4 prawy · uwaga autora 2026-10-06 |
 | 10 | **Źródło dat i pochówku** — stały tekst pomocniczy nad przyciskiem: „Daty i miejsce pochówku zapiszą się ze źródłem: notatki.” | tekst | — | źródło „notatki”, status `CLAIMED` (statusu nie pokazujemy) | — | AC-4 · FR-001 (decyzja kosztowa: bez pytania przy każdym polu) |
 | 11 | **Zapisz** | przycisk wypełniony (zaokrąglony prostokąt, ≥ 52 dp), **przypięty na dole, nad klawiaturą**; bez znicza ([[style-b]] reguła 8) | dotknięcie | — | błąd → komunikaty przy polach, fokus i przewinięcie do pierwszego błędu, nic się nie zapisuje | AC-1…AC-4 |
 
@@ -115,6 +148,19 @@ wiem” (`UNKNOWN`) to [[US-004-fakt-od-babci]].
 **Zapis jest całością:** osoba, pochówek (z twierdzeniem) i każda wpisana data (z twierdzeniem) zapisują
 się razem albo wcale. Po błędzie nie zostaje „pół osoby”.
 
+### Sekcja „Rodzina” (9a, v5)
+| # | Element | Typ | Klawiatura / akcja | Domyślnie | Walidacja |
+|---|---|---|---|---|---|
+| a | **Nagłówek:** `people_outline` (20 dp, akcent) + „Rodzina” (16 sp, półgruby, kolor tekstu) — jak sekcje R4 prawego ([[style-b]] reguła 3: ikona nagłówka sekcji w akcencie) | tekst | — | — | — |
+| b | **Grupa „Rodzice”** — gdy osoba jest dzieckiem w jakiejś rodzinie: etykieta „Rodzice” (14 sp, tekst pomocniczy), z prawej ✎ (`edit_outlined`, akcent, cel 48 dp, `tooltip` „Popraw rodzinę”); pod nią chipy rodziców („Rodzic: Józef” · „Rodzic: Zofia”) | grupa | ✎ → [[rodzina]] A, poprawa tej rodziny | — | — |
+| ~~c~~ | ~~**Grupa „Rodzeństwo”**~~ — **nie wchodzi** (v5.1, decyzja autora: rodzeństwo pokażą wizualizacje połączeń, EPIC-003) | — | — | — | — |
+| d | **Grupa za każdy związek** (osoba w parze), według daty ślubu, a bez daty na końcu, w kolejności zapisu. Etykieta „Związek”, a z datami „Związek · ślub ok. 1948” i „· koniec 1960” (format: [[style-b]] reguła 6); ✎ jak w b. Chipy: druga osoba z pary („Partner: Jan”), potem dzieci tej pary („Dziecko: Stanisław”, „Dziecko: Anna”) **według daty urodzenia**, a bez daty na końcu (v5.1, kanon GEDCOM 7) | grupa | jak b | — | — |
+| e | **Chip** — powierzchnia, obrys 1 dp w kolorze obrysu, promień 8 dp, wysokość co najmniej 32 dp — gęstość Material 3 daje ok. 37 dp (cel dotyku 48 dp; przegląd `ui`, v5.2); `person_outline` (18 dp, akcent); napis „Rola: Imię” (14 sp, tekst) — rola z [[rodzina]] → *Role names* (neutralna, v5.1), imię to pierwsze z imion, a bez imion nazwisko. Opis dla czytnika: „Partner: Jan Wymyślony — otwórz wpis”. Chipy zawijają się do kolejnych linii i rosną z tekstem (SC 1.4.4) | chip-przycisk | dotknięcie → wpis tej osoby (poprawa) | — | — |
+| f | **Rząd działań:** „Dodaj rodziców” (`group_add_outlined`) — tylko gdy osoba nie ma rodziców; **„Dodaj związek”** (`person_add_alt_outlined`) — zawsze, bo każdy kolejny związek (po rozstaniu albo owdowieniu) to osobna rodzina ze swoimi dziećmi (AC-2). Przyciski z obrysem ([[style-b]] reguła 1), ≥ 52 dp, szerokość treści; gdy dwa nie mieszczą się w linii, drugi schodzi niżej | przyciski | → [[rodzina]] A „nowa rodzina” | — | — |
+
+**Bez rodziny:** sam nagłówek (a) i rząd działań (f). Pusty stan nie potrzebuje zdania: dwa przyciski mówią, co tu
+będzie ([[style-b]] reguła 9).
+
 ## States
 | Stan | Co widać |
 |---|---|
@@ -128,8 +174,29 @@ się razem albo wcale. Po błędzie nie zostaje „pół osoby”.
 | zdjęcia — błąd (v4) | pod okręgiem 1a zamiast podpisu: `error_outline` + „Nie udało się wczytać zdjęcia. Spróbuj jeszcze raz.” (kolor błędu, 14 sp); przy kilku: „Nie udało się wczytać 1 zdjęcia z 3. Spróbuj jeszcze raz.” — udane zostają. Bez żadnego udanego okrąg wraca do stanu bez zdjęć. Wpis bez zdjęcia da się zapisać |
 | nieudany zapis (v2.1) | nad „Zapisz”: `error_outline` + „Nie udało się zapisać. Spróbuj jeszcze raz.” w kolorze błędu; wpis zostaje |
 | okno „Odrzucić wpis?” | „Wpisane dane nie zostaną zapisane.” · **„Wróć do wpisu”** (akcent — bezpieczne działanie jest główne) · „Odrzuć” (kolor tekstu) |
+| rodzina — brak (v5, poprawa) | 9a: nagłówek i „Dodaj rodziców” · „Dodaj związek” |
+| rodzina — wypełniona (v5, poprawa) | 9a: grupy b–d z chipami; „Dodaj rodziców” tylko bez rodziców |
+| nowa osoba (v5) | 9a nie ma — sekcja pojawia się w poprawie (arkusz potrzebuje zapisanej osoby, [[rodzina]] D2) |
+| poprawa osoby bez grobu (v5) | podtytuł paska „bez grobu w aplikacji”; reszta jak poprawa |
 
 ## Sketch
+v5.1: „Rodzina” (9a) pod biografią — poprawa osoby z rodzicami i jednym związkiem (bez płci, bez rodzeństwa):
+```
+│  Źródło: notatki         Zmień   │
+│                                  │
+│  👥 Rodzina                       │  ← ikona w akcencie
+│  Rodzice                      ✎  │
+│  (👤 Rodzic: Józef) (👤 Rodzic: Zofia)
+│  Związek · ślub ok. 1948      ✎  │
+│  (👤 Partner: Jan)                │
+│  (👤 Dziecko: Stanisław) (👤 Dziecko: Anna)
+│ ┌────────────────────────┐       │
+│ │ 👤+ Dodaj związek       │       │  ← „Dodaj rodziców” znika, gdy są
+│ └────────────────────────┘       │
+│  Daty i miejsce pochówku zapiszą │
+│  się ze źródłem: notatki.        │
+```
+
 v4: zdjęcia (1a) nad imionami — bez zdjęć po lewej, ze zdjęciami po prawej (profilowe i liczba). Reszta formularza
 bez zmian (niżej, z v2).
 ```
@@ -212,6 +279,8 @@ zgonu, bez daty pochówku, krótkie „kim była”.
   to tylko ok. 128 dp wysokości nad polami (okrąg 80, podpis, odstęp 24). Na emulatorze `Medium_Phone` przy otwartej
   klawiaturze „Imiona” i „Nazwisko” dalej widać, a pole w fokusie i tak przewija się do widoku (sprawdza przegląd
   `ui` przed stopem #2).
+- **Rodzina (9a, v5): +0 w formularzu** — sekcji nie ma przy nowej osobie, a w poprawie stoi poza `next`. Koszt
+  rodziny liczy [[rodzina]] → *Tempo*.
 - **Co skraca:** podpowiedziane nazwisko, klawiatura dobrana do pola, źródło domyślne bez pytania, brak
   wyboru statusu, przycisk „Zapisz” zawsze nad klawiaturą.
 - **Co wydłuża świadomie:** `next` przez puste „Nazwisko rodowe”. Pole wymaga FR-005; zwijanie pustych pól
@@ -231,6 +300,12 @@ zgonu, bez daty pochówku, krótkie „kim była”.
   zdjęciu. Puste zdjęcie to przycisk (obrys 3,40:1 na tle — SC 1.4.11 ✅, ikona w akcencie,
   podpis), a nie zastępczy obrazek ani sylwetka. Bez bursztynowego pierścienia z R4 prawego: tam to widok osoby
   (M5), a tu formularz; pierścień w akcencie byłby dekoracją (reguła 1).
+- **Rodzina (v5, [[style-b]] v1.11):**
+  - nagłówek sekcji z ikoną w akcencie (reguła 3, R4);
+  - chipy relacji prowadzą do wpisu krewnego **bez chevronu** — wyjątek od reguły 11 z R4 prawego;
+  - ✎ jak w [[grob]] element 3.
+  
+  Tokeny bez zmian: obrys chipu na tle 3,40:1, napis na powierzchni 10,02:1, akcent na tle 8,81:1.
 - **Nowe tokeny** (proponowane; `dev` wpisuje je do `theme.dart` w ISSUE-012, a [[style-b]] ma już ich role):
 
   | Rola | Proponowana wartość | Pomiar (tło / powierzchnia) | Próg |
@@ -254,6 +329,10 @@ zgonu, bez daty pochówku, krótkie „kim była”.
 | ISSUE-016: styl B | 1a | reguły 11 i 14; przegląd `ui` |
 | ISSUE-017: kilka zdjęć, profilowe (v4) | 1a → [[zdjecia-osoby]] | okrąg pokazuje profilowe, podpis — liczbę zdjęć; po „Ustaw jako profilowe” i powrocie okrąg się zmienia |
 | ISSUE-017: zapis zdjęć z wpisem (v4) | 1a, 11 | zmiany zdjęć widać w 1a przed zapisem; po „Zapisz” są w [[grob]] (miniatura), po „Odrzuć” — nie ma ich |
+| US-003 AC-1 (v5) | 9a f → [[rodzina]] | po zapisie arkusza para i dzieci są w sekcji jako chipy |
+| US-003 AC-2 (v5) | 9a d, f | „Dodaj związek” przy osobie, która ma już związek; dwie grupy „Związek”, każda ze swoimi dziećmi |
+| US-003 AC-3 (v5) | 9a d | data ślubu i końca z dopiskiem w etykiecie grupy |
+| US-003: relacje przy osobie (v5.1) | 9a e | chipy „Rodzic”, „Partner”, „Dziecko”; po zmianie imienia krewnego w jego wpisie chip pokazuje nowe imię |
 | ISSUE-012: zapis zamawia kopię w tle | 11 | n/a dla wyglądu. Zapis idzie przez API danych (`claims.dart`, drift), więc kopię zamawia sam `grobing_app.dart` (`watchChanges`). Sprawdza `qa` ISSUE-012 |
 
 ## Decisions
@@ -270,13 +349,21 @@ zgonu, bez daty pochówku, krótkie „kim była”.
 | **Rok od 1500 do bieżącego** | łapie literówkę typu „190” zamiast „1890”; dolna granica z zapasem | wpis sprzed 1500 (przy grobach nieprawdopodobny) |
 | **Bez usuwania osoby** | brief G7/C5 („Undo / no silent deletion”, Could) czeka na osobną decyzję; dane są niezastąpione | — |
 | **Biografia = „kim była”** (v2) | autor chciał krótkiej biografii i zgodził się, że to dzisiejsze „kim była” z linią źródła (decyzja 2026-10-06). Etykieta zostaje słowem z US-002 AC-2, a podpowiedź mówi, że to biografia. Większe pole (3 linie) zaprasza do dwóch-trzech zdań, jak w R4 prawym. Jedna linia źródła na cały tekst (FR-001, decyzja kosztowa). Biografię pokaże widok osoby (M5); do tego czasu widać ją w poprawie wpisu albo w karcie grobu ([[grob]] D3) | autor chce osobnych pól (zawód, miejsce) — wtedy to osobna pozycja ze zmianą schematu |
-| **Zdjęcie i relacje później** (v2) | brakowało ich autorowi, ale należą do [[US-005-zdjecia]] i [[US-003-przepisanie-rodziny]] (kolejność autora 2026-10-06). Miejsce, żeby kolejne pozycje nie przestawiały formularza: **portret na górze**, przed imionami (jak w R4 prawym) — dotknięcie dodaje zdjęcie, a pusty stan to ikona z podpisem, bez sylwetki; **„Rodzina” pod biografią**, przed linią źródła dat — chipy relacji jak w R4. Bez miejsc zastępczych w ISSUE-012 | US-003 wpisuje rodzinę naraz, w arkuszu rodziny (brief: *family group sheet*) — wtedy relacje nie trafiają do formularza osoby |
+| **Zdjęcie i relacje później** (v2) | brakowało ich autorowi, ale należą do [[US-005-zdjecia]] i [[US-003-przepisanie-rodziny]] (kolejność autora 2026-10-06). Miejsce, żeby kolejne pozycje nie przestawiały formularza: **portret na górze**, przed imionami (jak w R4 prawym) — dotknięcie dodaje zdjęcie, a pusty stan to ikona z podpisem, bez sylwetki; **„Rodzina” pod biografią**, przed linią źródła dat — chipy relacji jak w R4. Bez miejsc zastępczych w ISSUE-012. **v5:** relacje wpisuje się arkuszem ([[rodzina]]), a w formularzu je widać (9a) — warunek obalający trafił w połowie: do formularza nie trafia **wpisywanie**, trafia **widok** | US-003 wpisuje rodzinę naraz, w arkuszu rodziny (brief: *family group sheet*) — wtedy relacje nie trafiają do formularza osoby |
+| **D-rodzina-1 — „Rodzina” tylko w poprawie** (v5) | arkusz zapisuje się sam i wskazuje „tę osobę”, więc osoba musi być zapisana; nowa osoba nie ma jeszcze relacji do pokazania ([[rodzina]] D2) | autor chce dodać rodzinę zaraz przy nowej osobie → „Zapisz i dodaj rodzinę” |
+| **D-rodzina-2 — chip prowadzi do wpisu krewnego**, nie do arkusza (v5) | osoba dodana arkuszem bez grobu nie ma innego wejścia do swojego wpisu (daty, zdjęcia); rodzinę poprawia ✎ przy grupie. Formularz pod spodem zostaje z danymi, więc chip nie wymaga okna „Odrzucić wpis?” | autor gubi się w wpisach położonych jeden na drugim (wstecz przez kilka osób) |
+| ~~**D-płeć — segment pod nazwiskiem rodowym, poza `next`, podpowiedziany z imienia** (v5)~~ — **odrzucone na stopie #1** (v5.1: bez płci) | nazwy relacji jak w R4 bez dodatkowej akcji przy trafnej podpowiedzi; poza `next`, więc tempo wpisu bez zmian; podpowiedź widać przed zapisem. Poprawa nie podpowiada, bo poprawa nie zmienia niczego sama | autor wybiera na stopie #1 wariant P1' albo P2 ([[rodzina]] → *Open* 2) albo złe podpowiedzi zdarzają się częściej niż przy imionach męskich na „-a” |
 | ~~**D-zdjęcie-1 — jedno zdjęcie na osobę** (v3)~~ — **nieaktualne:** decyzja autora na stopie #1 ISSUE-016 — baza zdjęć osoby z „profilowym” ([[ISSUE-017-person-photos]]) | R4 prawy pokazuje jeden portret, a karta w [[grob]] ma miejsce na jedną miniaturę. Kilka zdjęć osoby (np. z różnych lat) to treść widoku osoby (M5), którego jeszcze nie ma | autor przy przepisywaniu chce dołączyć do osoby kilka zdjęć — wtedy galeria w widoku osoby (M5), nie w formularzu |
 | **D-zdjęcie-2 — zdjęcia zapisują się z „Zapisz”**, a nie od razu (v3; **v4: wszystkie zmiany bazy zdjęć**) | „zapis jest całością” (v2): osoba i jej zdjęcia powstają razem albo wcale, a „Odrzuć” cofa także zdjęcia. v4: to samo dotyczy zmian w [[zdjecia-osoby]] i [[zdjecie]] (tryb osoby) — dodania, profilowego, osób na zdjęciu (także łączy **innych** osób) i usunięcia z osoby; ten sam przepływ działa przy nowej osobie, której jeszcze nie ma w bazie ([[zdjecia-osoby]] D1). Inaczej niż w [[grob]], gdzie zdjęcie nagrobka zapisuje się od razu — tam nie ma formularza, który by je zatwierdził | autor gubi zmiany zdjęć albo czuje dwie zasady (nagrobek od razu, osoba z „Zapisz”) — [[zdjecia-osoby]] D1 |
 | **D-zdjęcie-4 — baza zdjęć na osobnym ekranie, wejście z 1a** (v4) | formularz to ok. 100 wpisów, a większość osób z notatek zdjęć nie ma: galeria w formularzu zabierałaby miejsce przy każdym wpisie. Okrąg z profilowym i liczbą mówi, że zdjęcia są i ile; siatka potrzebuje szerokości ekranu. Ten sam ekran przyjmie widok osoby (M5) | autor przy poprawie chce widzieć wszystkie zdjęcia w formularzu → pasek miniatur pod 1a |
 | ~~**D-zdjęcie-3 — bez kadrowania** (v3)~~ — **obalone** na stopie #2 ISSUE-017 (uwaga autora o zdjęciu grupowym) → [[kadr-profilowego]], [[ISSUE-018-profile-photo-crop]] | wybrane zdjęcie przycina się do okręgu ze środka; całość widać w podglądzie. Twarz ze zdjęcia grupowego wymagałaby kadrowania, które jest poza zakresem ([[ISSUE-016-photos-grave-and-person]] → *Out of Scope*) | na stopie #2 środek zdjęcia nie trafia w twarz na typowych starych zdjęciach — wtedy kadrowanie jako osobna pozycja |
 
 ## Open
+**v5 — trzy pytania na stopie #1 [[ISSUE-019-family-relations]] — rozstrzygnięte 2026-10-07** ([[rodzina]] → *Open*):
+1. droga wejścia relacji → **C** (widok w 9a, wpisywanie arkuszem);
+2. płeć osoby → **bez płci** (4a nie wchodzi);
+3. rodzeństwo w 9a → **nie**.
+
 v3: zdjęcie osoby — **przeprojektowane w v4** (baza zdjęć: [[zdjecia-osoby]]; dzielenie i profilowe: [[zdjecie]] v1.3).
 Na stopie #1 ISSUE-017: [[zdjecie]] D7 (kogo da się zaznaczyć na zdjęciu) — rekomendacja, nie luka.
 
