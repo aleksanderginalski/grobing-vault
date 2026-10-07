@@ -44,12 +44,9 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     *Notes*): literówki z OSM zajmują pierwsze miejsca, skracanie słów łapie podobne nazwy („krakow” →
     „…Krakowskie”), w bazie są cmentarze dla zwierząt, a wynik znaleziony przez okoliczną miejscowość nie
     mówi, przez którą. Kandydat na małą pozycję, gdy zacznie przeszkadzać przy prawdziwych cmentarzach;
-  - **push na GitHuba odblokowany:** [[NT-008-publication-review]] zamknięte 2026-10-07, wszystkie trzy repo
-    publiczne. Zostało:
-    1. autor zakłada trzy **puste** publiczne repo, bez README, licencji i `.gitignore` (pierwszy push nie
-       będzie wtedy wymagał scalania);
-    2. agent dodaje remote i robi push dopiero po „go” (stop #3), pokazując wcześniej, co wychodzi;
-    3. przy pierwszym pushu budzi się [[DEF-005-push-gate]].
+  - **[[DEF-005-push-gate]] obudzony** pierwszym pushem (2026-10-07). Bramka potrzebuje pipeline'u CI,
+    którego nie ma (`ci` na sygnał), a pipeline budzi też [[DEF-003-dependency-scanning]]. **Decyzja autora:**
+    wdrożyć teraz albo zostawić do PRODUKCJA (DEF-005 → *Wake*). Do tego czasu status `deferred`.
 - **Przed pierwszymi prawdziwymi danymi w aplikacji:** kopia jest gotowa (US-001 ✅). Zostały hasło i
   miejsce pliku klucza w notce przekazania ([[NT-007-hand-over-note]]): utrata któregoś z nich = utrata
   kopii. Notkę sprawdzić raz jej własną drogą (`age -d -i …` z hasłem w terminalu — NT-007 → *Input from
@@ -80,8 +77,8 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
 - Poza kodem: *patrz `backlog/non-tech/`*.
 - Odłożone: *patrz `backlog/deferred/`*.
 - Wymagania: *patrz `03_REQUIREMENTS/`* (EPIC-i, US, FR, NFR); architektura i ADR-y: *patrz `04_ARCHITECTURE/`*.
-- **Przed pierwszym pushem (repo publiczne):** twardy warunek z `family-data.md` spełniony —
-  [[ISSUE-006-setup-family-data-guard]] i [[NT-008-publication-review]] zamknięte. Push tylko po „go”.
+- **Repo są publiczne na GitHubie** od 2026-10-07 (*Recently done*). Każdy push tylko po „go”; przegląd
+  imion na wychodzących zmianach czeka na retro (*Do retro*).
 
 ## Retro / fact-confirmation counter
 - Zamknięte pozycje od ostatniego retro: **3** (ostatnie retro: [[2026-10-06-retro-01]]). Co **10** →
@@ -93,7 +90,10 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     uwaga agenta, dopóki nie ma [[ISSUE-003-setup-quality-critic]]. Kandydat: ten sam przegląd imion na
     wychodzących zmianach przy każdym „go”. Dziś to niemożliwe bez prośby autora w sesji, bo agent nie czyta
     `family_data_dir` sam. Do decyzji: zmiana w `family-data.md` (np. lista rdzeni imion w `family_data_dir`,
-    czytana tylko przy „go”) albo prośba autora przy każdym pushu;
+    czytana tylko przy „go”) albo prośba autora przy każdym pushu. **Pierwszy push (2026-10-07) pokazał, że
+    sama prośba nie wystarcza:** odczyt `family_data_dir` zablokował klasyfikator uprawnień Claude Code (dane
+    osobowe), choć autor zgodził się w sesji. Każda z opcji wymaga więc reguły uprawnień w ustawieniach albo
+    przeglądu, który robi sam autor;
   - **po czytaniu `family_data_dir` grep obowiązkowy** ([[ISSUE-014-home-map-of-poland]] → *Self-check*):
     `ui` wpisał do specyfikacji trzy prawdziwe przykłady zaraz po porównaniu z listą autora. Złapane przed
     commitem, bo strażnik nie widzi treści. Do decyzji: krok w regule `family-data.md` albo w checkliście R1;
@@ -117,6 +117,24 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   (zdarzenie) · data zapytania`. **Odpowiedź z faktami o rodzinie trafia do aplikacji, nie tutaj.**
 
 ## Recently done
+- 2026-10-07 — **pierwszy push: trzy repo publiczne na GitHubie** (za „go” autora, stop #3):
+  [grobing-agents](https://github.com/aleksanderginalski/grobing-agents) ·
+  [grobing-vault](https://github.com/aleksanderginalski/grobing-vault) ·
+  [grobing-code](https://github.com/aleksanderginalski/grobing-code). Repo założone puste (bez README,
+  licencji i `.gitignore`), `main` śledzi `origin/main`.
+  - **przed pushem:** 3 commity powstałe po przeglądzie historii z [[NT-008-publication-review]] (zamknięcie
+    NT-008 i ISSUE-015) przeszukane **bez notatek rodziny**. Kody pocztowe, PESEL, adresy, numery kwater i
+    sekrety: 0. Współrzędne i miejscowości: tylko publiczne (znane cmentarze w testach, wynik z bazy OSM) albo
+    wymyślone. Nazwiska osób: 0;
+  - odczyt `family_data_dir` zablokował klasyfikator uprawnień Claude Code mimo zgody autora (*Do retro*).
+    Nazwy z notatek w zmianach ISSUE-015 pokrywa grep `qa` przed commitem (ISSUE-015 → *Verification*);
+  - **granica:** tekstu dopisanego przy zamknięciu ISSUE-015 nikt nie przeszukał nazwami z notatek;
+  - obudził się [[DEF-005-push-gate]] → *In progress*.
+  
+  To nie zamknięcie pozycji, więc licznik retro bez zmian.
+
+  **Dla autora:** repo nie mają pliku `LICENSE` — kod można oglądać, ale nie wolno go używać. Licencję można
+  dodać później.
 - 2026-10-07 — [[ISSUE-015-add-cemetery-from-database]] zamknięte. **Cmentarz dodaje się z wbudowanej bazy
   cmentarzy Polski**, bez sieci:
   - wyciąg z OpenStreetMap: ok. 16 tys. cmentarzy z miejscowością (z dzielnicą w mieście), województwem i
@@ -145,7 +163,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   - wybór autora: **wszystkie trzy repo publiczne**. Skutek dla [[SPIKE-001-map-source-offline]]: nazwy
     cmentarzy autora nigdy nie trafiają do vaulta, tylko liczby.
   
-  Kroki do pushu są w *In progress*. Przegląd imion przy kolejnych pushach czeka na retro.
+  Push odbył się tego samego dnia (wpis wyżej). Przegląd imion przy kolejnych pushach czeka na retro.
 - 2026-10-06 — [[ISSUE-014-home-map-of-poland]] zamknięte. **Ekran główny to mapa Polski**, działająca bez sieci
   od pierwszego uruchomienia:
   - kontur, rzeki i 9 miast z Natural Earth są w aplikacji; `flutter_map` rysuje bez kafelków
