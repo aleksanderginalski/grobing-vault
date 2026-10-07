@@ -254,7 +254,8 @@ Ekran do wybierania; wpisywanie jest rzadkie. Rekordem jest **cmentarz**: ok. 10
   cmentarz stanął.
 - **D12 — [[NFR-004-czytelnosc-w-sloncu]] nie rozstrzyga się tutaj.** Mapę Polski czyta się przy wyborze,
   dokąd jechać. Nazwa ma kolor tekstu (10,0:1), miejscowość i liczby — pomocniczy (5,0:1, AA). Miara zapada
-  przy [[cmentarz]] (ISSUE-012).
+  przy pierwszym ekranie wizyty — mapie cmentarza z pinezkami ([[EPIC-002-wizyta]]), a nie przy [[cmentarz]]
+  w ISSUE-012, który jest ekranem przepisywania w domu ([[cmentarz]] D8, 2026-10-07).
 - **D13 — liczba osób w arkuszu = różne osoby z pochówkiem w grobach tego cmentarza** (osoba z dwoma
   sprzecznymi pochówkami na tym cmentarzu liczy się raz).
 - **D14 — odwzorowanie Merkatora, północ u góry, bez obrotu.**

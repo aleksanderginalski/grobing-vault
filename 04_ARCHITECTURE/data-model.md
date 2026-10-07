@@ -6,7 +6,7 @@ source: "PROJECT_BRIEF §Architecture → Data model (accepted by the author, 20
 FR: ["[[FR-001-provenance]]", "[[FR-002-rodzina-jako-rekord]]", "[[FR-003-wiele-osob-w-grobie]]", "[[FR-004-data-z-dopiskiem]]", "[[FR-005-nazwisko-rodowe]]"]
 ADR: ["[[ADR-001-local-first]]", "[[ADR-006-claimed-value-separate-structures]]"]
 created: 2026-10-05
-updated: 2026-10-06
+updated: 2026-10-07
 ---
 
 # Grobing — Data model
@@ -47,7 +47,7 @@ erDiagram
 | **Family** | 1-2 partnerów · dzieci · własne zdarzenia małżeństwa / końca | osoba może być partnerem w kilku rodzinach → powtórne małżeństwo działa z konstrukcji ([[FR-002-rodzina-jako-rekord]]) |
 | **Event** | typ · **data + kwalifikator** (dokładnie / około / przed / po / między) · miejsce | „ok. 1890" i „przed 1920" to normalne dane ([[FR-004-data-z-dopiskiem]]). Typy: osoby — urodzenie, zgon, **pochówek** (`glossary.md` → *pochówek*: data pochówku to Event, nie cecha powiązania); rodziny — małżeństwo, koniec. Diagram z briefu wymienia tylko birth, death |
 | **Cemetery** | nazwa · miejscowość · punkt środka · link do Grobonetu (jeśli pokryty) · status mapy offline | widok 1; dwa ostatnie pola wypełnia SPIKE-001 / [[ADR-003-map-source-offline]] |
-| **Grave** | **kwatera / rząd / miejsce** (`sector` / `row` / `plot`) · pozycja + **jak ją uzyskano** (pinezka ze zdjęcia satelitarnego / GPS na miejscu) + dokładność · zdjęcia nagrobka · opłata ważna do (S4) | adres zarządcy jest prawdą, pinezka pomocą |
+| **Grave** | **nazwa grobu** (`name`, opcjonalna, wpisuje autor — schemat v3, [[ISSUE-012-transcribe-grave-screen]]) · **kwatera / rząd / miejsce** (`sector` / `row` / `plot`) · pozycja + **jak ją uzyskano** (pinezka ze zdjęcia satelitarnego / GPS na miejscu) + dokładność · zdjęcia nagrobka · opłata ważna do (S4) | adres zarządcy jest prawdą, pinezka pomocą |
 | **Burial** | grób ↔ osoba, wiele na grób; osoba ma osobny wiersz dla każdego grobu, który podaje dla niej jakieś źródło | grób rodzinny mieści kilka osób ([[FR-003-wiele-osob-w-grobie]]); człowiek leży w jednym miejscu, ale źródła mogą się różnić ([[ADR-006-claimed-value-separate-structures]] D2) |
 | **Assertion** (provenance) | **źródło** (nagrobek / notatki / babcia / krewny / akt) + szczegół (kto, który akt) · **status** `CLAIMED / CONFIRMED / CONTRADICTED / UNKNOWN` · kiedy — **przy wierszu *Event* albo *Burial***, którego wartość potwierdza; wartość („co twierdzimy”) żyje w tym wierszu | cytowanie źródła jak w GEDCOM 7; **dwa sprzeczne twierdzenia współistnieją** jako dwa wiersze, każdy ze swoim twierdzeniem ([[FR-001-provenance]], [[ADR-006-claimed-value-separate-structures]]) |
 | **Media** | pliki zdjęć w prywatnym magazynie aplikacji, powiązane z osobą albo grobem | — |

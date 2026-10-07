@@ -3,7 +3,7 @@ title: "Grobing — Glossary"
 type: meta
 status: active
 created: 2026-10-05
-updated: 2026-10-05
+updated: 2026-10-07
 ---
 
 # Grobing — Glossary
@@ -33,6 +33,7 @@ updated: 2026-10-05
 | **kwatera** | **sektor cmentarza** w adresie zarządcy (wiele grobów) | pojedynczym grobem — tak używał tego słowa autor w pierwszym opisie; w danych to pole `sector` |
 | **rząd · miejsce** | dalsza część adresu zarządcy: kwatera → rząd → miejsce | współrzędnymi GPS |
 | **grób** (Grave) | miejsce na cmentarzu z adresem, pinezką i zdjęciami nagrobka | osobą — w grobie rodzinnym leży kilka osób |
+| **nazwa grobu** | opcjonalny tytuł grobu nadany przez autora, np. „Grób rodzinny Nowaków” ([[ISSUE-012-transcribe-grave-screen]], schemat v3) | nazwiskiem osób — aplikacja nie wylicza jej z nazwisk, bo odmiana bywa błędna; bez nazwy grób ma tytuł „Grób” |
 | **pochówek** (Burial) | powiązanie osoba ↔ grób (wiele na jeden grób) | zdarzeniem z datą (data pochówku to Event) |
 | **pinezka** | pozycja grobu na mapie **ze źródłem** (zdjęcie satelitarne / GPS na miejscu) i dokładnością | prawdą o położeniu — prawdą jest adres zarządcy |
 | **rodzina** (Family) | rekord: 1-2 partnerów + dzieci; osoba może być partnerem w kilku rodzinach | „krawędzią" między dwiema osobami — to psuje się przy pierwszym powtórnym małżeństwie |

@@ -8,7 +8,7 @@ verdict-date: null
 verdict-reviewer: null
 source: "PROJECT_BRIEF §Architecture → Sufficiency pass A1 · DoD ISSUE"
 created: 2026-10-05
-updated: 2026-10-06
+updated: 2026-10-07
 ---
 
 # NFR-003 — Migracje schematu
@@ -39,3 +39,7 @@ niezastępowalne i będą żyć latami — aktualizacja aplikacji ze złą migra
     całą.
 
   Sprawdzone na emulatorze: aktualizacja przez wgranie nowej wersji na starą, bez odinstalowania.
+- **2026-10-07 — druga migracja** (v2→v3, [[ISSUE-012-transcribe-grave-screen]]): opcjonalna nazwa grobu, sam
+  `addColumn`. Test z danymi v2→v3 i wygenerowane v1→v3; na emulatorze łańcuch v1→v3. Kopia v2 odtwarza się w
+  aplikacji v3. **Kopia zamawia się zaraz po migracji** (retro 1, R6): start pyta o kopię dopiero po otwarciu bazy,
+  bo migracja zmienia plik, ale nie zgłasza zmian. Test na hoście pokazuje lukę sprzed poprawki i jej zamknięcie.

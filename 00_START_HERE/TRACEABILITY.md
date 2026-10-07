@@ -3,7 +3,7 @@ title: "Grobing — Requirements Traceability"
 type: meta
 status: active
 created: 2026-10-05
-updated: 2026-10-06
+updated: 2026-10-07
 ---
 
 # Grobing — Requirements Traceability
@@ -36,7 +36,7 @@ updated: 2026-10-06
 | n/a — widok 5 (zestaw funkcji): drzewo | §5 M9 | [[EPIC-003-zrozumienie]] | | | | | |
 | n/a — widok 5: suwak czasu | §5 M10 | [[EPIC-003-zrozumienie]] | | | | | |
 | n/a — widok 5: ścieżka między dowolnymi dwiema osobami | §5 M11 | [[EPIC-003-zrozumienie]] | | | | | |
-| n/a — poza ścieżką (warunek kroku 1): przepisanie grobu z osobami | §5 M1 | [[EPIC-001-zabezpiecz-i-przepisz]] | [[US-002-przepisanie-grobu]] | [[ISSUE-011-schema-v2-assertions]] · [[ISSUE-014-home-map-of-poland]] · [[ISSUE-015-add-cemetery-from-database]] | in-progress | ISSUE-011 done · ISSUE-014 done · ISSUE-015 done | ISSUE-011: APPROVED (self-check, 2026-10-06, z uwagami; stop #2 oddany agentowi — aktualizacja v1→v2 na emulatorze sprawdzona przez agenta, odtworzenie kopii v1 tylko na hoście) · ISSUE-014: APPROVED (self-check, 2026-10-06, z uwagami; przegląd `ui` — BLOCKER w krokach poprawiony; stop #2 „ok”, kroki 4–5 pominięte przez autora, pokryte testami i agentem) · ISSUE-015: APPROVED (self-check, 2026-10-07, z uwagami; przegląd `ui` w 2 rundach; stop #2 8 z 8 „tak”) |
+| n/a — poza ścieżką (warunek kroku 1): przepisanie grobu z osobami | §5 M1 | [[EPIC-001-zabezpiecz-i-przepisz]] | [[US-002-przepisanie-grobu]] | [[ISSUE-011-schema-v2-assertions]] · [[ISSUE-014-home-map-of-poland]] · [[ISSUE-015-add-cemetery-from-database]] · [[ISSUE-012-transcribe-grave-screen]] | done | ISSUE-011 done · ISSUE-014 done · ISSUE-015 done · ISSUE-012 done | ISSUE-011: APPROVED (self-check, 2026-10-06, z uwagami; stop #2 oddany agentowi — aktualizacja v1→v2 na emulatorze sprawdzona przez agenta, odtworzenie kopii v1 tylko na hoście) · ISSUE-014: APPROVED (self-check, 2026-10-06, z uwagami; przegląd `ui` — BLOCKER w krokach poprawiony; stop #2 „ok”, kroki 4–5 pominięte przez autora, pokryte testami i agentem) · ISSUE-015: APPROVED (self-check, 2026-10-07, z uwagami; przegląd `ui` w 2 rundach; stop #2 8 z 8 „tak”) · ISSUE-012: APPROVED (self-check, 2026-10-07, z uwagami; przegląd `ui` 0/0/5 MINOR poprawione; stop #2 „ok”, pole „Pochówek” usunięte decyzją autora) · **US-002: APPROVED** (niezależny przegląd, 2026-10-07, z uwagami; AC-3 po D7) |
 | n/a — poza ścieżką (warunek kroku 1): wprowadzanie całymi rodzinami | §5 M1 · G6 | [[EPIC-001-zabezpiecz-i-przepisz]] | [[US-003-przepisanie-rodziny]] | | ready | | |
 | n/a — poza ścieżką (warunek kroku 1): fakty od babci obok notatek | §2 · §5 M1 | [[EPIC-001-zabezpiecz-i-przepisz]] | [[US-004-fakt-od-babci]] | | ready | | |
 | n/a — poza ścieżką (warunek kroku 1): zdjęcia nagrobka i osoby | §5 M1 | [[EPIC-001-zabezpiecz-i-przepisz]] | [[US-005-zdjecia]] | | ready | | |

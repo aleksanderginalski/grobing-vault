@@ -18,24 +18,22 @@ updated: 2026-10-07
 MVP — od startu, cały produkt (Meta-decyzja 4).
 
 ## In progress
-- [[US-002-przepisanie-grobu]] w toku: [[ISSUE-011-schema-v2-assertions]] (schemat v2),
-  [[ISSUE-014-home-map-of-poland]] (mapa Polski jako ekran główny) i [[ISSUE-015-add-cemetery-from-database]]
-  (dodanie cmentarza z bazy) zamknięte. Została [[ISSUE-012-transcribe-grave-screen]].
+- **[[US-002-przepisanie-grobu]] zamknięta 2026-10-07** (werdykt US: APPROVED, niezależny przegląd, z uwagami;
+  AC-3 doprecyzowane po D7 — formularz bez daty pochówku). Następna w kolejności: [[US-005-zdjecia]] — do
+  rozpisania na ISSUE.
 - **Następne kroki, w tej kolejności (decyzja autora 2026-10-06, *„ok plan brzmi dobrze”*; ISSUE-015 dołożona
   na stopie #1 ISSUE-014, *„wygląda dobrze”*):**
   1. ~~[[ISSUE-014-home-map-of-poland]]~~ — zamknięte 2026-10-06;
   2. ~~[[ISSUE-015-add-cemetery-from-database]]~~ — zamknięte 2026-10-07;
-  3. [[ISSUE-012-transcribe-grave-screen]] — „Otwórz cmentarz” w arkuszu mapy (z ISSUE-014, D5); cmentarz jak
-     R2, ale bez zdjęcia satelitarnego; grób jak R4
-     z nazwą grobu (migracja v2→v3); formularz osoby z biografią. Zapis faktów jest gotowy w
-     `grobing-code/lib/data/claims.dart`;
-  4. [[US-005-zdjecia]] — zdjęcia grobu i osoby;
+  3. ~~[[ISSUE-012-transcribe-grave-screen]]~~ — zamknięte 2026-10-07;
+  4. [[US-005-zdjecia]] — zdjęcia grobu i osoby. Miejsca na zdjęcia są wskazane w specyfikacjach ([[grob]] D4,
+     [[wpis-osoby]] → *Decisions* → „Zdjęcie i relacje później”); `ui` pokaże je na makiecie przed planem;
   5. [[US-003-przepisanie-rodziny]] — relacje w formularzu osoby;
   6. [[SPIKE-001-map-source-offline]] — zdjęcie satelitarne cmentarza, znicze na grobach, plany z kwaterami
      (`01_INBOX/2026-10-05-plany-cmentarzy.md`). Baza cmentarzy przeszła do ISSUE-015.
   
   **Każda pozycja z ekranem: `ui` → `planning`** (`autonomous-flow.md`). Wygląd: `05_DESIGN/brand/`
-  (wytyczne v1.5 i referencje R1–R4 z kick-offu).
+  (wytyczne v1.6 i referencje R1–R4 z kick-offu).
 - Poza tą kolejnością:
   - [[NT-001-photograph-the-notes]]: zdjęcia zrobione (33). Zostało: zaszyfrowane miejsce, sprawdzenie
     kopii w WhatsAppie i otwarcie kopii — *Resolution*;
@@ -81,7 +79,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   paczki (decyzja autora 2026-10-07); przegląd imion na wychodzących zmianach czeka na retro (*Do retro*).
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **3** (ostatnie retro: [[2026-10-06-retro-01]]). Co **10** →
+- Zamknięte pozycje od ostatniego retro: **4** (ostatnie retro: [[2026-10-06-retro-01]]). Co **10** →
   retro + pytanie o 3–5 nośnych faktów (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**;
   podbija go `docs` przy zamknięciu, a zeruje go retro.
 - Do retro (zebrane po drodze, bez decyzji):
@@ -102,7 +100,14 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     po checkliście. Zgłoszone od razu, skutek bez znaczenia (ta sama zmiana weszła do commita). Do decyzji:
     czy reguła ma wprost wymieniać `git rm` i `git restore`;
   - **zawieszony przebieg testów** (ISSUE-014 → *Verification*): drift zamyka strumień na timerze fałszywego
-    czasu testu. Wzorzec sprzątania jest w testach; czy dopisać go do README `grobing-code` → testy;
+    czasu testu. Wzorzec sprzątania jest w testach; czy dopisać go do README `grobing-code` → testy.
+    **Drugi przypadek w ISSUE-012** (→ *Verification*): zapis albo odczyt bazy w `tester.runAsync` przy podpiętym
+    ekranie ze strumieniem drift wisi bez końca (zakleszczenie na blokadzie bazy), a limit czasu testu go nie
+    przerywa. Wzorzec `leaveScreen` jest w `grave_screens_test.dart`. Po zawieszonym przebiegu `flutter test` padł
+    na zablokowanym `sqlite3.dll` i zapisał `flutter_01.log` w korzeniu repo (usunięty przed commitem). Są już
+    dwie instancje, więc kandydat na krótką sekcję README → testy;
+  - **wstępne dane debug** (ISSUE-012 → *Notes*): wszyscy wymyśleni z ISSUE-007 mają nazwisko „Wymyślona”, także
+    „Ojciec” — na ekranach wygląda to jak błąd odmiany;
   - **polskie `MaterialLocalizations`** (przegląd `ui`, uwaga 11): systemowe podpowiedzi są po angielsku —
     kandydat na małą pozycję;
   - **agent `architect`** — kick-off (MD3c) dał mu sygnał „decyzja wymagająca ADR-a poza kick-offem”. Ten
@@ -118,6 +123,30 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   (zdarzenie) · data zapytania`. **Odpowiedź z faktami o rodzinie trafia do aplikacji, nie tutaj.**
 
 ## Recently done
+- 2026-10-07 — [[ISSUE-012-transcribe-grave-screen]] zamknięte, a z nim **[[US-002-przepisanie-grobu]]** (werdykt US:
+  APPROVED, niezależny przegląd, z uwagami). **Grób z notatek da się przepisać w aplikacji:**
+  - arkusz cmentarza na mapie → „Otwórz cmentarz” → lista grobów ([[cmentarz]] v2.1: „R2 bez satelity”, bez pola
+    mapy, dopóki groby nie mają pinezek) → „Dodaj grób” → formularz pierwszej osoby → widok grobu jak R4 bez
+    zdjęć ([[grob]] v2.1) → „Dodaj osobę”;
+  - formularz osoby ([[wpis-osoby]] v2.2): imiona, nazwisko (w grobie podpowiedziane), z domu, urodzenie i zgon z
+    dopiskiem i podglądem, „kim była” jako krótka biografia z linią źródła; daty i pochówek zawsze ze źródłem
+    „notatki”, `CLAIMED`; zapis całością albo wcale;
+  - **nazwa grobu** z ✎ w widoku grobu — schemat v3 (migracja v2→v3 z testem; kopia v2 odtwarza się w v3);
+  - **poprawa wpisu** (D1): wartości poprawiane w miejscu, data z kilku źródeł tylko do odczytu;
+  - **kopia zamawia się zaraz po migracji** (retro 1, R6 dowiezione): start pyta o kopię dopiero po otwarciu bazy.
+
+  Na stopie #2 autor zdecydował (D7): **bez pola „Pochówek”** w formularzu — model danych zachowuje datę pochówku,
+  [[FR-004-data-z-dopiskiem]] ma linię o pokryciu. Na stopie #1 autor zapytał o siatkę kwater (→
+  `01_INBOX/2026-10-05-plany-cmentarzy.md`), relacje (→ US-003) i zdjęcia (→ US-005). Przegląd `ui`: 0 BLOCKER,
+  0 MAJOR, 5 MINOR poprawione przed stopem; wytyczne [[style-b]] v1.6. Werdykt `qa`: APPROVED (self-check, z
+  uwagami); stop #2 „ok”. Testy: 341.
+
+  **Dla autora:**
+  - **czy notatki podają daty pochówku — niesprawdzone.** Pierwszy taki wpis przy przepisywaniu
+    ([[NT-002-transcribe-the-notes]]) to sygnał, żeby pole wróciło (bez migracji);
+  - na emulatorze `Medium_Phone` jest build release z publicznym cmentarzem (Powązki) i grobem z kroku stopu #2
+    (wymyślone osoby). Kopia w tle po aktualizacji zadziałała na starym buildzie debug z konfiguracją testową
+    z ISSUE-010, a na obecnym release kopia nie jest skonfigurowana.
 - 2026-10-07 — **push bez pytania** (decyzja autora, po pierwszym pushu): `docs` wypycha paczkę zaraz po
   commicie. W retro 1 autor chciał automatu dla commitu i pushu, a zapis R1 („push tylko po „go””) tego nie
   oddał. „go” zostaje tylko tam, gdzie odpowiedź może brzmieć „nie”: commit spoza łańcucha (np. z VS Code),

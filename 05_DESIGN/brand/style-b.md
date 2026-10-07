@@ -1,5 +1,5 @@
 ---
-title: "Style B — visual guidelines (v1.5)"
+title: "Style B — visual guidelines (v1.6)"
 type: design-guidelines
 status: active
 owner: ui
@@ -51,7 +51,8 @@ sam (SC 1.4.1):
 |---|---|---|
 | kontrast tekstu | **≥ 4,5:1** | [WCAG 2.2](https://www.w3.org/TR/WCAG22/) SC 1.4.3 Contrast (Minimum), AA: *„text … has a contrast ratio of at least 4.5:1”* |
 | kontrast elementów interfejsu (ramka pola, obrys przycisku, ikona, która coś znaczy) | **≥ 3:1** wobec sąsiedniego koloru | WCAG 2.2 SC 1.4.11 Non-text Contrast, AA |
-| kolor jako nośnik | **nigdy jedyny**: błąd, brak, wybór i stan mają też tekst albo ikonę | WCAG 2.2 SC 1.4.1 Use of Color, A |
+| kolor jako nośnik | **nigdy jedyny**: błąd, brak, wybór i stan mają też tekst albo ikonę. Pozycja wybrana w menu ma ikonę `check` i stan „zaznaczone” dla czytnika, nie tylko akcent (v1.6) | WCAG 2.2 SC 1.4.1 Use of Color, A |
+| rozmiar kontrolki z tekstem | **najmniejszy, nie stały**: przycisk, link i pole rosną z systemowym rozmiarem tekstu, zamiast ucinać napis (v1.6 — druga instancja po linku z v1.5) | WCAG 2.2 SC 1.4.4 Resize Text, AA |
 | cel dotyku | **≥ 48 × 48 dp** | [Android — Make apps more accessible](https://developer.android.com/guide/topics/ui/accessibility/apps) → *Use large, simple controls*: *„at least 48dp×48dp”* |
 | rozmiary tekstu | treść i tekst wpisywany **≥ 16 sp**; drobny tekst pomocniczy ≥ 13 sp; etykieta przycisku 14–16 sp, waga 500 | decyzja projektowa (nie norma) — dane wpisuje się szybko i trzeba je odczytać bez mrużenia oczu |
 | **kandydat** dla ekranów wizyty | **≥ 7:1** dla tekstu | WCAG 2.2 SC 1.4.6 Contrast (Enhanced), AAA. **Nie obowiązuje jeszcze:** propozycja miary dla [[NFR-004-czytelnosc-w-sloncu]] (`⚠️ OPEN` tam), decyzja przy pierwszym ekranie wizyty |
@@ -69,6 +70,7 @@ wzorem. **Przelicz przy każdej zmianie tokenów.**
 | tło na akcencie (napis na przycisku głównym) | 8,81 | — | 4,5 | ✅ |
 | obrys *(kandydat `6B6862`)* | 3,40 | 3,10 | 3 (SC 1.4.11) | ✅ |
 | błąd *(kandydat `E07A6F`)* | 6,45 | 5,89 | 4,5 | ✅ |
+| tekst na zaznaczeniu tekstu (domyślne zaznaczenie Fluttera: akcent 40% na tle ≈ `#664D26`) *(v1.6)* | 4,60 | — | 4,5 | ✅ — tuż nad progiem: **nie zwiększać krycia zaznaczenia** |
 
 **Wniosek:** wszystkie pary spełniają AA, a tekst pomocniczy nie spełnia kandydata 7:1. Jeśli ekrany
 wizyty przyjmą 7:1, informacja potrzebna na cmentarzu (adres kwatery, lata) nie może być w kolorze
@@ -87,7 +89,8 @@ pomocniczym albo ten token trzeba rozjaśnić. Do rozstrzygnięcia przy pierwszy
    - **w oknie dialogowym:** przyciski tekstowe, a potwierdzające w akcencie (wzorzec okien Material);
    - **przycisk tekstowy poza oknem** (v1.4): w akcencie, gdy jest jedynym działaniem dalej (np. „Dodaj
      ręcznie” pod wynikami); w kolorze tekstu, gdy stoi obok wypełnionego (np. „Zapisz bez punktu” obok
-     „Zapisz”), żeby akcent miało tylko główne działanie;
+     „Zapisz”), żeby akcent miało tylko główne działanie. **Przycisk tekstowy w linii treści** (np. „Zmień”
+     przy źródle biografii) jest w akcencie (v1.6);
    - **link zewnętrzny:** tekst w akcencie, podkreślony, ze strzałką „↗” (np. „Grobonet ↗”, R2). Szczegóły
      (v1.5, [[ISSUE-015-add-cemetery-from-database]]):
      - **strzałka to ikona `north_east`** w akcencie, a nie znak U+2197, bo Android rysuje ten znak jako
@@ -160,8 +163,9 @@ wysokokontrastowy, bez rezygnacji ze stylu B. Wynik i data trafiają tutaj i do
   2026-10-06).
 - **Cel dotyku 48 dp przycisków** zapewnia domyślne `MaterialTapTargetSize.padded` motywu na Androidzie
   (widoczny przycisk tekstowy ma 40 dp). `shrinkWrap` obniżyłby cel do 40 dp, więc ekrany go nie używają.
-- **Nazwa grobu** „Grób rodzinny Nowaków” (R2, R4) wymaga odmiany nazwiska w dopełniaczu liczby mnogiej
-  albo pola „nazwa grobu” w schemacie. Patrz [[grob]] → *Open*.
+- ~~**Nazwa grobu**~~ — rozstrzygnięte 2026-10-07: opcjonalne pole w schemacie, wpisywane ręcznie, bez
+  wyliczania z nazwisk (decyzja autora, [[ISSUE-012-transcribe-grave-screen]]; [[grob]] D1). Bez nazwy grób
+  ma tytuł „Grób”, a na liście [[cmentarz]] tytułem są osoby.
 - **Ikona znicza** nie istnieje w Material Icons. Własna ikona wektorowa, jedna na całą aplikację (wersja
   liniowa i wypełniona), powstaje z [[ISSUE-014-home-map-of-poland]]; sylwetka i wersje: [[cmentarze]] →
   *Style B rules applied*.
@@ -199,3 +203,9 @@ wysokokontrastowy, bez rezygnacji ze stylu B. Wynik i data trafiają tutaj i do
   (znak U+2197 Android rysuje jako kolorowe emoji), ikona rośnie z tekstem, cel ≥ 48 dp rośnie, a tekst się
   zawija. Tokeny bez zmian, więc pomiar z 2026-10-06 obowiązuje (przeliczony z `theme.dart` 2026-10-07,
   wyniki te same).
+- 2026-10-07 — **v1.6, po przeglądzie ekranów przepisywania** (`ui` jako subagent `qa`,
+  [[ISSUE-012-transcribe-grave-screen]]): kontrolka z tekstem ma rozmiar najmniejszy i rośnie z tekstem (SC 1.4.4);
+  pozycja wybrana w menu ma ikonę `check` (SC 1.4.1); przycisk tekstowy w linii treści w akcencie; nowa para w
+  pomiarze — tekst na zaznaczeniu 4,60:1. Tokeny bez zmian.
+- 2026-10-07 — *Known gaps*: nazwa grobu rozstrzygnięta (`ui` przed planem [[ISSUE-012-transcribe-grave-screen]]).
+  Reguły i tokeny bez zmian, więc wersja zostaje v1.5.

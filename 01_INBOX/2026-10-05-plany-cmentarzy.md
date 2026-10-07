@@ -44,3 +44,11 @@ dotknięciem na mapie.
 > na stopie #1 ISSUE-014). Falsyfikator: wbudowany wyciąg OpenStreetMap (ODbL), 8 z 8 cmentarzy autora w bazie
 > (ISSUE-014 → *Stop #1 — round 1*). **„Import mapy” cmentarza** (granice, zdjęcie satelitarne) i plany z
 > kwaterami zostają tutaj i w [[SPIKE-001-map-source-offline]].
+
+## Related idea — a grid of sectors to tap (author, 2026-10-07)
+Na stopie #1 [[ISSUE-012-transcribe-grave-screen]] autor zapytał, czy oprócz „Dodaj grób” nie mogłaby być
+**siatka kwater**: dotknięcie kwatery na planie cmentarza mówi, która to kwatera. Autor nie wiedział, jak takie plany
+wyglądają, i odłożył to, jeśli to temat na osobną pozycję. Notatki nie mają adresów kwater, więc siatka pomoże na
+cmentarzu, a nie przy przepisywaniu w domu. Stoi na tym samym falsyfikatorze co plany wyżej: **ile cmentarzy autora
+ma plan z kwaterami** ([[SPIKE-001-map-source-offline]] krok 1). Kierunek ekranu po SPIKE-001: [[cmentarz]] → D1
+(mapa nad arkuszem grobów).
