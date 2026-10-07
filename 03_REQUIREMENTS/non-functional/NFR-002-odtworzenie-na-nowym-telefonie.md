@@ -32,6 +32,10 @@ kopią (G1).
 - **Odcisk w kopii i na PC** (2026-10-06, [[ISSUE-008-backup-write]]): manifest kopii niesie
   `data_fingerprint`, więc odtworzenie sprawdza wynik jedną liczbą. Na PC tę samą liczbę z rozpakowanej
   kopii liczy `tool/fingerprint.dart` (tą samą funkcją co ekran) — format: `04_ARCHITECTURE/backup-format.md`.
+- ✅ **2026-10-07 — odtworzenie ze zdjęciem** ([[ISSUE-016-photos-grave-and-person]]): kopia z `Medium_Phone` (grób ze
+  zdjęciem nagrobka) odtworzona na `Grobing_Restore`, odcisk danych zgodny, grób pokazuje zdjęcie; kopia rozszyfrowana
+  też niezależnym dekoderem na PC. Zdjęcie dodane albo usunięte w trakcie kopii nie psuje jej
+  ([[ADR-008-photos-access-copy-and-backup-consistency]]).
 - Kopia ≠ eksport (`glossary.md`): kopia jest pełna, zaszyfrowana, do odtworzenia; eksport jest czytelny
   bez aplikacji, dla rodziny. To NFR dotyczy kopii.
 - **Sama kopia Androida się nie liczy** — limit 25 MB na aplikację czyni ją cicho niepełną ze zdjęciami

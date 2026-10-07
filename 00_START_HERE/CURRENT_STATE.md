@@ -19,15 +19,18 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
 
 ## In progress
 - **[[US-002-przepisanie-grobu]] zamknięta 2026-10-07** (werdykt US: APPROVED, niezależny przegląd, z uwagami;
-  AC-3 doprecyzowane po D7 — formularz bez daty pochówku). Następna w kolejności: [[US-005-zdjecia]] — do
-  rozpisania na ISSUE.
+  AC-3 doprecyzowane po D7 — formularz bez daty pochówku).
+- **[[ISSUE-016-photos-grave-and-person]] zamknięta 2026-10-07** (zdjęcie nagrobka i fundament zdjęć). Następna:
+  **[[ISSUE-017-person-photos]]** — baza zdjęć osoby, zdjęcia dzielone, „profilowe”, schemat v4. Pierwszy krok: `ui`
+  projektuje bazę zdjęć osoby ([[wpis-osoby]] v3 to kierunek z jednym zdjęciem — do przeprojektowania), potem
+  `planning` z ADR o modelu (`OBJE` w GEDCOM 7). [[US-005-zdjecia]] idzie do werdyktu po ISSUE-017.
 - **Następne kroki, w tej kolejności (decyzja autora 2026-10-06, *„ok plan brzmi dobrze”*; ISSUE-015 dołożona
   na stopie #1 ISSUE-014, *„wygląda dobrze”*):**
   1. ~~[[ISSUE-014-home-map-of-poland]]~~ — zamknięte 2026-10-06;
   2. ~~[[ISSUE-015-add-cemetery-from-database]]~~ — zamknięte 2026-10-07;
   3. ~~[[ISSUE-012-transcribe-grave-screen]]~~ — zamknięte 2026-10-07;
-  4. [[US-005-zdjecia]] — zdjęcia grobu i osoby. Miejsca na zdjęcia są wskazane w specyfikacjach ([[grob]] D4,
-     [[wpis-osoby]] → *Decisions* → „Zdjęcie i relacje później”); `ui` pokaże je na makiecie przed planem;
+  4. [[US-005-zdjecia]] → ~~[[ISSUE-016-photos-grave-and-person]]~~ (zamknięte 2026-10-07), potem
+     [[ISSUE-017-person-photos]] (zdjęcia osób; przed planem `ui` projektuje bazę zdjęć osoby);
   5. [[US-003-przepisanie-rodziny]] — relacje w formularzu osoby;
   6. [[SPIKE-001-map-source-offline]] — zdjęcie satelitarne cmentarza, znicze na grobach, plany z kwaterami
      (`01_INBOX/2026-10-05-plany-cmentarzy.md`). Baza cmentarzy przeszła do ISSUE-015.
@@ -79,7 +82,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   paczki (decyzja autora 2026-10-07); przegląd imion na wychodzących zmianach czeka na retro (*Do retro*).
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **4** (ostatnie retro: [[2026-10-06-retro-01]]). Co **10** →
+- Zamknięte pozycje od ostatniego retro: **5** (ostatnie retro: [[2026-10-06-retro-01]]). Co **10** →
   retro + pytanie o 3–5 nośnych faktów (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**;
   podbija go `docs` przy zamknięciu, a zeruje go retro.
 - Do retro (zebrane po drodze, bez decyzji):
@@ -123,6 +126,33 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   (zdarzenie) · data zapytania`. **Odpowiedź z faktami o rodzinie trafia do aplikacji, nie tutaj.**
 
 ## Recently done
+- 2026-10-07 — [[ISSUE-016-photos-grave-and-person]] zamknięte. **Grób ma zdjęcie nagrobka:**
+  - pole „Dodaj zdjęcie nagrobka” w miejscu zdjęcia, nad tytułem (decyzja autora na stopie #2, [[grob]] v3.2 D12) →
+    galeria albo aparat → zdjęcie nad tytułem; podgląd na pełnym ekranie z przybliżeniem; „Zmień zdjęcie” i „Usuń
+    zdjęcie” (z oknem); miniatura nagrobka na liście grobów;
+  - zdjęcie w aplikacji to **kopia dostępowa: JPEG 2048 px, bez EXIF** (decyzja autora D2'), oryginał zostaje w galerii
+    albo na papierze — [[ADR-008-photos-access-copy-and-backup-consistency]];
+  - **naprawiona luka w kopii z ISSUE-008:** zdjęcie dodane w trakcie kopii dawało kopię, której żadne odtworzenie by
+    nie przyjęło (dziś nieosiągalne, ta pozycja by ją otworzyła) — jedna lista plików i sprzątanie (ADR-008 pkt 3);
+  - bez nowych uprawnień; APK 57,1 MB (+0,8 MB).
+
+  Stop #1 w dwóch rundach: autor rozdzielił zdjęcia — nagrobek jedno zdjęcie, a osoby **baza zdjęć, dzielona, z
+  „profilowym”** → [[ISSUE-017-person-photos]] (schemat v4). Przegląd `ui`: 0 BLOCKER, 1 MAJOR poprawiony przed stopem.
+  Werdykt `qa`: APPROVED (self-check, z uwagami); stop #2 „ok”. Testy: 367.
+
+  **Dla autora:**
+  - okno wyboru zdjęć na Androidzie 16 wymaga „Done” także przy jednym zdjęciu — to system, nie aplikacja;
+  - zdjęć HEIF nie sprawdzono (emulator ich nie zrobi) — pierwsze prawdziwe zdjęcie z Twojego telefonu przy MVP;
+  - „Stan danych” przez godzinę po zmianie albo usunięciu zdjęcia pokazuje więcej plików niż wpisów — sprzątanie, nie
+    błąd;
+  - na `Medium_Phone` kopia jest skonfigurowana **do Pobranych** emulatora (hasło testowe), a `Grobing_Restore` ma dane
+    z tej kopii; jego stare ustawienia kopii wskazują folder `Grobing-proba` w Twoim Dysku (wymyślone dane).
+- 2026-10-07 — [[US-005-zdjecia]] rozpisana na [[ISSUE-016-photos-grave-and-person]] i [[ISSUE-017-person-photos]]
+  (`docs`). Najpierw jedna pozycja (decyzja autora w `pm`), a na stopie #1 autor chciał dla osób **bazy zdjęć,
+  dzielonej między osoby, z „profilowym”**, a nagrobkowi wystarczy jedno zdjęcie. To zmiana schematu, więc podział:
+  016 — nagrobek i fundament (bez zmiany schematu), 017 — zdjęcia osób (schemat v4, model jak `OBJE` w GEDCOM 7).
+  Zdjęcia w aplikacji: **2048 px, JPEG 85** („raczej podglądowe”), oryginał zostaje w galerii albo na papierze. To
+  rozpisanie, nie zamknięta pozycja, więc licznik retro bez zmian.
 - 2026-10-07 — [[ISSUE-012-transcribe-grave-screen]] zamknięte, a z nim **[[US-002-przepisanie-grobu]]** (werdykt US:
   APPROVED, niezależny przegląd, z uwagami). **Grób z notatek da się przepisać w aplikacji:**
   - arkusz cmentarza na mapie → „Otwórz cmentarz” → lista grobów ([[cmentarz]] v2.1: „R2 bez satelity”, bez pola

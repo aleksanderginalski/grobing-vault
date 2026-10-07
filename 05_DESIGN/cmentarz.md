@@ -1,16 +1,16 @@
 ---
 screen: "Cmentarz — groby na cmentarzu"
-items: ["[[ISSUE-012-transcribe-grave-screen]]"]
-us: "[[US-002-przepisanie-grobu]]"
+items: ["[[ISSUE-012-transcribe-grave-screen]]", "[[ISSUE-016-photos-grave-and-person]]"]
+us: "[[US-002-przepisanie-grobu]] · [[US-005-zdjecia]]"
 journey-step: "n/a — M1 (warunek kroku 1 UJ-001); docelowo mapa cmentarza z arkuszem grobu (R2, krok 2 UJ-001, M3)"
-mockup: "katalog tymczasowy sesji 2026-10-07: makieta-cmentarz-grob-osoba.html (ramki 1–2, 8)"
+mockup: "katalog tymczasowy sesji 2026-10-07: makieta-cmentarz-grob-osoba.html (ramki 1–2, 8, ISSUE-012) · makieta-zdjecia.html (ramka 9, ISSUE-016)"
 updated: 2026-10-07
 ---
 
 # Cmentarz — specyfikacja
 
 > Żywy plik: `ui` aktualizuje go przy każdej pozycji, która ten ekran zmienia. Prawdą o ekranie jest ten
-> plik; szkic i makieta to podgląd. Wytyczne: [[style-b]] (v1.5) · referencja: [[references]] → **R2**.
+> plik; szkic i makieta to podgląd. Wytyczne: [[style-b]] (v1.8) · referencja: [[references]] → **R2**.
 >
 > **Wersja 2 (2026-10-07, przed planem ISSUE-012)** — przebudowa według decyzji autora z 2026-10-06
 > ([[ISSUE-012-transcribe-grave-screen]] → *Input from the author*): **cmentarz jak R2, ale bez zdjęcia
@@ -21,6 +21,10 @@ updated: 2026-10-07
 > **Wersja 2.1 — przegląd `ui` zbudowanego ekranu (2026-10-07):** lista kończy się nad przypiętym „Dodaj grób”
 > (zamiast przewijać się pod nim — skutek ten sam: ostatnia karta jest cała widoczna). Osoba bez imion i nazwiska
 > (tylko z innych danych): „Osoba bez imienia”. Reszta zgodna ze zbudowanym ekranem.
+>
+> **Wersja 3 (2026-10-07, przed planem [[ISSUE-016-photos-grave-and-person]]):** karta grobu ze zdjęciem ma z
+> lewej **miniaturę zdjęcia nagrobka** (element 3 (d)) — „miejsce na zdjęcie” z arkusza grobu, którego chciał
+> autor (ISSUE-012 → *Input from the author* 2), i miniatura nagrobka z R2. Grób bez zdjęcia — karta bez zmian.
 
 ## Purpose
 Groby przepisane na jednym cmentarzu i wejście do dodania kolejnego grobu z notatek. Każda karta grobu niesie
@@ -40,7 +44,7 @@ treść arkusza grobu z R2 — nazwę, adres, kto tam leży — i mówi, czy gr�
 |---|---|---|---|---|---|---|
 | 1 | **Pasek:** wstecz + **nazwa cmentarza** (20 sp, półgruby, do 2 linii), pod nią miejscowość (14 sp, tekst pomocniczy; bez miejscowości — brak linii) | pasek | wstecz → [[cmentarze]] | — | — | R2 (nagłówek) |
 | 2 | **Podsumowanie:** „3 groby · 6 osób” (14 sp, tekst pomocniczy), margines 16 dp | tekst | — | — | — | decyzja projektowa (postęp przepisywania, NT-002) · [[cmentarze]] D13 (ta sama liczba osób co w arkuszu) |
-| 3 | **Arkusz grobów** — karty na powierzchni (promień 16 dp, odstęp 8 dp, margines 16 dp) w kolejności wpisania. Karta, od góry: **(a) tytuł** — nazwa grobu (16 sp, półgruby, kolor tekstu, do 2 linii); bez nazwy tytułem są **osoby w grobie**: imiona i nazwiska po przecinku, ten sam krój, do 2 linii, potem „i jeszcze 2”. **(b) osoby** — tylko gdy tytułem jest nazwa: imiona i nazwiska po przecinku (14 sp, tekst pomocniczy, do 2 linii, potem „i jeszcze 2”). **(c) adres** (14 sp, tekst pomocniczy): „Kwatera B · Rząd 4 · Miejsce 12”, a bez pinezki dopisane „· bez pinezki”; bez adresu „Bez adresu kwatery · bez pinezki”. Chevron „›” po prawej. Karta ≥ 64 dp | lista kart | dotknięcie → [[grob]] | kolejność wpisania | — | AC-1 · AC-5 · R2 (arkusz grobu) · decyzja autora (nazwa grobu) |
+| 3 | **Arkusz grobów** — karty na powierzchni (promień 16 dp, odstęp 8 dp, margines 16 dp) w kolejności wpisania. Karta, od góry: **(a) tytuł** — nazwa grobu (16 sp, półgruby, kolor tekstu, do 2 linii); bez nazwy tytułem są **osoby w grobie**: imiona i nazwiska po przecinku, ten sam krój, do 2 linii, potem „i jeszcze 2”. **(b) osoby** — tylko gdy tytułem jest nazwa: imiona i nazwiska po przecinku (14 sp, tekst pomocniczy, do 2 linii, potem „i jeszcze 2”). **(c) adres** (14 sp, tekst pomocniczy): „Kwatera B · Rząd 4 · Miejsce 12”, a bez pinezki dopisane „· bez pinezki”; bez adresu „Bez adresu kwatery · bez pinezki”. Chevron „›” po prawej. Karta ≥ 64 dp. **(d) miniatura (v3)** — tylko gdy grób ma zdjęcie: zdjęcie nagrobka (jedno — [[grob]] D9), kwadrat **56 dp** z zaokrągleniem 8 dp, przycięty ze środka, z lewej, wyśrodkowany w pionie, odstęp 12 dp do tekstu; poza czytnikiem (kartę opisuje tekst). Bez zdjęcia: bez miniatury i bez wcięcia ([[grob]] D11) | lista kart | dotknięcie → [[grob]] | kolejność wpisania | — | AC-1 · AC-5 · R2 (arkusz grobu) · decyzja autora (nazwa grobu) · US-005 AC-1 · uwaga autora 2 (ISSUE-012) |
 | 4 | **„Dodaj grób”** — przycisk wypełniony (główne działanie), ≥ 52 dp, **przypięty na dole**, pełna szerokość minus marginesy, nad paskiem gestów; lista przewija się pod nim, a ostatnia karta ma pod sobą odstęp na wysokość przycisku | przycisk główny | dotknięcie → [[wpis-osoby]] „nowy grób” | — | — | *What to build* 2 |
 
 Imię i nazwisko w liście osób: „Imiona Nazwisko” bez nazwiska rodowego — „z d.” jest w [[grob]]. Osoba bez
@@ -55,8 +59,24 @@ osoba z dwoma pochówkami stoi w obu grobach, jak w [[grob]].
 | błąd | „Nie udało się odczytać grobów.” (tekst pomocniczy) + „Spróbuj ponownie” (przycisk z obrysem); „Dodaj grób” nieaktywny, bo nie wiadomo, do czego dodaje |
 | wczytywanie | wskaźnik postępu w środku (lokalna baza — zwykle niewidoczny) |
 | grób bez osób | może przyjść z innych danych (z interfejsu nie powstaje): tytuł karty „Grób bez wpisanych osób” w kolorze pomocniczym |
+| brak pliku zdjęcia (v3) | wpis zdjęcia jest, pliku nie ma: karta bez miniatury (o braku mówi [[grob]] → *States*) |
 
 ## Sketch
+v3 — karta ze zdjęciem nagrobka (pierwsza) obok karty bez zdjęcia:
+```
+│ ╭──────────────────────────────╮ │
+│ │ ▓▓▓▓  Grób rodzinny        › │ │  ← miniatura 56 dp
+│ │ ▓▓▓▓  Wymyślonych            │ │
+│ │       Jan Wymyślony, Anna    │ │
+│ │       Wymyślona, Józef W…    │ │
+│ ╰──────────────────────────────╯ │
+│ ╭──────────────────────────────╮ │
+│ │ Maria Próbna, Piotr Próbny › │ │  ← bez zdjęcia: jak v2
+│ │ Kwatera B · Rząd 3 · …       │ │
+│ ╰──────────────────────────────╯ │
+```
+
+v2:
 ```
 ┌──────────────────────────────────┐
 │ ←  Cmentarz Wymyślony            │
@@ -97,8 +117,9 @@ Rekordem jest **grób**: ok. 50 na całe notatki (G6, [[NT-002-transcribe-the-no
 ## Style B rules applied
 - **Reguła 1:** jedyny wypełniony przycisk to „Dodaj grób” — w przepisywaniu to powtarzana czynność tego
   ekranu. Bez znicza (reguła 8: „Dodaj” to działanie, nie miejsce pamięci).
-- **Reguły 2 i 11:** karty na powierzchni z chevronem. **Bez miniatury** do [[US-005-zdjecia]] i bez
-  zastępczego obrazka.
+- **Reguły 2 i 11:** karty na powierzchni z chevronem. **Miniatura zdjęcia nagrobka z lewej, gdy zdjęcie jest**
+  (v3), bez zastępczego obrazka.
+- **Reguła 14 (v1.7):** miniatura bez filtrów i bez tekstu na niej.
 - **Reguła 4:** tytuł paska i tytuły kart półgrube.
 - **Reguła 5:** margines 16 dp, 8 dp między kartami, 24 dp między podsumowaniem a paskiem.
 - **Reguła 6:** adres pełnymi słowami, liczby odmienione (`polish.dart` → `gravesLabel`, `peopleLabel`).
@@ -115,6 +136,7 @@ Rekordem jest **grób**: ok. 50 na całe notatki (G6, [[NT-002-transcribe-the-no
 | ISSUE-012: „Otwórz cmentarz” otwiera ekran cmentarza | [[cmentarze]] element 7 → 1 | arkusz cmentarza na mapie → „Otwórz cmentarz” → pasek z nazwą tego cmentarza |
 | decyzja autora 2026-10-06: nazwa grobu | 3 (a) | grób z nazwą nadaną w [[grob]] ma ją jako tytuł karty |
 | ISSUE-012: styl B | całość | reguły wyżej; przegląd `ui` przed stopem #2 |
+| US-005 AC-1 (v3) | 3 (d) | grób ze zdjęciem dodanym w [[grob]] ma jego miniaturę w karcie |
 
 ## Decisions
 - **D1 — „jak R2 bez satelity” = arkusz grobów na cały ekran, bez pola mapy.** Groby z notatek nie mają
@@ -145,6 +167,11 @@ Rekordem jest **grób**: ok. 50 na całe notatki (G6, [[NT-002-transcribe-the-no
   wskazywało ten ekran). W ISSUE-012 cmentarz to ekran przepisywania w domu, a nie wizyty. Miara zapada przy
   pierwszym ekranie wizyty: mapie cmentarza z pinezkami (D1, [[EPIC-002-wizyta]]). Do tego czasu linie
   pomocnicze mają 5,01:1 (AA).
+- **D9 — miniatura nagrobka w karcie** (v3). Autor chciał w arkuszu grobu „miejsca na zdjęcie” (ISSUE-012 →
+  *Input from the author* 2), a R2 ma miniaturę nagrobka. Na liście ok. 50 grobów nagrobek rozpoznaje się
+  szybciej niż listę imion. Kwadrat 56 dp, a nie okrąg jak przy osobie: nagrobek to przedmiot, okrąg zostaje dla
+  ludzi (R3, R4). To decyzja projektowa spoza AC US-005 (AC-1 mówi „przy grobie”), widoczna na stopie #1.
+  *Obali:* autor uznaje miniatury na liście za szum — wtedy zdjęcie tylko w [[grob]].
 
 ## Open
 brak.

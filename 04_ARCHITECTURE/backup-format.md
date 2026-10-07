@@ -74,8 +74,15 @@ sprawdza manifest (rozmiary, SHA-256, liczby, odcisk).
 ## Known limits of v1
 - Każda kopia to całość: Dysk w oknie zapisu pliku nie pozwala na kopię przyrostową (ADR-004, *Options*).
 - „Ostatnia udana kopia” znaczy: Dysk w telefonie przyjął plik, a nie: plik jest już w chmurze.
-- Migawka bazy i odczyt zdjęć nie są jedną transakcją — do rozstrzygnięcia przy
-  [[US-005-zdjecia]], zanim zdjęcia będzie można usuwać.
+- ~~Migawka bazy i odczyt zdjęć nie są jedną transakcją~~ — **rozstrzygnięte 2026-10-07**
+  ([[ADR-008-photos-access-copy-and-backup-consistency]], [[ISSUE-016-photos-grave-and-person]] D3): jedna lista plików
+  dla odcisku i archiwum (po migawce), plik zdjęcia powstaje przed wierszem, usunięcie kasuje tylko wiersz, a pliki bez
+  wiersza usuwa sprzątanie pod zamkiem danych (przed znacznikiem i migawką kopii oraz przy starcie, tylko starsze niż
+  1 h). **Skutek:** przez godzinę po zmianie albo usunięciu zdjęcia kopia zawiera też jego stary plik, a odcisk liczy go
+  spójnie. Format v1 bez zmian.
+- **Rozmiar kopii ze zdjęciami** (ADR-008): zdjęcia w aplikacji to JPEG 2048 px (ok. 0,4–0,7 MB — szacunek); przy
+  ok. 350 zdjęciach kopia ma rząd 0,15–0,25 GB. Zmierzone na hoście: 205 MB zdjęć → kopia ok. 22 s
+  ([[ISSUE-016-photos-grave-and-person]] → *Verification*, F2).
 - **Dwa działające telefony piszą do jednego pliku** (po odtworzeniu kopia idzie dalej tym samym kluczem
   do tego samego pliku — [[ISSUE-009-restore]], D3): wygrywa ostatni zapis, dane z drugiego telefonu
   znikają z kopii. Po zmianie telefonu stary trzeba wyłączyć z kopii albo skonfigurować na nim kopię od

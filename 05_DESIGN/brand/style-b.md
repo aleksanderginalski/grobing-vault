@@ -1,5 +1,5 @@
 ---
-title: "Style B — visual guidelines (v1.6)"
+title: "Style B — visual guidelines (v1.8)"
 type: design-guidelines
 status: active
 owner: ui
@@ -32,7 +32,7 @@ autor, też używają znicza (reguła 8).
 | powierzchnia | `GrobingColors.surface` | **karty** (osoba, grób, cmentarz), dolny arkusz, wyszukiwarka, okno, menu, chip, przycisk pływający | granica pola wpisu (tło–powierzchnia ma ok. 1,1:1, więc granicę niesie obrys) |
 | tekst | `GrobingColors.text` | treść, wartości, imiona i nazwiska, tytuły | — |
 | tekst pomocniczy | `GrobingColors.textMuted` | lata, adres, liczby („6 grobów · 14 osób”), etykiety, podpowiedzi, „bez adresu kwatery”, źródło, nieaktywne zakładki | jedyny nośnik ważnej informacji na ekranie wizyty (patrz *Thresholds*) |
-| akcent | `GrobingColors.amber` | **jeden kolor, wiele ról** (reguła 1): główne działanie (wypełnione), pinezki, znicz, aktywna zakładka i segment, zaznaczenie, fokus, ikony działań i nagłówków sekcji, wyróżnione imiona na ścieżce, link zewnętrzny | treść ciągła (akapity), duże dekoracyjne plamy, ostrzeżenia i błędy |
+| akcent | `GrobingColors.amber` | **jeden kolor, wiele ról** (reguła 1): główne działanie (wypełnione), pinezki, znicz, aktywna zakładka i segment, zaznaczenie, fokus, ikony działań i nagłówków sekcji, wyróżnione imiona na ścieżce, link zewnętrzny, wskaźnik działania w toku (v1.8) | treść ciągła (akapity), duże dekoracyjne plamy, ostrzeżenia i błędy |
 | obrys *(nowy — wchodzi z [[ISSUE-014-home-map-of-poland]], zaproponowany przy [[ISSUE-012-transcribe-grave-screen]])* | proponowany `GrobingColors.outline` | ramka pola wpisu, przycisk z obrysem, linia podziału, granica na mapie (reguła 13) | tekst |
 | błąd *(nowy — wchodzi z ISSUE-014)* | proponowany `GrobingColors.error` | komunikat błędu pod polem, jego ikona, ramka pola z błędem | cokolwiek poza błędem |
 
@@ -53,6 +53,7 @@ sam (SC 1.4.1):
 | kontrast elementów interfejsu (ramka pola, obrys przycisku, ikona, która coś znaczy) | **≥ 3:1** wobec sąsiedniego koloru | WCAG 2.2 SC 1.4.11 Non-text Contrast, AA |
 | kolor jako nośnik | **nigdy jedyny**: błąd, brak, wybór i stan mają też tekst albo ikonę. Pozycja wybrana w menu ma ikonę `check` i stan „zaznaczone” dla czytnika, nie tylko akcent (v1.6) | WCAG 2.2 SC 1.4.1 Use of Color, A |
 | rozmiar kontrolki z tekstem | **najmniejszy, nie stały**: przycisk, link i pole rosną z systemowym rozmiarem tekstu, zamiast ucinać napis (v1.6 — druga instancja po linku z v1.5) | WCAG 2.2 SC 1.4.4 Resize Text, AA |
+| gesty | **przesunięcie i gest kilkoma palcami mają alternatywę jednym dotknięciem** (przyciski poprzednie/następne, podwójne dotknięcie zamiast rozsunięcia palców) (v1.7) | WCAG 2.2 SC 2.5.1 Pointer Gestures, A: *„All functionality that uses multipoint or path-based gestures for operation can be operated with a single pointer without a path-based gesture”* ([Understanding 2.5.1](https://www.w3.org/WAI/WCAG22/Understanding/pointer-gestures.html)) |
 | cel dotyku | **≥ 48 × 48 dp** | [Android — Make apps more accessible](https://developer.android.com/guide/topics/ui/accessibility/apps) → *Use large, simple controls*: *„at least 48dp×48dp”* |
 | rozmiary tekstu | treść i tekst wpisywany **≥ 16 sp**; drobny tekst pomocniczy ≥ 13 sp; etykieta przycisku 14–16 sp, waga 500 | decyzja projektowa (nie norma) — dane wpisuje się szybko i trzeba je odczytać bez mrużenia oczu |
 | **kandydat** dla ekranów wizyty | **≥ 7:1** dla tekstu | WCAG 2.2 SC 1.4.6 Contrast (Enhanced), AAA. **Nie obowiązuje jeszcze:** propozycja miary dla [[NFR-004-czytelnosc-w-sloncu]] (`⚠️ OPEN` tam), decyzja przy pierwszym ekranie wizyty |
@@ -149,6 +150,23 @@ pomocniczym albo ten token trzeba rozjaśnić. Do rozstrzygnięcia przy pierwszy
       **Znicz w obrysie** (bursztynowy kontur, wnętrze w kolorze lądu) oznacza miejsce jeszcze nie zapisane,
       np. podgląd cmentarza z bazy przed dodaniem;
     - **kolory stanu** tylko z *State colours* (zieleń offline, niebieska kropka „tu jesteś” — mapa cmentarza).
+14. **Zdjęcia to treść użytkownika** (v1.7, R2, R4; pierwsze: [[grob]], [[wpis-osoby]], [[cmentarz]], [[zdjecie]]):
+    - **bez filtrów i tonowania** — sepia z R4 jest w samych starych zdjęciach, a nie w aplikacji. Krzyż, znicze
+      i napisy na nagrobku to treść zdjęcia (reguła 8);
+    - **nic na zdjęciu:** licznik, podpis i przyciski stoją obok zdjęcia, nie na nim — kontrastu tekstu na zdjęciu
+      nie da się zagwarantować (SC 1.4.3);
+    - **kształt mówi, co to jest:** ludzie — okrąg (miniatura w karcie 40 dp, zdjęcie w formularzu 80 dp; R3, R4);
+      nagrobek — zaokrąglony prostokąt (duże zdjęcie: promień 16 dp; miniatura w karcie: kwadrat 56 dp, promień 8 dp;
+      R2, R4);
+    - **przycięcie tylko w miniaturze i na liście**, ze środka; całe zdjęcie, bez przycinania i z przybliżeniem —
+      w podglądzie na tle;
+    - **puste miejsce na zdjęcie istnieje tylko jako przycisk** (obrys, ikona w akcencie, podpis — np. „Dodaj
+      zdjęcie” w formularzu osoby), nigdy jako szary prostokąt ani sylwetka (reguła 11);
+    - duże zdjęcie i zdjęcie osoby w formularzu mają opis dla czytnika; miniatura w karcie nie ma, bo kartę opisuje
+      jej tekst;
+    - gesty na zdjęciu mają alternatywę jednym dotknięciem (*Thresholds* → gesty);
+    - **usuwanie zdjęcia bez koloru błędu:** przycisk tekstowy z ikoną `delete_outline` w kolorze tekstu, a gdy
+      usunięcie działa od razu — okno z bezpiecznym działaniem w akcencie (reguła 10).
 
 ## Sunlight — [[NFR-004-czytelnosc-w-sloncu]]
 **Nie sprawdzone.** Test wymaga prawdziwego telefonu, buildu release i pełnego słońca
@@ -209,3 +227,11 @@ wysokokontrastowy, bez rezygnacji ze stylu B. Wynik i data trafiają tutaj i do
   pomiarze — tekst na zaznaczeniu 4,60:1. Tokeny bez zmian.
 - 2026-10-07 — *Known gaps*: nazwa grobu rozstrzygnięta (`ui` przed planem [[ISSUE-012-transcribe-grave-screen]]).
   Reguły i tokeny bez zmian, więc wersja zostaje v1.5.
+- 2026-10-07 — **v1.7, zdjęcia** (`ui` przed planem [[ISSUE-016-photos-grave-and-person]]): nowa reguła 14 (zdjęcia
+  jako treść użytkownika — bez filtrów, nic na zdjęciu, kształt według tego, co na zdjęciu, puste miejsce tylko jako
+  przycisk, usuwanie bez koloru błędu) z czterech instancji naraz (zdjęcie nagrobka, miniatura w karcie osoby i grobu,
+  zdjęcie w formularzu, podgląd). Nowy próg: gesty z alternatywą jednym dotknięciem (SC 2.5.1). Tokeny bez zmian,
+  więc pomiar z 2026-10-06 obowiązuje; obrys pustego zdjęcia osoby to istniejąca para obrys/tło (3,40:1).
+- 2026-10-07 — **v1.8, po przeglądzie ekranów zdjęcia nagrobka** (`ui` jako subagent `qa`,
+  [[ISSUE-016-photos-grave-and-person]]): rola akcentu obejmuje wskaźnik działania w toku (`CircularProgressIndicator`
+  dziedziczy akcent na każdym ekranie — było spójne, brakowało zapisu). Tokeny bez zmian.
