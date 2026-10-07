@@ -77,8 +77,8 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
 - Poza kodem: *patrz `backlog/non-tech/`*.
 - Odłożone: *patrz `backlog/deferred/`*.
 - Wymagania: *patrz `03_REQUIREMENTS/`* (EPIC-i, US, FR, NFR); architektura i ADR-y: *patrz `04_ARCHITECTURE/`*.
-- **Repo są publiczne na GitHubie** od 2026-10-07 (*Recently done*). Każdy push tylko po „go”; przegląd
-  imion na wychodzących zmianach czeka na retro (*Do retro*).
+- **Repo są publiczne na GitHubie** od 2026-10-07 (*Recently done*). Push idzie sam zaraz po commicie
+  paczki (decyzja autora 2026-10-07); przegląd imion na wychodzących zmianach czeka na retro (*Do retro*).
 
 ## Retro / fact-confirmation counter
 - Zamknięte pozycje od ostatniego retro: **3** (ostatnie retro: [[2026-10-06-retro-01]]). Co **10** →
@@ -87,8 +87,9 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
 - Do retro (zebrane po drodze, bez decyzji):
   - **przegląd imion przy każdym pushu** ([[NT-008-publication-review]] → *Progress* 2026-10-07): przegląd
     historii objął commity do 2026-10-07. Każdy kolejny push publikuje nowe commity, a treść pilnuje tylko
-    uwaga agenta, dopóki nie ma [[ISSUE-003-setup-quality-critic]]. Kandydat: ten sam przegląd imion na
-    wychodzących zmianach przy każdym „go”. Dziś to niemożliwe bez prośby autora w sesji, bo agent nie czyta
+    uwaga agenta, dopóki nie ma [[ISSUE-003-setup-quality-critic]]. Od 2026-10-07 push idzie sam, więc
+    nie ma już momentu „go”, w którym człowiek patrzy na wychodzące zmiany. Kandydat: ten sam przegląd
+    imion na zmianach przed `git add`. Dziś to niemożliwe bez prośby autora w sesji, bo agent nie czyta
     `family_data_dir` sam. Do decyzji: zmiana w `family-data.md` (np. lista rdzeni imion w `family_data_dir`,
     czytana tylko przy „go”) albo prośba autora przy każdym pushu. **Pierwszy push (2026-10-07) pokazał, że
     sama prośba nie wystarcza:** odczyt `family_data_dir` zablokował klasyfikator uprawnień Claude Code (dane
@@ -117,6 +118,12 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   (zdarzenie) · data zapytania`. **Odpowiedź z faktami o rodzinie trafia do aplikacji, nie tutaj.**
 
 ## Recently done
+- 2026-10-07 — **push bez pytania** (decyzja autora, po pierwszym pushu): `docs` wypycha paczkę zaraz po
+  commicie. W retro 1 autor chciał automatu dla commitu i pushu, a zapis R1 („push tylko po „go””) tego nie
+  oddał. „go” zostaje tylko tam, gdzie odpowiedź może brzmieć „nie”: commit spoza łańcucha (np. z VS Code),
+  odrzucony push, nowe repo albo remote, ustawienia GitHuba. Nigdy force, pull ani rebase. Reguły:
+  `grobing-agents` → `git-autonomy-boundary.md` → *push*. To nie zamknięcie pozycji, więc licznik retro bez
+  zmian.
 - 2026-10-07 — **pierwszy push: trzy repo publiczne na GitHubie** (za „go” autora, stop #3):
   [grobing-agents](https://github.com/aleksanderginalski/grobing-agents) ·
   [grobing-vault](https://github.com/aleksanderginalski/grobing-vault) ·
