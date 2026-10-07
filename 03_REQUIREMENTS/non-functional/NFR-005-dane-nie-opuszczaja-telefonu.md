@@ -8,7 +8,7 @@ verdict-date: null
 verdict-reviewer: null
 source: "PROJECT_BRIEF §Security (ASVS-lite translated, off-phone copy) · Step 0 (local-first: privacy) · §2 value ('private')"
 created: 2026-10-05
-updated: 2026-10-05
+updated: 2026-10-07
 ---
 
 # NFR-005 — Dane nie opuszczają telefonu poza kopią
@@ -46,6 +46,12 @@ SDK wysyłających dane z telefonu (np. Firebase).
   `WAKE_LOCK`, `ACCESS_NETWORK_STATE`, `RECEIVE_BOOT_COMPLETED`, `FOREGROUND_SERVICE` — **bez `INTERNET`**
   (`aapt` na APK release), bez bibliotek sieciowych. Własna baza WorkManagera trzyma tylko listę zadań,
   bez danych rodziny.
+- **Link do zdjęcia satelitarnego (2026-10-07, [[ISSUE-015-add-cemetery-from-database]]):** pierwsze wyjście z
+  aplikacji, tylko po dotknięciu. Adres Map Google z punktem otwiera inna aplikacja (Mapy, a bez nich
+  przeglądarka). Wychodzi punkt **publicznego** cmentarza z bazy OpenStreetMap, nie dane rodziny. Bez nowej
+  zależności i bez `INTERNET` (`aapt` na APK release). **Granica:** gdyby ten sam link otwierał kiedyś
+  cmentarz już zapisany w aplikacji, punkt mówiłby, gdzie leży rodzina autora — wtedy to osobna decyzja
+  wobec tego NFR.
 - Eksport nie jest szyfrowany z założenia (czytelność jest jego celem) — dlatego żyje offline, nie w chmurze
   (§Security).
 - Hipoteza prawna (wyłączenie domowe RODO) jest najmocniejsza, gdy chmura trzyma tylko szyfrogram →

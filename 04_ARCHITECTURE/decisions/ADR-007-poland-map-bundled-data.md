@@ -9,7 +9,7 @@ verdict-reviewer: null
 decided-by: "[[ISSUE-014-home-map-of-poland]]"
 source: "ISSUE-014 → Implementation plan (Prior art, Falsifier, D1–D3) · ADR-003 Follow-ups (⚠️ OPEN: mapa Polski offline) · NFR-001 · NFR-005 · ADR-002 (pinned Flutter) · brief §Architecture → Stack, §6 N5"
 created: 2026-10-06
-updated: 2026-10-06
+updated: 2026-10-07
 ---
 
 # ADR-007 — Mapa Polski z wbudowanych danych
@@ -62,3 +62,8 @@ zostają (jedna liczba, jeden dom).
   - Jeśli SPIKE-001 wybierze inną bibliotekę dla mapy cmentarza (np. MapLibre), aplikacja będzie miała dwie
     biblioteki map. Decyzja wtedy, w ADR-003.
   - Zmiana wersji `flutter_map` / `latlong2` to przegląd, a nie `pub upgrade` (komentarz w `pubspec.yaml`).
+  - **Baza cmentarzy Polski (2026-10-07, [[ISSUE-015-add-cemetery-from-database]]):** drugi wbudowany zbiór
+    danych, tym razem z OpenStreetMap: `assets/cemeteries/poland_cemeteries.json`, ok. 1,9 MB (+0,62 MB w
+    APK). Licencja ODbL: baza pochodna w repo na tej samej licencji, podpis „© autorzy OpenStreetMap
+    (ODbL)” w aplikacji. Ta sama zasada co mapa — nic się nie pobiera, nowy wyciąg to nowa wersja aplikacji
+    ze skryptu `tool/cemeteries/`. Decyzja tego ADR-a bez zmian.

@@ -1,12 +1,12 @@
 ---
-title: "Style B — visual guidelines (v1.4)"
+title: "Style B — visual guidelines (v1.5)"
 type: design-guidelines
 status: active
 owner: ui
 source: "PROJECT_BRIEF §6a (Style B, chosen by the author 2026-10-05) · references.md (R1–R4, the kick-off images) · grobing-code/lib/app/theme.dart · WCAG 2.2 · Android accessibility"
 non-tech-item: "[[NT-006-visual-guidelines]]"
 created: 2026-10-06
-updated: 2026-10-06
+updated: 2026-10-07
 ---
 
 # Styl B — wytyczne wizualne
@@ -88,7 +88,14 @@ pomocniczym albo ten token trzeba rozjaśnić. Do rozstrzygnięcia przy pierwszy
    - **przycisk tekstowy poza oknem** (v1.4): w akcencie, gdy jest jedynym działaniem dalej (np. „Dodaj
      ręcznie” pod wynikami); w kolorze tekstu, gdy stoi obok wypełnionego (np. „Zapisz bez punktu” obok
      „Zapisz”), żeby akcent miało tylko główne działanie;
-   - **link zewnętrzny:** tekst w akcencie, podkreślony, ze strzałką „↗” (np. „Grobonet ↗”, R2).
+   - **link zewnętrzny:** tekst w akcencie, podkreślony, ze strzałką „↗” (np. „Grobonet ↗”, R2). Szczegóły
+     (v1.5, [[ISSUE-015-add-cemetery-from-database]]):
+     - **strzałka to ikona `north_east`** w akcencie, a nie znak U+2197, bo Android rysuje ten znak jako
+       kolorowe emoji (zobaczone na emulatorze). Byłby to drugi kolor obok akcentu;
+     - ikona rośnie z systemowym rozmiarem tekstu (16 dp × skala tekstu);
+     - podkreślenie obejmuje sam tekst;
+     - cel dotyku ma ≥ 48 dp wysokości i rośnie, a tekst zawija się przy dużej czcionce zamiast się uciąć;
+     - czytnik ekranu czyta link z dopiskiem „w innej aplikacji”.
 2. **Głębia subtelna:** tło → powierzchnia (zaokrąglone karty, promień 12–16 dp, i dolny arkusz). Głównemu
    przyciskowi i zaznaczonemu elementowi (wybrana pinezka, węzeł na ścieżce) wolno mieć **delikatną
    bursztynową poświatę**. Bez twardych cieni i bez gradientów tła.
@@ -187,3 +194,8 @@ wysokokontrastowy, bez rezygnacji ze stylu B. Wynik i data trafiają tutaj i do
 - 2026-10-06 — **v1.4, po pierwszym przeglądzie mapy** (`ui` jako subagent `qa`, [[ISSUE-014-home-map-of-poland]]):
   - reguła 1: przycisk tekstowy poza oknem (akcent albo kolor tekstu);
   - reguła 13: obwódka podpisów miast; cyfra plakietki ≥ 11 sp jako wyjątek.
+- 2026-10-07 — **v1.5, po przeglądzie ekranu z bazy cmentarzy** (`ui` jako subagent `qa`,
+  [[ISSUE-015-add-cemetery-from-database]]): reguła 1, link zewnętrzny — strzałka „↗” to ikona `north_east`
+  (znak U+2197 Android rysuje jako kolorowe emoji), ikona rośnie z tekstem, cel ≥ 48 dp rośnie, a tekst się
+  zawija. Tokeny bez zmian, więc pomiar z 2026-10-06 obowiązuje (przeliczony z `theme.dart` 2026-10-07,
+  wyniki te same).

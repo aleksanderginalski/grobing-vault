@@ -18,14 +18,13 @@ updated: 2026-10-07
 MVP — od startu, cały produkt (Meta-decyzja 4).
 
 ## In progress
-- [[US-002-przepisanie-grobu]] w toku: [[ISSUE-011-schema-v2-assertions]] (schemat v2) i
-  [[ISSUE-014-home-map-of-poland]] (mapa Polski jako ekran główny) zamknięte. Zostały
-  [[ISSUE-015-add-cemetery-from-database]] i [[ISSUE-012-transcribe-grave-screen]].
+- [[US-002-przepisanie-grobu]] w toku: [[ISSUE-011-schema-v2-assertions]] (schemat v2),
+  [[ISSUE-014-home-map-of-poland]] (mapa Polski jako ekran główny) i [[ISSUE-015-add-cemetery-from-database]]
+  (dodanie cmentarza z bazy) zamknięte. Została [[ISSUE-012-transcribe-grave-screen]].
 - **Następne kroki, w tej kolejności (decyzja autora 2026-10-06, *„ok plan brzmi dobrze”*; ISSUE-015 dołożona
   na stopie #1 ISSUE-014, *„wygląda dobrze”*):**
   1. ~~[[ISSUE-014-home-map-of-poland]]~~ — zamknięte 2026-10-06;
-  2. [[ISSUE-015-add-cemetery-from-database]] — dodanie cmentarza z wbudowanej bazy OpenStreetMap (offline),
-     z podglądem i linkiem do zdjęcia satelitarnego. Ręczne dodanie zostaje zapasem;
+  2. ~~[[ISSUE-015-add-cemetery-from-database]]~~ — zamknięte 2026-10-07;
   3. [[ISSUE-012-transcribe-grave-screen]] — „Otwórz cmentarz” w arkuszu mapy (z ISSUE-014, D5); cmentarz jak
      R2, ale bez zdjęcia satelitarnego; grób jak R4
      z nazwą grobu (migracja v2→v3); formularz osoby z biografią. Zapis faktów jest gotowy w
@@ -36,11 +35,15 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
      (`01_INBOX/2026-10-05-plany-cmentarzy.md`). Baza cmentarzy przeszła do ISSUE-015.
   
   **Każda pozycja z ekranem: `ui` → `planning`** (`autonomous-flow.md`). Wygląd: `05_DESIGN/brand/`
-  (wytyczne v1.4 i referencje R1–R4 z kick-offu).
+  (wytyczne v1.5 i referencje R1–R4 z kick-offu).
 - Poza tą kolejnością:
   - [[NT-001-photograph-the-notes]]: zdjęcia zrobione (33). Zostało: zaszyfrowane miejsce, sprawdzenie
     kopii w WhatsAppie i otwarcie kopii — *Resolution*;
   - [[SPIKE-002-tree-on-a-phone]]: przed drzewem (widok 5);
+  - **wyszukiwanie w bazie cmentarzy — tematy do decyzji autora** ([[ISSUE-015-add-cemetery-from-database]] →
+    *Notes*): literówki z OSM zajmują pierwsze miejsca, skracanie słów łapie podobne nazwy („krakow” →
+    „…Krakowskie”), w bazie są cmentarze dla zwierząt, a wynik znaleziony przez okoliczną miejscowość nie
+    mówi, przez którą. Kandydat na małą pozycję, gdy zacznie przeszkadzać przy prawdziwych cmentarzach;
   - **push na GitHuba odblokowany:** [[NT-008-publication-review]] zamknięte 2026-10-07, wszystkie trzy repo
     publiczne. Zostało:
     1. autor zakłada trzy **puste** publiczne repo, bez README, licencji i `.gitignore` (pierwszy push nie
@@ -81,7 +84,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   [[ISSUE-006-setup-family-data-guard]] i [[NT-008-publication-review]] zamknięte. Push tylko po „go”.
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **2** (ostatnie retro: [[2026-10-06-retro-01]]). Co **10** →
+- Zamknięte pozycje od ostatniego retro: **3** (ostatnie retro: [[2026-10-06-retro-01]]). Co **10** →
   retro + pytanie o 3–5 nośnych faktów (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**;
   podbija go `docs` przy zamknięciu, a zeruje go retro.
 - Do retro (zebrane po drodze, bez decyzji):
@@ -114,6 +117,25 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   (zdarzenie) · data zapytania`. **Odpowiedź z faktami o rodzinie trafia do aplikacji, nie tutaj.**
 
 ## Recently done
+- 2026-10-07 — [[ISSUE-015-add-cemetery-from-database]] zamknięte. **Cmentarz dodaje się z wbudowanej bazy
+  cmentarzy Polski**, bez sieci:
+  - wyciąg z OpenStreetMap: ok. 16 tys. cmentarzy z miejscowością (z dzielnicą w mieście), województwem i
+    wyznaniem, licencja ODbL, podpis „Dane: © autorzy OpenStreetMap (ODbL)”;
+  - wyniki z bazy pod twoimi cmentarzami; „Dodany” przy tym, który już masz; najwyżej 30 wyników z
+    podpowiedzią, żeby dopisać miejscowość;
+  - podgląd na mapie ze zniczem w obrysie. Link „Zobacz zdjęcie satelitarne ↗” otwiera Mapy Google w widoku
+    satelitarnym, tylko po dotknięciu (`geo:` nie umie wybrać warstwy — D1). Okno z nazwą do poprawy i
+    „Zapisz”;
+  - aplikacja dalej bez `INTERNET`, APK +0,62 MB; pierwsze wczytanie bazy ok. 0,5 s.
+
+  Przegląd `ui` w 2 rundach (MAJOR: przybliżenie podglądu), specyfikacja [[cmentarze]] v2.2, [[style-b]] v1.5.
+  Werdykt `qa`: APPROVED (self-check, z uwagami); stop #2: 8 z 8 „tak”. Testy: 309.
+
+  **Dla autora:**
+  - zapytań Overpass w README `grobing-code` nie wykonano ponownie (serwery 2026-10-07 nie odpowiadały).
+    Plik bazy pochodzi z wyciągu z 2026-10-06;
+  - emulator `Medium_Phone` wrócił ze starego snapshotu z buildem debug — teraz jest na nim build release z
+    jednym publicznym cmentarzem z kroku 4 stopu #2.
 - 2026-10-07 — [[NT-008-publication-review]] zamknięte. **Push na GitHuba odblokowany**, choć jeszcze się nie
   odbył:
   - agent przeszukał historię trzech repo (41 commitów, razem z opisami) imionami, nazwiskami i miejscami z
