@@ -1,9 +1,9 @@
 ---
 screen: "Wpis osoby w grobie — formularz"
-items: ["[[ISSUE-012-transcribe-grave-screen]]"]
+items: ["[[ISSUE-012-transcribe-grave-screen]]", "[[ISSUE-017-person-photos]]"]
 us: "[[US-002-przepisanie-grobu]] · [[US-005-zdjecia]]"
 journey-step: "n/a — M1 (warunek kroku 1 UJ-001)"
-mockup: "katalog tymczasowy sesji 2026-10-07: makieta-cmentarz-grob-osoba.html (ramki 3–4, ISSUE-012) · makieta-zdjecia.html (ramki 7–8 — kierunek dla ISSUE-017)"
+mockup: "katalog tymczasowy sesji 2026-10-07: makieta-cmentarz-grob-osoba.html (ramki 3–4, ISSUE-012) · makieta-zdjecia.html (ramki 7–8 — kierunek sprzed stopu #1 ISSUE-016) · makieta-zdjecia-osoby.html (ramki 1–2, ISSUE-017)"
 updated: 2026-10-07
 ---
 
@@ -52,6 +52,15 @@ updated: 2026-10-07
 > ISSUE-016 autor zdecydował inaczej niż v3:** osoba ma **bazę zdjęć** (dzieloną z innymi osobami, gdy na zdjęciu
 > jest kilka osób) i wybrane **„profilowe”**. Element 1a pokaże więc profilowe, a D-zdjęcie-1 („jedno zdjęcie na
 > osobę”) jest nieaktualne. `ui` przeprojektuje to przed planem ISSUE-017. **Formularz w ISSUE-016 się nie zmienia.**
+>
+> **Wersja 4 (2026-10-07, przed planem [[ISSUE-017-person-photos]]) — baza zdjęć osoby.** Element 1a zostaje na
+> swoim miejscu i dalej stoi poza `next`. Zmienia się to, co pokazuje i dokąd prowadzi:
+> - **bez zdjęć:** jak v3 — „Dodaj zdjęcie” otwiera arkusz źródła, a galeria pozwala wybrać kilka zdjęć;
+> - **ze zdjęciami:** okrąg pokazuje **profilowe** (pierwsze łącze), a pod nim liczbę zdjęć. Dotknięcie otwiera bazę
+>   zdjęć osoby ([[zdjecia-osoby]]), nie podgląd.
+>
+> Wszystkie zmiany zdjęć (dodanie, profilowe, osoby na zdjęciu, usunięcie z osoby) zapisują się z „Zapisz”, razem
+> z wpisem (D-zdjęcie-2, rozszerzone). D-zdjęcie-1 zastępuje D-zdjęcie-4.
 
 ## Purpose
 Wpisanie jednej osoby pochowanej w grobie, tak jak stoi w notatkach: zdjęcie (gdy jest), imiona, nazwisko,
@@ -65,15 +74,17 @@ nazwisko rodowe, daty urodzenia i zgonu z dopiskiem oraz **krótka biografia (�
 - **Zapis → [[grob]]**, który zastępuje formularz na stosie (wstecz z grobu wraca do cmentarza).
 - **Wstecz z wpisanymi danymi** (przycisk albo gest) → okno „Odrzucić wpis?”. Bez wpisanych danych →
   od razu wstecz. **Wybrane albo zmienione zdjęcie to też wpisane dane** (v3).
-- **Zdjęcie (1a, v3):** puste → arkusz źródła ([[zdjecie]] A, jedno zdjęcie); ze zdjęciem → podgląd ([[zdjecie]]
-  B), a w nim „Zmień zdjęcie” i „Usuń zdjęcie”, jeśli usuwanie wejdzie ([[zdjecie]] → *Open* 1). Powrót z
-  arkusza, systemowego okna albo podglądu wraca do formularza z wpisanymi danymi, bez zmiany fokusu na pole.
+- **Zdjęcia (1a, v4):** bez zdjęć → arkusz źródła ([[zdjecie]] A w trybie osoby: galeria — kilka zdjęć, aparat —
+  jedno); ze zdjęciami → baza zdjęć osoby ([[zdjecia-osoby]]), a z niej podgląd ([[zdjecie]] B w trybie osoby).
+  Powrót z arkusza, systemowego okna albo bazy wraca do formularza z wpisanymi danymi, bez zmiany fokusu na pole.
+- **Okno „Odrzucić wpis?” przy zmianach zdjęć (v4):** treść „Wpisane dane i zmiany zdjęć nie zostaną zapisane.”, gdy
+  w tej edycji zmieniono zdjęcia (także gdy pól nie ruszano). Bez zmian zdjęć treść jak dotąd.
 
 ## Elements in order
 | # | Element | Typ | Klawiatura / akcja | Domyślnie | Walidacja | Źródło |
 |---|---|---|---|---|---|---|
 | 1 | Pasek: „Osoba w grobie” (w poprawie: „Poprawa wpisu”); podtytuł (tekst pomocniczy, jedna linia): w trybie „nowy grób” — „Cmentarz Wymyślony · nowy grób”; w trybie „kolejna osoba” i w poprawie — nazwa grobu, a bez nazwy nazwa cmentarza, i „· w grobie: 2 osoby” | tytuł | — | — | — | decyzja projektowa · [[grob]] D1 |
-| 1a | **Zdjęcie osoby** (v3) — wyśrodkowane, okrąg **80 dp**, odstęp 24 dp do „Imiona”. **Puste:** okrąg z obrysem 1 dp (kolor obrysu), w środku `add_a_photo_outlined` (28 dp, akcent), pod okręgiem „Dodaj zdjęcie” (14 sp, kolor tekstu); cała grupa to jeden przycisk, opis dla czytnika „Dodaj zdjęcie osoby”. **Ze zdjęciem:** zdjęcie przycięte do okręgu ze środka, bez podpisu; opis „Zdjęcie osoby — otwórz” | przycisk (cel ≥ 80 dp) | dotknięcie → [[zdjecie]] A (puste) albo B (ze zdjęciem). **Poza kolejnością `next`, nie bierze fokusu** | puste; w poprawie — zdjęcie osoby, jeśli ma | — | US-005 AC-1 · R4 prawy · v2 *Decisions* → „Zdjęcie i relacje później” · D-zdjęcie-1…3 |
+| 1a | **Zdjęcia osoby** (v4) — wyśrodkowane, okrąg **80 dp**, odstęp 24 dp do „Imiona”. **Bez zdjęć:** jak v3 — okrąg z obrysem 1 dp (kolor obrysu), w środku `add_a_photo_outlined` (28 dp, akcent), pod okręgiem „Dodaj zdjęcie” (14 sp, kolor tekstu); opis dla czytnika „Dodaj zdjęcie osoby”. **Ze zdjęciami:** **profilowe** (pierwsze łącze) przycięte do okręgu ze środka, a pod okręgiem liczba zdjęć z odmianą — „1 zdjęcie” · „3 zdjęcia” · „5 zdjęć” (14 sp, tekst pomocniczy, `plural`); opis „Zdjęcia osoby: 3 — otwórz”. W obu stanach cała grupa (okrąg z podpisem) to jeden przycisk | przycisk (cel ≥ 80 dp) | dotknięcie → [[zdjecie]] A w trybie osoby (bez zdjęć) albo [[zdjecia-osoby]] (ze zdjęciami). **Poza kolejnością `next`, nie bierze fokusu** | bez zdjęć; w poprawie — profilowe i liczba zdjęć osoby | — | US-005 AC-1 · ISSUE-017 AC 4 · R4 prawy · D-zdjęcie-2…4 |
 | 2 | **Imiona** | pole tekstowe, wielka litera na początku słów | `next`; **fokus i klawiatura od razu po wejściu** w trybach „nowy grób” i „kolejna osoba”; w poprawie bez fokusu (v2.1) | pusto | imiona albo nazwisko, co najmniej jedno: „Podaj imiona albo nazwisko.” | AC-2 |
 | 3 | **Nazwisko** | pole tekstowe, wielka litera na początku słów | `next` | w trybie „kolejna osoba”: nazwisko ostatnio wpisanej osoby w tym grobie, **zaznaczone** (pisanie je zastępuje) | jak 2 | AC-2 · decyzja (tempo) |
 | 4 | **Nazwisko rodowe** — etykieta „Nazwisko rodowe (z domu)” | pole tekstowe, wielka litera na początku słów | `next` | pusto | — | AC-2 · [[FR-005-nazwisko-rodowe]] |
@@ -107,24 +118,25 @@ się razem albo wcale. Po błędzie nie zostaje „pół osoby”.
 | błąd | komunikat pod polem w kolorze **błędu** z ikoną `error_outline`, a ramka pola też w kolorze błędu. Kolor nigdy sam: zawsze ikona i tekst (SC 1.4.1) |
 | wypełniony | podgląd pod każdą wpisaną datą; przy „między” dwa pola daty |
 | poprawa (D1) | wartości wpisane. Data, która ma więcej niż jedno twierdzenie (spór źródeł), jest tylko do odczytu, z dopiskiem „Kilka źródeł — tej daty tu nie poprawisz.” |
-| zapisywanie | „Zapisz” nieaktywny przez chwilę zapisu (lokalnie — ułamek sekundy; **ze zdjęciem** dłużej, bo zdjęcie trafia do magazynu aplikacji — wskaźnik postępu w przycisku zamiast napisu, v3) |
-| zdjęcie wybrane (v3) | element 1a pokazuje wybrane zdjęcie od razu, zanim wpis się zapisze. Pozostałe pola i fokus bez zmian |
-| zdjęcie — przygotowanie (v3) | między powrotem z galerii albo aparatu a pokazaniem: okrąg 1a z obrysem i wskaźnikiem postępu w środku (zwykle niewidoczne) |
-| zdjęcie — błąd (v3) | pod okręgiem 1a zamiast „Dodaj zdjęcie”: `error_outline` + „Nie udało się wczytać zdjęcia. Spróbuj jeszcze raz.” (kolor błędu, 14 sp); okrąg wraca do stanu pustego. Wpis bez zdjęcia da się zapisać |
+| zapisywanie | „Zapisz” nieaktywny przez chwilę zapisu (lokalnie — ułamek sekundy; **z nowymi zdjęciami** dłużej, bo pliki trafiają do magazynu aplikacji — wskaźnik postępu w przycisku zamiast napisu, v3) |
+| zdjęcia wybrane (v4) | element 1a pokazuje profilowe i liczbę zdjęć od razu, zanim wpis się zapisze — także po zmianach w [[zdjecia-osoby]]. Pozostałe pola i fokus bez zmian |
+| zdjęcia — przygotowanie (v4) | między powrotem z galerii albo aparatu (z 1a bez zdjęć) a pokazaniem: okrąg 1a z obrysem i wskaźnikiem postępu w środku. Przy kilku zdjęciach okrąg pokazuje pierwsze gotowe, a liczba rośnie |
+| zdjęcia — błąd (v4) | pod okręgiem 1a zamiast podpisu: `error_outline` + „Nie udało się wczytać zdjęcia. Spróbuj jeszcze raz.” (kolor błędu, 14 sp); przy kilku: „Nie udało się wczytać 1 zdjęcia z 3. Spróbuj jeszcze raz.” — udane zostają. Bez żadnego udanego okrąg wraca do stanu bez zdjęć. Wpis bez zdjęcia da się zapisać |
 | nieudany zapis (v2.1) | nad „Zapisz”: `error_outline` + „Nie udało się zapisać. Spróbuj jeszcze raz.” w kolorze błędu; wpis zostaje |
 | okno „Odrzucić wpis?” | „Wpisane dane nie zostaną zapisane.” · **„Wróć do wpisu”** (akcent — bezpieczne działanie jest główne) · „Odrzuć” (kolor tekstu) |
 
 ## Sketch
-v3: zdjęcie (1a) nad imionami — puste po lewej, wybrane po prawej. Reszta formularza bez zmian (niżej, z v2).
+v4: zdjęcia (1a) nad imionami — bez zdjęć po lewej, ze zdjęciami po prawej (profilowe i liczba). Reszta formularza
+bez zmian (niżej, z v2).
 ```
- puste                                 wybrane (poprawa)
+ bez zdjęć                             ze zdjęciami (poprawa)
 ┌──────────────────────────────────┐  ┌──────────────────────────────────┐
 │ ←  Osoba w grobie                │  │ ←  Poprawa wpisu                 │
 │    Cmentarz Wymyślony · nowy grób│  │    Grób rodzinny Wymyślonych · … │
 │              ╭────╮              │  │              ╭────╮              │
-│              │ 📷 │              │  │              │▓▓▓▓│  ← zdjęcie   │
-│              ╰────╯              │  │              ╰────╯    w okręgu  │
-│          Dodaj zdjęcie           │  │                                  │
+│              │ 📷 │              │  │              │▓▓▓▓│ ← profilowe  │
+│              ╰────╯              │  │              ╰────╯              │
+│          Dodaj zdjęcie           │  │            3 zdjęcia  ← do bazy  │
 │ ┌ Imiona ──────────────────────┐ │  │ ┌ Imiona ──────────────────────┐ │
 │ │ ▌                            │ │  │ │ Anna                         │ │
 ```
@@ -190,8 +202,9 @@ zgonu, bez daty pochówku, krótkie „kim była”.
 
 - Dopisek inny niż „dokładnie”: **+2 dotknięcia** (menu, wybór). „Między”: +2 i drugie pole.
 - Na całe notatki (ok. 100 osób): **ok. 700 akcji** plus pisanie.
-- **Zdjęcie osoby (v3): +3 dotknięcia** (zdjęcie, „Wybierz z galerii”, wybór), tylko gdy osoba ma zdjęcie. Bez
-  zdjęcia **+0**: element 1a stoi poza `next`, a fokus od wejścia dalej trafia w „Imiona”. Koszt v3 bez zdjęcia
+- **Zdjęcia osoby (v4): +4 dotknięcia** przy pierwszym zdjęciu (1a, „Wybierz z galerii”, wybór, „Gotowe” — okno
+  systemowe na Androidzie 16, [[zdjecie]] v1.2), +1 na każde kolejne wybrane naraz; dalsze działania na bazie —
+  [[zdjecia-osoby]] → *Tempo*. Tylko gdy osoba ma zdjęcie. Bez zdjęcia **+0**: element 1a stoi poza `next`, a fokus od wejścia dalej trafia w „Imiona”. Koszt v3 bez zdjęcia
   to tylko ok. 128 dp wysokości nad polami (okrąg 80, podpis, odstęp 24). Na emulatorze `Medium_Phone` przy otwartej
   klawiaturze „Imiona” i „Nazwisko” dalej widać, a pole w fokusie i tak przewija się do widoku (sprawdza przegląd
   `ui` przed stopem #2).
@@ -210,7 +223,8 @@ zgonu, bez daty pochówku, krótkie „kim była”.
 - Reguła 7: komunikaty spokojne i rzeczowe; okno odrzucenia bez straszenia.
 - Reguła 10: zapis kończy się widokiem grobu, bez okienka „Zapisano”.
 - Tekst wpisywany ≥ 16 sp.
-- **Reguły 11 i 14 (v3):** puste zdjęcie to przycisk (obrys 3,40:1 na tle — SC 1.4.11 ✅, ikona w akcencie,
+- **Reguły 11 i 14 (v3, v4):** profilowe w okręgu (osoba), liczba zdjęć pod nim w tekście pomocniczym, nie na
+  zdjęciu. Puste zdjęcie to przycisk (obrys 3,40:1 na tle — SC 1.4.11 ✅, ikona w akcencie,
   podpis), a nie zastępczy obrazek ani sylwetka. Bez bursztynowego pierścienia z R4 prawego: tam to widok osoby
   (M5), a tu formularz; pierścień w akcencie byłby dekoracją (reguła 1).
 - **Nowe tokeny** (proponowane; `dev` wpisuje je do `theme.dart` w ISSUE-012, a [[style-b]] ma już ich role):
@@ -234,6 +248,8 @@ zgonu, bez daty pochówku, krótkie „kim była”.
 | US-005 AC-1 (v3) | 1a → [[zdjecie]] A | zdjęcie z galerii albo aparatu widać w okręgu, a po „Zapisz” — w karcie osoby w [[grob]] |
 | US-005 AC-2 (v3) | 1a | w poprawie zdjęcie widać dalej po usunięciu oryginału z galerii |
 | ISSUE-016: styl B | 1a | reguły 11 i 14; przegląd `ui` |
+| ISSUE-017: kilka zdjęć, profilowe (v4) | 1a → [[zdjecia-osoby]] | okrąg pokazuje profilowe, podpis — liczbę zdjęć; po „Ustaw jako profilowe” i powrocie okrąg się zmienia |
+| ISSUE-017: zapis zdjęć z wpisem (v4) | 1a, 11 | zmiany zdjęć widać w 1a przed zapisem; po „Zapisz” są w [[grob]] (miniatura), po „Odrzuć” — nie ma ich |
 | ISSUE-012: zapis zamawia kopię w tle | 11 | n/a dla wyglądu. Zapis idzie przez API danych (`claims.dart`, drift), więc kopię zamawia sam `grobing_app.dart` (`watchChanges`). Sprawdza `qa` ISSUE-012 |
 
 ## Decisions
@@ -252,11 +268,13 @@ zgonu, bez daty pochówku, krótkie „kim była”.
 | **Biografia = „kim była”** (v2) | autor chciał krótkiej biografii i zgodził się, że to dzisiejsze „kim była” z linią źródła (decyzja 2026-10-06). Etykieta zostaje słowem z US-002 AC-2, a podpowiedź mówi, że to biografia. Większe pole (3 linie) zaprasza do dwóch-trzech zdań, jak w R4 prawym. Jedna linia źródła na cały tekst (FR-001, decyzja kosztowa). Biografię pokaże widok osoby (M5); do tego czasu widać ją w poprawie wpisu albo w karcie grobu ([[grob]] D3) | autor chce osobnych pól (zawód, miejsce) — wtedy to osobna pozycja ze zmianą schematu |
 | **Zdjęcie i relacje później** (v2) | brakowało ich autorowi, ale należą do [[US-005-zdjecia]] i [[US-003-przepisanie-rodziny]] (kolejność autora 2026-10-06). Miejsce, żeby kolejne pozycje nie przestawiały formularza: **portret na górze**, przed imionami (jak w R4 prawym) — dotknięcie dodaje zdjęcie, a pusty stan to ikona z podpisem, bez sylwetki; **„Rodzina” pod biografią**, przed linią źródła dat — chipy relacji jak w R4. Bez miejsc zastępczych w ISSUE-012 | US-003 wpisuje rodzinę naraz, w arkuszu rodziny (brief: *family group sheet*) — wtedy relacje nie trafiają do formularza osoby |
 | ~~**D-zdjęcie-1 — jedno zdjęcie na osobę** (v3)~~ — **nieaktualne:** decyzja autora na stopie #1 ISSUE-016 — baza zdjęć osoby z „profilowym” ([[ISSUE-017-person-photos]]) | R4 prawy pokazuje jeden portret, a karta w [[grob]] ma miejsce na jedną miniaturę. Kilka zdjęć osoby (np. z różnych lat) to treść widoku osoby (M5), którego jeszcze nie ma | autor przy przepisywaniu chce dołączyć do osoby kilka zdjęć — wtedy galeria w widoku osoby (M5), nie w formularzu |
-| **D-zdjęcie-2 — zdjęcie zapisuje się z „Zapisz”**, a nie od razu (v3) | „zapis jest całością” (v2): osoba i jej zdjęcie powstają razem albo wcale, a „Odrzuć” cofa także zdjęcie. Inaczej niż w [[grob]], gdzie zdjęcie nagrobka zapisuje się od razu — tam nie ma formularza, który by je zatwierdził | — |
+| **D-zdjęcie-2 — zdjęcia zapisują się z „Zapisz”**, a nie od razu (v3; **v4: wszystkie zmiany bazy zdjęć**) | „zapis jest całością” (v2): osoba i jej zdjęcia powstają razem albo wcale, a „Odrzuć” cofa także zdjęcia. v4: to samo dotyczy zmian w [[zdjecia-osoby]] i [[zdjecie]] (tryb osoby) — dodania, profilowego, osób na zdjęciu (także łączy **innych** osób) i usunięcia z osoby; ten sam przepływ działa przy nowej osobie, której jeszcze nie ma w bazie ([[zdjecia-osoby]] D1). Inaczej niż w [[grob]], gdzie zdjęcie nagrobka zapisuje się od razu — tam nie ma formularza, który by je zatwierdził | autor gubi zmiany zdjęć albo czuje dwie zasady (nagrobek od razu, osoba z „Zapisz”) — [[zdjecia-osoby]] D1 |
+| **D-zdjęcie-4 — baza zdjęć na osobnym ekranie, wejście z 1a** (v4) | formularz to ok. 100 wpisów, a większość osób z notatek zdjęć nie ma: galeria w formularzu zabierałaby miejsce przy każdym wpisie. Okrąg z profilowym i liczbą mówi, że zdjęcia są i ile; siatka potrzebuje szerokości ekranu. Ten sam ekran przyjmie widok osoby (M5) | autor przy poprawie chce widzieć wszystkie zdjęcia w formularzu → pasek miniatur pod 1a |
 | **D-zdjęcie-3 — bez kadrowania** (v3) | wybrane zdjęcie przycina się do okręgu ze środka; całość widać w podglądzie. Twarz ze zdjęcia grupowego wymagałaby kadrowania, które jest poza zakresem ([[ISSUE-016-photos-grave-and-person]] → *Out of Scope*) | na stopie #2 środek zdjęcia nie trafia w twarz na typowych starych zdjęciach — wtedy kadrowanie jako osobna pozycja |
 
 ## Open
-v3: zdjęcie osoby — do przeprojektowania przed planem [[ISSUE-017-person-photos]] (baza zdjęć, dzielenie, profilowe).
+v3: zdjęcie osoby — **przeprojektowane w v4** (baza zdjęć: [[zdjecia-osoby]]; dzielenie i profilowe: [[zdjecie]] v1.3).
+Na stopie #1 ISSUE-017: [[zdjecie]] D7 (kogo da się zaznaczyć na zdjęciu) — rekomendacja, nie luka.
 
 Rozstrzygnięte w wersji 2.1:
 1. **Poprawa wpisu** — wchodzi minimum (stop #1 ISSUE-012, D1): ten sam formularz w trybie „poprawa”, wartości

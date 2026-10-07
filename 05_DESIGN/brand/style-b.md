@@ -1,5 +1,5 @@
 ---
-title: "Style B — visual guidelines (v1.8)"
+title: "Style B — visual guidelines (v1.9)"
 type: design-guidelines
 status: active
 owner: ui
@@ -155,11 +155,14 @@ pomocniczym albo ten token trzeba rozjaśnić. Do rozstrzygnięcia przy pierwszy
       i napisy na nagrobku to treść zdjęcia (reguła 8);
     - **nic na zdjęciu:** licznik, podpis i przyciski stoją obok zdjęcia, nie na nim — kontrastu tekstu na zdjęciu
       nie da się zagwarantować (SC 1.4.3);
-    - **kształt mówi, co to jest:** ludzie — okrąg (miniatura w karcie 40 dp, zdjęcie w formularzu 80 dp; R3, R4);
-      nagrobek — zaokrąglony prostokąt (duże zdjęcie: promień 16 dp; miniatura w karcie: kwadrat 56 dp, promień 8 dp;
-      R2, R4);
-    - **przycięcie tylko w miniaturze i na liście**, ze środka; całe zdjęcie, bez przycinania i z przybliżeniem —
-      w podglądzie na tle;
+    - **kształt mówi, co to jest:** osoba — okrąg, i to tylko jej **profilowe** (miniatura w karcie 40 dp, zdjęcie w
+      formularzu 80 dp, nagłówek bazy zdjęć 96 dp; R3, R4); nagrobek — zaokrąglony prostokąt (duże zdjęcie: promień
+      16 dp; miniatura w karcie: kwadrat 56 dp, promień 8 dp; R2, R4); **zdjęcia w bazie zdjęć osoby** — kwadraty w
+      siatce, promień 8 dp, bo bywają grupowe, a okrąg ucina najwięcej (v1.9, [[zdjecia-osoby]]);
+    - **przycięcie tylko w miniaturze, na liście i w siatce**, ze środka; całe zdjęcie, bez przycinania i z
+      przybliżeniem — w podglądzie na tle;
+    - **stan zdjęcia (np. „profilowe”) nie jest znacznikiem na zdjęciu:** niesie go miejsce (nagłówek, pierwsza
+      pozycja), tekst obok albo opis dla czytnika (v1.9);
     - **puste miejsce na zdjęcie istnieje tylko jako przycisk** (obrys, ikona w akcencie, podpis — np. „Dodaj
       zdjęcie” w formularzu osoby), nigdy jako szary prostokąt ani sylwetka (reguła 11);
     - duże zdjęcie i zdjęcie osoby w formularzu mają opis dla czytnika; miniatura w karcie nie ma, bo kartę opisuje
@@ -235,3 +238,7 @@ wysokokontrastowy, bez rezygnacji ze stylu B. Wynik i data trafiają tutaj i do
 - 2026-10-07 — **v1.8, po przeglądzie ekranów zdjęcia nagrobka** (`ui` jako subagent `qa`,
   [[ISSUE-016-photos-grave-and-person]]): rola akcentu obejmuje wskaźnik działania w toku (`CircularProgressIndicator`
   dziedziczy akcent na każdym ekranie — było spójne, brakowało zapisu). Tokeny bez zmian.
+- 2026-10-07 — **v1.9, baza zdjęć osoby** (`ui` przed planem [[ISSUE-017-person-photos]], [[zdjecia-osoby]]): reguła
+  14 — okrąg tylko dla profilowego osoby (także nagłówek bazy, 96 dp), zdjęcia w bazie jako kwadraty w siatce
+  (bywają grupowe), stan zdjęcia nie jest znacznikiem na zdjęciu. Tokeny bez zmian, więc pomiar z 2026-10-06
+  obowiązuje; obrys pustego pola wyboru to tekst pomocniczy na tle (5,50:1, SC 1.4.11 ✅).

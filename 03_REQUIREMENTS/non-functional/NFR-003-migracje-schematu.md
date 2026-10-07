@@ -43,3 +43,10 @@ niezastępowalne i będą żyć latami — aktualizacja aplikacji ze złą migra
   `addColumn`. Test z danymi v2→v3 i wygenerowane v1→v3; na emulatorze łańcuch v1→v3. Kopia v2 odtwarza się w
   aplikacji v3. **Kopia zamawia się zaraz po migracji** (retro 1, R6): start pyta o kopię dopiero po otwarciu bazy,
   bo migracja zmienia plik, ale nie zgłasza zmian. Test na hoście pokazuje lukę sprzed poprawki i jej zamknięcie.
+- **2026-10-07 — trzecia migracja** (v3→v4, [[ISSUE-017-person-photos]], [[ADR-009-person-photos-record-and-link]]):
+  - nowa tabela łączy `person_media`; zdjęcia osób z v3 stają się łączami w kolejności `id`;
+  - przebudowa `media` bez `person_id` (`TableMigration`, te same wiersze i `id` — odtworzenie kopii v3 liczy wiersze);
+  - na końcu `PRAGMA foreign_key_check`.
+
+  Test z danymi v3→v4 i wygenerowane v1→v4, v2→v4. Kopia v3 ze zdjęciami osób odtwarza się w v4 (test na prawdziwym
+  archiwum). Na emulatorze build v4 wgrany na v3 z danymi: liczby wierszy bez zmian, kopia w tle po migracji.

@@ -18,19 +18,17 @@ updated: 2026-10-07
 MVP — od startu, cały produkt (Meta-decyzja 4).
 
 ## In progress
-- **[[US-002-przepisanie-grobu]] zamknięta 2026-10-07** (werdykt US: APPROVED, niezależny przegląd, z uwagami;
-  AC-3 doprecyzowane po D7 — formularz bez daty pochówku).
-- **[[ISSUE-016-photos-grave-and-person]] zamknięta 2026-10-07** (zdjęcie nagrobka i fundament zdjęć). Następna:
-  **[[ISSUE-017-person-photos]]** — baza zdjęć osoby, zdjęcia dzielone, „profilowe”, schemat v4. Pierwszy krok: `ui`
-  projektuje bazę zdjęć osoby ([[wpis-osoby]] v3 to kierunek z jednym zdjęciem — do przeprojektowania), potem
-  `planning` z ADR o modelu (`OBJE` w GEDCOM 7). [[US-005-zdjecia]] idzie do werdyktu po ISSUE-017.
+- **[[ISSUE-017-person-photos]] zamknięta 2026-10-07, a z nią [[US-005-zdjecia]]** (werdykt US: APPROVED, niezależny
+  przegląd, z uwagami). Następna: **[[ISSUE-018-profile-photo-crop]]** — kadr profilowego ze zdjęcia grupowego (decyzja
+  autora na stopie #2 ISSUE-017: *„tak zróbmy”*, przed US-003). Pierwszy krok: `ui` projektuje ekran kadru (okrąg z
+  liniami pomocniczymi), potem `planning` z ADR o zapisie kadru (piksele jak `CROP` w GEDCOM 7 albo ułamki boków).
 - **Następne kroki, w tej kolejności (decyzja autora 2026-10-06, *„ok plan brzmi dobrze”*; ISSUE-015 dołożona
   na stopie #1 ISSUE-014, *„wygląda dobrze”*):**
   1. ~~[[ISSUE-014-home-map-of-poland]]~~ — zamknięte 2026-10-06;
   2. ~~[[ISSUE-015-add-cemetery-from-database]]~~ — zamknięte 2026-10-07;
   3. ~~[[ISSUE-012-transcribe-grave-screen]]~~ — zamknięte 2026-10-07;
-  4. [[US-005-zdjecia]] → ~~[[ISSUE-016-photos-grave-and-person]]~~ (zamknięte 2026-10-07), potem
-     [[ISSUE-017-person-photos]] (zdjęcia osób; przed planem `ui` projektuje bazę zdjęć osoby);
+  4. ~~[[US-005-zdjecia]]~~ — zamknięta 2026-10-07 (~~ISSUE-016~~, ~~ISSUE-017~~);
+     **4a. [[ISSUE-018-profile-photo-crop]]** — kadr profilowego (decyzja autora 2026-10-07, stop #2 ISSUE-017);
   5. [[US-003-przepisanie-rodziny]] — relacje w formularzu osoby;
   6. [[SPIKE-001-map-source-offline]] — zdjęcie satelitarne cmentarza, znicze na grobach, plany z kwaterami
      (`01_INBOX/2026-10-05-plany-cmentarzy.md`). Baza cmentarzy przeszła do ISSUE-015.
@@ -45,6 +43,11 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     *Notes*): literówki z OSM zajmują pierwsze miejsca, skracanie słów łapie podobne nazwy („krakow” →
     „…Krakowskie”), w bazie są cmentarze dla zwierząt, a wynik znaleziony przez okoliczną miejscowość nie
     mówi, przez którą. Kandydat na małą pozycję, gdy zacznie przeszkadzać przy prawdziwych cmentarzach;
+  - **semantyka przycisków w dwóch starszych ekranach** (przegląd `ui` [[ISSUE-017-person-photos]], MAJOR tego samego
+    wzorca): „Dodaj zdjęcie nagrobka” ([[ISSUE-016-photos-grave-and-person]]) i podgląd cmentarza z bazy
+    ([[ISSUE-015-add-cemetery-from-database]]) mają opis dla czytnika, ale bez akcji dotknięcia. Switch Access i
+    Voice Access ich nie naciśną. Poprawka: dwie linie i test na ekran. Autor nie zdecydował (pytanie na stopie #2
+    ISSUE-017) — kandydat na małą pozycję;
   - **[[DEF-005-push-gate]] obudzony** pierwszym pushem (2026-10-07). Bramka potrzebuje pipeline'u CI,
     którego nie ma (`ci` na sygnał), a pipeline budzi też [[DEF-003-dependency-scanning]]. **Decyzja autora:**
     wdrożyć teraz albo zostawić do PRODUKCJA (DEF-005 → *Wake*). Do tego czasu status `deferred`.
@@ -82,7 +85,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   paczki (decyzja autora 2026-10-07); przegląd imion na wychodzących zmianach czeka na retro (*Do retro*).
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **5** (ostatnie retro: [[2026-10-06-retro-01]]). Co **10** →
+- Zamknięte pozycje od ostatniego retro: **6** (ostatnie retro: [[2026-10-06-retro-01]]). Co **10** →
   retro + pytanie o 3–5 nośnych faktów (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**;
   podbija go `docs` przy zamknięciu, a zeruje go retro.
 - Do retro (zebrane po drodze, bez decyzji):
@@ -113,6 +116,11 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     „Ojciec” — na ekranach wygląda to jak błąd odmiany;
   - **polskie `MaterialLocalizations`** (przegląd `ui`, uwaga 11): systemowe podpowiedzi są po angielsku —
     kandydat na małą pozycję;
+  - **stop #2 w praktyce: autor robi część kroków** ([[ISSUE-017-person-photos]] → *Manual*): z 7 kroków autor wykonał
+    2 (stan urządzenia), odpowiedział „względnie ok” z nową prośbą, a kroki funkcjonalne zrobił agent. To kolejna
+    instancja po ISSUE-008, ISSUE-009, ISSUE-012 i ISSUE-014 (stop #2 tamtych pozycji: kroki pominięte albo „ok” bez
+    śladu w stanie urządzenia). Kandydat: stop #2 z 2–3 krokami
+    odczucia, a resztę od razu robi agent;
   - **agent `architect`** — kick-off (MD3c) dał mu sygnał „decyzja wymagająca ADR-a poza kick-offem”. Ten
     sygnał już był: [[ADR-005-sqlite-package]] i [[ADR-006-claimed-value-separate-structures]] powstały w
     łańcuchu (`planning` → `docs`), bez osobnego agenta, i [[ISSUE-014-home-map-of-poland]] doda kolejny.
@@ -126,6 +134,34 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   (zdarzenie) · data zapytania`. **Odpowiedź z faktami o rodzinie trafia do aplikacji, nie tutaj.**
 
 ## Recently done
+- 2026-10-07 — [[ISSUE-017-person-photos]] zamknięte, a z nim **[[US-005-zdjecia]]** (werdykt US: APPROVED, niezależny
+  przegląd, z uwagami). **Osoba ma bazę zdjęć z „profilowym”, a jedno zdjęcie może należeć do kilku osób:**
+  - w formularzu osoby okrąg z profilowym i liczbą zdjęć → ekran „Zdjęcia” ([[zdjecia-osoby]]): profilowe, siatka,
+    „Dodaj zdjęcie” (kilka z galerii naraz albo aparat);
+  - podgląd: „Ustaw jako profilowe”, „Na zdjęciu: …” z „Kto jest na zdjęciu?” (wszystkie osoby, ten grób na górze,
+    filtr — decyzja autora D2 na stopie #1, także zaznaczenie później), „Usuń z tej osoby”;
+  - profilowe w kartach osób w widoku grobu;
+  - zmiany zdjęć zapisują się z „Zapisz” formularza, w jednej transakcji z wpisem (D3);
+  - **schemat v4:** zdjęcie jako rekord, łącze osoba–zdjęcie z kolejnością (`OBJE` w GEDCOM 7) —
+    [[ADR-009-person-photos-record-and-link]]; migracja v3→v4 z testem, kopia v3 odtwarza się w v4.
+
+  Przegląd `ui`: 0 BLOCKER, 1 MAJOR (semantyka), 5 MINOR — poprawione przed stopem #2. Werdykt `qa`: APPROVED
+  (self-check, z uwagami). Stop #2: autor wykonał dodanie z galerii i zdjęcie wspólne, kroki 4–7 zrobił agent. Testy:
+  391.
+
+  **Decyzja autora na stopie #2:** kadr profilowego ze zdjęcia grupowego — **następna pozycja**,
+  [[ISSUE-018-profile-photo-crop]].
+
+  **Dla autora:**
+  - **próbnego odtworzenia na drugim emulatorze nie było** (w sesji nie było hasła testowego z ISSUE-016). Pokrywają je
+    testy na prawdziwych archiwach. Przy następnej pozycji z kopią — nowe hasło testowe i odtworzenie na
+    `Grobing_Restore`;
+  - nieocenione przez ciebie: „Ustaw jako profilowe”, odczucie siatki i okręgu, zapis zdjęć przez „Zapisz” (D3 — inaczej
+    niż nagrobek, który zapisuje się od razu) i lista „Kto jest na zdjęciu?”;
+  - okno wyboru oddaje zdjęcia w kolejności zaznaczania — sprawdzone tylko na Androidzie 16;
+  - na `Medium_Phone` (release v4) są wymyślone osoby ze zdjęciami. Dwie osoby „as Wymyslona” z ISSUE-016 mają teraz
+    imiona Ewa i Zofia, a w drugim grobie jest „Jozef z d. Testowy” (do kroków stopu #2). W galerii emulatora leżą
+    `wymyslone-1…3.png`.
 - 2026-10-07 — [[ISSUE-016-photos-grave-and-person]] zamknięte. **Grób ma zdjęcie nagrobka:**
   - pole „Dodaj zdjęcie nagrobka” w miejscu zdjęcia, nad tytułem (decyzja autora na stopie #2, [[grob]] v3.2 D12) →
     galeria albo aparat → zdjęcie nad tytułem; podgląd na pełnym ekranie z przybliżeniem; „Zmień zdjęcie” i „Usuń

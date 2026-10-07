@@ -42,7 +42,7 @@ updated: 2026-10-06
 | Ścieżka | Co to jest |
 |---|---|
 | `grobing.db` | migawka bazy SQLite (`VACUUM INTO`) — schemat: `data-model.md`, wersja w `PRAGMA user_version` |
-| `media/<ścieżka>` | każdy plik zdjęcia z prywatnego katalogu aplikacji, ścieżka względna jak w tabeli `media` |
+| `media/<ścieżka>` | każdy plik zdjęcia z prywatnego katalogu aplikacji, ścieżka względna jak w tabeli `media`: `groby/…` (nagrobki) i od schematu v4 `zdjecia/…` (zdjęcia osób). Łącza osoba–zdjęcie są w tabeli `person_media` w `grobing.db` ([[ADR-009-person-photos-record-and-link]]) — format v1 bez zmian |
 | `manifest.json` | opis kopii (niżej) — ostatni, bo sumy liczone są w tym samym przebiegu, w którym plik trafia do archiwum |
 
 ## manifest.json
@@ -79,7 +79,9 @@ sprawdza manifest (rozmiary, SHA-256, liczby, odcisk).
   dla odcisku i archiwum (po migawce), plik zdjęcia powstaje przed wierszem, usunięcie kasuje tylko wiersz, a pliki bez
   wiersza usuwa sprzątanie pod zamkiem danych (przed znacznikiem i migawką kopii oraz przy starcie, tylko starsze niż
   1 h). **Skutek:** przez godzinę po zmianie albo usunięciu zdjęcia kopia zawiera też jego stary plik, a odcisk liczy go
-  spójnie. Format v1 bez zmian.
+  spójnie. Format v1 bez zmian. **Od schematu v4** ([[ISSUE-017-person-photos]], F4): zdjęcie osoby czeka w otwartym
+  formularzu, czasem dłużej niż godzinę, więc przy przeniesieniu do `media/` dostaje czas „teraz” — sprzątanie nie zabiera
+  go między przeniesieniem a zapisem wiersza.
 - **Rozmiar kopii ze zdjęciami** (ADR-008): zdjęcia w aplikacji to JPEG 2048 px (ok. 0,4–0,7 MB — szacunek); przy
   ok. 350 zdjęciach kopia ma rząd 0,15–0,25 GB. Zmierzone na hoście: 205 MB zdjęć → kopia ok. 22 s
   ([[ISSUE-016-photos-grave-and-person]] → *Verification*, F2).

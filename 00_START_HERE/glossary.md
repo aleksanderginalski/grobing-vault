@@ -49,3 +49,5 @@ updated: 2026-10-07
 | **zaparkowane** | sprawa czekająca na kogoś spoza sesji (babcia, cmentarz) z **warunkiem obudzenia** | blokadą łańcucha |
 | **Zbierający** | jedyny użytkownik — autor (persona P1) | rodziną, która dziedziczy dane |
 | **Źródło (osoba)** | babcia — najważniejsze żywe źródło faktów, z ograniczonym czasem | użytkowniczką aplikacji |
+| **łącze zdjęcia** | powiązanie osoba ↔ zdjęcie z miejscem w kolejności zdjęć tej osoby (jak `OBJE` w GEDCOM 7; [[ADR-009-person-photos-record-and-link]]). Jedno zdjęcie może mieć łącza od kilku osób | kopią pliku — plik jest jeden; usunięcie zdjęcia z osoby usuwa łącze, nie zdjęcie |
+| **profilowe** | pierwsze zdjęcie osoby (pierwsze łącze) — okrąg w formularzu, w karcie grobu i w nagłówku jej zdjęć; **osobne dla każdej osoby** | cechą zdjęcia — to samo zdjęcie grupowe może być profilowym jednej osoby i zwykłym zdjęciem drugiej |
