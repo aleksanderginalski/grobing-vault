@@ -24,8 +24,13 @@ updated: 2026-10-08
 osób z notatek było szybkie (G6), a relacje wynikały z rodzin, nie z pojedynczych powiązań.
 
 ## Acceptance Criteria
-- **AC-1 — rodzina jednym formularzem.** *When* wpisuję rodzinę *Then* w jednym przebiegu podaję 1-2
-  partnerów i dzieci, a nowe osoby powstają przy okazji ([[FR-002-rodzina-jako-rekord]]).
+- **AC-1 — rodzina jednym formularzem.** ~~*When* wpisuję rodzinę *Then* w jednym przebiegu podaję 1-2
+  partnerów i dzieci, a nowe osoby powstają przy okazji ([[FR-002-rodzina-jako-rekord]]).~~ **Nowe brzmienie (2026-10-08,
+  po zamknięciu — decyzja autora na stopie #1 [[ISSUE-025-gender-kinship-together-since]], C1):** *When* wpisuję rodzinę
+  *Then* para jest jednym związkiem z jego osią czasu, a dzieci dodaję przy tej parze; nowe osoby powstają przy okazji
+  ([[FR-002-rodzina-jako-rekord]]). Testy scenariusza przepisane na kreator (`family_screens_test.dart`, zielone).
+  *Edycja zamkniętej US: status cofnięty na `in-progress` i przywrócony na `done` w tej samej zmianie `docs`
+  (vault-as-sot, reguła 5).*
 - **AC-2 — powtórne małżeństwo.** *Given* osoba jest już partnerem w jednej rodzinie *When* dodaję drugą
   rodzinę z tą samą osobą *Then* obie rodziny istnieją, a dzieci należą do właściwej pary.
 - **AC-3 — małżeństwo z datą z dopiskiem.** *When* wpisuję datę małżeństwa albo końca rodziny *Then* mogę

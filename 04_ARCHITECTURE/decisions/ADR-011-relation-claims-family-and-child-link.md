@@ -95,3 +95,6 @@ to dummy data, więc nic się nie dzieje”*). Wdrożone i sprawdzone w tej same
     [[US-004-fakt-od-babci]] albo osobna pozycja;
   - płeć — wraca jako pole osoby z migracją, gdyby nazwy ścieżki albo drzewa (EPIC-003) jej potrzebowały; pomiar
     podpowiedzi z imienia (PESEL) jest w [[ISSUE-019-family-relations]] → *Prior art*.
+  - **2026-10-08 — dopisek:** płeć wróciła tak, jak zapowiadał pkt 5 (przy osobie, nie przy miejscu w parze) —
+    [[ADR-012-person-sex-and-union-timeline]], schemat v7, [[ISSUE-025-gender-kinship-together-since]]. Decyzja tego ADR
+    (twierdzenia przy rodzinie i łączu dziecka) bez zmian; ADR-012 go nie zastępuje.

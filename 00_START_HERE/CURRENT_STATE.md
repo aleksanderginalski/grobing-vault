@@ -29,9 +29,10 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   4. ~~[[SPIKE-004-mvp-flow-prototype]]~~ — zamknięty 2026-10-08 (*Recently done*).
 - **Droga do instalacji MVP** — propozycja łańcucha przy zamknięciu SPIKE-004 (autor może zmienić kolejność):
   1. ~~[[ISSUE-022-app-skeleton-tabs-people-settings]]~~ — zamknięte 2026-10-08 (*Recently done*);
-  2. **następna: [[ISSUE-025-gender-kinship-together-since]]** — płeć, nazwy pokrewieństwa, „Razem od”, formularz bez
-     źródeł (jedna zmiana schematu); pokrewieństwo wejdzie pod imię w zakładce Osoby;
-  3. [[ISSUE-024-person-view]] — widok osoby (M5), z mini-drzewem i pochówkiem prowadzącym na mapę;
+  2. ~~[[ISSUE-025-gender-kinship-together-since]]~~ — zamknięte 2026-10-08 (*Recently done*);
+  3. **następna: [[ISSUE-024-person-view]]** — widok osoby (M5), z mini-drzewem i pochówkiem prowadzącym na mapę; od ISSUE-025
+     także **słownik nazw pokrewieństwa i ścieżka do „ja”** („Jak łączy się ze mną”) i uwaga autora *„najpierw profil, potem
+     edycja”* (karty i chipy krewnych → widok osoby) — ISSUE-024 → *Input from ISSUE-025*;
   4. [[ISSUE-023-poland-map-r1-cemetery-photo]] — mapa Polski jak R1 i zdjęcie cmentarza;
   5. [[US-007-mapa-cmentarza]] — plan offline, zdjęcie z góry, kwatery (przed planem: `ui` projektuje zaznaczanie kwater;
      wchodzi uprawnienie `INTERNET`);
@@ -121,7 +122,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   paczki (decyzja autora 2026-10-07); treść wychodzących zmian sprawdza strażnik treści ([[ISSUE-020-content-guard]]) przy każdym `git add`/`commit`.
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **4** (ostatnie retro: [[2026-10-08-retro-02]]). Co **10** →
+- Zamknięte pozycje od ostatniego retro: **5** (ostatnie retro: [[2026-10-08-retro-02]]). Co **10** →
   retro + pytanie o 3–5 nośnych faktów (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**;
   podbija go `docs` przy zamknięciu, a zeruje go retro.
 - Do retro (zebrane po drodze, bez decyzji):
@@ -147,6 +148,14 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     polskie nazwisko, użyte jako przykład w komentarzu i teście, trafiło na listę rdzeni. Strażnik zadziałał przed `git add`
     (suchy przebieg `qa`). Kandydat: przykłady tylko z rdzeni jawnie wymyślonych („Wymyśl-”, „Zmyśl-”, „Testow-”,
     „Przykład-”), nigdy z prawdziwych nazwisk, nawet popularnych;
+  - **`python -I -` jeszcze dwa razy** ([[ISSUE-025-gender-kinship-together-since]]) — po zapisie w pamięci „nigdy”
+    (SPIKE-001, dwa razy). Wola nie działa: token wraca z nawyku, raz jako „szablon” komendy, raz doklejony do łańcucha.
+    Kandydat: hook `PreToolUse`, który odmawia komendy z `python -I -` (mechanizm zamiast pamięci, jak strażnik danych);
+  - **discovery na klikalnym prototypie — druga instancja** ([[ISSUE-025-gender-kinship-together-since]], stop #1): autor
+    odrzucił oba warianty z makiety (przełącznik albo same daty) i opisał trzeci kształt — związek, który „ewoluuje”,
+    w kreatorze; po prototypie panel po panelu: *„C1 / P1 / Jest dobrze”*. Z SPIKE-004 to już dwie instancje — warunek dla
+    trybu „discovery” w skillu `ui` spełniony (doc-growth: generalizacja z instancji). Przy okazji: decyzja z prototypu
+    SPIKE-004 (pokrewieństwo w liście Osób, D19) odwrócona na stopie #1 — *„to jest funkcja łączenia osób w drzewie”*;
   - **przegląd `ui` zmienił decyzję zapisaną w specyfikacji z prototypu** (ISSUE-022, MAJOR: „Odtwórz z kopii” przez
     „Stan danych”): prototyp nie pokazał drugiego przycisku pod „Skonfiguruj kopię od nowa”. Na tę lukę prototypu odpowiedział
     przegląd zbudowanego ekranu.
@@ -165,6 +174,39 @@ Format wpisu: `źródło (babcia / cmentarz X) · pytanie bez danych rodziny · 
 (zdarzenie) · data zapytania`. **Odpowiedź z faktami o rodzinie trafia do aplikacji, nie tutaj.**
 
 ## Recently done
+- 2026-10-08 — [[ISSUE-025-gender-kinship-together-since]] zamknięte. **Płeć wraca, związek to oś czasu, formularz bez
+  źródeł:**
+  - **płeć ♀ ♂ obok „Imiona”** w formularzu osoby i przy każdej nowej osobie, podpowiadana z imienia (wyjątki z pomiaru
+    PESEL: Kuba, Barnaba…), zmiana jednym dotknięciem; zapisanej płci formularz sam nie zmienia ([[wpis-osoby]] v5.6);
+  - **związek „ewoluuje”** (decyzja autora na stopie #1, zamiast przełącznika albo samych dat): **kreator w arkuszu od
+    dołu** — z kim → „Razem” albo „Małżeństwo” (z datą albo „Nie znam daty”) → co było dalej (ślub · koniec · nic więcej);
+    przy osobie **karta na każdy związek** z osią czasu („razem od 1980 · ślub 1985”) i ✎ do podsumowania, w którym każdą
+    datę zmienia się osobno; **dzieci pod kartą związku** (C1) i **„Dodaj rodziców”** tym samym kreatorem („Kto jest
+    mamą?”, „Kto jest tatą?” — P1); arkusz zawsze tej samej wysokości (uwaga autora na stopie #2) ([[rodzina]] v2.1);
+  - nazwy ról z płci i ślubu: Matka, Ojciec, Mąż, Żona, Partner, Partnerka, Syn, Córka; bez płci — neutralne;
+  - **bez źródeł w formularzu** (D28) — dane dalej zapisują się z domyślnym źródłem;
+  - **schemat v7:** `persons.sex`, zdarzenie „Razem od”, ślub i koniec bez daty jako zdarzenia bez daty (`MARR Y` w GEDCOM 7)
+    — [[ADR-012-person-sex-and-union-timeline]] (nie zastępuje ADR-011, sygnał dla `architect` się nie zapala); migracja
+    v6→v7 z testem, kopia v6 odtwarza się w v7; próbne odtworzenie kopii v7 na drugim emulatorze — odcisk zgodny;
+  - **zmiana wymagań** (decyzja autora, C1): [[FR-002-rodzina-jako-rekord]] i [[US-003-przepisanie-rodziny]] AC-1 — rodzina
+    to jeden rekord, dzieci dodaje się przy parze; **bez pokrewieństwa w zakładce Osoby** ([[osoby]] v2.2); **słownik
+    pokrewieństwa i AC-2 → [[ISSUE-024-person-view]]** (kanon zapisany w ISSUE-025 → *Prior art*).
+
+  Stop #1 w trzech rundach (makieta wariantów → prototyp klikalny → „Jest dobrze”). Przegląd `ui`: 0 BLOCKER, 2 MAJOR, 7 MINOR —
+  wszystkie poprawione przed stopem #2. Werdykt `qa`: APPROVED (self-check, z uwagami); stop #2 „ok” w dwóch rundach,
+  sprawdzone na urządzeniu. Testy: 504. Licznik retro: 4 → 5.
+
+  **Dla autora:**
+  - **pytanie bez odpowiedzi:** czy kreator rodziców ma wpisywać płeć z odpowiedzi „mama”/„tata” osobie, która jej nie ma
+    (tylko puste pole, nigdy nadpisanie)? Dziś nie wpisuje — chip mówi „Rodzic” ([[ADR-012-person-sex-and-union-timeline]]
+    → *Follow-ups*). Tanie, jeśli tak;
+  - podpowiadane nazwisko nowej osoby ma formę osoby z wpisu („Testowy” dla mamy) — znany punkt „do odczucia”
+    ([[wpis-osoby]] *Open*);
+  - nieprzetestowane na żywo: TalkBack i tekst 200% w kreatorze;
+  - emulatory: na `Medium_Phone` kopia skonfigurowana od nowa z hasłem testowym do Pobranych (`grobing-klucz-025.age`,
+    `grobing-kopia-025.age`, wymyślone dane); `Grobing_Restore` ma dane z tej kopii i Twoje usunięcia związków ze stopu #2;
+  - makieta i prototyp leżą poza repo (katalog tymczasowy sesji: `issue-025-warianty.html`, `issue-025-prototyp.html`) — do
+    kosza.
 - 2026-10-08 — [[ISSUE-022-app-skeleton-tabs-people-settings]] zamknięte. **Aplikacja ma szkielet z prototypu:**
   - **dolny pasek Mapa · Osoby · Drzewo** na mapie, cmentarzu i grobie; mapa zawsze na dole stosu, więc „wstecz” z Osób
     wraca na mapę; zakładka z głębi stosu wraca do swojego ekranu głównego. Drzewo to na razie zapowiedź (D1 = A);

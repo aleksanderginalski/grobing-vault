@@ -1,6 +1,6 @@
 ---
 screen: "Osoby — zakładka: wszystkie osoby i wyszukiwanie; wybór „ja”"
-items: ["[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-022-app-skeleton-tabs-people-settings]]"]
+items: ["[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-022-app-skeleton-tabs-people-settings]]", "[[ISSUE-025-gender-kinship-together-since]]"]
 us: "do rozpisania — S5/G5 (wyszukiwanie osób; brief §5a G5 — Should, przyjęte do MVP decyzją autora na prototypie: SPIKE-004 D1, D3, D19)"
 journey-step: "n/a — wejście do widoku osoby (M5) spoza ścieżki wizyty"
 mockup: "2026-10-08: grobing-prototyp.html (SPIKE-004, panel 5) — katalog tymczasowy sesji, ścieżka w SPIKE-004"
@@ -27,6 +27,12 @@ updated: 2026-10-08
 > - pole szukania z „Wyczyść”, przewinięcie listy chowa klawiaturę (element 2);
 > - **nowa część: wybór „ja” — „Która osoba to Ty?”** (elementy 6–7, D6);
 > - karta osoby otwiera „Poprawę wpisu”, dopóki nie ma widoku osoby (D7, *Navigation*).
+>
+> ~~**Wersja 2.1 — pokrewieństwo w liście.**~~ **Wycofana na stopie #1 [[ISSUE-025-gender-kinship-together-since]]
+> (wersja 2.2, 2026-10-08, decyzja autora):** *„W osobach bym nie dodawał informacji kto jest kim dla kogo to jest funkcja
+> łączenia osób w drzewie (przy wielu poziomach to by się strasznie rozrastało)”*. Lista pokazuje imię, nazwisko i lata
+> życia, jak w v2. „Kim jest dla mnie” jest w widoku osoby ([[osoba]] element 7) i w łączeniu osób w drzewie ([[drzewo]]).
+> D2 obalone, D8 i D9 wycofane.
 
 ## Purpose
 Znaleźć osobę bez wiedzy, na którym cmentarzu leży: po nazwisku albo imieniu, a w liście — zobaczyć, kim jest dla
@@ -52,8 +58,12 @@ która osoba to on („ja”) — od niej liczą się łańcuchy i nazwy pokrewi
 | 1 | **Pasek:** „Osoby” (20 sp, półgruby) i po prawej liczba „34 osoby” (14 sp, tekst pomocniczy, odmiana) — wszystkie osoby, także podczas szukania | pasek | — | — | — | R1 · [[style-b]] reguła 6 |
 | 2 | **Wyszukiwarka** — pigułka jak na mapie ([[cmentarze]] element 2), podpowiedź „Szukaj osoby”, a z wpisanym tekstem **× „Wyczyść”** (cel 48 dp) jak w wyszukiwarce cmentarzy. Dopasowanie bez polskich znaków i wielkości liter, od początku słowa imienia albo nazwiska (także nazwiska rodowego); nazwisko z łącznikiem to dwa słowa | pole tekstowe | wielka litera wyłączona; `search` = zamknij klawiaturę; **przewinięcie listy chowa klawiaturę** | pusto | — | D3 (SPIKE-004) · jak [[cmentarze]] D3 · ISSUE-022 odstępstwo 7 |
 | 3 | **„Ja”** — pierwsza karta, z obrysem: inicjały „Ja” w akcencie (40 dp; **zawsze znak „Ja”, także gdy osoba ma profilowe** — D4), „Ja” (16 sp, półgruby), pod spodem jedna linia (14 sp, tekst pomocniczy): **przed wyborem** „Wybierz, która osoba to Ty”, **po wyborze** imię i nazwisko tej osoby („Ewa Wymyślona”, z „z d. …”, jeśli jest). Chevron. Przy wpisanym tekście znika | karta | przed wyborem → wybór „ja” (6–7); po wyborze → [[osoba]] dla „ja” (do ISSUE-024 — „Poprawa wpisu”) | — | — | M5 · [[data-model]] (ustawienie „ja”) · ISSUE-022 D3 · przegląd `ui` (D4) |
-| 4 | **Lista osób A–Z po nazwisku**, z nagłówkami liter (13 sp, tekst pomocniczy). Karta (reguła 11, ≥ 64 dp): profilowe 40 dp albo inicjały, „Imiona Nazwisko z d. Rodowe” (16 sp, półgruby), pod spodem lata życia i **kim osoba jest dla autora** („1925–2004 · babcia”, „ur. 1955 · ciotka (siostra taty)”) — 14 sp, tekst pomocniczy; chevron. **Lata — same lata** według reguły 6: „1926–2010”, „ur. 1955”, „zm. 1951”, „ok. 1890 – 1951”, „między 1893 a 1895 – 1960”, a bez dat „bez dat”. Pokrewieństwo dochodzi z [[ISSUE-025-gender-kinship-together-since]]; do tego czasu same lata. **Polskie sortowanie: po nazwisku, a gdy go brak — po nazwisku rodowym** (tego samego klucza używa nagłówek litery), potem po imionach. Osoby bez nazwiska i bez nazwiska rodowego — **na końcu, pod nagłówkiem „Bez nazwiska”**. Osoba „ja” nie powtarza się na liście (stoi w 3), ale wyszukiwanie ją znajduje | lista kart | karta → [[osoba]] (do ISSUE-024 — „Poprawa wpisu”, D7) | po nazwisku, potem po imieniu | — | **decyzja autora** (D19) · [[osoba]] D4 (nazwy pokrewieństwa) · ISSUE-022 D3, odstępstwo 2 (D5) |
+| 4 | **Lista osób A–Z po nazwisku**, z nagłówkami liter (13 sp, tekst pomocniczy). Karta (reguła 11, ≥ 64 dp): profilowe 40 dp albo inicjały, „Imiona Nazwisko z d. Rodowe” (16 sp, półgruby), pod spodem **lata życia** — 14 sp, tekst pomocniczy (v2.2: bez pokrewieństwa — D2 obalone); chevron. **Lata — same lata** według reguły 6: „1926–2010”, „ur. 1955”, „zm. 1951”, „ok. 1890 – 1951”, „między 1893 a 1895 – 1960”, a bez dat „bez dat”. Pokrewieństwa w liście nie ma (v2.2, decyzja autora). **Polskie sortowanie: po nazwisku, a gdy go brak — po nazwisku rodowym** (tego samego klucza używa nagłówek litery), potem po imionach. Osoby bez nazwiska i bez nazwiska rodowego — **na końcu, pod nagłówkiem „Bez nazwiska”**. Osoba „ja” nie powtarza się na liście (stoi w 3), ale wyszukiwanie ją znajduje | lista kart | karta → [[osoba]] (do ISSUE-024 — „Poprawa wpisu”, D7) | po nazwisku, potem po imieniu | — | **decyzja autora** (D19) · [[osoba]] D4 (nazwy pokrewieństwa) · ISSUE-022 D3, odstępstwo 2 (D5) |
 | 5 | **Brak wyników:** „Nie ma osoby „<tekst>”.” (tekst pomocniczy) | tekst | — | — | — | [[style-b]] reguła 9 |
+
+~~**Pokrewieństwo w liście (element 4, v2.1)**~~ — wycofane w v2.2 (decyzja autora, wyżej). Reguły nazw (słownik ze
+źródłem, nawias ze ścieżką, opis z odcinków, odcinki neutralne bez płci) przechodzą do widoku osoby
+([[ISSUE-024-person-view]], [[osoba]] element 7) — zapis kanonu w [[ISSUE-025-gender-kinship-together-since]] → *Prior art*.
 
 **Wybór „ja” — „Która osoba to Ty?”** ([[ISSUE-022-app-skeleton-tabs-people-settings]] D3; tryb wyboru, bez dolnego paska)
 
@@ -87,17 +97,16 @@ która osoba to on („ja”) — od niej liczą się łańcuchy i nazwy pokrewi
 │ P                                │  │ ╰──────────────────────────────╯ │
 │ ╭──────────────────────────────╮ │  │ W                                │
 │ │ (◉) Alicja Przykładowa      ›│ │  │ ╭──────────────────────────────╮ │
-│ │     1926–2010 · babcia       │ │  │ │ (◉) Ewa Wymyślona           ✓│ │
+│ │     1926–2010                │ │  │ │ (◉) Ewa Wymyślona           ✓│ │
 │ ╰──────────────────────────────╯ │  │ │     ur. 1958                 │ │
 │ ╭──────────────────────────────╮ │  │ ╰──────────────────────────────╯ │
 │ │ (EP) Ewa Przykładowa        ›│ │  │ Bez nazwiska                     │
-│ │     ur. 1955 · ciotka (sios… │ │  │ ╭──────────────────────────────╮ │
+│ │     ur. 1955                 │ │  │ ╭──────────────────────────────╮ │
 │ ╰──────────────────────────────╯ │  │ │ (J)  Józef                   │ │
 │  Mapa      Osoby      Drzewo     │  │ │     bez dat                  │ │
 └──────────────────────────────────┘  └──────────────────────────────────┘
 ```
-Przed wyborem karta „Ja” ma w drugiej linii „Wybierz, która osoba to Ty”. Pokrewieństwo („· babcia”) w liście
-dochodzi z ISSUE-025; w wyborze „ja” go nie ma, bo liczy się od wybranej osoby.
+Przed wyborem karta „Ja” ma w drugiej linii „Wybierz, która osoba to Ty”. Pokrewieństwa w liście nie ma (v2.2).
 
 ## Tempo
 n/a — ekran do szukania i oglądania.
@@ -119,12 +128,14 @@ n/a — ekran do szukania i oglądania.
 | G5 — znaleźć osobę po nazwisku wśród ok. 100 | 2, 4 | „wymys” → osoby o nazwisku Wymyślony/Wymyślona |
 | (ISSUE-022) AC-2 — „Ja” i wszystkie osoby A–Z; „wymys” zostawia Wymyślony/Wymyślona | 1–5 | „Osoby” → „Ja” na górze, litery, liczba; „wymys” → tylko te osoby, bez liter i bez „Ja”; „zmys” → osoba z d. Zmyślona |
 | (ISSUE-022) AC-4 — wybrana w ustawieniach osoba jest „ja” i stoi na górze | 3, 6–7 · [[ustawienia]] 1 | wybór Ewy → pod „Ja” „Ewa Wymyślona”, Ewa nie powtarza się w A–Z |
+| (ISSUE-025) — lista bez pokrewieństwa (v2.2) | 4 | karta: imię i nazwisko, pod spodem same lata |
 
 ## Decisions
 - **D1 — sortowanie po nazwisku z literami** (D19: *„tak jest dobrze”*). Nazwisko grupuje rodziny. *Obali:* autor szuka
   częściej po pokoleniu albo bliskości — wtedy przełącznik sortowania.
-- **D2 — pokrewieństwo w liście** zamiast miejsca pochówku: lista odpowiada na „kto to dla mnie”, a „gdzie leży” jest w
-  widoku osoby. *Obali:* autor przed wizytą szuka po cmentarzu — wtedy filtr „na tym cmentarzu”.
+- ~~**D2 — pokrewieństwo w liście** zamiast miejsca pochówku~~ — **obalone na stopie #1 ISSUE-025** (v2.2): „kto to dla
+  mnie” to funkcja łączenia osób w drzewie, a przy wielu poziomach linia by się rozrastała. Lista: imię, nazwisko, lata.
+  Miejsca pochówku też nie ma — „gdzie leży” jest w widoku osoby.
 - **D3 — „Ja” na górze** — kotwica łańcuchów; tu autor ją widzi i poprawia (ustawienie w [[ustawienia]]).
 - **D4 — „Ja” zaprasza przed wyborem i nazywa wybraną osobę po wyborze** (v2; ISSUE-022 D3 i odstępstwo 1, przegląd
   `ui`). Tekst z v1 („to Ty — od Ciebie liczą się łańcuchy”) nie mówił, że nikogo nie wybrano ani co zrobić (reguła 9),
@@ -142,6 +153,9 @@ n/a — ekran do szukania i oglądania.
   wtedy fokus od razu.
 - **D7 — karta osoby → „Poprawa wpisu” do czasu widoku osoby** (v2; ISSUE-022 D2). Tymczasowe złamanie reguły 15 (widok
   przed poprawą), opisane w [[style-b]] reguła 15. [[ISSUE-024-person-view]] przepina kartę na [[osoba]].
+
+- ~~**D8, D9** (v2.1 — nawias ze ścieżką, opis neutralny bez płci)~~ — wycofane z listą (v2.2); obie reguły przechodzą do
+  widoku osoby ([[ISSUE-024-person-view]]).
 
 ## Open
 brak.
