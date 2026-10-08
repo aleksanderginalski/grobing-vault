@@ -19,9 +19,8 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
 
 ## In progress
 - **Po [[2026-10-08-retro-02]] (R1–R10, decyzja autora 2026-10-08):**
-  1. **[[ISSUE-020-content-guard]]** — strażnik treści (R1), następna pozycja: push idzie sam, a treści
-     wychodzących zmian nie sprawdza żaden mechanizm;
-  2. potem `pm` proponuje jedną z: [[ISSUE-021-small-fixes-after-retro-2]] (R9, przed pierwszymi prawdziwymi danymi) ·
+  1. ~~[[ISSUE-020-content-guard]]~~ — zamknięte 2026-10-08 (*Recently done*);
+  2. teraz `pm` proponuje jedną z: [[ISSUE-021-small-fixes-after-retro-2]] (R9, przed pierwszymi prawdziwymi danymi) ·
      [[US-004-fakt-od-babci]] · rozpisanie [[EPIC-002-wizyta]]. Między US-004 a EPIC-002 rozstrzyga fakt 5 z retro
      2 (rozmowa z babcią w najbliższym miesiącu?) — bez odpowiedzi, `pm` pyta ponownie.
 
@@ -50,6 +49,9 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     „…Krakowskie”), w bazie są cmentarze dla zwierząt, a wynik znaleziony przez okoliczną miejscowość nie
     mówi, przez którą. Kandydat na małą pozycję, gdy zacznie przeszkadzać przy prawdziwych cmentarzach;
   - **semantyka przycisków w dwóch starszych ekranach** → [[ISSUE-021-small-fixes-after-retro-2]] (retro 2, R9);
+  - **odświeżenie bazy cmentarzy OSM zostanie odrzucone przez strażnika treści** ([[ISSUE-020-content-guard]] →
+    *Verification*): wyciąg to jeden wiersz JSON z nazwami miejscowości z listy rdzeni. Przy pierwszym odświeżeniu —
+    wyjątek dla ścieżki tego pliku jako osobna pozycja, decyzja autora;
   - **kontrola cykli w rodzinie** ([[ISSUE-019-family-relations]] → *Manual*): aplikacja pozwala, by osoba była w parze ze
     swoim dzieckiem albo była swoim przodkiem — zobaczone w danych testowych autora na stopie #2. Poza zakresem ISSUE-019
     ([[ADR-011-relation-claims-family-and-child-link]] → *Follow-ups*). Kandydat na małą pozycję, gdy zdarzy się przy
@@ -74,6 +76,9 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     fakt 4);
   - **notatki rodziny na PC** leżą w `family_data_dir` (`project-config.md`), poza repo. Docelowo
     zdjęcia stron trafiają do zaszyfrowanego miejsca (NT-001);
+  - **lista rdzeni strażnika** (`rdzenie-straznika.txt` w `family_data_dir`, spisana przez agenta z notatek 2026-10-08):
+    4 nazwiska mają niepewny odczyt pisma (oznaczone na liście). Poprawki — w pliku albo w czacie z agentem. Każde nowe
+    nazwisko z przepisywania warto dopisać: rdzeń działa od następnego `git add`;
   - opcjonalnie zmiana hasła klucza (README `grobing-code` → *Podpis wydania*);
   - po SPIKE-003: usunąć folder `Grobing-spike` na Dysku (wymyślone dane, zaszyfrowane). Dwa pliki `grobing-*.age`
     z Pobranych na PC agent przeniósł do Kosza Windows 2026-10-08, na prośbę autora. Folderów na Dysku agent nie
@@ -92,13 +97,17 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
 - Odłożone: *patrz `backlog/deferred/`*.
 - Wymagania: *patrz `03_REQUIREMENTS/`* (EPIC-i, US, FR, NFR); architektura i ADR-y: *patrz `04_ARCHITECTURE/`*.
 - **Repo są publiczne na GitHubie** od 2026-10-07 (*Recently done*). Push idzie sam zaraz po commicie
-  paczki (decyzja autora 2026-10-07); treść wychodzących zmian ma sprawdzać [[ISSUE-020-content-guard]] (retro 2, R1).
+  paczki (decyzja autora 2026-10-07); treść wychodzących zmian sprawdza strażnik treści ([[ISSUE-020-content-guard]]) przy każdym `git add`/`commit`.
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **0** (ostatnie retro: [[2026-10-08-retro-02]]). Co **10** →
+- Zamknięte pozycje od ostatniego retro: **1** (ostatnie retro: [[2026-10-08-retro-02]]). Co **10** →
   retro + pytanie o 3–5 nośnych faktów (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**;
   podbija go `docs` przy zamknięciu, a zeruje go retro.
-- Do retro (zebrane po drodze, bez decyzji): —
+- Do retro (zebrane po drodze, bez decyzji):
+  - **model zagrożenia przyjęty, a nie zapytany** ([[ISSUE-020-content-guard]] → *Decision at stop #2*): plan i retro 2
+    zakładały, że nazwiska nie mogą trafić do rozmowy z agentem, więc listę miał pisać autor. Autor na stopie #2: chroni
+    tylko publikację na GitHubie. Kosztowało to rundę i edycję reguły, którą klasyfikator zablokował agentowi.
+    Kandydat: przy pozycjach o danych rodziny pytanie „przed czym chronimy?” na stopie #1, zanim plan je założy;
 
   Tematy z poprzedniego okresu rozliczyło [[2026-10-08-retro-02]] (R1–R10); wcześniejsze [[2026-10-06-retro-01]].
 
@@ -113,6 +122,22 @@ Format wpisu: `źródło (babcia / cmentarz X) · pytanie bez danych rodziny · 
 (zdarzenie) · data zapytania`. **Odpowiedź z faktami o rodzinie trafia do aplikacji, nie tutaj.**
 
 ## Recently done
+- 2026-10-08 — [[ISSUE-020-content-guard]] zamknięte. **Strażnik danych rodziny sprawdza też treść**, nie tylko typ pliku:
+  - przy każdym `git add`/`commit` porównuje z listą rdzeni (`rdzenie-straznika.txt` w `family_data_dir`): linie
+    dodane, pliki nowe, ścieżki, opis commita, plik `-F`. Bez polskich znaków i wielkości liter, rdzeń na początku
+    słowa (także camelCase). Odmowa podaje plik, linię i numer linii listy, **nigdy słowo**;
+  - brak listy, pusta lista albo rdzeń krótszy niż 3 znaki → blokada. Ręcznie: `-ScanTracked` przeszukuje treść
+    trzech repo;
+  - **decyzja autora na stopie #2:** nazwiska w rozmowie z agentem są w porządku, chronimy publikację na GitHubie,
+    więc listę spisał agent z notatek. Regułę w `family-data.md` poprawił autor (klasyfikator zablokował agentowi);
+  - **skan treści trzech repo: 0 nazwisk z notatek** — trafienia tylko w danych publicznych (wyciąg OSM, jedno duże miasto
+    mapy Polski, które wypadło z listy).
+
+  Koszt: ok. +0,2–0,3 s na `git add`/`commit`. Testy strażnika: 150. Werdykt `qa`: APPROVED (self-check, z uwagami).
+  Licznik retro: 0 → 1.
+
+  **Dla autora:** 4 niepewne odczyty nazwisk na liście (*Autor, poza sesją*); odświeżenie bazy cmentarzy OSM zostanie
+  odrzucone (*In progress*).
 - 2026-10-08 — **retro 2** ([[2026-10-08-retro-02]]): licznik 10 → 0. Decyzje autora R1–R10 („ok idźmy z twoją
   rekomendacją”):
   - **strażnik treści** — lista rdzeni w `family_data_dir`, czyta ją skrypt strażnika, odmowa bez słowa → [[ISSUE-020-content-guard]] (R1);
