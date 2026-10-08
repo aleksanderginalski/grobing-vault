@@ -72,8 +72,9 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   - **notatki rodziny na PC** leżą w `family_data_dir` (`project-config.md`), poza repo. Docelowo
     zdjęcia stron trafiają do zaszyfrowanego miejsca (NT-001);
   - opcjonalnie zmiana hasła klucza (README `grobing-code` → *Podpis wydania*);
-  - po SPIKE-003: usunąć folder `Grobing-spike` na Dysku i dwa pliki `grobing-*.age` z Pobranych na PC
-    (wymyślone dane, zaszyfrowane);
+  - po SPIKE-003: usunąć folder `Grobing-spike` na Dysku (wymyślone dane, zaszyfrowane). Dwa pliki `grobing-*.age`
+    z Pobranych na PC agent przeniósł do Kosza Windows 2026-10-08, na prośbę autora. Folderów na Dysku agent nie
+    usunął, bo podłączony do Claude Dysk Google to inne konto niż to na emulatorach;
   - po ISSUE-009: usunąć foldery `Grobing-dev-009` i `Grobing-proba` na Dysku (wymyślone dane, hasła
     testowe). Pliki o tej samej nazwie w kilku folderach mylą wyszukiwarkę okna przy odtworzeniu.
 - **[[EPIC-002-wizyta]] gotowy do rozpisania na US** — pytanie „jak znaleźć grób bez pinezki” ma kierunek autora
