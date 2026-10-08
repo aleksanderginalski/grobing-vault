@@ -75,10 +75,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   - po SPIKE-003: usunąć folder `Grobing-spike` na Dysku i dwa pliki `grobing-*.age` z Pobranych na PC
     (wymyślone dane, zaszyfrowane);
   - po ISSUE-009: usunąć foldery `Grobing-dev-009` i `Grobing-proba` na Dysku (wymyślone dane, hasła
-    testowe). Pliki o tej samej nazwie w kilku folderach mylą wyszukiwarkę okna przy odtworzeniu;
-  - po SPIKE-001: **usunąć folder `C:\Programowanie\Grobing\_throwaway\`** (prototyp poza repo; publiczny cmentarz
-    testowy, bez danych rodziny). Ochrona Claude Code zablokowała usunięcie agentowi, bo był katalogiem roboczym
-    sesji.
+    testowe). Pliki o tej samej nazwie w kilku folderach mylą wyszukiwarkę okna przy odtworzeniu.
 - **[[EPIC-002-wizyta]] gotowy do rozpisania na US** — pytanie „jak znaleźć grób bez pinezki” ma kierunek autora
   (2026-10-08): adres z wyszukiwarki zarządcy → kwatera zaznaczona według planu zarządcy → na miejscu plan offline i
   GPS → pinezka. Wejście do pierwszej US (mapa cmentarza): EPIC-002 → *Input from SPIKE-001*. Ekran: `ui` →
@@ -185,7 +182,7 @@ Format wpisu: `źródło (babcia / cmentarz X) · pytanie bez danych rodziny · 
 
   **Dla autora:**
   - sprawdzenie na cmentarzu przy najbliższej wizycie → §Parked;
-  - folder `_throwaway` do usunięcia (*Autor, poza sesją*);
+  - folder prototypu `_throwaway` usunięty 2026-10-08 na Twoją prośbę;
   - pole „link do wyszukiwarki zarządcy” zamiast „link do Grobonetu” czeka na Twoją decyzję przy pierwszej US mapy
     cmentarza.
 - 2026-10-08 — [[ISSUE-019-family-relations]] zamknięte, a z nim **[[US-003-przepisanie-rodziny]]** (werdykt US: APPROVED,

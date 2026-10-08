@@ -64,8 +64,8 @@ Wybrane źródło z uzasadnieniem i kosztem → **ADR-003** `accepted`; koszt �
         stopie #2;*
       - *H3 i H10 w *Findings*;*
       - *prototyp odinstalowany z emulatora, a pliki pomiarów usunięte ze scratchpada. **Folder
-        `_throwaway/spike-001/` poza repo usuwa autor**, bo ochrona Claude Code zablokowała to agentowi
-        (`CURRENT_STATE.md` → *Autor, poza sesją*);*
+        `_throwaway/spike-001/` poza repo** najpierw zablokowała ochrona Claude Code (był katalogiem roboczym
+        sesji), a potem agent go usunął na wyraźną prośbę autora, 2026-10-08;*
       - *krok 4 → §Parked.)*
 
 ## Implementation plan
