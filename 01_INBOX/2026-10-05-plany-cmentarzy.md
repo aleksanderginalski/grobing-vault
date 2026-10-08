@@ -1,5 +1,17 @@
 # Plany cmentarzy z kwaterami — trzecie źródło położenia grobu?
 
+> ✅ **Rozstrzygnięte 2026-10-08 przez [[SPIKE-001-map-source-offline]] → [[ADR-003-map-source-offline]].**
+> - Plany z kwaterami są w sieci dla 8 z 11 cmentarzy autora, a wyszukiwarkę grobów zarządcy ma 11 z 11. **Nie
+>   wolno ich kopiować** i nie działają offline, więc **nie są źródłem położenia w aplikacji**.
+> - Kwatery zaznacza autor według planu zarządcy, a pinezkę grobu stawia w kwaterze.
+> - Siatkę kwater z pomysłu niżej zastępują kwatery autora.
+> - Plan w aplikacji to schemat z OSM, a zdjęcie z góry jest tylko online.
+>
+> Wejście do pierwszej US mapy cmentarza: [[EPIC-002-wizyta]] → *Input from SPIKE-001*. Model danych i
+> glosariusz są już zaktualizowane (*Sector*, *pinezka*, *plan cmentarza*). **Notatka zostaje w INBOX jako ślad,
+> mimo zdania „znika z INBOX” niżej:** linkuje do niej 8 zamkniętych pozycji, a usunięcie urwałoby te odsyłacze
+> (`docs`, 2026-10-08).
+
 > Pomysł autora z sesji `pm` 2026-10-05, **bez preferencji** względem zdjęć z GPS. Decyzja odłożona do
 > [[SPIKE-001-map-source-offline]], bo rozstrzygają ją dane, nie gust.
 

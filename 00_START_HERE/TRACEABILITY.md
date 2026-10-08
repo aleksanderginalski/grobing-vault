@@ -3,7 +3,7 @@ title: "Grobing — Requirements Traceability"
 type: meta
 status: active
 created: 2026-10-05
-updated: 2026-10-07
+updated: 2026-10-08
 ---
 
 # Grobing — Requirements Traceability
@@ -27,7 +27,7 @@ updated: 2026-10-07
 | Journey step | Brief § | EPIC | US | Issue(s) | Story Status | Issue Status | Quality Verdict |
 |---|---|---|---|---|---|---|---|
 | UJ-001 · 1 — mapa Polski z cmentarzami rodziny; wybór, dokąd jechać | §4a · §5 M2 | [[EPIC-002-wizyta]] | | [[ISSUE-014-home-map-of-poland]] (pod US-002: mapa jako ekran główny) · [[ISSUE-015-add-cemetery-from-database]] (pod US-002: dodanie cmentarza z bazy) | | ISSUE-014 done · ISSUE-015 done | ISSUE-014: APPROVED (self-check, 2026-10-06, z uwagami) · ISSUE-015: APPROVED (self-check, 2026-10-07, z uwagami; przegląd `ui` w 2 rundach; stop #2 8 z 8 „tak”) |
-| UJ-001 · 2 — na miejscu: mapa cmentarza, pinezki, adres zarządcy, link do Grobonetu | §4a · §5 M3 | [[EPIC-002-wizyta]] | | | | | |
+| UJ-001 · 2 — na miejscu: mapa cmentarza, pinezki, adres zarządcy, link do Grobonetu | §4a · §5 M3 | [[EPIC-002-wizyta]] | | [[SPIKE-001-map-source-offline]] (spike: źródło zdjęcia cmentarza offline, Grobonet, plany z kwaterami → [[ADR-003-map-source-offline]]) | | SPIKE-001 done | SPIKE-001: APPROVED (self-check, 2026-10-08, z uwagami; stop #2: autor wybrał plan schematyczny OSM offline + ortofotomapę online po szkicu na emulatorze) |
 | UJ-001 · 3 — dojście do pinezki; porównanie ze zdjęciem nagrobka | §4a · §5 M3/M4 | [[EPIC-002-wizyta]] | | | | | |
 | UJ-001 · 4 — grób: wszyscy pochowani, zdjęcie + imię | §4a · §5 M4 | [[EPIC-002-wizyta]] | | | | | |
 | UJ-001 · 5 — osoba: kim była, pokrewieństwa, ścieżka do „ja" | §4a · §5 M5 | [[EPIC-002-wizyta]] | | | | | |
@@ -40,7 +40,7 @@ updated: 2026-10-07
 | n/a — poza ścieżką (warunek kroku 1): wprowadzanie całymi rodzinami | §5 M1 · G6 | [[EPIC-001-zabezpiecz-i-przepisz]] | [[US-003-przepisanie-rodziny]] | [[ISSUE-019-family-relations]] | done | ISSUE-019 done | ISSUE-019: APPROVED (self-check, 2026-10-08, z uwagami; stop #2 „ok” — krok 2 pominięty, sprawdzony przez agenta; F3 na drugim emulatorze, odcisk zgodny) |
 | n/a — poza ścieżką (warunek kroku 1): fakty od babci obok notatek | §2 · §5 M1 | [[EPIC-001-zabezpiecz-i-przepisz]] | [[US-004-fakt-od-babci]] | | ready | | |
 | n/a — poza ścieżką (warunek kroku 1): zdjęcia nagrobka i osoby | §5 M1 | [[EPIC-001-zabezpiecz-i-przepisz]] | [[US-005-zdjecia]] | [[ISSUE-016-photos-grave-and-person]] · [[ISSUE-017-person-photos]] · [[ISSUE-018-profile-photo-crop]] (kadr profilowego, rozwinięcie po werdykcie US) | done | ISSUE-016 done · ISSUE-017 done · ISSUE-018 done | ISSUE-016: APPROVED (self-check, 2026-10-07, z uwagami; przegląd `ui` 0 BLOCKER / 1 MAJOR poprawiony / MINOR; stop #2 „ok” + zmiana autora D12) · ISSUE-017: APPROVED (self-check, 2026-10-07, z uwagami; przegląd `ui` 0 BLOCKER / 1 MAJOR / 5 MINOR poprawione; stop #2: autor kroki 1 i 3 + kadr profilowego jako następna pozycja, kroki 4–7 agent) · **US-005: APPROVED** (niezależny przegląd, 2026-10-07, z uwagami — odtworzenie zdjęć osób na urządzeniu niewykonane, kadr → [[ISSUE-018-profile-photo-crop]]) · ISSUE-018: APPROVED (self-check, 2026-10-07, z uwagami; przegląd `ui` 0/0/6 MINOR poprawione; stop #2: autor krok 1 + bez lup → podwójne dotknięcie (opcja A), reszta agent; odtworzenie zdjęć osób z kadrami na drugim emulatorze zgodne) |
-| n/a — poza ścieżką (NFR): działa bez zasięgu | §5 M7 | [[EPIC-002-wizyta]] ([[NFR-001-offline]]) | | | | | |
+| n/a — poza ścieżką (NFR): działa bez zasięgu | §5 M7 | [[EPIC-002-wizyta]] ([[NFR-001-offline]]) | | [[SPIKE-001-map-source-offline]] (spike: mapa cmentarza offline, kroki 2–7) | | SPIKE-001 done | SPIKE-001: APPROVED (self-check, 2026-10-08, z uwagami; offline sprawdzone na emulatorze w trybie samolotowym; na miejscu → §Parked) |
 | n/a — poza ścieżką: kopia z odtworzeniem | §5 M8 · G1 | [[EPIC-001-zabezpiecz-i-przepisz]] | [[US-001-kopia-z-odtworzeniem]] | [[SPIKE-003-backup-and-restore]] (spike: mechanizm kopii → [[ADR-004-backup-format-encryption-destination]]) · [[ISSUE-007-data-layer]] · [[ISSUE-008-backup-write]] · [[ISSUE-009-restore]] · [[ISSUE-010-background-backup]] | done | SPIKE-003 done · ISSUE-007 done · ISSUE-008 done · ISSUE-009 done · ISSUE-010 done | SPIKE-003: APPROVED (self-check, 2026-10-05; stop #2 pominięty) · ISSUE-007: APPROVED (self-check, 2026-10-05; stop #2 ok) · ISSUE-008: APPROVED (self-check, 2026-10-06, z uwagami; stop #2 pominięty — Dysk z kodem produkcyjnym niesprawdzony) · ISSUE-009: APPROVED (self-check, 2026-10-06, z uwagami; stop #2 ok — odtworzenie przez Dysk na drugim emulatorze) · ISSUE-010: APPROVED (self-check, 2026-10-06, z uwagami; stop #2 ok w podejściu 2 — kopia w tle po zamknięciu gestem, odtworzona z odciskiem zgodnym) · **US-001: APPROVED** (self-check, niezależny przegląd, 2026-10-06, z uwagami) |
 | n/a — poza ścieżką: eksport czytelny bez aplikacji (+ notka przekazania [[NT-007-hand-over-note]], poza kodem) | §5 M8 · G2 · A4 | [[EPIC-001-zabezpiecz-i-przepisz]] | [[US-006-eksport-dla-rodziny]] | | ready | | |
 
@@ -65,12 +65,20 @@ updated: 2026-10-07
   - ✅ **Część M1 zamknięta (2026-10-06):** jeden wpis w notatkach = jeden nagrobek z osobami, więc grób z
     notatek to cmentarz + osoby, reszta opcjonalna ([[US-002-przepisanie-grobu]] → *Open questions*).
     **Otwarte zostaje tylko pytanie wizyty:** jak taki grób znaleźć na miejscu (EPIC-002, SPIKE-001).
+  - ✅ **Kierunek dla pytania wizyty (autor, 2026-10-08, [[SPIKE-001-map-source-offline]]):**
+    1. adres zarządcy z wyszukiwarki (ma ją każdy cmentarz autora; autor szuka sam, po nazwisku);
+    2. kwatera zaznaczona przez autora według planu zarządcy;
+    3. na miejscu plan offline i GPS → pinezka (krok 6).
+
+    Szczegóły: [[EPIC-002-wizyta]] → *Open questions*. Sprawdzenie w terenie: `CURRENT_STATE.md` → §Parked.
 - **2 — nierozstrzygnięte: grób ze zdjęcia z galerii** (pinezka z lokalizacji zdjęcia) — funkcja spoza M1.
   **Decyzja autora (2026-10-05): budowa bez terminu**, 1 listopada niczego nie wyznacza. Przy wizytach
   autor robi zdjęcia nagrobków aparatem z włączoną lokalizacją, co nie wymaga żadnej budowy. Kopię w
   Zdjęciach Google trzeba wtedy wstrzymać, bo wysłałaby zdjęcia i położenia **niezaszyfrowane**
   (brief §Security). Sama funkcja **nie jest planowana teraz** i zależy od tego, które źródła położenia
-  wybierze [[SPIKE-001-map-source-offline]] (patrz `01_INBOX/2026-10-05-plany-cmentarzy.md`).
+  wybierze [[SPIKE-001-map-source-offline]] (patrz `01_INBOX/2026-10-05-plany-cmentarzy.md`). SPIKE-001
+  (2026-10-08) wybrał pinezkę autora na planie albo na ortofotomapie oraz GPS na miejscu ([[ADR-003-map-source-offline]]).
+  Lokalizacja ze zdjęcia z galerii byłaby kolejnym źródłem pinezki; funkcja dalej nie jest planowana.
   *Nota techniczna:* systemowy picker zdjęć Androida domyślnie usuwa lokalizację. Odczyt wymaga
   `ACCESS_MEDIA_LOCATION` i poproszenia o oryginał pliku albo nowego API pickera (mainline 08.2026), w
   którym użytkownik sam zgadza się przekazać lokalizację. Poza EPIC-ami do decyzji.

@@ -8,7 +8,7 @@ verdict-date: null
 verdict-reviewer: null
 source: "PROJECT_BRIEF §Security (ASVS-lite translated, off-phone copy) · Step 0 (local-first: privacy) · §2 value ('private')"
 created: 2026-10-05
-updated: 2026-10-07
+updated: 2026-10-08
 ---
 
 # NFR-005 — Dane nie opuszczają telefonu poza kopią
@@ -52,6 +52,17 @@ SDK wysyłających dane z telefonu (np. Firebase).
   zależności i bez `INTERNET` (`aapt` na APK release). **Granica:** gdyby ten sam link otwierał kiedyś
   cmentarz już zapisany w aplikacji, punkt mówiłby, gdzie leży rodzina autora — wtedy to osobna decyzja
   wobec tego NFR.
+- **`INTERNET` dla mapy cmentarza (2026-10-08, [[ADR-003-map-source-offline]]):**
+  - aplikacja dostanie to uprawnienie wraz z pozycją, która zbuduje mapę cmentarza, i **tylko po to**, żeby
+    pobrać plan cmentarza z OSM przy jego dodaniu i wyświetlić ortofotomapę GUGiK online;
+  - **od tej chwili tę własność pilnuje kod, a nie system:** aplikacja z `INTERNET` mogłaby wysłać cokolwiek.
+    Dlatego pozycja, która je doda, ma w DoD: lista hostów w kodzie (OSM, GUGiK), tylko HTTPS, przegląd
+    zależności i `aapt` na APK. `qa` sprawdza, że żadne inne wywołanie sieciowe nie powstało;
+  - **co wychodzi:** z telefonu nie wychodzą dane rodziny. Wychodzą zapytania o **obszar cmentarza**, czyli
+    ramka albo kafelki, z adresu IP telefonu. To ta sama granica, co przy linku do zdjęcia satelitarnego wyżej:
+    serwery OSM i GUGiK mogłyby z tego wywnioskować, gdzie leży rodzina autora. Autor przyjął to, wybierając
+    plan z pobraniem i zdjęcie online;
+  - wcześniejszy pomysł „aplikacja bez `INTERNET`, plik z PC” (droga (b) w SPIKE-001) odrzucił autor.
 - Eksport nie jest szyfrowany z założenia (czytelność jest jego celem) — dlatego żyje offline, nie w chmurze
   (§Security).
 - Hipoteza prawna (wyłączenie domowe RODO) jest najmocniejsza, gdy chmura trzyma tylko szyfrogram →

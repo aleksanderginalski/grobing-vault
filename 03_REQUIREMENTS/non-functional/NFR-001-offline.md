@@ -8,7 +8,7 @@ verdict-date: null
 verdict-reviewer: null
 source: "PROJECT_BRIEF §5 M7 · §4a branch 'weak or no signal' · §3b H9 · MD2 (NFR example) · Step 0 (local-first)"
 created: 2026-10-05
-updated: 2026-10-05
+updated: 2026-10-08
 ---
 
 # NFR-001 — Offline
@@ -34,3 +34,11 @@ słaby albo żaden, a ścieżka, która go potrzebuje, zawodzi dokładnie tam, g
   [[SPIKE-001-map-source-offline]] / [[ADR-003-map-source-offline]].
 - Link do Grobonetu (krok 2) z natury wymaga sieci — to zewnętrzna strona w przeglądarce; brak zasięgu
   nie może blokować reszty kroku.
+- ✅ **Kroki 2–7 mają źródło mapy — 2026-10-08** ([[ADR-003-map-source-offline]], [[SPIKE-001-map-source-offline]]):
+  - **plan schematyczny** cmentarza (obrys i alejki z OSM) pobiera się raz, przy dodaniu cmentarza, i działa
+    offline. Kwatery i pinezki to dane autora w bazie. Prototyp pokazał plan i zdjęcie w trybie samolotowym
+    na emulatorze (M7, M11);
+  - **zdjęcie z góry (ortofotomapa)** jest świadomie tylko online (decyzja autora). Na cmentarzu bez zasięgu go nie
+    ma, a plan i GPS działają.
+
+  Sprawdzenie na miejscu (H9 razem z H3) → `CURRENT_STATE.md` → §Parked.

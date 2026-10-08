@@ -13,7 +13,7 @@ verdict-date: null
 verdict-reviewer: null
 source: "PROJECT_BRIEF §4a · §5 M2-M7 · §3b H3, H9"
 created: 2026-10-05
-updated: 2026-10-06
+updated: 2026-10-08
 ---
 
 # EPIC-002 — Wizyta
@@ -46,8 +46,9 @@ dokładnością ([[FR-001-provenance]]).
 - C1 „odwiedzony w tym roku" · C4 wskazówki dojścia do grobu · S5 wyszukiwanie · W3 kopiowanie danych
   Grobonetu · W6 rocznice śmierci.
 - **Grób ze zdjęcia z galerii (pinezka z lokalizacji zdjęcia)** — nierozstrzygnięte, poza zakresem do
-  decyzji autora po [[SPIKE-001-map-source-offline]]: `TRACEABILITY.md` → *Open gaps* 2. Kandydat
-  na trzecie źródło położenia (plan zarządcy z kwaterami): `01_INBOX/2026-10-05-plany-cmentarzy.md`.
+  decyzji autora: `TRACEABILITY.md` → *Open gaps* 2 (SPIKE-001 zamknięty 2026-10-08 bez rozstrzygnięcia tej funkcji). Plan
+  zarządcy jako trzecie źródło położenia odpadł, bo nie wolno go kopiować ([[ADR-003-map-source-offline]]).
+  Kwatery zaznacza autor (sekcja niżej).
 
 ## Prior art
 Przegląd z kick-offu (`kickoff/SESSION_STATE.md` → *Prior-art scan*, 2026-10-05): każdy widok istnieje
@@ -59,12 +60,40 @@ EPIC-a, zacznij od nich. Dopisane przy przeglądzie `kickoff/` (retro 1, R4, 202
 ## Dependencies
 | Dependency | Type | Status |
 |---|---|---|
-| [[SPIKE-001-map-source-offline]] → [[ADR-003-map-source-offline]] | technical | ADR `proposed` — **widoki 1-2 czekają na spike** |
-| [[NT-004-grobonet-link-terms]] | legal (hipoteza) | `open` — link, nigdy kopia |
+| [[SPIKE-001-map-source-offline]] → [[ADR-003-map-source-offline]] | technical | ✅ `accepted` 2026-10-08 — plan schematyczny OSM offline, ortofotomapa GUGiK online, kwatery i pinezki autora |
+| [[NT-004-grobonet-link-terms]] | legal | ✅ `done` 2026-10-08 — regulamin nie zakazuje linku, zakazuje kopiowania: link, nigdy kopia |
 | [[NT-006-visual-guidelines]] | visual | `open` — styl B + czytelność w słońcu |
 | [[EPIC-001-zabezpiecz-i-przepisz]] | product | krok 1 jest pusty bez przepisanych danych |
 
+## Input from SPIKE-001 (2026-10-08) — for the first US of this EPIC
+Decyzje autora po szkicu na emulatorze ([[SPIKE-001-map-source-offline]] → *Verification*,
+[[ADR-003-map-source-offline]]):
+- **Mapa cmentarza (widok 2) to plan schematyczny** w stylu B, *„jak Grobonet, w naszych kolorach”*: obrys i
+  alejki z OSM, offline, pobrane przy dodaniu cmentarza; bez sieci zaślepka. Zdjęcie z góry (ortofotomapa)
+  jest tylko online, jako warstwa;
+- **kwatera** to nazwana strefa, którą autor zaznacza sam według planu zarządcy, i tylko tam, gdzie leży rodzina.
+  Autor wcześniej myślał o kwaterze jak o miejscu jednego grobowca; w danych to sektor z wieloma grobami
+  (`glossary.md` → *kwatera*);
+- **grób** ma pinezkę w kwaterze i adres zarządcy (kwatera, rząd, miejsce). **Siatki grobów nie ma** (to dane
+  zarządców);
+- pomysł autora z 2026-10-08: *„można tam dodać kwatery ale ich lokalizacja będzie dostępna dopiero gdy będziemy
+  mieć plan cmentarza”*, czyli kwatera może istnieć bez strefy, a strefę dostaje później;
+- pole „link do wyszukiwarki zarządcy” zamiast „link do Grobonetu” (*Findings* → rekomendacja 6) czeka na
+  decyzję autora przy tej US.
+
+Wygląd projektuje `ui` (makieta przed kodem, retro 1 R5). [[cmentarz]] D1 zakładał zdjęcie nad listą, więc jest
+do zmiany.
+
 ## Open questions
+- ✅ **Kierunek dla gałęzi „grób bez pinezki” (autor, 2026-10-08, stop #2 [[SPIKE-001-map-source-offline]]):**
+  1. w domu autor szuka grobu po nazwisku w **wyszukiwarce zarządcy**, którą ma każdy z jego cmentarzy (*Findings*
+     → M1–M3), i przepisuje adres;
+  2. z **planu zarządcy** wie, w której kwaterze jest grób, i zaznacza tę kwaterę w aplikacji;
+  3. na miejscu idzie do kwatery planem offline i GPS-em i **stawia pinezkę** przy grobie (krok 6).
+
+  Autor: *„mając plan cmentarza — wiem w której kwaterze jest mój grób a potem … zaznaczyłbym pinezką gdzie jest
+  grób”*. Czy to wystarcza w terenie, sprawdzi wizyta (`CURRENT_STATE.md` → §Parked). Niżej zostaje
+  pierwotny opis luki:
 - ⚠️ **OPEN — gałąź „grób bez pinezki".** Brief §4a: *„Grave with no pin yet (only a plot address from
   the notes) → step 2 shows the address and the Grobonet link"*. **Po korekcie autora (2026-10-05)
   notatki nie mają adresów kwater**, więc przy pierwszej wizycie taki grób nie ma ani pinezki, ani

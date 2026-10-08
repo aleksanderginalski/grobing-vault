@@ -18,20 +18,18 @@ updated: 2026-10-08
 MVP — od startu, cały produkt (Meta-decyzja 4).
 
 ## In progress
-- **[[ISSUE-019-family-relations]] zamknięta 2026-10-08** (relacje w rodzinie, schemat v6), a z nią
-  [[US-003-przepisanie-rodziny]]. Następna według kolejności autora: **[[SPIKE-001-map-source-offline]]** — zdjęcie
-  satelitarne cmentarza, znicze na grobach, plany z kwaterami. Pierwszy krok: `planning` (spike bez ekranu do
-  zaprojektowania przed planem).
-- **Następne kroki, w tej kolejności (decyzja autora 2026-10-06, *„ok plan brzmi dobrze”*; ISSUE-015 dołożona
-  na stopie #1 ISSUE-014, *„wygląda dobrze”*):**
+- **[[SPIKE-001-map-source-offline]] zamknięty 2026-10-08** → [[ADR-003-map-source-offline]] `accepted`: mapa
+  cmentarza to **plan schematyczny z OSM offline** + ortofotomapa GUGiK online + kwatery i pinezki autora. Kolejność
+  autora z 2026-10-06 jest wyczerpana, więc następną pozycję proponuje `pm`. **Najpierw retro** (licznik niżej).
+- **Kolejność autora (2026-10-06, *„ok plan brzmi dobrze”*; ISSUE-015 dołożona
+  na stopie #1 ISSUE-014, *„wygląda dobrze”*) — wyczerpana:**
   1. ~~[[ISSUE-014-home-map-of-poland]]~~ — zamknięte 2026-10-06;
   2. ~~[[ISSUE-015-add-cemetery-from-database]]~~ — zamknięte 2026-10-07;
   3. ~~[[ISSUE-012-transcribe-grave-screen]]~~ — zamknięte 2026-10-07;
   4. ~~[[US-005-zdjecia]]~~ — zamknięta 2026-10-07 (~~ISSUE-016~~, ~~ISSUE-017~~);
      ~~4a. [[ISSUE-018-profile-photo-crop]]~~ — zamknięte 2026-10-07;
   5. ~~[[US-003-przepisanie-rodziny]]~~ — zamknięta 2026-10-08 (~~ISSUE-019~~);
-  6. **[[SPIKE-001-map-source-offline]]** (następna) — zdjęcie satelitarne cmentarza, znicze na grobach, plany z kwaterami
-     (`01_INBOX/2026-10-05-plany-cmentarzy.md`). Baza cmentarzy przeszła do ISSUE-015.
+  6. ~~[[SPIKE-001-map-source-offline]]~~ — zamknięty 2026-10-08 (*Recently done*).
   
   **Każda pozycja z ekranem: `ui` → `planning`** (`autonomous-flow.md`). Wygląd: `05_DESIGN/brand/`
   (wytyczne v1.6 i referencje R1–R4 z kick-offu).
@@ -77,10 +75,14 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   - po SPIKE-003: usunąć folder `Grobing-spike` na Dysku i dwa pliki `grobing-*.age` z Pobranych na PC
     (wymyślone dane, zaszyfrowane);
   - po ISSUE-009: usunąć foldery `Grobing-dev-009` i `Grobing-proba` na Dysku (wymyślone dane, hasła
-    testowe). Pliki o tej samej nazwie w kilku folderach mylą wyszukiwarkę okna przy odtworzeniu.
-- **Przed rozpisaniem [[EPIC-002-wizyta]] na US — pytanie do autora:** jak znaleźć przy pierwszej wizycie
-  grób bez pinezki, adresu kwatery i zdjęcia → `TRACEABILITY.md` → *Open gaps* 1. Kandydat: plany
-  cmentarzy z kwaterami → `01_INBOX/2026-10-05-plany-cmentarzy.md` (rozstrzyga SPIKE-001).
+    testowe). Pliki o tej samej nazwie w kilku folderach mylą wyszukiwarkę okna przy odtworzeniu;
+  - po SPIKE-001: **usunąć folder `C:\Programowanie\Grobing\_throwaway\`** (prototyp poza repo; publiczny cmentarz
+    testowy, bez danych rodziny). Ochrona Claude Code zablokowała usunięcie agentowi, bo był katalogiem roboczym
+    sesji.
+- **[[EPIC-002-wizyta]] gotowy do rozpisania na US** — pytanie „jak znaleźć grób bez pinezki” ma kierunek autora
+  (2026-10-08): adres z wyszukiwarki zarządcy → kwatera zaznaczona według planu zarządcy → na miejscu plan offline i
+  GPS → pinezka. Wejście do pierwszej US (mapa cmentarza): EPIC-002 → *Input from SPIKE-001*. Ekran: `ui` →
+  makieta przed kodem; [[cmentarz]] D1 (zdjęcie nad listą) do zmiany.
 
 ## Backlog at a glance
 - Zadania: *patrz `backlog/issues/`*.
@@ -92,9 +94,10 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   paczki (decyzja autora 2026-10-07); przegląd imion na wychodzących zmianach czeka na retro (*Do retro*).
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **8** (ostatnie retro: [[2026-10-06-retro-01]]). Co **10** →
+- Zamknięte pozycje od ostatniego retro: **10** (ostatnie retro: [[2026-10-06-retro-01]]). Co **10** →
   retro + pytanie o 3–5 nośnych faktów (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**;
-  podbija go `docs` przy zamknięciu, a zeruje go retro.
+  podbija go `docs` przy zamknięciu, a zeruje go retro. **⏰ Sygnał dla `pm`: licznik osiągnął 10 (SPIKE-001 i
+  NT-004, 2026-10-08) — retro przed następną pozycją.**
 - Do retro (zebrane po drodze, bez decyzji):
   - **przegląd imion przy każdym pushu** ([[NT-008-publication-review]] → *Progress* 2026-10-07): przegląd
     historii objął commity do 2026-10-07. Każdy kolejny push publikuje nowe commity, a treść pilnuje tylko
@@ -140,13 +143,51 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     Według R9 sygnał z kick-offu wygrywa. **Decyzja autora:** zbudować `architect` albo zapisać, że ADR-y
     zostają w łańcuchu. Wykrył to przegląd `kickoff/` (R4); do tego czasu ADR-y robi łańcuch jak dotąd.
   
+  - **szkic na emulatorze zmienił decyzję ADR** ([[SPIKE-001-map-source-offline]] → *Verification*): na stopie #2 autor
+    zakwestionował zdjęcie („mało co widoczne”), pokazał plan z Grobonetu i poprosił o szkic na emulatorze. Po szkicu
+    wybrał plan schematyczny zamiast zdjęcia offline, które rekomendował `dev`. Stop #2 autor znów przeszedł nie
+    krokami, tylko odczuciem i pytaniem o kierunek. Kandydat: przy pozycjach z decyzją widoczną dla użytkownika szkic
+    na emulatorze przed stopem #1, a nie po pomiarach;
+  - **narzędzia pod presją** (SPIKE-001): agent dwa razy zawiesił powłokę `python -I -`, choć pamięć to opisuje, a
+    ochrona Claude Code zablokowała usunięcie folderu prototypu, który był katalogiem roboczym sesji. Kandydat:
+    prototyp w katalogu, który nie staje się katalogiem roboczym (`cd` tylko w komendzie), i pamięć sprawdzana
+    przed pierwszym wywołaniem Pythona.
+
   Tematy z poprzedniego okresu rozliczyło [[2026-10-06-retro-01]] (R1–R10).
 
 ## Parked (waiting on someone outside the session)
-- brak. Format wpisu: `źródło (babcia / cmentarz X) · pytanie bez danych rodziny · warunek obudzenia
-  (zdarzenie) · data zapytania`. **Odpowiedź z faktami o rodzinie trafia do aplikacji, nie tutaj.**
+- **cmentarz (którykolwiek z cmentarzy autora)** · przy 3 grobach, które autor zna: (a) dokładność GPS telefonu
+  przy grobie w metrach (dowolna mapa z niebieską kropką); (b) czy kropka trafia we właściwą kwaterę, rząd albo
+  aleję; (c) czy przy bramie wisi plan z kwaterami. Odpowiedź w czacie: **same liczby i tak/nie**, bez nazw i
+  położeń · warunek obudzenia: **najbliższa wizyta na cmentarzu** · 2026-10-08 ([[SPIKE-001-map-source-offline]] D5;
+  mierzy H3 i H9 przed budową pinezek w [[EPIC-002-wizyta]]).
+
+Format wpisu: `źródło (babcia / cmentarz X) · pytanie bez danych rodziny · warunek obudzenia
+(zdarzenie) · data zapytania`. **Odpowiedź z faktami o rodzinie trafia do aplikacji, nie tutaj.**
 
 ## Recently done
+- 2026-10-08 — [[SPIKE-001-map-source-offline]] zamknięty → **[[ADR-003-map-source-offline]] `accepted`**, a z nim
+  [[NT-004-grobonet-link-terms]] (regulamin Grobonetu nie zakazuje linku i zakazuje kopiowania). **Mapa cmentarza:**
+  - **plan schematyczny offline**: obrys i alejki z OSM, pobrane przy dodaniu cmentarza; bez sieci zaślepka;
+  - **ortofotomapa GUGiK tylko online**, za 0 zł (H10). Mapbox, Esri i Google odpadły na warunkach offline;
+  - **kwatery i pinezki to dane autora**. Siatki grobów nie ma, bo plany zarządców nie są do kopiowania;
+  - aplikacja dostanie `INTERNET` tylko do pobrania planu i zdjęcia online ([[NFR-005-dane-nie-opuszczaja-telefonu]]).
+
+  Pomiary (bez nazw cmentarzy):
+  - lista autora to 8 pozycji, czyli 11 cmentarzy;
+  - wyszukiwarka grobów zarządcy: 11 z 11, plan z kwaterami w sieci: 8 z 11, Grobonet: 6 z 11;
+  - rzędy grobów na zdjęciu widać w 7 z 8 obszarów;
+  - kwatery w OSM: 1 na 8 obszarów; gęste alejki w OSM: 4 z 8;
+  - prototyp pokazał w trybie samolotowym plan i zdjęcie z plików.
+
+  Autor zakwestionował zdjęcie na stopie #2. Na jego prośbę agent zrobił szkic planu na emulatorze, a autor
+  wybrał kierunek „Jak u Ciebie”. Werdykt `qa`: APPROVED (self-check, z uwagami). Licznik retro: 8 → 10.
+
+  **Dla autora:**
+  - sprawdzenie na cmentarzu przy najbliższej wizycie → §Parked;
+  - folder `_throwaway` do usunięcia (*Autor, poza sesją*);
+  - pole „link do wyszukiwarki zarządcy” zamiast „link do Grobonetu” czeka na Twoją decyzję przy pierwszej US mapy
+    cmentarza.
 - 2026-10-08 — [[ISSUE-019-family-relations]] zamknięte, a z nim **[[US-003-przepisanie-rodziny]]** (werdykt US: APPROVED,
   niezależny przegląd, z uwagami). **Rodzinę wpisuje się naraz, a relacje widać przy osobie:**
   - w formularzu osoby (poprawa) sekcja **„Rodzina”** ([[wpis-osoby]] v5.2): rodzice i każdy **związek** z dziećmi jako
