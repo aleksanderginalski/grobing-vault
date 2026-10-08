@@ -3,7 +3,7 @@ title: "Grobing — Definition of Ready / Done"
 type: contract
 status: active
 created: 2026-10-05
-updated: 2026-10-06
+updated: 2026-10-08
 ---
 
 # Grobing — Definition of Ready / Done
@@ -42,6 +42,12 @@ updated: 2026-10-06
 > robi **agent** (`adb`: instalacja, dotknięcia, zrzut ekranu, odczyt bazy) i zapisuje ją w
 > *Verification* jako „kroki oddane agentowi”, a nie jako „ok” autora. Krok, którego agent nie może
 > wykonać, bo wymaga sekretu autora (hasło), pokrywa test automatyczny, nazwany wprost.
+>
+> **Ile kroków — decyzja autora 2026-10-08 ([[2026-10-08-retro-02]], R4).** Autor dostaje **najwyżej 3 kroki
+> odczucia**: to, co czuje w ręce i na oku (przepływ, tempo, czytelność). Wszystko, co da się sprawdzić bez
+> człowieka, agent robi na emulatorze **przed** stopem #2 i pokazuje zrzuty. W siedmiu pozycjach autor pominął
+> kroki albo zrobił 1–2 i odpowiedział odczuciem, więc dłuższa lista dawała tylko „ok” bez pokrycia. „ok” bez
+> śladu na urządzeniu agent dalej sprawdza na urządzeniu.
 
 ## DoD scaling by maturity stage (current: MVP)
 

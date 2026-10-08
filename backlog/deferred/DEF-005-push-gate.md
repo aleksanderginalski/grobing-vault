@@ -7,7 +7,7 @@ trigger: "the first push of any Grobing repo to a remote"
 category: maturity
 priority: SHOULD
 created: 2026-10-05
-updated: 2026-10-07
+updated: 2026-10-08
 ---
 
 # DEF-005 — Bramka dryfu na pushu
@@ -36,3 +36,11 @@ Warunek aktywacji spełniony: trzy repo Grobing dostały pierwszy push na public
   [[ISSUE-004-setup-freshness-gate]] (trzy pozostałe triggery, jeszcze niezbudowane);
 - **decyzja autora:** wdrożyć teraz (pozycja + `ci`) albo zostawić do `deferred-until: PRODUKCJA`. Do tej
   decyzji status zostaje `deferred`.
+
+## Decision — 2026-10-08 ([[2026-10-08-retro-02]], R8)
+Autor: **zostaje `deferred-until: PRODUKCJA`**. Powody:
+- pipeline CI na GitHubie nie zna imion z notatek (lista nie może tam trafić), więc danych rodziny nie złapie. Treść
+  przed `git add` sprawdza lokalnie [[ISSUE-020-content-guard]];
+- dryf dokumentów łapią lokalne triggery z [[ISSUE-004-setup-freshness-gate]] (jeszcze niezbudowane).
+
+Warunek ponownego obudzenia: wejście w etap PRODUKCJA albo pierwszy pipeline CI z innego powodu.

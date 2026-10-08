@@ -18,9 +18,17 @@ updated: 2026-10-08
 MVP — od startu, cały produkt (Meta-decyzja 4).
 
 ## In progress
+- **Po [[2026-10-08-retro-02]] (R1–R10, decyzja autora 2026-10-08):**
+  1. **[[ISSUE-020-content-guard]]** — strażnik treści (R1), następna pozycja: push idzie sam, a treści
+     wychodzących zmian nie sprawdza żaden mechanizm;
+  2. potem `pm` proponuje jedną z: [[ISSUE-021-small-fixes-after-retro-2]] (R9, przed pierwszymi prawdziwymi danymi) ·
+     [[US-004-fakt-od-babci]] · rozpisanie [[EPIC-002-wizyta]]. Między US-004 a EPIC-002 rozstrzyga fakt 5 z retro
+     2 (rozmowa z babcią w najbliższym miesiącu?) — bez odpowiedzi, `pm` pyta ponownie.
+
+  **EPIC-001 nie jest domknięty:** [[US-004-fakt-od-babci]] i [[US-006-eksport-dla-rodziny]] są `ready`, bez
+  rozpisania na ISSUE.
 - **[[SPIKE-001-map-source-offline]] zamknięty 2026-10-08** → [[ADR-003-map-source-offline]] `accepted`: mapa
-  cmentarza to **plan schematyczny z OSM offline** + ortofotomapa GUGiK online + kwatery i pinezki autora. Kolejność
-  autora z 2026-10-06 jest wyczerpana, więc następną pozycję proponuje `pm`. **Najpierw retro** (licznik niżej).
+  cmentarza to **plan schematyczny z OSM offline** + ortofotomapa GUGiK online + kwatery i pinezki autora.
 - **Kolejność autora (2026-10-06, *„ok plan brzmi dobrze”*; ISSUE-015 dołożona
   na stopie #1 ISSUE-014, *„wygląda dobrze”*) — wyczerpana:**
   1. ~~[[ISSUE-014-home-map-of-poland]]~~ — zamknięte 2026-10-06;
@@ -41,11 +49,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     *Notes*): literówki z OSM zajmują pierwsze miejsca, skracanie słów łapie podobne nazwy („krakow” →
     „…Krakowskie”), w bazie są cmentarze dla zwierząt, a wynik znaleziony przez okoliczną miejscowość nie
     mówi, przez którą. Kandydat na małą pozycję, gdy zacznie przeszkadzać przy prawdziwych cmentarzach;
-  - **semantyka przycisków w dwóch starszych ekranach** (przegląd `ui` [[ISSUE-017-person-photos]], MAJOR tego samego
-    wzorca): „Dodaj zdjęcie nagrobka” ([[ISSUE-016-photos-grave-and-person]]) i podgląd cmentarza z bazy
-    ([[ISSUE-015-add-cemetery-from-database]]) mają opis dla czytnika, ale bez akcji dotknięcia. Switch Access i
-    Voice Access ich nie naciśną. Poprawka: dwie linie i test na ekran. Autor nie zdecydował (pytanie na stopie #2
-    ISSUE-017) — kandydat na małą pozycję;
+  - **semantyka przycisków w dwóch starszych ekranach** → [[ISSUE-021-small-fixes-after-retro-2]] (retro 2, R9);
   - **kontrola cykli w rodzinie** ([[ISSUE-019-family-relations]] → *Manual*): aplikacja pozwala, by osoba była w parze ze
     swoim dzieckiem albo była swoim przodkiem — zobaczone w danych testowych autora na stopie #2. Poza zakresem ISSUE-019
     ([[ADR-011-relation-claims-family-and-child-link]] → *Follow-ups*). Kandydat na małą pozycję, gdy zdarzy się przy
@@ -53,9 +57,8 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   - **data początku związku bez ślubu** (przegląd US-003, uwaga 4): arkusz ma „Ślub” i „Koniec związku”, a uwaga autora do
     O1 mówiła o związkach „w danym okresie”. Związek bez ślubu da się zapisać, ale bez daty początku. **Decyzja autora**,
     gdy pojawi się w notatkach: osobne pole „Początek związku” albo „Ślub” z innym podpisem;
-  - **[[DEF-005-push-gate]] obudzony** pierwszym pushem (2026-10-07). Bramka potrzebuje pipeline'u CI,
-    którego nie ma (`ci` na sygnał), a pipeline budzi też [[DEF-003-dependency-scanning]]. **Decyzja autora:**
-    wdrożyć teraz albo zostawić do PRODUKCJA (DEF-005 → *Wake*). Do tego czasu status `deferred`.
+  - **[[DEF-005-push-gate]]** obudzony pierwszym pushem — **zostaje do PRODUKCJA** (retro 2, R8; DEF-005 →
+    *Decision*).
 - **Przed pierwszymi prawdziwymi danymi w aplikacji:** kopia jest gotowa (US-001 ✅). Zostały hasło i
   miejsce pliku klucza w notce przekazania ([[NT-007-hand-over-note]]): utrata któregoś z nich = utrata
   kopii. Notkę sprawdzić raz jej własną drogą (`age -d -i …` z hasłem w terminalu — NT-007 → *Input from
@@ -89,69 +92,15 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
 - Odłożone: *patrz `backlog/deferred/`*.
 - Wymagania: *patrz `03_REQUIREMENTS/`* (EPIC-i, US, FR, NFR); architektura i ADR-y: *patrz `04_ARCHITECTURE/`*.
 - **Repo są publiczne na GitHubie** od 2026-10-07 (*Recently done*). Push idzie sam zaraz po commicie
-  paczki (decyzja autora 2026-10-07); przegląd imion na wychodzących zmianach czeka na retro (*Do retro*).
+  paczki (decyzja autora 2026-10-07); treść wychodzących zmian ma sprawdzać [[ISSUE-020-content-guard]] (retro 2, R1).
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **10** (ostatnie retro: [[2026-10-06-retro-01]]). Co **10** →
+- Zamknięte pozycje od ostatniego retro: **0** (ostatnie retro: [[2026-10-08-retro-02]]). Co **10** →
   retro + pytanie o 3–5 nośnych faktów (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**;
-  podbija go `docs` przy zamknięciu, a zeruje go retro. **⏰ Sygnał dla `pm`: licznik osiągnął 10 (SPIKE-001 i
-  NT-004, 2026-10-08) — retro przed następną pozycją.**
-- Do retro (zebrane po drodze, bez decyzji):
-  - **przegląd imion przy każdym pushu** ([[NT-008-publication-review]] → *Progress* 2026-10-07): przegląd
-    historii objął commity do 2026-10-07. Każdy kolejny push publikuje nowe commity, a treść pilnuje tylko
-    uwaga agenta, dopóki nie ma [[ISSUE-003-setup-quality-critic]]. Od 2026-10-07 push idzie sam, więc
-    nie ma już momentu „go”, w którym człowiek patrzy na wychodzące zmiany. Kandydat: ten sam przegląd
-    imion na zmianach przed `git add`. Dziś to niemożliwe bez prośby autora w sesji, bo agent nie czyta
-    `family_data_dir` sam. Do decyzji: zmiana w `family-data.md` (np. lista rdzeni imion w `family_data_dir`,
-    czytana tylko przy „go”) albo prośba autora przy każdym pushu. **Pierwszy push (2026-10-07) pokazał, że
-    sama prośba nie wystarcza:** odczyt `family_data_dir` zablokował klasyfikator uprawnień Claude Code (dane
-    osobowe), choć autor zgodził się w sesji. Każda z opcji wymaga więc reguły uprawnień w ustawieniach albo
-    przeglądu, który robi sam autor;
-  - **po czytaniu `family_data_dir` grep obowiązkowy** ([[ISSUE-014-home-map-of-poland]] → *Self-check*):
-    `ui` wpisał do specyfikacji trzy prawdziwe przykłady zaraz po porównaniu z listą autora. Złapane przed
-    commitem, bo strażnik nie widzi treści. Do decyzji: krok w regule `family-data.md` albo w checkliście R1;
-  - **`git rm --cached` przez `dev`** (ISSUE-014 → *Dev report* → *Deviations* 5): zmiana indeksu poza commitem
-    po checkliście. Zgłoszone od razu, skutek bez znaczenia (ta sama zmiana weszła do commita). Do decyzji:
-    czy reguła ma wprost wymieniać `git rm` i `git restore`;
-  - **zawieszony przebieg testów** (ISSUE-014 → *Verification*): drift zamyka strumień na timerze fałszywego
-    czasu testu. Wzorzec sprzątania jest w testach; czy dopisać go do README `grobing-code` → testy.
-    **Drugi przypadek w ISSUE-012** (→ *Verification*): zapis albo odczyt bazy w `tester.runAsync` przy podpiętym
-    ekranie ze strumieniem drift wisi bez końca (zakleszczenie na blokadzie bazy), a limit czasu testu go nie
-    przerywa. Wzorzec `leaveScreen` jest w `grave_screens_test.dart`. Po zawieszonym przebiegu `flutter test` padł
-    na zablokowanym `sqlite3.dll` i zapisał `flutter_01.log` w korzeniu repo (usunięty przed commitem). Są już
-    dwie instancje, więc kandydat na krótką sekcję README → testy;
-  - **wstępne dane debug** (ISSUE-012 → *Notes*): wszyscy wymyśleni z ISSUE-007 mają nazwisko „Wymyślona”, także
-    „Ojciec” — na ekranach wygląda to jak błąd odmiany;
-  - **polskie `MaterialLocalizations`** (przegląd `ui`, uwaga 11): systemowe podpowiedzi są po angielsku —
-    kandydat na małą pozycję;
-  - **stop #2 w praktyce: autor robi część kroków** ([[ISSUE-017-person-photos]] → *Manual*): z 7 kroków autor wykonał
-    2 (stan urządzenia), odpowiedział „względnie ok” z nową prośbą, a kroki funkcjonalne zrobił agent. To kolejna
-    instancja po ISSUE-008, ISSUE-009, ISSUE-012 i ISSUE-014 (stop #2 tamtych pozycji: kroki pominięte albo „ok” bez
-    śladu w stanie urządzenia). **Kolejna w [[ISSUE-018-profile-photo-crop]]:** autor wykonał krok 1 (bez „Gotowe”), dał
-    odczucie z prośbą o zmianę i napisał *„nie planowałem więcej testować”*; kroki 2–3 zrobił agent. Kandydat: stop #2 z 2–3 krokami
-    odczucia, a resztę od razu robi agent. **[[ISSUE-019-family-relations]] przeszła już tak (3 kroki):** autor zrobił krok 1 z
-    nadmiarem (rodzice, koniec związku), krok 2 pominął i odpowiedział „ok” bez uwag — stan sprawdził agent na urządzeniu;
-  - **emulator przed testami łapie to, czego testy nie widzą** ([[ISSUE-019-family-relations]] → *Dev report* → *Deviations*):
-    przejście `dev` przez ekrany znalazło dwa błędy przy zielonych testach — współdzielony strumień drift (uśpiony też w widoku
-    grobu od ISSUE-012) i „dalej” przeskakujące pole. Oba mają teraz testy. Do decyzji: czy przejście `dev` na emulatorze
-    przed `qa` ma być krokiem reguły;
-  - **agent `architect`** — kick-off (MD3c) dał mu sygnał „decyzja wymagająca ADR-a poza kick-offem”. Ten
-    sygnał już był: [[ADR-005-sqlite-package]] i [[ADR-006-claimed-value-separate-structures]] powstały w
-    łańcuchu (`planning` → `docs`), bez osobnego agenta, i [[ISSUE-014-home-map-of-poland]] doda kolejny.
-    Według R9 sygnał z kick-offu wygrywa. **Decyzja autora:** zbudować `architect` albo zapisać, że ADR-y
-    zostają w łańcuchu. Wykrył to przegląd `kickoff/` (R4); do tego czasu ADR-y robi łańcuch jak dotąd.
-  
-  - **szkic na emulatorze zmienił decyzję ADR** ([[SPIKE-001-map-source-offline]] → *Verification*): na stopie #2 autor
-    zakwestionował zdjęcie („mało co widoczne”), pokazał plan z Grobonetu i poprosił o szkic na emulatorze. Po szkicu
-    wybrał plan schematyczny zamiast zdjęcia offline, które rekomendował `dev`. Stop #2 autor znów przeszedł nie
-    krokami, tylko odczuciem i pytaniem o kierunek. Kandydat: przy pozycjach z decyzją widoczną dla użytkownika szkic
-    na emulatorze przed stopem #1, a nie po pomiarach;
-  - **narzędzia pod presją** (SPIKE-001): agent dwa razy zawiesił powłokę `python -I -`, choć pamięć to opisuje, a
-    ochrona Claude Code zablokowała usunięcie folderu prototypu, który był katalogiem roboczym sesji. Kandydat:
-    prototyp w katalogu, który nie staje się katalogiem roboczym (`cd` tylko w komendzie), i pamięć sprawdzana
-    przed pierwszym wywołaniem Pythona.
+  podbija go `docs` przy zamknięciu, a zeruje go retro.
+- Do retro (zebrane po drodze, bez decyzji): —
 
-  Tematy z poprzedniego okresu rozliczyło [[2026-10-06-retro-01]] (R1–R10).
+  Tematy z poprzedniego okresu rozliczyło [[2026-10-08-retro-02]] (R1–R10); wcześniejsze [[2026-10-06-retro-01]].
 
 ## Parked (waiting on someone outside the session)
 - **cmentarz (którykolwiek z cmentarzy autora)** · przy 3 grobach, które autor zna: (a) dokładność GPS telefonu
@@ -164,6 +113,17 @@ Format wpisu: `źródło (babcia / cmentarz X) · pytanie bez danych rodziny · 
 (zdarzenie) · data zapytania`. **Odpowiedź z faktami o rodzinie trafia do aplikacji, nie tutaj.**
 
 ## Recently done
+- 2026-10-08 — **retro 2** ([[2026-10-08-retro-02]]): licznik 10 → 0. Decyzje autora R1–R10 („ok idźmy z twoją
+  rekomendacją”):
+  - **strażnik treści** — lista rdzeni w `family_data_dir`, czyta ją skrypt strażnika, odmowa bez słowa → [[ISSUE-020-content-guard]] (R1);
+  - **stop #2: najwyżej 3 kroki odczucia**, resztę agent robi na emulatorze przed stopem (R4);
+  - `dev` przechodzi AC na emulatorze przed `qa` przy ekranach (R5); kandydaci na emulatorze albo makiecie na
+    stopie #1, gdy pozycja wybiera to, co widać (R6);
+  - ADR-y zostają w łańcuchu, `architect` na sygnał „pierwszy ADR zastąpiony” (R7); DEF-005 do PRODUKCJA (R8);
+  - drobne poprawki → [[ISSUE-021-small-fixes-after-retro-2]] (R3, R9); `git rm`/`restore`/`stash` wprost zakazane (R2).
+
+  Na pięć pytań o fakty autor nie odpowiedział — zapisane jako „bez odpowiedzi”, wracają tam, gdzie od nich coś
+  zależy (retro 2 → *Load-bearing facts*).
 - 2026-10-08 — [[SPIKE-001-map-source-offline]] zamknięty → **[[ADR-003-map-source-offline]] `accepted`**, a z nim
   [[NT-004-grobonet-link-terms]] (regulamin Grobonetu nie zakazuje linku i zakazuje kopiowania). **Mapa cmentarza:**
   - **plan schematyczny offline**: obrys i alejki z OSM, pobrane przy dodaniu cmentarza; bez sieci zaślepka;
