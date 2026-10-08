@@ -20,9 +20,12 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
 ## In progress
 - **Po [[2026-10-08-retro-02]] (R1–R10, decyzja autora 2026-10-08):**
   1. ~~[[ISSUE-020-content-guard]]~~ — zamknięte 2026-10-08 (*Recently done*);
-  2. teraz `pm` proponuje jedną z: [[ISSUE-021-small-fixes-after-retro-2]] (R9, przed pierwszymi prawdziwymi danymi) ·
-     [[US-004-fakt-od-babci]] · rozpisanie [[EPIC-002-wizyta]]. Między US-004 a EPIC-002 rozstrzyga fakt 5 z retro
-     2 (rozmowa z babcią w najbliższym miesiącu?) — bez odpowiedzi, `pm` pyta ponownie.
+  2. ~~[[ISSUE-021-small-fixes-after-retro-2]]~~ — zamknięte 2026-10-08 (*Recently done*);
+  3. **teraz [[US-004-fakt-od-babci]] — rozpisanie na ISSUE, przed [[EPIC-002-wizyta]].** Fakt 5 z retro 2 ma
+     odpowiedź (autor, 2026-10-08): **rozmowa z babcią za ok. miesiąc, przy wizycie na zaduszki (~2026-11-02)**.
+     Żeby rozmowa skończyła się faktami w aplikacji, US-004 musi być gotowa przed nią. **Otwarte dla autora:** czy
+     na tę rozmowę aplikacja ma już być na telefonie z prawdziwymi danymi (dziś do MVP tylko emulator — decyzja
+     2026-10-05), czy odpowiedzi babci trafią do aplikacji później, z notatki. Potem rozpisanie EPIC-002.
 
   **EPIC-001 nie jest domknięty:** [[US-004-fakt-od-babci]] i [[US-006-eksport-dla-rodziny]] są `ready`, bez
   rozpisania na ISSUE.
@@ -48,7 +51,6 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     *Notes*): literówki z OSM zajmują pierwsze miejsca, skracanie słów łapie podobne nazwy („krakow” →
     „…Krakowskie”), w bazie są cmentarze dla zwierząt, a wynik znaleziony przez okoliczną miejscowość nie
     mówi, przez którą. Kandydat na małą pozycję, gdy zacznie przeszkadzać przy prawdziwych cmentarzach;
-  - **semantyka przycisków w dwóch starszych ekranach** → [[ISSUE-021-small-fixes-after-retro-2]] (retro 2, R9);
   - **odświeżenie bazy cmentarzy OSM zostanie odrzucone przez strażnika treści** ([[ISSUE-020-content-guard]] →
     *Verification*): wyciąg to jeden wiersz JSON z nazwami miejscowości z listy rdzeni. Przy pierwszym odświeżeniu —
     wyjątek dla ścieżki tego pliku jako osobna pozycja, decyzja autora;
@@ -61,7 +63,8 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     gdy pojawi się w notatkach: osobne pole „Początek związku” albo „Ślub” z innym podpisem;
   - **[[DEF-005-push-gate]]** obudzony pierwszym pushem — **zostaje do PRODUKCJA** (retro 2, R8; DEF-005 →
     *Decision*).
-- **Przed pierwszymi prawdziwymi danymi w aplikacji:** kopia jest gotowa (US-001 ✅). Zostały hasło i
+- **Przed pierwszymi prawdziwymi danymi w aplikacji:** kopia jest gotowa (US-001 ✅), poprawki z retro 2 też
+  ([[ISSUE-021-small-fixes-after-retro-2]] ✅). Zostały hasło i
   miejsce pliku klucza w notce przekazania ([[NT-007-hand-over-note]]): utrata któregoś z nich = utrata
   kopii. Notkę sprawdzić raz jej własną drogą (`age -d -i …` z hasłem w terminalu — NT-007 → *Input from
   US-001 closure*).
@@ -100,7 +103,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   paczki (decyzja autora 2026-10-07); treść wychodzących zmian sprawdza strażnik treści ([[ISSUE-020-content-guard]]) przy każdym `git add`/`commit`.
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **1** (ostatnie retro: [[2026-10-08-retro-02]]). Co **10** →
+- Zamknięte pozycje od ostatniego retro: **2** (ostatnie retro: [[2026-10-08-retro-02]]). Co **10** →
   retro + pytanie o 3–5 nośnych faktów (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**;
   podbija go `docs` przy zamknięciu, a zeruje go retro.
 - Do retro (zebrane po drodze, bez decyzji):
@@ -108,6 +111,9 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     zakładały, że nazwiska nie mogą trafić do rozmowy z agentem, więc listę miał pisać autor. Autor na stopie #2: chroni
     tylko publikację na GitHubie. Kosztowało to rundę i edycję reguły, którą klasyfikator zablokował agentowi.
     Kandydat: przy pozycjach o danych rodziny pytanie „przed czym chronimy?” na stopie #1, zanim plan je założy;
+  - **trzecia instancja tego samego błędu semantyki** ([[ISSUE-021-small-fixes-after-retro-2]] → *Verification*, uwaga
+    5): `Semantics` z `excludeSemantics` bez `onTap` — przycisk czytany, ale nienaciskany przez Switch Access i Voice
+    Access (ISSUE-017 + dwa ekrany z ISSUE-021). Kandydat: test na źródłach albo punkt przeglądu `ui`;
 
   Tematy z poprzedniego okresu rozliczyło [[2026-10-08-retro-02]] (R1–R10); wcześniejsze [[2026-10-06-retro-01]].
 
@@ -116,12 +122,32 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   przy grobie w metrach (dowolna mapa z niebieską kropką); (b) czy kropka trafia we właściwą kwaterę, rząd albo
   aleję; (c) czy przy bramie wisi plan z kwaterami. Odpowiedź w czacie: **same liczby i tak/nie**, bez nazw i
   położeń · warunek obudzenia: **najbliższa wizyta na cmentarzu** · 2026-10-08 ([[SPIKE-001-map-source-offline]] D5;
-  mierzy H3 i H9 przed budową pinezek w [[EPIC-002-wizyta]]).
+  mierzy H3 i H9 przed budową pinezek w [[EPIC-002-wizyta]]). Prawdopodobna okazja: wyjazd autora na zaduszki
+  (~2026-11-02, ten sam co rozmowa z babcią — *In progress*).
 
 Format wpisu: `źródło (babcia / cmentarz X) · pytanie bez danych rodziny · warunek obudzenia
 (zdarzenie) · data zapytania`. **Odpowiedź z faktami o rodzinie trafia do aplikacji, nie tutaj.**
 
 ## Recently done
+- 2026-10-08 — [[ISSUE-021-small-fixes-after-retro-2]] zamknięte (retro 2, R3 i R9). **Poprawki przed pierwszymi
+  prawdziwymi danymi:**
+  - teksty widżetów Fluttera **zawsze po polsku**, niezależnie od języka telefonu (D1): „Wstecz”, menu tekstu
+    „Wytnij · Kopiuj · Wklej”, „Zamknij” przy arkuszach. Pakiet `flutter_localizations` z SDK; `intl` cofnięty do
+    0.20.2 (decyzja autora; [[ADR-002-flutter-pinned]] → *Follow-ups*). APK +0,8 MB;
+  - „Dodaj zdjęcie nagrobka” i link „Zobacz zdjęcie satelitarne” mają akcję dotknięcia — Switch Access i Voice
+    Access je naciśną (na emulatorze `clickable` false → true);
+  - wymyśleni w buildzie debug: „Wymyślony”, „Wymyślona”, „Wymyślone” (D2);
+  - README `grobing-code` → **Testy**: trzy pułapki, przez które przebieg testów wisi, i co zrobić po nim.
+
+  Bez nowego ekranu: kroki na emulatorze zrobił agent (aktualizacja na danych testowych, dane bez zmian). Werdykt `qa`:
+  APPROVED (self-check, z uwagami). Testy: 462. Licznik retro: 1 → 2.
+
+  **Fakt 5 z retro 2 ma odpowiedź** (rozmowa z babcią ~2026-11-02) → następna [[US-004-fakt-od-babci]] (*In progress*).
+
+  **Dla autora:**
+  - czytnik ekranu czyta teraz tłumaczenia Fluttera, także niezgrabne: tło pod arkuszem to „Siatka”, arkusz to
+    „Plansza dolna” (wcześniej „Scrim”, „Bottom Sheet”);
+  - `Medium_Phone` ma build release z ISSUE-021, wgrany na Twoje dane testowe (bez odinstalowania).
 - 2026-10-08 — [[ISSUE-020-content-guard]] zamknięte. **Strażnik danych rodziny sprawdza też treść**, nie tylko typ pliku:
   - przy każdym `git add`/`commit` porównuje z listą rdzeni (`rdzenie-straznika.txt` w `family_data_dir`): linie
     dodane, pliki nowe, ścieżki, opis commita, plik `-F`. Bez polskich znaków i wielkości liter, rdzeń na początku

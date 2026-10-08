@@ -65,3 +65,7 @@ SQLite, nie magazyn klucz-wartość; własny klucz podpisu poza każdym drzewem 
     Przypięty SDK trzyma `analyzer` na 10.x, więc `drift` i `drift_dev` są przypięte parą na 2.34.0, a
     `sqlite3` stoi na 3.5.x. **Zmiana wersji Fluttera rusza też tę parę**, potem `drift_dev schema dump`
     i pełne testy. Wcześniej to samo ograniczenie odrzuciło `dartage` ([[SPIKE-003-backup-and-restore]]).
+  - **2026-10-08 — `flutter_localizations` wiąże `intl` z SDK** ([[ISSUE-021-small-fixes-after-retro-2]]). Polskie
+    teksty widżetów Fluttera biorą pakiet z SDK, który wymaga dokładnie `intl` 0.20.2, więc `intl` (wcześniej tylko
+    przez `latlong2`) cofnął się z 0.20.3 — decyzja autora; Grobing sam `intl` nie używa. **Zmiana wersji Fluttera
+    rusza też `intl`.**
