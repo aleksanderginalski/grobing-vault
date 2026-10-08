@@ -34,6 +34,22 @@ updated: 2026-10-07
 > blok z linią komunikatu nad „Zapisz” (*States* → „A — błąd”; blok wspólny z [[wpis-osoby]]); 24 dp przed „Dzieci”;
 > „Dodaj koniec związku” i „Usuń rodzinę” na krawędzi treści (16 dp); „Nowa osoba” ma rolę przycisku dla czytnika; D7 ze
 > słowami v1.1.
+>
+> **Wersja 1.3 — płeć wraca ([[SPIKE-004-mvp-flow-prototype]] D16, 2026-10-08):** warunek obalenia D9' się spełnił —
+> ścieżka do „ja” w widoku osoby ([[osoba]] D4) potrzebuje nazw z płcią. Autor: *„W sumie faktycznie musi wrócić płeć -
+> bo dzięki temu możemy powiedzieć babcia, dziadek, stryj, siostra cioteczna itd.”*. Chipy i wiersze dostają nazwy z
+> płci: Ojciec/Matka, Mąż/Żona (bez ślubu: Partner/Partnerka), Syn/Córka; osoba bez wpisanej płci — nazwy neutralne
+> jak w v1.1. Kolumna roli w arkuszu dalej niepotrzebna (sekcje „Para” i „Dzieci”). Szczegóły → pozycja, która zbuduje
+> pole płci ([[wpis-osoby]] 4a).
+>
+> **Wersja 1.4 — dwa tryby związku ([[SPIKE-004-mvp-flow-prototype]] D20, 2026-10-08):** związek ma **dwie daty: „Razem od”
+> (początek związku) i „Ślub”**, a do tego jak dotąd koniec związku. Autor: *„zrobiłbym dwa tryby połączenia (razem,
+> małżeństwo - bo czasami ludzie nie są małżeństwem, mają dziecko, i dopiero biorą ślub)”*. Rozstrzyga to temat z
+> `CURRENT_STATE.md` („data początku związku bez ślubu”, przegląd US-003 uwaga 4) wariantem **osobnego pola „Razem
+> od”**, nie innego podpisu „Ślubu”. Związek bez ślubu ma samo „Razem od”; nazwy w chipach: Partner/Partnerka (bez ślubu)
+> albo Mąż/Żona (po ślubie). W drzewie: linia przerywana od „Razem od”, ciągła od ślubu ([[drzewo]] D4). Zdarzenie
+> początku związku to nowe zdarzenie rodziny z twierdzeniem (jak ślub, [[ADR-011-relation-claims-family-and-child-link]]) —
+> szczegóły i ewentualna migracja → pozycja, która zbuduje pole.
 
 ## Purpose
 Wpisanie jednej rodziny naraz — pary i jej dzieci — tak, jak stoi w notatkach, oraz poprawa rodziny. Wybór osoby

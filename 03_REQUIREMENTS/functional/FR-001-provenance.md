@@ -1,7 +1,7 @@
 ---
 title: "FR-001 — Provenance: every disputed fact carries its source and status"
 type: functional-requirement
-status: draft
+status: withdrawn
 epic: "[[EPIC-001-zabezpiecz-i-przepisz]]"
 used-by: ["[[EPIC-002-wizyta]]"]
 user-stories: ["[[US-002-przepisanie-grobu]]", "[[US-003-przepisanie-rodziny]]", "[[US-004-fakt-od-babci]]"]
@@ -15,6 +15,12 @@ updated: 2026-10-05
 ---
 
 # FR-001 — Provenance
+
+> **Wycofane decyzją autora 2026-10-08 ([[SPIKE-004-mvp-flow-prototype]] D28).** Autor: *„a to jakiś błąd się wkradł w takim razie - moje notatki to moje notatki, nie potrzeba żadnych potwierdzeń skąd pochodzą”*. Aplikacja **nie pokazuje i nie zbiera** źródła ani
+> statusu przy faktach: ani na ekranach, ani w formularzu, ani w eksporcie. **Schemat zostaje** (twierdzenia z v2 i v6,
+> [[ADR-006-claimed-value-separate-structures]], [[ADR-011-relation-claims-family-and-child-link]]): formularz zapisuje
+> domyślne źródło po cichu, bez migracji — decyzję da się cofnąć bez utraty danych. To zmiana względem kick-offu
+> (brief §5a G3, Step 0 → Genealogical Proof Standard), którego zapis się nie zmienia. Treść niżej — historia.
 
 ## Requirement
 Każde **twierdzenie** o **datach, relacjach i miejscu pochówku** jest zapisane razem z:

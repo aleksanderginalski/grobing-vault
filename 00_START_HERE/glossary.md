@@ -42,7 +42,7 @@ updated: 2026-10-08
 | **nazwisko rodowe** | nazwisko z urodzenia (panieńskie) | nazwiskiem po ślubie |
 | **data z dopiskiem** | data + kwalifikator: dokładnie / około / przed / po / między | błędem — „ok. 1890" to normalna dana |
 | **twierdzenie** (Assertion) | fakt **ze źródłem** (nagrobek / notatki / babcia / krewny / akt) i statusem | gołą wartością pola |
-| **status twierdzenia** | `CLAIMED` (jedno źródło) · `CONFIRMED` (drugie, niezależne) · `CONTRADICTED` (źródła się różnią — **zostaje**, to wynik) · `UNKNOWN` (wiem, że nie wiem) | oceną prawdziwości — status mówi, jak mocne jest twierdzenie, nie czy jest prawdziwe |
+| **status twierdzenia** | `CLAIMED` (jedno źródło) · `CONFIRMED` (drugie, niezależne) · `CONTRADICTED` (źródła się różnią — **zostaje**, to wynik) · `UNKNOWN` (wiem, że nie wiem) | oceną prawdziwości — status mówi, jak mocne jest twierdzenie, nie czy jest prawdziwe **Od 2026-10-08 niewidoczny i niezbierany w aplikacji** ([[SPIKE-004-mvp-flow-prototype]] D28); kolumny w schemacie zostają. |
 | **„ja"** | wskazanie, która osoba w danych to autor — kotwica ścieżki pokrewieństwa | kontem użytkownika (kont nie ma) |
 | **ścieżka pokrewieństwa** | najkrótsza droga po rodzinach między dwiema osobami, wyliczana na bieżąco | czymś zapisanym w bazie |
 | **kopia** (backup) | pełna, **zaszyfrowana w telefonie**, automatyczna, sprawdzona odtworzeniem — do przywrócenia na nowym telefonie | eksportem |

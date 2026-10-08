@@ -87,6 +87,18 @@ updated: 2026-10-07
 > **Wersja 5.2 (2026-10-07, przegląd `ui` ISSUE-019):** blok daty z błędem przewija się cały, z linią komunikatu nad
 > przypiętym „Zapisz” — dotyczy też „Urodzenie” i „Zgon” (wspólny `DateBlock`); *Navigation* bez słów sprzed v5.1; chip
 > „co najmniej 32 dp”.
+>
+> **Wersja 5.3 — płeć wraca, formularz to poprawa z widoku osoby ([[SPIKE-004-mvp-flow-prototype]] D4, D13, D16,
+> 2026-10-08):**
+> - **4a „Płeć” wraca** w kształcie z v5 (Kobieta · Mężczyzna, podpowiedziana z imienia, poza `next`), bo nazwy
+>   pokrewieństwa w widoku osoby jej potrzebują ([[osoba]] D4). Autor: *„musi wrócić płeć”*. Wiersz 4a i *D-płeć*
+>   niżej są przekreślone z v5.1 — odkreśli je pozycja, która pole zbuduje (z migracją schematu);
+> - **tryb „poprawa” otwiera się z ✎ w widoku osoby** ([[osoba]]), a nie z karty osoby w [[grob]] ani z chipu krewnego —
+>   te prowadzą do widoku osoby ([[style-b]] reguła 15). Po zapisie poprawy formularz wraca do widoku osoby.
+>
+> **Wersja 5.4 — bez źródeł ([[SPIKE-004-mvp-flow-prototype]] D28, 2026-10-08):** autor: *„a to jakiś błąd się wkradł w takim razie - moje notatki to moje notatki, nie potrzeba żadnych potwierdzeń skąd pochodzą”*. Elementy 9 („Źródło: notatki · Zmień” przy „kim
+> była”) i 10 (tekst o źródle dat i pochówku) **znikają**. Schemat dalej dostaje domyślne źródło, po cichu. Wiedza od
+> babci wchodzi tą samą poprawą (✎ w [[osoba]]), bez osobnej drogi (SPIKE-004 D27).
 
 ## Purpose
 Wpisanie jednej osoby pochowanej w grobie, tak jak stoi w notatkach: zdjęcie (gdy jest), imiona, nazwisko,
@@ -128,9 +140,9 @@ nazwisko rodowe, daty urodzenia i zgonu z dopiskiem oraz **krótka biografia (�
 | 6 | **Zgon** | blok daty | `next` | jak 5 | jak 5 | AC-3 |
 | 7 | ~~**Pochówek** (data pochówku)~~ — **usunięte w v2.2** (decyzja autora, stop #2 ISSUE-012) | — | — | — | — | AC-3 (bez pochówku) |
 | 8 | **Kim była** — krótka biografia. Pole wielowierszowe: **3 linie od startu**, rośnie do 6, potem przewija się w środku. Podpowiedź w pustym polu: „Krótka biografia — np. zawód, miejsce, co warto zapamiętać” (tekst pomocniczy, znika przy pisaniu) | pole wielowierszowe, wielka litera na początku zdania | Enter = nowa linia | pusto | — | AC-2 · uwaga autora 4 (biografia) · *Decisions* → „Biografia = „kim była”” |
-| 9 | **Źródło „kim była”** — linia pod polem 8: „Źródło: notatki” (tekst pomocniczy) + „Zmień” | tekst + dotknięcie; „Zmień” odsłania jedno pole tekstowe w tym miejscu | dotknięcie | „notatki” | niepuste, gdy „kim była” jest wypełnione: „Podaj źródło — kto to powiedział albo skąd to wiesz.” | AC-4 · [[FR-001-provenance]] |
+| ~~9~~ | ~~**Źródło „kim była”**~~ — **usunięte** (v5.4, [[SPIKE-004-mvp-flow-prototype]] D28: bez źródeł w aplikacji) | — | — | — | — | — |
 | 9a | **Rodzina** (v5) — **tylko w poprawie**; elementy niżej (*Sekcja „Rodzina”*). Odstęp 24 dp od 9 | sekcja | chip → wpis krewnego; ✎ i przyciski → [[rodzina]] A. **Poza `next`** | — | — | US-003 AC-1, AC-2 · R4 prawy · uwaga autora 2026-10-06 |
-| 10 | **Źródło dat i pochówku** — stały tekst pomocniczy nad przyciskiem: „Daty i miejsce pochówku zapiszą się ze źródłem: notatki.” | tekst | — | źródło „notatki”, status `CLAIMED` (statusu nie pokazujemy) | — | AC-4 · FR-001 (decyzja kosztowa: bez pytania przy każdym polu) |
+| ~~10~~ | ~~**Źródło dat i pochówku**~~ — **usunięte** (v5.4, [[SPIKE-004-mvp-flow-prototype]] D28) | — | — | — | — | — |
 | 11 | **Zapisz** | przycisk wypełniony (zaokrąglony prostokąt, ≥ 52 dp), **przypięty na dole, nad klawiaturą**; bez znicza ([[style-b]] reguła 8) | dotknięcie | — | błąd → komunikaty przy polach, fokus i przewinięcie do pierwszego błędu, nic się nie zapisuje | AC-1…AC-4 |
 
 ### Blok daty (pola 5, 6, 7)

@@ -21,14 +21,28 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
 - **Po [[2026-10-08-retro-02]] (R1–R10, decyzja autora 2026-10-08):**
   1. ~~[[ISSUE-020-content-guard]]~~ — zamknięte 2026-10-08 (*Recently done*);
   2. ~~[[ISSUE-021-small-fixes-after-retro-2]]~~ — zamknięte 2026-10-08 (*Recently done*);
-  3. **teraz [[US-004-fakt-od-babci]] — rozpisanie na ISSUE, przed [[EPIC-002-wizyta]].** Fakt 5 z retro 2 ma
-     odpowiedź (autor, 2026-10-08): **rozmowa z babcią za ok. miesiąc, przy wizycie na zaduszki (~2026-11-02)**.
-     Żeby rozmowa skończyła się faktami w aplikacji, US-004 musi być gotowa przed nią. **Otwarte dla autora:** czy
-     na tę rozmowę aplikacja ma już być na telefonie z prawdziwymi danymi (dziś do MVP tylko emulator — decyzja
-     2026-10-05), czy odpowiedzi babci trafią do aplikacji później, z notatki. Potem rozpisanie EPIC-002.
+  3. ~~US-004 przed rozmową z babcią~~ — **rozstrzygnięte przez autora 2026-10-08 w `/pm`:** budujemy produkt
+     gotowy do instalacji na telefonie (MVP = brief §5, M1–M11). **Wszystkie prawdziwe dane rodziny trafią do
+     aplikacji dopiero po instalacji**, a do tego czasu autor ocenia aplikację na wymyślonych danych, żeby mieć
+     „feeling”. Rozmowa z babcią (~2026-11-02) jest więc na kartce, a odpowiedzi trafią do aplikacji po instalacji.
+     US-004 nie ma terminu;
+  4. ~~[[SPIKE-004-mvp-flow-prototype]]~~ — zamknięty 2026-10-08 (*Recently done*).
+- **Droga do instalacji MVP** — propozycja łańcucha przy zamknięciu SPIKE-004 (autor może zmienić kolejność):
+  1. **następna: [[ISSUE-022-app-skeleton-tabs-people-settings]]** — dolny pasek, zakładka Osoby, ustawienia; szkielet,
+     na którym stoi reszta;
+  2. [[ISSUE-025-gender-kinship-together-since]] — płeć, nazwy pokrewieństwa, „Razem od”, formularz bez źródeł (jedna
+     zmiana schematu);
+  3. [[ISSUE-024-person-view]] — widok osoby (M5), z mini-drzewem i pochówkiem prowadzącym na mapę;
+  4. [[ISSUE-023-poland-map-r1-cemetery-photo]] — mapa Polski jak R1 i zdjęcie cmentarza;
+  5. [[US-007-mapa-cmentarza]] — plan offline, zdjęcie z góry, kwatery (przed planem: `ui` projektuje zaznaczanie kwater;
+     wchodzi uprawnienie `INTERNET`);
+  6. [[US-008-pinezka-na-miejscu]] — pinezka z GPS (dokładność czeka na pomiar z *Parked*);
+  7. [[SPIKE-002-tree-on-a-phone]] → drzewo, czas, „Połącz dwie osoby” ([[drzewo]], EPIC-003);
+  8. [[US-006-eksport-dla-rodziny]] i [[NT-007-hand-over-note]];
+  → **instalacja MVP na telefonie** (build release) → prawdziwe dane ([[NT-002-transcribe-the-notes]]).
 
-  **EPIC-001 nie jest domknięty:** [[US-004-fakt-od-babci]] i [[US-006-eksport-dla-rodziny]] są `ready`, bez
-  rozpisania na ISSUE.
+  **EPIC-001:** [[US-004-fakt-od-babci]] **wycofana** (SPIKE-004 D28 — bez źródeł; wiedza od babci przez zwykłą
+  poprawę); [[US-006-eksport-dla-rodziny]] `ready`.
 - **[[SPIKE-001-map-source-offline]] zamknięty 2026-10-08** → [[ADR-003-map-source-offline]] `accepted`: mapa
   cmentarza to **plan schematyczny z OSM offline** + ortofotomapa GUGiK online + kwatery i pinezki autora.
 - **Kolejność autora (2026-10-06, *„ok plan brzmi dobrze”*; ISSUE-015 dołożona
@@ -58,9 +72,9 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     swoim dzieckiem albo była swoim przodkiem — zobaczone w danych testowych autora na stopie #2. Poza zakresem ISSUE-019
     ([[ADR-011-relation-claims-family-and-child-link]] → *Follow-ups*). Kandydat na małą pozycję, gdy zdarzy się przy
     prawdziwym przepisywaniu;
-  - **data początku związku bez ślubu** (przegląd US-003, uwaga 4): arkusz ma „Ślub” i „Koniec związku”, a uwaga autora do
-    O1 mówiła o związkach „w danym okresie”. Związek bez ślubu da się zapisać, ale bez daty początku. **Decyzja autora**,
-    gdy pojawi się w notatkach: osobne pole „Początek związku” albo „Ślub” z innym podpisem;
+  - ~~**data początku związku bez ślubu**~~ — **rozstrzygnięte 2026-10-08** ([[SPIKE-004-mvp-flow-prototype]] D20,
+    [[rodzina]] v1.4): dwa tryby związku, osobne pole **„Razem od”** obok „Ślubu” (autor: *„czasami ludzie nie są
+    małżeństwem, mają dziecko, i dopiero biorą ślub”*). Wejdzie z pozycją z zamknięcia SPIKE-004;
   - **[[DEF-005-push-gate]]** obudzony pierwszym pushem — **zostaje do PRODUKCJA** (retro 2, R8; DEF-005 →
     *Decision*).
 - **Przed pierwszymi prawdziwymi danymi w aplikacji:** kopia jest gotowa (US-001 ✅), poprawki z retro 2 też
@@ -103,7 +117,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   paczki (decyzja autora 2026-10-07); treść wychodzących zmian sprawdza strażnik treści ([[ISSUE-020-content-guard]]) przy każdym `git add`/`commit`.
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **2** (ostatnie retro: [[2026-10-08-retro-02]]). Co **10** →
+- Zamknięte pozycje od ostatniego retro: **3** (ostatnie retro: [[2026-10-08-retro-02]]). Co **10** →
   retro + pytanie o 3–5 nośnych faktów (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**;
   podbija go `docs` przy zamknięciu, a zeruje go retro.
 - Do retro (zebrane po drodze, bez decyzji):
@@ -114,6 +128,17 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   - **trzecia instancja tego samego błędu semantyki** ([[ISSUE-021-small-fixes-after-retro-2]] → *Verification*, uwaga
     5): `Semantics` z `excludeSemantics` bez `onTap` — przycisk czytany, ale nienaciskany przez Switch Access i Voice
     Access (ISSUE-017 + dwa ekrany z ISSUE-021). Kandydat: test na źródłach albo punkt przeglądu `ui`;
+  - **discovery na klikalnym prototypie zadziałał** ([[SPIKE-004-mvp-flow-prototype]]): 10 paneli w jednej sesji, 28
+    decyzji, 4 nowe specyfikacje, a przed kodem wyszły: inny układ cmentarza, płeć, zdjęcie w tle, bez Grobonetu, bez
+    źródeł. Kandydat: tryb „discovery” w skillu `ui` (druga instancja potrzebna przed frameworkiem);
+  - **wymaganie z kick-offu obalone dopiero na ekranie** (źródła, brief §5a G3 → FR-001 → US-004): przez trzy dni stało
+    w specyfikacjach i w `qa`, a autor odrzucił je, gdy zobaczył je na prototypie. Kandydat: wymagania z kick-offu,
+    których autor nie widział na ekranie, pokazać na makiecie wcześnie;
+  - **twardy stop „fakt o rodzinie bez źródła”** w `grobing-agents/.claude/rules/autonomous-flow.md` (*Hard stops*) jest po
+    D28 nieaktualny. Proponowane brzmienie: „…ryzyko utraty danych rodziny, dane rodziny w repo, niespełnione AC, zmiana
+    bez odbicia w vaulcie”. Agent nie zmienia listy twardych stopów sam — decyzja autora (skill `qa` już poprawiony);
+  - **agent uruchomił `python -I -`** (czytanie skryptu z wejścia), choć pamięć sesji mówi „nigdy” — komenda zawisła i
+    trzeba ją było zatrzymać; bez szkody dla plików.
 
   Tematy z poprzedniego okresu rozliczyło [[2026-10-08-retro-02]] (R1–R10); wcześniejsze [[2026-10-06-retro-01]].
 
@@ -129,6 +154,24 @@ Format wpisu: `źródło (babcia / cmentarz X) · pytanie bez danych rodziny · 
 (zdarzenie) · data zapytania`. **Odpowiedź z faktami o rodzinie trafia do aplikacji, nie tutaj.**
 
 ## Recently done
+- 2026-10-08 — [[SPIKE-004-mvp-flow-prototype]] zamknięty. **Cały przepływ MVP przeszedł przez klikalny prototyp**, panel po
+  panelu, z decyzjami autora zapisanymi od razu w specyfikacjach (D1–D28):
+  - **szkielet:** dolny pasek Mapa · Osoby · Drzewo, widok przed poprawą (✎), ustawienia pod kołem zębatym;
+  - **mapa Polski jak R1** (sąsiedzi, Bałtyk, wyśrodkowanie) i **zdjęcie cmentarza** w arkuszu;
+  - **cmentarz to mapa**: plan offline, zdjęcie z góry online, kwatery autora; znicz → jeden grób, przeciągnięcie → lista;
+    **bez linku do Grobonetu**;
+  - **widok osoby** (nowy): zdjęcie w tle, portret, mini-drzewo, „jak łączy się ze mną”, pochówek → mapa z pinezką;
+  - **płeć wraca** (babcia, stryj, siostra cioteczna); związek „razem” i „małżeństwo”;
+  - **drzewo od osoby** z poziomami, kolorami linii i czasem; „Połącz dwie osoby” z animacją na drzewie;
+  - **wizyta:** „gdzie jestem”, pinezka z GPS, praca bez internetu;
+  - **bez źródeł w aplikacji** — *„a to jakiś błąd się wkradł w takim razie - moje notatki to moje notatki, nie potrzeba żadnych potwierdzeń skąd pochodzą”*: FR-001 i US-004 wycofane, schemat bez zmian.
+
+  Nowe specyfikacje: [[osoba]], [[osoby]], [[drzewo]], [[ustawienia]]. Nowe pozycje: ISSUE-022…025, [[US-007-mapa-cmentarza]],
+  [[US-008-pinezka-na-miejscu]] (*In progress* → droga do instalacji MVP). Zmiany zakresu nazwane w SPIKE-004 →
+  *Verification*. Werdykt: APPROVED (self-check). Licznik retro: 2 → 3.
+
+  **Dla autora:** prototyp leży poza repo (`%TEMP%\claude\c--Programowanie-Grobing-grobing-agents\e2987d63-950d-4e55-b9fb-24429bf1ed09\scratchpad\grobing-prototyp.html`) — do obejrzenia albo do kosza. Sprawa „data początku związku bez
+  ślubu” rozstrzygnięta (*Poza tą kolejnością*).
 - 2026-10-08 — [[ISSUE-021-small-fixes-after-retro-2]] zamknięte (retro 2, R3 i R9). **Poprawki przed pierwszymi
   prawdziwymi danymi:**
   - teksty widżetów Fluttera **zawsze po polsku**, niezależnie od języka telefonu (D1): „Wstecz”, menu tekstu

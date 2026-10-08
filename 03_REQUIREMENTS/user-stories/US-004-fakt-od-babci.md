@@ -1,7 +1,7 @@
 ---
 title: "US-004 — Record what grandmother says, even against the notes (fakt od babci)"
 type: user-story
-status: ready
+status: withdrawn
 epic: "[[EPIC-001-zabezpiecz-i-przepisz]]"
 persona: "[[P1-zbierajacy]]"
 moscow: [M1]
@@ -18,6 +18,12 @@ updated: 2026-10-05
 ---
 
 # US-004 — Fakt od babci obok notatek
+
+> **Wycofana decyzją autora 2026-10-08 ([[SPIKE-004-mvp-flow-prototype]] D28, D27).** Autor: *„Babcia to po prostu jedna z osób które dadzą mi wkład
+> do tego co później wrzucę do notatek o danej osobie - nie ma potrzeby mieć tam źródła. Po rozmowie z babią normalnie
+> wszedłbym na edycje danej osoby i dodał o niej informacje.”* oraz *„a to jakiś błąd się wkradł w takim razie - moje notatki to moje notatki, nie potrzeba żadnych potwierdzeń skąd pochodzą”*. **Wiedza od babci wchodzi zwykłą poprawą
+> wpisu** ([[wpis-osoby]], ✎ w [[osoba]]). Linia DoD produktu „co najmniej jedna rozmowa z babcią dodała fakty spoza
+> notatek” zostaje — mierzy ją autor, nie aplikacja. Treść niżej — historia.
 
 ## Story
 **Jako** Zbierający **chcę** w trakcie rozmowy z babcią dopisać, co pamięta, także gdy przeczy notatkom,

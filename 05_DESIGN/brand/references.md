@@ -5,7 +5,7 @@ status: active
 owner: ui
 source: "kick-off 2026-10-05 (PROJECT_BRIEF §6a: four image-generation prompts, Style B chosen by the author) · prompts and images re-supplied by the author 2026-10-06"
 created: 2026-10-06
-updated: 2026-10-06
+updated: 2026-10-08
 ---
 
 # Styl B — referencje wizualne z kick-offu
@@ -139,6 +139,9 @@ updated: 2026-10-06
 - **Ekran główny = mapa Polski** (R1) z wyszukiwarką (S5) i kołem zębatym (ustawienia, w tym „Stan
   danych”).
 - **Dolna nawigacja: Mapa · Osoby · Drzewo.** Pojawia się, gdy istnieją co najmniej dwa z tych celów.
+  Potwierdzone na prototypie ([[SPIKE-004-mvp-flow-prototype]] D1–D3, autor 2026-10-08): pasek na ekranach do
+  oglądania, ukryty w formularzach i na zdjęciu na pełnym ekranie; **wyszukiwarka na mapie szuka tylko cmentarzy**
+  (odstępstwo od R1 „Szukaj osoby lub cmentarza”), a osoby szuka zakładka Osoby.
 - Cmentarz → mapa cmentarza z arkuszem grobu (R2) → widok grobu (R4 lewy) → osoba (R4 prawy) → drzewo i
   ścieżka (R3).
 - **Mapa Polski jest ekranem głównym od startu** (decyzja autora 2026-10-06): kontur z wbudowanych danych,

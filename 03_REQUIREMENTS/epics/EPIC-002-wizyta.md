@@ -7,7 +7,7 @@ persona: "[[P1-zbierajacy]]"
 journey: "UJ-001 (PROJECT_BRIEF §4a) — steps 1-7"
 FR: ["[[FR-001-provenance]]", "[[FR-002-rodzina-jako-rekord]]", "[[FR-003-wiele-osob-w-grobie]]"]
 NFR: ["[[NFR-001-offline]]", "[[NFR-003-migracje-schematu]]", "[[NFR-004-czytelnosc-w-sloncu]]", "[[NFR-005-dane-nie-opuszczaja-telefonu]]"]
-user-stories: []
+user-stories: ["[[US-007-mapa-cmentarza]]", "[[US-008-pinezka-na-miejscu]]"]
 quality-verdict: pending
 verdict-date: null
 verdict-reviewer: null
@@ -31,7 +31,7 @@ EPIC niesie **główną ścieżkę produktu** (UJ-001, wybór autora w §4a) —
 | M | Co | Krok UJ-001 |
 |---|---|---|
 | M2 | mapa Polski z cmentarzami rodziny (widok 1) | 1 |
-| M3 | mapa cmentarza z pinezkami grobów, adresem kwatery, linkiem do Grobonetu tam, gdzie cmentarz jest pokryty (widok 2) | 2, 7 |
+| M3 | mapa cmentarza z pinezkami grobów, adresem kwatery ~~, linkiem do Grobonetu tam, gdzie cmentarz jest pokryty~~ (widok 2). Bez linku do Grobonetu, decyzja autora 2026-10-08 ([[SPIKE-004-mvp-flow-prototype]] D10) | 2, 7 |
 | M4 | widok grobu — wszyscy pochowani, zdjęcie + imię (widok 3) | 3, 4 |
 | M5 | widok osoby — kim była, relacje, **ścieżka do „ja"** (widok 4) | 5 |
 | M6 | poprawa na miejscu — pinezka tam, gdzie stoję; nowe zdjęcie nagrobka; imię z tablicy | 6 |
@@ -39,6 +39,16 @@ EPIC niesie **główną ścieżkę produktu** (UJ-001, wybór autora w §4a) —
 
 Krok 6 to **jedyne miejsce, gdzie powstają ręczne pinezki** (H3) — każda zapisana ze źródłem i
 dokładnością ([[FR-001-provenance]]).
+
+## User stories (from [[SPIKE-004-mvp-flow-prototype]], 2026-10-08)
+| # | US / pozycja | M | Specyfikacja |
+|---|---|---|---|
+| 1 | [[ISSUE-023-poland-map-r1-cemetery-photo]] — mapa Polski jak R1, zdjęcie cmentarza | M2 | [[cmentarze]] v2.4 |
+| 2 | [[US-007-mapa-cmentarza]] — plan offline, zdjęcie z góry, kwatery, znicze | M3, M7 | [[cmentarz]] v4.1 |
+| 3 | [[ISSUE-024-person-view]] — widok osoby z łańcuchem do „ja” | M5 | [[osoba]] v1.3 |
+| 4 | [[US-008-pinezka-na-miejscu]] — pinezka z GPS, poprawa na miejscu | M6, M7 | [[cmentarz]] v4.2, [[grob]] v5.1 |
+
+Widok grobu (M4) jest zbudowany ([[grob]] v5 — zmienia się tylko cel karty osoby, w ISSUE-024).
 
 ## Out of scope
 - Wprowadzanie danych z notatek i od babci (M1) i kopia (M8) → [[EPIC-001-zabezpiecz-i-przepisz]].
@@ -78,8 +88,10 @@ Decyzje autora po szkicu na emulatorze ([[SPIKE-001-map-source-offline]] → *Ve
   zarządców);
 - pomysł autora z 2026-10-08: *„można tam dodać kwatery ale ich lokalizacja będzie dostępna dopiero gdy będziemy
   mieć plan cmentarza”*, czyli kwatera może istnieć bez strefy, a strefę dostaje później;
-- pole „link do wyszukiwarki zarządcy” zamiast „link do Grobonetu” (*Findings* → rekomendacja 6) czeka na
-  decyzję autora przy tej US.
+- ~~pole „link do wyszukiwarki zarządcy” zamiast „link do Grobonetu” (*Findings* → rekomendacja 6) czeka na
+  decyzję autora przy tej US.~~ **Rozstrzygnięte 2026-10-08 ([[SPIKE-004-mvp-flow-prototype]] D10): bez żadnego
+  linku.** Autor: *„Nie wykorzystujemy tej funkcjonalności, z grobonetu chciałem tak naprawdę tylko te mapki”*.
+  Wyszukiwarki zarządcy autor używa poza aplikacją, w przeglądarce.
 
 Wygląd projektuje `ui` (makieta przed kodem, retro 1 R5). [[cmentarz]] D1 zakładał zdjęcie nad listą, więc jest
 do zmiany.

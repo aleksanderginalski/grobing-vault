@@ -26,7 +26,7 @@ updated: 2026-10-05
 
 ## Acceptance Criteria
 - **AC-1 — HTML i PDF bez aplikacji.** *When* generuję eksport *Then* powstaje samodzielny HTML i PDF z
-  osobami, rodzinami, grobami, datami z dopiskiem i źródłami, otwierany zwykłą przeglądarką
+  osobami, rodzinami, grobami i datami z dopiskiem (bez źródeł — [[SPIKE-004-mvp-flow-prototype]] D28), otwierany zwykłą przeglądarką
   ([[ADR-004-backup-format-encryption-destination]] → *Eksport (A4)*).
 - **AC-2 — znaki specjalne bezpieczne.** *Given* imię albo „kim była" ze znakami specjalnymi HTML *Then*
   eksport pokazuje je jako tekst (§Security, output encoding).

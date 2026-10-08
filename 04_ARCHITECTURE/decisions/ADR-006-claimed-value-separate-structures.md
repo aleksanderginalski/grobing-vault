@@ -97,3 +97,9 @@ Status z FR-001 (`CLAIMED` · `CONFIRMED` · `CONTRADICTED` · `UNKNOWN`) zostaj
     łączu (jak `ChildRef` w Gramps). Sprzeczna relacja to osobny wiersz: inny partner — inna rodzina, inni rodzice —
     inne łącze dziecka (to drugie zostaje [[US-004-fakt-od-babci]]). Migracja v5→v6 nie dopisała twierdzeń rodzinom
     sprzed v6 — inaczej niż D5 przy v1→v2, bo `assertions` nie była już nową tabelą.
+
+## Follow-ups — 2026-10-08 ([[SPIKE-004-mvp-flow-prototype]] D28)
+**Wymaganie, które ta decyzja niosła ([[FR-001-provenance]]), autor wycofał:** *„a to jakiś błąd się wkradł w takim razie - moje notatki to moje notatki, nie potrzeba żadnych potwierdzeń skąd pochodzą”*. **Struktury zostają** — sprzeczna
+wartość dalej mogłaby być osobnym wierszem — ale aplikacja nie pokazuje ani nie zbiera źródła i statusu: formularz zapisuje
+domyślne źródło po cichu, a poprawa zastępuje wartość. Bez migracji i bez nowego ADR (struktura się nie zmienia; to nie jest
+zastąpienie decyzji, więc nie jest to sygnał dla agenta `architect`).

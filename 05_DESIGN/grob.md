@@ -1,10 +1,10 @@
 ---
 screen: "Grób — wszyscy pochowani"
-items: ["[[ISSUE-012-transcribe-grave-screen]]", "[[ISSUE-016-photos-grave-and-person]]", "[[ISSUE-017-person-photos]]", "[[ISSUE-018-profile-photo-crop]]"]
+items: ["[[ISSUE-012-transcribe-grave-screen]]", "[[ISSUE-016-photos-grave-and-person]]", "[[ISSUE-017-person-photos]]", "[[ISSUE-018-profile-photo-crop]]", "[[SPIKE-004-mvp-flow-prototype]]"]
 us: "[[US-002-przepisanie-grobu]] · [[US-005-zdjecia]]"
 journey-step: "n/a — M1; ten sam widok stanie się widokiem 3 (krok 4 UJ-001, M4, R4 lewy) — wizyta dojdzie tutaj"
 mockup: "katalog tymczasowy sesji 2026-10-07: makieta-cmentarz-grob-osoba.html (ramki 5–7, ISSUE-012) · makieta-zdjecia.html (ramki 1, 2, 4, ISSUE-016)"
-updated: 2026-10-07
+updated: 2026-10-08
 ---
 
 # Grób — specyfikacja
@@ -47,6 +47,18 @@ updated: 2026-10-07
 >
 > **Wersja 4.1 (2026-10-07, przed planem [[ISSUE-018-profile-photo-crop]]):** miniatura w karcie (element 5) pokazuje
 > profilowe **w kadrze** z [[kadr-profilowego]]; bez kadru — jak dotąd, ze środka. Bez nowych działań.
+>
+> **Wersja 5 — discovery na prototypie, panel 3 ([[SPIKE-004-mvp-flow-prototype]] D13, 2026-10-08):** widok grobu
+> zostaje jak zbudowany (autor: *„1 ok”*). Zmieniają się dwie rzeczy:
+> - **karta osoby otwiera widok osoby** ([[osoba]], panel 4), a nie formularz poprawy ([[style-b]] reguła 15,
+>   SPIKE-004 D4; autor: *„2 ok”*). Poprawa jest pod ✎ w widoku osoby;
+> - **dolny pasek** Mapa · Osoby · Drzewo jest widoczny, a aktywna jest zakładka, z której przyszedł autor
+>   ([[style-b]] reguła 12).
+>
+> **Wersja 5.1 — wizyta ([[SPIKE-004-mvp-flow-prototype]] D22, 2026-10-08):** grób bez pinezki ma pod adresem przycisk z
+> obrysem **„Postaw pinezkę”** (`add_location_alt` w akcencie) → mapa cmentarza w trybie stawiania pinezki ([[cmentarz]]
+> element 12). Grób z pinezką ma pod adresem jej źródło: „Pinezka: GPS ±4 m · 08.10.2026” (13 sp, tekst pomocniczy).
+>   ([[style-b]] reguła 12).
 
 ## Purpose
 Wszyscy pochowani w jednym grobie, z datami z dopiskiem (US-002 AC-1, AC-3), nazwa grobu i widoczny brak
@@ -63,7 +75,9 @@ krok 3).
 - **„Dodaj zdjęcie” → arkusz źródła** ([[zdjecie]] A) → systemowe okno wyboru (jedno zdjęcie) albo aparat → z
   powrotem tutaj, a zdjęcie zapisuje się od razu, bez formularza (v3).
 - **Dotknięcie zdjęcia nagrobka → podgląd** ([[zdjecie]] B): tam „Zmień zdjęcie” i „Usuń zdjęcie” (v3).
-- Dotknięcie karty osoby → [[wpis-osoby]] w trybie „poprawa” (ISSUE-012, D1). Docelowo: widok osoby (M5, R4 prawy).
+- Dotknięcie karty osoby → **widok osoby** ([[osoba]], M5, R4 prawy; v5, SPIKE-004 D13). Do v4.1 prowadziło do
+  [[wpis-osoby]] w trybie „poprawa” (ISSUE-012, D1), bo widoku osoby nie było.
+- **Dolny pasek** Mapa · Osoby · Drzewo widoczny (v5, [[style-b]] reguła 12).
 - Wstecz → [[cmentarz]].
 
 ## Elements in order
@@ -75,7 +89,7 @@ krok 3).
 | 3 | **Ikonka edycji** w linii tytułu, z prawej: `edit_outlined` w akcencie, cel 48 × 48 dp, `tooltip` „Popraw grób”. Tytuł ma z lewej taki sam odstęp, więc zostaje wyśrodkowany | przycisk-ikona | → okno „Popraw grób” (3a) | — | — | decyzja projektowa (jak [[cmentarze]] element 8) · D2 |
 | 3a | **Okno „Popraw grób”:** pole **„Nazwa grobu”** (ramka w kolorze obrysu, wielka litera na początku zdania, podpowiedź „np. Grób rodzinny Nowaków” — tekst z R4), pod polem „Zostaw puste, jeśli grób nie ma nazwy.” (13 sp, tekst pomocniczy). Przyciski „Anuluj” (kolor tekstu) · **„Zapisz”** (akcent) — jak okno cmentarza w `cemetery_form.dart` | okno dialogowe | fokus i klawiatura od razu, kursor na końcu obecnej nazwy; `done` = „Zapisz” | obecna nazwa albo pusto | puste = bez nazwy (tytuł „Grób”); spacje na brzegach obcięte. Błąd zapisu: pod polem `error_outline` + „Nie udało się zapisać. Spróbuj jeszcze raz.” (kolor błędu), okno zostaje | decyzja autora (nazwa grobu) · [[style-b]] reguła 1 (okno) |
 | 4 | **Adres i pinezka** pod tytułem, wyśrodkowane: adres pełnymi słowami „Kwatera B · Rząd 4 · Miejsce 12” (14 sp, tekst pomocniczy). Bez adresu: ikona `place_outlined` + „Bez adresu kwatery · bez pinezki”, a pod spodem „Uzupełnisz przy wizycie.” (tekst pomocniczy). Z adresem, bez pinezki: adres + „· bez pinezki” | tekst | — | — | — | AC-5 · R4 |
-| 5 | **Karty osób** w kolejności wpisania, odstęp 8 dp. Karta: „Imiona Nazwisko z d. Rodowe” (16 sp, półgruby, zawijane); lata życia (14 sp, tekst pomocniczy): `1921–1987`, a z dopiskiem `ok. 1890 – 14.03.1951`; gdy jest data pochówku: `· poch. 18.03.1951`. Brak urodzenia: `zm. 1951`; brak zgonu: `ur. 1890`; brak dat: „bez dat”. **Chevron „›” — karta prowadzi do poprawy (D1)**. **Profilowe osoby (v4, [[ISSUE-017-person-photos]]):** okrąg 40 dp z lewej, wyśrodkowany w pionie, odstęp 12 dp do tekstu, w kadrze łącza ([[kadr-profilowego]], v4.1), a bez kadru przycięty ze środka, poza czytnikiem (kartę opisuje jej tekst); osoba bez zdjęcia — bez miniatury i bez wcięcia (D11). Plik bez odczytu: okrąg na tle z `broken_image_outlined` (20 dp, tekst pomocniczy) | lista kart na powierzchni, karta ≥ 64 dp | dotknięcie → poprawa ([[wpis-osoby]] → *Open* 1) | kolejność wpisania | — | AC-1 · AC-2 · AC-3 · R4 · ISSUE-017 AC 4 |
+| 5 | **Karty osób** w kolejności wpisania, odstęp 8 dp. Karta: „Imiona Nazwisko z d. Rodowe” (16 sp, półgruby, zawijane); lata życia (14 sp, tekst pomocniczy): `1921–1987`, a z dopiskiem `ok. 1890 – 14.03.1951`; gdy jest data pochówku: `· poch. 18.03.1951`. Brak urodzenia: `zm. 1951`; brak zgonu: `ur. 1890`; brak dat: „bez dat”. **Chevron „›” — karta prowadzi do widoku osoby** ([[osoba]], v5; do v4.1 do poprawy). **Profilowe osoby (v4, [[ISSUE-017-person-photos]]):** okrąg 40 dp z lewej, wyśrodkowany w pionie, odstęp 12 dp do tekstu, w kadrze łącza ([[kadr-profilowego]], v4.1), a bez kadru przycięty ze środka, poza czytnikiem (kartę opisuje jej tekst); osoba bez zdjęcia — bez miniatury i bez wcięcia (D11). Plik bez odczytu: okrąg na tle z `broken_image_outlined` (20 dp, tekst pomocniczy) | lista kart na powierzchni, karta ≥ 64 dp | dotknięcie → widok osoby ([[osoba]], v5) | kolejność wpisania | — | AC-1 · AC-2 · AC-3 · R4 · ISSUE-017 AC 4 |
 | 6 | **Rząd działań:** „Dodaj osobę” — przycisk z obrysem, ikona `person_add_alt_outlined` w akcencie, napis w kolorze tekstu, ≥ 52 dp, szerokość treści, z lewej. „Dodaj zdjęcie” jest w polu 1a (v3.2, D12), nie tutaj | rząd przycisków pod listą | „Dodaj osobę” → [[wpis-osoby]] „kolejna osoba” | — | — | *What to build* 3 · R4 |
 
 **Gdy źródła się spierają** (dwie daty urodzenia albo dwa groby jednej osoby), widok pokazuje **pierwszą**

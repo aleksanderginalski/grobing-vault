@@ -1,12 +1,12 @@
 ---
-title: "Style B — visual guidelines (v1.11)"
+title: "Style B — visual guidelines (v1.16)"
 type: design-guidelines
 status: active
 owner: ui
 source: "PROJECT_BRIEF §6a (Style B, chosen by the author 2026-10-05) · references.md (R1–R4, the kick-off images) · grobing-code/lib/app/theme.dart · WCAG 2.2 · Android accessibility"
 non-tech-item: "[[NT-006-visual-guidelines]]"
 created: 2026-10-06
-updated: 2026-10-07
+updated: 2026-10-08
 ---
 
 # Styl B — wytyczne wizualne
@@ -35,6 +35,8 @@ autor, też używają znicza (reguła 8).
 | akcent | `GrobingColors.amber` | **jeden kolor, wiele ról** (reguła 1): główne działanie (wypełnione), pinezki, znicz, aktywna zakładka i segment, zaznaczenie, fokus, ikony działań i nagłówków sekcji, wyróżnione imiona na ścieżce, link zewnętrzny, wskaźnik działania w toku (v1.8) | treść ciągła (akapity), duże dekoracyjne plamy, ostrzeżenia i błędy |
 | obrys *(nowy — wchodzi z [[ISSUE-014-home-map-of-poland]], zaproponowany przy [[ISSUE-012-transcribe-grave-screen]])* | proponowany `GrobingColors.outline` | ramka pola wpisu, przycisk z obrysem, linia podziału, granica na mapie (reguła 13) | tekst |
 | błąd *(nowy — wchodzi z ISSUE-014)* | proponowany `GrobingColors.error` | komunikat błędu pod polem, jego ikona, ramka pola z błędem | cokolwiek poza błędem |
+| woda *(nowa, v1.13 — [[SPIKE-004-mvp-flow-prototype]] D6, [[cmentarze]] D29)* | proponowane `GrobingColors.water` (morze, jeziora) i `GrobingColors.waterLine` (rzeki) | woda na mapie Polski jak w R1 | cokolwiek poza mapą; nośnik znaczenia (to dekoracja — brzeg niesie granica) |
+| relacje w drzewie *(nowa, v1.16 — [[SPIKE-004-mvp-flow-prototype]] D20, [[drzewo]] D3)* | proponowane `GrobingColors.relParentChild` (`#8FB3C9`, rodzic–dziecko) i `GrobingColors.relPartners` (`#D39BB0`, partnerzy: ciągła — małżeństwo, przerywana — razem) | linie relacji w drzewie i mini-drzewie | jedyny nośnik rodzaju relacji — kształt i styl linii niosą go też (SC 1.4.1); **bez legendy** (decyzja autora, SPIKE-004 D25); cokolwiek poza liniami relacji |
 
 ### State colours — beyond the accent
 Poza akcentem występują tylko **kolory stanu**. Każdy pojawia się zawsze razem z ikoną albo tekstem, nigdy
@@ -43,8 +45,8 @@ sam (SC 1.4.1):
 | Stan | Skąd | Kiedy wchodzi |
 |---|---|---|
 | błąd | czerwień złagodzona (propozycja `#E07A6F`, pomiar niżej) | ISSUE-014 |
-| offline gotowy („Offline ✓”) | zieleń — R2 | pierwszy ekran wizyty (M7, EPIC-002): wartość i pomiar wtedy |
-| „tu jesteś” | niebieska kropka — konwencja map, R2 | mapa cmentarza (EPIC-002) |
+| offline gotowy („Offline ✓”) | zieleń — R2; **propozycja `#8CC084`** (v1.14, [[cmentarz]] D10): 8,19:1 na powierzchni, zawsze z ikoną `offline_pin` i podpisem „Plan offline” | pierwszy ekran wizyty (M7, EPIC-002): token w `theme.dart` wpisze `dev` |
+| „tu jesteś” | niebieska kropka — konwencja map, R2; **propozycja `#5EA2E6`** (v1.16, [[cmentarz]] element 10): 6,99:1 na tle, 6,38:1 na powierzchni, z obwódką w kolorze tła i kołem dokładności | mapa cmentarza (EPIC-002): token w `theme.dart` wpisze `dev` |
 
 ## Thresholds — with source
 | Próg | Wartość | Źródło |
@@ -126,8 +128,9 @@ pomocniczym albo ten token trzeba rozjaśnić. Do rozstrzygnięcia przy pierwszy
    pinezki), na głównym działaniu prowadzącym do miejsca pamięci („Otwórz cmentarz”, „Pokaż grób”) i jako
    znacznik osoby zmarłej (węzeł drzewa, R3). **Znicz oznacza miejsce i pamięć**, a nie zwykłe działania:
    „Zapisz” i „Dodaj” go nie mają. **Krzyż ani inne symbole religijne nie pojawiają się w interfejsie** —
-   są tylko na zdjęciach, czyli w treści użytkownika (R4). Gałązki wokół portretu (R4, osoba) to opcja
-   widoku osoby, rozstrzygana przy tym ekranie.
+   są tylko na zdjęciach, czyli w treści użytkownika (R4). ~~Gałązki wokół portretu (R4, osoba) to opcja
+   widoku osoby, rozstrzygana przy tym ekranie.~~ **Rozstrzygnięte (v1.15, [[osoba]] D3): bez gałązek** — zamiast nich
+   zdjęcie w tle, jak na Facebooku (decyzja autora, [[SPIKE-004-mvp-flow-prototype]] D17).
 9. **Puste stany** mówią, co tu będzie, i dają jedno działanie. Bez ilustracji.
 10. **Potwierdzenia ciche:** zapis kończy się widokiem tego, co zapisano, a nie komunikatem w okienku.
     Okno dialogowe tylko wtedy, gdy coś może przepaść (niezapisany wpis).
@@ -140,9 +143,28 @@ pomocniczym albo ten token trzeba rozjaśnić. Do rozstrzygnięcia przy pierwszy
 12. **Nawigacja docelowa** ([[references]] → *Target app structure*): dolny pasek Mapa · Osoby · Drzewo
     (aktywna zakładka ma ikonę, podpis i podkreślenie w akcencie). Pojawia się, gdy istnieją co najmniej dwa
     z tych celów. Ustawienia, w tym „Stan danych”, są pod kołem zębatym w pasku ekranu głównego.
+    **Potwierdzone na prototypie (v1.12, [[SPIKE-004-mvp-flow-prototype]] D1–D2, autor 2026-10-08):**
+    - zakładki i koło zębate zostają jak w R1;
+    - **pasek jest widoczny na ekranach do oglądania** (mapa Polski, cmentarz, grób, osoba, listy, drzewo), a ekran
+      otwarty z zakładki zostawia ją aktywną (cmentarz → Mapa);
+    - **pasek jest ukryty w formularzach, oknach i trybach wyboru** (wpis osoby, arkusz rodziny, wyszukiwanie,
+      wskazanie punktu) **i na zdjęciu na pełnym ekranie** (podgląd, kadr). Tam liczy się jedno zadanie, a powrót
+      daje „wstecz”;
+    - **każda zakładka szuka swojego** (D3): wyszukiwarka na mapie szuka tylko cmentarzy, a osób — zakładka Osoby.
+      To odstępstwo od R1 („Szukaj osoby lub cmentarza”).
 13. **Mapy** (R1, R2; pierwsza: [[cmentarze]]). Mapa nie ma własnej palety, tylko tokeny i kolory stanu:
     - **ląd** — powierzchnia; **poza krajem** — tło; **granica** — obrys, bo kształt kraju niesie położenie
       zniczy (≥ 3:1, SC 1.4.11);
+    - **mapa Polski jak R1** (v1.13, [[cmentarze]] D29): **sąsiednie kraje** w kolorze tła z granicami w kolorze obrysu
+      (krycie 45%, dekoracja); **morze i jeziora** — woda; **rzeki** — linia wody. **Granica Polski** w kolorze tekstu
+      pomocniczego, bo obrys ma na wodzie tylko 3,11:1, a tekst pomocniczy 5,04:1 (na tle 5,50:1, na lądzie 5,01:1).
+      Woda i ląd mają tę samą jasność (1,00:1), więc brzeg niesie granica, a nie kolor (SC 1.4.1). Napis kraju —
+      tekst pomocniczy, 22 sp, półgruby, odstęp liter 2;
+    - **plan cmentarza** (v1.14, [[cmentarz]] D10, D13): teren cmentarza — powierzchnia z obrysem; alejki — obrys
+      (główne 4 dp, boczne 2 dp); **kwatera autora** — przerywana linia w kolorze tekstu (krycie 75%) z nazwą 12 sp,
+      półgrubą, z obwódką w kolorze tła planu. Linia kwatery to granica zaznaczona przez autora, więc niesie znaczenie:
+      tekst na powierzchni 10,02:1. Zdjęcie z góry to treść z zewnątrz (reguła 14 — nic na nim poza zniczami, nazwami
+      kwater z obwódką i plakietkami na powierzchni);
     - **rzeki** i inne tło mapy — cienki obrys z przezroczystością. To dekoracja, a SC 1.4.11 obejmuje tylko
       grafikę potrzebną do zrozumienia treści. Nic, co coś znaczy, nie może mieć formy dekoracji;
     - **podpisy miast** — tekst pomocniczy ≥ 13 sp na lądzie (5,01:1), **z obwódką 2–3 dp w kolorze lądu**, żeby granica, wybrzeże i rzeki nie przecinały liter (standard kartograficzny, v1.4);
@@ -163,7 +185,10 @@ pomocniczym albo ten token trzeba rozjaśnić. Do rozstrzygnięcia przy pierwszy
       tła (krycie 72%), linie pomocnicze w kolorze tekstu (krycie 60%) z cieniem w kolorze tła (krycie 50 %);
     - **kształt mówi, co to jest:** osoba — okrąg, i to tylko jej **profilowe** (miniatura w karcie 40 dp, zdjęcie w
       formularzu 80 dp, nagłówek bazy zdjęć 96 dp; R3, R4); nagrobek — zaokrąglony prostokąt (duże zdjęcie: promień
-      16 dp; miniatura w karcie: kwadrat 56 dp, promień 8 dp; R2, R4); **zdjęcia w bazie zdjęć osoby** — kwadraty w
+      16 dp; miniatura w karcie: kwadrat 56 dp, promień 8 dp; R2, R4); **cmentarz** — zaokrąglony prostokąt
+      (miniatura w arkuszu cmentarza 96 × 80 dp, promień 12 dp; R1; v1.13, [[cmentarze]] D28); **zdjęcie w tle osoby** —
+      prostokąt na pełną szerokość, 140 dp, bez zaokrąglenia, przycięty ze środka, a portret nachodzi na jego dolną
+      krawędź (v1.15, [[osoba]] D3); **zdjęcia w bazie zdjęć osoby** — kwadraty w
       siatce, promień 8 dp, bo bywają grupowe, a okrąg ucina najwięcej (v1.9, [[zdjecia-osoby]]);
     - **przycięcie tylko w miniaturze, na liście i w siatce**, ze środka; całe zdjęcie, bez przycinania i z
       przybliżeniem — w podglądzie na tle. **Okrąg profilowego pokazuje kadr łącza osoba–zdjęcie** (v1.10,
@@ -178,6 +203,12 @@ pomocniczym albo ten token trzeba rozjaśnić. Do rozstrzygnięcia przy pierwszy
     - gesty na zdjęciu mają alternatywę jednym dotknięciem (*Thresholds* → gesty);
     - **usuwanie zdjęcia bez koloru błędu:** przycisk tekstowy z ikoną `delete_outline` w kolorze tekstu, a gdy
       usunięcie działa od razu — okno z bezpiecznym działaniem w akcencie (reguła 10).
+15. **Widok przed poprawą** (v1.12, [[SPIKE-004-mvp-flow-prototype]] D4, autor 2026-10-08: *„ok”*). Dotknięcie
+    cmentarza, grobu albo osoby **otwiera widok**, a poprawa jest pod ✎ (`edit_outlined` w akcencie, `tooltip`
+    „Popraw …”), jak w arkuszu cmentarza ([[cmentarze]] element 8) i w tytule grobu ([[grob]]). Formularz otwiera się
+    od razu tylko przy działaniu „Dodaj …”. **Dziś regułę łamie karta osoby w grobie**: otwiera formularz poprawy,
+    bo widoku osoby (M5, R4 prawy) jeszcze nie ma. To samo dotyczy chipów rodziny w formularzu (ISSUE-012 D1,
+    [[grob]] → *Navigation*). Widok osoby projektuje panel 4 tego spike'a.
 
 ## Sunlight — [[NFR-004-czytelnosc-w-sloncu]]
 **Nie sprawdzone.** Test wymaga prawdziwego telefonu, buildu release i pełnego słońca
@@ -258,3 +289,31 @@ wysokokontrastowy, bez rezygnacji ze stylu B. Wynik i data trafiają tutaj i do
   reguła 11 — chip relacji z R4 prawego jako wyjątek od „karta z chevronem”. Tokeny bez zmian, więc pomiar z 2026-10-06
   obowiązuje: obrys chipu na tle 3,40:1, napis chipu na powierzchni 10,02:1. Przycisk segmentowy dla pola płci wypadł
   razem z polem na stopie #1 (decyzja autora: bez płci), więc reguły dla niego nie ma — bez instancji byłaby na zapas.
+- 2026-10-08 — **v1.12, szkielet aplikacji z prototypu** (`ui`, [[SPIKE-004-mvp-flow-prototype]] panel 0, decyzje
+  autora D1–D4):
+  - reguła 12: pasek dolny i koło zębate potwierdzone; widoczny na ekranach do oglądania, ukryty w formularzach,
+    trybach wyboru i na zdjęciu na pełnym ekranie; każda zakładka szuka swojego;
+  - nowa reguła 15: widok przed poprawą.
+
+  Tokeny bez zmian, więc pomiar z 2026-10-06 obowiązuje. Pasek to istniejące pary: powierzchnia z tekstem
+  pomocniczym, a aktywna zakładka w akcencie.
+- 2026-10-08 — **v1.13, mapa Polski jak R1 i zdjęcie cmentarza** (`ui`, [[SPIKE-004-mvp-flow-prototype]] panel 1,
+  decyzje autora D5–D6):
+  - nowa rola: woda (`water`, `waterLine` — wartości proponuje [[cmentarze]] element 3, a do `theme.dart` wpisze je
+    `dev`);
+  - reguła 13: sąsiedzi, morze, jeziora, rzeki; granica Polski w kolorze tekstu pomocniczego;
+  - reguła 14: kształt zdjęcia cmentarza.
+
+  Pomiar nowych par (wzór WCAG, 2026-10-08): tekst pomocniczy/woda 5,04:1 · obrys/woda 3,11:1 · akcent/woda 8,07:1 ·
+  woda/ląd 1,00:1 · linia wody/ląd 2,49:1 (dekoracja).
+- 2026-10-08 — **v1.14, plan cmentarza** (`ui`, [[SPIKE-004-mvp-flow-prototype]] panel 2, decyzje autora D8, D11):
+  reguła 13 — plan schematyczny i kwatery autora; *State colours* — propozycja zieleni „Plan offline” `#8CC084`
+  (8,19:1 na powierzchni, z ikoną i podpisem).
+- 2026-10-08 — **v1.15, widok osoby** (`ui`, [[SPIKE-004-mvp-flow-prototype]] panel 4, [[osoba]]): reguła 8 — bez
+  gałązek wokół portretu (rozstrzygnięte); reguła 14 — kształt zdjęcia w tle osoby. Tokeny bez zmian.
+- 2026-10-08 — **v1.16, drzewo i wizyta** (`ui`, [[SPIKE-004-mvp-flow-prototype]] D20, D22; [[drzewo]], [[cmentarz]] v4.2):
+  - nowa rola — kolory relacji (rodzic–dziecko, partnerzy) z kształtem i legendą;
+  - *State colours* — wartość niebieskiej kropki „tu jesteś”.
+
+  Pomiar (wzór WCAG, 2026-10-08): rodzic–dziecko 8,50:1 na tle, 7,75:1 na powierzchni · partnerzy 8,16:1 i 7,45:1 ·
+  między sobą 1,04:1 (dlatego kształt i legenda) · kropka 6,99:1 i 6,38:1.
