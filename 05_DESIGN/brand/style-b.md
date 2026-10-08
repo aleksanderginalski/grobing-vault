@@ -1,5 +1,5 @@
 ---
-title: "Style B — visual guidelines (v1.16)"
+title: "Style B — visual guidelines (v1.17)"
 type: design-guidelines
 status: active
 owner: ui
@@ -32,7 +32,7 @@ autor, też używają znicza (reguła 8).
 | powierzchnia | `GrobingColors.surface` | **karty** (osoba, grób, cmentarz), dolny arkusz, wyszukiwarka, okno, menu, chip, przycisk pływający | granica pola wpisu (tło–powierzchnia ma ok. 1,1:1, więc granicę niesie obrys) |
 | tekst | `GrobingColors.text` | treść, wartości, imiona i nazwiska, tytuły | — |
 | tekst pomocniczy | `GrobingColors.textMuted` | lata, adres, liczby („6 grobów · 14 osób”), etykiety, podpowiedzi, „bez adresu kwatery”, źródło, nieaktywne zakładki | jedyny nośnik ważnej informacji na ekranie wizyty (patrz *Thresholds*) |
-| akcent | `GrobingColors.amber` | **jeden kolor, wiele ról** (reguła 1): główne działanie (wypełnione), pinezki, znicz, aktywna zakładka i segment, zaznaczenie, fokus, ikony działań i nagłówków sekcji, wyróżnione imiona na ścieżce, link zewnętrzny, wskaźnik działania w toku (v1.8) | treść ciągła (akapity), duże dekoracyjne plamy, ostrzeżenia i błędy |
+| akcent | `GrobingColors.amber` | **jeden kolor, wiele ról** (reguła 1): główne działanie (wypełnione), pinezki, znicz, aktywna zakładka i segment, zaznaczenie, fokus, ikony działań i nagłówków sekcji, wyróżnione imiona na ścieżce, link zewnętrzny, wskaźnik działania w toku (v1.8) | treść ciągła (akapity), duże dekoracyjne plamy, ostrzeżenia i błędy, numery listy i inne ozdobniki (v1.17) |
 | obrys *(nowy — wchodzi z [[ISSUE-014-home-map-of-poland]], zaproponowany przy [[ISSUE-012-transcribe-grave-screen]])* | proponowany `GrobingColors.outline` | ramka pola wpisu, przycisk z obrysem, linia podziału, granica na mapie (reguła 13) | tekst |
 | błąd *(nowy — wchodzi z ISSUE-014)* | proponowany `GrobingColors.error` | komunikat błędu pod polem, jego ikona, ramka pola z błędem | cokolwiek poza błędem |
 | woda *(nowa, v1.13 — [[SPIKE-004-mvp-flow-prototype]] D6, [[cmentarze]] D29)* | proponowane `GrobingColors.water` (morze, jeziora) i `GrobingColors.waterLine` (rzeki) | woda na mapie Polski jak w R1 | cokolwiek poza mapą; nośnik znaczenia (to dekoracja — brzeg niesie granica) |
@@ -45,7 +45,7 @@ sam (SC 1.4.1):
 | Stan | Skąd | Kiedy wchodzi |
 |---|---|---|
 | błąd | czerwień złagodzona (propozycja `#E07A6F`, pomiar niżej) | ISSUE-014 |
-| offline gotowy („Offline ✓”) | zieleń — R2; **propozycja `#8CC084`** (v1.14, [[cmentarz]] D10): 8,19:1 na powierzchni, zawsze z ikoną `offline_pin` i podpisem „Plan offline” | pierwszy ekran wizyty (M7, EPIC-002): token w `theme.dart` wpisze `dev` |
+| bezpieczne i gotowe — kopia udana, „Offline ✓” | zieleń — R2; **`GrobingColors.stateOk`** (zaproponowana w v1.14, [[cmentarz]] D10; w `theme.dart` od [[ISSUE-022-app-skeleton-tabs-people-settings]], v1.17): 8,97:1 na tle, 8,19:1 na powierzchni. Zawsze z ikoną i podpisem: `cloud_done_outlined` + „Ostatnia udana kopia” ([[ustawienia]] element 2), `offline_pin` + „Plan offline” | **kopia — ISSUE-022**; plan offline — pierwszy ekran wizyty (M7, EPIC-002) |
 | „tu jesteś” | niebieska kropka — konwencja map, R2; **propozycja `#5EA2E6`** (v1.16, [[cmentarz]] element 10): 6,99:1 na tle, 6,38:1 na powierzchni, z obwódką w kolorze tła i kołem dokładności | mapa cmentarza (EPIC-002): token w `theme.dart` wpisze `dev` |
 
 ## Thresholds — with source
@@ -57,7 +57,7 @@ sam (SC 1.4.1):
 | rozmiar kontrolki z tekstem | **najmniejszy, nie stały**: przycisk, link i pole rosną z systemowym rozmiarem tekstu, zamiast ucinać napis (v1.6 — druga instancja po linku z v1.5) | WCAG 2.2 SC 1.4.4 Resize Text, AA |
 | gesty | **przesunięcie i gest kilkoma palcami mają alternatywę jednym dotknięciem** (przyciski poprzednie/następne, podwójne dotknięcie zamiast rozsunięcia palców) (v1.7) | WCAG 2.2 SC 2.5.1 Pointer Gestures, A: *„All functionality that uses multipoint or path-based gestures for operation can be operated with a single pointer without a path-based gesture”* ([Understanding 2.5.1](https://www.w3.org/WAI/WCAG22/Understanding/pointer-gestures.html)) |
 | cel dotyku | **≥ 48 × 48 dp** | [Android — Make apps more accessible](https://developer.android.com/guide/topics/ui/accessibility/apps) → *Use large, simple controls*: *„at least 48dp×48dp”* |
-| rozmiary tekstu | treść i tekst wpisywany **≥ 16 sp**; drobny tekst pomocniczy ≥ 13 sp; etykieta przycisku 14–16 sp, waga 500 | decyzja projektowa (nie norma) — dane wpisuje się szybko i trzeba je odczytać bez mrużenia oczu |
+| rozmiary tekstu | treść i tekst wpisywany **≥ 16 sp**; drobny tekst pomocniczy ≥ 13 sp; etykieta przycisku 14–16 sp, waga 500. **Wyjątek — podpis zakładki w dolnym pasku: 12 sp, półgruby** (v1.17, [[cmentarze]] element 18), bo to krótka etykieta pod ikoną, a nie tekst do czytania; rośnie z systemowym rozmiarem tekstu (przy 200% mieści się w pasku 72 dp) | decyzja projektowa (nie norma) — dane wpisuje się szybko i trzeba je odczytać bez mrużenia oczu. Wyjątek: podpis zakładki w pasku nawigacji Material 3 to *label medium*, 12 sp (Flutter 3.41.1, `material/navigation_bar.dart` → `_NavigationBarDefaultsM3` używa `labelMedium`; `material/typography.dart` → `_M3Typography`: `labelMedium` 12.0, w500 — sprawdzone w SDK 2026-10-08) |
 | **kandydat** dla ekranów wizyty | **≥ 7:1** dla tekstu | WCAG 2.2 SC 1.4.6 Contrast (Enhanced), AAA. **Nie obowiązuje jeszcze:** propozycja miary dla [[NFR-004-czytelnosc-w-sloncu]] (`⚠️ OPEN` tam), decyzja przy pierwszym ekranie wizyty |
 
 ## Measurement — 2026-10-06
@@ -74,6 +74,7 @@ wzorem. **Przelicz przy każdej zmianie tokenów.**
 | obrys *(kandydat `6B6862`)* | 3,40 | 3,10 | 3 (SC 1.4.11) | ✅ |
 | błąd *(kandydat `E07A6F`)* | 6,45 | 5,89 | 4,5 | ✅ |
 | tekst na zaznaczeniu tekstu (domyślne zaznaczenie Fluttera: akcent 40% na tle ≈ `#664D26`) *(v1.6)* | 4,60 | — | 4,5 | ✅ — tuż nad progiem: **nie zwiększać krycia zaznaczenia** |
+| zieleń stanu `stateOk` jako ikona albo tekst *(v1.17, 2026-10-08)* | 8,97 | 8,19 | 3 (ikona) · 4,5 (tekst) | ✅ |
 
 **Wniosek:** wszystkie pary spełniają AA, a tekst pomocniczy nie spełnia kandydata 7:1. Jeśli ekrany
 wizyty przyjmą 7:1, informacja potrzebna na cmentarzu (adres kwatery, lata) nie może być w kolorze
@@ -120,7 +121,12 @@ pomocniczym albo ten token trzeba rozjaśnić. Do rozstrzygnięcia przy pierwszy
    - daty: `14.03.1951`, `03.1951`, `1890`; dopiski: `ok. 1890`, `przed 1920`, `po 1945`, `między 1893 a 1895`;
    - nazwisko rodowe w tej samej linii co nazwisko: `Maria Nowak z d. Kowalska`;
    - adres pełnymi słowami: `Kwatera B · Rząd 4 · Miejsce 12`; liczby: `6 grobów · 14 osób`, `3 osoby`
-     (z odmianą).
+     (z odmianą);
+   - **twarda spacja (U+00A0) po jednoliterowych słowach** (a, i, o, u, w, z) w stałych tekstach aplikacji i w „z d.”
+     w nazwie osoby (`z d. Rodowe`), żeby słowo nie zostało samo na końcu linii (polska zasada składu)
+     (v1.17; instancje z przeglądu [[ISSUE-022-app-skeleton-tabs-people-settings]]: „…na papierze, u⏎rodziny” w
+     ustawieniach, „Na⏎kartce”, „w⏎środku”, „i⏎zdjęciami” w notce przekazania). **Kod jeszcze tej reguły nie
+     stosuje** — obejmuje całą aplikację i `personName`, więc wejdzie osobną drobną pozycją, a nie w ISSUE-022.
 7. **Ton tekstów:** spokojny i rzeczowy. Bez wykrzykników, bez „Sukces!”, bez emotikonów. Brak czegoś
    opisujemy faktem i tym, kiedy się uzupełni („Bez adresu kwatery · uzupełnisz przy wizycie”), a nie
    ostrzeżeniem.
@@ -152,6 +158,17 @@ pomocniczym albo ten token trzeba rozjaśnić. Do rozstrzygnięcia przy pierwszy
       daje „wstecz”;
     - **każda zakładka szuka swojego** (D3): wyszukiwarka na mapie szuka tylko cmentarzy, a osób — zakładka Osoby.
       To odstępstwo od R1 („Szukaj osoby lub cmentarza”).
+
+    **Zbudowane w [[ISSUE-022-app-skeleton-tabs-people-settings]] (v1.17):**
+    - **ustawienia nie są zakładką**, więc lista ustawień i wszystkie ekrany pod nią (wybór „ja”, notka, eksport,
+      odtworzenie, „Stan danych”) są bez paska;
+    - **mapa zawsze leży na dole stosu** (stały ekran startowy Androida): wstecz z ekranu głównego innej zakładki wraca
+      na mapę, a z mapy zamyka aplikację; zakładka kładzie swój ekran bez wsuwania; zakładka na swoim ekranie nic nie
+      robi; otwarta klawiatura zakrywa pasek ([[cmentarze]] D31);
+    - **zakładka, której ekranu jeszcze nie ma, prowadzi do zaślepki** z tekstem, kiedy ekran powstanie (Drzewo do
+      SPIKE-002; decyzja autora, ISSUE-022 D1 = A). Zaślepka jest tymczasowa i **nie jest wzorem pustego stanu**: duża
+      ikona w kolorze obrysu i numer pozycji w tekście łamią reguły 3 i 9, a przyjęto je tylko dlatego, że zaślepka
+      znika razem z prawdziwym ekranem.
 13. **Mapy** (R1, R2; pierwsza: [[cmentarze]]). Mapa nie ma własnej palety, tylko tokeny i kolory stanu:
     - **ląd** — powierzchnia; **poza krajem** — tło; **granica** — obrys, bo kształt kraju niesie położenie
       zniczy (≥ 3:1, SC 1.4.11);
@@ -183,8 +200,8 @@ pomocniczym albo ten token trzeba rozjaśnić. Do rozstrzygnięcia przy pierwszy
       kadru wybiera część zdjęcia. Ramka nie ma tekstu: pierścień 2 dp w akcencie, z obu stron linia 1 dp w kolorze tła
       (akcent–tło 8,81:1 na każdym zdjęciu; sam akcent na białym ok. 2,1:1), poza okręgiem zdjęcie przyciemnione kolorem
       tła (krycie 72%), linie pomocnicze w kolorze tekstu (krycie 60%) z cieniem w kolorze tła (krycie 50 %);
-    - **kształt mówi, co to jest:** osoba — okrąg, i to tylko jej **profilowe** (miniatura w karcie 40 dp, zdjęcie w
-      formularzu 80 dp, nagłówek bazy zdjęć 96 dp; R3, R4); nagrobek — zaokrąglony prostokąt (duże zdjęcie: promień
+    - **kształt mówi, co to jest:** osoba — okrąg, i to tylko jej **profilowe** (miniatura w karcie i w wierszu ustawień
+      40 dp — v1.17, [[ustawienia]] element 1; zdjęcie w formularzu 80 dp, nagłówek bazy zdjęć 96 dp; R3, R4); nagrobek — zaokrąglony prostokąt (duże zdjęcie: promień
       16 dp; miniatura w karcie: kwadrat 56 dp, promień 8 dp; R2, R4); **cmentarz** — zaokrąglony prostokąt
       (miniatura w arkuszu cmentarza 96 × 80 dp, promień 12 dp; R1; v1.13, [[cmentarze]] D28); **zdjęcie w tle osoby** —
       prostokąt na pełną szerokość, 140 dp, bez zaokrąglenia, przycięty ze środka, a portret nachodzi na jego dolną
@@ -208,7 +225,7 @@ pomocniczym albo ten token trzeba rozjaśnić. Do rozstrzygnięcia przy pierwszy
     „Popraw …”), jak w arkuszu cmentarza ([[cmentarze]] element 8) i w tytule grobu ([[grob]]). Formularz otwiera się
     od razu tylko przy działaniu „Dodaj …”. **Dziś regułę łamie karta osoby w grobie**: otwiera formularz poprawy,
     bo widoku osoby (M5, R4 prawy) jeszcze nie ma. To samo dotyczy chipów rodziny w formularzu (ISSUE-012 D1,
-    [[grob]] → *Navigation*). Widok osoby projektuje panel 4 tego spike'a.
+    [[grob]] → *Navigation*) i kart w zakładce Osoby ([[osoby]] D7, ISSUE-022 D2) — do [[ISSUE-024-person-view]]. Widok osoby projektuje panel 4 tego spike'a.
 
 ## Sunlight — [[NFR-004-czytelnosc-w-sloncu]]
 **Nie sprawdzone.** Test wymaga prawdziwego telefonu, buildu release i pełnego słońca
@@ -317,3 +334,18 @@ wysokokontrastowy, bez rezygnacji ze stylu B. Wynik i data trafiają tutaj i do
 
   Pomiar (wzór WCAG, 2026-10-08): rodzic–dziecko 8,50:1 na tle, 7,75:1 na powierzchni · partnerzy 8,16:1 i 7,45:1 ·
   między sobą 1,04:1 (dlatego kształt i legenda) · kropka 6,99:1 i 6,38:1.
+- 2026-10-08 — **v1.17, po przeglądzie szkieletu aplikacji** (`ui` jako subagent `qa`,
+  [[ISSUE-022-app-skeleton-tabs-people-settings]]; [[osoby]] v2, [[ustawienia]] v2, [[cmentarze]] v2.5):
+  - *State colours* — zieleń stanu weszła do `theme.dart` jako `GrobingColors.stateOk`; rola „bezpieczne i gotowe”
+    obejmuje kopię udaną (ustawienia), a nie tylko „Plan offline”;
+  - *Thresholds* — wyjątek: podpis zakładki 12 sp, półgruby (jak w pasku nawigacji Material 3);
+  - akcent — nigdy numery listy ani inne ozdobniki (notka przekazania);
+  - reguła 6 — twarda spacja po jednoliterowych słowach i w „z d.”; **kod jeszcze jej nie stosuje** (osobna drobna
+    pozycja);
+  - reguła 12 — ustawienia i ekrany pod nimi bez paska; mapa na dole stosu; zaślepka zakładki bez ekranu, tymczasowa i
+    nie jako wzór pustego stanu;
+  - reguła 14 — profilowe 40 dp także w wierszu ustawień.
+
+  Pomiar (wzór WCAG z wartości w `theme.dart`, 2026-10-08): `stateOk` 8,97:1 na tle, 8,19:1 na powierzchni. Pozostałe
+  tokeny bez zmian (przeliczone tego dnia: akcent 8,81 / 8,04, tekst pomocniczy 5,50 / 5,01, błąd 6,45 / 5,89, obrys
+  3,40 / 3,10 — wyniki te same).

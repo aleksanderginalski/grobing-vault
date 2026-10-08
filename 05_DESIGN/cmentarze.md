@@ -1,6 +1,6 @@
 ---
 screen: "Ekran główny — mapa Polski z cmentarzami rodziny"
-items: ["[[ISSUE-012-transcribe-grave-screen]]", "[[ISSUE-014-home-map-of-poland]]", "[[ISSUE-015-add-cemetery-from-database]]", "[[SPIKE-004-mvp-flow-prototype]]"]
+items: ["[[ISSUE-012-transcribe-grave-screen]]", "[[ISSUE-014-home-map-of-poland]]", "[[ISSUE-015-add-cemetery-from-database]]", "[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-022-app-skeleton-tabs-people-settings]]"]
 us: "[[US-002-przepisanie-grobu]]"
 journey-step: "UJ-001 · 1 (widok 1, M2) · warunek kroku 1: dodanie cmentarza (M1)"
 mockup: "katalog tymczasowy sesji 2026-10-06: makieta-mapa-polski.html (ramki 1–10, wersja 2 po stopie #1) · 2026-10-08: grobing-prototyp.html (SPIKE-004, klikalny)"
@@ -10,7 +10,7 @@ updated: 2026-10-08
 # Ekran główny — mapa Polski — specyfikacja
 
 > Żywy plik: `ui` aktualizuje go przy każdej pozycji, która ten ekran zmienia. Prawdą o ekranie jest ten
-> plik; szkic i makieta to podgląd. Wytyczne: [[style-b]] (v1.5) · referencja: [[references]] → **R1**.
+> plik; szkic i makieta to podgląd. Wytyczne: [[style-b]] (v1.17) · referencja: [[references]] → **R1**.
 >
 > **Historia:** do ISSUE-014 plik opisywał listę cmentarzy jako ekran główny (pierwsza wersja `ui`). Autor
 > zdecydował, że ekranem głównym jest od startu mapa Polski jak R1. Nazwa pliku zostaje, bo linkują do niej
@@ -59,6 +59,13 @@ updated: 2026-10-08
 >   *„Mapa Polski B - jest ok”* — D29, zastępuje D9);
 > - **Polska wyśrodkowana bez arkusza**, a po otwarciu arkusza przesunięta nad niego (D30).
 >
+> **Wersja 2.5 — pasek dolny i koło zębate zbudowane ([[ISSUE-022-app-skeleton-tabs-people-settings]], przegląd `ui`,
+> 2026-10-08):**
+> - **koło zębate → [[ustawienia]]**, a „Stan danych” o poziom niżej (element 1, *Navigation*);
+> - pasek dolny na mapie, cmentarzu i grobie; przełączanie zakładek, wstecz i zaślepka Drzewa (D31 → element 18,
+>   *Navigation*);
+> - element 18: semantyka zakładek, klawiatura zakrywa pasek, podpis 12 sp jako wyjątek w [[style-b]] v1.17.
+>
 > Które elementy dowozi która pozycja, mówi plan (`planning`), a nie ten plik.
 
 ## Purpose
@@ -71,7 +78,8 @@ a cmentarze z OpenStreetMap są wbudowane w aplikację.
 ## Navigation
 - **Start aplikacji → ten ekran.** Ekran startowy z [[ISSUE-002-bootstrap-code-repo]] znika; natywny ekran
   uruchamiania (tło `grobing_background`) zostaje.
-- **Koło zębate → „Stan danych”** (jedyne ustawienie; lista ustawień powstanie z drugą pozycją).
+- **Koło zębate → [[ustawienia]]** (od [[ISSUE-022-app-skeleton-tabs-people-settings]]; „Stan danych” jest tam o poziom
+  niżej — [[ustawienia]] D1). Do ISSUE-022 koło otwierało od razu „Stan danych”.
 - **Znicz → arkusz cmentarza** (6–8); **znicz z liczbą → arkusz grupy** (9) → wiersz → arkusz cmentarza.
 - **„Otwórz cmentarz” → [[cmentarz]]** — dochodzi z [[ISSUE-012-transcribe-grave-screen]] (decyzja autora:
   ISSUE-014 → *Decisions for stop #1* D5).
@@ -86,15 +94,18 @@ a cmentarze z OpenStreetMap są wbudowane w aplikację.
   tym samym tekstem; z wyszukiwania → mapa; z otwartego arkusza → zamyka arkusz; z mapy → wyjście z
   aplikacji.
 - **Dolny pasek Mapa · Osoby · Drzewo** (element 18, D26). Mapa jest zakładką aktywną także na [[cmentarz]]
-  i niżej, a wyszukiwanie, okno i tryb wskazania pasek chowają ([[style-b]] reguła 12). Do czasu zbudowania
-  zakładek Osoby i Drzewo pasek czeka na drugi cel (reguła 12).
+  i niżej, a wyszukiwanie, okno i tryb wskazania pasek chowają ([[style-b]] reguła 12). **Zbudowany w
+  [[ISSUE-022-app-skeleton-tabs-people-settings]]** (D31): mapa zawsze leży na dole stosu; „Osoby” i „Drzewo” kładą
+  swój ekran nad mapą bez wsuwania, a wstecz z nich wraca na mapę; „Mapa” z cmentarza albo grobu wraca na mapę Polski.
+  **Drzewo prowadzi do zaślepki** „Drzewo powstanie po SPIKE-002. Na razie rodzinę widać przy osobie.” (z paskiem,
+  aktywne Drzewo), dopóki nie ma [[drzewo]] (ISSUE-022 D1 = A).
 
 ## Elements in order
 **Mapa (ekran główny)**
 
 | # | Element | Typ | Klawiatura / akcja | Domyślnie | Walidacja | Źródło |
 |---|---|---|---|---|---|---|
-| 1 | Pasek: **ikona znicza (akcent) + „Grobing”** (półgruby, 22 sp); po prawej koło zębate (`settings_outlined`, tekst pomocniczy, `tooltip` „Ustawienia”) | pasek | koło → „Stan danych” | — | — | R1 · *What to build* 5 · [[style-b]] reguła 8 |
+| 1 | Pasek: **ikona znicza (akcent) + „Grobing”** (półgruby, 22 sp); po prawej koło zębate (`settings_outlined`, tekst pomocniczy, `tooltip` „Ustawienia”) | pasek | koło → [[ustawienia]] (od ISSUE-022; wcześniej „Stan danych”) | — | — | R1 · *What to build* 5 · [[style-b]] reguła 8 · ISSUE-022 |
 | 2 | **Wyszukiwarka:** pigułka na powierzchni, wys. 56 dp, margines 16 dp, ikona `search` (tekst pomocniczy), podpowiedź **„Szukaj cmentarza”** | pole (tylko wejście) | dotknięcie → tryb wyszukiwania (10) | pusto | — | R1 · *What to build* 3 · D2 |
 | 3 | **Mapa Polski jak R1 (v2.4, D29)** na całą szerokość pod wyszukiwarką: **Polska** — ląd w kolorze powierzchni, granica w kolorze **tekstu pomocniczego** (1,4 dp; 5,01:1 na lądzie, 5,04:1 na wodzie, 5,50:1 na tle); **sąsiednie kraje** w kolorze tła z granicami w kolorze obrysu (0,7 dp, krycie 45%, dekoracja); **Bałtyk i jeziora** w kolorze **wody** (nowa rola, proponowany token `water` `#101C25`); **rzeki** linią wody (1 dp, proponowany token `waterLine` `#3A5E74`, dekoracja); napis **„Polska”** (22 sp, półgruby, odstęp liter 2, tekst pomocniczy, krycie 85%) w wolnym miejscu północnej części kraju; **11 miast** (kropka 4 dp + podpis 13 sp, tekst pomocniczy, z obwódką 2–3 dp w kolorze lądu — [[style-b]] reguła 13): Szczecin, Gdańsk, Bydgoszcz, Białystok, Poznań, Warszawa, Łódź, Wrocław, Katowice, Lublin, Kraków. Dane: Natural Earth 1:10m, te same co dziś. Bez faktury terenu | mapa | szczypanie, przeciąganie, podwójne dotknięcie; ruch ograniczony do Polski; najmniejsze przybliżenie = cała Polska z marginesem 16 dp, **wyśrodkowana w pionie w obszarze mapy, gdy arkusz jest zamknięty; po otwarciu arkusza mapa przesuwa się płynnie w górę, tak że Polska stoi nad arkuszem** (v2.4, D30); bez obrotu; dotknięcie pustego miejsca zamyka arkusz | cała Polska, północ u góry | — | R1 · *What to build* 1 · D14, D29, D30 |
 | 4 | **Znicze cmentarzy** w punkcie cmentarza: pinezka w akcencie z sylwetką znicza w kolorze tła, 32 × 40 dp, **cel dotyku 48 × 48 dp**. Wybrany: 40 × 50 dp z poświatą. **Znicze, których cele nachodzą na siebie, łączą się w jeden znicz z liczbą** (plakietka: powierzchnia, obrys w akcencie, cyfra w kolorze tekstu). Znicz rysuje się nad podpisami miast | znaczniki | dotknięcie → arkusz (6) albo arkusz grupy (9); mapa przesuwa się tak, żeby znicz (także znicz z liczbą) nie stał pod arkuszem — według wysokości narysowanego arkusza | — | cmentarz bez punktu nie ma znicza | R1 · *What to build* 2 · AC-2 · D8 |
@@ -142,7 +153,7 @@ a cmentarze z OpenStreetMap są wbudowane w aplikację.
 
 | # | Element | Typ | Klawiatura / akcja | Domyślnie | Walidacja | Źródło |
 |---|---|---|---|---|---|---|
-| 18 | **Pasek dolny** na powierzchni, wys. 72 dp, linia podziału u góry w kolorze obrysu: trzy zakładki **Mapa** (`map_outlined`) · **Osoby** (`group_outlined`) · **Drzewo** (`account_tree_outlined`), ikona nad podpisem (12 sp, półgruby). Aktywna: ikona, podpis i podkreślenie 2 dp w akcencie; nieaktywne w kolorze tekstu pomocniczego. Arkusz cmentarza (6–8) i arkusz grupy (9) stoją **nad** paskiem | nawigacja | zakładka → jej ekran główny, stos zakładki od początku | Mapa | — | R1 · [[style-b]] reguła 12 · D26 |
+| 18 | **Pasek dolny** na powierzchni, wys. 72 dp (plus dolny margines systemu), linia podziału u góry w kolorze obrysu: trzy zakładki **Mapa** (`map_outlined`) · **Osoby** (`group_outlined`) · **Drzewo** (`account_tree_outlined`), każda na 1/3 szerokości, ikona nad podpisem (12 sp, półgruby — wyjątek od 13 sp, [[style-b]] *Thresholds*, v1.17). Aktywna: ikona, podpis i podkreślenie podpisu 2 dp w akcencie; nieaktywne w kolorze tekstu pomocniczego. Dla czytnika każda zakładka to przycisk z nazwą, a aktywna ma stan „wybrana”. Arkusz cmentarza (6–8) i arkusz grupy (9) stoją **nad** paskiem; **otwarta klawiatura zakrywa pasek** | nawigacja | zakładka → jej ekran główny, stos zakładki od początku, **bez wsuwania**; zakładka na swoim ekranie głównym nic nie robi; mapa zawsze na dole stosu (D31) | Mapa | — | R1 · [[style-b]] reguła 12 · D26 · D31 |
 
 Liczby odmieniają się po polsku: 1 grób · 2–4 groby · 5+ grobów (też 12–14 grobów, 22–24 groby) · 0
 grobów; tak samo osoba / osoby / osób i cmentarz / cmentarze / cmentarzy.
@@ -221,7 +232,8 @@ Ekran do wybierania; wpisywanie jest rzadkie. Rekordem jest **cmentarz**: ok. 10
   mają.
 - **Reguły 9 i 10:** pusty stan z jednym działaniem. Po zapisie widać zapisany znicz i jego arkusz.
 - **Reguła 11:** karty z chevronem w wyszukiwarce, wiersze w arkuszu grupy; bez miniatur.
-- **Reguła 12:** koło zębate → „Stan danych”; bez dolnej nawigacji.
+- **Reguła 12:** koło zębate → [[ustawienia]]; dolny pasek Mapa · Osoby · Drzewo na mapie, cmentarzu i grobie (od
+  ISSUE-022), ukryty w wyszukiwaniu, oknie i trybie wskazania.
 - **Reguła 13 (mapy):** role kolorów na mapie, znicz-pinezka i **znicz w obrysie dla cmentarza jeszcze nie
   dodanego** (podgląd).
 - **Tokeny wchodzące tą pozycją** (zmierzone w [[style-b]] → *Measurement*; do `theme.dart` wpisuje je
@@ -240,7 +252,7 @@ Ekran do wybierania; wpisywanie jest rzadkie. Rekordem jest **cmentarz**: ok. 10
 | Cmentarz z punktem jest zniczem; cmentarz bez punktu znajduje wyszukiwarka | 4 · 11 | zapis z punktem (z bazy albo wskazany) → znicz; zapis bez punktu → brak znicza, karta w 11 z „· bez punktu na mapie” |
 | Wyszukiwarka znajduje po nazwie albo miejscowości; brak wyników → „Dodaj cmentarz” | 12, 13 | tekst z nazwy i z miejscowości daje karty w obu sekcjach; tekst bez trafień daje 13 |
 | Arkusz pokazuje liczbę grobów i osób | 6 | „2 groby · 3 osoby” zgodne z danymi. Otwarcie ekranu cmentarza → ISSUE-012 (D5) |
-| „Stan danych” pod kołem zębatym; ekranu startowego nie ma | 1 · *Navigation* | start → od razu mapa; koło → „Stan danych” |
+| „Stan danych” pod kołem zębatym; ekranu startowego nie ma | 1 · *Navigation* | start → od razu mapa; koło → „Stan danych” (od ISSUE-022: koło → ustawienia → „Stan danych”) |
 | Ekran według specyfikacji `ui` i wytycznych stylu B | całość | *Style B rules applied*; przegląd `ui` przed stopem #2 |
 | US-002 AC-1, *Given* „cmentarz w aplikacji” | 12, 14, 15 | cmentarz dodany z bazy istnieje i ma arkusz |
 | **Uwaga autora: właściwy cmentarz we właściwym miejscu** | 12, 14 | wynik z województwem i dzielnicą; podgląd na mapie i zdjęcie satelitarne przed dodaniem |
@@ -251,6 +263,8 @@ Ekran do wybierania; wpisywanie jest rzadkie. Rekordem jest **cmentarz**: ok. 10
 | (ISSUE-015) Podpis ODbL przy wynikach z bazy; wyciąg w repo z licencją i pochodzeniem | 12 · D16 | „Dane: © autorzy OpenStreetMap (ODbL)” pod sekcją „Z bazy cmentarzy”. Licencja i pochodzenie wyciągu: n/a dla ekranu (README i nagłówek zasobu w repo) |
 | (ISSUE-015) APK release bez uprawnienia `INTERNET` | n/a — mechanizm, nie element | na ekranie tego nie widać: link wychodzi przez inną aplikację (D18), a nie przez sieć Grobing. Sprawdza `aapt` na APK release |
 | (ISSUE-015) Ekran według specyfikacji `ui` i wytycznych stylu B | całość (12–15) | *Style B rules applied*; przegląd `ui` przed stopem #2 |
+| (ISSUE-022) AC-1 — na dole Mapa · Osoby · Drzewo, aktywna Mapa; w formularzu osoby paska nie ma | 18 · *Navigation* | start → pasek z aktywną Mapą; arkusz nad paskiem; cmentarz i grób — pasek z aktywną Mapą; „Poprawa wpisu” bez paska; Osoby → wstecz → mapa |
+| (ISSUE-022) AC-3 — koło zębate → ustawienia | 1 | koło → „Ustawienia” ([[ustawienia]]) |
 
 ## Decisions
 - **D1 — plik przepisany w miejscu**, nazwa zostaje (linki w zamkniętych pozycjach).
@@ -394,6 +408,14 @@ Ekran do wybierania; wpisywanie jest rzadkie. Rekordem jest **cmentarz**: ok. 10
   Autor: *„powinna być bardziej wycentrowana (ale na widoku z otworzonym cmentarzem jest idealnie)”*. Margines dołu
   na wysokość arkusza (przegląd `ui` 2026-10-06) działa więc tylko przy otwartym arkuszu, a mapa przesuwa się do niego
   płynnie (ok. 300 ms).
+- **D31 — jak pasek przełącza zakładki** (v2.5, [[ISSUE-022-app-skeleton-tabs-people-settings]], przegląd `ui`).
+  **Mapa zawsze leży na dole stosu** — to stały ekran startowy Androida (developer.android.com → *Principles of
+  navigation*: *fixed start destination*), więc wstecz z Osób albo Drzewa wraca na mapę, a z mapy zamyka aplikację.
+  Zakładka zdejmuje stos do mapy i kładzie swój ekran główny **bez wsuwania**, bo przełączenie zakładki nie jest krokiem
+  w głąb. Zakładka na swoim ekranie głównym nic nie robi. **Zakładka bez gotowego ekranu prowadzi do zaślepki** z
+  tekstem, kiedy powstanie (Drzewo → SPIKE-002; decyzja autora na stopie #1 ISSUE-022, D1 = A): pasek od razu ma
+  kształt zatwierdzony na prototypie. Pamięć osobnego stosu każdej zakładki jest poza zakresem (stos od początku).
+  *Obali:* autor wraca do Osób i oczekuje osoby, którą zostawił — wtedy osobny stos na zakładkę.
 
 ## Open
 brak. Rundy prototypu ([[SPIKE-004-mvp-flow-prototype]]) rozstrzygnęły zdjęcie w arkuszu (D28) i mapę (D29, D30).

@@ -28,10 +28,9 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
      US-004 nie ma terminu;
   4. ~~[[SPIKE-004-mvp-flow-prototype]]~~ — zamknięty 2026-10-08 (*Recently done*).
 - **Droga do instalacji MVP** — propozycja łańcucha przy zamknięciu SPIKE-004 (autor może zmienić kolejność):
-  1. **następna: [[ISSUE-022-app-skeleton-tabs-people-settings]]** — dolny pasek, zakładka Osoby, ustawienia; szkielet,
-     na którym stoi reszta;
-  2. [[ISSUE-025-gender-kinship-together-since]] — płeć, nazwy pokrewieństwa, „Razem od”, formularz bez źródeł (jedna
-     zmiana schematu);
+  1. ~~[[ISSUE-022-app-skeleton-tabs-people-settings]]~~ — zamknięte 2026-10-08 (*Recently done*);
+  2. **następna: [[ISSUE-025-gender-kinship-together-since]]** — płeć, nazwy pokrewieństwa, „Razem od”, formularz bez
+     źródeł (jedna zmiana schematu); pokrewieństwo wejdzie pod imię w zakładce Osoby;
   3. [[ISSUE-024-person-view]] — widok osoby (M5), z mini-drzewem i pochówkiem prowadzącym na mapę;
   4. [[ISSUE-023-poland-map-r1-cemetery-photo]] — mapa Polski jak R1 i zdjęcie cmentarza;
   5. [[US-007-mapa-cmentarza]] — plan offline, zdjęcie z góry, kwatery (przed planem: `ui` projektuje zaznaczanie kwater;
@@ -76,7 +75,12 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     [[rodzina]] v1.4): dwa tryby związku, osobne pole **„Razem od”** obok „Ślubu” (autor: *„czasami ludzie nie są
     małżeństwem, mają dziecko, i dopiero biorą ślub”*). Wejdzie z pozycją z zamknięcia SPIKE-004;
   - **[[DEF-005-push-gate]]** obudzony pierwszym pushem — **zostaje do PRODUKCJA** (retro 2, R8; DEF-005 →
-    *Decision*).
+    *Decision*);
+  - **twarde spacje po jednoliterowych słowach i w „z d.”** w całej aplikacji ([[style-b]] v1.17 reguła 6 — kod jeszcze
+    jej nie stosuje; przegląd `ui` w [[ISSUE-022-app-skeleton-tabs-people-settings]], B5). Dotyka `personName`, więc
+    wszystkich ekranów z osobami i ich testów. Kandydat na małą pozycję;
+  - **„Stan danych” mówi „Zapisana w Dysku na telefonie” także przy kopii w Pobranych** (ISSUE-022, B6) — jedna linia z
+    `backupPlace`, poza zakresem ISSUE-022.
 - **Przed pierwszymi prawdziwymi danymi w aplikacji:** kopia jest gotowa (US-001 ✅), poprawki z retro 2 też
   ([[ISSUE-021-small-fixes-after-retro-2]] ✅). Zostały hasło i
   miejsce pliku klucza w notce przekazania ([[NT-007-hand-over-note]]): utrata któregoś z nich = utrata
@@ -117,7 +121,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   paczki (decyzja autora 2026-10-07); treść wychodzących zmian sprawdza strażnik treści ([[ISSUE-020-content-guard]]) przy każdym `git add`/`commit`.
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **3** (ostatnie retro: [[2026-10-08-retro-02]]). Co **10** →
+- Zamknięte pozycje od ostatniego retro: **4** (ostatnie retro: [[2026-10-08-retro-02]]). Co **10** →
   retro + pytanie o 3–5 nośnych faktów (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**;
   podbija go `docs` przy zamknięciu, a zeruje go retro.
 - Do retro (zebrane po drodze, bez decyzji):
@@ -138,7 +142,14 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     D28 nieaktualny. Proponowane brzmienie: „…ryzyko utraty danych rodziny, dane rodziny w repo, niespełnione AC, zmiana
     bez odbicia w vaulcie”. Agent nie zmienia listy twardych stopów sam — decyzja autora (skill `qa` już poprawiony);
   - **agent uruchomił `python -I -`** (czytanie skryptu z wejścia), choć pamięć sesji mówi „nigdy” — komenda zawisła i
-    trzeba ją było zatrzymać; bez szkody dla plików.
+    trzeba ją było zatrzymać; bez szkody dla plików;
+  - **strażnik treści złapał przykład agenta** ([[ISSUE-022-app-skeleton-tabs-people-settings]] → *Verification*): zwykłe
+    polskie nazwisko, użyte jako przykład w komentarzu i teście, trafiło na listę rdzeni. Strażnik zadziałał przed `git add`
+    (suchy przebieg `qa`). Kandydat: przykłady tylko z rdzeni jawnie wymyślonych („Wymyśl-”, „Zmyśl-”, „Testow-”,
+    „Przykład-”), nigdy z prawdziwych nazwisk, nawet popularnych;
+  - **przegląd `ui` zmienił decyzję zapisaną w specyfikacji z prototypu** (ISSUE-022, MAJOR: „Odtwórz z kopii” przez
+    „Stan danych”): prototyp nie pokazał drugiego przycisku pod „Skonfiguruj kopię od nowa”. Na tę lukę prototypu odpowiedział
+    przegląd zbudowanego ekranu.
 
   Tematy z poprzedniego okresu rozliczyło [[2026-10-08-retro-02]] (R1–R10); wcześniejsze [[2026-10-06-retro-01]].
 
@@ -154,6 +165,29 @@ Format wpisu: `źródło (babcia / cmentarz X) · pytanie bez danych rodziny · 
 (zdarzenie) · data zapytania`. **Odpowiedź z faktami o rodzinie trafia do aplikacji, nie tutaj.**
 
 ## Recently done
+- 2026-10-08 — [[ISSUE-022-app-skeleton-tabs-people-settings]] zamknięte. **Aplikacja ma szkielet z prototypu:**
+  - **dolny pasek Mapa · Osoby · Drzewo** na mapie, cmentarzu i grobie; mapa zawsze na dole stosu, więc „wstecz” z Osób
+    wraca na mapę; zakładka z głębi stosu wraca do swojego ekranu głównego. Drzewo to na razie zapowiedź (D1 = A);
+  - **zakładka Osoby:** „Ja” na górze, wszyscy A–Z po nazwisku (gdy brak — po rodowym), wyszukiwanie od początku słowa
+    bez polskich znaków, karta → „Poprawa wpisu” do czasu widoku osoby (D2);
+  - **koło zębate → ustawienia:** „Ja” (wybór „Która osoba to Ty?” — pierwszy zapis ustawienia „ja” z [[data-model]],
+    bez zmiany schematu), kopia (ostatnia udana, „Zrób kopię teraz”, „Odtwórz z kopii” od razu do odtworzenia), notka
+    przekazania (lista z NT-007), zaślepka eksportu, „Stan danych” piętro niżej, „O aplikacji”;
+  - wyszukiwanie osób (brief §5a G5, Should) weszło do MVP decyzją autora na prototypie.
+
+  `dev` znalazł na emulatorze, że po powrocie z wpisu wraca klawiatura (pole odzyskiwało fokus) — poprawione. Przegląd `ui`:
+  0 BLOCKER, 1 MAJOR (droga odtworzenia), 13 MINOR — MAJOR i 9 MINOR poprawione przed stopem; specyfikacje [[osoby]] v2,
+  [[ustawienia]] v2, [[cmentarze]] v2.5, [[style-b]] v1.17. Strażnik treści złapał przykładowe nazwiska w teście przed
+  `git add` — zamienione na wymyślone. Próbne odtworzenie z „ja” na drugim emulatorze: odcisk zgodny. Werdykt `qa`:
+  APPROVED (self-check, z uwagami); stop #2 „ok” (krok 3 sprawdzony na urządzeniu). Testy: 481. Licznik retro: 3 → 4.
+
+  **Dla autora:**
+  - na `Medium_Phone` kopia skonfigurowana od nowa — hasło testowe, do Pobranych (`grobing-klucz-022.age`,
+    `grobing-kopia-022.age`, wymyślone dane); `Grobing_Restore` ma dane z tej kopii; „Ja” na `Medium_Phone` to Twój wybór
+    ze stopu #2;
+  - rozpoznanie „Dysk Google” w wierszu kopii sprawdzone tylko testem — pierwszy prawdziwy telefon przy MVP;
+  - nieprzetestowane przez nikogo na żywo: TalkBack i duże powiększenie tekstu na Osobach i ustawieniach;
+  - makieta wariantów paska ze stopu #1 leży poza repo (katalog tymczasowy tej sesji) — do kosza.
 - 2026-10-08 — [[SPIKE-004-mvp-flow-prototype]] zamknięty. **Cały przepływ MVP przeszedł przez klikalny prototyp**, panel po
   panelu, z decyzjami autora zapisanymi od razu w specyfikacjach (D1–D28):
   - **szkielet:** dolny pasek Mapa · Osoby · Drzewo, widok przed poprawą (✎), ustawienia pod kołem zębatym;
