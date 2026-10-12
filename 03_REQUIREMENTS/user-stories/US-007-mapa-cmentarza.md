@@ -1,20 +1,20 @@
 ---
 title: "US-007 — Cemetery as a map: schematic plan offline, photo from above online, the author's quarters, candles (mapa cmentarza)"
 type: user-story
-status: ready
+status: in-progress
 epic: "[[EPIC-002-wizyta]]"
 persona: "[[P1-zbierajacy]]"
 moscow: [M3, M7]
 journey-steps: "UJ-001 · 2, 7 (widok 2, R2)"
 FR: []
 NFR: ["[[NFR-001-offline]]", "[[NFR-005-dane-nie-opuszczaja-telefonu]]"]
-issues: []
+issues: ["[[ISSUE-027-cemetery-map-plan-photo-states]]", "[[ISSUE-028-cemetery-sectors]]"]
 quality-verdict: pending
 verdict-date: null
 verdict-reviewer: null
 source: "[[SPIKE-004-mvp-flow-prototype]] D8–D12 · [[ADR-003-map-source-offline]] · [[cmentarz]] v4.1 · EPIC-002 → Input from SPIKE-001"
 created: 2026-10-08
-updated: 2026-10-08
+updated: 2026-10-12
 ---
 
 # US-007 — Mapa cmentarza

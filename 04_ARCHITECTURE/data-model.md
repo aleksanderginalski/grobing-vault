@@ -4,7 +4,7 @@ type: data-model
 status: active
 source: "PROJECT_BRIEF §Architecture → Data model (accepted by the author, 2026-10-05)"
 FR: ["[[FR-001-provenance]]", "[[FR-002-rodzina-jako-rekord]]", "[[FR-003-wiele-osob-w-grobie]]", "[[FR-004-data-z-dopiskiem]]", "[[FR-005-nazwisko-rodowe]]"]
-ADR: ["[[ADR-001-local-first]]", "[[ADR-006-claimed-value-separate-structures]]", "[[ADR-011-relation-claims-family-and-child-link]]", "[[ADR-012-person-sex-and-union-timeline]]", "[[ADR-013-person-background-on-photo-link]]", "[[ADR-014-cemetery-photo-on-media]]"]
+ADR: ["[[ADR-001-local-first]]", "[[ADR-006-claimed-value-separate-structures]]", "[[ADR-011-relation-claims-family-and-child-link]]", "[[ADR-012-person-sex-and-union-timeline]]", "[[ADR-013-person-background-on-photo-link]]", "[[ADR-014-cemetery-photo-on-media]]", "[[ADR-015-cemetery-plan-in-database]]"]
 created: 2026-10-05
 updated: 2026-10-12
 ---
@@ -46,7 +46,7 @@ erDiagram
 | **Person** | imiona · nazwisko · **nazwisko rodowe** · **płeć** (kobieta / mężczyzna, pusta = nieznana — `SEX` w GEDCOM 7; schemat v7, [[ADR-012-person-sex-and-union-timeline]]) · kim była (tekst) · `is_living` | nazwisko rodowe — [[FR-005-nazwisko-rodowe]]; `is_living` steruje prywatnością w eksporcie |
 | **Family** | **związek** (małżeństwo albo nie): 1-2 partnerów · dzieci (**według daty urodzenia**, bez daty na końcu — GEDCOM 7 „chronological by birth”, [[ISSUE-019-family-relations]] D4) · **oś czasu związku**: własne zdarzenia „razem od”, ślubu i końca — ślub albo koniec, o których wiadomo, że były, bez daty to zdarzenie bez daty (`MARR Y` w GEDCOM 7; [[ADR-012-person-sex-and-union-timeline]]); twierdzenie o parze przy rodzinie, o dziecku przy jego łączu ([[ADR-011-relation-claims-family-and-child-link]]) | osoba może być partnerem w kilku rodzinach → powtórne małżeństwo działa z konstrukcji ([[FR-002-rodzina-jako-rekord]]) |
 | **Event** | typ · **data + kwalifikator** (dokładnie / około / przed / po / między) · miejsce | „ok. 1890" i „przed 1920" to normalne dane ([[FR-004-data-z-dopiskiem]]). Typy: osoby — urodzenie, zgon, **pochówek** (`glossary.md` → *pochówek*: data pochówku to Event, nie cecha powiązania); rodziny — **razem od** (od v7; eksport jako `EVEN` + `TYPE`), małżeństwo, koniec. Data może być nieznana przy zdarzeniu, o którym wiadomo, że było (ślub, koniec — v7). Diagram z briefu wymienia tylko birth, death |
-| **Cemetery** | nazwa · miejscowość · punkt środka · **zdjęcie** (jedno, wiersz *Media* z `cemetery_id` — schemat v9, [[ADR-014-cemetery-photo-on-media]]) · **plan** (obrys i alejki z OSM, pobrany przy dodaniu; brak = zaślepka) · link do Grobonetu albo **wyszukiwarki zarządcy** (decyzja autora przy US mapy cmentarza) | widok 1–2; plan i link — [[ADR-003-map-source-offline]] (2026-10-08). Ortofotomapa nie jest zapisywana (tylko online) |
+| **Cemetery** | nazwa · miejscowość · punkt środka · **zdjęcie** (jedno, wiersz *Media* z `cemetery_id` — schemat v9, [[ADR-014-cemetery-photo-on-media]]) · **plan** (obrys i alejki z OSM, pobrany raz — tabela `cemetery_plans`, schemat v10, [[ADR-015-cemetery-plan-in-database]]; brak wiersza = jeszcze nie pobrany, zaślepka) · link do Grobonetu albo **wyszukiwarki zarządcy** (decyzja autora przy US mapy cmentarza) | widok 1–2; plan i link — [[ADR-003-map-source-offline]] (2026-10-08). Ortofotomapa nie jest zapisywana (tylko online) |
 | **Sector** (kwatera, *planowana* — EPIC-002) | nazwa („Kwatera 81”) · cmentarz · **strefa** zaznaczona przez autora (opcjonalna: kwatera może istnieć bez strefy, aż autor ją zaznaczy) | dane autora, nie zarządcy — [[ADR-003-map-source-offline]] pkt 3. Dziś kwatera to tylko tekst w `Grave.sector`; czy powstanie osobna encja, rozstrzyga US mapy cmentarza |
 | **Grave** | **nazwa grobu** (`name`, opcjonalna, wpisuje autor — schemat v3, [[ISSUE-012-transcribe-grave-screen]]) · **kwatera / rząd / miejsce** (`sector` / `row` / `plot`) · pozycja + **jak ją uzyskano** (pinezka postawiona na planie albo na ortofotomapie / GPS na miejscu — [[ADR-003-map-source-offline]]) + dokładność · zdjęcia nagrobka · opłata ważna do (S4) | adres zarządcy jest prawdą, pinezka pomocą |
 | **Burial** | grób ↔ osoba, wiele na grób; osoba ma osobny wiersz dla każdego grobu, który podaje dla niej jakieś źródło | grób rodzinny mieści kilka osób ([[FR-003-wiele-osob-w-grobie]]); człowiek leży w jednym miejscu, ale źródła mogą się różnić ([[ADR-006-claimed-value-separate-structures]] D2) |
@@ -106,6 +106,12 @@ erDiagram
   — zdjęcie cmentarza w arkuszu na mapie, zapisywane tą samą drogą co nagrobek (`photos.dart` → `setCemeteryPhoto`). Warunek
   sieroty w `applyPersonPhotoEdits` obejmuje cmentarz (inaczej „Zapisz” zdjęć osoby kasowałoby zdjęcia cmentarzy). Migracja
   v8→v9 tylko dodaje kolumnę — kopie v8 odtwarzają się z cmentarzami bez zdjęć.
+- **2026-10-12 — schemat v10** ([[ISSUE-027-cemetery-map-plan-photo-states]], [[ADR-015-cemetery-plan-in-database]]): tabela
+  `cemetery_plans` — plan cmentarza z OSM (status `ok`/`notInOsm`, obrys i alejki jako JSON samych współrzędnych, bez nazw i
+  znaczników; czas pobrania, serwer). Jeden wiersz na cmentarz; nowy punkt kasuje plan w tej samej transakcji. Plan jest w kopii.
+  Migracja v9→v10 to `createTable` — kopie v9 odtwarzają się bez planów, a cmentarze z punktem pobierają je, gdy jest sieć.
+  **Pinezka grobu** (`graves.lat`/`lon`/`position_source`/`position_accuracy_m`, od v1) rysuje się od v10 jako znicz na planie;
+  stawia się ją od [[US-008-pinezka-na-miejscu]].
 
 ## Known consequence — not a model change
 

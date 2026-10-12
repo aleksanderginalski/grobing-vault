@@ -7,7 +7,7 @@ priority: SHOULD
 source: "PROJECT_BRIEF §6 N7, §6a, sufficiency A2"
 wake-condition: "the first screen to design (also the trigger to propose the `ui` agent)"
 created: 2026-10-05
-updated: 2026-10-06
+updated: 2026-10-12
 ---
 
 # NT-006 — Wytyczne wizualne (styl B) + czytelność w słońcu
@@ -27,6 +27,6 @@ używany. Folder `05_DESIGN/brand/` powstaje na ten sygnał (`doc-growth.md`).
   ([[ISSUE-013-setup-ui-agent]]) i wyrównane do obrazów z kick-offu (`05_DESIGN/brand/references.md`,
   R1–R4) po uwagach autora.
 - ⏳ **Test w słońcu:** nie zrobiony. Wymaga telefonu, buildu release i pełnego słońca
-  (`DEFINITION_OF_DONE.md` → wyjątki). Miara [[NFR-004-czytelnosc-w-sloncu]] nadal `⚠️ OPEN`; kandydat 7:1 i
-  jego skutek dla tekstu pomocniczego są w `style-b.md` → *Measurement*. **Pozycja zostaje `open`** do
-  testu na telefonie.
+  (`DEFINITION_OF_DONE.md` → wyjątki). **Miara [[NFR-004-czytelnosc-w-sloncu]] przyjęta 2026-10-12** — 7:1 dla tekstu
+  czytanego przy grobie (W2, decyzja autora na stopie #1 [[ISSUE-027-cemetery-map-plan-photo-states]]). **Pozycja zostaje
+  `open`** do testu na telefonie przy instalacji MVP.

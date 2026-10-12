@@ -32,8 +32,10 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   2. ~~[[ISSUE-025-gender-kinship-together-since]]~~ — zamknięte 2026-10-08 (*Recently done*);
   3. ~~[[ISSUE-024-person-view]]~~ — zamknięte 2026-10-12 (*Recently done*);
   4. ~~[[ISSUE-023-poland-map-r1-cemetery-photo]]~~ — zamknięte 2026-10-12 (*Recently done*);
-  5. **następna: [[US-007-mapa-cmentarza]]** — plan offline, zdjęcie z góry, kwatery (przed planem: `ui` projektuje zaznaczanie
-     kwater; wchodzi uprawnienie `INTERNET`);
+  5. **w toku: [[US-007-mapa-cmentarza]]**, rozpisana 2026-10-12 na dwie pozycje:
+     - ~~[[ISSUE-027-cemetery-map-plan-photo-states]]~~ — zamknięte 2026-10-12 (*Recently done*);
+     - **następna: [[ISSUE-028-cemetery-sectors]]** — kwatery autora (przed planem: `ui` projektuje zaznaczanie kwater; zmiana
+       schematu);
   6. [[US-008-pinezka-na-miejscu]] — pinezka z GPS (dokładność czeka na pomiar z *Parked*);
   7. [[SPIKE-002-tree-on-a-phone]] → drzewo, czas, „Połącz dwie osoby” ([[drzewo]], EPIC-003) — od ISSUE-024 także **słownik nazw
      złożonych i dawne AC-6** („ciotka”, „stryj”, „siostra cioteczna babci żony”) i „Pokaż w drzewie” w widoku osoby (SPIKE-002 →
@@ -124,7 +126,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   paczki (decyzja autora 2026-10-07); treść wychodzących zmian sprawdza strażnik treści ([[ISSUE-020-content-guard]]) przy każdym `git add`/`commit`.
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **7** (ostatnie retro: [[2026-10-08-retro-02]]). Co **10** →
+- Zamknięte pozycje od ostatniego retro: **8** (ostatnie retro: [[2026-10-08-retro-02]]). Co **10** →
   retro + pytanie o 3–5 nośnych faktów (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**;
   podbija go `docs` przy zamknięciu, a zeruje go retro.
 - Do retro (zebrane po drodze, bez decyzji):
@@ -180,7 +182,20 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     niedostępny dla Switch Access jako osobny. Złapane w przejściu AC (`uiautomator`). Przy okazji z ISSUE-024: węzeł „Dodaj zdjęcie
     osoby” w „Zdjęcie w tle” jest szerszy niż kafelek (ramka TalkBack). Kandydat: punkt „semantyka” w przejściu AC i w przeglądzie `ui`;
   - **skill `ui` w trybie przeglądu mówi „nic nie zapisujesz”**, a przeglądy zapisują przyjęte odstępstwa w specyfikacji (ISSUE-023:
-    cmentarze v2.6, style-b v1.20, zdjecie v1.6; wcześniej v2.2, v1.4–v1.8, v1.17). Kandydat: wyrównać skill z praktyką.
+    cmentarze v2.6, style-b v1.20, zdjecie v1.6; wcześniej v2.2, v1.4–v1.8, v1.17). Kandydat: wyrównać skill z praktyką. ISSUE-027:
+    jeszcze raz (cmentarz v5.1, style-b v1.21);
+  - **współrzędna z pamięci w planowaniu** ([[ISSUE-027-cemetery-map-plan-photo-states]] → *Dev report*, Found 1): sonda przed planem
+    użyła punktu cmentarza testowego „z głowy” (ok. 80 m za krawędzią), więc *Prior art* zapisał błędny wniosek. Odwrócił go dopiero
+    punkt z bazy aplikacji w `dev`. Globalne „cytuję źródło, nie pamięć” dotyczy też danych wejściowych sondy;
+  - **pakiet zewnętrzny pisał lokalizację do logu** (ISSUE-027 F5): `flutter_map` wypisywał adres nieudanego kafelka (miejsce
+    cmentarza) do logcat także w release — znalezione przypadkiem przy sprawdzaniu „ok” ze stopu #2. Kandydat: krok `qa` „logcat bez
+    adresów i współrzędnych” przy każdej pozycji z siecią;
+  - **piąta instancja błędu semantyki** (ISSUE-027 F4): węzeł „Pokaż listę grobów” bez `container` brał granice całego panelu razem
+    z „Dodaj grób”. Wzmacnia kandydata „semantyka” w przejściu AC i w przeglądzie `ui`;
+  - **Overpass ma limit zapytań na adres IP**, a emulator wychodzi przez adres PC (ISSUE-027): sondy z PC w tym samym czasie
+    psuły pobieranie na emulatorze. Kandydat: zakaz sond z PC w czasie przejścia AC na emulatorze (zapisany w README);
+  - **`adb input text` zgubił pierwszy znak hasła** (ISSUE-027, próbne odtworzenie): pierwsza próba „Złe hasło”. Kandydat do
+    pamięci emulatora: dotknąć pola, odczekać, wpisać, policzyć kropki.
 
   Tematy z poprzedniego okresu rozliczyło [[2026-10-08-retro-02]] (R1–R10); wcześniejsze [[2026-10-06-retro-01]].
 
@@ -196,6 +211,47 @@ Format wpisu: `źródło (babcia / cmentarz X) · pytanie bez danych rodziny · 
 (zdarzenie) · data zapytania`. **Odpowiedź z faktami o rodzinie trafia do aplikacji, nie tutaj.**
 
 ## Recently done
+- 2026-10-12 — [[ISSUE-027-cemetery-map-plan-photo-states]] zamknięte (pierwsza z dwóch pozycji [[US-007-mapa-cmentarza]]). **Cmentarz
+  jest mapą:**
+  - **plan offline** z OpenStreetMap — obrys i alejki pobierane raz (przy zapisie cmentarza z punktem, przy zmianie punktu, przy
+    starcie i powrocie do aplikacji, przy otwarciu cmentarza, „Pobierz teraz”), trzymane w bazie i w kopii
+    ([[ADR-015-cemetery-plan-in-database]], schemat v10); **zdjęcie z góry GUGiK** tylko online, nic nie zostaje w telefonie;
+  - **trzy stany** ([[cmentarz]] v5.1): A — sama mapa i pasek grobów, B — jeden grób ze znicza, C — lista; uchwyty działają
+    dotknięciem; z „Pochówku” grób z pinezką → B, bez → lista; ✎ w pasku cmentarza;
+  - **pięć zaślepek planu** (2a): pobieram · bez internetu · serwer nie odpowiada · brak w OSM · bez punktu — każda z faktem i drogą
+    naprzód;
+  - **W2 — miara [[NFR-004-czytelnosc-w-sloncu]] przyjęta** (decyzja autora na stopie #1): tekst czytany przy grobie ≥ 7:1;
+  - **`INTERNET` w aplikacji**, wszystkie adresy w jednym pliku (`lib/net/hosts.dart`), tylko `https`, bez pamięci kafelków i bez
+    adresów kafelków w logu ([[NFR-005-dane-nie-opuszczaja-telefonu]]); serwery planu bez `maps.mail.ru` (D4).
+
+  Znalezione po drodze:
+  - `around` w Overpass nie łapie środka dużego cmentarza → zapytanie łączy `is_in` i `around`;
+  - kadr nie dopasowywał się przy tekście 200% → poprawione;
+  - `flutter_map` domyślnie zapisuje kafelki na dysk i wypisuje ich adresy do logu → oba wyłączone.
+
+  Przegląd `ui`: 0 BLOCKER, 2 MAJOR (uchwyt 28 dp, zaślepka bez grobów odsyłała do listy), 7 MINOR — poprawione przed stopem #2;
+  odstępstwo „karty listy w kolorze tła” odrzucone (lista na tle, karty na powierzchni). Próbne odtworzenie na drugim emulatorze:
+  odcisk zgodny, plan z kopii bez sieci. Stop #2 „ok” (kroki 1–2 sprawdzone na urządzeniu, krok 3 bez śladu). Werdykt `qa`: APPROVED
+  (self-check, z uwagami). Testy: 632. Licznik retro: 7 → 8.
+
+  **Dla autora:**
+  - **po tej pozycji na Twoich danych plan jest bez zniczy** — pinezki postawisz od [[US-008-pinezka-na-miejscu]]; znicze widać tylko na
+    wymyślonych pinezkach (przycisk „Wymyślone pinezki na planach” w „Stanie danych”, tylko debug);
+  - `Medium_Phone`: release v10 na Twoich danych testowych, kopia skonfigurowana od nowa — **nowe hasło testowe** (wymyślone, w
+    tej sesji), pliki `grobing-klucz-027.age` i `grobing-kopia-027.age` w Pobranych;
+  - `Grobing_Restore`: **build debug** z danymi z tej kopii i wymyślonymi pinezkami (do kroku 3 stopu #2) — przed następnym próbnym
+    odtworzeniem w release trzeba go odinstalować;
+  - nieprzetestowane na żywo: stan „brak w OSM” (serwer był przeciążony), koszt rysowania na prawdziwym telefonie, TalkBack na
+    planie, test w słońcu (W2) — przy instalacji MVP;
+  - do decyzji, gdy zobaczysz plany swoich cmentarzy: grubość alejek (w OSM prawie wszystkie są „boczne”) i znicze sąsiednich
+    grobów, które nachodzą na siebie ([[cmentarz]] → *Open*);
+  - zrzuty, makieta (`issue-027-mapa-cmentarza.html`), kopie `-027` i wyciąg planu leżą poza repo (katalog tymczasowy sesji
+    `1d9348ed-…`) — do kosza.
+- 2026-10-12 — [[US-007-mapa-cmentarza]] rozpisana na [[ISSUE-027-cemetery-map-plan-photo-states]] (AC-1, AC-2, AC-3, AC-5:
+  plan, zdjęcie z góry, stany ekranu, `INTERNET`) i [[ISSUE-028-cemetery-sectors]] (AC-4: kwatery autora) (`docs`, auto-flow
+  po `pm`). Kwatery są osobno, bo ich zaznaczania prototyp nie pokazał, a zmieniają schemat. Ten podział zaproponował
+  łańcuch, nie autor, więc na stopie #1 autor może go zmienić. To rozpisanie, nie zamknięta pozycja, więc licznik retro
+  bez zmian. Rozpisanie wejdzie do commita paczki ISSUE-027.
 - 2026-10-12 — [[ISSUE-023-poland-map-r1-cemetery-photo]] zamknięte. **Mapa Polski wygląda jak R1, a cmentarz ma zdjęcie:**
   - **mapa jak R1** ([[cmentarze]] v2.6, D29, D32): sąsiedzi w kolorze tła z granicami, Bałtyk i jeziora w kolorze wody, rzeki linią
     wody, granica Polski w kolorze tekstu pomocniczego, „Polska” (tylko przy najmniejszych przybliżeniach), 11 miast (+ Bydgoszcz,

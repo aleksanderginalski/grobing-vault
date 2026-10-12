@@ -1,6 +1,6 @@
 ---
 screen: "Ekran główny — mapa Polski z cmentarzami rodziny"
-items: ["[[ISSUE-012-transcribe-grave-screen]]", "[[ISSUE-014-home-map-of-poland]]", "[[ISSUE-015-add-cemetery-from-database]]", "[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-022-app-skeleton-tabs-people-settings]]", "[[ISSUE-023-poland-map-r1-cemetery-photo]]"]
+items: ["[[ISSUE-012-transcribe-grave-screen]]", "[[ISSUE-014-home-map-of-poland]]", "[[ISSUE-015-add-cemetery-from-database]]", "[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-022-app-skeleton-tabs-people-settings]]", "[[ISSUE-023-poland-map-r1-cemetery-photo]]", "[[ISSUE-027-cemetery-map-plan-photo-states]]"]
 us: "[[US-002-przepisanie-grobu]]"
 journey-step: "UJ-001 · 1 (widok 1, M2) · warunek kroku 1: dodanie cmentarza (M1)"
 mockup: "katalog tymczasowy sesji 2026-10-06: makieta-mapa-polski.html (ramki 1–10, wersja 2 po stopie #1) · 2026-10-08: grobing-prototyp.html (SPIKE-004, klikalny)"
@@ -78,6 +78,11 @@ updated: 2026-10-12
 > - *AC → element*: wiersze dla 4 AC ISSUE-023, szkic arkusza z miniaturą.
 >
 > Które elementy dowozi która pozycja, mówi plan (`planning`), a nie ten plik.
+>
+> **Wersja 2.7 (2026-10-12, przed planem [[ISSUE-027-cemetery-map-plan-photo-states]]):** zapis cmentarza z punktem (okno 15
+> z bazy, „Zapisz” w trybie wskazania 17) i zmiana punktu przy poprawie **uruchamiają pobieranie planu cmentarza**
+> ([[ADR-003-map-source-offline]] pkt 1). Na tym ekranie nic się nie zmienia: postęp i braki planu widać w [[cmentarz]] (element
+> 2a), a nie w arkuszu (D34).
 
 ## Purpose
 Zbierający otwiera aplikację i widzi, **na których cmentarzach w Polsce leży jego rodzina**, ze zniczem na
@@ -508,6 +513,10 @@ Ekran do wybierania; wpisywanie jest rzadkie. Rekordem jest **cmentarz**: ok. 10
   - **miniatura dekoduje się jak inne miniatury przycięte ze środka:** do dwukrotności szerokości pola. Zdjęcia cmentarzy są
     zwykle poziome, a pole 96 × 80 ma proporcje 1,2:1, więc zdjęcie dekodowane tylko na szerokość pola byłoby powiększane i
     rozmyte.
+- **D34 — pobieranie planu bez śladu na mapie Polski** (v2.7, [[cmentarz]] D18, D20). Zapis cmentarza z punktem albo zmiana
+  punktu uruchamia pobieranie planu, ale arkusz i znicz wyglądają jak dotąd. Mapa Polski służy do wyboru, dokąd jechać, a
+  plan jest potrzebny dopiero w cmentarzu, gdzie [[cmentarz]] 2a mówi, co się z nim dzieje. *Obali:* autor dodaje cmentarz
+  bez zasięgu i chce wiedzieć, czy plan już jest — wtedy w arkuszu linia „Plan offline” z ikoną.
 
 ## Open
 brak. Rundy prototypu ([[SPIKE-004-mvp-flow-prototype]]) rozstrzygnęły zdjęcie w arkuszu (D28) i mapę (D29, D30).

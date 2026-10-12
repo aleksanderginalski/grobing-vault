@@ -1,10 +1,10 @@
 ---
 screen: "Cmentarz — groby na cmentarzu"
-items: ["[[ISSUE-012-transcribe-grave-screen]]", "[[ISSUE-016-photos-grave-and-person]]", "[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-024-person-view]]"]
-us: "[[US-002-przepisanie-grobu]] · [[US-005-zdjecia]]"
+items: ["[[ISSUE-012-transcribe-grave-screen]]", "[[ISSUE-016-photos-grave-and-person]]", "[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-024-person-view]]", "[[ISSUE-027-cemetery-map-plan-photo-states]]"]
+us: "[[US-002-przepisanie-grobu]] · [[US-005-zdjecia]] · [[US-007-mapa-cmentarza]]"
 journey-step: "n/a — M1 (warunek kroku 1 UJ-001); docelowo mapa cmentarza z arkuszem grobu (R2, krok 2 UJ-001, M3)"
-mockup: "katalog tymczasowy sesji 2026-10-07: makieta-cmentarz-grob-osoba.html (ramki 1–2, 8, ISSUE-012) · makieta-zdjecia.html (ramka 9, ISSUE-016) · 2026-10-08: grobing-prototyp.html (SPIKE-004, panel 2)"
-updated: 2026-10-09
+mockup: "katalog tymczasowy sesji 2026-10-07: makieta-cmentarz-grob-osoba.html (ramki 1–2, 8, ISSUE-012) · makieta-zdjecia.html (ramka 9, ISSUE-016) · 2026-10-08: grobing-prototyp.html (SPIKE-004, panel 2) · 2026-10-12: issue-027-mapa-cmentarza.html (stany planu, warianty NFR-004)"
+updated: 2026-10-12
 ---
 
 # Cmentarz — specyfikacja
@@ -54,7 +54,39 @@ updated: 2026-10-09
 > akcencie** (D11 — „na liście zaznaczony grób ma obrys w akcencie”) i stan „zaznaczone” dla czytnika (SC 1.4.1 — kolor
 > nie jest jedynym nośnikiem). **Bez komunikatu o pinezce**, dopóki pinezek nie ma w aplikacji ([[osoba]] D17); wraca z
 > mapą. Wstecz → widok osoby. Zaznaczenie trwa, dopóki ekran jest otwarty (powrót z grobu — dalej zaznaczony).
+>
+> **Wersja 5 (2026-10-12, przed planem [[ISSUE-027-cemetery-map-plan-photo-states]]) — stany planu, których prototyp nie
+> pokazał.** Prototyp znał dwa stany planu: „jest” i „nie pobrany”. Plan pobierany z sieci ma ich sześć, bo cmentarz może
+> nie mieć punktu albo obrysu w OSM, a serwer może nie odpowiadać (element 2a, D17–D19). Do tego:
+> - pobieranie bez śladu na mapie Polski (D20);
+> - uchwyt arkusza działa dotknięciem (D21);
+> - plakietki przy dużym tekście (D22);
+> - wejście z widoku osoby, gdy mapa już jest (D23).
+>
+> Kwatery (element 4) → [[ISSUE-028-cemetery-sectors]]. W ISSUE-027 plan jest bez kwater i bez sposobu ich zaznaczenia.
+> **Pinezek nie da się postawić aż do [[US-008-pinezka-na-miejscu]]**, więc na prawdziwych danych mapa po ISSUE-027 pokazuje
+> stan „bez pinezek”, a znicze widać tylko na danych testowych. Zbudowany ekran nie ma jeszcze ✎ w pasku (element 1). Wchodzi
+> z tą pozycją tą samą drogą, co ✎ w arkuszu [[cmentarze]] (okno 15 → wskazanie 16).
+> Miara [[NFR-004-czytelnosc-w-sloncu]] na tym ekranie: **W2** — adres, „3 osoby”, linia grobów bez pinezki i druga linia
+> zaślepek w kolorze tekstu (decyzja autora na stopie #1 ISSUE-027, *Open*).
 
+> **Wersja 5.1 (2026-10-12, przegląd `ui` zbudowanego ekranu [[ISSUE-027-cemetery-map-plan-photo-states]]):** odstępstwa `dev`
+> przyjęte w przeglądzie i poprawki z przeglądu (0 BLOCKER, 2 MAJOR, 7 MINOR — poprawione przed stopem #2):
+> - **2a bez grobów:** (b) bez drugiej linii, (c) tylko „Spróbuję znowu później.” — zaślepka nie odsyła do listy, której nie ma
+>   (reguła 7). Ikony 2a w wariantach `outlined` (`cloud_download_outlined`, `cloud_off_outlined`, `not_listed_location_outlined`),
+>   przełącznik `satellite_alt_outlined` — reguła 3 (błąd tej specyfikacji w v5);
+> - **uchwyty arkuszy (B, C) — cel 48 dp**, znicz 48 × 48 dp (D21);
+> - **podpisy źródła** („© OpenStreetMap”, „Ortofotomapa: GUGiK”) jako mała plakietka na powierzchni, 11 sp, tekst pomocniczy
+>   (5,01:1) — alejki nie przecinają liter (reguła 13), na zdjęciu tylko plakietki (reguła 14); wyjątek 11 sp w [[style-b]]
+>   *Thresholds* (v1.21). Zdjęcie ładuje się na tle w kolorze powierzchni;
+> - **element 8 (C): lista na tle, karty na powierzchni** (reguły 2, 11 — jak Osoby i grób); w v5 omyłkowo „na powierzchni”;
+> - **kadr (el. 2):** plan ma co najmniej 35% wysokości mapy; na 360 × 640 dp przy 200% pasek zasłania południe planu (D14 →
+>   *Obali*; wyjście „Dodaj grób obok liczby” nie mieści się w 360 dp przy 200%). Przełącznik przy dwóch rzędach zmniejsza się,
+>   zamiast wychodzić za ekran;
+> - **B:** arkusz przeciągnięty w dół → A; ikona „osoby” w kolorze linii (W2), stałe 18 dp;
+> - **el. 13:** „bez internetu” przy zdjęciu trwa do zmiany warstwy (sieć sprawdzana jeszcze raz przy wyborze „Zdjęcia”);
+> - **pasek grobów (6):** „Pokaż listę grobów” to osobny węzeł dla czytnika (`container`), nie cały panel.
+>
 ## Purpose
 Cmentarz rodziny **jako mapa** (UJ-001 krok 2, M3, M7): plan schematyczny bez sieci albo zdjęcie z góry z siecią,
 kwatery zaznaczone przez autora i znicze grobów z pinezką. Stąd autor idzie do **jednego grobu** (znicz) albo do
@@ -68,11 +100,12 @@ kwatery i pinezkę (US-002 AC-5), i pokazuje, dokąd doszło przepisywanie.
   - **A — mapa:** plan (2–5) i pasek grobów na dole (6). Znicz → B. Pasek (dotknięcie albo przeciągnięcie w górę)
     → C. „Dodaj grób” → [[wpis-osoby]] w trybie „nowy grób”: grób powstaje z pierwszą osobą, przy jej zapisie;
   - **B — jeden grób:** arkusz grobu (7), a plan przesuwa się płynnie nad arkusz. „Pokaż grób” → [[grob]]. Arkusz
-    przeciągnięty w górę → C. Dotknięcie planu albo wstecz → A;
-  - **C — lista:** wszystkie groby na cały ekran, bez planu (8–9). Karta → [[grob]]. Lista przeciągnięta w dół albo
-    wstecz → stan, z którego przyszła (B albo A).
-- **Z [[osoba]] → „Pochówek”** (v4.3): ekran z zaznaczonym grobem — z mapą stan B (grób z pinezką) albo C (bez pinezki,
-  z komunikatem, [[osoba]] D9); do czasu mapy lista z zaznaczonym grobem ([[osoba]] D17). Wstecz → widok osoby.
+    przeciągnięty w górę albo **dotknięty uchwyt** → C (D21). Dotknięcie planu albo wstecz → A;
+  - **C — lista:** wszystkie groby na cały ekran, bez planu (8–9). Karta → [[grob]]. Lista przeciągnięta w dół, **dotknięty
+    uchwyt** albo wstecz → stan, z którego przyszła (B albo A).
+- **Z [[osoba]] → „Pochówek”** (v5, D23): grób z pinezką → stan B z tym grobem; grób bez pinezki → stan C z zaznaczonym
+  grobem, **bez komunikatu o pinezce aż do [[US-008-pinezka-na-miejscu]]** ([[osoba]] D17 trwa; komunikat z [[osoba]] D9
+  wraca z US-008). Wstecz → widok osoby.
 - **Wstecz w stanie A → [[cmentarze]]** z tym samym cmentarzem wybranym i jego arkuszem (D7). Z [[grob]] wstecz →
   stan, w którym autor ekran opuścił.
 - **✎ w pasku → okno „Popraw cmentarz”** ([[cmentarze]] 15), według [[style-b]] reguły 15. Zaznaczanie kwater i
@@ -84,13 +117,14 @@ kwatery i pinezkę (US-002 AC-5), i pokazuje, dokąd doszło przepisywanie.
 | # | Element | Typ | Klawiatura / akcja | Domyślnie | Walidacja | Źródło |
 |---|---|---|---|---|---|---|
 | 1 | **Pasek:** wstecz + **nazwa cmentarza** (18 sp, półgruby, do 2 linii), pod nią miejscowość (13 sp, tekst pomocniczy; bez miejscowości brak linii); po prawej ✎ (`edit_outlined`, akcent, `tooltip` „Popraw cmentarz”) | pasek | wstecz (*Navigation*); ✎ → okno | — | — | R2 (nagłówek) · [[style-b]] reguła 15 |
-| 2 | **Plan schematyczny** na całą szerokość pod paskiem, także pod arkuszami: obrys cmentarza i alejki z OSM, pobrane przy dodaniu cmentarza ([[style-b]] reguła 13: teren — powierzchnia z obrysem, alejki — obrys 4 i 2 dp). Wyśrodkowany w wolnym miejscu między plakietkami (3) a paskiem grobów (6); w stanie B przesuwa się płynnie nad arkusz (jak [[cmentarze]] D30). Podpis „© OpenStreetMap” (11 sp, tekst pomocniczy) pod plakietką. **Bez planu:** ikona `cloud_download`, „Plan tego cmentarza pobierze się, gdy będzie internet.”, „Groby są na liście — pasek na dole.” (14 sp, tekst pomocniczy) i przycisk tekstowy „Pobierz teraz” (akcent) | mapa | szczypanie, przeciąganie, podwójne dotknięcie; bez obrotu | cały cmentarz, północ u góry | — | [[ADR-003-map-source-offline]] pkt 1 · D10 |
-| 3 | **Plakietki na planie**, na powierzchni, wys. 32 dp, margines 12 dp. Z lewej **„Plan offline”** z ikoną `offline_pin` w zieleni stanu (propozycja `#8CC084`, [[style-b]] *State colours*). Z prawej przełącznik segmentowy **Plan · Zdjęcie** (ikony `map_outlined`, `satellite_alt`; aktywny segment w akcencie). „Zdjęcie” to ortofotomapa GUGiK, tylko online, nic nie zapisuje w telefonie; plakietka zmienia się na „tylko z internetem” z ikoną `wifi` (tekst pomocniczy), a podpis na „Ortofotomapa: GUGiK”. Wygląd „Zdjęcia” bez sieci → panel 7 (wizyta, offline) | plakietka + przełącznik | segment → warstwa | Plan | — | [[ADR-003-map-source-offline]] pkt 2 · D10 |
-| 4 | **Kwatery autora:** przerywana linia (tekst, krycie 75%, kreska 5/4) i nazwa „Kwatera A” (12 sp, półgruba, obwódka w kolorze tła planu) w dolnym lewym rogu strefy. Kwatera bez strefy jest tylko w adresach grobów | strefy | — | — | — | [[ADR-003-map-source-offline]] pkt 3 · D13 |
+| 2 | **Plan schematyczny** na całą szerokość pod paskiem, także pod arkuszami: obrys cmentarza i alejki z OSM, pobrane przy dodaniu cmentarza ([[style-b]] reguła 13: teren — powierzchnia z obrysem, alejki — obrys 4 i 2 dp). Wyśrodkowany w wolnym miejscu między plakietkami (3) a paskiem grobów (6); w stanie B przesuwa się płynnie nad arkusz (jak [[cmentarze]] D30). Podpis „© OpenStreetMap” (11 sp, tekst pomocniczy) pod plakietką. **Kadr (v5):** na starcie cały obrys z marginesem 16 dp w wolnym miejscu; to też najmniejsze przybliżenie, a największe to z19 (granica zdjęcia z góry, [[ADR-003-map-source-offline]] pkt 2). Przesuwanie ograniczone do obrysu z marginesem, więc cmentarz nigdy nie znika z ekranu. Teren poza obrysem w kolorze tła. **Dla czytnika** plan to jeden węzeł „Plan cmentarza” (alejek nie czyta), a każdy znicz (5) to osobny przycisk. **Bez planu → 2a** | mapa | szczypanie, przeciąganie, podwójne dotknięcie; bez obrotu | cały cmentarz, północ u góry | — | [[ADR-003-map-source-offline]] pkt 1 · D10 |
+| 2a | **Zaślepka planu (v5, D17)** w miejscu planu, wyśrodkowana w wolnym miejscu. Ikona 32 dp w kolorze tekstu pomocniczego, pod nią fakt i droga naprzód (oba 14 sp, kolor tekstu — W2, *Open*), niżej przycisk tekstowy w akcencie, cel ≥ 48 dp. Pięć wariantów: **(a) pobieranie** — wskaźnik postępu (kołowy, akcent) zamiast ikony, „Pobieram plan cmentarza…”, bez przycisku; **(b) bez internetu** — `cloud_download`, „Plan tego cmentarza pobierze się, gdy będzie internet.” · „Groby są na liście — pasek na dole.” · **„Pobierz teraz”**; **(c) serwer nie odpowiada** (po ponowieniach) — `cloud_off`, „Nie udało się pobrać planu — serwer map nie odpowiada.” · „Spróbuję znowu później. Groby są na liście.” · **„Pobierz teraz”**; **(d) brak obrysu w OSM** — `not_listed_location`, „W OpenStreetMap nie ma planu tego cmentarza.” · „Z internetem zobaczysz go na zdjęciu z góry.” · **„Pokaż zdjęcie z góry”** (tylko z siecią; bez sieci bez przycisku); **(e) bez punktu** — `location_off_outlined`, „Plan pobierze się, gdy wskażesz cmentarz na mapie.” · **„Wskaż na mapie”**. Plakietka „Plan offline” i podpis „© OpenStreetMap” znikają w każdym wariancie; przełącznik Plan · Zdjęcie (3) zostaje w (a)–(d), a w (e) znika, bo zdjęcie nie ma środka | stan planu | „Pobierz teraz” → (a); bez sieci zamiast tego pasek komunikatu „Bez internetu. Plan pobierze się, gdy będzie zasięg.” (zaślepka zostaje); „Pokaż zdjęcie z góry” → warstwa „Zdjęcie”, środek w punkcie cmentarza, z17; „Wskaż na mapie” → tryb wskazania ([[cmentarze]] 16) dla tego cmentarza; po „Zapisz” powrót tutaj w (a) | według stanu pobierania | — | [[ADR-003-map-source-offline]] pkt 1 („ponawianie i zaślepka są warunkiem”) · US-007 AC-5 · [[style-b]] reguła 7 · D17–D19 |
+| 3 | **Plakietki na planie**, na powierzchni, wys. 32 dp, margines 12 dp. Z lewej **„Plan offline”** z ikoną `offline_pin` w zieleni stanu (propozycja `#8CC084`, [[style-b]] *State colours*). Z prawej przełącznik segmentowy **Plan · Zdjęcie** (ikony `map_outlined`, `satellite_alt`; aktywny segment w akcencie). „Zdjęcie” to ortofotomapa GUGiK, tylko online, nic nie zapisuje w telefonie; plakietka zmienia się na „tylko z internetem” z ikoną `wifi` (tekst pomocniczy), a podpis na „Ortofotomapa: GUGiK”. Kafelki zdjęcia ładują się na tle w kolorze powierzchni, bez wskaźnika; nic nie trafia do pamięci telefonu poza pamięcią podręczną w RAM (pkt 2). Wygląd „Zdjęcia” bez sieci → 13. **Duży tekst (v5, D22):** plakietki to kontrolki, więc rosną w pełni; gdy z przełącznikiem nie mieszczą się w jednym rzędzie, „Plan offline” schodzi pod przełącznik, z lewej. Przełącznik dla czytnika: dwa przyciski ze stanem „wybrany” | plakietka + przełącznik | segment → warstwa | Plan | — | [[ADR-003-map-source-offline]] pkt 2 · D10 |
+| 4 | **Kwatery autora:** przerywana linia (tekst, krycie 75%, kreska 5/4) i nazwa „Kwatera A” (12 sp, półgruba, obwódka w kolorze tła planu) w dolnym lewym rogu strefy. Kwatera bez strefy jest tylko w adresach grobów. **Zaznaczanie i rysowanie → [[ISSUE-028-cemetery-sectors]]**; w ISSUE-027 plan jest bez kwater | strefy | — | — | — | [[ADR-003-map-source-offline]] pkt 3 · D13 |
 | 5 | **Znicze grobów z pinezką:** znicz-pinezka 28 × 35 dp, cel dotyku ≥ 48 dp; wybrany 38 × 47 dp z poświatą ([[style-b]] reguła 13). Grób bez pinezki nie ma znicza | znaczniki | dotknięcie → stan B | — | — | R2 · D11 |
-| 6 | **Pasek grobów** (stan A): dolny arkusz na powierzchni, promień 16 dp u góry, uchwyt. „6 grobów · 14 osób” (14 sp, tekst), pod spodem „2 groby bez pinezki — na liście” albo „wszystkie groby mają pinezki” (13 sp, tekst pomocniczy). Pod nimi **wypełniony „Dodaj grób”** z ikoną `add`, ≥ 52 dp, na pełną szerokość — **ten sam przycisk co pod listą (9)** | dolny arkusz + przycisk główny | dotknięcie albo przeciągnięcie w górę → stan C; „Dodaj grób” → [[wpis-osoby]] „nowy grób” | — | — | **decyzja autora** (SPIKE-004 D12) · D14 |
-| 7 | **Arkusz grobu** (stan B), na powierzchni, z uchwytem: miniatura nagrobka 72 dp (promień 12 dp; bez zdjęcia brak miniatury), tytuł (16 sp, półgruby — jak 8 (a)), adres (14 sp, tekst pomocniczy), ikona `group_outlined` + „3 osoby”, **wypełniony „Pokaż grób” ze zniczem** (kolor tła na akcencie) | dolny arkusz + przycisk główny | „Pokaż grób” → [[grob]]; przeciągnięcie w górę → stan C | — | — | R2 (arkusz grobu) · D11 |
-| 8 | **Lista grobów** (stan C), pod paskiem (1), na powierzchni z uchwytem: podsumowanie „6 grobów · 14 osób” (14 sp, tekst pomocniczy, margines 16 dp) i karty (promień 16 dp, odstęp 8 dp, margines 16 dp) w kolejności wpisania. Karta, od góry: **(a) tytuł** — nazwa grobu (16 sp, półgruby, kolor tekstu, do 2 linii); bez nazwy tytułem są **osoby w grobie**: imiona i nazwiska po przecinku, ten sam krój, do 2 linii, potem „i jeszcze 2”. **(b) osoby** — tylko gdy tytułem jest nazwa: imiona i nazwiska po przecinku (14 sp, tekst pomocniczy, do 2 linii, potem „i jeszcze 2”). **(c) adres** (14 sp, tekst pomocniczy): „Kwatera B · Rząd 4 · Miejsce 12”, a bez pinezki dopisane „· bez pinezki”; bez adresu „Bez adresu kwatery · bez pinezki”. Chevron „›” po prawej. Karta ≥ 64 dp. **(d) miniatura** — tylko gdy grób ma zdjęcie: zdjęcie nagrobka ([[grob]] D9), kwadrat **56 dp** z zaokrągleniem 8 dp, przycięty ze środka, z lewej, wyśrodkowany w pionie, odstęp 12 dp do tekstu; poza czytnikiem. Bez zdjęcia bez miniatury i bez wcięcia ([[grob]] D11). **Grób wybrany w stanie B** ma obrys 1,5 dp w akcencie | lista kart | karta → [[grob]]; przeciągnięcie w dół → stan B albo A | kolejność wpisania | — | AC-1 · AC-5 · R2 · decyzja autora (nazwa grobu) · US-005 AC-1 · D6, D9, D11 |
+| 6 | **Pasek grobów** (stan A): dolny arkusz na powierzchni, promień 16 dp u góry, uchwyt. „6 grobów · 14 osób” (14 sp, tekst), pod spodem „2 groby bez pinezki — na liście” albo „wszystkie groby mają pinezki” (13 sp, kolor tekstu — W2). Pod nimi **wypełniony „Dodaj grób”** z ikoną `add`, ≥ 52 dp, na pełną szerokość — **ten sam przycisk co pod listą (9)** | dolny arkusz + przycisk główny | dotknięcie albo przeciągnięcie w górę → stan C; „Dodaj grób” → [[wpis-osoby]] „nowy grób” | — | — | **decyzja autora** (SPIKE-004 D12) · D14 |
+| 7 | **Arkusz grobu** (stan B), na powierzchni, z uchwytem: miniatura nagrobka 72 dp (promień 12 dp; bez zdjęcia brak miniatury), tytuł (16 sp, półgruby — jak 8 (a)), adres i ikona `group_outlined` + „3 osoby” (14 sp, kolor tekstu — W2, *Open*), **wypełniony „Pokaż grób” ze zniczem** (kolor tła na akcencie) | dolny arkusz + przycisk główny | „Pokaż grób” → [[grob]]; przeciągnięcie w górę albo dotknięcie uchwytu (cel 48 dp, czytnik: „Pokaż listę grobów”) → stan C | — | — | R2 (arkusz grobu) · D11 · D21 |
+| 8 | **Lista grobów** (stan C), pod paskiem (1), na powierzchni z uchwytem: podsumowanie „6 grobów · 14 osób” (14 sp, tekst pomocniczy, margines 16 dp) i karty (promień 16 dp, odstęp 8 dp, margines 16 dp) w kolejności wpisania. Karta, od góry: **(a) tytuł** — nazwa grobu (16 sp, półgruby, kolor tekstu, do 2 linii); bez nazwy tytułem są **osoby w grobie**: imiona i nazwiska po przecinku, ten sam krój, do 2 linii, potem „i jeszcze 2”. **(b) osoby** — tylko gdy tytułem jest nazwa: imiona i nazwiska po przecinku (14 sp, tekst pomocniczy, do 2 linii, potem „i jeszcze 2”). **(c) adres** (14 sp, kolor tekstu — W2, ten sam adres co w arkuszu 7): „Kwatera B · Rząd 4 · Miejsce 12”, a bez pinezki dopisane „· bez pinezki”; bez adresu „Bez adresu kwatery · bez pinezki”. Chevron „›” po prawej. Karta ≥ 64 dp. **(d) miniatura** — tylko gdy grób ma zdjęcie: zdjęcie nagrobka ([[grob]] D9), kwadrat **56 dp** z zaokrągleniem 8 dp, przycięty ze środka, z lewej, wyśrodkowany w pionie, odstęp 12 dp do tekstu; poza czytnikiem. Bez zdjęcia bez miniatury i bez wcięcia ([[grob]] D11). **Grób wybrany w stanie B** ma obrys 1,5 dp w akcencie | lista kart | karta → [[grob]]; przeciągnięcie w dół albo dotknięcie uchwytu (czytnik: „Pokaż mapę”) → stan B albo A | kolejność wpisania | — | AC-1 · AC-5 · R2 · decyzja autora (nazwa grobu) · US-005 AC-1 · D6, D9, D11 |
 | 9 | **„Dodaj grób”** pod listą — wypełniony, z ikoną `add`, ≥ 52 dp, przypięty na dole; lista przewija się nad nim, a ostatnia karta ma pod sobą odstęp na wysokość przycisku | przycisk główny | → [[wpis-osoby]] „nowy grób” | — | — | *What to build* 2 · D14 |
 | 10 | **„Gdzie jestem”** — okrągły przycisk 48 dp na powierzchni (`my_location`), z prawej nad paskiem grobów albo arkuszem grobu (R2). Włączony: ikona w kolorze kropki „tu jesteś”, na planie **niebieska kropka** 16 dp z obwódką w kolorze tła i **kołem dokładności** (kolor kropki, krycie 18%), obok plakietka „tu jesteś · ±4 m” (12 sp) | przycisk-ikona | włącz / wyłącz lokalizację; pierwsze użycie → systemowe pytanie o uprawnienie lokalizacji | wyłączony | brak uprawnienia → „Bez zgody na lokalizację pinezki postawisz tylko ręcznie.” | R2 · [[style-b]] *State colours* · D15 |
 | 11 | **„Popraw pinezkę”** (stan B, grób z pinezką) — pigułka na powierzchni z `edit_location_alt` w akcencie, z lewej nad arkuszem grobu (R2) | przycisk | → stan D dla tego grobu | — | — | R2 · M6 · D15 |
@@ -108,7 +142,11 @@ osoba z dwoma pochówkami stoi w obu grobach, jak w [[grob]].
 | A — mapa | 1–6 |
 | B — jeden grób | 1–5, 7; pasek grobów (6) schowany |
 | C — lista | 1, 8, 9 |
-| bez planu | 1, zaślepka (2), pasek grobów (6) — lista działa |
+| plan się pobiera (v5) | 1, 2a (a), przełącznik (3), pasek grobów (6) — lista działa |
+| bez planu: bez internetu | 1, 2a (b), przełącznik (3), pasek grobów (6) — lista działa |
+| bez planu: serwer nie odpowiada (v5) | 1, 2a (c), przełącznik (3), pasek grobów (6) |
+| bez planu: brak obrysu w OSM (v5) | 1, 2a (d), przełącznik (3), pasek grobów (6) |
+| bez punktu (v5) | 1, 2a (e), pasek grobów (6); bez przełącznika |
 | bez pinezek (np. zaraz po przepisaniu) | 1–4 bez zniczy, pasek (6): „6 grobów bez pinezki — na liście” |
 | bez grobów | 1–4, pasek (6): „Na tym cmentarzu nie ma jeszcze grobów.” (tekst pomocniczy) i „Dodaj grób” |
 | błąd | „Nie udało się odczytać grobów.” (tekst pomocniczy) + „Spróbuj ponownie” (przycisk z obrysem); „Dodaj grób” nieaktywny, bo nie wiadomo, do czego dodaje |
@@ -142,6 +180,9 @@ v4 — stan A (mapa) i stan B (jeden grób):
 │  Mapa      Osoby      Drzewo     │
 └──────────────────────────────────┘
 ```
+v5 — zaślepki planu 2a (a)–(e) i warianty W1/W2 z *Open*: makieta `issue-027-mapa-cmentarza.html` (katalog tymczasowy
+sesji 2026-10-12). Zaślepka stoi w miejscu planu, nad paskiem grobów; przełącznik w prawym górnym rogu zostaje (poza (e)).
+
 Stan C (lista) — karty jak w v3, na cały ekran pod paskiem (1), z wypełnionym „Dodaj grób” na dole. Szkice v2 i v3:
 *Historia* w nagłówku i makiety z 2026-10-07.
 
@@ -165,9 +206,12 @@ Rekordem jest **grób**: ok. 50 na całe notatki (G6, [[NT-002-transcribe-the-no
 - **Reguła 14:** miniatury bez filtrów i bez tekstu; zdjęcie z góry to treść z zewnątrz — na nim tylko znicze,
   nazwy kwater z obwódką i plakietki na powierzchni.
 - **Reguły 4–7:** tytuły półgrube; margines 16 dp, 8 dp między kartami; adres pełnymi słowami, liczby odmienione;
-  „bez pinezki” to fakt w tekście pomocniczym.
-- **Tokeny:** zieleń offline (propozycja, [[style-b]] *State colours*); reszta bez zmian. Kontrast: tytuł karty
-  10,02:1, linie pomocnicze 5,01:1 na powierzchni, zieleń 8,19:1 na powierzchni.
+  „bez pinezki” to fakt w tekście pomocniczym. **Reguła 7 (v5):** każdy brak planu ma fakt i drogę naprzód (2a, D17), ton
+  spokojny, bez wykrzykników — także przy błędzie serwera.
+- **Gesty (v5):** przeciągnięcie arkusza ma alternatywę w dotknięciu uchwytu (D21, SC 2.5.7).
+- **Tokeny:** zieleń offline `stateOk` (w `theme.dart` od [[ISSUE-022-app-skeleton-tabs-people-settings]]); v5 bez nowych
+  tokenów. Kontrast: tytuł karty 10,02:1, linie pomocnicze 5,01:1 na powierzchni (W2 z *Open*: 10,02:1), zieleń 8,19:1 na
+  powierzchni, alejki (obrys) 3,10:1 na powierzchni (SC 1.4.11).
 
 ## AC → element
 | AC | Element(y) | Jak widać spełnienie |
@@ -178,7 +222,11 @@ Rekordem jest **grób**: ok. 50 na całe notatki (G6, [[NT-002-transcribe-the-no
 | decyzja autora 2026-10-06: nazwa grobu | 7, 8 (a) | grób z nazwą nadaną w [[grob]] ma ją jako tytuł karty i arkusza |
 | ISSUE-012: styl B | całość | reguły wyżej; przegląd `ui` przed stopem #2 |
 | US-005 AC-1 | 7, 8 (d) | grób ze zdjęciem dodanym w [[grob]] ma jego miniaturę w karcie i w arkuszu |
-| M3 / [[ADR-003-map-source-offline]] (EPIC-002, pozycja do rozpisania) | 2–5, 7 | plan offline z kwaterami i zniczami; zdjęcie z góry online; znicz → arkusz grobu → „Pokaż grób” |
+| US-007 AC-1 — plan offline | 2, 3 | cmentarz dodany z siecią, w trybie samolotowym: plan (obrys, alejki), „Plan offline” z ikoną, „© OpenStreetMap” |
+| US-007 AC-2 — zdjęcie z góry online | 3, 13 | „Zdjęcie” z siecią: ortofotomapa i „Ortofotomapa: GUGiK”; bez sieci „bez internetu”, „Wróć do planu”, a plan działa; w pamięci telefonu nie przybywa plików |
+| US-007 AC-3 — sama mapa, jeden grób, lista | 5, 6, 7, 8 · *Navigation* | na starcie plan i pasek z liczbą grobów bez pinezki; znicz → arkusz z „Pokaż grób”; pasek albo uchwyt → lista wszystkich grobów |
+| US-007 AC-4 — kwatery autora | 4 | → [[ISSUE-028-cemetery-sectors]] |
+| US-007 AC-5 — bez planu | 2a (b), 6 | cmentarz dodany bez sieci: „pobierze się, gdy będzie internet”, „Pobierz teraz”, a pasek prowadzi do listy |
 
 ## Decisions
 - **D1 — „jak R2 bez satelity” = arkusz grobów na cały ekran, bez pola mapy.** *(Zastąpione w v4 przez D10–D11.)* Groby z notatek nie mają
@@ -247,7 +295,65 @@ Rekordem jest **grób**: ok. 50 na całe notatki (G6, [[NT-002-transcribe-the-no
   dotknięciem planu poprawia go bez nowego trybu. Źródło i dokładność zapisują się z pinezką. *Obali:* pomiar na
   cmentarzu (*Parked*) pokaże dokładność gorszą niż szerokość alejki — wtedy pinezka zaczyna się od kwatery, nie od GPS.
 
+- **D17 — sześć stanów planu zamiast dwóch** (v5, element 2a). Prototyp znał „jest” i „nie pobrany”, a każda przyczyna
+  braku ma inną drogę naprzód: brak internetu (poczekać), serwer (spróbować później), brak obrysu w OSM (zdjęcie z góry),
+  brak punktu (wskazać). Jedna zaślepka „pobierze się, gdy będzie internet” mówiłaby nieprawdę w trzech z nich ([[style-b]]
+  reguła 7: brak opisany faktem i tym, kiedy się uzupełni). Tekst (b) zostaje z prototypu (autor: *„Plan i zdjęcie ok”*).
+  *Obali:* na cmentarzach autora zdarza się tylko (b) — wtedy (c) i (d) zostają w kodzie bez dalszego projektu.
+- **D18 — pobieranie rusza samo, „Pobierz teraz” to skrót.** Plan zaczyna się pobierać przy zapisie cmentarza z punktem
+  (z bazy albo ręcznie), przy zmianie punktu w „Popraw cmentarz” i wtedy, gdy telefon odzyska internet. Tekst (b) to
+  obietnica, więc mechanizm musi ją spełnić: wybiera go `planning`, np. zadanie w tle z warunkiem sieci, jak kopia. Zmiana
+  punktu pobiera plan od nowa, bo obrys zależy od punktu. *Obali:* zadanie w tle kosztuje więcej niż reszta pozycji — wtedy
+  (b) brzmi „Plan tego cmentarza pobierze się, gdy otworzysz go z internetem.”
+- **D19 — brak obrysu w OSM: zaślepka i zdjęcie z góry, a nie kwadrat wokół punktu.** Kwadrat ±300 m (zapas z SPIKE-001)
+  pokazałby drogi i domy wokół cmentarza: plan, który nie jest planem. Cmentarze z bazy ([[ISSUE-015-add-cemetery-from-database]])
+  pochodzą z OSM, więc zwykle mają obrys, a ten stan dotyczy głównie cmentarzy dodanych ręcznie. *Obali:* autor ma taki
+  cmentarz i bez zasięgu nie widzi na nim nic — wtedy same znicze na tle w kolorze powierzchni, z podziałką.
+- **D20 — pobieranie niewidoczne na mapie Polski** ([[cmentarze]] D34). Po „Zapisz” mapa Polski wygląda jak dotąd, a plan
+  widać w cmentarzu, gdzie jest potrzebny. Postęp w arkuszu cmentarza byłby szumem na ekranie, na którym wybiera się, dokąd
+  jechać. *Obali:* autor dodaje cmentarz w drodze, bez zasięgu, i chce wiedzieć, czy plan już jest — wtedy w arkuszu linia
+  „Plan offline” z ikoną.
+- **D21 — uchwyt arkusza działa dotknięciem.** W prototypie z B do C prowadziło tylko przeciągnięcie. WCAG 2.2 SC 2.5.7
+  Dragging Movements (AA): *„All functionality that uses a dragging movement for operation can be achieved by a single
+  pointer without dragging, unless dragging is essential”* ([Understanding 2.5.7](https://www.w3.org/WAI/WCAG22/Understanding/dragging-movements.html)).
+  Uchwyt z celem 48 dp: w B prowadzi do C, w C wraca. Pasek w A działał dotknięciem już wcześniej (element 6).
+- **D22 — plakietki przy dużym tekście.** Przełącznik zostaje w prawym górnym rogu, bo tam jest w R2 i w prototypie. „Plan
+  offline” schodzi pod niego, gdy oba nie mieszczą się w rzędzie. Plakietki to kontrolki, a nie podpisy przypięte do punktu,
+  więc nie obowiązuje ich granica 1,3× ([[style-b]] reguła 13).
+- **D23 — z widoku osoby, gdy mapa już jest.** Grób z pinezką → stan B z tym grobem. Grób bez pinezki → stan C z
+  zaznaczonym grobem, **bez komunikatu o pinezce aż do [[US-008-pinezka-na-miejscu]]**. [[osoba]] D17 trwa, bo mapa jest,
+  ale pinezki nie da się jeszcze postawić, a komunikat mówiłby o działaniu, którego nie ma.
+
 ## Open
-brak. Wejście do listy na cmentarzu bez pinezek rozstrzygnął pasek grobów (D14).
+- ✅ **Rozstrzygnięte 2026-10-12 — W2** (autor: „tak” na stopie #1 [[ISSUE-027-cemetery-map-plan-photo-states]], D1). Pierwotny
+  opis pytania:
+- **Miara [[NFR-004-czytelnosc-w-sloncu]] na tym ekranie.** To pierwszy ekran wizyty (D8 przesunęło miarę tutaj),
+  a [[style-b]] trzyma 7:1 (SC 1.4.6, AAA) jako kandydata „do decyzji przy pierwszym ekranie wizyty”. Dwa warianty na
+  makiecie (ramki B1 i B2):
+  - **W1 — jak dziś:** adres, „3 osoby”, linia grobów bez pinezki i druga linia zaślepek w tekście pomocniczym (5,01:1 na
+    powierzchni, AA);
+  - **W2 — 7:1 dla tekstu potrzebnego na cmentarzu:** te same linie w kolorze tekstu (10,02:1 na powierzchni). W tekście
+    pomocniczym zostaje tylko to, czego nie czyta się przy grobie: podpisy źródeł („© OpenStreetMap”, „Ortofotomapa:
+    GUGiK”). Hierarchię niesie rozmiar i waga, a nie kolor.
+
+  **Rekomendacja `ui`: W2** i test w słońcu na telefonie przy instalacji MVP (`DEFINITION_OF_DONE.md` → wyjątki).
+  - **Koszt:** kilka linii zmienia rolę koloru, bez nowych tokenów.
+  - **Co tracimy:** część spokojnej hierarchii z R2, w której linie pomocnicze są szare.
+  - **Co obali:** test w słońcu pokaże, że W2 nie wystarcza → wariant wysokokontrastowy (NFR-004 → *Notes*).
+
+  Decyzja autora trafi do NFR-004 (miara), [[style-b]] (*Thresholds*: z kandydata miara obowiązująca na ekranach wizyty) i
+  [[grob]] (*Known gaps*: te same linie przy M4).
 - ⚠️ OPEN — **dokładność GPS przy grobie** (ile metrów, czy kropka trafia w kwaterę) — mierzy wizyta na cmentarzu
-  (`CURRENT_STATE.md` → *Parked*, SPIKE-001 D5). Od wyniku zależy próg „słaby sygnał” (element 12).
+  (`CURRENT_STATE.md` → *Parked*, SPIKE-001 D5). Od wyniku zależy próg „słaby sygnał” (element 12) — [[US-008-pinezka-na-miejscu]].
+- **Nie do `ui` — czy plan wchodzi do kopii** (`planning`, kandydat na ADR). Widoczny skutek: jeśli plan nie wchodzi do
+  kopii, po odtworzeniu na nowym telefonie każdy cmentarz pokazuje (a) albo (b), aż telefon dostanie internet.
+- **Znicze sąsiednich grobów nachodzą na siebie** (przegląd ISSUE-027, odstępstwo 4): przy z19 na 52° N 1 dp to ok. 0,18 m, więc
+  cel 48 dp ma ok. 9 m, a znicz ok. 5 m — groby obok siebie zasłonią się nawet przy największym przybliżeniu, a łączenie w znicz
+  z liczbą (jak na mapie Polski) ich nie rozdzieli. Kandydat dla [[US-008-pinezka-na-miejscu]]: znicz z liczbą otwiera arkusz z
+  listą tych grobów. Do tego czasu wybór przez listę (C).
+- **Główne i boczne alejki według rodzaju z OSM** (przegląd ISSUE-027, pkt 9): na publicznym cmentarzu testowym prawie wszystkie
+  alejki mają w OSM `footway`, więc rysują się jako boczne (2 dp), także te, które są główne na miejscu. Kandydat: grubość z
+  `width`/`surface` albo jedna grubość dla wszystkich — decyzja, gdy autor zobaczy plany swoich cmentarzy.
+- **Znana luka — przesuwanie przybliżonego planu tylko przeciągnięciem** (SC 2.5.7). Wszystkie znicze są w kadrze startowym,
+  a lista (C) prowadzi do każdego grobu jednym dotknięciem, więc żadne działanie nie wymaga przeciągania. Kandydat:
+  przycisk „cały cmentarz”, gdy autor zgubi się na przybliżonym planie.

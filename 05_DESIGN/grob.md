@@ -4,7 +4,7 @@ items: ["[[ISSUE-012-transcribe-grave-screen]]", "[[ISSUE-016-photos-grave-and-p
 us: "[[US-002-przepisanie-grobu]] · [[US-005-zdjecia]]"
 journey-step: "n/a — M1; ten sam widok stanie się widokiem 3 (krok 4 UJ-001, M4, R4 lewy) — wizyta dojdzie tutaj"
 mockup: "katalog tymczasowy sesji 2026-10-07: makieta-cmentarz-grob-osoba.html (ramki 5–7, ISSUE-012) · makieta-zdjecia.html (ramki 1, 2, 4, ISSUE-016)"
-updated: 2026-10-09
+updated: 2026-10-12
 ---
 
 # Grób — specyfikacja
@@ -225,9 +225,9 @@ Widok do oglądania. Jako krok przepisywania:
 - **Reguła 10:** zapis z [[wpis-osoby]] kończy się tym widokiem, bez okienka „Zapisano”; zapis nazwy kończy
   się nowym tytułem.
 - **Tokeny:** bez nowych.
-- **Uwaga na ekrany wizyty:** lata i adres są tu w tekście pomocniczym (5,50:1 na tle). Gdy ten widok stanie
-  się widokiem wizyty (M4), a [[NFR-004-czytelnosc-w-sloncu]] przyjmie 7:1, te linie przejdą na kolor tekstu
-  ([[style-b]] → *Measurement*).
+- **Uwaga na ekrany wizyty:** lata i adres są tu w tekście pomocniczym (5,50:1 na tle). [[NFR-004-czytelnosc-w-sloncu]]
+  przyjęła 7:1 (W2, 2026-10-12, [[ISSUE-027-cemetery-map-plan-photo-states]]) — gdy ten widok stanie się widokiem wizyty (M4), te
+  linie przejdą na kolor tekstu ([[style-b]] → *Thresholds*).
 
 ## AC → element
 | AC | Element(y) | Jak widać spełnienie |

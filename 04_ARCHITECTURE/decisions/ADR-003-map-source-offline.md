@@ -9,7 +9,7 @@ verdict-reviewer: self-check
 decided-by: "[[SPIKE-001-map-source-offline]] + decyzja autora na stopie #2 (2026-10-08)"
 source: "PROJECT_BRIEF §Architecture → Stack (S-MAP) · §6 N5 · §3b H3, H9, H10 · MoSCoW W3"
 created: 2026-10-05
-updated: 2026-10-08
+updated: 2026-10-12
 ---
 
 # ADR-003 — Mapa cmentarza: plan offline, zdjęcie online
@@ -90,3 +90,9 @@ accepted — 2026-10-08.
     zmiany przez `ui`);
   - pułapka w `flutter_map`: `CameraConstraint.contain` przy ramce mniejszej od ekranu (M7);
   - sprawdzenie na miejscu (GPS przy grobie, plan przy bramie) → `CURRENT_STATE.md` → §Parked.
+  - **2026-10-12 — stan po [[ISSUE-027-cemetery-map-plan-photo-states]]** (dopisek, decyzja bez zmian): pkt 1 i 2 wdrożone — plan
+    w bazie i w kopii ([[ADR-015-cemetery-plan-in-database]]), pobieranie z ponawianiem na dwóch instancjach Overpass i zaślepki
+    ([[cmentarz]] 2a), zdjęcie GUGiK bez zapisu w telefonie; pkt 4 — `INTERNET` z listą hostów w kodzie
+    ([[NFR-005-dane-nie-opuszczaja-telefonu]]); pole „link do wyszukiwarki zarządcy” wycofane ([[cmentarz]] D12); pułapka
+    `CameraConstraint.contain` ominięta (`containCenter`); model kwatery → [[ISSUE-028-cemetery-sectors]], pinezki →
+    [[US-008-pinezka-na-miejscu]].

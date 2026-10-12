@@ -1,10 +1,10 @@
 ---
 screen: "Osoba — widok osoby (kim była, rodzina, jak łączy się ze mną, daty, pochówek, zdjęcia)"
-items: ["[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-024-person-view]]"]
+items: ["[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-024-person-view]]", "[[ISSUE-027-cemetery-map-plan-photo-states]]"]
 us: "M5 (brief §5, widok 4) — [[ISSUE-024-person-view]] AC-1…AC-5 (AC-6 → drzewo, v2.1)"
 journey-step: "UJ-001 · 5 (widok 4, M5, R4 prawy)"
 mockup: "2026-10-09: issue-024-widok-osoby.html (ISSUE-024; runda 1 stopu #1 — W2, łańcuch po imionach, pusta sekcja „Zdjęcia”) — katalog tymczasowy sesji, ścieżka w ISSUE-024 → Implementation plan · 2026-10-08: grobing-prototyp.html (SPIKE-004, panel 4)"
-updated: 2026-10-09
+updated: 2026-10-12
 ---
 
 # Osoba — specyfikacja
@@ -274,6 +274,9 @@ n/a — ekran do oglądania. Poprawa idzie przez [[wpis-osoby]] (✎).
   mówiłby o czymś, czego w aplikacji nie ma; wraca z mapą (D9). Lista przewija się do grobu, a karta ma obrys w akcencie
   ([[cmentarz]] D11) i stan „zaznaczony” dla czytnika. *Obali:* autor woli od razu grób (jedno dotknięcie mniej) — wtedy
   do czasu mapy pochówek → [[grob]].
+  **v2.4 (2026-10-12, [[ISSUE-027-cemetery-map-plan-photo-states]], [[cmentarz]] D23):** mapa przychodzi przed pinezkami, więc
+  D17 trwa aż do [[US-008-pinezka-na-miejscu]]. Grób z pinezką (na razie tylko w danych testowych) → mapa w stanie B z tym
+  grobem, a grób bez pinezki → lista jak wyżej, bez komunikatu. Komunikat z D9 wraca z US-008.
 - **D18 — ikony nagłówków.** „Rodzina” — `people_outline`, jak w formularzu (ta sama sekcja, ta sama ikona; R4 ma dwie
   postacie). „Jak łączy się ze mną” — `link` (ogniwo z R4): `conversion_path` z v1 **nie istnieje** w `Icons` Fluttera
   3.41.1 (sprawdzone w SDK 2026-10-09).

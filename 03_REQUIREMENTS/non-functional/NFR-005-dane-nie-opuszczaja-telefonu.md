@@ -8,7 +8,7 @@ verdict-date: null
 verdict-reviewer: null
 source: "PROJECT_BRIEF §Security (ASVS-lite translated, off-phone copy) · Step 0 (local-first: privacy) · §2 value ('private')"
 created: 2026-10-05
-updated: 2026-10-08
+updated: 2026-10-12
 ---
 
 # NFR-005 — Dane nie opuszczają telefonu poza kopią
@@ -63,6 +63,21 @@ SDK wysyłających dane z telefonu (np. Firebase).
     serwery OSM i GUGiK mogłyby z tego wywnioskować, gdzie leży rodzina autora. Autor przyjął to, wybierając
     plan z pobraniem i zdjęcie online;
   - wcześniejszy pomysł „aplikacja bez `INTERNET`, plik z PC” (droga (b) w SPIKE-001) odrzucił autor.
+- ✅ **`INTERNET` w aplikacji od 2026-10-12** ([[ISSUE-027-cemetery-map-plan-photo-states]]) — warunki z punktu wyżej spełnione i
+  pilnowane testami:
+  - **wszystkie adresy w `grobing-code/lib/net/hosts.dart`**, tylko `https` (test na źródłach: w `lib/` żaden adres w stringu poza tym
+    plikiem; wyjątek — link do zdjęcia satelitarnego, który otwiera inna aplikacja); Overpass: `overpass-api.de`,
+    `overpass.private.coffee` (bez `maps.mail.ru` — decyzja autora D4); GUGiK: `mapy.geoportal.gov.pl`; `User-Agent` nazywa
+    aplikację, nie osobę; manifest bez ruchu jawnego (`usesCleartextTraffic="false"`);
+  - **zdjęcie z góry nie zostaje w telefonie:** `flutter_map` 8.3.2 domyślnie zapisuje kafelki na dysk — wyłączone
+    (`DisabledMapCachingProvider`), sprawdzone `run-as` (brak plików kafelków);
+  - **bez adresów kafelków w logu systemu:** `flutter_map` przy nieudanym kafelku wypisywał jego adres (numery kafelków = miejsce,
+    które oglądał telefon) także w release — wyciszone (`silenceExceptions`), na emulatorze 0 linii; pobieranie planu loguje sam
+    rodzaj błędu, bez punktu;
+  - `aapt` na APK release: z nowych uprawnień tylko `INTERNET`; bez nowych zależności (`pubspec.lock` bez zmian).
+
+  **Czego to nie łapie:** wywołania sieciowego dodanego przez przyszłą zależność bez adresu w stringu — dlatego przegląd zależności i
+  logcat przy każdej pozycji z siecią (`qa`).
 - Eksport nie jest szyfrowany z założenia (czytelność jest jego celem) — dlatego żyje offline, nie w chmurze
   (§Security).
 - Hipoteza prawna (wyłączenie domowe RODO) jest najmocniejsza, gdy chmura trzyma tylko szyfrogram →
