@@ -3,7 +3,7 @@ title: "Grobing — Glossary"
 type: meta
 status: active
 created: 2026-10-05
-updated: 2026-10-08
+updated: 2026-10-12
 ---
 
 # Grobing — Glossary
@@ -35,7 +35,7 @@ updated: 2026-10-08
 | **grób** (Grave) | miejsce na cmentarzu z adresem, pinezką i zdjęciami nagrobka | osobą — w grobie rodzinnym leży kilka osób |
 | **nazwa grobu** | opcjonalny tytuł grobu nadany przez autora, np. „Grób rodzinny Nowaków” ([[ISSUE-012-transcribe-grave-screen]], schemat v3) | nazwiskiem osób — aplikacja nie wylicza jej z nazwisk, bo odmiana bywa błędna; bez nazwy grób ma tytuł „Grób” |
 | **pochówek** (Burial) | powiązanie osoba ↔ grób (wiele na jeden grób) | zdarzeniem z datą (data pochówku to Event) |
-| **pinezka** | pozycja grobu na mapie **ze źródłem** (postawiona przez autora na planie albo na ortofotomapie / GPS na miejscu) i dokładnością | prawdą o położeniu — prawdą jest adres zarządcy; ani pozycją przejętą z map zarządców (tych nie kopiujemy — [[ADR-003-map-source-offline]]) |
+| **pinezka** | pozycja grobu na mapie **ze źródłem** (postawiona przez autora na planie albo na ortofotomapie / GPS na miejscu), dokładnością (tylko GPS) i **datą zapisu** — „Pinezka: GPS ±4 m · 12.10.2026” ([[cmentarz]] 14, D33; od v12) | prawdą o położeniu — prawdą jest adres zarządcy; ani pozycją przejętą z map zarządców (tych nie kopiujemy — [[ADR-003-map-source-offline]]) |
 | **plan cmentarza** | schematyczna mapa cmentarza w aplikacji: obrys i alejki z OSM (offline) + kwatery i pinezki autora ([[ADR-003-map-source-offline]]) | planem zarządcy (Grobonet, tablica przy bramie) — ten jest tylko odnośnikiem dla autora |
 | **rodzina** (Family) | rekord: **związek** (małżeństwo albo nie) 1-2 partnerów + dzieci; osoba może być partnerem w kilku rodzinach — kolejny związek po rozstaniu albo owdowieniu to kolejna rodzina ([[ISSUE-019-family-relations]]) | „krawędzią" między dwiema osobami — to psuje się przy pierwszym powtórnym małżeństwie |
 | ~~**arkusz rodziny**~~ | ~~ekran, na którym wpisuje się jedną rodzinę naraz~~ — zastąpiony **kreatorem związku** w [[ISSUE-025-gender-kinship-together-since]] | — |

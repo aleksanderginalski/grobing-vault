@@ -13,7 +13,7 @@ verdict-date: null
 verdict-reviewer: null
 source: "PROJECT_BRIEF §4a · §5 M2-M7 · §3b H3, H9"
 created: 2026-10-05
-updated: 2026-10-08
+updated: 2026-10-12
 ---
 
 # EPIC-002 — Wizyta
@@ -38,7 +38,8 @@ EPIC niesie **główną ścieżkę produktu** (UJ-001, wybór autora w §4a) —
 | M7 | działa bez zasięgu ([[NFR-001-offline]]) | 2-7 (gałąź) |
 
 Krok 6 to **jedyne miejsce, gdzie powstają ręczne pinezki** (H3) — każda zapisana ze źródłem i
-dokładnością ([[FR-001-provenance]]).
+dokładnością — pole grobu, nie źródło faktu ([[FR-001-provenance]] wycofane); od [[ISSUE-029-pin-on-site-gps]] GPS z dokładnością albo ręcznie na
+planie / zdjęciu z góry, z datą.
 
 ## User stories (from [[SPIKE-004-mvp-flow-prototype]], 2026-10-08)
 | # | US / pozycja | M | Specyfikacja |
@@ -46,7 +47,7 @@ dokładnością ([[FR-001-provenance]]).
 | 1 | [[ISSUE-023-poland-map-r1-cemetery-photo]] — mapa Polski jak R1, zdjęcie cmentarza | M2 | [[cmentarze]] v2.4 |
 | 2 | [[US-007-mapa-cmentarza]] — plan offline, zdjęcie z góry, kwatery, znicze | M3, M7 | [[cmentarz]] v4.1 |
 | 3 | [[ISSUE-024-person-view]] — widok osoby z łańcuchem do „ja” | M5 | [[osoba]] v1.3 |
-| 4 | [[US-008-pinezka-na-miejscu]] — pinezka z GPS, poprawa na miejscu | M6, M7 | [[cmentarz]] v4.2, [[grob]] v5.1 |
+| 4 | [[US-008-pinezka-na-miejscu]] — pinezka z GPS, poprawa na miejscu → [[ISSUE-029-pin-on-site-gps]] (✅ 2026-10-12; teren — *Parked*) | M6, M7 | [[cmentarz]] v7.1, [[grob]] v7 |
 
 Widok grobu (M4) jest zbudowany ([[grob]] v5 — zmienia się tylko cel karty osoby, w ISSUE-024).
 

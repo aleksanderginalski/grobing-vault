@@ -31,7 +31,7 @@ updated: 2026-10-12
 | UJ-001 · 3 — dojście do pinezki; porównanie ze zdjęciem nagrobka | §4a · §5 M3/M4 | [[EPIC-002-wizyta]] | | | | | |
 | UJ-001 · 4 — grób: wszyscy pochowani, zdjęcie + imię | §4a · §5 M4 | [[EPIC-002-wizyta]] | | | | | |
 | UJ-001 · 5 — osoba: kim była, pokrewieństwa, ścieżka do „ja" | §4a · §5 M5 | [[EPIC-002-wizyta]] | | [[ISSUE-022-app-skeleton-tabs-people-settings]] (ustawienie „ja”) · [[ISSUE-025-gender-kinship-together-since]] (płeć, nazwy pokrewieństwa, „Razem od” — z SPIKE-004, bez US, task-level) · [[ISSUE-024-person-view]] (z SPIKE-004, bez US — task-level) | | ISSUE-022 done · ISSUE-025 done · ISSUE-024 done | ISSUE-022: APPROVED (self-check, 2026-10-08, z uwagami; przegląd `ui` 0 BLOCKER / 1 MAJOR / 13 MINOR — MAJOR i 9 MINOR poprawione przed stopem; stop #2 „ok”, krok 3 sprawdzony na urządzeniu; odtworzenie z „ja” na drugim emulatorze, odcisk zgodny) · ISSUE-025: APPROVED (self-check, 2026-10-08, z uwagami; przegląd `ui` 0 BLOCKER / 2 MAJOR / 7 MINOR — wszystkie poprawione przed stopem; stop #2 „ok” w dwóch rundach, sprawdzone na urządzeniu; odtworzenie na drugim emulatorze, odcisk zgodny) · ISSUE-024: APPROVED (self-check, 2026-10-12, z uwagami; dwa przeglądy `ui` — 0 BLOCKER / 4 MAJOR / 10 MINOR, wszystkie poprawione przed stopem; stop #2 „ok” w dwóch rundach, krok 3 rundy 2 bez sprawdzenia na urządzeniu — autor: „pomiń”; odtworzenie na drugim emulatorze, odcisk zgodny) |
-| UJ-001 · 6 — poprawa na miejscu: pinezka, nowe zdjęcie, imię z tablicy | §4a · §5 M6 | [[EPIC-002-wizyta]] | [[US-008-pinezka-na-miejscu]] (z SPIKE-004) | | ready | | |
+| UJ-001 · 6 — poprawa na miejscu: pinezka, nowe zdjęcie, imię z tablicy | §4a · §5 M6 | [[EPIC-002-wizyta]] | [[US-008-pinezka-na-miejscu]] (z SPIKE-004) | [[ISSUE-029-pin-on-site-gps]] („gdzie jestem”, tryb D, „Postaw / Popraw pinezkę”, data pinezki — AC-1–4) · [[ISSUE-030-sector-on-a-visit]] (`draft` — kandydaci z [[cmentarz]] D29, decyzja autora) | done | ISSUE-029 done · ISSUE-030 draft | ISSUE-029: APPROVED (self-check, 2026-10-12, z uwagami; przegląd `ui` 0 BLOCKER / 3 MAJOR / 9 MINOR — MAJOR poprawione przed stopem; stop #2 „ok” — poprawa pinezki sprawdzona na urządzeniu, trzy stany ◎ bez śladu; odtworzenie na drugim emulatorze, odcisk zgodny, pinezka z datą bez sieci; GPS w terenie — *Parked*, D4) |
 | UJ-001 · 7 — powrót na mapę cmentarza → następny grób | §4a · §5 M3 | [[EPIC-002-wizyta]] | | | | | |
 | n/a — widok 5 (zestaw funkcji): drzewo | §5 M9 | [[EPIC-003-zrozumienie]] | | | | | |
 | n/a — widok 5: suwak czasu | §5 M10 | [[EPIC-003-zrozumienie]] | | | | | |
@@ -76,6 +76,8 @@ updated: 2026-10-12
   - ✅ **2026-10-12 — kroki 1 i 2 kierunku mają ekrany** ([[ISSUE-028-cemetery-sectors]]): adres zarządcy wpisuje się w oknie „Popraw
     grób” (dotąd żaden ekran go nie zapisywał — luka M1), a kwaterę zaznacza się na planie albo zdjęciu z góry
     ([[ADR-016-sector-record-and-grave-link]]). Otwarty zostaje krok 3 — pinezka na miejscu ([[US-008-pinezka-na-miejscu]]).
+  - ✅ **2026-10-12 — krok 3 ma ekran** ([[ISSUE-029-pin-on-site-gps]]): na planie „gdzie jestem”, pinezka w kropce albo ręką, poprawa na
+    miejscu. Otwarte zostaje sprawdzenie w terenie — `CURRENT_STATE.md` → §Parked (wizyta na cmentarzu).
 - **2 — nierozstrzygnięte: grób ze zdjęcia z galerii** (pinezka z lokalizacji zdjęcia) — funkcja spoza M1.
   **Decyzja autora (2026-10-05): budowa bez terminu**, 1 listopada niczego nie wyznacza. Przy wizytach
   autor robi zdjęcia nagrobków aparatem z włączoną lokalizacją, co nie wymaga żadnej budowy. Kopię w

@@ -1,9 +1,9 @@
 ---
 screen: "Cmentarz — groby na cmentarzu"
-items: ["[[ISSUE-012-transcribe-grave-screen]]", "[[ISSUE-016-photos-grave-and-person]]", "[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-024-person-view]]", "[[ISSUE-027-cemetery-map-plan-photo-states]]", "[[ISSUE-028-cemetery-sectors]]"]
-us: "[[US-002-przepisanie-grobu]] · [[US-005-zdjecia]] · [[US-007-mapa-cmentarza]]"
+items: ["[[ISSUE-012-transcribe-grave-screen]]", "[[ISSUE-016-photos-grave-and-person]]", "[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-024-person-view]]", "[[ISSUE-027-cemetery-map-plan-photo-states]]", "[[ISSUE-028-cemetery-sectors]]", "[[ISSUE-029-pin-on-site-gps]]"]
+us: "[[US-002-przepisanie-grobu]] · [[US-005-zdjecia]] · [[US-007-mapa-cmentarza]] · [[US-008-pinezka-na-miejscu]]"
 journey-step: "n/a — M1 (warunek kroku 1 UJ-001); docelowo mapa cmentarza z arkuszem grobu (R2, krok 2 UJ-001, M3)"
-mockup: "katalog tymczasowy sesji 2026-10-07: makieta-cmentarz-grob-osoba.html (ramki 1–2, 8, ISSUE-012) · makieta-zdjecia.html (ramka 9, ISSUE-016) · 2026-10-08: grobing-prototyp.html (SPIKE-004, panel 2) · 2026-10-12: issue-027-mapa-cmentarza.html (stany planu, warianty NFR-004) · 2026-10-12: issue-028-kwatery.html (klikalny: kwatery na planie, tryb „Kwatery”, kandydaci K1–K3, adres grobu W-a/W-b)"
+mockup: "katalog tymczasowy sesji 2026-10-07: makieta-cmentarz-grob-osoba.html (ramki 1–2, 8, ISSUE-012) · makieta-zdjecia.html (ramka 9, ISSUE-016) · 2026-10-08: grobing-prototyp.html (SPIKE-004, panel 2) · 2026-10-12: issue-027-mapa-cmentarza.html (stany planu, warianty NFR-004) · 2026-10-12: issue-028-kwatery.html (klikalny: kwatery na planie, tryb „Kwatery”, kandydaci K1–K3, adres grobu W-a/W-b) · 2026-10-12: issue-029-pinezka.html (klikalny: „gdzie jestem”, tryb D, kandydaci P1/P2, poprawa, słaby sygnał; katalog tymczasowy sesji `8b388e89-…`)"
 updated: 2026-10-12
 ---
 
@@ -111,6 +111,51 @@ updated: 2026-10-12
 >   jako ikona z `tooltip`; stara strefa w kolorze tekstu pomocniczego; komunikat przecięcia „…— cofnij ostatni róg.”;
 > - **19b:** nazwa zajęta — „…już jest na tym cmentarzu — wpisz inną nazwę.” (zmiana nazwy nie łączy kwater).
 >
+> **Wersja 7 (2026-10-12, przed planem [[ISSUE-029-pin-on-site-gps]]) — pinezka na miejscu.** Prototyp SPIKE-004 (panel 7, D22)
+> pokazał „gdzie jestem”, tryb D i „Popraw pinezkę”. Nie pokazał, co dzieje się poza zwykłą drogą. Na stopie #1 autor
+> wybrał **P2** (*Open*). Nowe w tej wersji:
+> - **„gdzie jestem” ma trzy stany** (10, D31): wyłączony, plan na kropce, plan odsunięty. Do tego plakietka stanu 10a: poza
+>   cmentarzem, szukam pozycji, tylko przybliżona lokalizacja;
+> - **tryb D włącza lokalizację sam** (D32). Poza cmentarzem pinezka zaczyna w strefie kwatery grobu;
+> - **źródło pinezki to to, z czego wzięła się pozycja** (14, D33): GPS z dokładnością albo „postawiona na planie” / „na zdjęciu z
+>   góry”. Link do wycofanego FR-001 zastąpiony słowniczkiem (*pinezka*) i [[data-model]] → Grave;
+> - **poprawa zaczyna od zapisanej pinezki** (11, D35);
+> - **słaby sygnał** z progiem tymczasowym 15 m, do pomiaru (12a, D37);
+> - **tryb D jak tryb F** (D36): pasek z ✕, bez dolnego paska, warstwa z poprzedniego stanu.
+>
+> Na stop #1 idzie jedno pytanie (*Open*): **gdzie się dotyka** w trybie D — **P1** (dotknięcie przesuwa znicz, jak w prototypie
+> SPIKE-004) albo **P2** (celownik jak przy kwaterach, K1). Klikalny prototyp: `issue-029-pinezka.html` (katalog tymczasowy sesji
+> `8b388e89-…`). Poza AC US-008, ale zapisane wcześniej: z [[osoba]] → „Pochówek” grób bez pinezki → stan C **z komunikatem**
+> [[osoba]] D9 (*Navigation*).
+>
+> **Wersja 7.1 (2026-10-12, przegląd `ui` zbudowanego ekranu [[ISSUE-029-pin-on-site-gps]]):** 0 BLOCKER, 3 MAJOR, 9 MINOR —
+> MAJOR poprawione przed stopem #2. Ta wersja obowiązuje nad opisami elementów 10–12a wyżej, gdy się różnią:
+> - **12 — karta GPS tylko wtedy, gdy znicz naprawdę stoi w kropce.** Gdy telefon szuka pozycji albo jest poza cmentarzem, karta
+>   mówi o stawianiu ręcznym z „◎ wraca do Twojej pozycji.”, a panel mówi, czego brakuje (MAJOR — karta przeczyła panelowi);
+> - **12a — „Zapisz pinezkę” przy poprawie** robi się aktywny dopiero, gdy pinezka się ruszy. Samo dotknięcie ◎ bez pozycji jej nie
+>   rusza (MAJOR — zapis w tym samym miejscu gubił „GPS ±N m”);
+> - **12 bez mapy (nowy stan):** cmentarz bez planu i bez zdjęcia — karta „Bez planu pinezkę postawisz tylko z GPS: stań przy
+>   grobie, a znicz stanie w niebieskiej kropce.”, w miejscu planu „Planu tego cmentarza nie ma w telefonie. Pinezkę postawisz tu
+>   tylko z GPS.”, „Zapisz pinezkę” czeka na kropkę. **Tryb D na „Zdjęciu” bez sieci startuje na planie**, a „Popraw pinezkę” (11)
+>   ma tę samą regułę widoczności co ◎ (10): nie ma ich przy zaślepce planu (2a) i przy „Zdjęciu” bez sieci (MAJOR — zapisywała się
+>   pinezka, której nie było widać);
+> - **10, D31 — gdy nie ma kropki, do której można wrócić** (tylko przybliżona, szukam pozycji, poza cmentarzem), ◎ wygląda jak „na
+>   kropce” i dotknięcie wyłącza — jest wyjście (znalezione testem `qa`: przy „Przybliżonej” ◎ nie dawał się wyłączyć). Pierwsze
+>   włączenie z przybliżeniem do z18 to skok, nie przejazd (przyjęte);
+> - **10a (a)** — od 10 km pełne kilometry („312 km”); od 1 do 10 km z jedną cyfrą po przecinku;
+> - **12a — stany lokalizacji** („Szukam pozycji…”, „Jesteś poza cmentarzem (…)”, „Lokalizacja w telefonie jest wyłączona.”) w
+>   **kolorze tekstu** (10,02:1, W2) — w v7 omyłkowo tekst pomocniczy;
+> - **12 — ◎ w trybie D nazywa się „Gdzie jestem”** jak w A i B (opis ze stanem); karta „bez zgody” — po dwukropku mała litera;
+>   cień pod czubkiem w kolorze tła (krycie 60%) i bez cienia, gdy znicz stoi w kropce; po podwójnym dotknięciu znicz wraca do kropki;
+> - **12 — szczypanie nie zmienia pinezki na ręczną**, tylko przybliżenie; ręczną robi przeciągnięcie albo dotknięcie miejsca;
+> - **D36 — wyjątek:** grób dodany przez formularz („Dodaj grób” → widok grobu zastępuje formularz) po „Zapisz pinezkę” wraca na mapę w
+>   stanie A z nowym zniczem, a nie do B. *Obali:* autor nie znajduje nowego znicza — wtedy wynik przechodzi przez stos;
+> - ***Navigation* — komunikat [[osoba]] D9 to pasek komunikatu na dole** (jeden wzorzec paska w aplikacji), nie „pod paskiem (1)”.
+>
+> Znana luka (przegląd, odstępstwo 7): przy tekście 200% na 360 × 640 dp „Kwatery” przykrywa „Plan offline” i „© OpenStreetMap”, a plan
+> w A jest bardzo niski — z [[ISSUE-027-cemetery-map-plan-photo-states]] i [[ISSUE-028-cemetery-sectors]]; ◎ jej nie pogarsza. Kandydat
+> na osobną pozycję przed MVP.
+>
 ## Purpose
 Cmentarz rodziny **jako mapa** (UJ-001 krok 2, M3, M7): plan schematyczny bez sieci albo zdjęcie z góry z siecią,
 kwatery zaznaczone przez autora i znicze grobów z pinezką. Stąd autor idzie do **jednego grobu** (znicz) albo do
@@ -129,11 +174,21 @@ kwatery i pinezkę (US-002 AC-5), i pokazuje, dokąd doszło przepisywanie.
     uchwyt** albo wstecz → stan, z którego przyszła (B albo A).
 - **Z [[osoba]] → „Pochówek”** (v5, D23): grób z pinezką → stan B z tym grobem; grób bez pinezki → stan C z zaznaczonym
   grobem, **bez komunikatu o pinezce aż do [[US-008-pinezka-na-miejscu]]** ([[osoba]] D17 trwa; komunikat z [[osoba]] D9
-  wraca z US-008). Wstecz → widok osoby.
+  wraca z US-008). Wstecz → widok osoby. **v7 ([[ISSUE-029-pin-on-site-gps]]):** komunikat wraca — pasek komunikatu pod
+  paskiem (1): „Ten grób nie ma jeszcze pinezki — jest zaznaczony na liście.” ([[osoba]] D9), znika po ok. 4 s albo po
+  dotknięciu.
 - **Wstecz w stanie A → [[cmentarze]]** z tym samym cmentarzem wybranym i jego arkuszem (D7). Z [[grob]] wstecz →
   stan, w którym autor ekran opuścił.
 - **✎ w pasku → okno „Popraw cmentarz”** ([[cmentarze]] 15), według [[style-b]] reguły 15. Zaznaczanie kwater i
   stawianie pinezek to osobne działania: kwatery — przycisk „Kwatery” (15, v6), pinezki — panel 7 (wizyta, [[US-008-pinezka-na-miejscu]]).
+- **Pinezka (v7, [[ISSUE-029-pin-on-site-gps]]):**
+  - **[[grob]] → „Postaw pinezkę”** (grób bez pinezki) → **tryb D** tego cmentarza dla tego grobu;
+  - **B → „Popraw pinezkę”** (11) → tryb D dla grobu z arkusza;
+  - **D → „Zapisz pinezkę”** → stan B z tym grobem, kadr na nowym zniczu — także gdy wejście było z [[grob]] (D22 z SPIKE-004,
+    D36). Wstecz z B → A, jak zawsze;
+  - **D → ✕, „Anuluj” albo wstecz** → tam, skąd przyszło ([[grob]] albo B), bez zapisu i bez okna (jedna pinezka to mało pracy
+    do stracenia — inaczej niż rogi w F, 19d);
+  - lokalizacja (10) gaśnie przy wyjściu z ekranu cmentarza. Nic nie działa w tle.
 - **Kwatery (v6, [[ISSUE-028-cemetery-sectors]]):**
   - **A → „Kwatery” (15) → tryb E** (16–17): lista kwater. Kwatera dotknięta na liście albo na planie → kwatera wybrana (17b).
     ‹ albo wstecz → lista; ✕ albo wstecz z listy → A z tym samym kadrem co przed wejściem;
@@ -157,11 +212,13 @@ kwatery i pinezkę (US-002 AC-5), i pokazuje, dokąd doszło przepisywanie.
 | 7 | **Arkusz grobu** (stan B), na powierzchni, z uchwytem: miniatura nagrobka 72 dp (promień 12 dp; bez zdjęcia brak miniatury), tytuł (16 sp, półgruby — jak 8 (a)), adres i ikona `group_outlined` + „3 osoby” (14 sp, kolor tekstu — W2, *Open*), **wypełniony „Pokaż grób” ze zniczem** (kolor tła na akcencie) | dolny arkusz + przycisk główny | „Pokaż grób” → [[grob]]; przeciągnięcie w górę albo dotknięcie uchwytu (cel 48 dp, czytnik: „Pokaż listę grobów”) → stan C | — | — | R2 (arkusz grobu) · D11 · D21 |
 | 8 | **Lista grobów** (stan C), pod paskiem (1), na powierzchni z uchwytem: podsumowanie „6 grobów · 14 osób” (14 sp, tekst pomocniczy, margines 16 dp) i karty (promień 16 dp, odstęp 8 dp, margines 16 dp) w kolejności wpisania. Karta, od góry: **(a) tytuł** — nazwa grobu (16 sp, półgruby, kolor tekstu, do 2 linii); bez nazwy tytułem są **osoby w grobie**: imiona i nazwiska po przecinku, ten sam krój, do 2 linii, potem „i jeszcze 2”. **(b) osoby** — tylko gdy tytułem jest nazwa: imiona i nazwiska po przecinku (14 sp, tekst pomocniczy, do 2 linii, potem „i jeszcze 2”). **(c) adres** (14 sp, kolor tekstu — W2, ten sam adres co w arkuszu 7): „Kwatera B · Rząd 4 · Miejsce 12”, a bez pinezki dopisane „· bez pinezki”; bez adresu „Bez adresu kwatery · bez pinezki”. Chevron „›” po prawej. Karta ≥ 64 dp. **(d) miniatura** — tylko gdy grób ma zdjęcie: zdjęcie nagrobka ([[grob]] D9), kwadrat **56 dp** z zaokrągleniem 8 dp, przycięty ze środka, z lewej, wyśrodkowany w pionie, odstęp 12 dp do tekstu; poza czytnikiem. Bez zdjęcia bez miniatury i bez wcięcia ([[grob]] D11). **Grób wybrany w stanie B** ma obrys 1,5 dp w akcencie | lista kart | karta → [[grob]]; przeciągnięcie w dół albo dotknięcie uchwytu (czytnik: „Pokaż mapę”) → stan B albo A | kolejność wpisania | — | AC-1 · AC-5 · R2 · decyzja autora (nazwa grobu) · US-005 AC-1 · D6, D9, D11 |
 | 9 | **„Dodaj grób”** pod listą — wypełniony, z ikoną `add`, ≥ 52 dp, przypięty na dole; lista przewija się nad nim, a ostatnia karta ma pod sobą odstęp na wysokość przycisku | przycisk główny | → [[wpis-osoby]] „nowy grób” | — | — | *What to build* 2 · D14 |
-| 10 | **„Gdzie jestem”** — okrągły przycisk 48 dp na powierzchni (`my_location`), z prawej nad paskiem grobów albo arkuszem grobu (R2). Włączony: ikona w kolorze kropki „tu jesteś”, na planie **niebieska kropka** 16 dp z obwódką w kolorze tła i **kołem dokładności** (kolor kropki, krycie 18%), obok plakietka „tu jesteś · ±4 m” (12 sp) | przycisk-ikona | włącz / wyłącz lokalizację; pierwsze użycie → systemowe pytanie o uprawnienie lokalizacji | wyłączony | brak uprawnienia → „Bez zgody na lokalizację pinezki postawisz tylko ręcznie.” | R2 · [[style-b]] *State colours* · D15 |
-| 11 | **„Popraw pinezkę”** (stan B, grób z pinezką) — pigułka na powierzchni z `edit_location_alt` w akcencie, z lewej nad arkuszem grobu (R2) | przycisk | → stan D dla tego grobu | — | — | R2 · M6 · D15 |
-| 12 | **Stan D — stawianie pinezki:** zamiast plakietek u góry karta „**Stań przy grobie.** Pinezka stanie w niebieskiej kropce. Możesz ją przesunąć — dotknij planu.” (13 sp, `my_location` w akcencie); na planie kropka i **znicz w obrysie** (miejsce jeszcze niezapisane, [[style-b]] reguła 13) w kropce; dotknięcie planu przesuwa znicz. Na dole arkusz: tytuł grobu, „dokładność GPS ±4 m · źródło pinezki: GPS” i „Anuluj” (tekstowy) · **„Zapisz pinezkę”** (wypełniony) | tryb mapy | „Zapisz pinezkę” → zapis pinezki ze źródłem i dokładnością ([[FR-001-provenance]]) → stan B z tym grobem; „Anuluj”/wstecz → poprzedni stan | pinezka w kropce | dokładność gorsza niż 15 m → pod tekstem „Słaby sygnał — przesuń pinezkę ręcznie.” | M6 · H3 · **decyzja autora** (D22) · D16 |
+| 10 | **„Gdzie jestem”** — okrągły przycisk 48 dp na powierzchni, z prawej nad paskiem grobów (A) albo arkuszem grobu (B), na wysokości „Kwater” (15) i „Popraw pinezkę” (11); w trybie D nad panelem 12a. **Trzy stany (v7, D31):** wyłączony — `my_location` w kolorze tekstu; **włączony, plan na kropce** — `my_location` w kolorze kropki „tu jesteś”; **włączony, plan odsunięty** (po przesunięciu planu) — `location_searching` w kolorze kropki. `tooltip` i opis dla czytnika „Gdzie jestem” ze stanem („włączone, ±5 m”). Na planie **niebieska kropka** 16 dp z obwódką 2 dp w kolorze tła i **kołem dokładności** (promień = dokładność podana przez telefon, w skali planu; kolor kropki, krycie 18%), obok plakietka „tu jesteś · ±5 m” (12 sp, tekst, na powierzchni, rośnie najwyżej do 1,3× — jak nazwa kwatery, reguła 13). Kropka i plakietka poza czytnikiem — stan mówi opis przycisku. Kropka przeskakuje do każdej nowej pozycji, bez animacji | przycisk-ikona | wyłączony → włącza i **jedzie planem do kropki** (płynnie, ok. 300 ms, przybliżenie co najmniej z18); plan na kropce → wyłącza; plan odsunięty → wraca do kropki. Kropka poza obrysem z marginesem (np. w domu) → plan się nie rusza, mówi o tym 10a. Pierwsze użycie → systemowe pytanie o lokalizację | wyłączony przy każdym wejściu na ekran | brak zgody → pasek komunikatu „Bez zgody na lokalizację pinezki postawisz tylko ręcznie.” (ok. 4 s); następne dotknięcie pyta jeszcze raz, jeśli system pozwala, a gdy nie — ten sam komunikat (czy otwierać ustawienia aplikacji — do sprawdzenia w planie) | R2 · [[style-b]] *State colours* · D15 · D31 |
+| 10a | **Plakietka stanu lokalizacji (v7)** — tylko przy włączonej lokalizacji, gdy kropki nie widać albo nie warto jej ufać. Z prawej pod przełącznikiem (3), na powierzchni, wys. 32 dp, 13 sp, tekst, ikona w kolorze kropki: (a) **„poza cmentarzem · 2,5 km”** — kropka poza obrysem z marginesem; odległość od środka obrysu, z jedną cyfrą po przecinku, a poniżej 1 km w metrach, zaokrąglona do dziesiątek; (b) **„Szukam pozycji…”** — telefon nie podał jeszcze pozycji; (c) **„tylko przybliżona lokalizacja”** — zgoda „Przybliżona” (Android 12+), bez kropki i bez koła, bo koło przykryłoby cały plan. **Lokalizacja wyłączona w telefonie** → zamiast plakietki pasek komunikatu „Lokalizacja w telefonie jest wyłączona.” z akcją „Włącz” (okno systemu albo ustawienia — do sprawdzenia w planie) | plakietka | — | — | — | D31 |
+| 11 | **„Popraw pinezkę”** (stan B, grób z pinezką) — pigułka jak „Kwatery” (15): wys. 40 dp w polu dotyku 48 dp (całe pole reaguje), na powierzchni, `edit_location_alt` w akcencie + „Popraw pinezkę” (14 sp, tekst), z lewej nad arkuszem grobu (R2), margines 12 dp; dla czytnika przycisk „Popraw pinezkę” | przycisk | → tryb D dla tego grobu; **pinezka startuje w zapisanym miejscu** (v7, D35) | — | — | R2 · M6 · D15 · D35 |
+| 12 | **Tryb D — „Pinezka grobu” (v7; w v4.2 „stan D”):** pasek: `close` (`tooltip` „Anuluj”), „Pinezka grobu” (18 sp, półgruby) i pod spodem tytuł grobu ([[grob]] D1; 13 sp, tekst pomocniczy). **Bez dolnego paska** ([[style-b]] reguła 12 — tryb, jak F). **U góry karta** jak w 18 — `edit_location_alt` w akcencie i instrukcja (13 sp; teksty → *States*), najwyżej ok. 22% wysokości mapy, a pod nią podpis źródła mapy. **Warstwa (plan albo zdjęcie) z poprzedniego stanu, bez przełącznika** — jak F (D36). Na planie: kwatery jak w 4, znicze innych grobów przygaszone (krycie 55%) i nieaktywne, kropka i koło (10; bez plakietki — dokładność jest w 12a), „gdzie jestem” (10) nad panelem i **znicz w obrysie** ([[style-b]] reguła 13 — miejsce jeszcze niezapisane); czubek znicza to miejsce pinezki, pod czubkiem cień 10 × 4 dp. **Gdzie się dotyka — P1 albo P2, decyzja autora na stopie #1** (*Open*, D34): **P1** — znicz stoi w kropce i idzie za nią; dotknięcie planu przenosi znicz w to miejsce i od tej chwili pinezka jest ręczna; przeciągnięcie przesuwa tylko plan. **P2** — znicz stoi na środku wolnego miejsca między kartą a panelem, a plan idzie za kropką (kropka pod czubkiem). Przeciągnięcie planu albo dotknięcie miejsca (miejsce płynnie podjeżdża pod znicz, ok. 220 ms, jak w F — droga bez przeciągania, SC 2.5.7) przechodzi na ręczne. W obu: **„gdzie jestem” (10) wraca do kropki** — pinezka znowu w kropce, z GPS. Przybliżenie startowe z18, gesty planu jak w 2 | tryb mapy | panel 12a | **start (D32):** nowa pinezka — w kropce, gdy kropka jest w obrysie; inaczej w środku strefy kwatery grobu, a bez strefy — w środku kadru. Poprawa — w zapisanym miejscu (D35) | — | M6 · H3 · **decyzja autora** (SPIKE-004 D22) · D16 · D32–D36 |
+| 12a | **Panel trybu D** na dole, na powierzchni, promień 16 dp u góry. Adres grobu ([[grob]] 4; 14 sp, tekst; bez adresu — „Bez adresu kwatery”), a pod nim **źródło, z którym pinezka się zapisze** (14 sp, tekst; ikona `place_outlined` w kolorze tekstu pomocniczego): „Pinezka: GPS ±5 m”, „Pinezka: postawiona na planie” albo „Pinezka: postawiona na zdjęciu z góry” (14, D33). **Poprawa przed zmianą:** „Teraz: GPS ±7 m · 12.10.2026”, a po zmianie „Po zapisie: postawiona na planie”. Przy złym sygnale niżej: `gps_not_fixed` w kolorze tekstu + „Słaby sygnał: ±25 m. Przesuń plan tak, żeby znicz stał na grobie.” (P2) albo „…Dotknij planu tam, gdzie jest grób.” (P1) — 14 sp, kolor tekstu, **bez akcentu i bez koloru błędu**, bo to nie błąd i nie działanie ([[style-b]] *Token roles*). Na dole „Anuluj” (tekstowy) i **„Zapisz pinezkę”** (wypełniony, na resztę szerokości) | panel + przycisk główny | „Zapisz pinezkę” → zapis pozycji, źródła, dokładności (tylko GPS) i daty → stan B z tym grobem (D36); „Anuluj” → *Navigation* | — | **słaby sygnał:** dokładność gorsza niż **15 m — próg tymczasowy** (decyzja autora 2026-10-12; ustawi go pomiar z `CURRENT_STATE.md` → *Parked*, D37); zapis możliwy, dokładność idzie do źródła. Poprawa bez zmiany → „Zapisz pinezkę” nieaktywny (D35). Błąd zapisu → nad przyciskami `error_outline` + „Nie udało się zapisać pinezki. Spróbuj jeszcze raz.” (kolor błędu), tryb zostaje | M6 · H3 · D33 · D35 · D37 |
 | 13 | **Bez internetu (M7):** plan bez zmian; plakietka przy „Zdjęciu” — `wifi_off` „bez internetu”, a wybrane „Zdjęcie” pokazuje „Zdjęcie z góry potrzebuje internetu. Plan działa bez niego.” i „Wróć do planu” | stan | — | — | — | [[NFR-001-offline]] · [[ADR-003-map-source-offline]] pkt 2 |
-| 14 | **Źródło pinezki w danych:** „GPS ±4 m · 08.10.2026” albo „zaznaczona w domu” (z planu lub zdjęcia z góry) — widać w [[grob]] pod adresem | dane | — | — | — | [[FR-001-provenance]] · [[EPIC-002-wizyta]] (każda pinezka ze źródłem i dokładnością) |
+| 14 | **Źródło pinezki w danych (v7, D33):** to, z czego wzięła się pozycja w chwili zapisu — **GPS** (pinezka w kropce, nieruszona; z dokładnością podaną przez telefon, w metrach) albo **ręcznie** na warstwie, na której pinezka stała: **plan** albo **zdjęcie z góry** (bez dokładności). Do tego **data zapisu**. Widać w [[grob]] (4) pod adresem: „Pinezka: GPS ±4 m · 12.10.2026”, „Pinezka: postawiona na planie · 12.10.2026”, „Pinezka: postawiona na zdjęciu z góry · 12.10.2026” (pinezka bez daty — bez „· data”). *(Do v6: „zaznaczona w domu” i link do [[FR-001-provenance]], wycofanego w SPIKE-004 D28. Źródło pinezki to nie źródło faktu o rodzinie.)* | dane | — | — | — | słowniczek → *pinezka* · [[data-model]] → Grave · [[EPIC-002-wizyta]] (każda pinezka ze źródłem i dokładnością) |
 | 15 | **„Kwatery” (v6)** — pigułka na powierzchni, wys. 40 dp w polu dotyku 48 dp (całe pole reaguje; dla czytnika przycisk „Kwatery” — v6.1), `pentagon_outlined` w akcencie + „Kwatery” (14 sp, tekst), z lewej nad paskiem grobów (6), margines 12 dp — miejsce „Popraw pinezkę” (11), która jest tylko w B. Kadr planu (2) pigułki nie liczy, tak jak „gdzie jestem” (10) (v6.1; *obali:* strefa rodziny w lewym dolnym rogu cmentarza schowana pod pigułką). **Tylko w stanie A i tylko wtedy, gdy jest na czym rysować:** plan (2) albo „Zdjęcie” z siecią. Przy zaślepce 2a i przy „Zdjęciu” bez sieci (13) jej nie ma | przycisk | → tryb E (16) | — | — | [[ISSUE-028-cemetery-sectors]] *What to build* 1 · D24 |
 | 16 | **Tryb E — „Kwatery” (v6):** pasek: `close` (`tooltip` „Zamknij kwatery”), „Kwatery” (18 sp, półgruby) i pod spodem nazwa cmentarza (13 sp, tekst pomocniczy). **Bez dolnego paska** ([[style-b]] reguła 12 — tryb). Plakietki i przełącznik Plan · Zdjęcie (3) zostają, bo kwaterę zaznacza się na planie albo na zdjęciu. Kadr: plan zostaje, jak był w A, gdy wszystkie strefy już są w wolnym miejscu nad arkuszem (margines 48 dp); inaczej przybliżenie maleje, aż się zmieszczą; bez stref — jak w A (v6.1). Znicze (5) widoczne w zwykłym wyglądzie i **nieaktywne** (jak [[cmentarze]] D21), żeby było widać, gdzie leżą znane groby | tryb mapy | strefa → 17b; gesty planu jak w 2 | lista (17a) | — | D24 |
 | 17 | **Arkusz kwater (tryb E)** na powierzchni, z uchwytem. **(a) Lista:** karta na kwaterę — w kolorze tła na arkuszu, promień 14 dp, odstęp 8 dp, ≥ 56 dp: „Kwatera A” (16 sp, półgruby) i pod spodem „2 groby · na planie”, „2 groby · bez strefy — tylko w adresach” albo „bez grobów · na planie” (14 sp, kolor tekstu — W2), chevron „›”; kolejność naturalna po nazwie (2, 10, A, B — liczby jako liczby, cyfry przed literami, jak w całej aplikacji — v6.1). Pod listą **wypełniony „Zaznacz kwaterę”** (`add`, ≥ 52 dp, pełna szerokość). Lista dłuższa niż pół ekranu przewija się w arkuszu. **Bez kwater:** „Na tym cmentarzu nie ma jeszcze kwater. Zaznacz te, w których leży rodzina — według planu zarządcy.” (14 sp, tekst) i „Zaznacz kwaterę”. **(b) Kwatera wybrana:** ‹ (`tooltip` „Wszystkie kwatery”), „Kwatera B” (18 sp, półgruby), ✎ (`edit_outlined`, akcent, `tooltip` „Zmień nazwę kwatery”); pod spodem ta sama linia co w karcie; przycisk z obrysem **„Narysuj strefę”** (bez strefy) albo **„Narysuj strefę od nowa”** (`pentagon_outlined` w akcencie); gdy strefa jest — przycisk tekstowy **„Usuń z planu”** (`delete_outline`, kolor tekstu — [[style-b]] reguła 14). Plan przesuwa się płynnie tak, żeby strefa stała w środku wolnego miejsca nad arkuszem w obecnym przybliżeniu, a przybliżenie maleje tylko wtedy, gdy strefa się nie mieści (v6.1) | dolny arkusz | karta → (b); ✎ → 19b; „Narysuj…” → F; „Usuń z planu” → 19c; „Zaznacz kwaterę” → 19a | — | — | ISSUE-028 *What to build* 1, 3 · D25–D27 |
@@ -189,7 +246,16 @@ osoba z dwoma pochówkami stoi w obu grobach, jak w [[grob]].
 | wczytywanie | wskaźnik postępu w środku (lokalna baza — zwykle niewidoczny) |
 | grób bez osób | może przyjść z innych danych (z interfejsu nie powstaje): tytuł karty „Grób bez wpisanych osób” w kolorze pomocniczym |
 | brak pliku zdjęcia | wpis zdjęcia jest, pliku nie ma: karta bez miniatury (o braku mówi [[grob]] → *States*) |
-| D — stawianie pinezki | 1, 2 (z kropką i zniczem w obrysie), 12 zamiast plakietek i arkuszy |
+| A, B z lokalizacją (v7) | jak A, B + kropka, koło i „tu jesteś · ±5 m” (10); przycisk 10 w kolorze kropki |
+| lokalizacja: poza cmentarzem · szukam pozycji · tylko przybliżona (v7) | jak A, B + 10a (a), (b) albo (c); plan się nie rusza |
+| lokalizacja: brak zgody · wyłączona w telefonie (v7) | jak A, B + pasek komunikatu z 10 albo 10a; przycisk 10 wyłączony |
+| D — z GPS (v7) | 12, 12a; znicz w kropce; karta: „**Stań przy grobie.** Pinezka stoi w niebieskiej kropce. Jeśli nie trafia w grób, dotknij planu tam, gdzie grób jest.” (P1) · „**Stań przy grobie.** Plan idzie za niebieską kropką, a znicz stoi w niej. Jeśli nie trafia w grób, przesuń plan albo dotknij miejsca grobu.” (P2); 12a: „Pinezka: GPS ±5 m” |
+| D — ręcznie (v7) | 12, 12a; karta: „Dotknij planu tam, gdzie jest grób. ◎ postawi pinezkę w Twojej pozycji.” (P1) · „Przesuń plan tak, żeby znicz stał na grobie. Możesz też dotknąć miejsca na planie — przesunie się pod znicz. ◎ wraca do Twojej pozycji.” (P2), w miejscu ◎ ikona `my_location`; 12a: „Pinezka: postawiona na planie” (albo „na zdjęciu z góry”) |
+| D — słaby sygnał (v7) | D z GPS + linia „Słaby sygnał: ±N m…” w 12a (próg tymczasowy 15 m, D37) |
+| D — bez zgody · tylko przybliżona (v7) | D ręcznie; karta: „Bez zgody na lokalizację pinezkę postawisz ręcznie: …” (dalej tekst D ręcznie bez zdania o ◎) · „Telefon podaje tylko przybliżoną lokalizację — postaw pinezkę ręcznie. Dokładną włączysz w ustawieniach telefonu.” |
+| D — szukam pozycji · poza cmentarzem (v7) | D ręcznie, pinezka w środku strefy kwatery grobu (D32). W 12a pod źródłem (14 sp, tekst pomocniczy): „Szukam pozycji…” albo „Jesteś poza cmentarzem (2,5 km).” — w trybie D plakietki 10a nie ma, bo jej miejsce zajmuje karta. Gdy pozycja przyjdzie w obrysie, a pinezki nikt nie ruszył, pinezka przeskakuje do kropki (z GPS) |
+| D — poprawa przed zmianą (v7) | D ręcznie w zapisanym miejscu; 12a: „Teraz: …”, „Zapisz pinezkę” nieaktywny (D35) |
+| błąd zapisu pinezki (v7) | D zostaje; w 12a nad przyciskami `error_outline` + „Nie udało się zapisać pinezki. Spróbuj jeszcze raz.” (kolor błędu) |
 | bez internetu | 1–6, 13; „Kwatery” (15) tylko na planie |
 | A z kwaterami (v6) | 1–6 ze strefami (4) i „Kwatery” (15) |
 | E — lista kwater (v6) | 16, 2–5 (strefy, znicze nieaktywne), 17a |
@@ -256,6 +322,34 @@ v6 — tryb E (lista kwater) i tryb F (zaznaczanie strefy, kandydat K1); K2 i K3
 └──────────────────────────────────┘   └──────────────────────────────────┘
 ```
 
+v7 — stan B z lokalizacją i „Popraw pinezkę”; tryb D z GPS (kandydat P2). P1 — prototyp `issue-029-pinezka.html`:
+```
+┌──────────────────────────────────┐   ┌──────────────────────────────────┐
+│ ←  Cmentarz parafialny w       ✎ │   │ ✕  Pinezka grobu                 │
+│    Wymyślonowie · Wymyślonów     │   │    Grób rodzinny Zmyślonych      │
+│ (✓ Plan offline)  [Plan|Zdjęcie] │   │ ╭──────────────────────────────╮ │
+│ © OpenStreetMap                  │   │ │⌖ Stań przy grobie. Plan idzie│ │
+│  ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─┐          │   │ │  za niebieską kropką, a znicz│ │
+│  │  ⚱                 │          │   │ │  stoi w niej. Jeśli nie tra… │ │
+│  │     ⚱wybrany  ●    │          │   │ ╰──────────────────────────────╯ │
+│  │Kwatera B           │          │   │  ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─┐       │
+│  └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─┘          │   │  │   ⚱(przygaszony)     │       │
+│ (⌖ Popraw pinezkę)          (◎)  │   │  │────────────────────  │       │
+│ ╭──────────────────────────────╮ │   │  │        ⚲  ← znicz w   │       │
+│ │ Grób rodzinny Zmyślonych     │ │   │  │        ●    obrysie,  │       │
+│ │ Kwatera B · Rząd 4 · Miej… 12│ │   │  │Kwatera B   w kropce  │       │
+│ │ 👥 2 osoby                    │ │   │  └ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─┘  (◉) │
+│ │ ╭──────────────────────────╮ │ │   │ ╭──────────────────────────────╮ │
+│ │ │     ⚱  Pokaż grób        │ │ │   │ │ Kwatera B · Rząd 4 · Miej… 12│ │
+│ │ ╰──────────────────────────╯ │ │   │ │ ⌖ Pinezka: GPS ±5 m          │ │
+│ ╰──────────────────────────────╯ │   │ │ Anuluj  ╭──────────────────╮ │ │
+│  Mapa      Osoby      Drzewo     │   │ │         │  Zapisz pinezkę  │ │ │
+└──────────────────────────────────┘   │ ╰─────────╰──────────────────╯─╯ │
+                                       └──────────────────────────────────┘
+```
+● — kropka „tu jesteś” z kołem dokładności; w A i B obok niej plakietka „tu jesteś · ±5 m” (10). ◎ — „gdzie jestem”, ◉ — włączone,
+plan na kropce.
+
 ## Tempo
 Rekordem jest **grób**: ok. 50 na całe notatki (G6, [[NT-002-transcribe-the-notes]]).
 - **Nowy grób:** stan A → „Dodaj grób” = **1 dotknięcie** (jak w v3), potem formularz pierwszej osoby ([[wpis-osoby]]
@@ -270,6 +364,12 @@ Rekordem jest **grób**: ok. 50 na całe notatki (G6, [[NT-002-transcribe-the-no
   (przesunięcie albo dotknięcie planu + „Dodaj róg”) = 8 ruchów; **K2** 4 dotknięcia; **K3** 4 przeciągnięcia (albo 8 dotknięć).
   Razem 8–12 dotknięć na kwaterę. Wpis jest rzadki, więc tempo nie rozstrzyga między kandydatami — rozstrzyga, czy róg staje
   tam, gdzie autor celował, i ile pomyłek trzeba cofać.
+- **Pinezka (v7):** rekordem jest grób na wizycie — ok. 50 na całe notatki, przy grobie, często w zimnie i jedną ręką. Z [[grob]]:
+  „Postaw pinezkę” → (stoisz przy grobie) → „Zapisz pinezkę” = **2 dotknięcia**, pierwszy raz +1 na zgodę systemu. Z mapy, grób
+  bez pinezki: pasek → karta → „Postaw pinezkę” → „Zapisz pinezkę” = 4. Ręczna poprawka: **P1** +1 dotknięcie, **P2** +1
+  przeciągnięcie albo +1 dotknięcie. Tempo nie rozstrzyga między P1 a P2 — rozstrzyga, czy pinezka staje tam, gdzie autor
+  celował (palec przy P1 zasłania przy z19 ok. 8–9 m planu, cel 48 dp — *Open*, znicze), i czy idąc z telefonem nie przestawi
+  jej przypadkiem.
 
 ## Style B rules applied
 - **Reguła 1:** jeden wypełniony przycisk w każdym stanie — A: „Dodaj grób”, B: „Pokaż grób”, C: „Dodaj grób”.
@@ -292,8 +392,19 @@ Rekordem jest **grób**: ok. 50 na całe notatki (G6, [[NT-002-transcribe-the-no
     kwatery; „Usuń z planu” bez koloru błędu, „Zostaw” w akcencie;
   - **reguła 10:** okno tylko przy porzuceniu rogów i przy usunięciu strefy;
   - **gesty:** K1 i K3 mają drogę bez przeciągania (SC 2.5.7); K2 wymaga przycisków „+ −” (SC 2.5.1).
+- **Pinezka (v7):**
+  - **reguła 1:** jeden wypełniony przycisk w D — „Zapisz pinezkę”; „Popraw pinezkę” to pigułka jak „Kwatery”;
+  - **reguła 12:** tryb D bez dolnego paska, jak E i F;
+  - **reguła 13:** znicz w obrysie = miejsce niezapisane; znicze innych grobów przygaszone; kropka „tu jesteś” w kolorze stanu
+    (*State colours*), nigdy w akcencie;
+  - **reguła 7 i *Token roles*:** słaby sygnał to fakt w kolorze tekstu, bez akcentu (akcent nie dla ostrzeżeń) i bez koloru błędu;
+    każdy brak lokalizacji ma drogę naprzód — ręczne stawianie;
+  - **gesty:** P2 ma drogę bez przeciągania (dotknięcie, jak F); P1 jej nie potrzebuje (SC 2.5.7).
 - **Tokeny:** zieleń offline `stateOk` (w `theme.dart` od [[ISSUE-022-app-skeleton-tabs-people-settings]]); v5 i v6 bez nowych
-  tokenów. **Pomiar v6** (wzór WCAG, 2026-10-12): linia kwatery (tekst 75%) 6,16:1 na powierzchni; nazwa kwatery 10,02:1; akcent
+  tokenów. **v7 — nowy token: kropka „tu jesteś”** (`#5EA2E6`, propozycja z [[style-b]] *State colours* v1.16; wpisze `dev` w
+  `theme.dart`, np. `GrobingColors.here`). Pomiar ([[style-b]] v1.16): 6,99:1 na tle, 6,38:1 na powierzchni (SC 1.4.11 ≥ 3:1);
+  znicz w obrysie (akcent) 8,04:1 na powierzchni; tekst 12a 10,02:1, ikona źródła (tekst pomocniczy) 5,01:1 na powierzchni.
+  Koło dokładności (krycie 18%) nie niesie informacji samo — liczbę mówią plakietka i 12a (SC 1.4.1). **Pomiar v6** (wzór WCAG, 2026-10-12): linia kwatery (tekst 75%) 6,16:1 na powierzchni; nazwa kwatery 10,02:1; akcent
   (wybrana, rysowana) 8,04:1 na powierzchni; stara strefa (obrys) 3,10:1; akcent wobec linii kwatery tylko 1,31:1, więc wybór
   niesie też grubość (2,5 dp) i nazwa w arkuszu 17b (SC 1.4.1). Kontrast: tytuł karty 10,02:1, linie pomocnicze 5,01:1 na powierzchni (W2 z *Open*: 10,02:1), zieleń 8,19:1 na
   powierzchni, alejki (obrys) 3,10:1 na powierzchni (SC 1.4.11).
@@ -314,6 +425,11 @@ Rekordem jest **grób**: ok. 50 na całe notatki (G6, [[NT-002-transcribe-the-no
 | ISSUE-028 *What to build* 3 — poprawa i usunięcie | 17b, 18, 19b, 19c | ✎ zmienia nazwę (z linią o adresach), „Narysuj strefę od nowa” rysuje na starej strefie, „Usuń z planu” zdejmuje strefę, a adresy grobów zostają |
 | ISSUE-028 — kwatera wraca po odtworzeniu z kopii | 4, 17a | po odtworzeniu ta sama lista kwater i te same strefy na planie — sprawdza `qa` (dane, nie ekran) |
 | US-007 AC-5 — bez planu | 2a (b), 6 | cmentarz dodany bez sieci: „pobierze się, gdy będzie internet”, „Pobierz teraz”, a pasek prowadzi do listy |
+| US-008 AC-1 — gdzie jestem | 10, 10a | ◎ → (pierwszy raz) pytanie systemu → niebieska kropka z kołem i „tu jesteś · ±5 m”, plan jedzie do kropki; „Nie zezwalaj” → „Bez zgody na lokalizację pinezki postawisz tylko ręcznie.”, a tryb D działa ręcznie |
+| US-008 AC-2 — postaw pinezkę | [[grob]] 4 → 12, 12a, 14 | grób bez pinezki → „Postaw pinezkę” → znicz w obrysie w kropce; dotknięcie (P1) albo przesunięcie planu (P2) go przenosi; „Zapisz pinezkę” → stan B z nowym zniczem, a w [[grob]] „Pinezka: GPS ±5 m · 12.10.2026” albo „postawiona na planie · …” |
+| US-008 AC-3 — popraw pinezkę | 11 → 12, 12a | grób z pinezką: znicz → B → „Popraw pinezkę” → ten sam tryb, start w zapisanym miejscu, „Teraz: …”; po zmianie „Zapisz pinezkę” zapisuje nowe miejsce |
+| US-008 AC-4 — bez internetu | 10, 12, 13 | w trybie samolotowym: kropka, koło i tryb D działają na planie offline; „Zdjęcie” mówi „bez internetu” (13) |
+| ISSUE-029 — pinezka z datą wraca po odtworzeniu | 5, 14 → [[grob]] 4 | po odtworzeniu ten sam znicz i ta sama linia „Pinezka: …” z datą — sprawdza `qa` (dane, nie ekran) |
 
 ## Decisions
 - **D1 — „jak R2 bez satelity” = arkusz grobów na cały ekran, bez pola mapy.** *(Zastąpione w v4 przez D10–D11.)* Groby z notatek nie mają
@@ -445,8 +561,52 @@ Rekordem jest **grób**: ok. 50 na całe notatki (G6, [[NT-002-transcribe-the-no
   Dlaczego tak: palec zasłania miejsce, które wskazuje, a dotknięcie, które stawia róg, konkuruje z gestami mapy (przesunięcie,
   podwójne dotknięcie). W samej aplikacji obowiązuje jednak odwrotny wzorzec: wskazanie cmentarza ([[cmentarze]] 16) i pinezka (12)
   stawia się dotknięciem.
+- **D31 — „gdzie jestem” ma trzy stany i jedzie planem do kropki** (v7, 10, 10a). Wyłączony → włącza i centruje; plan na kropce →
+  wyłącza; plan odsunięty → wraca do kropki. Jedno miejsce na trzy potrzeby: włączyć, wrócić, wyłączyć. Kropka poza obrysem nie
+  przesuwa planu, bo przesuwanie jest ograniczone do obrysu (2), a w domu plan zostałby pusty — plakietka mówi „poza cmentarzem”
+  i jak daleko. Decyzja projektowa, bo SPIKE-004 pokazał tylko włącz/wyłącz. *Obali:* przy bramie autor chce widzieć cały
+  cmentarz z kropką — wtedy pierwsze dotknięcie centruje bez przybliżania.
+- **D32 — tryb D sam włącza lokalizację; bez kropki pinezka zaczyna w strefie kwatery grobu** (v7, 12). „Postaw pinezkę” przy
+  grobie znaczy „tu jestem”, więc wejście do D to żądanie lokalizacji z D15, a nie wyjątek od niego. Pierwsze wejście pyta o zgodę.
+  Bez kropki (w domu, bez zgody, bez sygnału) pinezka startuje w środku strefy kwatery z adresu grobu — tak wygląda kierunek
+  autora ([[EPIC-002-wizyta]] → *Open questions*: adres → kwatera → pinezka). Bez strefy startuje w środku kadru. *Obali:* w domu
+  pytanie o lokalizację przy stawianiu pinezki na zdjęciu z góry przeszkadza — wtedy lokalizacja w D dopiero po ◎.
+- **D33 — źródło pinezki to to, z czego wzięła się pozycja, a nie to, gdzie był autor** (v7, 14, 12a; pytania (a) i (b) z
+  [[ISSUE-029-pin-on-site-gps]]). Pinezka nieruszona w kropce to **GPS** z dokładnością. Pinezka przesunięta ręką — także o metr,
+  także na cmentarzu — to **„postawiona na planie”** albo **„na zdjęciu z góry”** (warstwa, na której stała), **bez dokładności**,
+  bo to miejsce wybrane przez autora, a nie pomiar. Kanon: słowniczek → *pinezka*: „postawiona przez autora na planie albo na
+  ortofotomapie / GPS na miejscu”, czyli trzy źródła. „Zaznaczona w domu” z v4.2 odpada, bo ręczna poprawka przy grobie też jest
+  ręczna. Data — przy każdym źródle. **Dla danych** (`planning`): enum `PositionSource` ma dziś `satellite` i `gps`, brakuje
+  wartości „plan”, a daty pinezki nie ma w schemacie. *Obali:* autor chce odróżnić poprawkę przy grobie od poprawki w domu —
+  wtedy dopisek „na miejscu”, gdy kropka była w obrysie.
+- **D34 — gdzie się dotyka w trybie D: P1 albo P2 — decyzja autora na stopie #1** (v7, 12; retro: pokazać „gdzie się dotyka”, a nie
+  tylko co widać — ISSUE-024). **Rekomendacja `ui`: P2** — ten sam ruch co rysowanie kwatery na tym samym planie (K1, wybór
+  autora 2026-10-12): palec nie zasłania miejsca, idąc z telefonem nie przestawi się pinezki przypadkiem, a plan idący za kropką
+  znamy z nawigacji. **P1** (prototyp SPIKE-004 i wskazanie cmentarza, [[cmentarze]] 16) daje jedno dotknięcie na poprawkę, ale
+  opuszka przy z19 zasłania ok. 8–9 m planu, czyli tyle, ile sama poprawka GPS. *Obali P2:* na prototypie autor szuka pinezki, którą
+  da się złapać palcem — wtedy P1.
+- **D35 — poprawa zaczyna od zapisanej pinezki** (v7, 11, 12a). Zapisana pinezka mogła być postawiona starannie, a kropka ±15 m by
+  ją zgubiła. ◎ przenosi ją do kropki jednym dotknięciem. „Zapisz pinezkę” nieaktywny, dopóki nic się nie zmieni, jak „Gotowe” w F
+  przed trzecim rogiem. *Obali:* autor przy każdej poprawce najpierw dotyka ◎ — wtedy start w kropce.
+- **D36 — tryb D jak tryb F; po zapisie mapa z grobem** (v7, 12; [[style-b]] reguła 12). Pasek z ✕, bez dolnego paska, warstwa z
+  poprzedniego stanu bez przełącznika — ten sam wzorzec co F, więc drugi tryb na planie nie uczy nowego układu. „Zapisz pinezkę” →
+  stan B z nowym zniczem także po wejściu z [[grob]] (D22 z SPIKE-004), bo nowy znicz na mapie jest potwierdzeniem zapisu. Wyjście
+  bez zapisu nie pyta, bo jedna pinezka to mało pracy do stracenia (F pyta o rogi, 19d). *Obali:* autor po zapisie z grobu chce
+  wrócić do grobu, np. żeby od razu zrobić zdjęcie nagrobka — wtedy powrót tam, skąd przyszedł.
+- **D37 — słaby sygnał: próg tymczasowy 15 m** (v7, 12a; decyzja autora 2026-10-12 w `/pm`: budowa przed pomiarem, żeby jedna
+  wizyta dała pomiar i sprawdzenie w terenie). Komunikat jest faktem w kolorze tekstu, a zapis zostaje możliwy, bo słaby sygnał
+  przy grobie to wciąż lepiej niż brak pinezki, a dokładność idzie do źródła. Próg to jedna stała. *Obali:* pomiar przy 3 grobach
+  (`CURRENT_STATE.md` → *Parked*) — próg ustawia się na zmierzoną wartość, a jeśli kropka nie trafia nawet w kwaterę (D16 →
+  *Obali*), pinezka zaczyna od kwatery, nie od GPS.
 
 ## Open
+- ✅ **Rozstrzygnięte 2026-10-12 na stopie #1 [[ISSUE-029-pin-on-site-gps]] (autor: „ok”): P2** — celownik, plan pod zniczem.
+  Element 12 obowiązuje w wariancie P2, a teksty karty i 12a — w wariancie P2. Decyzje D31–D33, D35–D37 potwierdzone. Pierwotne
+  pytanie: **gdzie się dotyka w trybie D** (D34). Klikalny prototyp `issue-029-pinezka.html`, panel 2:
+  - **P1 — dotknięcie przesuwa znicz.** Koszt: palec zasłania miejsce (ok. 8–9 m planu przy z19); jedno dotknięcie na poprawkę.
+    Tracimy spójność z rysowaniem kwatery (K1);
+  - **P2 — celownik, plan pod zniczem** (rekomendacja). Koszt: przy dużej poprawce przesuwanie zamiast dotknięcia (albo dotknięcie,
+    które przesuwa miejsce pod znicz). *Obali:* autor na prototypie szuka pinezki do złapania palcem.
 - ✅ **Rozstrzygnięte 2026-10-12 na stopie #1 [[ISSUE-028-cemetery-sectors]] (autor: „tak”):** **K1** (celownik i „Dodaj róg”),
   **W-a** (odnośnik — [[ADR-016-sector-record-and-grave-link]]), **adres grobu w ISSUE-028** ([[grob]] v6). Element 18 obowiązuje w
   wariancie K1, a 19b — w wariancie W-a. Pierwotne opisy pytań:
@@ -499,13 +659,15 @@ Rekordem jest **grób**: ok. 50 na całe notatki (G6, [[NT-002-transcribe-the-no
   Decyzja autora trafi do NFR-004 (miara), [[style-b]] (*Thresholds*: z kandydata miara obowiązująca na ekranach wizyty) i
   [[grob]] (*Known gaps*: te same linie przy M4).
 - ⚠️ OPEN — **dokładność GPS przy grobie** (ile metrów, czy kropka trafia w kwaterę) — mierzy wizyta na cmentarzu
-  (`CURRENT_STATE.md` → *Parked*, SPIKE-001 D5). Od wyniku zależy próg „słaby sygnał” (element 12) — [[US-008-pinezka-na-miejscu]].
+  (`CURRENT_STATE.md` → *Parked*, SPIKE-001 D5). Od wyniku zależy próg „słaby sygnał” (element 12a) — [[US-008-pinezka-na-miejscu]].
+  **Nie blokuje budowy (v7):** do pomiaru próg tymczasowy 15 m (D37, decyzja autora 2026-10-12).
 - **Nie do `ui` — czy plan wchodzi do kopii** (`planning`, kandydat na ADR). Widoczny skutek: jeśli plan nie wchodzi do
   kopii, po odtworzeniu na nowym telefonie każdy cmentarz pokazuje (a) albo (b), aż telefon dostanie internet.
 - **Znicze sąsiednich grobów nachodzą na siebie** (przegląd ISSUE-027, odstępstwo 4): przy z19 na 52° N 1 dp to ok. 0,18 m, więc
   cel 48 dp ma ok. 9 m, a znicz ok. 5 m — groby obok siebie zasłonią się nawet przy największym przybliżeniu, a łączenie w znicz
   z liczbą (jak na mapie Polski) ich nie rozdzieli. Kandydat dla [[US-008-pinezka-na-miejscu]]: znicz z liczbą otwiera arkusz z
-  listą tych grobów. Do tego czasu wybór przez listę (C).
+  listą tych grobów. Do tego czasu wybór przez listę (C). **v7:** kandydat poza [[ISSUE-029-pin-on-site-gps]] →
+  [[ISSUE-030-sector-on-a-visit]] (`draft`, razem z „Pokaż kwaterę” i listą grobów kwatery z D29).
 - **Główne i boczne alejki według rodzaju z OSM** (przegląd ISSUE-027, pkt 9): na publicznym cmentarzu testowym prawie wszystkie
   alejki mają w OSM `footway`, więc rysują się jako boczne (2 dp), także te, które są główne na miejscu. Kandydat: grubość z
   `width`/`surface` albo jedna grubość dla wszystkich — decyzja, gdy autor zobaczy plany swoich cmentarzy.

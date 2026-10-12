@@ -33,9 +33,10 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   3. ~~[[ISSUE-024-person-view]]~~ — zamknięte 2026-10-12 (*Recently done*);
   4. ~~[[ISSUE-023-poland-map-r1-cemetery-photo]]~~ — zamknięte 2026-10-12 (*Recently done*);
   5. ~~[[US-007-mapa-cmentarza]]~~ — zamknięta 2026-10-12 (~~ISSUE-027~~, ~~ISSUE-028~~; *Recently done*);
-  6. **następna: [[US-008-pinezka-na-miejscu]]** — pinezka z GPS (jeszcze nierozpisana na pozycje; dokładność czeka na pomiar z
-     *Parked*). Kandydaci z [[cmentarz]] D29: „Pokaż kwaterę” przy grobie bez pinezki i lista grobów kwatery;
-  7. [[SPIKE-002-tree-on-a-phone]] → drzewo, czas, „Połącz dwie osoby” ([[drzewo]], EPIC-003) — od ISSUE-024 także **słownik nazw
+  6. ~~[[US-008-pinezka-na-miejscu]]~~ — zamknięta 2026-10-12 (~~ISSUE-029~~; *Recently done*). **Teren czeka:** build release na
+     telefonie przed zaduszkami (~2026-11-02) → *Parked* (cel autora z `/pm`: jedna wizyta da pomiar i sprawdzenie AC-1, AC-4).
+     Kandydaci z [[cmentarz]] D29 i nachodzące znicze → [[ISSUE-030-sector-on-a-visit]] (`draft`, **czeka na wizytę** — D5, stop #1);
+  7. **następna (po retro — licznik niżej): [[SPIKE-002-tree-on-a-phone]]** → drzewo, czas, „Połącz dwie osoby” ([[drzewo]], EPIC-003) — od ISSUE-024 także **słownik nazw
      złożonych i dawne AC-6** („ciotka”, „stryj”, „siostra cioteczna babci żony”) i „Pokaż w drzewie” w widoku osoby (SPIKE-002 →
      *Input from ISSUE-024*);
   8. [[US-006-eksport-dla-rodziny]] i [[NT-007-hand-over-note]];
@@ -84,6 +85,11 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     wszystkich ekranów z osobami i ich testów. Kandydat na małą pozycję;
   - **„Stan danych” mówi „Zapisana w Dysku na telefonie” także przy kopii w Pobranych** (ISSUE-022, B6) — jedna linia z
     `backupPlace`, poza zakresem ISSUE-022.
+  - **mapa cmentarza przy tekście 200% na 360 × 640 dp** ([[ISSUE-029-pin-on-site-gps]] → *Verification*, przegląd `ui` m8): plan w A
+    jest bardzo niski, „Kwatery” przykrywa „Plan offline” i „© OpenStreetMap” — z [[ISSUE-027-cemetery-map-plan-photo-states]] (D14 →
+    *Obali*) i [[ISSUE-028-cemetery-sectors]]. Kandydat na małą pozycję **przed instalacją MVP**;
+  - [[ISSUE-030-sector-on-a-visit]] (`draft`) — „Pokaż kwaterę”, lista grobów kwatery, nachodzące znicze; **czeka na wizytę** (D5 stopu #1
+    ISSUE-029).
 - **Przed pierwszymi prawdziwymi danymi w aplikacji:** kopia jest gotowa (US-001 ✅), poprawki z retro 2 też
   ([[ISSUE-021-small-fixes-after-retro-2]] ✅). Zostały hasło i
   miejsce pliku klucza w notce przekazania ([[NT-007-hand-over-note]]): utrata któregoś z nich = utrata
@@ -104,6 +110,10 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     4 nazwiska mają niepewny odczyt pisma (oznaczone na liście). Poprawki — w pliku albo w czacie z agentem. Każde nowe
     nazwisko z przepisywania warto dopisać: rdzeń działa od następnego `git add`;
   - opcjonalnie zmiana hasła klucza (README `grobing-code` → *Podpis wydania*);
+  - **build release na telefon przed wizytą na cmentarzu (~2026-11-02)** — README `grobing-code` → *Lokalizacja* (`flutter build apk
+    --release --split-per-abi --target-platform android-arm64`, `adb install -r`), albo agent przez `adb`, gdy podłączysz telefon. Podpisany
+    kluczem wydania, więc MVP wejdzie później jako aktualizacja. Na telefonie tylko wymyślone dane; **przed prawdziwymi danymi — wyczyść
+    dane aplikacji** (Ustawienia → Aplikacje → Grobing → Pamięć);
   - po SPIKE-003: usunąć folder `Grobing-spike` na Dysku (wymyślone dane, zaszyfrowane). Dwa pliki `grobing-*.age`
     z Pobranych na PC agent przeniósł do Kosza Windows 2026-10-08, na prośbę autora. Folderów na Dysku agent nie
     usunął, bo podłączony do Claude Dysk Google to inne konto niż to na emulatorach;
@@ -124,7 +134,8 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   paczki (decyzja autora 2026-10-07); treść wychodzących zmian sprawdza strażnik treści ([[ISSUE-020-content-guard]]) przy każdym `git add`/`commit`.
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **9** (ostatnie retro: [[2026-10-08-retro-02]]). Co **10** →
+- Zamknięte pozycje od ostatniego retro: **10** (ostatnie retro: [[2026-10-08-retro-02]]) — **🔔 sygnał dla `pm`: retro i pytanie o
+  3–5 nośnych faktów przed następną pozycją** (po ISSUE-029, 2026-10-12). Co **10** →
   retro + pytanie o 3–5 nośnych faktów (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**;
   podbija go `docs` przy zamknięciu, a zeruje go retro.
 - Do retro (zebrane po drodze, bez decyzji):
@@ -206,6 +217,15 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     z tej listy coraz pilniejszy;
   - **stop #2 pominięty w całości** (ISSUE-028) — drugi raz z rzędu bez sprawdzenia w ręce (ISSUE-024 krok 3). Kandydat: zapytać, czy stop
     #2 przy pozycji z nowym gestem ma zostać obowiązkowy.
+  - **`python -I -` ósmy raz** ([[ISSUE-029-pin-on-site-gps]], `qa`) — doklejone do komendy poprawiającej test; zawisło, zatrzymane od razu,
+    bez skutku. Hook `PreToolUse` z tej listy — najpilniejszy kandydat retro 3;
+  - **przegląd `ui` znalazł 3 MAJOR w stanach, których przejście AC `dev` nie pokazało** (ISSUE-029: brak kropki, brak mapy, „Zdjęcie” bez
+    sieci) — przejście szło główną drogą. Kandydat: w przejściu AC `dev` stany z *States* specyfikacji, każdy ze zrzutem;
+  - **testy widżetów z udawaną lokalizacją złapały dwa błędy, których nie złapał emulator** (◎ bez wyjścia przy „Przybliżonej”, kontroler
+    animacji tworzony w `dispose()`) — emulator i testy uzupełniają się;
+  - **`adb emu geo fix` bez wysokości i satelitów nie zmieniał pozycji** — kosztowało rundę; zapisane w README i w pamięci emulatora;
+  - **stop #2: autor przeszedł inną drogą niż krok** (poprawił pinezkę zamiast postawić nową) — ten sam mechanizm, „ok” sprawdzone na
+    urządzeniu; krok 2 (◎) znów bez śladu.
 
   Tematy z poprzedniego okresu rozliczyło [[2026-10-08-retro-02]] (R1–R10); wcześniejsze [[2026-10-06-retro-01]].
 
@@ -215,12 +235,51 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   aleję; (c) czy przy bramie wisi plan z kwaterami. Odpowiedź w czacie: **same liczby i tak/nie**, bez nazw i
   położeń · warunek obudzenia: **najbliższa wizyta na cmentarzu** · 2026-10-08 ([[SPIKE-001-map-source-offline]] D5;
   mierzy H3 i H9 przed budową pinezek w [[EPIC-002-wizyta]]). Prawdopodobna okazja: wyjazd autora na zaduszki
-  (~2026-11-02, ten sam co rozmowa z babcią — *In progress*).
+  (~2026-11-02, ten sam co rozmowa z babcią — *In progress*). **Krok w terenie [[ISSUE-029-pin-on-site-gps]] (D4, 2026-10-12):** z buildem
+  release na telefonie, na wymyślonym grobie — kropka i jej dokładność przy 3 grobach, pinezka postawiona i poprawiona, tryb samolotowy,
+  czytelność w słońcu ([[NFR-004-czytelnosc-w-sloncu]]); wynik ustawia próg „słaby sygnał” (`weakSignalM`, dziś tymczasowo 15 m) i decyduje
+  o [[ISSUE-030-sector-on-a-visit]]. Odpowiedź w czacie: same liczby i tak/nie. **Ta sama wizyta** sprawdzi w terenie
+  [[ISSUE-029-pin-on-site-gps]] (build release na telefonie, wymyślony grób) — cel autora z 2026-10-12.
 
 Format wpisu: `źródło (babcia / cmentarz X) · pytanie bez danych rodziny · warunek obudzenia
 (zdarzenie) · data zapytania`. **Odpowiedź z faktami o rodzinie trafia do aplikacji, nie tutaj.**
 
 ## Recently done
+- 2026-10-12 — [[ISSUE-029-pin-on-site-gps]] zamknięte, a z nim **[[US-008-pinezka-na-miejscu]]** (werdykt US = werdykt jedynej pozycji:
+  APPROVED, self-check, z uwagami). **Pinezkę da się postawić przy grobie:**
+  - **„gdzie jestem”** na planie: niebieska kropka z kołem dokładności i „tu jesteś · ±5 m”, trzy stany przycisku (włącz i do kropki ·
+    wyłącz · wróć do kropki), poza cmentarzem plakietka z odległością, zgoda „Przybliżona” bez kropki, odmowa i blokada z drogą przez
+    ustawienia ([[cmentarz]] v7.1, 10, 10a);
+  - **tryb „Pinezka grobu”** w wariancie **P2** (celownik, plan pod zniczem — decyzja autora na stopie #1): z grobu „Postaw pinezkę”, z
+    arkusza „Popraw pinezkę”; z GPS plan idzie za kropką, przesunięcie albo dotknięcie robi pinezkę ręczną; słaby sygnał od 15 m
+    (tymczasowo); bez internetu działa; po zapisie mapa z nowym zniczem;
+  - **źródło pinezki = skąd pozycja** (D33): „Pinezka: GPS ±5 m · 12.10.2026”, „postawiona na planie · …”, „postawiona na zdjęciu z
+    góry · …” w widoku grobu ([[grob]] v7);
+  - **schemat v12:** data pinezki i źródło `plan` ([[data-model]]); migracja v11→v12 z testem, na Twoich danych testowych liczby bez
+    zmian; próbne odtworzenie kopii v12 na drugim emulatorze — odcisk zgodny, pinezka z datą bez sieci;
+  - **pozycja tylko z satelitów**, własnym kanałem, bez usług Google i bez nowej zależności, nigdy w logu
+    ([[ADR-017-location-from-gnss-only]], [[NFR-005-dane-nie-opuszczaja-telefonu]]); komunikat [[osoba]] D9 przy „Pochówku” grobu bez
+    pinezki wrócił.
+
+  Przegląd `ui`: 0 BLOCKER, 3 MAJOR (karta „Stań przy grobie” bez kropki, zapis poprawki bez ruchu, zapis pinezki, której nie widać), 9
+  MINOR — MAJOR i 7 MINOR poprawione przed stopem #2; testy `qa` znalazły dwa błędy aplikacji (◎ nie dawał się wyłączyć przy „Przybliżonej”,
+  wyjątek przy zamknięciu trybu bez mapy) — poprawione. Stop #2 „ok”: poprawa pinezki sprawdzona na urządzeniu, trzy stany ◎ bez śladu.
+  Werdykt `qa`: APPROVED (self-check, z uwagami). Testy: 692. Licznik retro: 9 → 10.
+
+  **Dla autora:**
+  - **teren** — build release na telefonie przed ~2026-11-02 (*Autor, poza sesją*) i krok przy grobach (*Parked*);
+  - `Medium_Phone`: release v12 na Twoich danych testowych, kopia skonfigurowana od nowa — **nowe hasło testowe** (wymyślone, w tej
+    sesji), pliki `grobing-klucz-029.age` i `grobing-kopia-029.age` w Pobranych; grób „Jozef” ma pinezkę z Twojej poprawki, „Grob
+    wymyslonych” — bez pinezki;
+  - `Grobing_Restore`: release v12 z danymi z kopii `-029`;
+  - znana luka: przy tekście 200% na 360 × 640 dp plan w A jest bardzo niski, a „Kwatery” przykrywa plakietki (z ISSUE-027/028; *Poza tą
+    kolejnością*);
+  - prototyp `issue-029-pinezka.html`, zrzuty i kopie `-029` leżą poza repo (katalog tymczasowy sesji `8b388e89-…`) — do kosza.
+- 2026-10-12 — [[US-008-pinezka-na-miejscu]] rozpisana na **[[ISSUE-029-pin-on-site-gps]]** (AC-1–AC-4: „gdzie jestem”, tryb D,
+  „Postaw pinezkę”, „Popraw pinezkę”, data pinezki, offline) i **[[ISSUE-030-sector-on-a-visit]]** (`draft`: „Pokaż kwaterę”, lista
+  grobów kwatery, nachodzące znicze — do decyzji autora) (`docs`, auto-flow po `pm`). Jedna pozycja, bo cztery AC dzieją się w
+  jednym trybie mapy, który prototyp pokazał. Podział zaproponował łańcuch, więc na stopie #1 autor może go zmienić. To rozpisanie,
+  nie zamknięta pozycja, więc licznik retro bez zmian. Rozpisanie wejdzie do commita paczki ISSUE-029.
 - 2026-10-12 — [[ISSUE-028-cemetery-sectors]] zamknięte, a z nim **[[US-007-mapa-cmentarza]]** (werdykt US: APPROVED, niezależny
   przegląd, z uwagami). **Kwatery autora są na planie, a adres grobu da się wpisać:**
   - **tryb „Kwatery”** (pigułka na planie): lista kwater cmentarza → „Zaznacz kwaterę” → nazwa → rogi **celownikiem i „Dodaj róg”**

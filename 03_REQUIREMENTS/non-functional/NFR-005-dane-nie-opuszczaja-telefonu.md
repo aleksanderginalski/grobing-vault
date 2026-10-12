@@ -78,6 +78,16 @@ SDK wysyłających dane z telefonu (np. Firebase).
 
   **Czego to nie łapie:** wywołania sieciowego dodanego przez przyszłą zależność bez adresu w stringu — dlatego przegląd zależności i
   logcat przy każdej pozycji z siecią (`qa`).
+- ✅ **Lokalizacja telefonu od 2026-10-12** ([[ISSUE-029-pin-on-site-gps]], [[ADR-017-location-from-gnss-only]]) — pozycja przy grobie
+  to przy prawdziwym użyciu miejsce, gdzie leży rodzina:
+  - **tylko satelity** (`LocationManager.GPS_PROVIDER`, własny kanał `HereLocation.kt`), bez Wi-Fi i masztów, **bez usług Google i bez
+    nowej zależności** (`pubspec.lock` bez zmian); tylko gdy ekran cmentarza słucha, bez pracy w tle i bez `ACCESS_BACKGROUND_LOCATION`;
+  - **żadnej pozycji w logu** — test na źródłach (`HereLocation.kt` bez `Log.`), logcat procesu aplikacji na emulatorze: 0 linii ze
+    współrzędnymi; pozycja nie wychodzi z telefonu poza kopią (pinezka grobu jest w bazie jak każda inna dana);
+  - `aapt` na APK release: z nowych uprawnień tylko `ACCESS_FINE_LOCATION` i `ACCESS_COARSE_LOCATION` (test na manifeście).
+
+  **Czego to nie łapie:** ustawienia telefonu „Dokładność lokalizacji Google” — to sprawa systemu, nie aplikacji; aplikacja z niego
+  nie korzysta.
 - Eksport nie jest szyfrowany z założenia (czytelność jest jego celem) — dlatego żyje offline, nie w chmurze
   (§Security).
 - Hipoteza prawna (wyłączenie domowe RODO) jest najmocniejsza, gdy chmura trzyma tylko szyfrogram →

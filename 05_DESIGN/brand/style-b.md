@@ -1,5 +1,5 @@
 ---
-title: "Style B — visual guidelines (v1.22)"
+title: "Style B — visual guidelines (v1.23)"
 type: design-guidelines
 status: active
 owner: ui
@@ -46,7 +46,7 @@ sam (SC 1.4.1):
 |---|---|---|
 | błąd | czerwień złagodzona (propozycja `#E07A6F`, pomiar niżej) | ISSUE-014 |
 | bezpieczne i gotowe — kopia udana, „Offline ✓” | zieleń — R2; **`GrobingColors.stateOk`** (zaproponowana w v1.14, [[cmentarz]] D10; w `theme.dart` od [[ISSUE-022-app-skeleton-tabs-people-settings]], v1.17): 8,97:1 na tle, 8,19:1 na powierzchni. Zawsze z ikoną i podpisem: `cloud_done_outlined` + „Ostatnia udana kopia” ([[ustawienia]] element 2), `offline_pin` + „Plan offline” | **kopia — ISSUE-022**; plan offline — pierwszy ekran wizyty (M7, EPIC-002) |
-| „tu jesteś” | niebieska kropka — konwencja map, R2; **propozycja `#5EA2E6`** (v1.16, [[cmentarz]] element 10): 6,99:1 na tle, 6,38:1 na powierzchni, z obwódką w kolorze tła i kołem dokładności | mapa cmentarza (EPIC-002): token w `theme.dart` wpisze `dev` |
+| „tu jesteś” | niebieska kropka — konwencja map, R2; `GrobingColors.here` (`#5EA2E6`, v1.16, w `theme.dart` od v1.23, [[cmentarz]] element 10): 6,99:1 na tle, 6,38:1 na powierzchni, z obwódką w kolorze tła i kołem dokładności (krycie 18%). **Także:** „gdzie jestem” włączony i ikona plakietki stanu lokalizacji (10a) — v1.23 | mapa cmentarza (EPIC-002); nigdy w roli akcentu i nigdy jako ostrzeżenie |
 
 ## Thresholds — with source
 | Próg | Wartość | Źródło |
@@ -413,3 +413,7 @@ wysokokontrastowy, bez rezygnacji ze stylu B. Wynik i data trafiają tutaj i do
   Tokeny bez zmian. Pomiar (wzór WCAG z wartości w `theme.dart`, 2026-10-12): linia kwatery (tekst 75%) 6,16:1 na powierzchni i
   6,56:1 na tle; akcent na powierzchni 8,04:1; akcent wobec linii kwatery 1,31:1; stara strefa (tekst pomocniczy) 5,01:1 na
   powierzchni i 1,62:1 wobec alejki (obrys).
+- 2026-10-12 — v1.23 (`ui`, [[ISSUE-029-pin-on-site-gps]], przegląd zbudowanego ekranu): *State colours* — „tu jesteś” w `theme.dart`
+  (`GrobingColors.here`), rola obejmuje też włączony „gdzie jestem” i ikonę plakietki 10a; nigdy akcent, nigdy ostrzeżenie. Słaby
+  sygnał w trybie pinezki to fakt w kolorze tekstu (reguła 7, *Token roles*: akcent nie dla ostrzeżeń). Pomiar bez zmian
+  (kropka 6,99:1 na tle, 6,38:1 na powierzchni).
