@@ -1,12 +1,12 @@
 ---
-title: "Style B — visual guidelines (v1.17)"
+title: "Style B — visual guidelines (v1.19)"
 type: design-guidelines
 status: active
 owner: ui
 source: "PROJECT_BRIEF §6a (Style B, chosen by the author 2026-10-05) · references.md (R1–R4, the kick-off images) · grobing-code/lib/app/theme.dart · WCAG 2.2 · Android accessibility"
 non-tech-item: "[[NT-006-visual-guidelines]]"
 created: 2026-10-06
-updated: 2026-10-08
+updated: 2026-10-09
 ---
 
 # Styl B — wytyczne wizualne
@@ -36,7 +36,7 @@ autor, też używają znicza (reguła 8).
 | obrys *(nowy — wchodzi z [[ISSUE-014-home-map-of-poland]], zaproponowany przy [[ISSUE-012-transcribe-grave-screen]])* | proponowany `GrobingColors.outline` | ramka pola wpisu, przycisk z obrysem, linia podziału, granica na mapie (reguła 13) | tekst |
 | błąd *(nowy — wchodzi z ISSUE-014)* | proponowany `GrobingColors.error` | komunikat błędu pod polem, jego ikona, ramka pola z błędem | cokolwiek poza błędem |
 | woda *(nowa, v1.13 — [[SPIKE-004-mvp-flow-prototype]] D6, [[cmentarze]] D29)* | proponowane `GrobingColors.water` (morze, jeziora) i `GrobingColors.waterLine` (rzeki) | woda na mapie Polski jak w R1 | cokolwiek poza mapą; nośnik znaczenia (to dekoracja — brzeg niesie granica) |
-| relacje w drzewie *(nowa, v1.16 — [[SPIKE-004-mvp-flow-prototype]] D20, [[drzewo]] D3)* | proponowane `GrobingColors.relParentChild` (`#8FB3C9`, rodzic–dziecko) i `GrobingColors.relPartners` (`#D39BB0`, partnerzy: ciągła — małżeństwo, przerywana — razem) | linie relacji w drzewie i mini-drzewie | jedyny nośnik rodzaju relacji — kształt i styl linii niosą go też (SC 1.4.1); **bez legendy** (decyzja autora, SPIKE-004 D25); cokolwiek poza liniami relacji |
+| relacje w drzewie *(nowa, v1.16 — [[SPIKE-004-mvp-flow-prototype]] D20, [[drzewo]] D3)* | proponowane `GrobingColors.relParentChild` (`#8FB3C9`, rodzic–dziecko) i `GrobingColors.relPartners` (`#D39BB0`, partnerzy: ciągła — małżeństwo, przerywana — razem); **do `theme.dart` wchodzą z [[ISSUE-024-person-view]]** (mini-drzewo w [[osoba]] — pierwsze użycie, v1.18) | linie relacji w drzewie i mini-drzewie | jedyny nośnik rodzaju relacji — kształt i styl linii niosą go też (SC 1.4.1); **bez legendy** (decyzja autora, SPIKE-004 D25); cokolwiek poza liniami relacji |
 
 ### State colours — beyond the accent
 Poza akcentem występują tylko **kolory stanu**. Każdy pojawia się zawsze razem z ikoną albo tekstem, nigdy
@@ -143,8 +143,9 @@ pomocniczym albo ten token trzeba rozjaśnić. Do rozstrzygnięcia przy pierwszy
 11. **Listy jako karty:** element, który prowadzi dalej (osoba, grób, cmentarz), to karta na powierzchni z
     chevronem „›”. Miniatura zdjęcia z lewej, gdy zdjęcie jest ([[US-005-zdjecia]]). **Bez zastępczych
     obrazków**: brak zdjęcia oznacza brak miniatury. **Wyjątek — chip relacji** (v1.11, R4 prawy, [[wpis-osoby]]
-    9a): osoba w sekcji „Rodzina” to chip „Partner: Jan” z ikoną osoby w akcencie, bez chevronu. Prowadzi do wpisu tej
-    osoby, więc ma obrys (granica na tle 3,40:1), cel dotyku 48 dp i opis dla czytnika kończący się „otwórz wpis”.
+    9a): osoba w sekcji „Rodzina” to chip „Partner: Jan” z ikoną osoby w akcencie, bez chevronu. Prowadzi do **widoku**
+    tej osoby (reguła 15; do v1.17 — do jej wpisu), więc ma obrys (granica na tle 3,40:1), cel dotyku 48 dp i opis dla
+    czytnika kończący się „— otwórz” (v1.18).
     Chip stoi tylko tam, gdzie osób jest kilka obok siebie; lista osób dalej składa się z kart.
 12. **Nawigacja docelowa** ([[references]] → *Target app structure*): dolny pasek Mapa · Osoby · Drzewo
     (aktywna zakładka ma ikonę, podpis i podkreślenie w akcencie). Pojawia się, gdy istnieją co najmniej dwa
@@ -218,14 +219,21 @@ pomocniczym albo ten token trzeba rozjaśnić. Do rozstrzygnięcia przy pierwszy
     - duże zdjęcie i zdjęcie osoby w formularzu mają opis dla czytnika; miniatura w karcie nie ma, bo kartę opisuje
       jej tekst;
     - gesty na zdjęciu mają alternatywę jednym dotknięciem (*Thresholds* → gesty);
+    - **tło osoby wybiera się z pasma w widoku osoby** („Zdjęcie w tle”, [[zdjecia-osoby]] v1.4) albo w podglądzie („Ustaw jako
+      tło”, [[zdjecie]] v1.5); jego stan niesie podtytuł podglądu („Zdjęcie w tle”) — jak profilowe, bez znacznika na zdjęciu
+      (v1.18). **Zaznaczone zdjęcie w siatce** ma ramkę wokół, nie na zdjęciu: 2 dp akcentu, 2 dp tła, zdjęcie mniejsze w środku
+      (v1.19);
+    - **wyjątek — pasmo tła bez zdjęcia** ([[osoba]] D21, decyzja autora: „zwykłe tło”): powierzchnia z samą ikoną w akcencie
+      (z `tooltip`), bez obrysu i podpisu — całe pasmo jest przyciskiem (v1.19);
     - **usuwanie zdjęcia bez koloru błędu:** przycisk tekstowy z ikoną `delete_outline` w kolorze tekstu, a gdy
       usunięcie działa od razu — okno z bezpiecznym działaniem w akcencie (reguła 10).
 15. **Widok przed poprawą** (v1.12, [[SPIKE-004-mvp-flow-prototype]] D4, autor 2026-10-08: *„ok”*). Dotknięcie
     cmentarza, grobu albo osoby **otwiera widok**, a poprawa jest pod ✎ (`edit_outlined` w akcencie, `tooltip`
     „Popraw …”), jak w arkuszu cmentarza ([[cmentarze]] element 8) i w tytule grobu ([[grob]]). Formularz otwiera się
-    od razu tylko przy działaniu „Dodaj …”. **Dziś regułę łamie karta osoby w grobie**: otwiera formularz poprawy,
-    bo widoku osoby (M5, R4 prawy) jeszcze nie ma. To samo dotyczy chipów rodziny w formularzu (ISSUE-012 D1,
-    [[grob]] → *Navigation*) i kart w zakładce Osoby ([[osoby]] D7, ISSUE-022 D2) — do [[ISSUE-024-person-view]]. Widok osoby projektuje panel 4 tego spike'a.
+    od razu tylko przy działaniu „Dodaj …”. ~~Dziś regułę łamie karta osoby w grobie~~ — **[[ISSUE-024-person-view]] kończy
+    te wyjątki** (v1.18): karta osoby w [[grob]] i w [[osoby]] oraz chipy i karta partnera w formularzu prowadzą do widoku
+    osoby ([[osoba]] D14). **Poprawa ma jedno wejście — ✎ w widoku**, a ✎ dla osoby, której poprawa już leży w stosie,
+    wraca do niej zamiast otwierać drugą ([[osoba]] D15).
 
 ## Sunlight — [[NFR-004-czytelnosc-w-sloncu]]
 **Nie sprawdzone.** Test wymaga prawdziwego telefonu, buildu release i pełnego słońca
@@ -349,3 +357,15 @@ wysokokontrastowy, bez rezygnacji ze stylu B. Wynik i data trafiają tutaj i do
   Pomiar (wzór WCAG z wartości w `theme.dart`, 2026-10-08): `stateOk` 8,97:1 na tle, 8,19:1 na powierzchni. Pozostałe
   tokeny bez zmian (przeliczone tego dnia: akcent 8,81 / 8,04, tekst pomocniczy 5,50 / 5,01, błąd 6,45 / 5,89, obrys
   3,40 / 3,10 — wyniki te same).
+- 2026-10-09 — **v1.18, widok osoby** (`ui` przed planem [[ISSUE-024-person-view]], [[osoba]] v2):
+  - reguła 15 — wyjątki (karta w grobie, w Osobach, chipy w formularzu) kończy ISSUE-024; poprawa ma jedno wejście (✎),
+    a druga poprawa tej samej osoby w stosie się nie otwiera;
+  - reguła 11 — chip relacji prowadzi do widoku osoby, opis dla czytnika „— otwórz”;
+  - reguła 14 — tło osoby wybiera się w podglądzie, stan niesie podtytuł;
+  - role — kolory relacji wchodzą do `theme.dart` z ISSUE-024 (mini-drzewo).
+
+  Tokeny bez nowych wartości, więc pomiar z v1.16 i v1.17 obowiązuje (rodzic–dziecko 8,50:1 na tle, partnerzy 8,16:1 na tle;
+  okrąg z inicjałami — obrys/tło 3,40:1, inicjały — tekst pomocniczy na powierzchni 5,01:1).
+- 2026-10-09 — **v1.19, pasmo tła** (`ui`, stop #2 [[ISSUE-024-person-view]], runda 1; [[osoba]] v2.3, [[zdjecia-osoby]] v1.4): reguła 14
+  — tło wybiera się też z pasma w widoku osoby; zaznaczone zdjęcie w siatce ma ramkę wokół, nie na zdjęciu; pasmo bez tła jako
+  wyjątek od „obrys, ikona, podpis”. Tokeny bez zmian (ikona — akcent/powierzchnia 8,04:1; ramka — akcent/tło 8,81:1).

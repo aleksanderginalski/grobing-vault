@@ -37,6 +37,18 @@ trafił do Must z wyboru autora). Narzędzia genealogiczne pokazują zwykle przo
 - **Dane do spike'a:** wymyślona rodzina o kształcie prawdziwej (ok. 100 osób, powinowaci, związki „razem” i małżeństwa),
   zostaje w buildzie debug jako dane do oceny „feelingu” (propozycja z sesji `/pm` 2026-10-08).
 
+## Input from ISSUE-024 (2026-10-12, `docs` przy zamknięciu)
+- **Słownik nazw złożonych przechodzi do drzewa** (decyzja autora na stopie #1 [[ISSUE-024-person-view]], runda 1: *„przypadki np.
+  Brat stryjeczny prababki lub podobne zrobimy w widoku drzewa przy łączeniu różnych osób”*). Kanon i tabela nazw —
+  [[ISSUE-025-gender-kinship-together-since]] → *Prior art* i D2; widok osoby pokazuje tylko łańcuch z relacjami jednego kroku
+  ([[osoba]] D13'). Pozycja drzewa dostaje **dawne AC-6 ISSUE-024**: *Given ścieżka Ja → rodzic (mężczyzna) → jego rodzic → jego
+  córka Then nazwa to „ciotka”; brat ojca — „stryj”, brat matki — „wuj”; dziecko siostry ojca — „brat/siostra cioteczna”
+  (słownik ze źródłem)* — w banerze „Połącz dwie osoby” ([[drzewo]] D6) i w karcie osoby w środku drzewa.
+- **Ścieżka już jest:** `grobing-code/lib/data/kinship.dart` (`KinGraph.path` — najkrótsza, mniej „para”, niższe `id`) z testami.
+- **Mini-drzewo w widoku osoby** (jeden poziom, `mini_tree.dart`) ma układ dla dwóch związków i przewijanie w bok ([[osoba]] D12)
+  — do porównania z kierunkiem spike'a.
+- „Pokaż w drzewie” w widoku osoby czeka na pozycję drzewa ([[osoba]] D11).
+
 ## Exit criterion
 Wybrane podejście → notatka/ADR; albo „nie da się czytelnie" → decyzja autora (np. widok wycinkowy
 zamiast pełnego drzewa).

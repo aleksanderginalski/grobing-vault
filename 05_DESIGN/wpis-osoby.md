@@ -1,10 +1,10 @@
 ---
 screen: "Wpis osoby w grobie — formularz"
-items: ["[[ISSUE-012-transcribe-grave-screen]]", "[[ISSUE-017-person-photos]]", "[[ISSUE-018-profile-photo-crop]]", "[[ISSUE-019-family-relations]]", "[[ISSUE-025-gender-kinship-together-since]]"]
+items: ["[[ISSUE-012-transcribe-grave-screen]]", "[[ISSUE-017-person-photos]]", "[[ISSUE-018-profile-photo-crop]]", "[[ISSUE-019-family-relations]]", "[[ISSUE-025-gender-kinship-together-since]]", "[[ISSUE-024-person-view]]"]
 us: "[[US-002-przepisanie-grobu]] · [[US-005-zdjecia]] · [[US-003-przepisanie-rodziny]]"
 journey-step: "n/a — M1 (warunek kroku 1 UJ-001)"
 mockup: "katalog tymczasowy sesji 2026-10-07: makieta-cmentarz-grob-osoba.html (ramki 3–4, ISSUE-012) · makieta-zdjecia.html (ramki 7–8 — kierunek sprzed stopu #1 ISSUE-016) · makieta-zdjecia-osoby.html (ramki 1–2, ISSUE-017) · makieta-rodzina.html (ramki 1–2, ISSUE-019)"
-updated: 2026-10-08
+updated: 2026-10-09
 ---
 
 # Wpis osoby — specyfikacja
@@ -114,6 +114,17 @@ updated: 2026-10-08
 >   arkuszu od dołu ([[rodzina]] v2, C), a po dodaniu widać **kartę partnera** z datami, ✎ i „Dodaj kolejnego
 >   partnera”. Dzieci pod kartą związku (C1), rodzice przez kreator „Dodaj rodziców” (P1) — wybór autora na stopie
 >   #1, runda 2 ([[rodzina]] *Open* 5, 6). Prototyp: `issue-025-prototyp.html` (katalog tymczasowy sesji).
+>
+> **Wersja 5.8 (2026-10-09, przed planem [[ISSUE-024-person-view]]) — widok osoby przed poprawą:**
+> - **chipy krewnych i karta partnera w 9a prowadzą do widoku tej osoby** ([[osoba]] D14), a nie do jej poprawy — uwaga
+>   autora ze stopu #2 ISSUE-025: *„po wybraniu osoby najpierw wejść w jej »profil« … a dopiero potem w edycję”*. Widok
+>   kładzie się nad formularzem; formularz czeka pod spodem z wpisanymi danymi;
+> - **karta partnera** pokazuje profilowe 40 dp w kadrze łącza (bez zdjęcia — inicjały, jak dziś) i **chevron** (prowadzi
+>   dalej, reguła 11); opis dla czytnika kończy się „— otwórz”, jak chipy;
+> - **tryb „poprawa” otwiera się z ✎ w widoku osoby** — także z widoku krewnego otwartego z chipu; poprawa osoby, która już
+>   leży w stosie, nie otwiera się drugi raz ([[osoba]] D15);
+> - **„Dodaj zdjęcie” w pustej sekcji „Zdjęcia” widoku osoby** ([[osoba]] D20) otwiera poprawę z arkuszem źródła nad nią
+>   (jak element 1a bez zdjęć); po wyborze formularz pokazuje nowe zdjęcie, a „Zapisz” wraca do widoku.
 
 ## Purpose
 Wpisanie jednej osoby pochowanej w grobie, tak jak stoi w notatkach: zdjęcie (gdy jest), imiona, nazwisko,
@@ -123,7 +134,8 @@ nazwisko rodowe, płeć, daty urodzenia i zgonu z dopiskiem oraz **krótka biogr
 ## Navigation
 - Z [[cmentarz]] → „Dodaj grób” → tryb **„nowy grób”**. Zapis tworzy grób i osobę razem.
 - Z [[grob]] → „Dodaj osobę” → tryb **„kolejna osoba”**.
-- Z [[grob]] → dotknięcie osoby → tryb **„poprawa”** (ISSUE-012, D1).
+- Z [[osoba]] → ✎ → tryb **„poprawa”** (v5.3, v5.8). Do [[ISSUE-024-person-view]] — z [[grob]] przez dotknięcie osoby
+  (ISSUE-012, D1).
 - **Zapis → [[grob]]**, który zastępuje formularz na stosie (wstecz z grobu wraca do cmentarza).
 - **Wstecz z wpisanymi danymi** (przycisk albo gest) → okno „Odrzucić wpis?”. Bez wpisanych danych →
   od razu wstecz. **Wybrane albo zmienione zdjęcie to też wpisane dane** (v3).
@@ -134,7 +146,9 @@ nazwisko rodowe, płeć, daty urodzenia i zgonu z dopiskiem oraz **krótka biogr
   w tej edycji zmieniono zdjęcia (także gdy pól nie ruszano). Bez zmian zdjęć treść jak dotąd.
 - **Rodzina (9a, v5.6):** „Dodaj rodziców”, „Dodaj partnera”, „Dodaj kolejnego partnera”, „Dodaj dziecko” i ✎ otwierają
   arkusz od dołu nad formularzem ([[rodzina]] C, D, E); zamknięcie arkusza wraca do formularza z wpisanymi danymi, a
-  sekcja się odświeża. Karta partnera i chipy prowadzą do wpisu tej osoby jak w v5. Punkty v5 niżej zostają do przebudowy.
+  sekcja się odświeża. **Karta partnera i chipy prowadzą do widoku tej osoby** ([[osoba]], v5.8) nad formularzem, który
+  zostaje pod spodem z wpisanymi danymi; wstecz wraca do formularza, a ten odświeża sekcję. Punkty v5 niżej — zapis
+  ISSUE-019, zastąpiony.
 - **Rodzina (9a, v5):**
   - chip krewnego → [[wpis-osoby]] w trybie „poprawa” **tej osoby**, położony na obecny formularz, który zostaje pod
     spodem z wpisanymi danymi. **Zapis albo wstecz wraca do formularza pod spodem**, a ten odświeża sekcję
@@ -185,15 +199,15 @@ v5 niżej (zostaje jako zapis tego, co zbudowało ISSUE-019, do czasu przebudowy
 | # | Element | Typ | Klawiatura / akcja | Domyślnie | Walidacja |
 |---|---|---|---|---|---|
 | a | **Nagłówek** jak v5 (`people_outline` w akcencie, „Rodzina”) | tekst | — | — | — |
-| b | **Rodzice** — etykieta „Rodzice · <oś czasu ich związku>” (np. „Rodzice · ślub ok. 1920”, bez dat — samo „Rodzice”), ✎ (`edit_outlined`, akcent, 48 dp, `tooltip` „Popraw związek rodziców”); pod nią chipy „Matka: Zofia”, „Ojciec: Józef” (rola z płci, [[rodzina]] *Role names*). **Bez rodziców:** przycisk z obrysem **„Dodaj rodziców”** (`group_add_outlined`) | grupa / przycisk | ✎ → [[rodzina]] D (podsumowanie związku rodziców); „Dodaj rodziców” → [[rodzina]] C w trybie „rodzice” (P1); chip → wpis tej osoby | — | — |
-| c | **Partnerzy** — etykieta „Partnerzy” (14 sp, tekst pomocniczy), pod nią **karta za każdy związek** (powierzchnia, promień 12 dp, ≥ 72 dp) w kolejności pierwszej daty związku, bez dat na końcu: profilowe albo inicjały 40 dp · imię i nazwisko partnera (16 sp, półgruby) · „lata · rola” (14 sp, tekst pomocniczy: „1921–1987 · Mąż”) · **oś czasu** „razem od 1946 · ślub ok. 1948 · koniec 1960” (14 sp, tekst; ślub bez daty — „ślub”, bez żadnej daty — samo „Małżeństwo” albo „Razem”); z prawej ✎ (48 dp, `tooltip` „Popraw związek”) | karta | dotknięcie karty → wpis partnera (poprawa, jak chip v5); ✎ → [[rodzina]] D | — | — |
-| d | **Dzieci z tego związku** (C1) — w karcie, pod osią czasu: etykieta (13 sp, tekst pomocniczy), chipy „Syn: Stanisław”, „Córka: Anna” według daty urodzenia, a pod nimi przycisk z obrysem **„Dodaj dziecko”** (`person_add_alt_outlined`) | chipy / przycisk | chip → wpis dziecka; „Dodaj dziecko” → [[rodzina]] E | — | — |
+| b | **Rodzice** — etykieta „Rodzice · <oś czasu ich związku>” (np. „Rodzice · ślub ok. 1920”, bez dat — samo „Rodzice”), ✎ (`edit_outlined`, akcent, 48 dp, `tooltip` „Popraw związek rodziców”); pod nią chipy „Matka: Zofia”, „Ojciec: Józef” (rola z płci, [[rodzina]] *Role names*). **Bez rodziców:** przycisk z obrysem **„Dodaj rodziców”** (`group_add_outlined`) | grupa / przycisk | ✎ → [[rodzina]] D (podsumowanie związku rodziców); „Dodaj rodziców” → [[rodzina]] C w trybie „rodzice” (P1); chip → widok tej osoby ([[osoba]], v5.8) | — | — |
+| c | **Partnerzy** — etykieta „Partnerzy” (14 sp, tekst pomocniczy), pod nią **karta za każdy związek** (powierzchnia, promień 12 dp, ≥ 72 dp) w kolejności pierwszej daty związku, bez dat na końcu: profilowe albo inicjały 40 dp · imię i nazwisko partnera (16 sp, półgruby) · „lata · rola” (14 sp, tekst pomocniczy: „1921–1987 · Mąż”) · **oś czasu** „razem od 1946 · ślub ok. 1948 · koniec 1960” (14 sp, tekst; ślub bez daty — „ślub”, bez żadnej daty — samo „Małżeństwo” albo „Razem”); z prawej ✎ (48 dp, `tooltip` „Popraw związek”), **za nim chevron** (v5.8) | karta | dotknięcie karty → widok partnera ([[osoba]], v5.8); ✎ → [[rodzina]] D | — | — |
+| d | **Dzieci z tego związku** (C1) — w karcie, pod osią czasu: etykieta (13 sp, tekst pomocniczy), chipy „Syn: Stanisław”, „Córka: Anna” według daty urodzenia, a pod nimi przycisk z obrysem **„Dodaj dziecko”** (`person_add_alt_outlined`) | chipy / przycisk | chip → widok dziecka ([[osoba]], v5.8); „Dodaj dziecko” → [[rodzina]] E | — | — |
 | e | **„Dodaj partnera”** (bez związków) / **„Dodaj kolejnego partnera”** (po kartach) — przycisk z obrysem, `person_add_alt_outlined` | przycisk | → [[rodzina]] C w trybie „partner” | — | — |
 
 **v5.7 (przegląd `ui`, ISSUE-025):** rodzice ze ślubem bez daty — „Rodzice · Małżeństwo”; **karta bez partnera** (rodzina
 jednego rodzica, widziana z jego wpisu) — „Drugi rodzic nieznany”, bez linii osi czasu, gdy nic nie jest zapisane („Razem”
 z nikim nie byłoby prawdą); karta partnera dla czytnika — „… otwórz wpis”, jak chipy. Chevron przy karcie — z widokiem osoby
-([[ISSUE-024-person-view]], reguła 15).
+([[ISSUE-024-person-view]], reguła 15) — **v5.8:** chevron i profilowe na karcie, opis „… — otwórz”.
 
 Wszystko w 9a stoi **poza `next`**; sekcja jest tylko w poprawie (D-rodzina-1). Zmiany z kreatora zapisują się od razu,
 własną transakcją ([[rodzina]] D1), więc formularz po powrocie tylko odświeża sekcję.

@@ -1,10 +1,10 @@
 ---
 screen: "Grób — wszyscy pochowani"
-items: ["[[ISSUE-012-transcribe-grave-screen]]", "[[ISSUE-016-photos-grave-and-person]]", "[[ISSUE-017-person-photos]]", "[[ISSUE-018-profile-photo-crop]]", "[[SPIKE-004-mvp-flow-prototype]]"]
+items: ["[[ISSUE-012-transcribe-grave-screen]]", "[[ISSUE-016-photos-grave-and-person]]", "[[ISSUE-017-person-photos]]", "[[ISSUE-018-profile-photo-crop]]", "[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-024-person-view]]"]
 us: "[[US-002-przepisanie-grobu]] · [[US-005-zdjecia]]"
 journey-step: "n/a — M1; ten sam widok stanie się widokiem 3 (krok 4 UJ-001, M4, R4 lewy) — wizyta dojdzie tutaj"
 mockup: "katalog tymczasowy sesji 2026-10-07: makieta-cmentarz-grob-osoba.html (ramki 5–7, ISSUE-012) · makieta-zdjecia.html (ramki 1, 2, 4, ISSUE-016)"
-updated: 2026-10-08
+updated: 2026-10-09
 ---
 
 # Grób — specyfikacja

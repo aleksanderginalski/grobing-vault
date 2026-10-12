@@ -1,10 +1,10 @@
 ---
 screen: "Cmentarz — groby na cmentarzu"
-items: ["[[ISSUE-012-transcribe-grave-screen]]", "[[ISSUE-016-photos-grave-and-person]]", "[[SPIKE-004-mvp-flow-prototype]]"]
+items: ["[[ISSUE-012-transcribe-grave-screen]]", "[[ISSUE-016-photos-grave-and-person]]", "[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-024-person-view]]"]
 us: "[[US-002-przepisanie-grobu]] · [[US-005-zdjecia]]"
 journey-step: "n/a — M1 (warunek kroku 1 UJ-001); docelowo mapa cmentarza z arkuszem grobu (R2, krok 2 UJ-001, M3)"
 mockup: "katalog tymczasowy sesji 2026-10-07: makieta-cmentarz-grob-osoba.html (ramki 1–2, 8, ISSUE-012) · makieta-zdjecia.html (ramka 9, ISSUE-016) · 2026-10-08: grobing-prototyp.html (SPIKE-004, panel 2)"
-updated: 2026-10-08
+updated: 2026-10-09
 ---
 
 # Cmentarz — specyfikacja
@@ -47,6 +47,13 @@ updated: 2026-10-08
 > **tryb stawiania pinezki** (stan D) z GPS — pinezka w kropce, przesuwana dotknięciem planu, zapis ze źródłem „GPS ±N m,
 > data”; **bez internetu** plan działa, a „Zdjęcie” mówi „bez internetu”. Wejście do trybu D także z [[grob]] („Postaw
 > pinezkę”). Elementy 10–14, stan D i *States*.
+>
+> **Wersja 4.3 (2026-10-09, przed planem [[ISSUE-024-person-view]]) — zaznaczony grób z widoku osoby.** „Pochówek” w
+> [[osoba]] (element 9) otwiera ten ekran **z zaznaczonym grobem**. Do czasu [[US-007-mapa-cmentarza]] zbudowany ekran to
+> sama lista (dzisiejszy stan C), więc: lista przewija się tak, żeby karta grobu była cała widoczna, karta ma **obrys 2 dp w
+> akcencie** (D11 — „na liście zaznaczony grób ma obrys w akcencie”) i stan „zaznaczone” dla czytnika (SC 1.4.1 — kolor
+> nie jest jedynym nośnikiem). **Bez komunikatu o pinezce**, dopóki pinezek nie ma w aplikacji ([[osoba]] D17); wraca z
+> mapą. Wstecz → widok osoby. Zaznaczenie trwa, dopóki ekran jest otwarty (powrót z grobu — dalej zaznaczony).
 
 ## Purpose
 Cmentarz rodziny **jako mapa** (UJ-001 krok 2, M3, M7): plan schematyczny bez sieci albo zdjęcie z góry z siecią,
@@ -64,6 +71,8 @@ kwatery i pinezkę (US-002 AC-5), i pokazuje, dokąd doszło przepisywanie.
     przeciągnięty w górę → C. Dotknięcie planu albo wstecz → A;
   - **C — lista:** wszystkie groby na cały ekran, bez planu (8–9). Karta → [[grob]]. Lista przeciągnięta w dół albo
     wstecz → stan, z którego przyszła (B albo A).
+- **Z [[osoba]] → „Pochówek”** (v4.3): ekran z zaznaczonym grobem — z mapą stan B (grób z pinezką) albo C (bez pinezki,
+  z komunikatem, [[osoba]] D9); do czasu mapy lista z zaznaczonym grobem ([[osoba]] D17). Wstecz → widok osoby.
 - **Wstecz w stanie A → [[cmentarze]]** z tym samym cmentarzem wybranym i jego arkuszem (D7). Z [[grob]] wstecz →
   stan, w którym autor ekran opuścił.
 - **✎ w pasku → okno „Popraw cmentarz”** ([[cmentarze]] 15), według [[style-b]] reguły 15. Zaznaczanie kwater i

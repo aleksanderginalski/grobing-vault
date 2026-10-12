@@ -1,10 +1,10 @@
 ---
 screen: "Zdjęcia osoby — baza zdjęć jednej osoby"
-items: ["[[ISSUE-017-person-photos]]", "[[ISSUE-018-profile-photo-crop]]"]
+items: ["[[ISSUE-017-person-photos]]", "[[ISSUE-018-profile-photo-crop]]", "[[ISSUE-024-person-view]]"]
 us: "[[US-005-zdjecia]]"
 journey-step: "n/a — M1 (przepisywanie i zbieranie u babci); docelowo część widoku osoby (M5, R4 prawy)"
 mockup: "katalog tymczasowy sesji 2026-10-07: makieta-zdjecia-osoby.html (ramki 1–9)"
-updated: 2026-10-07
+updated: 2026-10-09
 ---
 
 # Zdjęcia osoby — specyfikacja
@@ -22,6 +22,24 @@ updated: 2026-10-07
 > **Wersja 1.1 (2026-10-07, przed planem [[ISSUE-018-profile-photo-crop]]):** nagłówek (element 2) pokazuje profilowe
 > **w kadrze** z [[kadr-profilowego]]; profilowe bez kadru — jak dotąd, ze środka. Kadr ustawia się z podglądu
 > ([[zdjecie]] v1.4, B4'), a jego zmiana pokazuje linię zapisu (element 6). Siatka bez zmian.
+>
+> **Wersja 1.2 (2026-10-09, przed planem [[ISSUE-024-person-view]]):** wejście z widoku osoby ([[osoba]] element 10).
+> **Tryb oglądania** (W2 — decyzja autora na stopie #1 ISSUE-024): bez kafelka „Dodaj zdjęcie” (5) i bez linii zapisu (6),
+> podgląd bez działań ([[zdjecie]] v1.5). Zmiany zdjęć dalej tylko z formularza (D1). Tło osoby nie ma znacznika w siatce
+> (reguła 14); mówi o nim opis komórki dla czytnika: „Zdjęcie 3 z 4, tło — otwórz”.
+>
+> **Wersja 1.3 (2026-10-09, przegląd `ui` ISSUE-024):** baza w trybie oglądania jest **bez dolnego paska**, jak ten sam ekran z
+> formularza ([[style-b]] reguła 12 — ekran zdjęć jest piętrem pod widokiem, powrót daje „wstecz”).
+
+> **Wersja 1.4 (2026-10-09, stop #2 [[ISSUE-024-person-view]], runda 1 — tryb „Zdjęcie w tle”, [[osoba]] D21):** z pasma tła w
+> widoku osoby. Pasek: wstecz, tytuł „Zdjęcie w tle”, podtytuł — imię i nazwisko. Pod paskiem „Dotknij zdjęcia, które ma być w tle.”
+> (14 sp, tekst pomocniczy; osoba bez zdjęć — „Ta osoba nie ma jeszcze zdjęć. Dodaj zdjęcie, które ma być w tle.”). **Siatka zdjęć tej osoby** jak element 4 (bez nagłówka profilowego); obecne tło ma **obrys 2 dp w
+> akcencie** wokół komórki, pod nim 2 dp koloru tła, a zdjęcie w środku mniejsze, z promieniem 4 dp — jak ramka kadru (akcent/tło
+> 8,81:1 na każdym zdjęciu, a zmiana obrysu zdjęcia mówi to bez koloru; przegląd `ui`) (zaznaczenie — reguła 1) i dla czytnika „…, tło, zaznaczone — wybierz”; pozostałe „Zdjęcie 2 z 4 —
+> ustaw jako tło”. **Kafelek „Dodaj zdjęcie”** → arkusz źródła (tytuł „Zdjęcie w tle”; galeria — **jedno** zdjęcie, aparat — jedno).
+> **Dotknięcie zdjęcia albo zdjęcie dodane → tło zapisuje się od razu** i ekran wraca do widoku osoby z tłem (reguła 10). Gdy tło
+> jest: pod siatką przycisk tekstowy **„Bez zdjęcia w tle”** (`hide_image_outlined`, kolor tekstu) → tło zdjęte, zdjęcie zostaje,
+> powrót do widoku. Wstecz — bez zmian. Zdjęcie dodane tutaj dołącza do zdjęć osoby (na końcu; osobie bez zdjęć — też profilowe).
 
 ## Purpose
 Wszystkie zdjęcia jednej osoby w jednym miejscu: tu się je dodaje (z galerii kilka naraz albo aparatem), wybiera
@@ -37,7 +55,7 @@ rozstrzyga ADR w `planning`. Ekran zakłada tylko te trzy rzeczy: łącze, kolej
 ## Navigation
 - **Wejście:** z [[wpis-osoby]] → element 1a, gdy osoba ma choć jedno zdjęcie (także dopiero wybrane, jeszcze
   niezapisane). Bez zdjęć element 1a otwiera od razu arkusz źródła ([[zdjecie]] A), bez pustej bazy.
-  Docelowo także z widoku osoby (M5), ale tego widoku jeszcze nie ma.
+  **Z widoku osoby** ([[osoba]] element 10, v1.2) — w trybie oglądania. Wstecz → widok osoby.
 - **Zdjęcie w siatce albo profilowe w nagłówku** → podgląd ([[zdjecie]] B, tryb osoby): przybliżenie, poprzednie i
   następne, „Na zdjęciu”, „Ustaw jako profilowe”, „Usuń z tej osoby”.
 - **„Dodaj zdjęcie”** (kafelek w siatce) → arkusz źródła ([[zdjecie]] A, tytuł „Zdjęcia osoby”). Galeria pozwala

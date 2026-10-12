@@ -1,10 +1,10 @@
 ---
 screen: "Drzewo — rodzina od osoby, poziomy połączeń, czas; połącz dwie osoby"
-items: ["[[SPIKE-004-mvp-flow-prototype]]"]
+items: ["[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-024-person-view]]"]
 us: "do rozpisania — M9, M10, M11 w [[EPIC-003-zrozumienie]]; czytelność na telefonie: [[SPIKE-002-tree-on-a-phone]] (H4)"
 journey-step: "widok 5 (M9–M11, R3)"
 mockup: "2026-10-08: grobing-prototyp.html (SPIKE-004, panel 6, runda 2) — katalog tymczasowy sesji, ścieżka w SPIKE-004"
-updated: 2026-10-08
+updated: 2026-10-09
 ---
 
 # Drzewo — specyfikacja
@@ -132,6 +132,13 @@ n/a — ekran do oglądania.
   odcinków** nazwanych pojedynczo i połączonych w dopełniaczu: „siostra cioteczna” · „babci” · „mojej żony” →
   „Siostra cioteczna babci mojej żony”. Pojedyncze nazwy (z płcią i stroną) daje [[osoba]] D4; formy dopełniacza i podział
   na odcinki — słownik w pozycji, która to zbuduje, ze źródłem (kanon polskiej terminologii pokrewieństwa).
+  **Od 2026-10-09 słownik nazw złożonych żyje tutaj** (decyzja autora na stopie #1 [[ISSUE-024-person-view]]: *„przypadki np.
+  Brat stryjeczny prababki lub podobne zrobimy w widoku drzewa przy łączeniu różnych osób”*): kanon i tabela nazw —
+  [[ISSUE-025-gender-kinship-together-since]] → *Prior art* i D2 (ciotka, stryj, wuj, rodzeństwo cioteczne, stryjeczne i
+  wujeczne, bratanek, siostrzeniec, teściowie, zięć, synowa, bratowa, szwagier, opis z odcinków, odcinki neutralne), a z nimi
+  **dawne AC-6 ISSUE-024** (*Given ścieżka Ja → tata → jego rodzic → jego córka Then „ciotka”; brat ojca — „stryj”, brat matki
+  — „wuj”; dziecko siostry ojca — „brat/siostra cioteczna”*). Widok osoby pokazuje łańcuch z relacjami jednego kroku
+  ([[osoba]] D13'); ścieżkę (`kinship.dart`) buduje ISSUE-024 i drzewo jej użyje.
 - **D7 — przybliżanie i oddalanie** (v1.1, D25). Gesty jak na mapie (szczypanie, przeciąganie, podwójne dotknięcie),
   z alternatywą jednym dotknięciem ([[style-b]] *Thresholds* → gesty).
 
@@ -140,6 +147,9 @@ n/a — ekran do oglądania.
    pozycji: **oddalanie odsłania kolejne poziomy** (przybliżenie semantyczne — oddalasz, a drzewo dokłada dalszą
    rodzinę), bez osobnych przycisków; drugi — suwak „bliżej · dalej” w dolnej karcie. Makieta albo emulator przed planem
    (retro 2, R6).
+1a. **Ikona „Połącz dwie osoby”** (element 1): `conversion_path` **nie istnieje** w `Icons` Fluttera 3.41.1 (sprawdzone w SDK
+   2026-10-09, przy [[osoba]] D18). Do wyboru przy pozycji drzewa: `link` (jak „Jak łączy się ze mną” w [[osoba]] — ta sama
+   idea) albo własna ikona wektorowa.
 2. ⚠️ OPEN — **pokazanie drzewa na telewizorze** (D25). Kandydaci: (a) **systemowe przesyłanie ekranu Androida**
    („Przesyłaj ekran” / Smart View) — działa z każdą aplikacją, bez kodu; (b) do tego **tryb prezentacji** w aplikacji:
    poziomo, pełny ekran, większe węzły, bez przycisków; (c) Google Cast z odbiornikiem na telewizorze — dużo pracy, sieć

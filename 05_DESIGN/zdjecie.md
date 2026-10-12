@@ -1,10 +1,10 @@
 ---
 screen: "Zdjęcie — wybór źródła i podgląd na pełnym ekranie"
-items: ["[[ISSUE-016-photos-grave-and-person]]", "[[ISSUE-017-person-photos]]", "[[ISSUE-018-profile-photo-crop]]"]
+items: ["[[ISSUE-016-photos-grave-and-person]]", "[[ISSUE-017-person-photos]]", "[[ISSUE-018-profile-photo-crop]]", "[[ISSUE-024-person-view]]"]
 us: "[[US-005-zdjecia]]"
 journey-step: "n/a — M1; docelowo krok 3 UJ-001 (porównanie zdjęcia nagrobka z tym, co przed tobą — brief §4a)"
-mockup: "katalog tymczasowy sesji 2026-10-07: makieta-zdjecia.html (ramki 3, 5, 6 — wersja przed stopem #1 ISSUE-016) · makieta-zdjecia-osoby.html (ramki 5–8 — tryb osoby, ISSUE-017) · makieta-kadr-profilowego.html (ramki 1, 4 — B4' z kadrem, ISSUE-018)"
-updated: 2026-10-07
+mockup: "katalog tymczasowy sesji 2026-10-07: makieta-zdjecia.html (ramki 3, 5, 6 — wersja przed stopem #1 ISSUE-016) · makieta-zdjecia-osoby.html (ramki 5–8 — tryb osoby, ISSUE-017) · makieta-kadr-profilowego.html (ramki 1, 4 — B4' z kadrem, ISSUE-018) · 2026-10-09: issue-024-widok-osoby.html (ramka „Ustaw jako tło”, ISSUE-024)"
+updated: 2026-10-09
 ---
 
 # Zdjęcie — specyfikacja
@@ -41,6 +41,14 @@ updated: 2026-10-07
 >   podtytuł paska B1: „Zdjęcie profilowe” zamiast „Zdjęcie osoby” ([[kadr-profilowego]] D8).
 >
 > Podgląd dalej pokazuje całe zdjęcie, bez kadru.
+>
+> **Wersja 1.5 (2026-10-09, przed planem [[ISSUE-024-person-view]]) — tło osoby i tryb oglądania.** Tylko tryb osoby:
+> - **B4'' — trzecie działanie „Ustaw jako tło”** ([[osoba]] D3, ISSUE-024 AC-5); trzy działania stoją w trzech równych
+>   kolumnach, ikona nad napisem; na zdjęciu, które jest tłem — **„Usuń z tła”**; stan niesie podtytuł B1;
+> - **tryb oglądania** (z widoku osoby — W2, decyzja autora na stopie #1): B bez działań i bez „Zmień” w B5;
+> - **A z widoku osoby** (v1.5, [[osoba]] D20): „Dodaj zdjęcie” w pustej sekcji „Zdjęcia” otwiera poprawę wpisu, a nad nią od
+>   razu ten arkusz (tryb osoby); po wyborze — formularz z nowym zdjęciem, zapis z „Zapisz”;
+> - C1' i D mówią, co dzieje się z tłem.
 
 ## Purpose
 Dodanie zdjęcia nagrobka do grobu (US-005 AC-1) i obejrzenie go w całości, z przybliżeniem. Zdjęcie nagrobka ma
@@ -90,14 +98,23 @@ zwróci je okno systemowe (D8).
 | B4 | **Działania** w dolnym pasku: **„Zmień zdjęcie”** — przycisk tekstowy w akcencie, ikona `photo_library_outlined` → A; po wyborze nowe zdjęcie zastępuje stare i podgląd je pokazuje (D5). **„Usuń zdjęcie”** — przycisk tekstowy z ikoną `delete_outline`, oba w kolorze tekstu → C | przyciski tekstowe | dotknięcie | — | — | decyzja autora (stop #1 ISSUE-016) · D5 |
 | B4' | **Działania w trybie osoby** (v1.3), dolny pasek: **„Ustaw jako profilowe”** — przycisk tekstowy w akcencie, ikona `account_circle_outlined`; po dotknięciu zdjęcie staje się pierwszym łączem tej osoby, a na miejscu przycisku pojawia się stan. **Stan, gdy to już profilowe:** „Profilowe” z ikoną `check` (14 sp, tekst pomocniczy) — tekst, nie przycisk, ten sam stan dla czytnika. **„Usuń z tej osoby”** — przycisk tekstowy z ikoną `delete_outline`, w kolorze tekstu → C. **Bez „Zmień zdjęcie”**: w bazie się dodaje i usuwa, a nie podmienia. **v1.4:** „Ustaw jako profilowe” → [[kadr-profilowego]]; zdjęcie staje się profilowym po „Gotowe”, z kadrem. **Na profilowym zamiast stanu „✓ Profilowe”: „Popraw kadr”** — przycisk tekstowy w akcencie, ikona `crop_outlined` → [[kadr-profilowego]]; stan niesie podtytuł B1 („Zdjęcie profilowe”) | przyciski tekstowe | dotknięcie | — | — | ISSUE-017 AC 4, 6 · GEDCOM 7 („the first is the most-preferred value”) · D9 · ISSUE-018 AC 1, 3 ([[kadr-profilowego]] D2, D8) |
 
+| B4'' | **Trzy działania w trybie osoby** (v1.5, zastępuje układ B4' w jednym rzędzie): trzy równe kolumny w dolnym pasku, w każdej **ikona nad napisem** (napis 14 sp, waga 500, do 2 linii, wyśrodkowany; cała kolumna to cel ≥ 48 dp i rośnie z tekstem). **1 — profilowe:** „Ustaw jako profilowe” albo na profilowym „Popraw kadr” — jak B4' (akcent). **2 — tło:** **„Ustaw jako tło”** — ikona `wallpaper_outlined` w akcencie, napis w kolorze tekstu (działanie drugorzędne, reguła 1); po dotknięciu zdjęcie staje się tłem tej osoby (jedno tło na osobę — poprzednie przestaje nim być), a na miejscu przycisku **„Usuń z tła”** — ikona `hide_image_outlined` i napis w kolorze tekstu; zdjęcie zostaje w bazie. Zdjęcie może być naraz profilowym i tłem. **3 — „Usuń z tej osoby”** jak B4'. Stałe miejsca: przewijanie zdjęć nie przesuwa „Usuń z tej osoby” pod palcem. Zmiany tła zapisują się jak reszta zmian zdjęć osoby — z „Zapisz” formularza ([[zdjecia-osoby]] D1) | przyciski tekstowe | dotknięcie | — | — | [[ISSUE-024-person-view]] AC-5 · [[osoba]] D3 · [[style-b]] reguły 1, 14 |
+
 **B1 w trybie osoby (v1.3):** tytuł — imiona i nazwisko osoby, której bazę oglądamy (bez imion i nazwiska: „Nowa
-osoba”); podtytuł „Zdjęcie osoby”, **a na profilowym „Zdjęcie profilowe”** (v1.4). Kolejność pod zdjęciem: B5, B3, B4'.
+osoba”); podtytuł „Zdjęcie osoby”, **a na profilowym „Zdjęcie profilowe”** (v1.4), **na tle „Zdjęcie w tle”, a na
+profilowym, które jest też tłem — „Zdjęcie profilowe i tło”** (v1.5). Kolejność pod zdjęciem: B5, B3, B4''.
+
+**Tryb oglądania (v1.5 — W2, decyzja autora na stopie #1 ISSUE-024):** podgląd otwarty z widoku osoby (tło, portret, baza w
+trybie oglądania). B1 jak w trybie osoby; B2 i B3 bez zmian (poprzednie i następne zdjęcie osoby); B5 bez „Zmień”; **bez
+B4''**. Na starcie: zdjęcie, które dotknięto (portret — profilowe, tło — zdjęcie tła).
 
 ### C — okno „Usunąć zdjęcie?”
 | # | Element | Typ | Klawiatura / akcja | Domyślnie | Walidacja | Źródło |
 |---|---|---|---|---|---|---|
 | C1 | Tytuł „Usunąć zdjęcie?”, treść (16 sp, kolor tekstu — jak w oknie „Odrzucić wpis?”): „Zdjęcia nie będzie w aplikacji ani w kolejnych kopiach. Jeśli jest w galerii telefonu, tam zostaje.” Przyciski: „Usuń” (kolor tekstu) · **„Zostaw”** (akcent — bezpieczne działanie jest główne) | okno dialogowe | „Zostaw” zamyka okno; „Usuń” usuwa i wraca do [[grob]] | — | — | [[style-b]] reguła 10 · wzorzec okna „Odrzucić wpis?” z [[wpis-osoby]] |
-| C1' | **Tryb osoby (v1.3).** **Zdjęcie tylko tej osoby:** jak C1. **Zdjęcie ma też inne osoby:** tytuł „Usunąć zdjęcie z tej osoby?”, treść „Zdjęcie zostaje u: Jan Wymyślony.” (osoby po przecinku). **Gdy to profilowe**, w obu wariantach dochodzi zdanie: „Profilowym zostanie następne zdjęcie.” (albo, gdy to ostatnie zdjęcie osoby: „Osoba nie będzie miała zdjęcia.”). Przyciski jak C1. **Usunięcie działa z „Zapisz” formularza** ([[zdjecia-osoby]] D1), więc okno nie mówi „od razu” | okno dialogowe | „Usuń” usuwa łącze tej osoby → [[zdjecia-osoby]] | — | — | ISSUE-017 AC 6 · [[style-b]] reguły 7, 10, 14 |
+| C1' | **Tryb osoby (v1.3).** **Zdjęcie tylko tej osoby:** jak C1. **Zdjęcie ma też inne osoby:** tytuł „Usunąć zdjęcie z tej osoby?”, treść „Zdjęcie zostaje u: Jan Wymyślony.” (osoby po przecinku). **Gdy to profilowe**, w obu wariantach dochodzi zdanie: „Profilowym zostanie następne zdjęcie.” (albo, gdy to ostatnie zdjęcie osoby: „Osoba nie będzie miała zdjęcia.”). **Gdy to tło** (v1.5) dochodzi: „Osoba
+zostanie bez zdjęcia w tle.” — chyba że to ostatnie zdjęcie osoby: wtedy wystarcza „Osoba nie będzie miała zdjęcia.” (przegląd `ui`
+ISSUE-024) Przyciski jak C1. **Usunięcie działa z „Zapisz” formularza** ([[zdjecia-osoby]] D1), więc okno nie mówi „od razu” | okno dialogowe | „Usuń” usuwa łącze tej osoby → [[zdjecia-osoby]] | — | — | ISSUE-017 AC 6 · [[style-b]] reguły 7, 10, 14 |
 
 ### D — „Kto jest na zdjęciu?” (tryb osoby, v1.3; pełny ekran)
 | # | Element | Typ | Klawiatura / akcja | Domyślnie | Walidacja | Źródło |
@@ -118,7 +135,8 @@ osoba”); podtytuł „Zdjęcie osoby”, **a na profilowym „Zdjęcie profilo
 - łącza tego zdjęcia.
 
 Zaznaczenie osoby dodaje łącze **na końcu** jej kolejności. Gdy osoba nie miała zdjęć, to zdjęcie zostaje jej
-profilowym. Odznaczenie usuwa łącze tej osoby, a gdy to było jej profilowe, profilowym zostaje jej następne zdjęcie.
+profilowym. Odznaczenie usuwa łącze tej osoby, a gdy to było jej profilowe, profilowym zostaje jej następne zdjęcie;
+gdy to było jej tło, osoba zostaje bez tła (v1.5).
 Wszystko zapisuje się z „Zapisz” formularza ([[zdjecia-osoby]] D1).
 
 ## States
@@ -133,6 +151,8 @@ Wszystko zapisuje się z „Zapisz” formularza ([[zdjecia-osoby]] D1).
 | C — otwarte | okno nad podglądem |
 | C — nieudane usunięcie | w oknie pod treścią: `error_outline` + „Nie udało się usunąć zdjęcia. Spróbuj jeszcze raz.” (kolor błędu); okno zostaje. **W trybie osoby nie występuje** — usunięcie łącza zapisuje się z „Zapisz” formularza, a jego błąd pokazuje formularz („nieudany zapis”) |
 | B — tryb osoby, jedno zdjęcie | B1, B2, B5, B4' — bez B3 |
+| B — tryb osoby, tło (v1.5) | podtytuł B1 „Zdjęcie w tle” (albo „Zdjęcie profilowe i tło”); w B4'' kolumna 2 to „Usuń z tła” |
+| B — tryb oglądania (v1.5) | B1, B2, B5 bez „Zmień”, B3 przy kilku zdjęciach; bez B4'' |
 | B — tryb osoby, profilowe | v1.4: podtytuł B1 „Zdjęcie profilowe”; w B4' zamiast „Ustaw jako profilowe” przycisk „Popraw kadr” ([[kadr-profilowego]] D8). Do v1.3: stan „✓ Profilowe” (tekst pomocniczy) |
 | B — tryb osoby, zdjęcie dopiero wybrane | jak wypełniony: plik przygotowany w katalogu roboczym, jeszcze nie w magazynie aplikacji ([[ADR-008-photos-access-copy-and-backup-consistency]]); dla autora bez różnicy |
 | D — otwarte | D1–D6, klawiatura schowana; zaznaczone osoby, które mają łącze do zdjęcia |

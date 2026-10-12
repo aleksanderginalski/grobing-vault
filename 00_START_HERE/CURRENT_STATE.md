@@ -3,7 +3,7 @@ title: "Grobing — Current State"
 type: meta
 status: active
 created: 2026-10-05
-updated: 2026-10-08
+updated: 2026-10-12
 ---
 
 # Grobing — Current State
@@ -30,14 +30,14 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
 - **Droga do instalacji MVP** — propozycja łańcucha przy zamknięciu SPIKE-004 (autor może zmienić kolejność):
   1. ~~[[ISSUE-022-app-skeleton-tabs-people-settings]]~~ — zamknięte 2026-10-08 (*Recently done*);
   2. ~~[[ISSUE-025-gender-kinship-together-since]]~~ — zamknięte 2026-10-08 (*Recently done*);
-  3. **następna: [[ISSUE-024-person-view]]** — widok osoby (M5), z mini-drzewem i pochówkiem prowadzącym na mapę; od ISSUE-025
-     także **słownik nazw pokrewieństwa i ścieżka do „ja”** („Jak łączy się ze mną”) i uwaga autora *„najpierw profil, potem
-     edycja”* (karty i chipy krewnych → widok osoby) — ISSUE-024 → *Input from ISSUE-025*;
-  4. [[ISSUE-023-poland-map-r1-cemetery-photo]] — mapa Polski jak R1 i zdjęcie cmentarza;
+  3. ~~[[ISSUE-024-person-view]]~~ — zamknięte 2026-10-12 (*Recently done*);
+  4. **następna: [[ISSUE-023-poland-map-r1-cemetery-photo]]** — mapa Polski jak R1 i zdjęcie cmentarza;
   5. [[US-007-mapa-cmentarza]] — plan offline, zdjęcie z góry, kwatery (przed planem: `ui` projektuje zaznaczanie kwater;
      wchodzi uprawnienie `INTERNET`);
   6. [[US-008-pinezka-na-miejscu]] — pinezka z GPS (dokładność czeka na pomiar z *Parked*);
-  7. [[SPIKE-002-tree-on-a-phone]] → drzewo, czas, „Połącz dwie osoby” ([[drzewo]], EPIC-003);
+  7. [[SPIKE-002-tree-on-a-phone]] → drzewo, czas, „Połącz dwie osoby” ([[drzewo]], EPIC-003) — od ISSUE-024 także **słownik nazw
+     złożonych i dawne AC-6** („ciotka”, „stryj”, „siostra cioteczna babci żony”) i „Pokaż w drzewie” w widoku osoby (SPIKE-002 →
+     *Input from ISSUE-024*);
   8. [[US-006-eksport-dla-rodziny]] i [[NT-007-hand-over-note]];
   → **instalacja MVP na telefonie** (build release) → prawdziwe dane ([[NT-002-transcribe-the-notes]]).
 
@@ -58,6 +58,8 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   **Każda pozycja z ekranem: `ui` → `planning`** (`autonomous-flow.md`). Wygląd: `05_DESIGN/brand/`
   (wytyczne v1.6 i referencje R1–R4 z kick-offu).
 - Poza tą kolejnością:
+  - [[ISSUE-026-link-existing-photo-to-person]] — zdjęcie, które już jest w aplikacji, dodane osobie od jej strony („połączyć z
+    istniejącymi”, decyzja autora na stopie #1 ISSUE-024); nowy ekran wyboru, więc `ui` → `planning`. Dziś działa od strony zdjęcia;
   - [[NT-001-photograph-the-notes]]: zdjęcia zrobione (33). Zostało: zaszyfrowane miejsce, sprawdzenie
     kopii w WhatsAppie i otwarcie kopii — *Resolution*;
   - [[SPIKE-002-tree-on-a-phone]]: przed drzewem (widok 5);
@@ -122,7 +124,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   paczki (decyzja autora 2026-10-07); treść wychodzących zmian sprawdza strażnik treści ([[ISSUE-020-content-guard]]) przy każdym `git add`/`commit`.
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **5** (ostatnie retro: [[2026-10-08-retro-02]]). Co **10** →
+- Zamknięte pozycje od ostatniego retro: **6** (ostatnie retro: [[2026-10-08-retro-02]]). Co **10** →
   retro + pytanie o 3–5 nośnych faktów (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**;
   podbija go `docs` przy zamknięciu, a zeruje go retro.
 - Do retro (zebrane po drodze, bez decyzji):
@@ -160,6 +162,16 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     „Stan danych”): prototyp nie pokazał drugiego przycisku pod „Skonfiguruj kopię od nowa”. Na tę lukę prototypu odpowiedział
     przegląd zbudowanego ekranu.
 
+  - **przegląd `ui` znalazł 4 MAJOR po zielonych testach i przejściu AC na emulatorze** ([[ISSUE-024-person-view]] → *Verification*):
+    pierścień w akcencie przykryty przez okrąg w trzech miejscach, ucięta rola i łamane słowo przy tekście 200%, ramka zaznaczenia na
+    krawędzi zdjęcia. `dev` nie sprawdzał tekstu 200% ani zdjęć w sepii. Kandydat: punkt „tekst 200% i zdjęcie w sepii” w przejściu AC
+    przez `dev` (R5) przy każdym nowym ekranie;
+  - **wybór z makiety odwrócony na stopie #2** (ISSUE-024): autor wybrał W2 („widok tylko pokazuje”), a przy tle na emulatorze chciał
+    trzeciej drogi — dotknąć pasma i wybrać. Makieta pokazała W1 i W2 jako całości, a nie miejsce działania. Kandydat: przy pozycji
+    z działaniem na ekranie pokazać na makiecie **gdzie się dotyka**, nie tylko co widać;
+  - **„ok” na stopie #2 bez sprawdzenia na urządzeniu — autor przerwał sprawdzenie: „pomiń”** (ISSUE-024, krok 3 rundy 2). Pamięć mówi,
+    że „ok” bez śladu agent sprawdza; tu autor zdecydował inaczej. Kandydat: zapytać, czy sprawdzanie „ok” na urządzeniu ma zostać.
+
   Tematy z poprzedniego okresu rozliczyło [[2026-10-08-retro-02]] (R1–R10); wcześniejsze [[2026-10-06-retro-01]].
 
 ## Parked (waiting on someone outside the session)
@@ -174,6 +186,29 @@ Format wpisu: `źródło (babcia / cmentarz X) · pytanie bez danych rodziny · 
 (zdarzenie) · data zapytania`. **Odpowiedź z faktami o rodzinie trafia do aplikacji, nie tutaj.**
 
 ## Recently done
+- 2026-10-12 — [[ISSUE-024-person-view]] zamknięte. **Osoba ma swój widok, a poprawa jest pod ✎:**
+  - **widok osoby** ([[osoba]] v2.3): pasmo tła, portret na jego krawędzi, imię i lata, „kim była” w całości, **mini-drzewo** (rodzice,
+    partnerzy — dwa związki po obu stronach, „razem” przerywaną linią — dzieci pod swoim związkiem, przewijanie w bok), **„Jak łączy
+    się ze mną”** — łańcuch od „Ja” po imionach z relacją kroku (Ja → Mama Anna → Jej mama Maria; decyzja autora: nazwy złożone w
+    drzewie), daty, **pochówek** → cmentarz z zaznaczonym grobem (do czasu mapy), zdjęcia;
+  - **każde dotknięcie osoby otwiera widok**: karta w grobie, w Osobach, „Ja”, chipy i karta partnera w formularzu (uwaga autora
+    *„najpierw profil, potem edycja”*); jedna poprawa osoby naraz w stosie;
+  - **zdjęcia w widoku tylko do oglądania** (W2), z dwoma wyjątkami: „Dodaj zdjęcie” u osoby bez zdjęć (→ poprawa z arkuszem) i
+    **pasmo tła → „Zdjęcie w tle”** — wybór albo nowe zdjęcie zapisuje tło od razu (decyzja autora na stopie #2, D21);
+  - **schemat v8:** tło jako znacznik przy łączu osoba–zdjęcie, jedno na osobę — [[ADR-013-person-background-on-photo-link]]; migracja
+    v7→v8 z testem, kopia v7 odtwarza się bez tła; próbne odtworzenie kopii v8 z tłem na drugim emulatorze — odcisk zgodny;
+  - słownik nazw złożonych i dawne AC-6 → [[SPIKE-002-tree-on-a-phone]]; „połączyć z istniejącymi” → [[ISSUE-026-link-existing-photo-to-person]].
+
+  Stop #1 w dwóch rundach (W2; łańcuch po imionach; sekcja „Zdjęcia” także bez zdjęć). Dwa przeglądy `ui`: 0 BLOCKER, 4 MAJOR,
+  10 MINOR — wszystkie poprawione przed stopem #2. Stop #2: kroki 1–2 „ok”, krok 3 w drugiej rundzie (tło z pasma) „ok”, bez
+  sprawdzenia na urządzeniu (autor: „pomiń”). Werdykt `qa`: APPROVED (self-check, z uwagami). Testy: 544. Licznik retro: 5 → 6.
+
+  **Dla autora:**
+  - na `Medium_Phone` kopia skonfigurowana od nowa — hasło testowe, do Pobranych (`grobing-klucz-024.age`, `grobing-kopia-024.age`,
+    wymyślone dane); `Grobing_Restore` ma dane z tej kopii. Zofia Testowa ma wymyślone zdjęcie jako profilowe i tło (z kroków agenta);
+  - nieprzetestowane na żywo: TalkBack w widoku osoby i ekran 360 dp (emulator ma 411 dp; układ dla 360 dp sprawdzają testy);
+  - Ewa i Jozef z danych testowych nie mają płci (sprzed v7) — w łańcuchu „Rodzeństwo”, „Małżonek”; zaznacz ♀ ♂ w ich poprawie;
+  - makieta (`issue-024-widok-osoby.html`), zrzuty i pliki kopii leżą poza repo (katalog tymczasowy sesji `8adf85b2-…`) — do kosza.
 - 2026-10-08 — [[ISSUE-025-gender-kinship-together-since]] zamknięte. **Płeć wraca, związek to oś czasu, formularz bez
   źródeł:**
   - **płeć ♀ ♂ obok „Imiona”** w formularzu osoby i przy każdej nowej osobie, podpowiadana z imienia (wyjątki z pomiaru

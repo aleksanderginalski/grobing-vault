@@ -1,10 +1,10 @@
 ---
 screen: "Osoby — zakładka: wszystkie osoby i wyszukiwanie; wybór „ja”"
-items: ["[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-022-app-skeleton-tabs-people-settings]]", "[[ISSUE-025-gender-kinship-together-since]]"]
+items: ["[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-022-app-skeleton-tabs-people-settings]]", "[[ISSUE-025-gender-kinship-together-since]]", "[[ISSUE-024-person-view]]"]
 us: "do rozpisania — S5/G5 (wyszukiwanie osób; brief §5a G5 — Should, przyjęte do MVP decyzją autora na prototypie: SPIKE-004 D1, D3, D19)"
 journey-step: "n/a — wejście do widoku osoby (M5) spoza ścieżki wizyty"
 mockup: "2026-10-08: grobing-prototyp.html (SPIKE-004, panel 5) — katalog tymczasowy sesji, ścieżka w SPIKE-004"
-updated: 2026-10-08
+updated: 2026-10-09
 ---
 
 # Osoby — specyfikacja
@@ -33,6 +33,9 @@ updated: 2026-10-08
 > łączenia osób w drzewie (przy wielu poziomach to by się strasznie rozrastało)”*. Lista pokazuje imię, nazwisko i lata
 > życia, jak w v2. „Kim jest dla mnie” jest w widoku osoby ([[osoba]] element 7) i w łączeniu osób w drzewie ([[drzewo]]).
 > D2 obalone, D8 i D9 wycofane.
+>
+> **Wersja 2.3 (2026-10-09, przed planem [[ISSUE-024-person-view]]):** karta osoby i karta „Ja” po wyborze otwierają
+> **widok osoby** ([[osoba]]) — koniec tymczasowego D7. Reszta listy bez zmian.
 
 ## Purpose
 Znaleźć osobę bez wiedzy, na którym cmentarzu leży: po nazwisku albo imieniu, a w liście — zobaczyć, kim jest dla
@@ -42,8 +45,8 @@ która osoba to on („ja”) — od niej liczą się łańcuchy i nazwy pokrewi
 ## Navigation
 - **Zakładka „Osoby”** w dolnym pasku ([[style-b]] reguła 12, [[cmentarze]] element 18). Wyszukiwarka tej zakładki szuka
   tylko osób (SPIKE-004 D3). Zakładka otwiera ekran od razu, bez wsuwania; **wstecz z tego ekranu wraca na mapę**.
-- **Karta osoby → [[osoba]]** — zakładka Osoby zostaje aktywna na całym stosie: osoba → mapa cmentarza → grób. **Do czasu
-  [[ISSUE-024-person-view]] karta otwiera „Poprawę wpisu”** ([[wpis-osoby]]) tą samą drogą co chip krewnego (D7).
+- **Karta osoby → [[osoba]]** — zakładka Osoby zostaje aktywna na całym stosie: osoba → cmentarz → grób (v2.3; do
+  [[ISSUE-024-person-view]] karta otwierała „Poprawę wpisu” — D7).
 - **Karta „Ja”:** przed wyborem → **wybór „ja”** (elementy 6–7); po wyborze → ta osoba (jak karta osoby).
 - Wstecz z osoby wraca tu, z tym samym tekstem w wyszukiwarce, tą samą pozycją listy i **bez klawiatury** (pole oddaje
   fokus przed otwarciem osoby — błąd znaleziony na emulatorze w ISSUE-022).
@@ -151,8 +154,8 @@ n/a — ekran do szukania i oglądania.
   obecnej osobie; bez automatycznego fokusu pola, bo wybór robi się raz, a lista ok. 100 osób przewija się szybciej, niż
   się pisze przy klawiaturze zakrywającej połowę ekranu. *Obali:* autor przy pierwszym wyborze zawsze wpisuje nazwisko —
   wtedy fokus od razu.
-- **D7 — karta osoby → „Poprawa wpisu” do czasu widoku osoby** (v2; ISSUE-022 D2). Tymczasowe złamanie reguły 15 (widok
-  przed poprawą), opisane w [[style-b]] reguła 15. [[ISSUE-024-person-view]] przepina kartę na [[osoba]].
+- ~~**D7 — karta osoby → „Poprawa wpisu” do czasu widoku osoby**~~ (v2; ISSUE-022 D2) — **zakończone w v2.3**:
+  [[ISSUE-024-person-view]] przepina kartę na [[osoba]].
 
 - ~~**D8, D9** (v2.1 — nawias ze ścieżką, opis neutralny bez płci)~~ — wycofane z listą (v2.2); obie reguły przechodzą do
   widoku osoby ([[ISSUE-024-person-view]]).

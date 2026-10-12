@@ -4,9 +4,9 @@ type: data-model
 status: active
 source: "PROJECT_BRIEF §Architecture → Data model (accepted by the author, 2026-10-05)"
 FR: ["[[FR-001-provenance]]", "[[FR-002-rodzina-jako-rekord]]", "[[FR-003-wiele-osob-w-grobie]]", "[[FR-004-data-z-dopiskiem]]", "[[FR-005-nazwisko-rodowe]]"]
-ADR: ["[[ADR-001-local-first]]", "[[ADR-006-claimed-value-separate-structures]]", "[[ADR-011-relation-claims-family-and-child-link]]", "[[ADR-012-person-sex-and-union-timeline]]"]
+ADR: ["[[ADR-001-local-first]]", "[[ADR-006-claimed-value-separate-structures]]", "[[ADR-011-relation-claims-family-and-child-link]]", "[[ADR-012-person-sex-and-union-timeline]]", "[[ADR-013-person-background-on-photo-link]]"]
 created: 2026-10-05
-updated: 2026-10-08
+updated: 2026-10-12
 ---
 
 # Grobing — Data model
@@ -52,7 +52,7 @@ erDiagram
 | **Burial** | grób ↔ osoba, wiele na grób; osoba ma osobny wiersz dla każdego grobu, który podaje dla niej jakieś źródło | grób rodzinny mieści kilka osób ([[FR-003-wiele-osob-w-grobie]]); człowiek leży w jednym miejscu, ale źródła mogą się różnić ([[ADR-006-claimed-value-separate-structures]] D2) |
 | **Assertion** (provenance) | **źródło** (nagrobek / notatki / babcia / krewny / akt) + szczegół (kto, który akt) · **status** `CLAIMED / CONFIRMED / CONTRADICTED / UNKNOWN` · kiedy — **przy wierszu *Event* albo *Burial***, którego wartość potwierdza, **albo przy rodzinie i łączu dziecka** (relacje, schemat v6 — [[ADR-011-relation-claims-family-and-child-link]]); wartość („co twierdzimy”) żyje w tym wierszu | cytowanie źródła jak w GEDCOM 7; **dwa sprzeczne twierdzenia współistnieją** jako dwa wiersze, każdy ze swoim twierdzeniem ([[FR-001-provenance]], [[ADR-006-claimed-value-separate-structures]]) **Od 2026-10-08 uśpione:** aplikacja nie pokazuje i nie zbiera źródła ani statusu ([[SPIKE-004-mvp-flow-prototype]] D28); kolumny zostają, formularz wpisuje domyślne źródło. |
 | **Media** | **zdjęcie jako rekord** (jak `MULTIMEDIA_RECORD` w GEDCOM 7): plik w prywatnym magazynie aplikacji i, dla nagrobka, grób. **Zdjęcie = kopia dostępowa:** JPEG 2048 px, bez EXIF ([[ADR-008-photos-access-copy-and-backup-consistency]]); pliki `media/groby/<id>/<czas>-<losowe>.jpg` i `media/zdjecia/<czas>-<losowe>.jpg` (zdjęcia osób, bez id osoby — bywają wspólne). **Grób — najwyżej jedno zdjęcie** (pierwsze = najniższe `id`). Usunięcie kasuje wiersz, plik usuwa sprzątanie (ADR-008 pkt 3). Wiersz bez grobu i bez łącza znika w tej samej transakcji ([[ADR-009-person-photos-record-and-link]]) | oryginał zostaje w galerii albo na papierze |
-| **PersonMedia** (łącze zdjęcia) | osoba ↔ zdjęcie z **pozycją** (jak `OBJE` w GEDCOM 7) — schemat v4, [[ISSUE-017-person-photos]]. **Profilowe = pierwsze łącze osoby**, osobno dla każdej osoby; jedno zdjęcie (np. grupowe) ma łącza od wielu osób, a plik jest jeden. Zmiany zdjęć osoby zapisują się w transakcji jej wpisu ([[ADR-009-person-photos-record-and-link]]) | kto jest na zdjęciu — bez źródła ([[FR-001-provenance]]: daty, relacje, pochówek; łącze w GEDCOM 7 nie ma `SOUR`). **Kadr profilowego** (schemat v5): `CROP` przy łączu — cztery kolumny `crop_*` w pikselach pliku zdjęcia; brak = środek; każda osoba na zdjęciu ma własny ([[ADR-010-profile-photo-crop-pixels]]) |
+| **PersonMedia** (łącze zdjęcia) | osoba ↔ zdjęcie z **pozycją** (jak `OBJE` w GEDCOM 7) — schemat v4, [[ISSUE-017-person-photos]]. **Profilowe = pierwsze łącze osoby**, osobno dla każdej osoby; jedno zdjęcie (np. grupowe) ma łącza od wielu osób, a plik jest jeden. Zmiany zdjęć osoby zapisują się w transakcji jej wpisu ([[ADR-009-person-photos-record-and-link]]) | kto jest na zdjęciu — bez źródła ([[FR-001-provenance]]: daty, relacje, pochówek; łącze w GEDCOM 7 nie ma `SOUR`). **Kadr profilowego** (schemat v5): `CROP` przy łączu — cztery kolumny `crop_*` w pikselach pliku zdjęcia; brak = środek; każda osoba na zdjęciu ma własny ([[ADR-010-profile-photo-crop-pixels]]). **Tło** (schemat v8): `is_background` przy łączu — najwyżej jedno na osobę (częściowy indeks unikalny), rozszerzenie aplikacji, bo łącze w GEDCOM 7 zna tylko `CROP` i `TITL` ([[ADR-013-person-background-on-photo-link]]) |
 | **Setting: „ja"** | która osoba to autor | kotwica „jak łączą się ze mną" (M5). W kodzie: tabela `settings` od v1, jeden wiersz `id = 1`, zapisywany przy pierwszym wyborze w ustawieniach albo w zakładce Osoby ([[ISSUE-022-app-skeleton-tabs-people-settings]]); jedzie w kopii razem z bazą |
 
 ## Rules that are not tables
@@ -97,6 +97,11 @@ erDiagram
   `together` („Razem od”). Ślub i koniec bez daty to zdarzenia bez daty; `families.dart` → `saveFamily` dostaje `together`,
   `married`, `ended`. Migracja v6→v7 tylko dodaje kolumnę — kopie v6 odtwarzają się bez zmian w kodzie odtworzenia.
   Związki osoby według pierwszej daty związku (razem od, a bez niej ślub).
+- **2026-10-12 — schemat v8** ([[ISSUE-024-person-view]], [[ADR-013-person-background-on-photo-link]]): `person_media.is_background`
+  i indeks `person_media_background` (jedno tło na osobę). Tło zapisuje `applyPersonPhotoEdits` jak kadr — czyta przed
+  przepisaniem łączy i oddaje; łącze usunięte zabiera tło. Migracja v7→v8 dodaje kolumnę i indeks, bez wierszy — kopie v7
+  odtwarzają się bez tła. **Ścieżka od „ja” liczona, nie zapisywana:** `grobing-code/lib/data/kinship.dart` buduje graf z rodzin
+  (rodzic, dziecko, rodzeństwo — dzieci tej samej rodziny, para) przy każdym otwarciu widoku osoby.
 
 ## Known consequence — not a model change
 
