@@ -31,9 +31,9 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   1. ~~[[ISSUE-022-app-skeleton-tabs-people-settings]]~~ — zamknięte 2026-10-08 (*Recently done*);
   2. ~~[[ISSUE-025-gender-kinship-together-since]]~~ — zamknięte 2026-10-08 (*Recently done*);
   3. ~~[[ISSUE-024-person-view]]~~ — zamknięte 2026-10-12 (*Recently done*);
-  4. **następna: [[ISSUE-023-poland-map-r1-cemetery-photo]]** — mapa Polski jak R1 i zdjęcie cmentarza;
-  5. [[US-007-mapa-cmentarza]] — plan offline, zdjęcie z góry, kwatery (przed planem: `ui` projektuje zaznaczanie kwater;
-     wchodzi uprawnienie `INTERNET`);
+  4. ~~[[ISSUE-023-poland-map-r1-cemetery-photo]]~~ — zamknięte 2026-10-12 (*Recently done*);
+  5. **następna: [[US-007-mapa-cmentarza]]** — plan offline, zdjęcie z góry, kwatery (przed planem: `ui` projektuje zaznaczanie
+     kwater; wchodzi uprawnienie `INTERNET`);
   6. [[US-008-pinezka-na-miejscu]] — pinezka z GPS (dokładność czeka na pomiar z *Parked*);
   7. [[SPIKE-002-tree-on-a-phone]] → drzewo, czas, „Połącz dwie osoby” ([[drzewo]], EPIC-003) — od ISSUE-024 także **słownik nazw
      złożonych i dawne AC-6** („ciotka”, „stryj”, „siostra cioteczna babci żony”) i „Pokaż w drzewie” w widoku osoby (SPIKE-002 →
@@ -124,7 +124,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   paczki (decyzja autora 2026-10-07); treść wychodzących zmian sprawdza strażnik treści ([[ISSUE-020-content-guard]]) przy każdym `git add`/`commit`.
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **6** (ostatnie retro: [[2026-10-08-retro-02]]). Co **10** →
+- Zamknięte pozycje od ostatniego retro: **7** (ostatnie retro: [[2026-10-08-retro-02]]). Co **10** →
   retro + pytanie o 3–5 nośnych faktów (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**;
   podbija go `docs` przy zamknięciu, a zeruje go retro.
 - Do retro (zebrane po drodze, bez decyzji):
@@ -171,6 +171,16 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     z działaniem na ekranie pokazać na makiecie **gdzie się dotyka**, nie tylko co widać;
   - **„ok” na stopie #2 bez sprawdzenia na urządzeniu — autor przerwał sprawdzenie: „pomiń”** (ISSUE-024, krok 3 rundy 2). Pamięć mówi,
     że „ok” bez śladu agent sprawdza; tu autor zdecydował inaczej. Kandydat: zapytać, czy sprawdzanie „ok” na urządzeniu ma zostać.
+  - **`dev` przypisał wolne klatki emulatorowi, a był to błąd wydajności ok. 600×** ([[ISSUE-023-poland-map-r1-cemetery-photo]] →
+    *After `qa`* pkt 1): morze rysowane przez `Path.combine` co klatkę, ANR przy starcie. Złapał to dopiero ANR i pomiar `qa` (stara vs
+    nowa mapa). Kandydat: przy nowej warstwie mapy albo dużych danych — test kosztu w przejściu AC, zanim padnie słowo „emulator”;
+  - **`python -` jeszcze raz** (ISSUE-023, `qa`) — trzecia sesja z rzędu mimo pamięci „nigdy”; zawisło, bez szkody. Wzmacnia kandydata
+    na hook `PreToolUse` wyżej;
+  - **czwarta instancja błędu semantyki** (ISSUE-023): `Semantics` bez `container` zlał „Dodaj zdjęcie” z całym arkuszem — przycisk
+    niedostępny dla Switch Access jako osobny. Złapane w przejściu AC (`uiautomator`). Przy okazji z ISSUE-024: węzeł „Dodaj zdjęcie
+    osoby” w „Zdjęcie w tle” jest szerszy niż kafelek (ramka TalkBack). Kandydat: punkt „semantyka” w przejściu AC i w przeglądzie `ui`;
+  - **skill `ui` w trybie przeglądu mówi „nic nie zapisujesz”**, a przeglądy zapisują przyjęte odstępstwa w specyfikacji (ISSUE-023:
+    cmentarze v2.6, style-b v1.20, zdjecie v1.6; wcześniej v2.2, v1.4–v1.8, v1.17). Kandydat: wyrównać skill z praktyką.
 
   Tematy z poprzedniego okresu rozliczyło [[2026-10-08-retro-02]] (R1–R10); wcześniejsze [[2026-10-06-retro-01]].
 
@@ -186,6 +196,30 @@ Format wpisu: `źródło (babcia / cmentarz X) · pytanie bez danych rodziny · 
 (zdarzenie) · data zapytania`. **Odpowiedź z faktami o rodzinie trafia do aplikacji, nie tutaj.**
 
 ## Recently done
+- 2026-10-12 — [[ISSUE-023-poland-map-r1-cemetery-photo]] zamknięte. **Mapa Polski wygląda jak R1, a cmentarz ma zdjęcie:**
+  - **mapa jak R1** ([[cmentarze]] v2.6, D29, D32): sąsiedzi w kolorze tła z granicami, Bałtyk i jeziora w kolorze wody, rzeki linią
+    wody, granica Polski w kolorze tekstu pomocniczego, „Polska” (tylko przy najmniejszych przybliżeniach), 11 miast (+ Bydgoszcz,
+    Katowice); podpisy mapy rosną z tekstem systemu najwyżej do 1,3×. Dane Natural Earth, bez sieci, `poland.json` ok. 300 KB, brzeg
+    danych nigdy na ekranie; ten sam wygląd w podglądzie z bazy i w trybie wskazania;
+  - **Polska na środku** (D30, D26 v2.6): bez arkusza na środku, na całą szerokość na każdym telefonie; przy otwarciu arkusza mapa
+    płynnie podjeżdża (ok. 300 ms), przy zamknięciu wraca; na krótkim ekranie arkusz zasłania południe (reguła znicza);
+  - **zdjęcie cmentarza w arkuszu** (6a, D33): miniatura 96 × 80 z lewej albo „Dodaj zdjęcie”, podgląd ze „Zmień” i „Usuń” jak przy
+    nagrobku;
+  - **schemat v9:** `media.cemetery_id` — [[ADR-014-cemetery-photo-on-media]]; migracja v8→v9 z testem, kopia v8 odtwarza się z
+    cmentarzami bez zdjęć; próbne odtworzenie kopii v9 ze zdjęciem cmentarza na drugim emulatorze — odcisk zgodny.
+
+  Znalezione po drodze: **błąd wydajności** — morze rysowane przez `Path.combine` co klatkę (2–3 s na klatkę, ANR przy starcie) →
+  `evenOdd`, start 2,3 s; pułapka sieroty (zapis zdjęć osoby kasowałby zdjęcia cmentarzy) zamknięta przed kodem; arkusz liczył margines
+  paska gestów dwa razy (od ISSUE-022) — poprawione. Dwa przeglądy `ui`: 0 BLOCKER, 2 MAJOR, 3 MINOR — wszystkie poprawione przed
+  stopem #2. Stop #2 „ok”, sprawdzone na urządzeniu. Werdykt `qa`: APPROVED (self-check, z uwagami). Testy: 579. Licznik retro: 6 → 7.
+
+  **Dla autora:**
+  - na `Medium_Phone` kopia skonfigurowana od nowa — hasło testowe, do Pobranych (`grobing-klucz-023.age`, `grobing-kopia-023.age`,
+    wymyślone dane); `Grobing_Restore` ma dane z tej kopii. Powązki mają wymyślone zdjęcie z Twojego kroku 3, Kuba Testowy — wymyślone
+    profilowe i tło (z kroków agenta);
+  - nieprzetestowane na żywo: wydajność mapy na słabym telefonie (pierwszy prawdziwy telefon przy MVP), TalkBack w arkuszu, telefon
+    trzymany poziomo;
+  - zrzuty, pliki Natural Earth (ok. 43 MB) i kopie kopii leżą poza repo (katalog tymczasowy sesji `a8d4bcfd-…`) — do kosza.
 - 2026-10-12 — [[ISSUE-024-person-view]] zamknięte. **Osoba ma swój widok, a poprawa jest pod ✎:**
   - **widok osoby** ([[osoba]] v2.3): pasmo tła, portret na jego krawędzi, imię i lata, „kim była” w całości, **mini-drzewo** (rodzice,
     partnerzy — dwa związki po obu stronach, „razem” przerywaną linią — dzieci pod swoim związkiem, przewijanie w bok), **„Jak łączy

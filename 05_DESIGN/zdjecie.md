@@ -1,10 +1,10 @@
 ---
 screen: "Zdjęcie — wybór źródła i podgląd na pełnym ekranie"
-items: ["[[ISSUE-016-photos-grave-and-person]]", "[[ISSUE-017-person-photos]]", "[[ISSUE-018-profile-photo-crop]]", "[[ISSUE-024-person-view]]"]
+items: ["[[ISSUE-016-photos-grave-and-person]]", "[[ISSUE-017-person-photos]]", "[[ISSUE-018-profile-photo-crop]]", "[[ISSUE-024-person-view]]", "[[ISSUE-023-poland-map-r1-cemetery-photo]]"]
 us: "[[US-005-zdjecia]]"
 journey-step: "n/a — M1; docelowo krok 3 UJ-001 (porównanie zdjęcia nagrobka z tym, co przed tobą — brief §4a)"
 mockup: "katalog tymczasowy sesji 2026-10-07: makieta-zdjecia.html (ramki 3, 5, 6 — wersja przed stopem #1 ISSUE-016) · makieta-zdjecia-osoby.html (ramki 5–8 — tryb osoby, ISSUE-017) · makieta-kadr-profilowego.html (ramki 1, 4 — B4' z kadrem, ISSUE-018) · 2026-10-09: issue-024-widok-osoby.html (ramka „Ustaw jako tło”, ISSUE-024)"
-updated: 2026-10-09
+updated: 2026-10-12
 ---
 
 # Zdjęcie — specyfikacja
@@ -49,6 +49,15 @@ updated: 2026-10-09
 > - **A z widoku osoby** (v1.5, [[osoba]] D20): „Dodaj zdjęcie” w pustej sekcji „Zdjęcia” otwiera poprawę wpisu, a nad nią od
 >   razu ten arkusz (tryb osoby); po wyborze — formularz z nowym zdjęciem, zapis z „Zapisz”;
 > - C1' i D mówią, co dzieje się z tłem.
+>
+> **Wersja 1.6 (2026-10-12, przegląd `ui` zbudowanego [[ISSUE-023-poland-map-r1-cemetery-photo]]) — tryb cmentarza.** Zdjęcie
+> cmentarza działa jak zdjęcie nagrobka: jedno, zapis od razu, zmiana i usunięcie ([[cmentarze]] 6a, D28). Różnice to same
+> napisy:
+> - **A1:** „Zdjęcie cmentarza”;
+> - **B1:** tytuł — nazwa cmentarza, podtytuł „Zdjęcie cmentarza”;
+> - B2, B4 i C1 bez zmian.
+>
+> Otwiera się z arkusza cmentarza na mapie (*Navigation*).
 
 ## Purpose
 Dodanie zdjęcia nagrobka do grobu (US-005 AC-1) i obejrzenie go w całości, z przybliżeniem. Zdjęcie nagrobka ma
@@ -65,6 +74,12 @@ zaznaczenie, kto jeszcze jest na zdjęciu — jedno zdjęcie należy wtedy do ki
   później (przypadek autora ze stopu #1). Anulowanie w systemowym oknie wraca bez zmian.
 - **B — podgląd** otwiera się po dotknięciu zdjęcia nagrobka w [[grob]] (element 1a). Wstecz → [[grob]].
 - **C — okno „Usunąć zdjęcie?”** z podglądu. Po usunięciu → [[grob]] bez zdjęcia, z polem „Dodaj zdjęcie nagrobka”.
+
+**Tryb cmentarza (v1.6):**
+- **A** otwiera się z pola „Dodaj zdjęcie” w arkuszu cmentarza na mapie ([[cmentarze]] 6a) albo z „Zmień zdjęcie” (B4). Po
+  wyborze zdjęcie zapisuje się od razu, a arkusz pokazuje miniaturę.
+- **B** otwiera się po dotknięciu miniatury w arkuszu. Wstecz → mapa z otwartym arkuszem.
+- **C** jak przy nagrobku. Po usunięciu → arkusz z polem „Dodaj zdjęcie”.
 
 **Tryb osoby (v1.3):**
 - **A** otwiera się z elementu 1a w [[wpis-osoby]] (osoba bez zdjęć) albo z kafelka „Dodaj zdjęcie” w
@@ -262,6 +277,7 @@ Rekordem jest **zdjęcie nagrobka**: ok. 50 grobów (G6, [[NT-002-transcribe-the
 | ISSUE-018: kadr profilowego, poprawa kadru (v1.4) | B4' → [[kadr-profilowego]] | „Ustaw jako profilowe” i „Popraw kadr” otwierają kadr; po „Gotowe” okręgi profilowego pokazują wycinek |
 | ISSUE-017: zdjęcie u kilku osób, jeden plik | B5 → D | zaznaczona osoba ma to zdjęcie w swojej bazie; plik w magazynie jeden |
 | ISSUE-017: usunięcie u jednej osoby nie usuwa innym | B4' → C1' | treść okna mówi, u kogo zdjęcie zostaje; po zapisie zdjęcie jest dalej w bazie tamtej osoby |
+| ISSUE-023 AC-3: zdjęcie cmentarza — podgląd, zmiana, usunięcie (v1.6) | A, B, B4, C1 (tryb cmentarza) → [[cmentarze]] 6a | podgląd z nazwą cmentarza i „Zdjęcie cmentarza”; „Zmień zdjęcie” → nowa miniatura w arkuszu; „Usuń zdjęcie” → „Usuń” → arkusz z „Dodaj zdjęcie” |
 
 ## Decisions
 - **D1 — najpierw galeria, potem aparat.** Przepisywanie odbywa się w domu: zdjęcia nagrobków zrobione na

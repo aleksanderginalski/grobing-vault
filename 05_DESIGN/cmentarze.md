@@ -1,16 +1,16 @@
 ---
 screen: "Ekran główny — mapa Polski z cmentarzami rodziny"
-items: ["[[ISSUE-012-transcribe-grave-screen]]", "[[ISSUE-014-home-map-of-poland]]", "[[ISSUE-015-add-cemetery-from-database]]", "[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-022-app-skeleton-tabs-people-settings]]"]
+items: ["[[ISSUE-012-transcribe-grave-screen]]", "[[ISSUE-014-home-map-of-poland]]", "[[ISSUE-015-add-cemetery-from-database]]", "[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-022-app-skeleton-tabs-people-settings]]", "[[ISSUE-023-poland-map-r1-cemetery-photo]]"]
 us: "[[US-002-przepisanie-grobu]]"
 journey-step: "UJ-001 · 1 (widok 1, M2) · warunek kroku 1: dodanie cmentarza (M1)"
 mockup: "katalog tymczasowy sesji 2026-10-06: makieta-mapa-polski.html (ramki 1–10, wersja 2 po stopie #1) · 2026-10-08: grobing-prototyp.html (SPIKE-004, klikalny)"
-updated: 2026-10-08
+updated: 2026-10-12
 ---
 
 # Ekran główny — mapa Polski — specyfikacja
 
 > Żywy plik: `ui` aktualizuje go przy każdej pozycji, która ten ekran zmienia. Prawdą o ekranie jest ten
-> plik; szkic i makieta to podgląd. Wytyczne: [[style-b]] (v1.17) · referencja: [[references]] → **R1**.
+> plik; szkic i makieta to podgląd. Wytyczne: [[style-b]] (v1.20) · referencja: [[references]] → **R1**.
 >
 > **Historia:** do ISSUE-014 plik opisywał listę cmentarzy jako ekran główny (pierwsza wersja `ui`). Autor
 > zdecydował, że ekranem głównym jest od startu mapa Polski jak R1. Nazwa pliku zostaje, bo linkują do niej
@@ -66,6 +66,17 @@ updated: 2026-10-08
 >   *Navigation*);
 > - element 18: semantyka zakładek, klawiatura zakrywa pasek, podpis 12 sp jako wyjątek w [[style-b]] v1.17.
 >
+> **Wersja 2.6 — przegląd `ui` zbudowanego ekranu [[ISSUE-023-poland-map-r1-cemetery-photo]] (2026-10-12):** odstępstwa `dev`
+> przyjęte w przeglądzie i poprawki z przeglądu (*Dev report → Deviations* 1–7, *Found on the emulator* 4):
+> - **falsyfikator D26 się zapalił** (360 × 640 dp: Polska ok. 145 dp, podpisy nachodzą). „Niższy arkusz” nie wystarcza, więc
+>   najmniejsze przybliżenie nie zależy od arkusza (cała Polska na szerokość ekranu), a na krótkim ekranie przy arkuszu działa
+>   reguła znicza (D26, D30);
+> - arkusz stoi na pasku dolnym i **nie dokłada marginesu paska gestów** — ten trzyma pasek dolny (nagłówek arkusza, D30);
+> - podpisy mapy rosną z tekstem najwyżej do 1,3×; „Polska” tylko przy najmniejszych przybliżeniach; brzegi sąsiadów bez
+>   linii; progi jezior (D32 → element 3);
+> - arkusz z miniaturą: nazwa przy górze miniatury, ✎ w linii pierwszej linii nazwy; stany miniatury (D33 → 6a, *States*);
+> - *AC → element*: wiersze dla 4 AC ISSUE-023, szkic arkusza z miniaturą.
+>
 > Które elementy dowozi która pozycja, mówi plan (`planning`), a nie ten plik.
 
 ## Purpose
@@ -107,16 +118,16 @@ a cmentarze z OpenStreetMap są wbudowane w aplikację.
 |---|---|---|---|---|---|---|
 | 1 | Pasek: **ikona znicza (akcent) + „Grobing”** (półgruby, 22 sp); po prawej koło zębate (`settings_outlined`, tekst pomocniczy, `tooltip` „Ustawienia”) | pasek | koło → [[ustawienia]] (od ISSUE-022; wcześniej „Stan danych”) | — | — | R1 · *What to build* 5 · [[style-b]] reguła 8 · ISSUE-022 |
 | 2 | **Wyszukiwarka:** pigułka na powierzchni, wys. 56 dp, margines 16 dp, ikona `search` (tekst pomocniczy), podpowiedź **„Szukaj cmentarza”** | pole (tylko wejście) | dotknięcie → tryb wyszukiwania (10) | pusto | — | R1 · *What to build* 3 · D2 |
-| 3 | **Mapa Polski jak R1 (v2.4, D29)** na całą szerokość pod wyszukiwarką: **Polska** — ląd w kolorze powierzchni, granica w kolorze **tekstu pomocniczego** (1,4 dp; 5,01:1 na lądzie, 5,04:1 na wodzie, 5,50:1 na tle); **sąsiednie kraje** w kolorze tła z granicami w kolorze obrysu (0,7 dp, krycie 45%, dekoracja); **Bałtyk i jeziora** w kolorze **wody** (nowa rola, proponowany token `water` `#101C25`); **rzeki** linią wody (1 dp, proponowany token `waterLine` `#3A5E74`, dekoracja); napis **„Polska”** (22 sp, półgruby, odstęp liter 2, tekst pomocniczy, krycie 85%) w wolnym miejscu północnej części kraju; **11 miast** (kropka 4 dp + podpis 13 sp, tekst pomocniczy, z obwódką 2–3 dp w kolorze lądu — [[style-b]] reguła 13): Szczecin, Gdańsk, Bydgoszcz, Białystok, Poznań, Warszawa, Łódź, Wrocław, Katowice, Lublin, Kraków. Dane: Natural Earth 1:10m, te same co dziś. Bez faktury terenu | mapa | szczypanie, przeciąganie, podwójne dotknięcie; ruch ograniczony do Polski; najmniejsze przybliżenie = cała Polska z marginesem 16 dp, **wyśrodkowana w pionie w obszarze mapy, gdy arkusz jest zamknięty; po otwarciu arkusza mapa przesuwa się płynnie w górę, tak że Polska stoi nad arkuszem** (v2.4, D30); bez obrotu; dotknięcie pustego miejsca zamyka arkusz | cała Polska, północ u góry | — | R1 · *What to build* 1 · D14, D29, D30 |
+| 3 | **Mapa Polski jak R1 (v2.4, D29)** na całą szerokość pod wyszukiwarką: **Polska** — ląd w kolorze powierzchni, granica w kolorze **tekstu pomocniczego** (1,4 dp; 5,01:1 na lądzie, 5,04:1 na wodzie, 5,50:1 na tle); **sąsiednie kraje** w kolorze tła z granicami w kolorze obrysu (0,7 dp, krycie 45%, dekoracja); **Bałtyk i jeziora** w kolorze **wody** (nowa rola, token `water`, od ISSUE-023 w `theme.dart`); **rzeki** linią wody (1 dp, token `waterLine`, dekoracja); napis **„Polska”** (22 sp, półgruby, odstęp liter 2, tekst pomocniczy, krycie 85%) w wolnym miejscu północnej części kraju; **11 miast** (kropka 4 dp + podpis 13 sp, tekst pomocniczy, z obwódką 2–3 dp w kolorze lądu — [[style-b]] reguła 13): Szczecin, Gdańsk, Bydgoszcz, Białystok, Poznań, Warszawa, Łódź, Wrocław, Katowice, Lublin, Kraków. Dane: Natural Earth 1:10m (siedem warstw od ISSUE-023). Bez faktury terenu. **Podpisy mapy** (miasta i „Polska”) rosną z tekstem systemu najwyżej do 1,3×; „Polska” stoi tylko do +2 kroków przybliżenia (v2.6, D32) | mapa | szczypanie, przeciąganie, podwójne dotknięcie; ruch ograniczony do Polski; najmniejsze przybliżenie = cała Polska z marginesem 16 dp, **wyśrodkowana w pionie w obszarze mapy, gdy arkusz jest zamknięty; po otwarciu arkusza mapa przesuwa się płynnie w górę, tak że Polska stoi nad arkuszem** (v2.4, D30). **Na krótkim ekranie** Polska zostaje na całą szerokość, a przy otwartym arkuszu działa reguła znicza z elementu 4 (v2.6, D26); bez obrotu; dotknięcie pustego miejsca zamyka arkusz | cała Polska, północ u góry | — | R1 · *What to build* 1 · D14, D29, D30 |
 | 4 | **Znicze cmentarzy** w punkcie cmentarza: pinezka w akcencie z sylwetką znicza w kolorze tła, 32 × 40 dp, **cel dotyku 48 × 48 dp**. Wybrany: 40 × 50 dp z poświatą. **Znicze, których cele nachodzą na siebie, łączą się w jeden znicz z liczbą** (plakietka: powierzchnia, obrys w akcencie, cyfra w kolorze tekstu). Znicz rysuje się nad podpisami miast | znaczniki | dotknięcie → arkusz (6) albo arkusz grupy (9); mapa przesuwa się tak, żeby znicz (także znicz z liczbą) nie stał pod arkuszem — według wysokości narysowanego arkusza | — | cmentarz bez punktu nie ma znicza | R1 · *What to build* 2 · AC-2 · D8 |
 | 5 | **Stan pusty:** karta na powierzchni na dole: „Tu pojawią się cmentarze rodziny.” (tekst pomocniczy) + **wypełniony „Dodaj cmentarz”** (`add_location_alt_outlined`) | karta + przycisk główny | → tryb wyszukiwania (10) z podpowiedzią „Wpisz nazwę cmentarza albo miejscowość” | — | — | AC-1 · [[style-b]] reguła 9 · D16 |
 
-**Arkusz cmentarza** — dolny arkusz na powierzchni do krawędzi ekranu (treść nad paskiem gestów), promień 16 dp, uchwyt: przeciągnięcie w dół zamyka arkusz jak dotknięcie mapy; mapa pod nim działa
+**Arkusz cmentarza** — dolny arkusz na powierzchni, promień 16 dp, uchwyt: przeciągnięcie w dół zamyka arkusz jak dotknięcie mapy; mapa pod nim działa. **Stoi na pasku dolnym (18)**, a dół treści ma 20 dp. Margines paska gestów trzyma pasek dolny, więc arkusz go nie dokłada; to samo dotyczy karty pustego stanu (5). Do ISSUE-022 arkusz sięgał krawędzi ekranu i sam trzymał treść nad paskiem gestów (v2.6)
 
 | # | Element | Typ | Klawiatura / akcja | Domyślnie | Walidacja | Źródło |
 |---|---|---|---|---|---|---|
 | 6 | **Nazwa** (tekst, 18 sp, półgruby, do 2 linii) · **miejscowość** (tekst pomocniczy, 14 sp) · ikona `people_outline` + **„6 grobów · 14 osób”** (tekst pomocniczy, odmiana — [[style-b]] reguła 6). Bez punktu: ikona `location_off_outlined` + „Bez punktu na mapie” | tekst | — | — | — | R1 · *What to build* 4 · AC-4 · D13 |
-| 6a | **Zdjęcie cmentarza (v2.4, D28)** z lewej, przed nazwą: zaokrąglony prostokąt **96 × 80 dp**, promień 12 dp, przycięty ze środka ([[style-b]] reguła 14). Nazwa, miejscowość i liczby stoją obok, a ✎ (8) zostaje w prawym górnym rogu. **Bez zdjęcia:** w tym samym miejscu pole **„Dodaj zdjęcie”** — obrys, ikona `add_a_photo_outlined` w akcencie, podpis 12 sp półgruby ([[style-b]] reguła 14: puste miejsce tylko jako przycisk). Zdjęcie robi autor; to treść użytkownika, bez filtrów | zdjęcie / przycisk | zdjęcie → zdjęcie cmentarza na pełnym ekranie ze „Zmień zdjęcie” i „Usuń zdjęcie”, jak [[zdjecie]] przy nagrobku; „Dodaj zdjęcie” → wybór źródła „Wybierz z galerii” · „Zrób zdjęcie” ([[zdjecie]]) → zdjęcie w arkuszu | brak zdjęcia | — | R1 (miniatura w arkuszu) · **decyzja autora** (SPIKE-004 D5) · D28 |
+| 6a | **Zdjęcie cmentarza (v2.4, D28)** z lewej, przed nazwą: zaokrąglony prostokąt **96 × 80 dp**, promień 12 dp, przycięty ze środka ([[style-b]] reguła 14). Nazwa, miejscowość i liczby stoją obok: **nazwa zaczyna się przy górze miniatury, a ✎ (8) stoi w prawym górnym rogu, w linii pierwszej linii nazwy** (v2.6, D33). Opis dla czytnika: „Zdjęcie cmentarza — otwórz”. **Bez zdjęcia:** w tym samym miejscu pole **„Dodaj zdjęcie”** — obrys, ikona `add_a_photo_outlined` w akcencie, podpis 12 sp półgruby (wyjątek w [[style-b]] *Thresholds*, v1.20; reguła 14: puste miejsce tylko jako przycisk); z dużym tekstem pole rośnie (podpis w dwóch liniach). Dla czytnika pole i miniatura to osobne przyciski z akcją dotknięcia, a nie część arkusza. Zdjęcie robi autor; to treść użytkownika, bez filtrów | zdjęcie / przycisk | zdjęcie → zdjęcie cmentarza na pełnym ekranie ze „Zmień zdjęcie” i „Usuń zdjęcie”, jak [[zdjecie]] przy nagrobku (tryb cmentarza, v1.6); „Dodaj zdjęcie” → wybór źródła „Zdjęcie cmentarza”: „Wybierz z galerii” · „Zrób zdjęcie” ([[zdjecie]] A) → zapis od razu → zdjęcie w arkuszu. **Zapis:** w miejscu pola wskaźnik postępu bez słów (nie mieszczą się w 96 × 80), a czytnik słyszy „Zapisuję zdjęcie…”. **Błąd zapisu:** pod wierszem `error_outline` + „Nie udało się zapisać zdjęcia. Spróbuj jeszcze raz.” (kolor błędu, jak w [[grob]]); pole zostaje | brak zdjęcia | — | R1 (miniatura w arkuszu) · **decyzja autora** (SPIKE-004 D5) · D28 · ISSUE-023 D3 · D33 |
 | 7 | **„Otwórz cmentarz”** — wypełniony, pełna szerokość karty, z ikoną znicza (kolor tła), ≥ 52 dp | przycisk główny | → [[cmentarz]] | — | — | R1 · ISSUE-012 (D5) |
 | 8 | **Ikonka edycji** w prawym górnym rogu arkusza, w linii nazwy: `edit_outlined` w akcencie, cel 48 × 48 dp, `tooltip` „Popraw cmentarz”. Nazwa zawija się przed ikonką | przycisk-ikona | → okno „Popraw cmentarz” (15) | — | — | **decyzja autora** (stop #1, runda 1) · D7 |
 
@@ -166,6 +177,7 @@ grobów; tak samo osoba / osoby / osób i cmentarz / cmentarze / cmentarzy.
 | błąd | **odczyt bazy danych:** mapa zostaje, na dole karta „Nie udało się odczytać cmentarzy.” + „Spróbuj ponownie” (z obrysem). **Dane wbudowane** (mapa, baza cmentarzy; błąd = usterka aplikacji): w miejscu mapy „Nie udało się narysować mapy.” (także w podglądzie 14; karta działa). W wyszukiwarce sekcję z bazy zastępuje tekst „Baza cmentarzy jest niedostępna — dodaj ręcznie.” (tekst pomocniczy, bez koloru błędu) i przycisk **„Dodaj ręcznie”** → okno (15) z nazwą = tekst. Bez twoich trafień przycisk jest wypełniony (jedyne działanie), a pod twoimi trafieniami tekstowy w akcencie ([[style-b]] reguła 1). Wyszukiwanie wśród twoich i dodanie ręczne działają. **Zapis:** element 17; z bazy — element 14 (D23). **Okno:** element 15 |
 | wypełniony | znicze bez arkusza; nic nie jest wybrane |
 | wybrany | znicz powiększony z poświatą, arkusz cmentarza (6–8) |
+| wybrany — zdjęcie cmentarza (6a, v2.6, D33) | **wczytywanie miniatury:** miejsce 96 × 80 w kolorze tła, bez wskaźnika (na telefonie trwa ułamek sekundy, jak „B — wczytywanie” w [[zdjecie]]); to chwila przed obrazem, a nie zastępczy obrazek z reguły 14. **Błąd odczytu miniatury:** w tym miejscu `broken_image_outlined` (tekst pomocniczy, 5,50:1 na tle); dotknięcie otwiera podgląd z „Nie udało się otworzyć zdjęcia.”, gdzie da się zdjęcie zmienić albo usunąć. **Zapis** i **błąd zapisu:** element 6a |
 | grupa | znicz z liczbą powiększony, arkusz grupy (9) |
 | wyszukiwanie | pusty tekst (11) · wyniki (12) · brak wyników (13) |
 | podgląd | element 14. **Brak aplikacji, która otworzy link:** pasek komunikatu na dole „Nie ma aplikacji, która to otworzy.” — sam tekst, bez ikony i bez koloru błędu (D18); podgląd zostaje, „Dodaj ten cmentarz” działa. **Okno nad podglądem:** element 15 (D23). **Błąd zapisu:** w karcie `error_outline` + „Nie udało się zapisać. Spróbuj jeszcze raz.” w kolorze błędu; ponowne „Dodaj ten cmentarz” otwiera okno z wpisanymi wartościami (D23) |
@@ -192,13 +204,19 @@ grobów; tak samo osoba / osoby / osób i cmentarz / cmentarze / cmentarzy.
 │  Dane: © autorzy OSM (ODbL)      │  │ │ ╰──────────────────────────╯ │ │
 │ Nie ma go w bazie — dodaj ręcznie│  │ ╰──────────────────────────────╯ │
 └──────────────────────────────────┘  └──────────────────────────────────┘
- arkusz cmentarza (ikonka edycji w prawym górnym rogu)
-┌──────────────────────────────────┐
-│ ═══                              │
-│ Cmentarz Wymyślony 1          ✎ │
-│ Miejscowość Testowa              │
-│ 👥 2 groby · 3 osoby             │
-└──────────────────────────────────┘
+ arkusz cmentarza (v2.6: miniatura z lewej, ✎ w linii nazwy)   bez zdjęcia
+┌──────────────────────────────────┐  ┌──────────────────────────────────┐
+│               ═══                │  │               ═══                │
+│ ╭────────╮ Cmentarz Wymyślony  ✎ │  │ ┌────────┐ Cmentarz Wymyślony  ✎ │
+│ │[zdjęcie│ Miejscowość Testowa   │  │ │  [+📷] │ Miejscowość Testowa   │
+│ │ 96×80] │ 👥 2 groby · 3 osoby  │  │ │ Dodaj  │ 👥 2 groby · 3 osoby  │
+│ ╰────────╯                       │  │ │zdjęcie │                       │
+│ ╭──────────────────────────────╮ │  │ └────────┘                       │
+│ │      Otwórz cmentarz         │ │  │ ╭──────────────────────────────╮ │
+│ ╰──────────────────────────────╯ │  │ │      Otwórz cmentarz         │ │
+├──────────────────────────────────┤  │ ╰──────────────────────────────╯ │
+│  Mapa      Osoby      Drzewo     │  ├──────────────────────────────────┤
+└──────────────────────────────────┘  └──────────────────────────────────┘
 ```
 Czego szkic nie pokazuje:
 - „Cmentarz bez nazwy” w kolorze pomocniczym i „Dodany” zamiast chevronu (element 12);
@@ -235,7 +253,10 @@ Ekran do wybierania; wpisywanie jest rzadkie. Rekordem jest **cmentarz**: ok. 10
 - **Reguła 12:** koło zębate → [[ustawienia]]; dolny pasek Mapa · Osoby · Drzewo na mapie, cmentarzu i grobie (od
   ISSUE-022), ukryty w wyszukiwaniu, oknie i trybie wskazania.
 - **Reguła 13 (mapy):** role kolorów na mapie, znicz-pinezka i **znicz w obrysie dla cmentarza jeszcze nie
-  dodanego** (podgląd).
+  dodanego** (podgląd). Od v1.13: woda, sąsiedzi, granica Polski w kolorze tekstu pomocniczego; od v1.20 podpisy mapy rosną
+  z tekstem najwyżej do 1,3× (D32).
+- **Reguła 14 (zdjęcia):** miniatura cmentarza 96 × 80 dp, promień 12, przycięta ze środka; bez zdjęcia pole „Dodaj
+  zdjęcie” jako przycisk (obrys 3,10:1 na powierzchni, ikona w akcencie 8,04:1, podpis 10,02:1), nigdy zastępczy obrazek.
 - **Tokeny wchodzące tą pozycją** (zmierzone w [[style-b]] → *Measurement*; do `theme.dart` wpisuje je
   `dev`): **obrys** `#6B6862` (3,40:1 na tle, 3,10:1 na powierzchni) i **błąd** `#E07A6F` (6,45:1 i
   5,89:1, zawsze z ikoną). Błąd zapisu w karcie podglądu stoi na powierzchni, więc ma 5,89:1 (D23).
@@ -265,6 +286,10 @@ Ekran do wybierania; wpisywanie jest rzadkie. Rekordem jest **cmentarz**: ok. 10
 | (ISSUE-015) Ekran według specyfikacji `ui` i wytycznych stylu B | całość (12–15) | *Style B rules applied*; przegląd `ui` przed stopem #2 |
 | (ISSUE-022) AC-1 — na dole Mapa · Osoby · Drzewo, aktywna Mapa; w formularzu osoby paska nie ma | 18 · *Navigation* | start → pasek z aktywną Mapą; arkusz nad paskiem; cmentarz i grób — pasek z aktywną Mapą; „Poprawa wpisu” bez paska; Osoby → wstecz → mapa |
 | (ISSUE-022) AC-3 — koło zębate → ustawienia | 1 | koło → „Ustawienia” ([[ustawienia]]) |
+| (ISSUE-023) AC-1 — sąsiednie kraje, Bałtyk, jeziora, „Polska” i 11 miast, bez sieci | 3 · D29, D32 | start → sąsiedzi w kolorze tła z cienkimi granicami, morze i jeziora w kolorze wody, rzeki, „Polska” na Mazurach, 11 podpisów bez nachodzenia (także 360 dp i tekst 200%) |
+| (ISSUE-023) AC-2 — mapa jedzie nad arkusz i wraca na środek | 3, 4 · D26, D30 | bez arkusza środek Polski w środku obszaru mapy; znicz → płynna jazda, Polska nad arkuszem (na krótkim ekranie: wybrany znicz nad arkuszem); dotknięcie mapy, przeciągnięcie, wstecz → środek |
+| (ISSUE-023) AC-3 — miniatura, podgląd ze zmianą i usunięciem | 6a · [[zdjecie]] (tryb cmentarza) · D33 | „Dodaj zdjęcie” → galeria → miniatura 96 × 80; miniatura → podgląd „Zdjęcie cmentarza” → „Zmień zdjęcie” → nowa; „Usuń zdjęcie” → okno C1 → arkusz z „Dodaj zdjęcie” |
+| (ISSUE-023) AC-4 — kopia sprzed zmiany schematu: dane pełne, cmentarze bez zdjęć | 6a · stan „wybrany” | po odtworzeniu kopii v8 każdy arkusz ma pole „Dodaj zdjęcie”; liczby i dane bez zmian sprawdza test |
 
 ## Decisions
 - **D1 — plik przepisany w miejscu**, nazwa zostaje (linki w zamkniętych pozycjach).
@@ -388,6 +413,29 @@ Ekran do wybierania; wpisywanie jest rzadkie. Rekordem jest **cmentarz**: ok. 10
   prototypie zakładki z R1 i koło zębate dla ustawień. Pasek zostaje na ekranach do oglądania, więc arkusz cmentarza
   stoi nad nim. *Obali:* arkusz nad paskiem zasłania południe Polski na małym telefonie — wtedy arkusz niższy
   (miniatura obok nazwy już oszczędza linię).
+
+  **Falsyfikator się zapalił** (przegląd `ui` [[ISSUE-023-poland-map-r1-cemetery-photo]], 2026-10-12, zrzuty build release):
+  - **360 × 640 dp:** obszar mapy ok. 388 dp, arkusz ok. 235 dp (nazwa w dwóch liniach). Zapas na arkusz w najmniejszym
+    przybliżeniu zmniejszył Polskę do ok. 145 dp szerokości, a podpisy nachodzą (Bydgoszcz na Białystok, „Polska” na Gdańsk);
+  - **„niższy arkusz” tego nie naprawi:** Polska na całą szerokość (328 dp) ma ok. 312 dp wysokości, więc z marginesami
+    zostaje ok. 44 dp na arkusz. Najniższy możliwy arkusz (uchwyt, wiersz z miniaturą 80 dp, „Otwórz cmentarz” 52 dp) ma ok.
+    190 dp.
+
+  **Reguła (v2.6): najmniejsze przybliżenie nie zależy od arkusza** — cała Polska z marginesem 16 dp (na pionowym ekranie
+  wyznacza je szerokość), na środku obszaru mapy. Arkusz zmienia tylko położenie mapy, nigdy jej przybliżenie.
+  - **411 × 914:** Polska mieści się nad arkuszem, a mapa jedzie tak jak w D30.
+  - **360 × 780 i 360 × 640:** Polska ma całą szerokość i stoi na środku. Po otwarciu arkusza mapa podnosi Polskę najwyżej
+    tak, by jej góra stała 16 dp pod wyszukiwarką. Gdy wybrany znicz dalej byłby pod arkuszem, działa reguła znicza z
+    elementu 4: znicz staje na środku miejsca nad arkuszem, także w poziomie, i bez jazdy, jak przy przybliżonej mapie.
+    Południe może zostać pod arkuszem — tak samo jak przy tekście 200% na każdym telefonie.
+  - Prostokąt danych mapy liczono dla tego przybliżenia, więc przy przeciąganiu brzeg danych nie wychodzi.
+
+  Zbudowane w ISSUE-023 i sprawdzone na zrzutach przeglądu: Polska ma 328 dp na 360 × 640, podpisy się nie nakładają, a znicz
+  stoi nad arkuszem. Pierwsza wersja tej reguły mówiła o „zapasie z górną granicą”; daje on to samo przybliżenie, więc
+  zostało prostsze brzmienie.
+
+  *Obali:* na krótkim telefonie nie da się wybrać cmentarza, bo arkusz zasłania za dużo — wtedy na krótkim ekranie arkusz
+  zwinięty do nazwy i „Otwórz cmentarz”, a miniatura po rozwinięciu.
 - **D27 — wyszukiwarka na mapie szuka tylko cmentarzy, na stałe** (v2.3, [[SPIKE-004-mvp-flow-prototype]] D3). D2
   zakładało, że tekst z R1 wróci z wyszukiwaniem osób. Autor wybrał podział: każda zakładka szuka swojego, a osoby
   szuka zakładka Osoby.
@@ -408,6 +456,17 @@ Ekran do wybierania; wpisywanie jest rzadkie. Rekordem jest **cmentarz**: ok. 10
   Autor: *„powinna być bardziej wycentrowana (ale na widoku z otworzonym cmentarzem jest idealnie)”*. Margines dołu
   na wysokość arkusza (przegląd `ui` 2026-10-06) działa więc tylko przy otwartym arkuszu, a mapa przesuwa się do niego
   płynnie (ok. 300 ms).
+
+  **Zbudowane w [[ISSUE-023-poland-map-r1-cemetery-photo]] (v2.6, przegląd `ui`):**
+  - najmniejsze przybliżenie to cała Polska z marginesem 16 dp, takie samo z arkuszem i bez (D26);
+  - jazda trwa 300 ms i zwalnia na końcu. Liczy ją **zmierzony arkusz** i kończy się, gdy dół Polski stoi 16 dp nad arkuszem,
+    a gdy Polska się nie mieści — gdy jej góra stoi 16 dp pod wyszukiwarką (dalej D26);
+  - palec na mapie zatrzymuje jazdę, „Usuń animacje” w systemie daje skok, a przy przybliżeniu działa reguła znicza (D2 planu).
+
+  **Arkusz nie dokłada marginesu paska gestów** (stoi na pasku dolnym, który już ten margines trzyma). W pierwszej wersji
+  ISSUE-023 pod „Otwórz cmentarz” było 44 dp zamiast 20, arkusz z miniaturą miał 214 dp zamiast 190, a stały zapas 214 dp w
+  przybliżeniu zmniejszał Polskę na 360 × 780 do 298 dp zamiast 328 dp. Po poprawce arkusz ma 190 dp, dół 20 dp, a Polska na
+  411 × 914 stoi 17 dp nad arkuszem (zrzuty przeglądu).
 - **D31 — jak pasek przełącza zakładki** (v2.5, [[ISSUE-022-app-skeleton-tabs-people-settings]], przegląd `ui`).
   **Mapa zawsze leży na dole stosu** — to stały ekran startowy Androida (developer.android.com → *Principles of
   navigation*: *fixed start destination*), więc wstecz z Osób albo Drzewa wraca na mapę, a z mapy zamyka aplikację.
@@ -416,6 +475,39 @@ Ekran do wybierania; wpisywanie jest rzadkie. Rekordem jest **cmentarz**: ok. 10
   tekstem, kiedy powstanie (Drzewo → SPIKE-002; decyzja autora na stopie #1 ISSUE-022, D1 = A): pasek od razu ma
   kształt zatwierdzony na prototypie. Pamięć osobnego stosu każdej zakładki jest poza zakresem (stos od początku).
   *Obali:* autor wraca do Osób i oczekuje osoby, którą zostawił — wtedy osobny stos na zakładkę.
+- **D32 — podpisy mapy i szczegóły R1** (v2.6, przegląd `ui` ISSUE-023, odstępstwa `dev` 1–4):
+  - **podpisy mapy (miasta i „Polska”) rosną z tekstem systemu najwyżej do 1,3×** (miasto 17 sp), a znacznik podpisu rośnie
+    razem z nimi. Od ISSUE-014 miał stałe 24 dp i przy 200% ucinał litery. Podpis jest przypięty do miasta i nie może się
+    odsunąć, więc przy 200% podpisy zachodziły na siebie (Bydgoszcz na Białystok). Nazwy cmentarzy, czyli treść, która coś
+    znaczy, rosną w pełni w arkuszu i wyszukiwarce ([[style-b]] reguła 13, v1.20);
+  - **„Polska” stoi w punkcie 53,85° N, 21,0° E** (Mazury, między podpisami Gdańska, Bydgoszczy, Warszawy i Białegostoku) i
+    **znika powyżej +2 kroków przybliżenia**. Nazwa kraju należy do najmniejszych przybliżeń (konwencja kartograficzna), a
+    bliżej leżałaby na jednym regionie. Przy przybliżeniu stoi na jeziorach mazurskich bez obwódki i dalej jest czytelna:
+    3,98:1 na lądzie i 4,02:1 na wodzie, duży tekst, próg 3:1;
+  - **strony podpisów:** Katowice po lewej (podpis po prawej wchodziłby na kropkę Krakowa), **Białystok i Lublin pod
+    kropką**, reszta po prawej. Białystok po lewej przy 360 dp i tekście 200% stał 4 dp od „Bydgoszcz” w tej samej linii
+    i obie nazwy czytały się jak jeden napis (zrzut po poprawkach przeglądu). Pod kropką przy 100% na 411 dp wchodzi na
+    kilka dp za wschodnią granicę; obwódka w kolorze lądu ma tam 1,10:1 do tła, więc tego prawie nie widać;
+  - **brzegi morza u sąsiadów i brzegi jezior są bez linii.** Wodę od lądu odróżnia odcień, bo to dekoracja, a brzeg Polski
+    niesie jej granica ([[style-b]] reguła 13);
+  - **progi jezior:** w Polsce od 8 km², za granicą od 40 km². Mniejsze przy całej Polsce mają poniżej 2 dp.
+
+  *Obali:* ktoś z dużym tekstem nie odczyta podpisów w 1,3× — wtedy 1,5× i mniej miast na wąskim ekranie. Autor nie widzi
+  jezior przy całej Polsce (krok odczucia 1; woda i ląd mają 1,00:1, różni je tylko odcień, jak na prototypie) — wtedy woda
+  jaśniejsza od lądu i nowy pomiar granicy Polski na wodzie.
+- **D33 — arkusz z miniaturą** (v2.6, przegląd `ui` ISSUE-023, odstępstwa `dev` 5–6):
+  - **nazwa zaczyna się przy górze miniatury** (2 dp od góry wiersza), bo górne krawędzie tekstu i obrazu tworzą jedną
+    linię. Bez magazynu zdjęć zostaje 12 dp, jak dotąd;
+  - **✎ ma środek ikony w linii pierwszej linii nazwy** (element 8), a cel zostaje 48 × 48 dp. W zbudowanej wersji przeglądu
+    ikona stała ok. 10 dp niżej, bo nazwa podjechała, a ✎ nie (do poprawki);
+  - **zapis bez słów:** w miejscu pola wskaźnik, a „Zapisuję zdjęcie…” słyszy czytnik. W [[zdjecie]] B tekst stoi, bo tam
+    jest na niego miejsce;
+  - **wczytywanie miniatury to samo tło, bez wskaźnika** (jak [[zdjecie]] v1.2). Na wolnym emulatorze po odtworzeniu kopii
+    widać było przez chwilę pusty prostokąt; na telefonie miniatura dekoduje się w ułamku sekundy. *Obali:* na telefonie
+    autora prostokąt miga — wtedy miniatura pojawia się łagodnie (ok. 150 ms), dalej bez wskaźnika;
+  - **miniatura dekoduje się jak inne miniatury przycięte ze środka:** do dwukrotności szerokości pola. Zdjęcia cmentarzy są
+    zwykle poziome, a pole 96 × 80 ma proporcje 1,2:1, więc zdjęcie dekodowane tylko na szerokość pola byłoby powiększane i
+    rozmyte.
 
 ## Open
 brak. Rundy prototypu ([[SPIKE-004-mvp-flow-prototype]]) rozstrzygnęły zdjęcie w arkuszu (D28) i mapę (D29, D30).

@@ -1,12 +1,12 @@
 ---
-title: "Style B — visual guidelines (v1.19)"
+title: "Style B — visual guidelines (v1.20)"
 type: design-guidelines
 status: active
 owner: ui
 source: "PROJECT_BRIEF §6a (Style B, chosen by the author 2026-10-05) · references.md (R1–R4, the kick-off images) · grobing-code/lib/app/theme.dart · WCAG 2.2 · Android accessibility"
 non-tech-item: "[[NT-006-visual-guidelines]]"
 created: 2026-10-06
-updated: 2026-10-09
+updated: 2026-10-12
 ---
 
 # Styl B — wytyczne wizualne
@@ -35,7 +35,7 @@ autor, też używają znicza (reguła 8).
 | akcent | `GrobingColors.amber` | **jeden kolor, wiele ról** (reguła 1): główne działanie (wypełnione), pinezki, znicz, aktywna zakładka i segment, zaznaczenie, fokus, ikony działań i nagłówków sekcji, wyróżnione imiona na ścieżce, link zewnętrzny, wskaźnik działania w toku (v1.8) | treść ciągła (akapity), duże dekoracyjne plamy, ostrzeżenia i błędy, numery listy i inne ozdobniki (v1.17) |
 | obrys *(nowy — wchodzi z [[ISSUE-014-home-map-of-poland]], zaproponowany przy [[ISSUE-012-transcribe-grave-screen]])* | proponowany `GrobingColors.outline` | ramka pola wpisu, przycisk z obrysem, linia podziału, granica na mapie (reguła 13) | tekst |
 | błąd *(nowy — wchodzi z ISSUE-014)* | proponowany `GrobingColors.error` | komunikat błędu pod polem, jego ikona, ramka pola z błędem | cokolwiek poza błędem |
-| woda *(nowa, v1.13 — [[SPIKE-004-mvp-flow-prototype]] D6, [[cmentarze]] D29)* | proponowane `GrobingColors.water` (morze, jeziora) i `GrobingColors.waterLine` (rzeki) | woda na mapie Polski jak w R1 | cokolwiek poza mapą; nośnik znaczenia (to dekoracja — brzeg niesie granica) |
+| woda *(nowa, v1.13 — [[SPIKE-004-mvp-flow-prototype]] D6, [[cmentarze]] D29)* | `GrobingColors.water` (morze, jeziora) i `GrobingColors.waterLine` (rzeki) — w `theme.dart` od [[ISSUE-023-poland-map-r1-cemetery-photo]] (v1.20) | woda na mapie Polski jak w R1 | cokolwiek poza mapą; nośnik znaczenia (to dekoracja — brzeg niesie granica) |
 | relacje w drzewie *(nowa, v1.16 — [[SPIKE-004-mvp-flow-prototype]] D20, [[drzewo]] D3)* | proponowane `GrobingColors.relParentChild` (`#8FB3C9`, rodzic–dziecko) i `GrobingColors.relPartners` (`#D39BB0`, partnerzy: ciągła — małżeństwo, przerywana — razem); **do `theme.dart` wchodzą z [[ISSUE-024-person-view]]** (mini-drzewo w [[osoba]] — pierwsze użycie, v1.18) | linie relacji w drzewie i mini-drzewie | jedyny nośnik rodzaju relacji — kształt i styl linii niosą go też (SC 1.4.1); **bez legendy** (decyzja autora, SPIKE-004 D25); cokolwiek poza liniami relacji |
 
 ### State colours — beyond the accent
@@ -54,10 +54,10 @@ sam (SC 1.4.1):
 | kontrast tekstu | **≥ 4,5:1** | [WCAG 2.2](https://www.w3.org/TR/WCAG22/) SC 1.4.3 Contrast (Minimum), AA: *„text … has a contrast ratio of at least 4.5:1”* |
 | kontrast elementów interfejsu (ramka pola, obrys przycisku, ikona, która coś znaczy) | **≥ 3:1** wobec sąsiedniego koloru | WCAG 2.2 SC 1.4.11 Non-text Contrast, AA |
 | kolor jako nośnik | **nigdy jedyny**: błąd, brak, wybór i stan mają też tekst albo ikonę. Pozycja wybrana w menu ma ikonę `check` i stan „zaznaczone” dla czytnika, nie tylko akcent (v1.6) | WCAG 2.2 SC 1.4.1 Use of Color, A |
-| rozmiar kontrolki z tekstem | **najmniejszy, nie stały**: przycisk, link i pole rosną z systemowym rozmiarem tekstu, zamiast ucinać napis (v1.6 — druga instancja po linku z v1.5) | WCAG 2.2 SC 1.4.4 Resize Text, AA |
+| rozmiar kontrolki z tekstem | **najmniejszy, nie stały**: przycisk, link i pole rosną z systemowym rozmiarem tekstu, zamiast ucinać napis (v1.6 — druga instancja po linku z v1.5). **Wyjątek — podpisy na mapie** (miasta, nazwa kraju): rosną z tekstem systemu najwyżej do 1,3× (v1.20, reguła 13) | WCAG 2.2 SC 1.4.4 Resize Text, AA |
 | gesty | **przesunięcie i gest kilkoma palcami mają alternatywę jednym dotknięciem** (przyciski poprzednie/następne, podwójne dotknięcie zamiast rozsunięcia palców) (v1.7) | WCAG 2.2 SC 2.5.1 Pointer Gestures, A: *„All functionality that uses multipoint or path-based gestures for operation can be operated with a single pointer without a path-based gesture”* ([Understanding 2.5.1](https://www.w3.org/WAI/WCAG22/Understanding/pointer-gestures.html)) |
 | cel dotyku | **≥ 48 × 48 dp** | [Android — Make apps more accessible](https://developer.android.com/guide/topics/ui/accessibility/apps) → *Use large, simple controls*: *„at least 48dp×48dp”* |
-| rozmiary tekstu | treść i tekst wpisywany **≥ 16 sp**; drobny tekst pomocniczy ≥ 13 sp; etykieta przycisku 14–16 sp, waga 500. **Wyjątek — podpis zakładki w dolnym pasku: 12 sp, półgruby** (v1.17, [[cmentarze]] element 18), bo to krótka etykieta pod ikoną, a nie tekst do czytania; rośnie z systemowym rozmiarem tekstu (przy 200% mieści się w pasku 72 dp) | decyzja projektowa (nie norma) — dane wpisuje się szybko i trzeba je odczytać bez mrużenia oczu. Wyjątek: podpis zakładki w pasku nawigacji Material 3 to *label medium*, 12 sp (Flutter 3.41.1, `material/navigation_bar.dart` → `_NavigationBarDefaultsM3` używa `labelMedium`; `material/typography.dart` → `_M3Typography`: `labelMedium` 12.0, w500 — sprawdzone w SDK 2026-10-08) |
+| rozmiary tekstu | treść i tekst wpisywany **≥ 16 sp**; drobny tekst pomocniczy ≥ 13 sp; etykieta przycisku 14–16 sp, waga 500. **Wyjątek — podpis zakładki w dolnym pasku: 12 sp, półgruby** (v1.17, [[cmentarze]] element 18), bo to krótka etykieta pod ikoną, a nie tekst do czytania; rośnie z systemowym rozmiarem tekstu (przy 200% mieści się w pasku 72 dp). **Wyjątek — podpis pola „Dodaj zdjęcie” w miejscu miniatury cmentarza 96 × 80 dp: 12 sp, półgruby** (v1.20, [[cmentarze]] 6a). To krótka etykieta pod ikoną w polu, które ma rozmiar miniatury, a przy 14 sp podpis nie mieści się w jednej linii. Rośnie z tekstem: przy 200% pole rośnie, a podpis przechodzi do dwóch linii | decyzja projektowa (nie norma) — dane wpisuje się szybko i trzeba je odczytać bez mrużenia oczu. Wyjątek: podpis zakładki w pasku nawigacji Material 3 to *label medium*, 12 sp (Flutter 3.41.1, `material/navigation_bar.dart` → `_NavigationBarDefaultsM3` używa `labelMedium`; `material/typography.dart` → `_M3Typography`: `labelMedium` 12.0, w500 — sprawdzone w SDK 2026-10-08) |
 | **kandydat** dla ekranów wizyty | **≥ 7:1** dla tekstu | WCAG 2.2 SC 1.4.6 Contrast (Enhanced), AAA. **Nie obowiązuje jeszcze:** propozycja miary dla [[NFR-004-czytelnosc-w-sloncu]] (`⚠️ OPEN` tam), decyzja przy pierwszym ekranie wizyty |
 
 ## Measurement — 2026-10-06
@@ -75,6 +75,8 @@ wzorem. **Przelicz przy każdej zmianie tokenów.**
 | błąd *(kandydat `E07A6F`)* | 6,45 | 5,89 | 4,5 | ✅ |
 | tekst na zaznaczeniu tekstu (domyślne zaznaczenie Fluttera: akcent 40% na tle ≈ `#664D26`) *(v1.6)* | 4,60 | — | 4,5 | ✅ — tuż nad progiem: **nie zwiększać krycia zaznaczenia** |
 | zieleń stanu `stateOk` jako ikona albo tekst *(v1.17, 2026-10-08)* | 8,97 | 8,19 | 3 (ikona) · 4,5 (tekst) | ✅ |
+| napis „Polska” — tekst pomocniczy, krycie 85%, 22 sp półgruby *(v1.20, 2026-10-12)* | — | 3,98 na lądzie · 4,02 na wodzie | 3 (duży tekst, SC 1.4.3) | ✅ |
+| granica sąsiada — obrys, krycie 45% *(v1.20)* | 1,61 · na wodzie 1,59 | — | dekoracja (poza SC 1.4.11) | — |
 
 **Wniosek:** wszystkie pary spełniają AA, a tekst pomocniczy nie spełnia kandydata 7:1. Jeśli ekrany
 wizyty przyjmą 7:1, informacja potrzebna na cmentarzu (adres kwatery, lata) nie może być w kolorze
@@ -177,7 +179,13 @@ pomocniczym albo ten token trzeba rozjaśnić. Do rozstrzygnięcia przy pierwszy
       (krycie 45%, dekoracja); **morze i jeziora** — woda; **rzeki** — linia wody. **Granica Polski** w kolorze tekstu
       pomocniczego, bo obrys ma na wodzie tylko 3,11:1, a tekst pomocniczy 5,04:1 (na tle 5,50:1, na lądzie 5,01:1).
       Woda i ląd mają tę samą jasność (1,00:1), więc brzeg niesie granica, a nie kolor (SC 1.4.1). Napis kraju —
-      tekst pomocniczy, 22 sp, półgruby, odstęp liter 2;
+      tekst pomocniczy, 22 sp, półgruby, odstęp liter 2, **tylko przy najmniejszych przybliżeniach** (v1.20: do +2 kroków;
+      nazwa kraju nazywa całość). **Brzegi morza u sąsiadów i brzegi jezior bez linii** — to dekoracja, a znaczenie niesie
+      tylko granica Polski (v1.20, [[cmentarze]] D32);
+    - **podpisy na mapie rosną z tekstem systemu najwyżej do 1,3×** (v1.20, [[cmentarze]] D32; miasto przy 200% = 17 sp).
+      Podpis jest przypięty do punktu na mapie i nie może się odsunąć, więc w 200% podpisy zachodziłyby na siebie i na
+      znicze — to też utrata treści (SC 1.4.4). Treść, która coś znaczy (nazwy cmentarzy), rośnie w pełni w arkuszu i w
+      wyszukiwarce. Znacznik podpisu ma wysokość podpisu w tej skali, żeby nie ucinał liter;
     - **plan cmentarza** (v1.14, [[cmentarz]] D10, D13): teren cmentarza — powierzchnia z obrysem; alejki — obrys
       (główne 4 dp, boczne 2 dp); **kwatera autora** — przerywana linia w kolorze tekstu (krycie 75%) z nazwą 12 sp,
       półgrubą, z obwódką w kolorze tła planu. Linia kwatery to granica zaznaczona przez autora, więc niesie znaczenie:
@@ -369,3 +377,14 @@ wysokokontrastowy, bez rezygnacji ze stylu B. Wynik i data trafiają tutaj i do
 - 2026-10-09 — **v1.19, pasmo tła** (`ui`, stop #2 [[ISSUE-024-person-view]], runda 1; [[osoba]] v2.3, [[zdjecia-osoby]] v1.4): reguła 14
   — tło wybiera się też z pasma w widoku osoby; zaznaczone zdjęcie w siatce ma ramkę wokół, nie na zdjęciu; pasmo bez tła jako
   wyjątek od „obrys, ikona, podpis”. Tokeny bez zmian (ikona — akcent/powierzchnia 8,04:1; ramka — akcent/tło 8,81:1).
+- 2026-10-12 — **v1.20, po przeglądzie mapy jak R1 i zdjęcia cmentarza** (`ui` jako subagent `qa`,
+  [[ISSUE-023-poland-map-r1-cemetery-photo]]; [[cmentarze]] v2.6):
+  - reguła 13 — podpisy na mapie rosną z tekstem najwyżej do 1,3×; „Polska” tylko przy najmniejszych przybliżeniach;
+    brzegi morza u sąsiadów i brzegi jezior bez linii;
+  - *Thresholds* — dwa wyjątki: podpisy mapy (SC 1.4.4, 1,3×) i podpis pola „Dodaj zdjęcie” w miejscu miniatury cmentarza
+    (12 sp, półgruby).
+
+  Pomiar (wzór WCAG z wartości w `theme.dart`, 2026-10-12): `water` i `waterLine` weszły do `theme.dart` z wartościami z
+  v1.13, więc pary z v1.13 obowiązują (przeliczone: tekst pomocniczy/woda 5,04, woda/ląd 1,00, linia wody/ląd 2,49). Nowe
+  pary: „Polska” (tekst pomocniczy 85%) 3,98:1 na lądzie i 4,02:1 na wodzie — duży tekst, próg 3:1; granica sąsiada (obrys
+  45%) 1,61:1 — dekoracja. Pole „Dodaj zdjęcie” na powierzchni: obrys 3,10, ikona 8,04, podpis 10,02.
