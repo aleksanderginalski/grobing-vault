@@ -1,9 +1,9 @@
 ---
 screen: "Grób — wszyscy pochowani"
-items: ["[[ISSUE-012-transcribe-grave-screen]]", "[[ISSUE-016-photos-grave-and-person]]", "[[ISSUE-017-person-photos]]", "[[ISSUE-018-profile-photo-crop]]", "[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-024-person-view]]"]
+items: ["[[ISSUE-012-transcribe-grave-screen]]", "[[ISSUE-016-photos-grave-and-person]]", "[[ISSUE-017-person-photos]]", "[[ISSUE-018-profile-photo-crop]]", "[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-024-person-view]]", "[[ISSUE-028-cemetery-sectors]]"]
 us: "[[US-002-przepisanie-grobu]] · [[US-005-zdjecia]]"
 journey-step: "n/a — M1; ten sam widok stanie się widokiem 3 (krok 4 UJ-001, M4, R4 lewy) — wizyta dojdzie tutaj"
-mockup: "katalog tymczasowy sesji 2026-10-07: makieta-cmentarz-grob-osoba.html (ramki 5–7, ISSUE-012) · makieta-zdjecia.html (ramki 1, 2, 4, ISSUE-016)"
+mockup: "katalog tymczasowy sesji 2026-10-07: makieta-cmentarz-grob-osoba.html (ramki 5–7, ISSUE-012) · makieta-zdjecia.html (ramki 1, 2, 4, ISSUE-016) · 2026-10-12: issue-028-kwatery.html (panel 4 — adres grobu, W-a/W-b)"
 updated: 2026-10-12
 ---
 
@@ -59,6 +59,13 @@ updated: 2026-10-12
 > obrysem **„Postaw pinezkę”** (`add_location_alt` w akcencie) → mapa cmentarza w trybie stawiania pinezki ([[cmentarz]]
 > element 12). Grób z pinezką ma pod adresem jej źródło: „Pinezka: GPS ±4 m · 08.10.2026” (13 sp, tekst pomocniczy).
 >   ([[style-b]] reguła 12).
+>
+> **Wersja 6 — przyjęta na stopie #1 [[ISSUE-028-cemetery-sectors]] (2026-10-12, autor: „tak”; pole „Kwatera” w wariancie W-a).**
+> Poniżej pierwotny opis propozycji. Dopiski „propozycja” w elementach 3b, 4 i D13 są nieaktualne — v6 obowiązuje. Adres zarządcy w oknie „Popraw
+> grób”. Kolumny kwatery, rzędu i miejsca są w schemacie od v1, ale **żaden ekran ich nie zapisuje**, więc „Uzupełnisz przy
+> wizycie” obiecuje coś, czego aplikacja nie umie ([[cmentarz]] → *Open*). Zmiany: okno 3a z polami Kwatera · Rząd · Miejsce,
+> element 4 z „Wpisz adres”, D13. Pole kwatery zależy od decyzji W-a/W-b ([[cmentarz]] → *Open*). Gdy autor zdecyduje, że adres
+> idzie osobną pozycją, ta wersja przechodzi do niej bez zmian.
 
 ## Purpose
 Wszyscy pochowani w jednym grobie, z datami z dopiskiem (US-002 AC-1, AC-3), nazwa grobu i widoczny brak
@@ -71,6 +78,8 @@ krok 3).
 - Z [[cmentarz]] (dotknięcie karty grobu) albo z [[wpis-osoby]] po zapisie. Formularz znika ze stosu, więc
   wstecz z grobu wraca do [[cmentarz]], nie do formularza.
 - **Ikonka edycji (3) → okno „Popraw grób”** nad widokiem grobu; „Zapisz” zamyka okno, a tytuł się zmienia.
+- **„Wpisz adres” (element 4, v6 — propozycja) → to samo okno** z fokusem w polu „Kwatera”; „Zapisz” zamyka okno, a adres
+  pojawia się pod tytułem.
 - „Dodaj osobę” → [[wpis-osoby]] w trybie „kolejna osoba”.
 - **„Dodaj zdjęcie” → arkusz źródła** ([[zdjecie]] A) → systemowe okno wyboru (jedno zdjęcie) albo aparat → z
   powrotem tutaj, a zdjęcie zapisuje się od razu, bez formularza (v3).
@@ -88,7 +97,8 @@ krok 3).
 | 2 | **Tytuł:** nazwa grobu (24 sp, półgruby, wyśrodkowany, do 2 linii). **Bez nazwy: „Grób”** w tym samym kroju | tekst | — | — | — | R4 · decyzja autora (nazwa grobu) · D1 |
 | 3 | **Ikonka edycji** w linii tytułu, z prawej: `edit_outlined` w akcencie, cel 48 × 48 dp, `tooltip` „Popraw grób”. Tytuł ma z lewej taki sam odstęp, więc zostaje wyśrodkowany | przycisk-ikona | → okno „Popraw grób” (3a) | — | — | decyzja projektowa (jak [[cmentarze]] element 8) · D2 |
 | 3a | **Okno „Popraw grób”:** pole **„Nazwa grobu”** (ramka w kolorze obrysu, wielka litera na początku zdania, podpowiedź „np. Grób rodzinny Nowaków” — tekst z R4), pod polem „Zostaw puste, jeśli grób nie ma nazwy.” (13 sp, tekst pomocniczy). Przyciski „Anuluj” (kolor tekstu) · **„Zapisz”** (akcent) — jak okno cmentarza w `cemetery_form.dart` | okno dialogowe | fokus i klawiatura od razu, kursor na końcu obecnej nazwy; `done` = „Zapisz” | obecna nazwa albo pusto | puste = bez nazwy (tytuł „Grób”); spacje na brzegach obcięte. Błąd zapisu: pod polem `error_outline` + „Nie udało się zapisać. Spróbuj jeszcze raz.” (kolor błędu), okno zostaje | decyzja autora (nazwa grobu) · [[style-b]] reguła 1 (okno) |
-| 4 | **Adres i pinezka** pod tytułem, wyśrodkowane: adres pełnymi słowami „Kwatera B · Rząd 4 · Miejsce 12” (14 sp, tekst pomocniczy). Bez adresu: ikona `place_outlined` + „Bez adresu kwatery · bez pinezki”, a pod spodem „Uzupełnisz przy wizycie.” (tekst pomocniczy). Z adresem, bez pinezki: adres + „· bez pinezki” | tekst | — | — | — | AC-5 · R4 |
+| 3b | **Adres w oknie „Popraw grób” (v6 — propozycja, stop #1 ISSUE-028).** Pod „Nazwą grobu” podpis grupy „Adres zarządcy” (13 sp, tekst pomocniczy, odstęp 16 dp) i pola z ramką w kolorze obrysu: **„Kwatera”**, a pod nim **„Rząd”** i **„Miejsce”** obok siebie (po połowie szerokości; przy tekście 200% jedno pod drugim). Pod polami: „Z wyszukiwarki zarządcy. Zostaw puste, czego nie wiesz.” (13 sp, tekst pomocniczy). **„Kwatera” — według decyzji W-a/W-b** ([[cmentarz]] → *Open*): **W-a** — pod polem chipy kwater tego cmentarza (kolejność naturalna, jak [[cmentarz]] 17a; [[style-b]] reguła 11 — chip z obrysem, cel 48 dp); dotknięcie chipu wpisuje jego nazwę; wpis równy kwaterze (bez wielkości liter, polskich znaków i słowa „Kwatera” na początku) zaznacza jej chip (`check`, obrys i napis w akcencie, stan „zaznaczone” dla czytnika); wpis bez odpowiednika → pod chipami „Nowa kwatera „D” — powstanie bez strefy; zaznaczysz ją w „Kwaterach”.” (13 sp, tekst pomocniczy). Bez kwater na cmentarzu — bez chipów. **W-b** — zwykłe pole tekstowe | pola tekstowe (+ chipy przy W-a) | klawiatura tekstowa (bywa „12a”, „IV”, „B”) bez wymuszonych wielkich liter; Nazwa `next` → Kwatera `next` → Rząd `next` → Miejsce `done` = „Zapisz”; okno przewija się nad klawiaturą | obecne wartości albo pusto | wszystko opcjonalne; spacje na brzegach obcięte; słowo pola na początku wpisu („Kwatera B”, „Rząd 4”, „Miejsce 12”) usunięte, żeby adres nie mówił „Kwatera Kwatera B” | **luka M1** · [[EPIC-002-wizyta]] → *Open questions* (krok 1) · [[cmentarz]] *Open* · D13 |
+| 4 | **Adres i pinezka** pod tytułem, wyśrodkowane: adres pełnymi słowami „Kwatera B · Rząd 4 · Miejsce 12” (14 sp, tekst pomocniczy). Bez adresu: ikona `place_outlined` + „Bez adresu kwatery · bez pinezki”, a pod spodem ~~„Uzupełnisz przy wizycie.” (tekst pomocniczy)~~ **(v6 — propozycja) przycisk tekstowy w linii treści „Wpisz adres”** (akcent, [[style-b]] reguła 1, cel 48 dp), bo adres przepisuje się w domu z wyszukiwarki zarządcy, a nie przy wizycie. Z adresem, bez pinezki: adres + „· bez pinezki” | tekst (+ przycisk tekstowy) | „Wpisz adres” → okno 3a z fokusem w „Kwatera” | — | — | AC-5 · R4 · D13 |
 | 5 | **Karty osób** w kolejności wpisania, odstęp 8 dp. Karta: „Imiona Nazwisko z d. Rodowe” (16 sp, półgruby, zawijane); lata życia (14 sp, tekst pomocniczy): `1921–1987`, a z dopiskiem `ok. 1890 – 14.03.1951`; gdy jest data pochówku: `· poch. 18.03.1951`. Brak urodzenia: `zm. 1951`; brak zgonu: `ur. 1890`; brak dat: „bez dat”. **Chevron „›” — karta prowadzi do widoku osoby** ([[osoba]], v5; do v4.1 do poprawy). **Profilowe osoby (v4, [[ISSUE-017-person-photos]]):** okrąg 40 dp z lewej, wyśrodkowany w pionie, odstęp 12 dp do tekstu, w kadrze łącza ([[kadr-profilowego]], v4.1), a bez kadru przycięty ze środka, poza czytnikiem (kartę opisuje jej tekst); osoba bez zdjęcia — bez miniatury i bez wcięcia (D11). Plik bez odczytu: okrąg na tle z `broken_image_outlined` (20 dp, tekst pomocniczy) | lista kart na powierzchni, karta ≥ 64 dp | dotknięcie → widok osoby ([[osoba]], v5) | kolejność wpisania | — | AC-1 · AC-2 · AC-3 · R4 · ISSUE-017 AC 4 |
 | 6 | **Rząd działań:** „Dodaj osobę” — przycisk z obrysem, ikona `person_add_alt_outlined` w akcencie, napis w kolorze tekstu, ≥ 52 dp, szerokość treści, z lewej. „Dodaj zdjęcie” jest w polu 1a (v3.2, D12), nie tutaj | rząd przycisków pod listą | „Dodaj osobę” → [[wpis-osoby]] „kolejna osoba” | — | — | *What to build* 3 · R4 |
 
@@ -200,6 +210,9 @@ Widok do oglądania. Jako krok przepisywania:
 - **1 dotknięcie** („Dodaj osobę”) na każdą osobę poza pierwszą w grobie;
 - **nazwa grobu: 2 dotknięcia** (ikonka, „Zapisz”) i pisanie — tylko dla grobów, które mają nazwę. Zaraz po
   zapisie pierwszej osoby ten widok jest na ekranie, więc nazwę nadaje się bez szukania grobu.
+- **adres zarządcy (v6 — propozycja): ok. 4 dotknięcia** („Wpisz adres”, chip kwatery albo 1–2 znaki, „dalej” do rzędu i miejsca,
+  „Zapisz”) i 2–6 znaków na grób; ok. 50 grobów. Adres przepisuje się z wyszukiwarki zarządcy, więc autor przełącza się między
+  przeglądarką a aplikacją — dlatego jedno okno na cały adres, a nie trzy.
 - **zdjęcie nagrobka (v3.1): 4 dotknięcia** z galerii („Dodaj zdjęcie”, „Wybierz z galerii”, zdjęcie, „Gotowe” —
   okno systemowe na Androidzie 16 wymaga potwierdzenia, [[zdjecie]] → *Tempo*). Na ok. 50 grobów: ok. 200 dotknięć.
   Też bez szukania grobu — widok jest na ekranie po zapisie osoby.
@@ -236,6 +249,7 @@ Widok do oglądania. Jako krok przepisywania:
 | US-002 AC-2 | 5 | imiona, nazwisko i osobno „z d. Rodowe”; „kim była” — patrz D3 |
 | US-002 AC-3 | 5 (lata życia, data pochówku) | każdy z pięciu dopisków widać w zapisie: „1890”, „ok. 1890”, „przed 1920”, „po 1945”, „między 1893 a 1895” |
 | US-002 AC-5 | 4 | grób bez adresu i pinezki zapisany i widoczny z „Bez adresu kwatery · bez pinezki” |
+| v6 — propozycja (stop #1 ISSUE-028): adres zarządcy | 3b, 4 | „Wpisz adres” → „B”, „4”, „12” → „Zapisz” → pod tytułem „Kwatera B · Rząd 4 · Miejsce 12 · bez pinezki”, a karta w [[cmentarz]] ma ten sam adres |
 | decyzja autora 2026-10-06: grób jak R4 z nazwą grobu | 2, 3, 3a | ikonka → „Grób rodzinny Wymyślonych” → „Zapisz” → tytuł widoku i tytuł karty w [[cmentarz]] |
 | ISSUE-012: styl B | całość | reguły wyżej; przegląd `ui` przed stopem #2 |
 | US-005 AC-1 (v3.2, grób) | 1a → [[zdjecie]] A | pole „Dodaj zdjęcie nagrobka” → wybór → zdjęcie w tym samym miejscu, nad tytułem |
@@ -290,7 +304,18 @@ Widok do oglądania. Jako krok przepisywania:
   wyglądałoby jak brakujące zdjęcie. Koszt: w grobie, gdzie część osób ma zdjęcie, imiona nie stoją w jednej linii.
   *Obali:* na stopie #2 karty mieszane wyglądają nierówno — wtedy wcięcie 52 dp bez obrazka u wszystkich, gdy
   choć jedna osoba w grobie ma zdjęcie.
+- **D13 — adres zarządcy w oknie „Popraw grób”, z widocznym „Wpisz adres”** (v6 — propozycja na stop #1
+  [[ISSUE-028-cemetery-sectors]]). Nazwa i adres to dane grobu, a poprawa ma jedno wejście — ✎ ([[style-b]] reguła 15), więc nie
+  ma drugiego okna. „Wpisz adres” przy braku adresu jest skrótem do tego samego okna, bo ✎ przy tytule nie mówi, że tam jest
+  adres. Rząd i miejsce to tekst, nie liczby, bo zarządcy piszą „12a” i „IV”. *Obali:* autor wpisuje adresy seriami (wiele grobów
+  pod rząd z jednej wyszukiwarki) — wtedy adres w karcie listy [[cmentarz]] C bez wchodzenia w grób.
 
 ## Open
-brak. Usuwanie i zmiana zdjęcia nagrobka rozstrzygnięte na stopie #1 ISSUE-016 (wchodzą — [[zdjecie]] B4, C).
-Poprawa wpisu rozstrzygnięta na stopie #1 ISSUE-012 (D1 — wchodzi).
+- ✅ **Rozstrzygnięte 2026-10-12 na stopie #1 [[ISSUE-028-cemetery-sectors]] (autor: „tak”):** adres zarządcy wchodzi do ISSUE-028, a
+  pole „Kwatera” działa w wariancie **W-a** (chipy kwater cmentarza, odnośnik — [[ADR-016-sector-record-and-grave-link]]). v6 obowiązuje.
+- **Znana luka (przegląd `ui` ISSUE-028, v6.1):** przy 360 × 640 dp, tekście 200% i otwartej klawiaturze okno „Popraw grób” pokazuje na
+  raz ok. dwie linie, resztę przewijaniem — wszystkie pola są osiągalne (SC 1.4.10). Okno na cały ekran przy dużym tekście dotyczy też
+  „Popraw cmentarz”, więc o wzorcu decyduje się przy drugim oknie z tym problemem. Kolejność chipów — [[cmentarz]] 17a.
+
+Usuwanie i zmiana zdjęcia nagrobka rozstrzygnięte na stopie #1 ISSUE-016 (wchodzą — [[zdjecie]] B4, C). Poprawa wpisu
+rozstrzygnięta na stopie #1 ISSUE-012 (D1 — wchodzi).

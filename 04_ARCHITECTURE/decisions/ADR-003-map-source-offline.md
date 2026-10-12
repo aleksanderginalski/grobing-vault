@@ -96,3 +96,6 @@ accepted — 2026-10-08.
     ([[NFR-005-dane-nie-opuszczaja-telefonu]]); pole „link do wyszukiwarki zarządcy” wycofane ([[cmentarz]] D12); pułapka
     `CameraConstraint.contain` ominięta (`containCenter`); model kwatery → [[ISSUE-028-cemetery-sectors]], pinezki →
     [[US-008-pinezka-na-miejscu]].
+  - **2026-10-12 — stan po [[ISSUE-028-cemetery-sectors]]** (dopisek, decyzja bez zmian): pkt 3 wdrożony dla kwater — kwatera to rekord
+    cmentarza ze strefą zaznaczaną przez autora celownikiem na planie albo zdjęciu z góry, a grób na nią wskazuje
+    ([[ADR-016-sector-record-and-grave-link]], schemat v11). Pinezki grobów → [[US-008-pinezka-na-miejscu]].

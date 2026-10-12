@@ -32,11 +32,9 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   2. ~~[[ISSUE-025-gender-kinship-together-since]]~~ — zamknięte 2026-10-08 (*Recently done*);
   3. ~~[[ISSUE-024-person-view]]~~ — zamknięte 2026-10-12 (*Recently done*);
   4. ~~[[ISSUE-023-poland-map-r1-cemetery-photo]]~~ — zamknięte 2026-10-12 (*Recently done*);
-  5. **w toku: [[US-007-mapa-cmentarza]]**, rozpisana 2026-10-12 na dwie pozycje:
-     - ~~[[ISSUE-027-cemetery-map-plan-photo-states]]~~ — zamknięte 2026-10-12 (*Recently done*);
-     - **następna: [[ISSUE-028-cemetery-sectors]]** — kwatery autora (przed planem: `ui` projektuje zaznaczanie kwater; zmiana
-       schematu);
-  6. [[US-008-pinezka-na-miejscu]] — pinezka z GPS (dokładność czeka na pomiar z *Parked*);
+  5. ~~[[US-007-mapa-cmentarza]]~~ — zamknięta 2026-10-12 (~~ISSUE-027~~, ~~ISSUE-028~~; *Recently done*);
+  6. **następna: [[US-008-pinezka-na-miejscu]]** — pinezka z GPS (jeszcze nierozpisana na pozycje; dokładność czeka na pomiar z
+     *Parked*). Kandydaci z [[cmentarz]] D29: „Pokaż kwaterę” przy grobie bez pinezki i lista grobów kwatery;
   7. [[SPIKE-002-tree-on-a-phone]] → drzewo, czas, „Połącz dwie osoby” ([[drzewo]], EPIC-003) — od ISSUE-024 także **słownik nazw
      złożonych i dawne AC-6** („ciotka”, „stryj”, „siostra cioteczna babci żony”) i „Pokaż w drzewie” w widoku osoby (SPIKE-002 →
      *Input from ISSUE-024*);
@@ -126,7 +124,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   paczki (decyzja autora 2026-10-07); treść wychodzących zmian sprawdza strażnik treści ([[ISSUE-020-content-guard]]) przy każdym `git add`/`commit`.
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **8** (ostatnie retro: [[2026-10-08-retro-02]]). Co **10** →
+- Zamknięte pozycje od ostatniego retro: **9** (ostatnie retro: [[2026-10-08-retro-02]]). Co **10** →
   retro + pytanie o 3–5 nośnych faktów (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**;
   podbija go `docs` przy zamknięciu, a zeruje go retro.
 - Do retro (zebrane po drodze, bez decyzji):
@@ -196,6 +194,18 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     psuły pobieranie na emulatorze. Kandydat: zakaz sond z PC w czasie przejścia AC na emulatorze (zapisany w README);
   - **`adb input text` zgubił pierwszy znak hasła** (ISSUE-027, próbne odtworzenie): pierwsza próba „Złe hasło”. Kandydat do
     pamięci emulatora: dotknąć pola, odczekać, wpisać, policzyć kropki.
+  - **wymaganie M1 bez ekranu przez cały MVP** ([[ISSUE-028-cemetery-sectors]] → *Do retro*): adres kwatery z brief §5 M1 miał kolumny od
+    v1, ale żaden ekran go nie zapisywał — wyszło dopiero przy specyfikacji `ui` piątej pozycji drogi do MVP. Kandydat: przy rozpisywaniu
+    EPIC-u porównać pola modelu danych z ekranami, które je zapisują;
+  - **szósta instancja błędu dostępności dotyku** (ISSUE-028, MAJOR przeglądu): pigułka „Kwatery” w polu 48 dp przyjmowała dotyk tylko na
+    40 dp i nie była przyciskiem dla czytnika — wzorzec `TapHandle`/`LayerSwitch` leżał w pliku obok. Wzmacnia kandydata „semantyka i cel
+    dotyku” w przejściu AC `dev`;
+  - **granica git złamana komendą „tylko do liczenia”** (ISSUE-028, `dev`): `git add -N .` i `git reset -q` — bez skutku, ale zakazane.
+    Kandydat: hook, który odmawia komend git zmieniających indeks poza commitem `docs`;
+  - **`python -` jeszcze trzy razy** (ISSUE-028, `dev` i `qa`) — razem już co najmniej siedem razy mimo pamięci „nigdy”; hook `PreToolUse`
+    z tej listy coraz pilniejszy;
+  - **stop #2 pominięty w całości** (ISSUE-028) — drugi raz z rzędu bez sprawdzenia w ręce (ISSUE-024 krok 3). Kandydat: zapytać, czy stop
+    #2 przy pozycji z nowym gestem ma zostać obowiązkowy.
 
   Tematy z poprzedniego okresu rozliczyło [[2026-10-08-retro-02]] (R1–R10); wcześniejsze [[2026-10-06-retro-01]].
 
@@ -211,6 +221,32 @@ Format wpisu: `źródło (babcia / cmentarz X) · pytanie bez danych rodziny · 
 (zdarzenie) · data zapytania`. **Odpowiedź z faktami o rodzinie trafia do aplikacji, nie tutaj.**
 
 ## Recently done
+- 2026-10-12 — [[ISSUE-028-cemetery-sectors]] zamknięte, a z nim **[[US-007-mapa-cmentarza]]** (werdykt US: APPROVED, niezależny
+  przegląd, z uwagami). **Kwatery autora są na planie, a adres grobu da się wpisać:**
+  - **tryb „Kwatery”** (pigułka na planie): lista kwater cmentarza → „Zaznacz kwaterę” → nazwa → rogi **celownikiem i „Dodaj róg”**
+    (K1 — decyzja autora na stopie #1) → strefa na planie i na zdjęciu z góry, przerywana linia z nazwą. Dalej: zmiana nazwy,
+    „Narysuj strefę od nowa”, „Usuń z planu” — adresy grobów zostają ([[cmentarz]] v6.1);
+  - **adres zarządcy** w oknie „Popraw grób”: kwatera z chipów kwater cmentarza, rząd, miejsce; „Wpisz adres” pod brakiem adresu
+    ([[grob]] v6). To była **luka M1**: kolumny istniały od v1, ale żaden ekran ich nie zapisywał (zmiana zakresu przyjęta na stopie #1);
+  - **schemat v11:** kwatera jako rekord cmentarza, grób na nią wskazuje. Zmiana nazwy poprawia wszystkie adresy, „b” = „B”
+    ([[ADR-016-sector-record-and-grave-link]]). Migracja v10→v11 z testem; próbne odtworzenie na drugim emulatorze — odcisk zgodny,
+    strefa i adres widać bez sieci.
+
+  Przegląd `ui`: 0 BLOCKER, 1 MAJOR (pigułka 40 dp zamiast 48), 9 MINOR — poprawione przed stopem #2. Stop #2: „pomiń” dla trzech
+  kroków. Werdykt `qa`: APPROVED (self-check, z uwagami). Testy: 661. Licznik retro: 8 → 9.
+
+  **Incydent:** `dev` uruchomił `git add -N .` i `git reset -q` — komendy zakazane; bez skutku, zgłoszone w sesji (*Do retro*).
+
+  **Dla autora:**
+  - **nieprzetestowane w ręce:** rysowanie K1 i okno adresu (stop #2 „pomiń”) — wracają przy pierwszym prawdziwym przepisywaniu
+    adresów po instalacji MVP; do tego TalkBack i prawdziwy telefon;
+  - `Medium_Phone`: release v11 na Twoich danych testowych, kopia skonfigurowana od nowa — **nowe hasło testowe** (wymyślone, w tej
+    sesji), pliki `grobing-klucz-028.age` i `grobing-kopia-028.age` w Pobranych. Grób „Grob wymyslonych” ma adres „Kwatera B1 ·
+    Rząd 4 · Miejsce 12”, a kwatera B1 — strefę;
+  - `Grobing_Restore`: release v11 z danymi z tej kopii (build debug z ISSUE-027 odinstalowany);
+  - znana luka: okno „Popraw grób” na małym ekranie przy tekście 200% i otwartej klawiaturze pokazuje naraz ok. dwie linie ([[grob]]
+    *Open*);
+  - prototyp `issue-028-kwatery.html`, zrzuty i kopie kopii leżą poza repo (katalog tymczasowy sesji `9f87c8cf-…`) — do kosza.
 - 2026-10-12 — [[ISSUE-027-cemetery-map-plan-photo-states]] zamknięte (pierwsza z dwóch pozycji [[US-007-mapa-cmentarza]]). **Cmentarz
   jest mapą:**
   - **plan offline** z OpenStreetMap — obrys i alejki pobierane raz (przy zapisie cmentarza z punktem, przy zmianie punktu, przy

@@ -1,5 +1,5 @@
 ---
-title: "Style B — visual guidelines (v1.21)"
+title: "Style B — visual guidelines (v1.22)"
 type: design-guidelines
 status: active
 owner: ui
@@ -77,6 +77,8 @@ wzorem. **Przelicz przy każdej zmianie tokenów.**
 | zieleń stanu `stateOk` jako ikona albo tekst *(v1.17, 2026-10-08)* | 8,97 | 8,19 | 3 (ikona) · 4,5 (tekst) | ✅ |
 | napis „Polska” — tekst pomocniczy, krycie 85%, 22 sp półgruby *(v1.20, 2026-10-12)* | — | 3,98 na lądzie · 4,02 na wodzie | 3 (duży tekst, SC 1.4.3) | ✅ |
 | granica sąsiada — obrys, krycie 45% *(v1.20)* | 1,61 · na wodzie 1,59 | — | dekoracja (poza SC 1.4.11) | — |
+| linia kwatery — tekst, krycie 75% *(v1.22, 2026-10-12)* | 6,56 | 6,16 | 3 (SC 1.4.11) | ✅ |
+| kwatera wybrana (akcent) wobec linii kwatery *(v1.22)* | — | 1,31 (między sobą) | — | wybór niesie też grubość i nazwa (SC 1.4.1) |
 
 **Wniosek:** wszystkie pary spełniają AA, a tekst pomocniczy nie spełnia 7:1. **Ekrany wizyty przyjęły 7:1** (v1.21, W2,
 2026-10-12): informacja potrzebna na cmentarzu (adres kwatery, liczby, stan planu) jest w kolorze tekstu, a token pomocniczy
@@ -191,6 +193,14 @@ zostaje bez zmian.
       półgrubą, z obwódką w kolorze tła planu. Linia kwatery to granica zaznaczona przez autora, więc niesie znaczenie:
       tekst na powierzchni 10,02:1. Zdjęcie z góry to treść z zewnątrz (reguła 14 — nic na nim poza zniczami, nazwami
       kwater z obwódką i plakietkami na powierzchni);
+    - **kwatera wybrana i rysowana** (v1.22, [[cmentarz]] v6, D28): strefa **bez wypełnienia** (akcent nigdy jako plama).
+      Wybrana — linia 2,5 dp i nazwa w akcencie; wybór niesie też grubość i nazwa w arkuszu, bo akcent i linia kwatery różnią
+      się tylko o 1,31:1 (SC 1.4.1). Rysowana — rogi (koło 14 dp w akcencie z obwódką 2 dp w kolorze tła) i boki (2,5 dp w
+      akcencie na linii 5 dp w kolorze tła), bok zamykający przerywany. Linia pod spodem w kolorze tła daje 8,81:1 na każdym
+      tle, także na zdjęciu (jak pierścień kadru, reguła 14). Stara strefa przy rysowaniu od nowa — przerywana linia w kolorze
+      tekstu pomocniczego (w kolorze obrysu znikała wzdłuż alejek — przegląd ISSUE-028). **Strefy na zdjęciu z góry** leżą na linii
+      w kolorze tła (3,5 dp, pod wybraną 5 dp), tak jak rysowana strefa. **Celownik** (K1 — wybór autora na stopie #1 [[ISSUE-028-cemetery-sectors]]): krzyż i koło w kolorze tekstu, 1,6 dp, z obwódką w
+      kolorze tła;
     - **rzeki** i inne tło mapy — cienki obrys z przezroczystością. To dekoracja, a SC 1.4.11 obejmuje tylko
       grafikę potrzebną do zrozumienia treści. Nic, co coś znaczy, nie może mieć formy dekoracji;
     - **podpisy miast** — tekst pomocniczy ≥ 13 sp na lądzie (5,01:1), **z obwódką 2–3 dp w kolorze lądu**, żeby granica, wybrzeże i rzeki nie przecinały liter (standard kartograficzny, v1.4);
@@ -208,7 +218,9 @@ zostaje bez zmian.
       nie da się zagwarantować (SC 1.4.3). **Jedyny wyjątek: ramka kadru** (v1.10, [[kadr-profilowego]]), bo ekran
       kadru wybiera część zdjęcia. Ramka nie ma tekstu: pierścień 2 dp w akcencie, z obu stron linia 1 dp w kolorze tła
       (akcent–tło 8,81:1 na każdym zdjęciu; sam akcent na białym ok. 2,1:1), poza okręgiem zdjęcie przyciemnione kolorem
-      tła (krycie 72%), linie pomocnicze w kolorze tekstu (krycie 60%) z cieniem w kolorze tła (krycie 50 %);
+      tła (krycie 72%), linie pomocnicze w kolorze tekstu (krycie 60%) z cieniem w kolorze tła (krycie 50 %). **Drugi wyjątek
+      — zaznaczanie kwatery na zdjęciu z góry** (v1.22, [[cmentarz]] 18): rogi, boki i celownik, bo ten tryb też wybiera
+      część zdjęcia. Tekstu nie ma, poza nazwą kwatery z obwódką. Każda linia leży na linii w kolorze tła (reguła 13);
     - **kształt mówi, co to jest:** osoba — okrąg, i to tylko jej **profilowe** (miniatura w karcie i w wierszu ustawień
       40 dp — v1.17, [[ustawienia]] element 1; zdjęcie w formularzu 80 dp, nagłówek bazy zdjęć 96 dp; R3, R4); nagrobek — zaokrąglony prostokąt (duże zdjęcie: promień
       16 dp; miniatura w karcie: kwadrat 56 dp, promień 8 dp; R2, R4); **cmentarz** — zaokrąglony prostokąt
@@ -388,3 +400,16 @@ wysokokontrastowy, bez rezygnacji ze stylu B. Wynik i data trafiają tutaj i do
   v1.13, więc pary z v1.13 obowiązują (przeliczone: tekst pomocniczy/woda 5,04, woda/ląd 1,00, linia wody/ląd 2,49). Nowe
   pary: „Polska” (tekst pomocniczy 85%) 3,98:1 na lądzie i 4,02:1 na wodzie — duży tekst, próg 3:1; granica sąsiada (obrys
   45%) 1,61:1 — dekoracja. Pole „Dodaj zdjęcie” na powierzchni: obrys 3,10, ikona 8,04, podpis 10,02.
+- 2026-10-12 — **v1.21, ekrany wizyty i podpis źródła mapy** (decyzja autora W2 na stopie #1 i przegląd `ui`
+  [[ISSUE-027-cemetery-map-plan-photo-states]]; [[cmentarz]] v5, v5.1). *Wpis uzupełniony w v1.22 — wersja v1.21 zmieniła
+  tytuł i progi, a tego wiersza zabrakło.*
+  - *Thresholds* — ekrany wizyty: ≥ 7:1 dla tekstu czytanego przy grobie (miara NFR-004);
+  - wyjątek: podpis źródła mapy 11 sp na plakietce.
+- 2026-10-12 — **v1.22, kwatery autora** (`ui` przed planem [[ISSUE-028-cemetery-sectors]], [[cmentarz]] v6):
+  - reguła 13 — kwatera wybrana i rysowana (bez wypełnienia, akcent na linii w kolorze tła); celownik (K1 — wybór autora); po
+    przeglądzie ISSUE-028: stara strefa w kolorze tekstu pomocniczego, strefy na zdjęciu na linii w kolorze tła;
+  - reguła 14 — drugi wyjątek od „nic na zdjęciu”: zaznaczanie kwatery na zdjęciu z góry.
+
+  Tokeny bez zmian. Pomiar (wzór WCAG z wartości w `theme.dart`, 2026-10-12): linia kwatery (tekst 75%) 6,16:1 na powierzchni i
+  6,56:1 na tle; akcent na powierzchni 8,04:1; akcent wobec linii kwatery 1,31:1; stara strefa (tekst pomocniczy) 5,01:1 na
+  powierzchni i 1,62:1 wobec alejki (obrys).

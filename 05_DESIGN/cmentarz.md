@@ -1,9 +1,9 @@
 ---
 screen: "Cmentarz — groby na cmentarzu"
-items: ["[[ISSUE-012-transcribe-grave-screen]]", "[[ISSUE-016-photos-grave-and-person]]", "[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-024-person-view]]", "[[ISSUE-027-cemetery-map-plan-photo-states]]"]
+items: ["[[ISSUE-012-transcribe-grave-screen]]", "[[ISSUE-016-photos-grave-and-person]]", "[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-024-person-view]]", "[[ISSUE-027-cemetery-map-plan-photo-states]]", "[[ISSUE-028-cemetery-sectors]]"]
 us: "[[US-002-przepisanie-grobu]] · [[US-005-zdjecia]] · [[US-007-mapa-cmentarza]]"
 journey-step: "n/a — M1 (warunek kroku 1 UJ-001); docelowo mapa cmentarza z arkuszem grobu (R2, krok 2 UJ-001, M3)"
-mockup: "katalog tymczasowy sesji 2026-10-07: makieta-cmentarz-grob-osoba.html (ramki 1–2, 8, ISSUE-012) · makieta-zdjecia.html (ramka 9, ISSUE-016) · 2026-10-08: grobing-prototyp.html (SPIKE-004, panel 2) · 2026-10-12: issue-027-mapa-cmentarza.html (stany planu, warianty NFR-004)"
+mockup: "katalog tymczasowy sesji 2026-10-07: makieta-cmentarz-grob-osoba.html (ramki 1–2, 8, ISSUE-012) · makieta-zdjecia.html (ramka 9, ISSUE-016) · 2026-10-08: grobing-prototyp.html (SPIKE-004, panel 2) · 2026-10-12: issue-027-mapa-cmentarza.html (stany planu, warianty NFR-004) · 2026-10-12: issue-028-kwatery.html (klikalny: kwatery na planie, tryb „Kwatery”, kandydaci K1–K3, adres grobu W-a/W-b)"
 updated: 2026-10-12
 ---
 
@@ -86,6 +86,30 @@ updated: 2026-10-12
 > - **B:** arkusz przeciągnięty w dół → A; ikona „osoby” w kolorze linii (W2), stałe 18 dp;
 > - **el. 13:** „bez internetu” przy zdjęciu trwa do zmiany warstwy (sieć sprawdzana jeszcze raz przy wyborze „Zdjęcia”);
 > - **pasek grobów (6):** „Pokaż listę grobów” to osobny węzeł dla czytnika (`container`), nie cały panel.
+
+> **Wersja 6 (2026-10-12, przed planem [[ISSUE-028-cemetery-sectors]]) — kwatery autora.** Prototyp SPIKE-004 pokazał, jak
+> kwatera wygląda (D13), a nie jak się ją zaznacza. Nowe:
+> - przycisk **„Kwatery”** w stanie A (element 15) → **tryb E „Kwatery”** (16–17): lista kwater cmentarza, kwatera wybrana,
+>   zmiana nazwy, „Narysuj strefę”, „Usuń z planu”;
+> - **tryb F — zaznaczanie strefy** (18) i okna (19), D24–D29;
+> - element 4 — kwatera wybrana, położenie nazwy, strefy bez dotyku poza trybem E.
+>
+> Na stop #1 idą dwie decyzje (*Open*): **gdzie się dotyka** przy rysowaniu (K1 celownik · K2 dotknięcie · K3 prostokąt) i
+> **jak kwatera łączy się z adresem grobu** (W-a odnośnik · W-b tekst). Do tego **luka spoza tej specyfikacji**: adresu grobu
+> (kwatera, rząd, miejsce) nie da się dziś wpisać na żadnym ekranie — propozycja w [[grob]] v6. Klikalny prototyp:
+> `issue-028-kwatery.html` (katalog tymczasowy sesji `9f87c8cf-…`).
+
+> **Wersja 6.1 (2026-10-12, przegląd `ui` zbudowanego ekranu [[ISSUE-028-cemetery-sectors]]):** 0 BLOCKER, 1 MAJOR, 9 MINOR —
+> poprawione przed stopem #2. Odstępstwa `dev` przyjęte (7 — częściowo):
+> - **15:** cel dotyku 48 dp to całe pole wokół pigułki 40 dp, dla czytnika przycisk „Kwatery” (MAJOR — było 40 dp); kadr planu w A
+>   pigułki nie liczy;
+> - **4:** nazwa po wewnętrznej stronie strefy — na lewo od rogu, gdy na prawo byłaby poza strefą; na zdjęciu z góry linia strefy na
+>   linii w kolorze tła;
+> - **16, 17b:** kadr nie przybliża bez potrzeby, a lista nie rusza planu, który już pokazuje strefy;
+> - **17a:** cyfry przed literami (2, 10, A, B);
+> - **18:** karta najwyżej ok. 22% mapy, z widocznym paskiem przewijania; podpis źródła mapy pod kartą; przy tekście > 130% „Cofnij”
+>   jako ikona z `tooltip`; stara strefa w kolorze tekstu pomocniczego; komunikat przecięcia „…— cofnij ostatni róg.”;
+> - **19b:** nazwa zajęta — „…już jest na tym cmentarzu — wpisz inną nazwę.” (zmiana nazwy nie łączy kwater).
 >
 ## Purpose
 Cmentarz rodziny **jako mapa** (UJ-001 krok 2, M3, M7): plan schematyczny bez sieci albo zdjęcie z góry z siecią,
@@ -109,7 +133,14 @@ kwatery i pinezkę (US-002 AC-5), i pokazuje, dokąd doszło przepisywanie.
 - **Wstecz w stanie A → [[cmentarze]]** z tym samym cmentarzem wybranym i jego arkuszem (D7). Z [[grob]] wstecz →
   stan, w którym autor ekran opuścił.
 - **✎ w pasku → okno „Popraw cmentarz”** ([[cmentarze]] 15), według [[style-b]] reguły 15. Zaznaczanie kwater i
-  stawianie pinezek to osobne działania: panel 7 (wizyta) i pierwsza US [[EPIC-002-wizyta]].
+  stawianie pinezek to osobne działania: kwatery — przycisk „Kwatery” (15, v6), pinezki — panel 7 (wizyta, [[US-008-pinezka-na-miejscu]]).
+- **Kwatery (v6, [[ISSUE-028-cemetery-sectors]]):**
+  - **A → „Kwatery” (15) → tryb E** (16–17): lista kwater. Kwatera dotknięta na liście albo na planie → kwatera wybrana (17b).
+    ‹ albo wstecz → lista; ✕ albo wstecz z listy → A z tym samym kadrem co przed wejściem;
+  - **„Zaznacz kwaterę” → okno „Nowa kwatera” (19a) → „Dalej” → tryb F** (18). „Gotowe” zapisuje kwaterę ze strefą → E z tą
+    kwaterą wybraną. Z kwatery wybranej **„Narysuj strefę” / „Narysuj strefę od nowa” → F** bez okna nazwy;
+  - **F → ✕ albo wstecz:** bez rogów → E; z rogami → okno „Porzucić zaznaczanie?” (19d);
+  - **✎ przy kwaterze → okno „Nazwa kwatery”** (19b); **„Usuń z planu” → okno 19c** → E (lista).
 - **Pasek dolny** Mapa · Osoby · Drzewo jest widoczny we wszystkich stanach, a aktywna jest Mapa ([[style-b]] reguła
   12, SPIKE-004 D2).
 
@@ -120,7 +151,7 @@ kwatery i pinezkę (US-002 AC-5), i pokazuje, dokąd doszło przepisywanie.
 | 2 | **Plan schematyczny** na całą szerokość pod paskiem, także pod arkuszami: obrys cmentarza i alejki z OSM, pobrane przy dodaniu cmentarza ([[style-b]] reguła 13: teren — powierzchnia z obrysem, alejki — obrys 4 i 2 dp). Wyśrodkowany w wolnym miejscu między plakietkami (3) a paskiem grobów (6); w stanie B przesuwa się płynnie nad arkusz (jak [[cmentarze]] D30). Podpis „© OpenStreetMap” (11 sp, tekst pomocniczy) pod plakietką. **Kadr (v5):** na starcie cały obrys z marginesem 16 dp w wolnym miejscu; to też najmniejsze przybliżenie, a największe to z19 (granica zdjęcia z góry, [[ADR-003-map-source-offline]] pkt 2). Przesuwanie ograniczone do obrysu z marginesem, więc cmentarz nigdy nie znika z ekranu. Teren poza obrysem w kolorze tła. **Dla czytnika** plan to jeden węzeł „Plan cmentarza” (alejek nie czyta), a każdy znicz (5) to osobny przycisk. **Bez planu → 2a** | mapa | szczypanie, przeciąganie, podwójne dotknięcie; bez obrotu | cały cmentarz, północ u góry | — | [[ADR-003-map-source-offline]] pkt 1 · D10 |
 | 2a | **Zaślepka planu (v5, D17)** w miejscu planu, wyśrodkowana w wolnym miejscu. Ikona 32 dp w kolorze tekstu pomocniczego, pod nią fakt i droga naprzód (oba 14 sp, kolor tekstu — W2, *Open*), niżej przycisk tekstowy w akcencie, cel ≥ 48 dp. Pięć wariantów: **(a) pobieranie** — wskaźnik postępu (kołowy, akcent) zamiast ikony, „Pobieram plan cmentarza…”, bez przycisku; **(b) bez internetu** — `cloud_download`, „Plan tego cmentarza pobierze się, gdy będzie internet.” · „Groby są na liście — pasek na dole.” · **„Pobierz teraz”**; **(c) serwer nie odpowiada** (po ponowieniach) — `cloud_off`, „Nie udało się pobrać planu — serwer map nie odpowiada.” · „Spróbuję znowu później. Groby są na liście.” · **„Pobierz teraz”**; **(d) brak obrysu w OSM** — `not_listed_location`, „W OpenStreetMap nie ma planu tego cmentarza.” · „Z internetem zobaczysz go na zdjęciu z góry.” · **„Pokaż zdjęcie z góry”** (tylko z siecią; bez sieci bez przycisku); **(e) bez punktu** — `location_off_outlined`, „Plan pobierze się, gdy wskażesz cmentarz na mapie.” · **„Wskaż na mapie”**. Plakietka „Plan offline” i podpis „© OpenStreetMap” znikają w każdym wariancie; przełącznik Plan · Zdjęcie (3) zostaje w (a)–(d), a w (e) znika, bo zdjęcie nie ma środka | stan planu | „Pobierz teraz” → (a); bez sieci zamiast tego pasek komunikatu „Bez internetu. Plan pobierze się, gdy będzie zasięg.” (zaślepka zostaje); „Pokaż zdjęcie z góry” → warstwa „Zdjęcie”, środek w punkcie cmentarza, z17; „Wskaż na mapie” → tryb wskazania ([[cmentarze]] 16) dla tego cmentarza; po „Zapisz” powrót tutaj w (a) | według stanu pobierania | — | [[ADR-003-map-source-offline]] pkt 1 („ponawianie i zaślepka są warunkiem”) · US-007 AC-5 · [[style-b]] reguła 7 · D17–D19 |
 | 3 | **Plakietki na planie**, na powierzchni, wys. 32 dp, margines 12 dp. Z lewej **„Plan offline”** z ikoną `offline_pin` w zieleni stanu (propozycja `#8CC084`, [[style-b]] *State colours*). Z prawej przełącznik segmentowy **Plan · Zdjęcie** (ikony `map_outlined`, `satellite_alt`; aktywny segment w akcencie). „Zdjęcie” to ortofotomapa GUGiK, tylko online, nic nie zapisuje w telefonie; plakietka zmienia się na „tylko z internetem” z ikoną `wifi` (tekst pomocniczy), a podpis na „Ortofotomapa: GUGiK”. Kafelki zdjęcia ładują się na tle w kolorze powierzchni, bez wskaźnika; nic nie trafia do pamięci telefonu poza pamięcią podręczną w RAM (pkt 2). Wygląd „Zdjęcia” bez sieci → 13. **Duży tekst (v5, D22):** plakietki to kontrolki, więc rosną w pełni; gdy z przełącznikiem nie mieszczą się w jednym rzędzie, „Plan offline” schodzi pod przełącznik, z lewej. Przełącznik dla czytnika: dwa przyciski ze stanem „wybrany” | plakietka + przełącznik | segment → warstwa | Plan | — | [[ADR-003-map-source-offline]] pkt 2 · D10 |
-| 4 | **Kwatery autora:** przerywana linia (tekst, krycie 75%, kreska 5/4) i nazwa „Kwatera A” (12 sp, półgruba, obwódka w kolorze tła planu) w dolnym lewym rogu strefy. Kwatera bez strefy jest tylko w adresach grobów. **Zaznaczanie i rysowanie → [[ISSUE-028-cemetery-sectors]]**; w ISSUE-027 plan jest bez kwater | strefy | — | — | — | [[ADR-003-map-source-offline]] pkt 3 · D13 |
+| 4 | **Kwatery autora:** przerywana linia 1,5 dp (tekst, krycie 75% — 6,16:1 na powierzchni, kreska 5/4), **bez wypełnienia** (D28), i nazwa „Kwatera A” (12 sp, półgruba, kolor tekstu, obwódka 3 dp w kolorze powierzchni planu) w dolnym lewym rogu strefy: przy rogu strefy położonym najbardziej w lewo i w dół (największe „y − x” na ekranie), 6 dp nad rogiem, **w stronę wnętrza strefy** — na prawo od rogu, a na lewo, gdy na prawo byłaby poza strefą (v6.1); przy pochyłym boku litery mogą przeciąć linię — przykrywa ją obwódka; rośnie z tekstem najwyżej do 1,3× ([[style-b]] reguła 13). Na zdjęciu z góry tak samo, a pod linią strefy leży linia w kolorze tła 3,5 dp (pod wybraną 5 dp) — reguły 13, 14 (v6.1). Kwatera bez strefy jest tylko w adresach grobów (i na liście 17a). **W stanach A i B strefy nie reagują na dotyk** (D29), a dla czytnika są częścią węzła „Plan cmentarza”. **Kwatera wybrana (tryb E, v6):** linia 2,5 dp w akcencie, nazwa w akcencie (8,04:1) | strefy | w trybie E dotknięcie strefy → kwatera wybrana (17b) | — | — | [[ADR-003-map-source-offline]] pkt 3 · D13 · US-007 AC-4 |
 | 5 | **Znicze grobów z pinezką:** znicz-pinezka 28 × 35 dp, cel dotyku ≥ 48 dp; wybrany 38 × 47 dp z poświatą ([[style-b]] reguła 13). Grób bez pinezki nie ma znicza | znaczniki | dotknięcie → stan B | — | — | R2 · D11 |
 | 6 | **Pasek grobów** (stan A): dolny arkusz na powierzchni, promień 16 dp u góry, uchwyt. „6 grobów · 14 osób” (14 sp, tekst), pod spodem „2 groby bez pinezki — na liście” albo „wszystkie groby mają pinezki” (13 sp, kolor tekstu — W2). Pod nimi **wypełniony „Dodaj grób”** z ikoną `add`, ≥ 52 dp, na pełną szerokość — **ten sam przycisk co pod listą (9)** | dolny arkusz + przycisk główny | dotknięcie albo przeciągnięcie w górę → stan C; „Dodaj grób” → [[wpis-osoby]] „nowy grób” | — | — | **decyzja autora** (SPIKE-004 D12) · D14 |
 | 7 | **Arkusz grobu** (stan B), na powierzchni, z uchwytem: miniatura nagrobka 72 dp (promień 12 dp; bez zdjęcia brak miniatury), tytuł (16 sp, półgruby — jak 8 (a)), adres i ikona `group_outlined` + „3 osoby” (14 sp, kolor tekstu — W2, *Open*), **wypełniony „Pokaż grób” ze zniczem** (kolor tła na akcencie) | dolny arkusz + przycisk główny | „Pokaż grób” → [[grob]]; przeciągnięcie w górę albo dotknięcie uchwytu (cel 48 dp, czytnik: „Pokaż listę grobów”) → stan C | — | — | R2 (arkusz grobu) · D11 · D21 |
@@ -131,6 +162,11 @@ kwatery i pinezkę (US-002 AC-5), i pokazuje, dokąd doszło przepisywanie.
 | 12 | **Stan D — stawianie pinezki:** zamiast plakietek u góry karta „**Stań przy grobie.** Pinezka stanie w niebieskiej kropce. Możesz ją przesunąć — dotknij planu.” (13 sp, `my_location` w akcencie); na planie kropka i **znicz w obrysie** (miejsce jeszcze niezapisane, [[style-b]] reguła 13) w kropce; dotknięcie planu przesuwa znicz. Na dole arkusz: tytuł grobu, „dokładność GPS ±4 m · źródło pinezki: GPS” i „Anuluj” (tekstowy) · **„Zapisz pinezkę”** (wypełniony) | tryb mapy | „Zapisz pinezkę” → zapis pinezki ze źródłem i dokładnością ([[FR-001-provenance]]) → stan B z tym grobem; „Anuluj”/wstecz → poprzedni stan | pinezka w kropce | dokładność gorsza niż 15 m → pod tekstem „Słaby sygnał — przesuń pinezkę ręcznie.” | M6 · H3 · **decyzja autora** (D22) · D16 |
 | 13 | **Bez internetu (M7):** plan bez zmian; plakietka przy „Zdjęciu” — `wifi_off` „bez internetu”, a wybrane „Zdjęcie” pokazuje „Zdjęcie z góry potrzebuje internetu. Plan działa bez niego.” i „Wróć do planu” | stan | — | — | — | [[NFR-001-offline]] · [[ADR-003-map-source-offline]] pkt 2 |
 | 14 | **Źródło pinezki w danych:** „GPS ±4 m · 08.10.2026” albo „zaznaczona w domu” (z planu lub zdjęcia z góry) — widać w [[grob]] pod adresem | dane | — | — | — | [[FR-001-provenance]] · [[EPIC-002-wizyta]] (każda pinezka ze źródłem i dokładnością) |
+| 15 | **„Kwatery” (v6)** — pigułka na powierzchni, wys. 40 dp w polu dotyku 48 dp (całe pole reaguje; dla czytnika przycisk „Kwatery” — v6.1), `pentagon_outlined` w akcencie + „Kwatery” (14 sp, tekst), z lewej nad paskiem grobów (6), margines 12 dp — miejsce „Popraw pinezkę” (11), która jest tylko w B. Kadr planu (2) pigułki nie liczy, tak jak „gdzie jestem” (10) (v6.1; *obali:* strefa rodziny w lewym dolnym rogu cmentarza schowana pod pigułką). **Tylko w stanie A i tylko wtedy, gdy jest na czym rysować:** plan (2) albo „Zdjęcie” z siecią. Przy zaślepce 2a i przy „Zdjęciu” bez sieci (13) jej nie ma | przycisk | → tryb E (16) | — | — | [[ISSUE-028-cemetery-sectors]] *What to build* 1 · D24 |
+| 16 | **Tryb E — „Kwatery” (v6):** pasek: `close` (`tooltip` „Zamknij kwatery”), „Kwatery” (18 sp, półgruby) i pod spodem nazwa cmentarza (13 sp, tekst pomocniczy). **Bez dolnego paska** ([[style-b]] reguła 12 — tryb). Plakietki i przełącznik Plan · Zdjęcie (3) zostają, bo kwaterę zaznacza się na planie albo na zdjęciu. Kadr: plan zostaje, jak był w A, gdy wszystkie strefy już są w wolnym miejscu nad arkuszem (margines 48 dp); inaczej przybliżenie maleje, aż się zmieszczą; bez stref — jak w A (v6.1). Znicze (5) widoczne w zwykłym wyglądzie i **nieaktywne** (jak [[cmentarze]] D21), żeby było widać, gdzie leżą znane groby | tryb mapy | strefa → 17b; gesty planu jak w 2 | lista (17a) | — | D24 |
+| 17 | **Arkusz kwater (tryb E)** na powierzchni, z uchwytem. **(a) Lista:** karta na kwaterę — w kolorze tła na arkuszu, promień 14 dp, odstęp 8 dp, ≥ 56 dp: „Kwatera A” (16 sp, półgruby) i pod spodem „2 groby · na planie”, „2 groby · bez strefy — tylko w adresach” albo „bez grobów · na planie” (14 sp, kolor tekstu — W2), chevron „›”; kolejność naturalna po nazwie (2, 10, A, B — liczby jako liczby, cyfry przed literami, jak w całej aplikacji — v6.1). Pod listą **wypełniony „Zaznacz kwaterę”** (`add`, ≥ 52 dp, pełna szerokość). Lista dłuższa niż pół ekranu przewija się w arkuszu. **Bez kwater:** „Na tym cmentarzu nie ma jeszcze kwater. Zaznacz te, w których leży rodzina — według planu zarządcy.” (14 sp, tekst) i „Zaznacz kwaterę”. **(b) Kwatera wybrana:** ‹ (`tooltip` „Wszystkie kwatery”), „Kwatera B” (18 sp, półgruby), ✎ (`edit_outlined`, akcent, `tooltip` „Zmień nazwę kwatery”); pod spodem ta sama linia co w karcie; przycisk z obrysem **„Narysuj strefę”** (bez strefy) albo **„Narysuj strefę od nowa”** (`pentagon_outlined` w akcencie); gdy strefa jest — przycisk tekstowy **„Usuń z planu”** (`delete_outline`, kolor tekstu — [[style-b]] reguła 14). Plan przesuwa się płynnie tak, żeby strefa stała w środku wolnego miejsca nad arkuszem w obecnym przybliżeniu, a przybliżenie maleje tylko wtedy, gdy strefa się nie mieści (v6.1) | dolny arkusz | karta → (b); ✎ → 19b; „Narysuj…” → F; „Usuń z planu” → 19c; „Zaznacz kwaterę” → 19a | — | — | ISSUE-028 *What to build* 1, 3 · D25–D27 |
+| 18 | **Tryb F — zaznaczanie strefy (v6):** pasek: `close`, „Kwatera D — strefa” (18 sp, półgruby) i pod spodem „Zaznacz rogi według planu zarządcy” albo przy rysowaniu od nowa „Stara strefa jest szara” (13 sp, tekst pomocniczy). Bez dolnego paska. **U góry karta** (jak 12) z `pentagon_outlined` w akcencie i instrukcją K1 (v6.1, dosłownie): „Przesuń plan tak, żeby celownik stał na rogu kwatery, i dotknij „Dodaj róg”. Możesz też dotknąć miejsca na planie — przesunie się pod celownik.” — zamiast plakietek; karta najwyżej ok. 22% wysokości mapy, przewijana z widocznym paskiem, a pod nią podpis źródła mapy jak w 3 („© OpenStreetMap” albo „Ortofotomapa: GUGiK”) (v6.1); warstwa (plan albo zdjęcie) zostaje z trybu E. Na planie: inne kwatery jak w 4, znicze przygaszone (krycie 55%) i nieaktywne, **stara strefa** (od nowa) przerywaną linią 2 dp w kolorze tekstu pomocniczego (5,01:1 na powierzchni, 1,62:1 wobec alejek — w kolorze obrysu znikała wzdłuż nich; v6.1). **Rogi:** koło 14 dp w akcencie z obwódką 2 dp w kolorze tła. **Boki:** 2,5 dp w akcencie na linii 5 dp w kolorze tła (widać je na planie i na zdjęciu), bok zamykający (ostatni → pierwszy róg) przerywany; od 3 rogów nazwa „Kwatera D” w akcencie jak w 4. **Dolny panel** na powierzchni: liczba rogów — „2 rogi — potrzebne co najmniej 3” / „4 rogi” (13 sp, tekst); przycisk z obrysem **„Cofnij”** (`undo` w akcencie), a przy tekście > 130% sama ikona `undo` 52 × 52 dp z `tooltip` „Cofnij” (v6.1); **wypełniony „Gotowe”** na pełną szerokość, nieaktywny poniżej 3 rogów | tryb mapy | „Cofnij” → bez ostatniego rogu (K3: bez ostatniej zmiany); „Gotowe” → zapis → E z tą kwaterą wybraną (17b); ✕/wstecz → *Navigation*. **Gesty — według kandydata:** **K1** celownik na środku wolnego miejsca (krzyż 28 dp i koło 18 dp, linia 1,6 dp w kolorze tekstu z obwódką w kolorze tła); przeciągnięcie przesuwa plan, **dotknięcie planu przesuwa to miejsce pod celownik** (ok. 220 ms — droga bez przeciągania, SC 2.5.7); przycisk z obrysem **„Dodaj róg”** (`add_circle_outline`) obok „Cofnij” stawia róg pod celownikiem. **K2** dotknięcie planu stawia róg, przeciągnięcie przesuwa plan; podwójne dotknięcie nie przybliża (stawiałoby rogi), więc przybliżanie dwoma palcami i **przyciskami „+ −”** (SC 2.5.1). **K3** na starcie prostokąt ok. 140 dp na środku wolnego miejsca; przeciągnięcie rogu go przesuwa, **dotknięcie rogu go wybiera** (pierścień 2 dp w akcencie), a dotknięcie planu przenosi wybrany róg (SC 2.5.7); „+” w połowie boku (koło 18 dp na powierzchni z obrysem, cel 48 dp) dodaje róg; przeciągnięcie poza rogiem przesuwa plan | — | boki, które się przecinają → pod liczbą rogów `error_outline` + „Boki strefy się przecinają — cofnij ostatni róg.” (kolor błędu; v6.1 — w K1 rogu nie da się przesunąć), „Gotowe” nieaktywne | ISSUE-028 *What to build* 1 · prior art (*Decisions* D30) · D26 |
+| 19 | **Okna (v6),** według [[style-b]] reguły 1 (okno) i 10. **(a) „Nowa kwatera”:** pole z przedrostkiem „Kwatera ” (ramka w kolorze obrysu), fokus i klawiatura od razu, klawiatura tekstowa bez wymuszonych wielkich liter, `done` = „Dalej”; pod polem „Sama nazwa, jak na planie zarządcy, np. B albo 12.” (13 sp, tekst pomocniczy); „Anuluj” · **„Dalej”** (akcent). **(b) „Nazwa kwatery”** (✎): to samo pole z obecną nazwą; pod polem skutek dla adresów — W-a: „Adresy 2 grobów zmienią się na „Kwatera B1”.”; W-b: „Adresy grobów zostaną bez zmian: 2 groby z „Kwatera B” przestaną pasować do tej strefy.”; kwatera bez grobów — bez tej linii; „Anuluj” · **„Zapisz”**. **(c) „Usunąć kwaterę B z planu?”** — „Strefa zniknie z planu. Adresy grobów zostaną.”; „Usuń” (kolor tekstu) · **„Zostaw”** (akcent). **(d) „Porzucić zaznaczanie?”** — „Zaznaczone rogi przepadną.”; „Porzuć” (kolor tekstu) · **„Rysuj dalej”** (akcent) | okna dialogowe | (a) „Dalej” → F; (b) „Zapisz” → 17b z nową nazwą; (c) „Usuń” → 17a (kwatera bez grobów znika, z grobami zostaje „bez strefy”); (d) „Porzuć” → E | (a) pusto; (b) obecna nazwa | (a), (b): puste → „Podaj nazwę kwatery.”; ta sama nazwa na tym cmentarzu (bez wielkości liter, polskich znaków i słowa „Kwatera” na początku) → (a) „Kwatera B już jest na liście — wybierz ją tam.”, (b) „Kwatera B już jest na tym cmentarzu — wpisz inną nazwę.” (v6.1 — zmiana nazwy nie łączy kwater) (kolor błędu + `error_outline`), okno zostaje; wpisane „Kwatera B” zapisuje się jako „B”; spacje na brzegach obcięte | D25 · D27 · *Open* W-a/W-b |
 
 Imię i nazwisko w liście osób: „Imiona Nazwisko” bez nazwiska rodowego — „z d.” jest w [[grob]]. Osoba bez
 imion albo bez nazwiska: to, co jest. Spór źródeł o grób ([[ADR-006-claimed-value-separate-structures]] D2):
@@ -154,7 +190,16 @@ osoba z dwoma pochówkami stoi w obu grobach, jak w [[grob]].
 | grób bez osób | może przyjść z innych danych (z interfejsu nie powstaje): tytuł karty „Grób bez wpisanych osób” w kolorze pomocniczym |
 | brak pliku zdjęcia | wpis zdjęcia jest, pliku nie ma: karta bez miniatury (o braku mówi [[grob]] → *States*) |
 | D — stawianie pinezki | 1, 2 (z kropką i zniczem w obrysie), 12 zamiast plakietek i arkuszy |
-| bez internetu | 1–6, 13 |
+| bez internetu | 1–6, 13; „Kwatery” (15) tylko na planie |
+| A z kwaterami (v6) | 1–6 ze strefami (4) i „Kwatery” (15) |
+| E — lista kwater (v6) | 16, 2–5 (strefy, znicze nieaktywne), 17a |
+| E — bez kwater (v6) | 16, 2, 3, 5, 17a: „Na tym cmentarzu nie ma jeszcze kwater…” i „Zaznacz kwaterę” |
+| E — kwatera wybrana (v6) | 16, 4 (wybrana w akcencie), 17b |
+| E — kwatera bez strefy wybrana (v6) | 16, 17b z „Narysuj strefę”, bez „Usuń z planu”; kadr bez zmian |
+| F — zaznaczanie strefy (v6) | 18 (pasek, karta, rogi, boki, dolny panel); 2 z kwaterami i przygaszonymi zniczami |
+| F — „Zdjęcie” bez sieci (v6) | 18 z 13 („Zdjęcie z góry potrzebuje internetu…”, „Wróć do planu”); rogi zostają |
+| błąd zapisu kwatery (v6) | F albo okno 19 zostaje; pod „Gotowe” (albo pod polem) `error_outline` + „Nie udało się zapisać kwatery. Spróbuj jeszcze raz.” (kolor błędu); rogi i wpis zostają |
+| błąd odczytu kwater (v6) | 17a: „Nie udało się odczytać kwater.” (tekst pomocniczy) + „Spróbuj ponownie” (przycisk z obrysem); „Zaznacz kwaterę” nieaktywny. Plan w A rysuje się bez stref |
 
 ## Sketch
 v4 — stan A (mapa) i stan B (jeden grób):
@@ -186,6 +231,31 @@ sesji 2026-10-12). Zaślepka stoi w miejscu planu, nad paskiem grobów; przełą
 Stan C (lista) — karty jak w v3, na cały ekran pod paskiem (1), z wypełnionym „Dodaj grób” na dole. Szkice v2 i v3:
 *Historia* w nagłówku i makiety z 2026-10-07.
 
+v6 — tryb E (lista kwater) i tryb F (zaznaczanie strefy, kandydat K1); K2 i K3 — prototyp `issue-028-kwatery.html`:
+```
+┌──────────────────────────────────┐   ┌──────────────────────────────────┐
+│ ✕  Kwatery                       │   │ ✕  Kwatera D — strefa            │
+│    Cmentarz parafialny w Wymyś…  │   │    Zaznacz rogi według planu za… │
+│ (✓ Plan offline)  [Plan|Zdjęcie] │   │ ╭──────────────────────────────╮ │
+│  ┌ ─ ─ ─ ─ ─┐ ┌ ─ ─ ─ ─ ─┐       │   │ │⬠ Przesuń plan tak, żeby cel- │ │
+│  │  ⚱   ⚱   │ │   ⚱      │       │   │ │  ownik stał na rogu kwatery… │ │
+│  │Kwatera A │ │Kwatera B │       │   │ ╰──────────────────────────────╯ │
+│  └ ─ ─ ─ ─ ─┘ └ ─ ─ ─ ─ ─┘       │   │  ┌ ─ ─ ─ ─┐ ┌ ─ ─ ─ ─┐          │
+│ ╭──────────────────────────────╮ │   │  │Kwatera A│ │Kwatera B│         │
+│ │ ╭──────────────────────────╮ │ │   │  ●━━━━━━━━●  ⊕ ← celownik       │
+│ │ │ Kwatera A              › │ │ │   │  ┆         ┃                    │
+│ │ │ 2 groby · na planie      │ │ │   │  ┆Kwatera D┃                    │
+│ │ ╰──────────────────────────╯ │ │   │  ●━━━━━━━━●                     │
+│ │ ╭──────────────────────────╮ │ │   │ ╭──────────────────────────────╮ │
+│ │ │ Kwatera C              › │ │ │   │ │ 4 rogi                       │ │
+│ │ │ 2 groby · bez strefy — … │ │ │   │ │ [↶ Cofnij] [⊕ Dodaj róg    ] │ │
+│ │ ╰──────────────────────────╯ │ │   │ │ ╭──────────────────────────╮ │ │
+│ │ ╭──────────────────────────╮ │ │   │ │ │         Gotowe           │ │ │
+│ │ │    +  Zaznacz kwaterę    │ │ │   │ │ ╰──────────────────────────╯ │ │
+│ ╰──────────────────────────────╯ │   │ ╰──────────────────────────────╯ │
+└──────────────────────────────────┘   └──────────────────────────────────┘
+```
+
 ## Tempo
 Rekordem jest **grób**: ok. 50 na całe notatki (G6, [[NT-002-transcribe-the-notes]]).
 - **Nowy grób:** stan A → „Dodaj grób” = **1 dotknięcie** (jak w v3), potem formularz pierwszej osoby ([[wpis-osoby]]
@@ -195,6 +265,11 @@ Rekordem jest **grób**: ok. 50 na całe notatki (G6, [[NT-002-transcribe-the-no
   pinezki, ale przepisywanie prowadzi „Dodaj grób”, a do listy wraca się rzadziej.
 - **Grób z pinezką:** znicz → „Pokaż grób” = 2 dotknięcia.
 - **Nazwa grobu** nie kosztuje tu nic — nadaje się ją w [[grob]].
+- **Kwatera (v6):** rekordem jest kwatera, w której leży rodzina — kilkanaście na całe notatki (11 cmentarzy, SPIKE-001), raz, w
+  domu. „Kwatery” → „Zaznacz kwaterę” → nazwa (1–3 znaki) → „Dalej” → rogi → „Gotowe”. Rogi prostokątnej kwatery: **K1** 4 ×
+  (przesunięcie albo dotknięcie planu + „Dodaj róg”) = 8 ruchów; **K2** 4 dotknięcia; **K3** 4 przeciągnięcia (albo 8 dotknięć).
+  Razem 8–12 dotknięć na kwaterę. Wpis jest rzadki, więc tempo nie rozstrzyga między kandydatami — rozstrzyga, czy róg staje
+  tam, gdzie autor celował, i ile pomyłek trzeba cofać.
 
 ## Style B rules applied
 - **Reguła 1:** jeden wypełniony przycisk w każdym stanie — A: „Dodaj grób”, B: „Pokaż grób”, C: „Dodaj grób”.
@@ -209,8 +284,18 @@ Rekordem jest **grób**: ok. 50 na całe notatki (G6, [[NT-002-transcribe-the-no
   „bez pinezki” to fakt w tekście pomocniczym. **Reguła 7 (v5):** każdy brak planu ma fakt i drogę naprzód (2a, D17), ton
   spokojny, bez wykrzykników — także przy błędzie serwera.
 - **Gesty (v5):** przeciągnięcie arkusza ma alternatywę w dotknięciu uchwytu (D21, SC 2.5.7).
-- **Tokeny:** zieleń offline `stateOk` (w `theme.dart` od [[ISSUE-022-app-skeleton-tabs-people-settings]]); v5 bez nowych
-  tokenów. Kontrast: tytuł karty 10,02:1, linie pomocnicze 5,01:1 na powierzchni (W2 z *Open*: 10,02:1), zieleń 8,19:1 na
+- **Kwatery (v6):**
+  - **reguła 1:** jeden wypełniony przycisk — E: „Zaznacz kwaterę”, F: „Gotowe”; w oknach przyciski tekstowe;
+  - **reguła 12:** tryby E i F bez dolnego paska;
+  - **reguła 13 (v1.22):** kwatera wybrana w akcencie, rysowana strefa w akcencie na linii w kolorze tła;
+  - **reguła 14 (v1.22):** rysowanie na zdjęciu z góry to wyjątek jak ramka kadru — rogi, boki i celownik, bez tekstu poza nazwą
+    kwatery; „Usuń z planu” bez koloru błędu, „Zostaw” w akcencie;
+  - **reguła 10:** okno tylko przy porzuceniu rogów i przy usunięciu strefy;
+  - **gesty:** K1 i K3 mają drogę bez przeciągania (SC 2.5.7); K2 wymaga przycisków „+ −” (SC 2.5.1).
+- **Tokeny:** zieleń offline `stateOk` (w `theme.dart` od [[ISSUE-022-app-skeleton-tabs-people-settings]]); v5 i v6 bez nowych
+  tokenów. **Pomiar v6** (wzór WCAG, 2026-10-12): linia kwatery (tekst 75%) 6,16:1 na powierzchni; nazwa kwatery 10,02:1; akcent
+  (wybrana, rysowana) 8,04:1 na powierzchni; stara strefa (obrys) 3,10:1; akcent wobec linii kwatery tylko 1,31:1, więc wybór
+  niesie też grubość (2,5 dp) i nazwa w arkuszu 17b (SC 1.4.1). Kontrast: tytuł karty 10,02:1, linie pomocnicze 5,01:1 na powierzchni (W2 z *Open*: 10,02:1), zieleń 8,19:1 na
   powierzchni, alejki (obrys) 3,10:1 na powierzchni (SC 1.4.11).
 
 ## AC → element
@@ -225,7 +310,9 @@ Rekordem jest **grób**: ok. 50 na całe notatki (G6, [[NT-002-transcribe-the-no
 | US-007 AC-1 — plan offline | 2, 3 | cmentarz dodany z siecią, w trybie samolotowym: plan (obrys, alejki), „Plan offline” z ikoną, „© OpenStreetMap” |
 | US-007 AC-2 — zdjęcie z góry online | 3, 13 | „Zdjęcie” z siecią: ortofotomapa i „Ortofotomapa: GUGiK”; bez sieci „bez internetu”, „Wróć do planu”, a plan działa; w pamięci telefonu nie przybywa plików |
 | US-007 AC-3 — sama mapa, jeden grób, lista | 5, 6, 7, 8 · *Navigation* | na starcie plan i pasek z liczbą grobów bez pinezki; znicz → arkusz z „Pokaż grób”; pasek albo uchwyt → lista wszystkich grobów |
-| US-007 AC-4 — kwatery autora | 4 | → [[ISSUE-028-cemetery-sectors]] |
+| US-007 AC-4 — kwatery autora | 4, 15–19 | kwatera zaznaczona w trybie „Kwatery” ma na planie (i na zdjęciu) przerywaną linię z „Kwatera B” w lewym dolnym rogu; kwatera tylko z adresu grobu jest na liście 17a jako „bez strefy — tylko w adresach”, a na planie jej nie ma |
+| ISSUE-028 *What to build* 3 — poprawa i usunięcie | 17b, 18, 19b, 19c | ✎ zmienia nazwę (z linią o adresach), „Narysuj strefę od nowa” rysuje na starej strefie, „Usuń z planu” zdejmuje strefę, a adresy grobów zostają |
+| ISSUE-028 — kwatera wraca po odtworzeniu z kopii | 4, 17a | po odtworzeniu ta sama lista kwater i te same strefy na planie — sprawdza `qa` (dane, nie ekran) |
 | US-007 AC-5 — bez planu | 2a (b), 6 | cmentarz dodany bez sieci: „pobierze się, gdy będzie internet”, „Pobierz teraz”, a pasek prowadzi do listy |
 
 ## Decisions
@@ -323,8 +410,76 @@ Rekordem jest **grób**: ok. 50 na całe notatki (G6, [[NT-002-transcribe-the-no
 - **D23 — z widoku osoby, gdy mapa już jest.** Grób z pinezką → stan B z tym grobem. Grób bez pinezki → stan C z
   zaznaczonym grobem, **bez komunikatu o pinezce aż do [[US-008-pinezka-na-miejscu]]**. [[osoba]] D17 trwa, bo mapa jest,
   ale pinezki nie da się jeszcze postawić, a komunikat mówiłby o działaniu, którego nie ma.
+- **D24 — kwatery w osobnym trybie, z widocznym wejściem w stanie A** (v6). Zaznacza się je rzadko i w domu, a stan A służy też
+  wizycie. Tryb zabiera dolny pasek i wyłącza dotyk zniczy, więc dotknięcie strefy nie konkuruje z dotknięciem znicza.
+  Wejście jest pigułką na planie, a nie wierszem pod ✎: działanie, którego nie widać, dla autora nie istnieje (prototyp SPIKE-004).
+  Pigułki nie ma, gdy nie ma na czym rysować (zaślepka 2a, „Zdjęcie” bez sieci). *Obali:* pigułka przeszkadza przy wizycie —
+  wtedy „Kwatery” jako wiersz w oknie „Popraw cmentarz”.
+- **D25 — nazwa przed rysowaniem** (v6), jak „Nowy cmentarz” → wskazanie na mapie ([[cmentarze]] 15 → 16). Instrukcja i podpis
+  rysowanej strefy mówią „Kwatera D”, a podwójna nazwa zatrzymuje autora, zanim narysuje drugi raz tę samą kwaterę. Aplikacje
+  terenowe robią odwrotnie (najpierw kształt, potem formularz — QField), bo tam pól jest wiele; tu jest jedna nazwa. *Obali:* na
+  prototypie autor chce najpierw rysować.
+- **D26 — poprawa strefy to narysowanie jej od nowa na starej, szarej strefie** (v6). Kwatera ma 4–6 rogów, więc przerysowanie to
+  4–6 ruchów ze wzorem pod spodem. Edytor rogów (przesuń, usuń, wstaw — *Vertex Tool* w QField) to osobny tryb do zbudowania i do
+  nauczenia. *Obali:* autor wiele razy poprawia jeden róg — wtedy edytor rogów (przy K3 to prawie ten sam tryb).
+- **D27 — „Usuń z planu” zdejmuje tylko strefę** (v6). Adres zarządcy jest prawdą, a strefa pomocą ([[data-model]] → Grave), więc
+  usunięcie strefy nie zmienia adresu żadnego grobu. Kwatera bez grobów i bez strefy znika z listy, a z grobami zostaje jako „bez
+  strefy”. *Obali:* autor chce usunąć literówkę z adresów wielu grobów naraz — to zmiana nazwy (19b) przy W-a.
+- **D28 — strefa bez wypełnienia; kwatera wybrana w akcencie** (v6). Wypełnienie byłoby dużą plamą (akcent nigdy jako plama — [[style-b]]
+  *Token roles*), a szare wypełnienie zlewałoby się z alejkami. Wybór niesie akcent, grubość 2,5 dp i nazwa w arkuszu 17b, bo akcent
+  i linia kwatery różnią się tylko o 1,31:1 (SC 1.4.1).
+- **D29 — strefy nie reagują na dotyk w stanach A i B** (v6). Znicze leżą w strefach. Gdyby dotknięcie strefy coś otwierało, każde
+  chybione dotknięcie znicza otwierałoby kwaterę. Kwaterami zarządza się w trybie E. *Obali:* autor na wizycie chce dotknąć kwatery,
+  żeby zobaczyć jej groby — kandydat dla [[US-008-pinezka-na-miejscu]] (lista grobów kwatery, „Pokaż kwaterę” przy grobie bez pinezki).
+- **D30 — prior art: jak aplikacje mapowe rysują obszar na telefonie** (v6, dla *Open* K1–K3). Kanonem są aplikacje do zbierania
+  danych w terenie:
+  - **QField:** celownik na środku i „+”: *„Tap the plus button (+) at the bottom right to place the first vertex”*, „−” usuwa
+    ostatni róg, a wielokąt wymaga *„a minimum of 3 vertices”*. **Dotknięcie stawiające róg jest opcją, domyślnie wyłączoną:**
+    *„Allow finger tap on canvas to add vertices”* ([QField — Digitize](https://docs.qfield.org/how-to/data-collection/digitize/));
+  - **Google Earth na Androidzie:** *„move the map and tap Add point”*, „Undo”, *„connect to your first point and tap Close Shape”*
+    ([Google Earth Help — Measure distances and areas](https://support.google.com/earth/answer/9010337));
+  - **Mergin Maps** i **ArcGIS Earth:** też celownik
+    ([Mergin Maps — mobile features](https://merginmaps.com/docs/field/mobile-features/),
+    [ArcGIS Earth mobile — Create drawings](https://doc.arcgis.com/en/arcgis-earth/mobile/create-drawings.htm)).
+
+  Dlaczego tak: palec zasłania miejsce, które wskazuje, a dotknięcie, które stawia róg, konkuruje z gestami mapy (przesunięcie,
+  podwójne dotknięcie). W samej aplikacji obowiązuje jednak odwrotny wzorzec: wskazanie cmentarza ([[cmentarze]] 16) i pinezka (12)
+  stawia się dotknięciem.
 
 ## Open
+- ✅ **Rozstrzygnięte 2026-10-12 na stopie #1 [[ISSUE-028-cemetery-sectors]] (autor: „tak”):** **K1** (celownik i „Dodaj róg”),
+  **W-a** (odnośnik — [[ADR-016-sector-record-and-grave-link]]), **adres grobu w ISSUE-028** ([[grob]] v6). Element 18 obowiązuje w
+  wariancie K1, a 19b — w wariancie W-a. Pierwotne opisy pytań:
+- **K1, K2 czy K3: gdzie się dotyka przy zaznaczaniu strefy** (v6, element 18; klikalny prototyp `issue-028-kwatery.html`,
+  panel 3):
+  - **K1 — celownik i „Dodaj róg”** (kanon, D30): plan zachowuje się jak wszędzie (przesuwanie, dwa palce, podwójne dotknięcie),
+    a róg nigdy nie stawia się przypadkiem; dotknięcie planu przesuwa miejsce pod celownik, więc nic nie wymaga przeciągania.
+    Koszt: dwa ruchy na róg i nowe pojęcie w aplikacji (celownik);
+  - **K2 — dotknięcie stawia róg**: jak wskazanie cmentarza i pinezka w tej aplikacji, najmniej ruchów. Koszt: palec zasłania róg,
+    przypadkowe dotknięcie stawia róg („Cofnij”), a podwójne dotknięcie nie może przybliżać, więc dochodzą przyciski „+ −”;
+  - **K3 — gotowy prostokąt do dopasowania**: większość kwater to prostokąty między alejkami. Koszt: małe uchwyty do przeciągania na
+    telefonie, droga bez przeciągania („dotknij rogu, potem miejsca”) jest mniej oczywista.
+
+  **Rekomendacja `ui`: K1.** Kanon wybiera celownik z powodów, które obowiązują także w domu: palec i gesty mapy. Plan nie dostaje
+  nowych przycisków. *Co obali:* na prototypie K1 wyda się autorowi wolny albo obcy, a K2 trafi w róg za pierwszym razem — wtedy K2
+  z „+ −”.
+- **jak kwatera łączy się z adresem grobu** (v6; prototyp, panele 2 i 4; model należy do `planning` — ADR, „model kwatery”
+  z [[ADR-003-map-source-offline]] → *Follow-ups*). Widoczny skutek:
+  - **W-a — odnośnik:** w adresie grobu wybierasz kwaterę z kwater cmentarza albo wpisujesz nową, a „b” trafia w „B”. Zmiana nazwy
+    kwatery poprawia adresy wszystkich jej grobów. Kwatera wpisana w adresie bez strefy jest na liście 17a jako „bez strefy”;
+  - **W-b — tekst:** każdy adres jest osobnym tekstem. Zmiana nazwy strefy nie zmienia adresów, więc groby z „Kwatera B” przestają
+    pasować do strefy „B1”, a „b” i „B” to dwie kwatery na liście.
+
+  **Rekomendacja `ui`: W-a.** Dziś żaden grób w aplikacji autora nie ma adresu, bo żaden ekran go nie zapisuje (niżej), więc W-a nie
+  przenosi żadnych prawdziwych danych. Po instalacji MVP przejście z W-b na W-a byłoby już migracją adresów rodziny. *Co obali:* autor
+  chce wpisywać w adresie dowolny opis, np. „B, lewa strona od kaplicy” — wtedy W-b.
+- **adresu grobu nie da się wpisać — luka poza tą specyfikacją** (znaleziona przy v6). Kolumny `sector`, `row`, `plot` są w
+  schemacie od v1, ale żaden ekran ich nie zapisuje — tylko wymyślone dane w buildzie debug. [[grob]] mówi „Uzupełnisz przy wizycie.”,
+  a [[US-008-pinezka-na-miejscu]] adresu nie obejmuje. Kierunek autora ([[EPIC-002-wizyta]] → *Open questions*, krok 1: adres z
+  wyszukiwarki zarządcy) nie ma więc ekranu, choć M1 wymienia adres kwatery. Bez adresu kwatera na planie nie łączy się z żadnym
+  grobem. **Propozycja: [[grob]] v6** — „Popraw grób” z polami Kwatera, Rząd i Miejsce oraz „Wpisz adres” pod brakiem adresu.
+  **Rekomendacja `ui`:** w ISSUE-028, bo W-a/W-b ma sens tylko razem z polem adresu, a koszt to jedno okno. Inaczej — osobna pozycja
+  przed instalacją MVP. To zmiana zakresu, więc decyduje autor.
 - ✅ **Rozstrzygnięte 2026-10-12 — W2** (autor: „tak” na stopie #1 [[ISSUE-027-cemetery-map-plan-photo-states]], D1). Pierwotny
   opis pytania:
 - **Miara [[NFR-004-czytelnosc-w-sloncu]] na tym ekranie.** To pierwszy ekran wizyty (D8 przesunęło miarę tutaj),
