@@ -18,8 +18,8 @@ updated: 2026-10-13
 MVP — od startu, cały produkt (Meta-decyzja 4).
 
 ## In progress
-- **Po [[2026-10-13-retro-03]] (R1–R10, decyzja autora 2026-10-13): następna [[ISSUE-031-command-guard]]** — hook, który
-  odmawia Pythona ze skryptem z wejścia i komend git spoza listy (R1). Potem dalej droga do instalacji MVP.
+- **Po [[2026-10-13-retro-03]] (R1–R10, decyzja autora 2026-10-13):** ~~[[ISSUE-031-command-guard]]~~ — zamknięte 2026-10-13
+  (*Recently done*). Dalej droga do instalacji MVP — **następna: [[SPIKE-002-tree-on-a-phone]]** (punkt 7 niżej).
 - **Prawdziwe dane rodziny dopiero po instalacji MVP** (decyzja autora 2026-10-08 w `/pm`): budujemy produkt gotowy do
   instalacji na telefonie (MVP = brief §5, M1–M11); do tego czasu autor ocenia aplikację na wymyślonych danych. Rozmowa z babcią
   (~2026-11-02) jest na kartce, a odpowiedzi trafią do aplikacji po instalacji.
@@ -32,7 +32,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   6. ~~[[US-008-pinezka-na-miejscu]]~~ — zamknięta 2026-10-12 (~~ISSUE-029~~). **Teren czeka:** build release na
      telefonie przed zaduszkami (~2026-11-02) → *Parked* (cel autora z `/pm`: jedna wizyta da pomiar i sprawdzenie AC-1, AC-4).
      Kandydaci z [[cmentarz]] D29 i nachodzące znicze → [[ISSUE-030-sector-on-a-visit]] (`draft`, **czeka na wizytę** — D5, stop #1);
-  7. **po ISSUE-031: [[SPIKE-002-tree-on-a-phone]]** → drzewo, czas, „Połącz dwie osoby” ([[drzewo]], EPIC-003) — od ISSUE-024 także **słownik nazw
+  7. **następna: [[SPIKE-002-tree-on-a-phone]]** → drzewo, czas, „Połącz dwie osoby” ([[drzewo]], EPIC-003) — od ISSUE-024 także **słownik nazw
      złożonych i dawne AC-6** („ciotka”, „stryj”, „siostra cioteczna babci żony”) i „Pokaż w drzewie” w widoku osoby (SPIKE-002 →
      *Input from ISSUE-024*);
   8. [[US-006-eksport-dla-rodziny]] i [[NT-007-hand-over-note]];
@@ -129,7 +129,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   paczki (decyzja autora 2026-10-07); treść wychodzących zmian sprawdza strażnik treści ([[ISSUE-020-content-guard]]) przy każdym `git add`/`commit`.
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **0** (ostatnie retro: [[2026-10-13-retro-03]]). Co **10** → retro + pytanie o 3–5
+- Zamknięte pozycje od ostatniego retro: **1** (ostatnie retro: [[2026-10-13-retro-03]]). Co **10** → retro + pytanie o 3–5
   nośnych faktów (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**; podbija go `docs` przy zamknięciu, a zeruje go retro.
 - Do retro (zebrane po drodze, bez decyzji): — pusto. Poprzednią listę rozliczyło [[2026-10-13-retro-03]] → *The "Do retro"
   list*.
@@ -152,6 +152,24 @@ Format wpisu: `źródło (babcia / cmentarz X) · pytanie bez danych rodziny · 
 ## Recently done
 > Tylko wpisy od ostatniego retro ([[2026-10-13-retro-03]], R5). Starsze są w plikach retro → *Archive*:
 > [[2026-10-13-retro-03]] · [[2026-10-08-retro-02]] · [[2026-10-06-retro-01]].
+
+- 2026-10-13 — [[ISSUE-031-command-guard]] zamknięte (retro 3, R1). **Strażnik komend: mechanizm zamiast pamięci:**
+  - hook `command-guard.ps1` przy każdej komendzie Bash i PowerShell — z gita przechodzi tylko **lista dozwolonych**: odczyt,
+    `git add` jawnych plików, `git commit` bez `--amend`/`-a`/`--no-verify`, `git push origin main`. Reszta — także `reset`,
+    `stash`, `fetch`, `revert`, `clean`, `gh` — dostaje odmowę przy próbie, również z `-C`/`-c`, w `&&`, `$(…)`, `bash -c`,
+    `powershell -Command`;
+  - **Python ze skryptem z wejścia** (`python -`, `python -I -`, REPL) — odmowa z podpowiedzią „zapisz skrypt i uruchom plik”;
+  - tekst w cudzysłowach i heredoc to tekst: `grep 'git reset'` i opis commita przechodzą;
+  - **komendy „po go”** (`git init`, `git remote`, `gh`) wykonuje autor w terminalu VS Code — agent podaje komendę
+    (`git-autonomy-boundary.md`);
+  - **luka w strażniku danych rodziny zamknięta:** przy przekroczeniu `timeout` przepuszczał po cichu — teraz oba hooki mają
+    `"onFailure": "block"`.
+
+  Testy: strażnik komend 369/369, strażnik danych rodziny 150/150 bez regresji; odmowy sprawdzone na żywo w Bash i PowerShell.
+  Koszt ok. 0,4–0,5 s na komendę, równolegle ze strażnikiem danych rodziny. Kroki oddane agentowi (pozycja bez ekranu); nic na
+  listę [[ISSUE-032-mvp-install]] → *Hand checks*. Werdykt `qa`: APPROVED (self-check, z uwagami). Licznik retro: 0 → 1.
+
+  **Dla autora:** `claude` 2.1.238 w terminalu nie zna `onFailure` — sesje idą przez rozszerzenie VS Code 2.1.296, które go zna.
 
 - 2026-10-13 — **retro 3** ([[2026-10-13-retro-03]]): licznik 10 → 0. Decyzja autora: „tak” dla R1–R10:
   - **hook na zakazane komendy** (Python ze skryptem z wejścia, komendy git spoza listy) → [[ISSUE-031-command-guard]], następna (R1);
