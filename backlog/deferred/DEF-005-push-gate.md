@@ -7,7 +7,7 @@ trigger: "the first push of any Grobing repo to a remote"
 category: maturity
 priority: SHOULD
 created: 2026-10-05
-updated: 2026-10-08
+updated: 2026-10-13
 ---
 
 # DEF-005 — Bramka dryfu na pushu
@@ -29,7 +29,7 @@ który ta bramka poprawnie odrzuci godzinę później.
 
 ## Wake — 2026-10-07
 Warunek aktywacji spełniony: trzy repo Grobing dostały pierwszy push na publiczny GitHub (za „go” autora,
-`CURRENT_STATE.md` → *Recently done*). Obudzenie nie jest zgodą na budowę. Co z tego wynika:
+[[2026-10-08-retro-02]] → *Archive*). Obudzenie nie jest zgodą na budowę. Co z tego wynika:
 - bramka to check w pipelinie CI na push/PR, a pipeline'u nie ma. Agent `ci` powstaje na sygnał „pierwszy
   pipeline” (`grobing-agents/CLAUDE.md`), a ten sam pipeline budzi [[DEF-003-dependency-scanning]];
 - filtr ścieżek ma wynikać z tego, co agenci czytają — to samo pytanie co w

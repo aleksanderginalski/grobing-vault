@@ -1,12 +1,12 @@
 ---
 title: "ISSUE-003 — Set up adversarial quality critic (`quality`)"
 type: issue
-status: ready
-deferred-until: null
-trigger: null
+status: deferred
+deferred-until: signal
+trigger: "first defect found after an item is closed (by the author or on the phone) that both qa and the ui review let through"
 priority: SHOULD
 created: 2026-10-05
-updated: 2026-10-05
+updated: 2026-10-13
 ---
 
 # ISSUE-003 — Set up adversarial quality critic (`quality`)
@@ -49,3 +49,12 @@ zablokować.
 
 ## Notes / references
 - `PROJECT_BRIEF.md` §How we build → 3d · NPG `workflow-library.md` §Review.
+
+## Deferred — 2026-10-13 ([[2026-10-13-retro-03]], R10)
+Decyzja autora: **`deferred` do sygnału** (`trigger:` wyżej). Pozycja stała w `ready` od kick-offu i przez 20 zamkniętych pozycji
+nikt jej nie wziął. Niezależną bramką okazał się przegląd `ui` uruchamiany przez `qa` jako subagent bez historii: MAJOR w 7 z 7
+pozycji z ekranem złapany przed stopem #2. Do obudzenia werdykt wystawia `qa` jako `self-check`, a lista powodów BLOCK z tego pliku
+obowiązuje jako twarde stopy w `autonomous-flow.md` — bez powodu „fakt o rodzinie bez źródła”, wycofanego po D28 (retro 3, R6).
+
+**Warunek obudzenia:** pierwsza usterka znaleziona po zamknięciu pozycji (u autora albo na telefonie), którą przepuściły i `qa`, i
+przegląd `ui`. Obudzenie nie jest zgodą na budowę — `pm` pokazuje je autorowi.

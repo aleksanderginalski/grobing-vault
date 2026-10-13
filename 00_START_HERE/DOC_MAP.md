@@ -3,7 +3,7 @@ title: "Grobing — Document Map"
 type: meta
 status: active
 created: 2026-10-05
-updated: 2026-10-06
+updated: 2026-10-13
 ---
 
 # Grobing — Document Map
@@ -12,7 +12,7 @@ updated: 2026-10-06
 > gdy powstaje folder** — według reguły rozbudowy w `grobing-agents/.claude/rules/doc-growth.md`
 > (tabela „sygnał → folder → co tam trafia"). Folder bez wiersza albo wiersz bez folderu to
 > **zaczątek śmietnika** — wyłapie to check z Meta-decyzji 3g
-> ([[ISSUE-004-setup-freshness-gate]]).
+> ([[ISSUE-004-setup-freshness-gate]], odłożony do sygnału — retro 3, R10); do tego czasu self-check `docs`.
 >
 > ⚠️ **W tym vaulcie nie ma i nie będzie danych rodziny** — imion, dat, zdjęć ani pozycji grobów
 > prawdziwych osób. Dane żyją wyłącznie w aplikacji na telefonie (+ zaszyfrowana kopia + eksport u
@@ -39,7 +39,7 @@ updated: 2026-10-06
 | `04_ARCHITECTURE/decisions/` | ADR-NNN — ≥3 opcje, append-only po akceptacji | ISSUE-001 AC-4 — pierwsza decyzja architektoniczna |
 | `05_DESIGN/` | Specyfikacje ekranów — jeden żywy plik na ekran (szablon w skillu `ui`); pisze agent `ui`. Makiety HTML i zrzuty **nie** trafiają do vaulta (katalog tymczasowy sesji) | [[ISSUE-013-setup-ui-agent]] — pierwszy ekran do zaprojektowania ([[ISSUE-012-transcribe-grave-screen]]) |
 | `05_DESIGN/brand/` | Styl B: wytyczne (`style-b.md` — role tokenów, progi ze źródłem, pomiar, reguły; wartości kolorów żyją w `grobing-code/lib/app/theme.dart`) i referencje z kick-offu (`references.md` — prompty i opisy R1–R4). Obrazy R1–R4 leżą obok w `references/` **tylko lokalnie**: `.gitignore` (`*.png`) je pomija, więc w repo tego podfolderu nie ma. Pisze `ui` | [[ISSUE-013-setup-ui-agent]] — pierwsza warstwa wizualna ([[NT-006-visual-guidelines]]) |
-| `07_RETRO/` | Retro co 10 zamkniętych pozycji: pytanie o nośne fakty (bez danych rodziny), decyzje R1…Rn z miejscem zapisu, co zadziałało i co nie | retro 1 (2026-10-06) — pierwsze retro |
+| `07_RETRO/` | Retro co 10 zamkniętych pozycji: pytanie o nośne fakty (bez danych rodziny), decyzje R1…Rn z miejscem zapisu, co zadziałało i co nie. Od retro 3 (R5) także *Archive* — wpisy *Recently done* z `CURRENT_STATE.md`, które to retro rozliczyło | retro 1 (2026-10-06) — pierwsze retro |
 | `backlog/` | Pozycje pracy: ISSUE · SPIKE · NT · DEF (EPIC-i — w `03_REQUIREMENTS/epics/`) | kickoff |
 | `backlog/issues/` | Zadania (ISSUE-NNN), w tym zadania konfiguracji mechanizmów | kickoff |
 | `backlog/spikes/` | Eksperymenty z pytaniem, limitem czasu i warunkiem wyjścia (SPIKE-NNN) | kickoff — trzy niewiadome architektury (A5) |

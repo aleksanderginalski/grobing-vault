@@ -3,7 +3,7 @@ title: "Grobing — Definition of Ready / Done"
 type: contract
 status: active
 created: 2026-10-05
-updated: 2026-10-08
+updated: 2026-10-13
 ---
 
 # Grobing — Definition of Ready / Done
@@ -48,6 +48,11 @@ updated: 2026-10-08
 > człowieka, agent robi na emulatorze **przed** stopem #2 i pokazuje zrzuty. W siedmiu pozycjach autor pominął
 > kroki albo zrobił 1–2 i odpowiedział odczuciem, więc dłuższa lista dawała tylko „ok” bez pokrycia. „ok” bez
 > śladu na urządzeniu agent dalej sprawdza na urządzeniu.
+>
+> **Co dzieje się z „pomiń” — decyzja autora 2026-10-13 ([[2026-10-13-retro-03]], R8).** Stop #2 bez zmian: „pomiń”
+> dalej nie blokuje. Każde „pomiń”, „ok” bez śladu na urządzeniu i „nieprzetestowane na żywo” z *Verification* trafia
+> przy zamknięciu (`docs`) na **jedną listę**: [[ISSUE-032-mvp-install]] → *Hand checks* — sprawdzaną na telefonie
+> przed pierwszymi prawdziwymi danymi. Wcześniej te rzeczy leżały rozsypane po wpisach „Dla autora”.
 
 ## DoD scaling by maturity stage (current: MVP)
 

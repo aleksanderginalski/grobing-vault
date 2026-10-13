@@ -1,10 +1,12 @@
 ---
 title: "ISSUE-005 — Compute session state at start (in progress, parked, next) instead of remembering it"
 type: issue
-status: ready
+status: deferred
+deferred-until: signal
+trigger: "first session start where pm got the state or the retro counter wrong"
 priority: SHOULD
 created: 2026-10-05
-updated: 2026-10-05
+updated: 2026-10-13
 ---
 
 # ISSUE-005 — Session state computed at start (SC-02 via T-03)
@@ -28,3 +30,11 @@ stanu.
 - [ ] Może współdzielić hook startu sesji z [[ISSUE-004-setup-freshness-gate]] — jeden hook, dwa
       raporty, milczący, gdy nie ma nic do powiedzenia poza stanem.
 - [ ] Uruchomiony raz naprawdę: pokazał zaparkowaną sprawę dodaną testowo (bez danych rodziny).
+
+## Deferred — 2026-10-13 ([[2026-10-13-retro-03]], R10)
+Decyzja autora: **`deferred` do sygnału** (`trigger:` wyżej). Pozycja stała w `ready` od kick-offu i przez 20 zamkniętych pozycji
+nikt jej nie wziął. Wersja ręczna (poziom MANUAL: `pm` czyta `CURRENT_STATE.md` i backlog) działa; retro 3 (R5) skróciło
+`CURRENT_STATE.md`, żeby odczyt nie obcinał go w połowie.
+
+**Warunek obudzenia:** pierwszy start sesji, na którym `pm` pomylił stan albo licznik retro. Obudzenie nie jest zgodą na budowę —
+`pm` pokazuje je autorowi.

@@ -1,13 +1,13 @@
 ---
 title: "ISSUE-004 — Set up the drift check (\"the dump\"): on file write + on session start"
 type: issue
-status: ready
-deferred-until: null
-trigger: null
+status: deferred
+deferred-until: signal
+trigger: "first DOC_MAP ↔ disk mismatch or dead link found after the fact (not by the writer in the same change)"
 level: enforced
 priority: SHOULD
 created: 2026-10-05
-updated: 2026-10-05
+updated: 2026-10-13
 ---
 
 # ISSUE-004 — Drift check: on file write + on session start
@@ -50,3 +50,11 @@ Każdy check porównuje plik z nim samym. **Zdarzenia, które nie trafiło do do
 ## Notes / references
 - `PROJECT_BRIEF.md` §How we build → 3g · NPG `agentic-ci-patterns.md` (CI-T2, CI-T3, CI-T4) ·
   trigger bramki na pushu: [[DEF-005-push-gate]].
+
+## Deferred — 2026-10-13 ([[2026-10-13-retro-03]], R10)
+Decyzja autora: **`deferred` do sygnału** (`trigger:` wyżej). Pozycja stała w `ready` od kick-offu i przez 20 zamkniętych pozycji
+nikt jej nie wziął. Do obudzenia DOC_MAP ↔ dysk pilnuje self-check `docs` (`doc-growth.md`), a zestarzały stan — `pm` na starcie
+sesji. Retro 3 (R5) zmniejszyło `CURRENT_STATE.md`, bo odczyt obcinał go w połowie — to inna strona tego samego problemu.
+
+**Warunek obudzenia:** pierwszy rozjazd DOC_MAP ↔ dysk albo martwe odwołanie znalezione po fakcie, a nie przez piszącego w tej
+samej zmianie. Obudzenie nie jest zgodą na budowę — `pm` pokazuje je autorowi.
