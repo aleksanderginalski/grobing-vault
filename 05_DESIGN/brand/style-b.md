@@ -1,12 +1,12 @@
 ---
-title: "Style B — visual guidelines (v1.23)"
+title: "Style B — visual guidelines (v1.27)"
 type: design-guidelines
 status: active
 owner: ui
 source: "PROJECT_BRIEF §6a (Style B, chosen by the author 2026-10-05) · references.md (R1–R4, the kick-off images) · grobing-code/lib/app/theme.dart · WCAG 2.2 · Android accessibility"
 non-tech-item: "[[NT-006-visual-guidelines]]"
 created: 2026-10-06
-updated: 2026-10-12
+updated: 2026-10-13
 ---
 
 # Styl B — wytyczne wizualne
@@ -36,7 +36,7 @@ autor, też używają znicza (reguła 8).
 | obrys *(nowy — wchodzi z [[ISSUE-014-home-map-of-poland]], zaproponowany przy [[ISSUE-012-transcribe-grave-screen]])* | proponowany `GrobingColors.outline` | ramka pola wpisu, przycisk z obrysem, linia podziału, granica na mapie (reguła 13) | tekst |
 | błąd *(nowy — wchodzi z ISSUE-014)* | proponowany `GrobingColors.error` | komunikat błędu pod polem, jego ikona, ramka pola z błędem | cokolwiek poza błędem |
 | woda *(nowa, v1.13 — [[SPIKE-004-mvp-flow-prototype]] D6, [[cmentarze]] D29)* | `GrobingColors.water` (morze, jeziora) i `GrobingColors.waterLine` (rzeki) — w `theme.dart` od [[ISSUE-023-poland-map-r1-cemetery-photo]] (v1.20) | woda na mapie Polski jak w R1 | cokolwiek poza mapą; nośnik znaczenia (to dekoracja — brzeg niesie granica) |
-| relacje w drzewie *(nowa, v1.16 — [[SPIKE-004-mvp-flow-prototype]] D20, [[drzewo]] D3)* | proponowane `GrobingColors.relParentChild` (`#8FB3C9`, rodzic–dziecko) i `GrobingColors.relPartners` (`#D39BB0`, partnerzy: ciągła — małżeństwo, przerywana — razem); **do `theme.dart` wchodzą z [[ISSUE-024-person-view]]** (mini-drzewo w [[osoba]] — pierwsze użycie, v1.18) | linie relacji w drzewie i mini-drzewie | jedyny nośnik rodzaju relacji — kształt i styl linii niosą go też (SC 1.4.1); **bez legendy** (decyzja autora, SPIKE-004 D25); cokolwiek poza liniami relacji |
+| relacje w drzewie *(nowa, v1.16 — [[SPIKE-004-mvp-flow-prototype]] D20, [[drzewo]] D3)* | proponowane `GrobingColors.relParentChild` (`#8FB3C9`, rodzic–dziecko) i `GrobingColors.relPartners` (`#D39BB0`, partnerzy: ciągła — małżeństwo, przerywana — razem); **do `theme.dart` wchodzą z [[ISSUE-024-person-view]]** (mini-drzewo w [[osoba]] — pierwsze użycie, v1.18) | linie relacji w drzewie i mini-drzewie; **ślad dalszej rodziny** w drzewie — te same kolory przy kryciu 60%, kreska przerywana 3/3, 14 dp ([[drzewo]] D9, v1.24) | jedyny nośnik rodzaju relacji — kształt i styl linii niosą go też (SC 1.4.1); **bez legendy** (decyzja autora, SPIKE-004 D25); cokolwiek poza liniami relacji |
 
 ### State colours — beyond the accent
 Poza akcentem występują tylko **kolory stanu**. Każdy pojawia się zawsze razem z ikoną albo tekstem, nigdy
@@ -56,7 +56,7 @@ sam (SC 1.4.1):
 | kolor jako nośnik | **nigdy jedyny**: błąd, brak, wybór i stan mają też tekst albo ikonę. Pozycja wybrana w menu ma ikonę `check` i stan „zaznaczone” dla czytnika, nie tylko akcent (v1.6) | WCAG 2.2 SC 1.4.1 Use of Color, A |
 | rozmiar kontrolki z tekstem | **najmniejszy, nie stały**: przycisk, link i pole rosną z systemowym rozmiarem tekstu, zamiast ucinać napis (v1.6 — druga instancja po linku z v1.5). **Wyjątek — podpisy na mapie** (miasta, nazwa kraju): rosną z tekstem systemu najwyżej do 1,3× (v1.20, reguła 13) | WCAG 2.2 SC 1.4.4 Resize Text, AA |
 | gesty | **przesunięcie i gest kilkoma palcami mają alternatywę jednym dotknięciem** (przyciski poprzednie/następne, podwójne dotknięcie zamiast rozsunięcia palców) (v1.7) | WCAG 2.2 SC 2.5.1 Pointer Gestures, A: *„All functionality that uses multipoint or path-based gestures for operation can be operated with a single pointer without a path-based gesture”* ([Understanding 2.5.1](https://www.w3.org/WAI/WCAG22/Understanding/pointer-gestures.html)) |
-| cel dotyku | **≥ 48 × 48 dp** | [Android — Make apps more accessible](https://developer.android.com/guide/topics/ui/accessibility/apps) → *Use large, simple controls*: *„at least 48dp×48dp”* |
+| cel dotyku | **≥ 48 × 48 dp**. **Wyjątek — węzeł drzewa przy oddaleniu** (v1.24, [[drzewo]] D17): cel to miejsce osoby × skala drzewa, na poziomie 4 38–32 dp, nigdy poniżej 24 dp (najmniejsza skala 0,4); przybliżenie (+) daje ≥ 48 dp jednym dotknięciem. Węzły nie mogą rosnąć, bo drzewo przestałoby być oddalone, a pomyłka tylko przestawia środek | [Android — Make apps more accessible](https://developer.android.com/guide/topics/ui/accessibility/apps) → *Use large, simple controls*: *„at least 48dp×48dp”*. Wyjątek: [WCAG 2.2](https://www.w3.org/TR/WCAG22/) SC 2.5.8 Target Size (Minimum), AA: *„The size of the target for pointer inputs is at least 24 by 24 CSS pixels”*, z wyjątkiem *Equivalent*: *„The function can be achieved through a different control on the same page that meets this criterion”* (odczyt 2026-10-13) |
 | rozmiary tekstu | treść i tekst wpisywany **≥ 16 sp**; drobny tekst pomocniczy ≥ 13 sp; etykieta przycisku 14–16 sp, waga 500. **Wyjątek — podpis zakładki w dolnym pasku: 12 sp, półgruby** (v1.17, [[cmentarze]] element 18), bo to krótka etykieta pod ikoną, a nie tekst do czytania; rośnie z systemowym rozmiarem tekstu (przy 200% mieści się w pasku 72 dp). **Wyjątek — podpis pola „Dodaj zdjęcie” w miejscu miniatury cmentarza 96 × 80 dp: 12 sp, półgruby** (v1.20, [[cmentarze]] 6a). To krótka etykieta pod ikoną w polu, które ma rozmiar miniatury, a przy 14 sp podpis nie mieści się w jednej linii. Rośnie z tekstem: przy 200% pole rośnie, a podpis przechodzi do dwóch linii. **Wyjątek — podpis źródła mapy („© OpenStreetMap”, „Ortofotomapa: GUGiK”): 11 sp, tekst pomocniczy, na małej plakietce w kolorze powierzchni** (v1.21, [[cmentarz]] v5.1). To wymagany podpis licencji, a nie treść do czytania przy grobie; rośnie z tekstem systemu | decyzja projektowa (nie norma) — dane wpisuje się szybko i trzeba je odczytać bez mrużenia oczu. Wyjątek: podpis zakładki w pasku nawigacji Material 3 to *label medium*, 12 sp (Flutter 3.41.1, `material/navigation_bar.dart` → `_NavigationBarDefaultsM3` używa `labelMedium`; `material/typography.dart` → `_M3Typography`: `labelMedium` 12.0, w500 — sprawdzone w SDK 2026-10-08) |
 | **ekrany wizyty** (od v1.21) | **≥ 7:1** dla tekstu czytanego przy grobie (adres, liczby, stan planu); w tekście pomocniczym tylko to, czego nie czyta się przy grobie | WCAG 2.2 SC 1.4.6 Contrast (Enhanced), AAA. **Miara [[NFR-004-czytelnosc-w-sloncu]]** — decyzja autora 2026-10-12 (W2, stop #1 [[ISSUE-027-cemetery-map-plan-photo-states]]); pierwszy ekran: [[cmentarz]] v5. Test w słońcu — przy instalacji MVP |
 
@@ -79,6 +79,7 @@ wzorem. **Przelicz przy każdej zmianie tokenów.**
 | granica sąsiada — obrys, krycie 45% *(v1.20)* | 1,61 · na wodzie 1,59 | — | dekoracja (poza SC 1.4.11) | — |
 | linia kwatery — tekst, krycie 75% *(v1.22, 2026-10-12)* | 6,56 | 6,16 | 3 (SC 1.4.11) | ✅ |
 | kwatera wybrana (akcent) wobec linii kwatery *(v1.22)* | — | 1,31 (między sobą) | — | wybór niesie też grubość i nazwa (SC 1.4.1) |
+| ślad dalszej rodziny — rodzic–dziecko · partnerzy, krycie 60% *(v1.24, 2026-10-13)* | 3,75 · 3,66 | — | 3 (SC 1.4.11) | ✅ — kształt (przerywana 3/3, krótka) odróżnia ślad od linii, nie tylko kolor (SC 1.4.1) |
 
 **Wniosek:** wszystkie pary spełniają AA, a tekst pomocniczy nie spełnia 7:1. **Ekrany wizyty przyjęły 7:1** (v1.21, W2,
 2026-10-12): informacja potrzebna na cmentarzu (adres kwatery, liczby, stan planu) jest w kolorze tekstu, a token pomocniczy
@@ -109,7 +110,9 @@ zostaje bez zmian.
      - czytnik ekranu czyta link z dopiskiem „w innej aplikacji”.
 2. **Głębia subtelna:** tło → powierzchnia (zaokrąglone karty, promień 12–16 dp, i dolny arkusz). Głównemu
    przyciskowi i zaznaczonemu elementowi (wybrana pinezka, węzeł na ścieżce) wolno mieć **delikatną
-   bursztynową poświatę**. Bez twardych cieni i bez gradientów tła.
+   bursztynową poświatę**. Bez twardych cieni i bez gradientów tła. **Poświata leży pod okręgiem, nie na nim** — nad
+   okręgiem leży tylko pierścień (v1.27): poświata nad okręgiem zabarwiała go (znak „Ja” spadał poniżej 4,5:1, zdjęcie dostawało
+   odcień — reguła 14). Trzy instancje: osoba w środku drzewa, w mini-drzewie i portret osoby (przegląd `ui` [[ISSUE-033-tree-from-a-person]]).
 3. **Ikony cienkie:** warianty `outlined` z Material Icons. Ikona jest w kolorze tekstu pomocniczego, a
    **w akcencie wtedy, gdy oznacza działanie albo nagłówek sekcji** (R4: „Rodzina”, „Dodaj osobę”). Ikona,
    która niesie znaczenie, ma podpis albo `tooltip`.
@@ -188,6 +191,12 @@ zostaje bez zmian.
       Podpis jest przypięty do punktu na mapie i nie może się odsunąć, więc w 200% podpisy zachodziłyby na siebie i na
       znicze — to też utrata treści (SC 1.4.4). Treść, która coś znaczy (nazwy cmentarzy), rośnie w pełni w arkuszu i w
       wyszukiwarce. Znacznik podpisu ma wysokość podpisu w tej skali, żeby nie ucinał liter;
+    - **imiona w drzewie przy oddaleniu** (v1.25, [[drzewo]] v1.6 — I2, decyzja autora na stopie #1 [[ISSUE-033-tree-from-a-person]]):
+      ta sama zasada co podpisy na mapie. Imię nie maleje z drzewem poniżej 13 sp × skala tekstu, stoi na **tabliczce w kolorze tła**
+      (zaokrąglona 4 dp, 3 dp z boków — v1.26), a z nakładających się zostaje to bliżej osoby w środku; reszta wraca po przybliżeniu. Mniej
+      imion, ale każde czytelne. **Tabliczka zamiast obwódki liter tylko na jednolitym tle** (v1.26, [[drzewo]] D23): na tle drzewa wygląda tak
+      samo i tak samo przerywa linie, a rysuje się bez rozmytych cieni, które przy ok. 100 imionach szarpały ruch. Na mapie tło się zmienia
+      (ląd, woda, granica, zdjęcie z góry), więc tam obwódka zostaje wokół liter;
     - **plan cmentarza** (v1.14, [[cmentarz]] D10, D13): teren cmentarza — powierzchnia z obrysem; alejki — obrys
       (główne 4 dp, boczne 2 dp); **kwatera autora** — przerywana linia w kolorze tekstu (krycie 75%) z nazwą 12 sp,
       półgrubą, z obwódką w kolorze tła planu. Linia kwatery to granica zaznaczona przez autora, więc niesie znaczenie:
@@ -417,3 +426,21 @@ wysokokontrastowy, bez rezygnacji ze stylu B. Wynik i data trafiają tutaj i do
   (`GrobingColors.here`), rola obejmuje też włączony „gdzie jestem” i ikonę plakietki 10a; nigdy akcent, nigdy ostrzeżenie. Słaby
   sygnał w trybie pinezki to fakt w kolorze tekstu (reguła 7, *Token roles*: akcent nie dla ostrzeżeń). Pomiar bez zmian
   (kropka 6,99:1 na tle, 6,38:1 na powierzchni).
+- 2026-10-13 — **v1.24, drzewo od osoby** (`ui` przed planem [[US-009-drzewo-od-osoby]], [[drzewo]] v1.5):
+  - role — kolory relacji obejmują ślad dalszej rodziny (krycie 60%, przerywana 3/3);
+  - *Thresholds* — wyjątek od celu dotyku 48 dp dla węzła drzewa przy oddaleniu, nigdy poniżej 24 dp (WCAG 2.2 SC 2.5.8, wyjątek
+    *Equivalent* — przybliżenie).
+
+  Tokeny bez zmian. Pomiar (wzór WCAG z wartości w `theme.dart`, 2026-10-13): ślad 3,75:1 (rodzic–dziecko) i 3,66:1 (partnerzy) na tle;
+  znak „Ja” w akcencie na powierzchni 8,04:1; imię na tle 10,98:1. Reguła dla imion przy oddalaniu czeka na decyzję autora ([[drzewo]]
+  *Open* 5) — przy I2 dojdzie do reguły 13 jako druga instancja podpisów z obwódką i chowaniem.
+- 2026-10-13 — **v1.25** (decyzja autora na stopie #1 [[ISSUE-033-tree-from-a-person]], I2): reguła 13 — imiona w drzewie przy oddaleniu jak
+  podpisy na mapie (nie maleją poniżej 13 sp, obwódka w kolorze tła, chowanie nakładających się z pierwszeństwem bliższych środka). Tokeny i
+  pomiar bez zmian.
+- 2026-10-13 — **v1.26, po przeglądzie drzewa** (`ui` jako subagent `qa`, [[ISSUE-033-tree-from-a-person]]; [[drzewo]] v1.7, D23): reguła 13 —
+  imię w drzewie stoi na tabliczce w kolorze tła (zaokrąglona 4 dp, 3 dp z boków) zamiast obwódki liter; tabliczka tylko na jednolitym tle,
+  na mapie obwódka zostaje. Powód: ok. 100 rozmytych cieni w klatce szarpało przejścia między poziomami (pomiar `dev` na emulatorze). Tokeny i
+  pomiar bez zmian (imię na tabliczce = tekst na tle, 10,98:1; przeliczone z `theme.dart` 2026-10-13).
+- 2026-10-13 — **v1.27** (przegląd `ui` [[ISSUE-033-tree-from-a-person]], MAJOR; poprawka w drzewie, mini-drzewie i portrecie — autor: „ok” na
+  stopie #2): reguła 2 — poświata pod okręgiem, nad nim tylko pierścień. Pomiar: wnętrze okręgu „Ja” na zrzucie `#1C1B19` (= powierzchnia), przed
+  poprawką `#594626`; znak „Ja” 8,04:1. Tokeny bez zmian.

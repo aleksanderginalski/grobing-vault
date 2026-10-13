@@ -78,7 +78,10 @@ Warunki — każdy ma swój dom, tutaj tylko lista:
 - płynność przesuwania i przejścia między poziomami na fizycznym telefonie — nieprzetestowane na żywo, emulator to tylko wskazówka
   ([[SPIKE-002-tree-on-a-phone]] → *Findings* M3);
 - progi S2 (oddalanie odsłania dalszą rodzinę) przy szczypaniu palcami — nieprzetestowane na żywo, na emulatorze tylko przyciski i mysz
-  ([[SPIKE-002-tree-on-a-phone]]).
+  ([[SPIKE-002-tree-on-a-phone]]);
+- „Pokaż w drzewie” z widoku osoby otwiera drzewo tam, gdzie się go spodziewasz — „ok” bez śladu ([[ISSUE-033-tree-from-a-person]], krok 3);
+- TalkBack na drzewie: opisy węzłów („…, Twoja babcia, w środek”) i pigułka poziomu — nieprzetestowane na żywo, tylko `uiautomator` i testy
+  ([[ISSUE-033-tree-from-a-person]]).
 
 **Do decyzji autora, gdy zobaczy swoje cmentarze** (nie sprawdzenie, tylko wybór): grubość alejek i znicze, które nachodzą na
 siebie ([[cmentarz]] → *Open*, [[ISSUE-030-sector-on-a-visit]]).

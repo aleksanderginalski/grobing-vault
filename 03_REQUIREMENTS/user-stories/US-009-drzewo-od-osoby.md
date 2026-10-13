@@ -1,14 +1,14 @@
 ---
 title: "US-009 — See the family around one person and how it connects (drzewo od osoby)"
 type: user-story
-status: ready
+status: in-progress
 epic: "[[EPIC-003-zrozumienie]]"
 persona: "[[P1-zbierajacy]]"
 moscow: [M9]
 journey-steps: "n/a — funkcja widoku 5 (PROJECT_BRIEF §4a)"
 FR: ["[[FR-002-rodzina-jako-rekord]]"]
 NFR: ["[[NFR-005-dane-nie-opuszczaja-telefonu]]"]
-issues: []
+issues: ["[[ISSUE-033-tree-from-a-person]]", "[[ISSUE-034-tree-presentation-mode]]"]
 quality-verdict: pending
 verdict-date: null
 verdict-reviewer: null
@@ -34,7 +34,8 @@ na kolejne osoby, **żeby** zrozumieć, jak łączą się ze sobą ludzie z grob
   rodzice, w dół dzieci, w bok partner ([[drzewo]] D9).
 - **AC-5 — nazwa pokrewieństwa w karcie** (dawne AC-6 [[ISSUE-024-person-view]]). *Given* ścieżka Ja → tata → jego rodzic → jego córka
   *Then* karta mówi „ciotka”; brat ojca — „stryj”, brat matki — „wuj”; dziecko siostry ojca — „brat/siostra cioteczna”; dalsze
-  pokrewieństwo — opis z odcinków („Siostra cioteczna babci mojej żony”, [[drzewo]] D6). Słownik ze źródłem:
+  pokrewieństwo — opis z odcinków („Siostra cioteczna babci Twojej żony”, [[drzewo]] D6, D12; „Twojej” — decyzja autora G1 na stopie #1
+  [[ISSUE-033-tree-from-a-person]], 2026-10-13). Słownik ze źródłem:
   [[ISSUE-025-gender-kinship-together-since]] → *Prior art* i D2.
 - **AC-6 — „Pokaż w drzewie”.** *When* w widoku osoby dotykam „Pokaż w drzewie” *Then* drzewo otwiera się z tą osobą w środku
   ([[osoba]] D11).

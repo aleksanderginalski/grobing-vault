@@ -19,8 +19,9 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
 
 ## In progress
 - **Po [[2026-10-13-retro-03]] (R1–R10, decyzja autora 2026-10-13):** ~~[[ISSUE-031-command-guard]]~~ i ~~[[SPIKE-002-tree-on-a-phone]]~~ —
-  zamknięte 2026-10-13 (*Recently done*). Dalej droga do instalacji MVP — **następna: [[US-009-drzewo-od-osoby]]** (punkt 7 niżej);
-  pierwszy krok pozycji: wymyślona rodzina o kształcie prawdziwej w `lib/dev/` (SPIKE-002 D6).
+  zamknięte 2026-10-13 (*Recently done*). Dalej droga do instalacji MVP — **w toku: [[US-009-drzewo-od-osoby]]** (punkt 7 niżej),
+  rozpisana 2026-10-13 na ~~[[ISSUE-033-tree-from-a-person]]~~ (AC-1–AC-7, zamknięte 2026-10-13) i **następna: [[ISSUE-034-tree-presentation-mode]]**
+  (AC-8, tryb prezentacji). Specyfikacja: [[drzewo]] v1.7, [[osoba]] v2.4, [[style-b]] v1.27.
 - **Prawdziwe dane rodziny dopiero po instalacji MVP** (decyzja autora 2026-10-08 w `/pm`): budujemy produkt gotowy do
   instalacji na telefonie (MVP = brief §5, M1–M11); do tego czasu autor ocenia aplikację na wymyślonych danych. Rozmowa z babcią
   (~2026-11-02) jest na kartce, a odpowiedzi trafią do aplikacji po instalacji.
@@ -33,7 +34,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   6. ~~[[US-008-pinezka-na-miejscu]]~~ — zamknięta 2026-10-12 (~~ISSUE-029~~). **Teren czeka:** build release na
      telefonie przed zaduszkami (~2026-11-02) → *Parked* (cel autora z `/pm`: jedna wizyta da pomiar i sprawdzenie AC-1, AC-4).
      Kandydaci z [[cmentarz]] D29 i nachodzące znicze → [[ISSUE-030-sector-on-a-visit]] (`draft`, **czeka na wizytę** — D5, stop #1);
-  7. ~~[[SPIKE-002-tree-on-a-phone]]~~ — zamknięty 2026-10-13 → **następna: [[US-009-drzewo-od-osoby]]** (drzewo od osoby, S2, ślad dalszej
+  7. ~~[[SPIKE-002-tree-on-a-phone]]~~ — zamknięty 2026-10-13 → **w toku: [[US-009-drzewo-od-osoby]]** (~~ISSUE-033~~ → ISSUE-034; drzewo od osoby, S2, ślad dalszej
      rodziny, słownik nazw złożonych — dawne AC-6 ISSUE-024, „Pokaż w drzewie”, tryb prezentacji) → [[US-010-czas-na-drzewie]] →
      [[US-011-polacz-dwie-osoby]] ([[drzewo]] v1.4, [[EPIC-003-zrozumienie]]);
   8. [[US-006-eksport-dla-rodziny]] i [[NT-007-hand-over-note]];
@@ -108,12 +109,16 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   - po ISSUE-009: usunąć foldery `Grobing-dev-009` i `Grobing-proba` na Dysku (wymyślone dane, hasła
     testowe). Pliki o tej samej nazwie w kilku folderach mylą wyszukiwarkę okna przy odtworzeniu;
   - **katalogi tymczasowe sesji** w `%TEMP%\claude\c--Programowanie-Grobing-grobing-agents\` (poza bieżącą sesją): makiety,
-    prototypy, zrzuty, pliki Natural Earth i kopie `-0NN` z wymyślonymi danymi — do kosza. Z SPIKE-002 zostało `220a9b6c-…\scratchpad\drzewo-spike002.html`
-    (makieta kandydatów drzewa, 106 wymyślonych osób) — przyda się przy [[US-009-drzewo-od-osoby]], potem do kosza;
+    prototypy, zrzuty, pliki Natural Earth i kopie `-0NN` z wymyślonymi danymi — do kosza. Z drzewa zostały: `220a9b6c-…\scratchpad\drzewo-spike002.html`
+    (makieta kandydatów SPIKE-002) i `c3868f5f-…\scratchpad\` — makieta `drzewo-us009.html`, zrzuty `shots-033\`, kopia bazy testowej
+    `test-grobing.db` i kopia konfiguracji AVD (wszystko wymyślone) — przydadzą się przy [[ISSUE-034-tree-presentation-mode]], potem do kosza;
   - **repo nie mają pliku `LICENSE`** — kod można oglądać, ale nie wolno go używać. Licencję można dodać później.
-- **Emulatory (po ISSUE-029):** `Medium_Phone` — release v12 na danych testowych autora, kopia skonfigurowana od nowa z hasłem
+- **Emulatory (po ISSUE-033):** `Medium_Phone` — release v12 na danych testowych autora, kopia skonfigurowana od nowa z hasłem
   testowym (wymyślone, z sesji ISSUE-029), pliki `grobing-klucz-029.age` i `grobing-kopia-029.age` w Pobranych; grób „Jozef” ma
-  pinezkę z poprawki autora. `Grobing_Restore` — release v12 z danymi z kopii `-029`. Następna pozycja z kopią: nowe hasło testowe.
+  pinezkę z poprawki autora; **wyłączony** na czas ISSUE-033, dane nietknięte. `Grobing_Restore` — **build profile** (podpis debug,
+  `--dart-define=FRAME_LOG=true` — czasy klatek w logcat `GROBING_FRAME`) z wymyśloną rodziną do drzewa (106 osób, „ja” = Mateusz); release z
+  danymi kopii `-029` odinstalowany (D5 ISSUE-033); **`hw.gpu.enabled=yes`** (było `no` — rysowanie programowe zawyżało czasy klatek). Release na
+  `Grobing_Restore` wymaga odinstalowania profile (inny podpis). Następna pozycja z kopią: nowe hasło testowe.
 - **[[EPIC-002-wizyta]] gotowy do rozpisania na US** — pytanie „jak znaleźć grób bez pinezki” ma kierunek autora
   (2026-10-08): adres z wyszukiwarki zarządcy → kwatera zaznaczona według planu zarządcy → na miejscu plan offline i
   GPS → pinezka. Wejście do pierwszej US (mapa cmentarza): EPIC-002 → *Input from SPIKE-001*. Ekran: `ui` →
@@ -130,10 +135,13 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   paczki (decyzja autora 2026-10-07); treść wychodzących zmian sprawdza strażnik treści ([[ISSUE-020-content-guard]]) przy każdym `git add`/`commit`.
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **2** (ostatnie retro: [[2026-10-13-retro-03]]). Co **10** → retro + pytanie o 3–5
+- Zamknięte pozycje od ostatniego retro: **3** (ostatnie retro: [[2026-10-13-retro-03]]). Co **10** → retro + pytanie o 3–5
   nośnych faktów (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**; podbija go `docs` przy zamknięciu, a zeruje go retro.
-- Do retro (zebrane po drodze, bez decyzji): — pusto. Poprzednią listę rozliczyło [[2026-10-13-retro-03]] → *The "Do retro"
-  list*.
+- Do retro (zebrane po drodze, bez decyzji):
+  - **US bez ISSUE na starcie łańcucha** ([[ISSUE-033-tree-from-a-person]]): `pm` skierował [[US-009-drzewo-od-osoby]] prosto do `ui`, a plan nie miał
+    pliku, w którym mógłby stanąć — `planning` zawołał `docs` do rozpisania w środku łańcucha. Przy US-007 i US-008 rozpisanie (`docs`) szło przed
+    `ui`; tabela *Routing* w `pm` tego kroku nie zna.
+  - Poprzednią listę rozliczyło [[2026-10-13-retro-03]] → *The "Do retro" list*.
 
 ## Parked (waiting on someone outside the session)
 - **cmentarz (którykolwiek z cmentarzy autora)** · przy 3 grobach, które autor zna: (a) dokładność GPS telefonu
@@ -153,6 +161,23 @@ Format wpisu: `źródło (babcia / cmentarz X) · pytanie bez danych rodziny · 
 ## Recently done
 > Tylko wpisy od ostatniego retro ([[2026-10-13-retro-03]], R5). Starsze są w plikach retro → *Archive*:
 > [[2026-10-13-retro-03]] · [[2026-10-08-retro-02]] · [[2026-10-06-retro-01]].
+
+- 2026-10-13 — [[ISSUE-033-tree-from-a-person]] zamknięte ([[US-009-drzewo-od-osoby]] AC-1–AC-7). **Zakładka Drzewo działa — od „Ja”, z poziomami:**
+  - wymyślona rodzina o kształcie prawdziwej (106 osób, debug i profile — przycisk w „Stanie danych”); układ = port makiety SPIKE-002, liczby
+    6 / 20 / 66 / 99 identyczne z M1; bez nowej zależności;
+  - dotknięcie stawia osobę w środku, oddalanie i + / − dokładają poziomy (pigułka „Poziom 3 · 66 osób”), podwójne dotknięcie przybliża,
+    ślad dalszej rodziny na zewnątrz od środka; drzewo wraca do kadru, gdy ucieknie;
+  - karta: „Twoja ciotka (siostra taty)”, „Siostra cioteczna babci Twojej żony” — słownik ISSUE-025 z odcinkami liczonymi od drugiej osoby
+    ([[drzewo]] D12); „Pokaż w drzewie” w widoku osoby; tekst 200%;
+  - **decyzje autora na stopie #1 (*„Tak”*):** I2 (imiona czytelne, nakładające się chowają), G1 („Twoja babcia”), dwie pozycje ([[ISSUE-034-tree-presentation-mode]]
+    następna), wymyślone dane za `!kReleaseMode`;
+  - przejścia między poziomami: 2–8% wolnych klatek na emulatorze z GPU (SPIKE-002: do 55%) — po zamianie cieni pod imionami na tabliczkę i
+    jednej warstwie przezroczystości;
+  - przegląd `ui`: 1 MAJOR (poświata nad okręgiem zabarwiała „Ja” i zdjęcia) + 3 MINOR — poprawione przed stopem; poświata poprawiona też w
+    mini-drzewie i portrecie osoby („ok” autora na stopie #2) — [[style-b]] v1.27; [[drzewo]] v1.7.
+
+  Stop #2 „ok” — kroki 1–2 ze śladem na emulatorze, krok 3 bez śladu; dwa wiersze na [[ISSUE-032-mvp-install]] → *Hand checks*. Testy: 721
+  zielonych. Werdykt `qa`: APPROVED (self-check, z uwagami). Licznik retro: 2 → 3.
 
 - 2026-10-13 — [[SPIKE-002-tree-on-a-phone]] zamknięty (H4). **Drzewo ok. 100 osób czyta się od osoby, z przesuwaniem — całości naraz nie:**
   - prior art ze źródłami ([[drzewo]] D8: TimeNets, drzewa podwójne, FamilySearch) — rodzina to krata, pokazuje się wycinek według zainteresowania,
