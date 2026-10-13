@@ -72,6 +72,14 @@ Warunki — każdy ma swój dom, tutaj tylko lista:
   okno „Popraw grób” przy tekście 200% z otwartą klawiaturą ([[grob]] → *Open*);
 - trzy stany ◎ — „ok” bez śladu ([[ISSUE-029-pin-on-site-gps]], krok 2); słaby sygnał i „Włącz” tylko w testach; TalkBack.
 
+**Drzewo** (decyzja autora w `/pm` 2026-10-13: ocena na emulatorze, telefon tutaj)
+- zadanie na czas „kim jest X dla mnie” < 30 s przy ok. 100 osobach — „pomiń” na stopie #2 ([[SPIKE-002-tree-on-a-phone]], krok 3; kryterium
+  spike'a niezmierzone);
+- płynność przesuwania i przejścia między poziomami na fizycznym telefonie — nieprzetestowane na żywo, emulator to tylko wskazówka
+  ([[SPIKE-002-tree-on-a-phone]] → *Findings* M3);
+- progi S2 (oddalanie odsłania dalszą rodzinę) przy szczypaniu palcami — nieprzetestowane na żywo, na emulatorze tylko przyciski i mysz
+  ([[SPIKE-002-tree-on-a-phone]]).
+
 **Do decyzji autora, gdy zobaczy swoje cmentarze** (nie sprawdzenie, tylko wybór): grubość alejek i znicze, które nachodzą na
 siebie ([[cmentarz]] → *Open*, [[ISSUE-030-sector-on-a-visit]]).
 
