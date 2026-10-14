@@ -119,6 +119,13 @@ Warunki — każdy ma swój dom, tutaj tylko lista:
 - imiona w trybie prezentacji z kanapy — 13 sp ≈ 14′ z 3 m na 55″, poniżej 16′ (I2, [[drzewo]] D27) — nieprzetestowane na żywo;
 - „Czas na działanie” z ustawień telefonu wydłuża sterowanie w trybie (Android 10+) — nieprzetestowane na żywo (na emulatorze przez adb).
 
+**Drzewo — „Połącz dwie osoby”** ([[ISSUE-039-connect-two-people]] → *Verification* → *For ISSUE-032 → Hand checks*)
+- Ja → Wanda: czy linia (0,7 s na krok) i baner na końcu dobrze opowiadają, kim ktoś jest — stop #2 „pomiń” (krok 1);
+- długa ścieżka (np. Ja → Zdzisław): czy pomniejszone drzewo z całą ścieżką (F2) jest czytelne, czy lepszy byłby widok jadący za linią (F1) — stop #2 „pomiń” (krok 2);
+- „Od” inne niż Ty (Piotr → Zofia): czy baner w dwóch liniach jasno mówi, kto kim jest dla kogo (O2) — stop #2 „pomiń” (krok 3);
+- TalkBack czyta baner raz, gdy się pokaże (region na żywo) — nieprzetestowane na żywo;
+- płynność ścieżki na telefonie — linia, wyszarzenie, poziom 4 — nieprzetestowane na żywo (emulator w szumie: przestawienie środka 52–57% wolnych klatek w obu buildach).
+
 **Do decyzji autora, gdy zobaczy swoje cmentarze** (nie sprawdzenie, tylko wybór): grubość alejek i znicze, które nachodzą na
 siebie ([[cmentarz]] → *Open*, [[ISSUE-030-sector-on-a-visit]]).
 

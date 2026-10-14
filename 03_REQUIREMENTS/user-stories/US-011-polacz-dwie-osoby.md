@@ -1,20 +1,20 @@
 ---
 title: "US-011 — See how any two people are related, on the tree (połącz dwie osoby)"
 type: user-story
-status: ready
+status: done
 epic: "[[EPIC-003-zrozumienie]]"
 persona: "[[P1-zbierajacy]]"
 moscow: [M11]
 journey-steps: "n/a — funkcja widoku 5 (PROJECT_BRIEF §4a)"
 FR: ["[[FR-002-rodzina-jako-rekord]]"]
 NFR: []
-issues: []
-quality-verdict: pending
-verdict-date: null
-verdict-reviewer: null
+issues: ["[[ISSUE-039-connect-two-people]]"]
+quality-verdict: APPROVED
+verdict-date: 2026-10-14
+verdict-reviewer: self-check
 source: "[[drzewo]] v1.4 (elementy 1, 7–10, D5, D6) · [[SPIKE-004-mvp-flow-prototype]] D21, D26 · [[ISSUE-024-person-view]] (`KinGraph.path`) · [[SPIKE-002-tree-on-a-phone]]"
 created: 2026-10-13
-updated: 2026-10-13
+updated: 2026-10-14
 ---
 
 # US-011 — Połącz dwie osoby
@@ -38,5 +38,8 @@ wiedzieć, kim ktoś z grobu jest dla mnie albo dla kogoś z rodziny.
 - Słownik nazw złożonych → [[US-009-drzewo-od-osoby]] AC-5 (pierwsza potrzebuje go karta osoby w środku).
 
 ## Notes
+- **Zamknięta 2026-10-14** przez [[ISSUE-039-connect-two-people]] (AC-1–AC-4; decyzje autora na stopie #1: A1, W2, F2, O2, Y1 — [[drzewo]] v1.16–v1.17, D44–D49).
+  Przy „Od” innym niż Ty baner mówi w dwóch liniach bez zaimka (O2): „Piotr Przykładowy → Zofia Wymyślona” / „Wnuczka”; przykład AC-3 („…mojej żony”) dotyczy
+  „Od” = Ty. Ścieżka szersza niż ekran — drzewo maleje, aż się zmieści (F2), więc brzmienie AC-2 bez zmian.
 - Ścieżka już jest: `grobing-code/lib/data/kinship.dart` (`KinGraph.path` — najkrótsza, mniej „para”) z testami ([[ISSUE-024-person-view]]).
 - Zależy od [[US-009-drzewo-od-osoby]] (drzewo, poziomy, słownik).

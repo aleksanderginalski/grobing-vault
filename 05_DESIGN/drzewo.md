@@ -1,9 +1,9 @@
 ---
 screen: "Drzewo — rodzina od osoby, poziomy połączeń, czas; połącz dwie osoby"
-items: ["[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-024-person-view]]", "[[SPIKE-002-tree-on-a-phone]]", "[[US-009-drzewo-od-osoby]]", "[[ISSUE-033-tree-from-a-person]]", "[[ISSUE-034-tree-presentation-mode]]", "[[ISSUE-035-tree-names-shrink-my-voice]]", "[[ISSUE-036-cast-from-the-app]]", "[[ISSUE-037-time-on-the-tree]]", "[[ISSUE-038-history-on-tv-and-tempo]]"]
+items: ["[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-024-person-view]]", "[[SPIKE-002-tree-on-a-phone]]", "[[US-009-drzewo-od-osoby]]", "[[ISSUE-033-tree-from-a-person]]", "[[ISSUE-034-tree-presentation-mode]]", "[[ISSUE-035-tree-names-shrink-my-voice]]", "[[ISSUE-036-cast-from-the-app]]", "[[ISSUE-037-time-on-the-tree]]", "[[ISSUE-038-history-on-tv-and-tempo]]", "[[ISSUE-039-connect-two-people]]"]
 us: "[[US-009-drzewo-od-osoby]] (M9) · [[US-010-czas-na-drzewie]] (M10) · [[US-011-polacz-dwie-osoby]] (M11) — [[EPIC-003-zrozumienie]]"
 journey-step: "widok 5 (M9–M11, R3)"
-mockup: "2026-10-14: drzewo-038.html (ISSUE-038: tryb prezentacji poziomo z rokiem L1–L3, sterowaniem B1–B3, tempem V1–V3, wejściem Z1–Z2 i podglądem „z kanapy” 32–65″; zrzuty `shots-038\\`) — katalog tymczasowy sesji `baf00b7b-…\\scratchpad`; 2026-10-14: drzewo-037.html (ISSUE-037: suwak czasu, kandydaci N1–N3, C1–C2, T1–T2, E1–E3, R1–R2 na wymyślonej rodzinie z datami niepewnymi; zrzuty `shots-037\\`) — katalog tymczasowy sesji `555909c3-…\\scratchpad`; 2026-10-14: drzewo-036.html (ISSUE-036: kandydaci P1–P3 wejścia w przesyłanie, zrzuty z emulatora `shots-036\\`) — katalog tymczasowy sesji `fa865b36-…\\scratchpad`; 2026-10-13: drzewo-us009.html (US-009: imiona przy oddalaniu I1–I3, karta z nazwami pokrewieństwa, tekst 200%, tryb prezentacji, stany) — katalog tymczasowy sesji `c3868f5f-…\\scratchpad`; 2026-10-13: drzewo-spike002.html (SPIKE-002, kandydaci na 106 wymyślonych osobach) — `220a9b6c-…\\scratchpad`; wcześniej 2026-10-08: grobing-prototyp.html (SPIKE-004, panel 6, runda 2)"
+mockup: "2026-10-14: drzewo-039.html (ISSUE-039: ikona w pasku, okno z kaflami „Od” i „Do”, lista wyboru, ścieżka na drzewie, baner; kandydaci A1–A4, W1–W2, F1–F2, O1–O3, Y1–Y2 na 106 wymyślonych osobach; zrzuty `shots-039\\`) — katalog tymczasowy sesji `0558e715-…\\scratchpad`; 2026-10-14: drzewo-038.html (ISSUE-038: tryb prezentacji poziomo z rokiem L1–L3, sterowaniem B1–B3, tempem V1–V3, wejściem Z1–Z2 i podglądem „z kanapy” 32–65″; zrzuty `shots-038\\`) — katalog tymczasowy sesji `baf00b7b-…\\scratchpad`; 2026-10-14: drzewo-037.html (ISSUE-037: suwak czasu, kandydaci N1–N3, C1–C2, T1–T2, E1–E3, R1–R2 na wymyślonej rodzinie z datami niepewnymi; zrzuty `shots-037\\`) — katalog tymczasowy sesji `555909c3-…\\scratchpad`; 2026-10-14: drzewo-036.html (ISSUE-036: kandydaci P1–P3 wejścia w przesyłanie, zrzuty z emulatora `shots-036\\`) — katalog tymczasowy sesji `fa865b36-…\\scratchpad`; 2026-10-13: drzewo-us009.html (US-009: imiona przy oddalaniu I1–I3, karta z nazwami pokrewieństwa, tekst 200%, tryb prezentacji, stany) — katalog tymczasowy sesji `c3868f5f-…\\scratchpad`; 2026-10-13: drzewo-spike002.html (SPIKE-002, kandydaci na 106 wymyślonych osobach) — `220a9b6c-…\\scratchpad`; wcześniej 2026-10-08: grobing-prototyp.html (SPIKE-004, panel 6, runda 2)"
 updated: 2026-10-14
 ---
 
@@ -111,6 +111,28 @@ updated: 2026-10-14
 > *Deviations*): z czytnikiem ekranu sterowanie jest od wejścia w tryb i nie chowa się wcale, bo pustego miejsca czytnik nie dotknie (1 → element 11, *States*, D40) · górny
 > rząd karty przy tekście ≥ 150% przenosi rok do następnej linii, zamiast go uciąć, gdy trzy elementy się nie mieszczą (2 → element 6) · przycisk tempa ma szerokość
 > najszerszego słowa (3 → element 6; druga instancja po roku z v1.13, więc reguła — [[style-b]] reguła 5, v1.31).
+>
+> **Wersja 1.16 — `ui` przed planem [[ISSUE-039-connect-two-people]] ([[US-011-polacz-dwie-osoby]], 2026-10-14): „Połącz dwie osoby” na dzisiejszym drzewie.** Elementy 7–10
+> były z v1.1 (prototyp z ok. 30 osobami), czyli sprzed poziomów S2, G2, czasu i trybu prezentacji. Prior art i pomiar (D43): FamilySearch pokazuje ścieżkę tylko od „mnie”;
+> Snackbar Androida bierze czas z ustawienia „Czas na działanie”. Na makiecie ze 106 osobami ścieżka od „Ja” ma 1–5 kroków, a 10 ze 105 ścieżek nie mieści się na 360 dp nawet
+> przy skali 0,4. **Kandydaci na stop #1** (*Candidates — ISSUE-039*, makieta `drzewo-039.html`):
+> - ikona **A1–A4** — rekomendacja **A1**, `link_outlined` (D44; zamyka *Open* 1a);
+> - kto staje w środku **W1–W2** — rekomendacja **W2**, „Do” (D45);
+> - długa ścieżka **F1–F2** — rekomendacja **F2**, drzewo maleje, aż cała ścieżka się zmieści (D46);
+> - baner, gdy „Od” to nie Ty, **O1–O3** — rekomendacja **O2**, dwie linie bez odmiany imion (D47);
+> - rok inny niż „dziś” **Y1–Y2** — rekomendacja **Y1**, ścieżka przestawia na „dziś” (D48).
+>
+> Decyzje projektowe bez pytania — D49 (poziom, linia, baner, koniec podświetlenia, okno, tryb prezentacji). Elementy 1, 7–10, *Navigation*, *States*, *Sketch* i *AC → element*
+> są zapisane według rekomendacji. Przy innym wyborze `ui` zmienia je przed planem (*Open* 10). **Decyzja autora na stopie #1 (2026-10-14, *„Tak”*): A1, W2, F2, O2, Y1** — zapis bez
+> zmian; do tego z planu: bez „ja” ikony „Połącz dwie osoby” nie ma (element 1).
+>
+> **Wersja 1.17 — przegląd `ui` zbudowanego „Połącz dwie osoby” [[ISSUE-039-connect-two-people]] (2026-10-14), przyjęte odstępstwa `dev`** (*Dev report* → *Deviations*):
+> baner dochodzi do czytnika jako region na żywo, jak pigułka poziomu, a nie osobnym ogłoszeniem — jego tekst jest na ekranie (1 → element 9, D43) · kadr krótkiej ścieżki na
+> poziomie 1 w skali 1,3, bez przybliżania ponad próg poziomu (2 → element 8, D46) · zmiana danych drzewa w trakcie podświetlenia je kończy (3 → element 8, *Navigation*, D49) ·
+> baner z jawną wysokością wiersza 1,3, żeby kadr liczył go tak, jak się rysuje (4 → element 9). Do tego dwa odstępstwa, których *Dev report* nie wymienia, a przegląd przyjmuje:
+> w podświetleniu **wszystkie** linie rodziny i ślady są przy 30%, także osób ze ścieżki — jedna warstwa linii (plan D7), a drogę niesie linia w akcencie (5 → element 8, D49,
+> *Style B rules applied*) · znak „Ja” w kaflu „Od” ma obrys w akcencie jak na liście [[osoby]], bo w oknie nie ma osoby w środku (6 → element 7). [[style-b]] bez zmian: żadne z
+> sześciu nie zmienia reguły stylu.
 
 ## Purpose
 Zobaczyć rodzinę wokół wybranej osoby i jak się łączy (M9), jak zmieniała się w czasie (M10) i jak dowolne dwie osoby
@@ -129,10 +151,12 @@ są spokrewnione (M11). Tak samo zbudowane jest mini-drzewo w [[osoba]] (element
   Wstecz albo „Zakończ prezentację” wraca do drzewa (US-009). Do v1.9 ikona telewizora otwierała sam tryb prezentacji. **Powrót** to chwila, gdy
   aplikacja znów ma fokus po ekranie systemu, a nie gdy była schowana (v1.11, D30 a). Home z ekranu systemu i powrót do Grobinga pokazuje znowu
   ekran systemu (to samo zadanie); tryb włącza dopiero wstecz.
-- **Ikona „Połącz dwie osoby”** w pasku → okno z dwoma kaflami → po wybraniu drugiej osoby **z powrotem na drzewie**, z
-  animacją ścieżki (v1.1, D26). Dotknięcie drzewa albo wstecz kończy podświetlenie (US-011).
+- **Ikona „Połącz dwie osoby”** w pasku → okno z dwoma kaflami (7) → kafel → lista „Od kogo?” / „Do kogo?” (tryb wyboru jak „Która osoba to Ty?”, bez
+  dolnego paska — [[style-b]] reguła 12) → wybór „Od” wraca do okna, a wybór „Do” zamyka okno i wraca **na drzewo**, z animacją ścieżki (v1.1, D26). „Do” staje w
+  środku (W2, D45). Podświetlenie kończy dotknięcie drzewa, wstecz, przybliżanie i oddalanie, ▶, suwak i „Przesyłaj na telewizor”; przeciąganie przesuwa i nie kończy
+  (v1.16, D49). Kończy je też zmiana danych drzewa (v1.17, odstępstwo 3 ISSUE-039). Wstecz w oknie, „Anuluj” albo dotknięcie poza oknem zamyka okno bez zmian.
 - **Rok na suwaku** (US-010, v1.12, D37): zostaje przy przestawieniu środka, zmianie poziomu i powrocie wstecz z widoku osoby; wejście z paska i „Pokaż w drzewie”
-  pokazują „dziś”. **Tryb prezentacji** (v1.14, Z2 — D42): rok przechodzi do trybu i wraca z niego, tak jak osoba w środku; ▶ stoi, bo po drodze był ekran systemu. Do v1.13
+  pokazują „dziś”, a ścieżka „Połącz dwie osoby” przestawia na „dziś” i zatrzymuje ▶ (v1.16, Y1 — D48). **Tryb prezentacji** (v1.14, Z2 — D42): rok przechodzi do trybu i wraca z niego, tak jak osoba w środku; ▶ stoi, bo po drodze był ekran systemu. Do v1.13
   tryb zawsze pokazywał „dziś”.
 - **Tempo** (v1.14, D41): wybrane tempo zostaje, dopóki aplikacja działa — w karcie i w trybie prezentacji to samo; po zamknięciu aplikacji wraca „Średnio”.
 - **Bez „ja”:** „Wybierz, która osoba to Ty” → wybór „ja” ([[osoby]] 6–7) → po wyborze z powrotem na drzewie, z tą osobą w środku (D19).
@@ -142,7 +166,7 @@ są spokrewnione (M11). Tak samo zbudowane jest mini-drzewo w [[osoba]] (element
 
 | # | Element | Typ | Klawiatura / akcja | Domyślnie | Walidacja | Źródło |
 |---|---|---|---|---|---|---|
-| 1 | Pasek „Drzewo” (20 sp, półgruby), po prawej ikony **bez podpisu** (v1.1): **„Przesyłaj na telewizor”** (`cast_outlined`, akcent, cel 48 dp, `tooltip` „Przesyłaj na telewizor”, czytnik: „Przesyłaj na telewizor — w ustawieniach telefonu” — **US-009**, v1.10, [[ISSUE-036-cast-from-the-app]]; **zastępuje** `tv_outlined` „Tryb prezentacji” z v1.5 — D30; drugie dotknięcie, zanim otworzy się ekran systemu, nic nie robi, a ikona się nie zmienia — v1.11, D30 b) i na lewo od niej **„Połącz dwie osoby”** (akcent, cel 48 dp, `tooltip` „Połącz dwie osoby” — **US-011**; ikona — *Open* 1a). W stanach bez drzewa (bez „ja”, pusta baza) ikon nie ma | pasek + przyciski-ikony | → systemowy ekran przesyłania → po powrocie tryb prezentacji (11) · → okno wyboru (7) | — | — | R3 · **decyzja autora** (D26, D11; stop #2 ISSUE-034 — „jak w YouTube”) · AC-8 · D29 |
+| 1 | Pasek „Drzewo” (20 sp, półgruby), po prawej ikony **bez podpisu** (v1.1): **„Przesyłaj na telewizor”** (`cast_outlined`, akcent, cel 48 dp, `tooltip` „Przesyłaj na telewizor”, czytnik: „Przesyłaj na telewizor — w ustawieniach telefonu” — **US-009**, v1.10, [[ISSUE-036-cast-from-the-app]]; **zastępuje** `tv_outlined` „Tryb prezentacji” z v1.5 — D30; drugie dotknięcie, zanim otworzy się ekran systemu, nic nie robi, a ikona się nie zmienia — v1.11, D30 b) i na lewo od niej **„Połącz dwie osoby”** (`link_outlined` — A1, v1.16, D44; akcent, cel 48 dp, `tooltip` i czytnik „Połącz dwie osoby” — **US-011**). W stanach bez drzewa (bez „ja”, pusta baza) ikon nie ma; „Połącz dwie osoby” nie ma też na drzewie z „Pokaż w drzewie”, gdy „ja” nie jest wybrane — okno zaczyna od „Ja”, a baner mówi od „ja” (v1.16, D3 planu [[ISSUE-039-connect-two-people]], stop #1) | pasek + przyciski-ikony | → systemowy ekran przesyłania → po powrocie tryb prezentacji (11) · → okno wyboru (7) | — | — | R3 · **decyzja autora** (D26, D11; stop #2 ISSUE-034 — „jak w YouTube”) · AC-8 · D29 |
 | 2 | ~~Legenda linii~~ — **bez legendy** (v1.1, D25). Rodzaj linii niesie kształt i styl (łamana z góry — rodzic–dziecko; pozioma ciągła — małżeństwo; przerywana — razem), więc kolor nie jest jedynym nośnikiem (SC 1.4.1) | — | — | — | — | **decyzja autora** (D25) |
 | 3 | **Poziom połączeń — oddalanie odsłania dalszą rodzinę** (v1.3, S2): bez przycisków „−/Poziom 2/+” w pasku. Poziom zmienia oddalanie i przybliżanie, **próg za progiem**: oddalasz — dokłada się poziom, przybliżasz — dalsza rodzina znika. **4 progi** (poziomy 1–4; od 4 to prawie wszyscy). Przy zmianie na chwilę pigułka „Poziom 3 · 66 osób” (13 sp, powierzchnia). **Przyciski + / −** (cel 48 dp, powierzchnia z obrysem) w prawym dolnym rogu drzewa — alternatywa jednym dotknięciem (SC 2.5.1): + przybliża, − oddala. **Poziom 1:** rodzice, partnerzy, dzieci. **Poziom k ≥ 2:** do tego rodzice, partnerzy, dzieci i **rodzeństwo** każdej osoby z poziomu k−1 (np. rodzeństwo, rodzeństwo partnerów, dziadkowie, teściowie, wnuki). **Wartości** (v1.5, D18 — z prototypu SPIKE-002, do potwierdzenia w ręce): skala 0,4–2,0, start 1,0; **poziom 1** przy skali ≥ 1,3 · **2** — 0,85–1,3 · **3** — 0,55–0,85 · **4** — poniżej 0,55. + / − mnożą skalę przez 1,45 (mniej więcej poziom na dotknięcie); **podwójne dotknięcie pustego miejsca** przybliża tak samo (AC-3). Pigułka ok. 1,5 s; ten sam tekst ogłasza czytnik. Zmiana poziomu zostawia osobę w środku w tym samym miejscu ekranu | gest + przycisk-ikona ×2 + pigułka | dwa palce (oddal / przybliż) · + / − · podwójne dotknięcie | 2 | — | **decyzja autora** (stop #1 SPIKE-002) · D2 · D8 · AC-3 · D18 |
 | 4 | **Drzewo**: rzędy według pokolenia (wyżej starsze), osoba w środku z pierścieniem w akcencie; rodzeństwo z boku osoby, po stronie dalszej od partnera; **rodzina partnera po prawej**, bez przeplatania z krewnymi. Węzeł 44 dp (profilowe albo inicjały), imię 13 sp półgrube (v1.2, D10); **zmarły ma znicz** w rogu węzła ([[style-b]] reguła 8, R3); zmarły = zapisany zgon albo pochówek, z datą albo bez (v1.7, D22). Linie: **rodzic–dziecko** — kolor relacji rodzic–dziecko, łamana z góry w dół; **małżeństwo** — kolor partnerów, ciągła, pozioma; **razem (bez ślubu)** — kolor partnerów, przerywana 5/4. **Koniec związku** (v1.12, E3 — D35): od roku końca dwie ukośne kreski „//” przez środek linii pary (kolor partnerów, 2 dp, ok. 12 × 12 dp), także na „dziś”; koniec bez daty — tylko na „dziś”; linia do dzieci zostaje. **Ślad dalszej rodziny** (v1.3, D9): osoba z rodziną poza widokiem dostaje krótką przerywaną kreskę 3/3, 14 dp, w kolorze relacji o kryciu 60% — w górę rodzice, w dół dzieci, w bok partner, **na zewnątrz od środka** (na lewo od osoby w środku — w lewo, na prawo i u niej samej — w prawo; v1.7, przegląd `ui` ISSUE-033: zawsze w prawo celował u osób po lewej w środek i mylił się z linią „razem”). Przewijanie w obu osiach, środek ustawia się na osobie. **Drzewo nie ucieka z kadru** (v1.7, D21): gdy w kadrze nie ma nikogo, widok wraca płynnie (ok. 0,35 s) do osoby w środku, a palec na ekranie przerywa powrót; nowy rozmiar obszaru drzewa przed pierwszym dotknięciem ustawia środek od nowa. **„Ja”** (v1.5, D14): okrąg ze znakiem „Ja” (inicjały „Ja” w akcencie, obrys w kolorze obrysu, także przy profilowym — jak [[osoby]] D4), podpis „Ja”; pierścień i poświatę w akcencie ma tylko osoba w środku. **Przestawienie środka** (AC-2, v1.5): węzły przesuwają się na nowe miejsca w ok. 0,45 s, nowe osoby się pojawiają, odchodzące gasną, a widok jedzie tak, że nowa osoba staje w środku (ok. 42% wysokości obszaru drzewa). Przy systemowym ograniczeniu animacji — od razu (SC 2.3.3, jak D5). **Imiona przy oddalaniu** (v1.6, I2 — decyzja autora; potwierdzona w v1.9, D27): przy skali < 1 imię nie maleje — na ekranie ma 13 sp × skala tekstu, na tabliczce w kolorze tła (zaokrąglona 4 dp, 3 dp z boków; v1.7, D23); gdy dwa imiona by się nałożyły, zostaje to bliżej osoby w środku (najpierw poziom z D2, potem odległość w poziomie), a reszta chowa się do przybliżenia. **Tekst systemu** (AC-7, v1.5): miejsce osoby 80 dp × skala tekstu, najwyżej 160 dp (jak mini-drzewo, [[osoba]] v2.2); rząd rośnie z podpisem (104 dp → 124 dp przy 200%); inicjały najwyżej 1,3×; imię w jednej linii, „…” dopiero poza miejscem osoby (przy 100% to ok. 10 liter, także przy oddaleniu — v1.7, D24). **Cel dotyku** = miejsce osoby × skala drzewa (D17). **Czytnik:** „Zofia Wymyślona, 1928–2010, Moja babcia — w środek” (v1.9, G2 — ten sam tekst co karta, D28), osoba w środku „… — otwórz”; kolejność rzędami, z góry i od lewej; linie i ślad poza czytnikiem | drzewo | dotknięcie → osoba w środek; drugie → [[osoba]] | „Ja” | — | R3 · D1, D3, D4, D9 · AC-1, AC-2, AC-4, AC-7 · D14, D17 |
@@ -154,10 +178,10 @@ są spokrewnione (M11). Tak samo zbudowane jest mini-drzewo w [[osoba]] (element
 
 | # | Element | Typ | Klawiatura / akcja | Domyślnie | Walidacja | Źródło |
 |---|---|---|---|---|---|---|
-| 7 | **Okno „Połącz dwie osoby”** (v1.1): dwa kafle na powierzchni — „Od” i „Do” (podpis 13 sp, profilowe 40 dp albo „Wybierz osobę”). Kafel → lista osób jak [[osoby]] (wyszukiwarka i A–Z). „Od” domyślnie „Ja” | okno z kaflami | kafel → lista; **wybór drugiej osoby zamyka okno** i uruchamia 8 | Od: „Ja” | — | **decyzja autora** (D26) · R3 |
-| 8 | **Ścieżka na drzewie** (v1.1): drzewo przechodzi na **najniższy poziom, na którym widać drugą osobę**, i ustawia się tak, żeby ścieżka była w kadrze; **osoby spoza ścieżki wyszarzone** (krycie ok. 30%), osoby ze ścieżki podświetlone; **linia w akcencie biegnie powoli ode mnie do kolejnych osób** (ok. 0,7 s na krok), każda osiągnięta osoba dostaje pierścień w akcencie | animacja na drzewie | dotknięcie drzewa / wstecz → koniec podświetlenia | — | — | **decyzja autora** (D21, D26) · D5 |
-| 9 | **Baner na chwilę** (ok. 4 s) u góry drzewa, na powierzchni: **kim ta osoba jest dla mnie** — opis złożony z odcinków, np. „Siostra cioteczna babci mojej żony” (16 sp, półgruby); bez zdania ścieżki i **bez „Odtwórz jeszcze raz”** | baner | znika sam | — | — | **decyzja autora** (D26) · D6 |
-| 10 | **Bez ścieżki:** baner „Te osoby nie łączą się — w drzewie brakuje rodziny między nimi.”, drzewo bez zmian | baner | — | — | — | reguła 9 |
+| 7 | **Okno „Połącz dwie osoby”** (v1.1; v1.16 — D49): okno na środku ekranu, na powierzchni, zaokrąglone 16 dp, tło pod nim przyciemnione; tytuł „Połącz dwie osoby” (18 sp, półgruby); **dwa kafle obok siebie**, między nimi strzałka `arrow_forward` (tekst pomocniczy) — „Od” i „Do”: obrys 1 dp w kolorze obrysu, zaokrąglone 12 dp, cel ≥ 48 dp. W kaflu podpis „Od” / „Do” (13 sp, tekst pomocniczy), okrąg 40 dp (profilowe w kadrze albo inicjały; „ja” — znak „Ja”, D14, z obrysem w akcencie jak na liście [[osoby]], bo w oknie nie ma osoby w środku, z którą by się pomylił — v1.17, przegląd ISSUE-039) i imię z nazwiskiem bez „z d.” (14 sp, zawija się na spacjach, nie w środku słowa). **Pusty kafel:** przerywany okrąg w akcencie z `add` i „Wybierz osobę” (akcent, waga 500 — główne działanie okna, [[style-b]] reguła 1). **Tekst ≥ 150%:** kafle jeden pod drugim, strzałka w dół; w kaflu podpis nad wierszem z okręgiem i imieniem. Na dole przycisk tekstowy „Anuluj” (kolor tekstu). **Każde otwarcie:** „Od” — „Ja”, „Do” — pusty. Kafel → **lista „Od kogo?” / „Do kogo?”** na cały ekran — ta sama lista co w [[osoby]] (wyszukiwarka „Szukaj osoby”, A–Z, karty z okręgiem, imieniem z „z d.” i latami; tryb wyboru jak „Która osoba to Ty?”, bez dolnego paska), **bez osoby z drugiego kafla**. Wybór „Od” wraca do okna; **wybór „Do” zamyka okno** i uruchamia 8 | okno z kaflami + lista wyboru | kafel → lista; wybór „Do” → 8; „Anuluj”, wstecz, dotknięcie poza oknem → zamknij bez zmian | Od: „Ja” | — | **decyzja autora** (D26) · R3 · [[osoby]] (lista) · D49 |
+| 8 | **Ścieżka na drzewie** (v1.1; v1.16 — D45, D46, D48, D49): **„Do” staje w środku** (W2) — przestawienie środka jak po dotknięciu (element 4, ok. 0,45 s), karta (5) pokazuje „Do”. Drzewo przechodzi na **najniższy poziom, na którym widać całą ścieżkę**, licząc od osoby w środku; gdy ścieżka sięga dalej niż poziom 4 — poziom 4 i brakujące osoby ścieżki. **Kadr:** cała ścieżka na ekranie, 24 dp od krawędzi, pod banerem (jego wysokość przy danym tekście), w skali swojego poziomu (S2, element 3; **na poziomie 1 — 1,3**, dół zakresu, bez przybliżania ponad próg poziomu — v1.17, odstępstwo 2 ISSUE-039, D46); gdy się w niej nie mieści — **mniejsza skala, aż się zmieści** (F2; najmniej 0,15, a po końcu podświetlenia skala wraca do 0,4). Osoby spoza ścieżki — **30% krycia**; **linie rodziny i ślady — wszystkie przy 30%**, także osób ze ścieżki, jedną warstwą; drogę niesie linia w akcencie (v1.17, odstępstwo 5 z przeglądu ISSUE-039; do v1.16 „razem z ich liniami i śladami”). **Linia w akcencie** (3 dp, ta sama grubość przy każdej skali) biegnie po liniach rodziny — para: pozioma; rodzic–dziecko: przez kreskę do dzieci; rodzeństwo: przez kreskę rodziców — **od „Od” do „Do”, ok. 0,7 s na krok**; osoba, do której doszła, dostaje pierścień i poświatę w akcencie ([[style-b]] reguła 2). Imiona osób ze ścieżki mają pierwszeństwo przy chowaniu nakładających się (przed osobą w środku; I2, D27). **Ograniczenie animacji** — od razu cała ścieżka (D5). **Rok:** ścieżka przestawia suwak na „dziś” i zatrzymuje ▶ (Y1, D48). **Koniec podświetlenia** (D49): dotknięcie drzewa (także osoby — pierwsze dotknięcie tylko kończy), wstecz, przybliżanie i oddalanie (także + / −), ▶, suwak, „Przesyłaj na telewizor”, **zmiana danych drzewa** (v1.17, odstępstwo 3 ISSUE-039); przeciąganie przesuwa i nie kończy. Osoba w środku, poziom i skala zostają | animacja na drzewie | dotknięcie drzewa / wstecz → koniec podświetlenia | — | — | **decyzja autora** (D21, D26) · D5 · D45, D46, D48, D49 |
+| 9 | **Baner** (v1.1; v1.16 — D43, D47) u góry drzewa, 12 dp od góry i 16 dp od boków, na powierzchni, zaokrąglony 12 dp, wyśrodkowany, zawija się; pojawia się, **gdy linia dojdzie do „Do”** (przy ograniczeniu animacji — od razu). **„Od” = „Ja”:** jedna linia — nazwa ze słownika Twoim głosem, ten sam tekst co w karcie (16 sp, półgruby, kolor tekstu), np. „Babcia mojej żony” (G2, D28). **„Od” to ktoś inny** (O2, D47): pierwsza linia „Piotr Przykładowy → Zofia Wymyślona” (13 sp, tekst pomocniczy; „Ja”, gdy jedną z osób jesteś Ty), druga — nazwa bez zaimka: „Wnuczka”, „Siostrzenica bratowej”. **Wysokość wiersza 1,3** w obu liniach, a nie 1,43 z motywu: kadr (8) mierzy baner tymi samymi stylami, którymi się rysuje, więc przy 200% nie zasłania góry ścieżki; przy 100% baner jest przez to o kilka dp niższy niż w makiecie (v1.17, odstępstwo 4 ISSUE-039). **Czas:** 4 s, dłużej, gdy zaleca ustawienie „Czas na działanie” (`getRecommendedTimeoutMillis` z flagami treści tekstowej, jak Snackbar Androida — D43). Czytnik ogłasza baner raz, bez przenoszenia fokusu (komunikat stanu, SC 4.1.3) — jako **region na żywo**, jak pigułka poziomu (element 3), a nie osobnym ogłoszeniem (v1.17, odstępstwo 1 ISSUE-039, D43). Bez zdania ścieżki i **bez „Odtwórz jeszcze raz”** (D26) | baner | znika sam; koniec podświetlenia też go chowa | — | — | **decyzja autora** (D26) · D6 · D43 · D47 |
+| 10 | **Bez ścieżki:** baner jak 9, jedna linia: „Te osoby nie łączą się — w drzewie brakuje rodziny między nimi.”; drzewo bez zmian — środek, poziom i rok zostają | baner | — | — | — | reguła 9 |
 
 ## States
 | Stan | Co widać |
@@ -168,9 +192,10 @@ są spokrewnione (M11). Tak samo zbudowane jest mini-drzewo w [[osoba]] (element
 | osoba w środku przed narodzinami (US-010) | 4: w jej miejscu pusty pierścień w akcencie (C1, D33); 5 bez zmian; czytnik „… — przed narodzinami” |
 | odtwarzanie (US-010) | 6: ❚❚ zamiast ▶, rok biegnie w wybranym tempie (domyślnie „Średnio”, 10 lat na sekundę — v1.14, D41); dotknięcie osoby i oddalanie działają dalej (D37) |
 | ograniczenie animacji (US-010) | jak odtwarzanie, ale rok skacze o dekadę co ok. 2 · 1 · 0,5 s według tempa, osoby pojawiają się od razu (R2, D36, D41) |
-| połącz — wybór (US-011) | 1, okno 7 nad drzewem |
-| połącz — ścieżka (US-011) | 1, 3–6, 8 (reszta wyszarzona), 9 przez ok. 4 s |
-| bez ścieżki (US-011) | 1, 3–6, 10 |
+| połącz — wybór (US-011) | 1, okno 7 nad przyciemnionym drzewem; kafel → lista „Od kogo?” / „Do kogo?” na cały ekran, bez dolnego paska; wyszukiwanie bez wyniku — „Nie ma osoby „…”.” (jak [[osoby]]) |
+| połącz — ścieżka (US-011) | 1, 3–6 („Do” w środku, karta „Do” z nazwą pokrewieństwa, suwak na „dziś”), 8 (reszta 30%), 9 od dojścia linii do „Do” przez ok. 4 s (v1.16) |
+| połącz — ścieżka, tekst 200% (US-011) | jak wyżej; w oknie 7 kafle jeden pod drugim; baner do 4 linii przy „Od” innym niż Ty, kadr pod nim; skala zwykle poniżej 0,4 (F2), imię jednej z osób ścieżki może się schować (makieta: Ja → Wanda, 1 z 4) |
+| bez ścieżki (US-011) | 1, 3–6 bez zmian, 10 przez ok. 4 s |
 | osoba bez rodziny | 4: tylko ona, bez śladu; 5 („… · nie wiadomo jeszcze, kim jest dla mnie”, chyba że to „ja”) |
 | osoba spoza rodziny „ja” | 4: jej rodzina; 5 z „nie wiadomo jeszcze, kim jest dla mnie” |
 | „ja” niewybrane | 1 bez ikon; w miejscu drzewa, na środku: „Aplikacja nie wie jeszcze, która osoba to Ty.” (16 sp, tekst pomocniczy) i przycisk tekstowy w akcencie „Wybierz, która osoba to Ty” (jak [[osoba]] element 7); bez karty i + / −. Wejście z „Pokaż w drzewie” działa — wtedy 5 bez pokrewieństwa (D19) |
@@ -219,6 +244,24 @@ są spokrewnione (M11). Tak samo zbudowane jest mini-drzewo w [[osoba]] (element
 └────────────────────────────────────────────────────────────────────────┘
 ```
 
+**„Połącz dwie osoby” — okno i ścieżka** (v1.16 — ISSUE-039; Ja → Wanda, W2; zrzuty `01`, `04` w `shots-039\`):
+```
+┌──────────────────────────────────┐   ┌──────────────────────────────────┐
+│ Drzewo                    ⛓  [⌔] │   │ Drzewo                    ⛓  [⌔] │  ← ⛓ „Połącz dwie osoby” (A1)
+│  ╭────────────────────────────╮  │   │       ╭───────────────────╮      │
+│  │ Połącz dwie osoby          │  │   │       │ Babcia mojej żony │      │  ← baner 9, gdy linia dojdzie do „Do”
+│  │ ┌──────────┐   ┌──────────┐│  │   │       ╰───────────────────╯      │
+│  │ │Od        │ → │Do        ││  │   │  ·(LW) ·(CW)      ((WP))  ·(EP)  │  ← „Do” w środku (W2); · = 30% krycia
+│  │ │   (Ja)   │   │  ( + )   ││  │   │                     ┃            │
+│  │ │ Mateusz  │   │ Wybierz  ││  │   │  ·(RW) ·(AP)  ((PP))┛            │  ← linia w akcencie po liniach rodziny
+│  │ │Wymyślony │   │  osobę   ││  │   │                 ┃                │
+│  │ └──────────┘   └──────────┘│  │   │ ((Ja))━━((KW))━┛  ·(WP) ·(AP)    │  ← osoby ze ścieżki: pierścień i poświata
+│  │                     Anuluj │  │   │ ╭──────────────────────────────╮ │
+│  ╰────────────────────────────╯  │   │ │(WP) Wanda Przykładowa z d. … │ │
+│                                  │   │ │ ur. 1934 · Babcia mojej żony │ │  ← karta „Do” trzyma nazwę po banerze
+└──────────────────────────────────┘   └──────────────────────────────────┘
+```
+
 ## Tempo
 n/a — ekran do oglądania.
 
@@ -263,6 +306,15 @@ n/a — ekran do oglądania.
 - **Stała szerokość zmiennego napisu (v1.15, [[style-b]] reguła 5, v1.31):** rok w karcie (v1.13) i przycisk tempa (v1.15) mają szerokość najszerszej swojej wartości, więc tor suwaka
   obok nich ma stałą długość. Pary bez zmian (przeliczone z `theme.dart` 2026-10-14, przegląd `ui`): rok w rogu 8,81:1 na tabliczce · ▶ i aktywny tor 8,04:1 · ikona na ▶ 8,81:1 ·
   tempo i napis „Zakończ” 10,02:1 · rok początku 5,01:1 · tor nieaktywny 3,10:1 · obrys „Zakończ” 3,40:1 na tle.
+- **„Połącz dwie osoby” (v1.16, ISSUE-039):** ikona `link_outlined` w akcencie (działanie, reguła 3; 8,81:1 na tle), ta sama co przy „Jak łączy się ze mną” w [[osoba]] 7. Linia ścieżki,
+  pierścienie i poświata — akcent (wybór i fokus, reguły 1 i 2; 8,81:1 na tle). **Reszta drzewa przy 30% krycia — poniżej progów, celowo:** imię 2,04:1, obrys 1,34:1, linia rodzic–dziecko
+  1,83:1. Na czas podświetlenia to tło bez działania (dotknięcie gdziekolwiek tylko kończy podświetlenie), a [WCAG 2.2](https://www.w3.org/TR/WCAG22/) SC 1.4.3 i 1.4.11 nie stawiają
+  wymagań elementom nieaktywnym; informację niosą osoby ze ścieżki w pełnym kontraście, a kolor nie jest jedynym nośnikiem (pierścień i linia mają kształt — SC 1.4.1). Okno — powierzchnia;
+  obrys kafla 3,10:1 na powierzchni (SC 1.4.11); „Wybierz osobę” — akcent 8,04:1; podpis „Od” / „Do” i pierwsza linia baneru — tekst pomocniczy 5,01:1; baner — tekst 10,02:1 na powierzchni.
+  Bez nowych tokenów (przeliczone z `theme.dart` 2026-10-14). **v1.17** (przegląd `ui` zbudowanego ekranu, odstępstwa 5 i 6): przy 30% są wszystkie linie rodziny i ślady, także osób ze ścieżki
+  (linia partnerów 1,78:1); linia w akcencie leży na nich z 4,81:1 wobec linii rodzic–dziecko przy 30%, więc droga odcina się od reszty kształtem i jasnością. Znak „Ja” w kaflu „Od” ma obrys
+  w akcencie jak w [[osoby]] (D4), a nie w kolorze obrysu jak w drzewie (D14): w oknie nie ma osoby w środku, z którą pierścień mógłby się pomylić. Pary przeliczone z `theme.dart` 2026-10-14
+  — wyniki jak wyżej.
 
 ## AC → element
 | AC | Element(y) | Jak widać spełnienie |
@@ -290,7 +342,12 @@ n/a — ekran do oglądania.
 | ISSUE-038 — ograniczenie animacji | 6 | „Usuń animacje”: dekada co ok. 2 · 1 · 0,5 s według tempa, bez przenikania (R2 zostaje) |
 | ISSUE-038 — prezentacja z roku Y | 11 | karta na 1950 → „Przesyłaj na telewizor” → wstecz: tryb w roku 1950, ▶ stoi; „Zakończ prezentację” → karta w roku 1950 (Z2) |
 | ISSUE-038 — tekst 200% | 6, 11 | tempo w górnym rzędzie karty, suwak 278 dp bez zmian; listwa w jednym rzędzie (suwak 614 dp na 914 dp); rok w rogu 47 sp |
-| M11 — ścieżka między dowolnymi dwiema osobami (US-011) | 7–9 | „Ja” → „Wanda Przykładowa” (v1.2: przykład z wymyślonych rdzeni, retro 3 R7): drzewo na poziomie 3, linia biegnie przez Kasię i Piotra, reszta wyszarzona, baner „Babcia mojej żony” |
+| M11 — ścieżka między dowolnymi dwiema osobami (US-011) | 7–9 | „Ja” → „Wanda Przykładowa” (v1.2: przykład z wymyślonych rdzeni, retro 3 R7): Wanda w środku, poziom 3 (skala 0,85), linia przez Kasię i Piotra, reszta przy 30%, baner i karta „Babcia mojej żony” (v1.16 — W2; makieta, zrzut `04`) |
+| US-011 AC-1 — wybór osób | 1, 7 | ikona `link_outlined` → okno: „Od” — „Ja” (Mateusz Wymyślony), „Do” — „Wybierz osobę”; „Do” → „Do kogo?” z wyszukiwarką i A–Z; wybór Wandy zamyka okno (zrzuty `01`, `02`) |
+| US-011 AC-2 — ścieżka na drzewie | 4, 8 | jw.; „Usuń animacje” — cała ścieżka od razu; najszersza ścieżka od „Ja” (Zdzisław, „Stryj mojej mamy”) — skala 0,34, cała ścieżka na ekranie (F2, zrzut `11`) |
+| US-011 AC-3 — baner z nazwą | 9 | „Babcia mojej żony” przez ok. 4 s po dojściu linii; „Od” = Piotr, „Do” = Zofia (ur. 2012): „Piotr Przykładowy → Zofia Wymyślona” / „Wnuczka” (O2, zrzut `06`) |
+| US-011 AC-4 — bez ścieżki | 10 | „Ja” → „Teofil Przykładowski” (wymyślona osoba bez rodziny): baner „Te osoby nie łączą się — w drzewie brakuje rodziny między nimi.”, drzewo bez zmian (zrzut `08`) |
+| ISSUE-039 — tekst 200% na 360 dp | 7, 9 | kafle jeden pod drugim, imię zawija się na spacji („Wanda / Przykładowa”), okno 328 × 458 dp; baner do 4 linii (zrzut `12`) |
 
 ## Candidates — SPIKE-002 (2026-10-13)
 > Makieta `drzewo-spike002.html` (*mockup* we frontmatterze) pokazuje ton, układ i liczby. **Nie** pokazuje gestów ani płynności
@@ -477,6 +534,62 @@ w jednym rzędzie. Tryb prezentacji od „Ja” na „dziś”: L1 i L2 — 20 z
 
 **Zauważone przy pomiarze, poza pozycją:** imiona w trybie prezentacji mają 13 sp (I2, D27), czyli z 3 m na 55″ ok. 14′, poniżej minimum 16′ — na telewizorze imiona czyta się
 z bliska, rok z kanapy. Wraca na [[ISSUE-032-mvp-install]] → *Hand checks* (telewizor autora) i jako wejście do [[2026-10-14-opowiesc-rodziny-i-wieniec]] (opowieść na telewizorze).
+
+## Candidates — ISSUE-039 (2026-10-14)
+> Makieta `drzewo-039.html` (*mockup* we frontmatterze) to makieta ISSUE-038 (106 wymyślonych osób, ten sam układ, czas i tryb prezentacji) z **ikoną w pasku, oknem z kaflami,
+> listą wyboru, ścieżką na drzewie i banerem**. Przełączniki w sekcjach 1–5, przykłady u góry (Ja → Wanda, Ja → Ewelina, Ja → najdalsza osoba, Ja → najszersza ścieżka, Ja → Teofil bez
+> rodziny, Piotr → Zofia, rok 1950), „Usuń animacje”, „Czas na działanie”, tekst 200%, „Pokaż, gdzie się dotyka”, self-test `#test=1`. **Nie** pokazuje płynności Fluttera, zdjęć w węzłach
+> ani prawdziwego czytnika ekranu. Zrzuty `shots-039\`.
+
+| # | Kandydat | Co widać | Gdzie się dotyka | Źródło |
+|---|---|---|---|---|
+| A1 | **Ogniwa łańcucha** (`link_outlined`) | ikona w akcencie na lewo od „Przesyłaj na telewizor” | ikona → okno 7 | ta sama ikona przy „Jak łączy się ze mną” ([[osoba]] 7) |
+| A2 | **Trasa między punktami** (`route_outlined`) | jw. | jw. | — |
+| A3 | **Punkty połączone linią** (`polyline_outlined`) | jw. | jw. | — |
+| A4 | **Własna ikona: dwie kropki i kręta droga** | kształt `conversion_path` z Material Symbols, rysowany w aplikacji | jw. | zapis prototypu (*Open* 1a) |
+| W1 | **„Od” w środku** | linia od środka na zewnątrz; karta „Od” (przy „Ja” — „to ja”) | — | D5 („ode mnie”) |
+| W2 | **„Do” w środku** | „Do” w środku jak po dotknięciu; karta „Do” z nazwą pokrewieństwa | „Pokaż ›” w karcie → widok „Do” | element 4 (dotknięcie osoby) · D6 |
+| F1 | **Widok jedzie za linią** | gdy ścieżka się nie mieści: skala poziomu, widok przesuwa się razem z linią i staje na „Do” | — | — |
+| F2 | **Drzewo maleje, aż ścieżka się zmieści** | cała ścieżka naraz, reszta osób jako małe kropki | — | AC-2 („ustawia ścieżkę w kadrze”) |
+| O1 | **„Od” zawsze Ty** | kafel „Od” bez wyboru | — | — |
+| O2 | **Dwie linie, bez odmiany imion** | „Piotr Przykładowy → Zofia Wymyślona” / „Wnuczka” | — | imiona w mianowniku, jak w notatkach |
+| O3 | **Jedno zdanie, imię w dopełniaczu** | „Wnuczka Piotra” | — | — |
+| Y1 | **Ścieżka przestawia na „dziś”** | suwak „dziś”, ▶ stoi, cała ścieżka z imionami | — | — |
+| Y2 | **Rok zostaje** | osoby ścieżki nieurodzone w tym roku — pusty pierścień (C1), bez imion; linia przez puste miejsca | — | C1 (D33) |
+
+**Pomiar** (makieta, `#test=1`, ekran 360 dp, „Ja” = Mateusz, 2026-10-14):
+
+| Co | Tekst 100% | Tekst 200% |
+|---|---|---|
+| ścieżka od „Ja” | do 105 osób rodziny; Teofil (osoba bez rodziny, dołożona w makiecie ISSUE-038) — bez ścieżki | jw. |
+| kroki ścieżki | 1 — 7 · 2 — 17 · 3 — 41 · 4 — 33 · 5 — 7 (najdłuższa: 3,5 s linii) | jw. |
+| poziom ścieżki — W2 | 1 — 5 · 2 — 13 · 3 — 39 · 4 — 39 · „4 + osoby ścieżki” — 9 | jw. |
+| poziom ścieżki — W1 | 1 — 5 · 2 — 14 · 3 — 46 · 4 — 33 · „4 +” — 7 | jw. |
+| ścieżka nie mieści się w skali swojego poziomu — W2 · W1 | 25 · 55 | 96 · 98 |
+| … nawet przy najmniejszej skali 0,4 — W2 · W1 | 10 · 37 | 67 · 73 |
+| F2: najmniejsza skala, przy której cała ścieżka się mieści (W2) | 0,34 (okrąg 15 dp) | 0,17 (okrąg 7 dp) |
+| wszystkie pary ze 107 osób makiety (11 342): bez ścieżki · „4 +” przy W2 · najdłuższa | 212 (z Teofilem) · 6681 (60% par ze ścieżką) · 9 kroków | — |
+| Ja → Wanda (W2): poziom · skala · imiona ścieżki schowane | 3 · 0,85 · 0 z 4 | 3 · 0,31 · 1 z 4 |
+| okno 7 | 328 × 253 dp, kafle 132 × 131 dp | 328 × 458 dp, kafle jeden pod drugim (296 dp) |
+| baner: „Od” = Ty · O2 · O3 · bez ścieżki (linie) | 1 · 2 · 1 · 2 | do 2 · do 4 · do 2 · 4 |
+
+**Odmiana imion w O3** (proste reguły, jak musiałaby je mieć aplikacja): wszystkie imiona wymyślonej rodziny poprawnie, ale 5 z 10 trudnych źle — „Ania” → „Anii” (Ani), „Hania” → „Hanii” (Hani),
+„Maciek” → „Macika” (Maćka), „Wiesiek” → „Wiesika” (Wieśka), „Lew” → „Lewa” (Lwa); dobrze: Aniela, Rozalia, Bartłomiej, Wincenty, Józefa. Zdrobnienia i rzadkie imiona to właśnie to, co
+bywa w notatkach rodziny.
+
+**Rekomendacja: A1, W2, F2, O2, Y1.**
+- **A1:** ten sam znak dla tej samej rzeczy — w widoku osoby `link` stoi nad łańcuchem „Jak łączy się ze mną”, a ścieżka na drzewie to ten łańcuch narysowany; bez rysunku do utrzymania.
+  A2 w aplikacji z mapą i pinezkami czyta się jak „trasa do grobu”, A3 to najmniej znany znak, A4 to własny rysunek. **Nie da:** znaku, którego nikt nie pomyli z „linkiem” z innych
+  aplikacji — dlatego `tooltip` i czytnik mówią „Połącz dwie osoby”.
+- **W2:** pytasz o „Do”, więc „Do” staje w środku jak po dotknięciu, karta trzyma nazwę po zniknięciu baneru, a „Pokaż ›” prowadzi do tej osoby. Przy W1 karta mówi „to ja”. W pomiarze przy
+  W2 ścieżka nie mieści się w skali poziomu 25 razy, przy W1 — 55. **Nie da:** linii „od środka na zewnątrz” — biegnie do środka.
+- **F2:** zostaje przy brzmieniu AC-2 („ustawia ścieżkę w kadrze”) — przy 100% najmniej 0,34, a imiona ze ścieżki są czytelne, bo przy oddalaniu nie maleją (I2). F1 pokazuje ścieżkę po
+  kawałku i co 0,7 s przesuwa całe drzewo; zmienia AC-2. **Nie da:** czytelnych osób spoza ścieżki przy długiej ścieżce (kropki), a przy tekście 200% — każdego imienia ze ścieżki (1 z 4 w
+  przykładzie). Po końcu podświetlenia skala wraca do 0,4.
+- **O2:** imiona zostają w mianowniku, więc nic się nie odmienia. O3 wymaga odmiany, a proste reguły mylą się na zdrobnieniach (tabela wyżej) — błąd w imieniu babci zobaczy cała rodzina.
+  O1 zmienia AC-1 i zabiera pytanie „kim jest X dla Y”, np. przy wnukach. **Nie da:** najkrótszego baneru — przy 200% do 4 linii.
+- **Y1:** pokrewieństwo nie zależy od roku; przy Y2 linia biegnie przez puste pierścienie bez imion (zrzut `09`). **Zmienia D37** dla jednego wejścia (jak wejście z paska). **Nie da:**
+  powrotu do roku sprzed ścieżki.
 
 ## Decisions
 - **D1 — drzewo od osoby z przestawianiem środka** (SPIKE-004 D20; kandydat 3 ze SPIKE-002). Na telefonie całe drzewo
@@ -779,13 +892,71 @@ z bliska, rok z kanapy. Wraca na [[ISSUE-032-mvp-install]] → *Hand checks* (te
 - **D42 — tryb prezentacji z rokiem z karty (Z2)** (v1.14, **decyzja autora na stopie #1 — „Ok”, 2026-10-14**; zmienia D37). Rok przechodzi do trybu i z niego wraca, tak jak osoba w środku; ▶
   stoi, bo po drodze był ekran systemu (jak przy widoku osoby, D37 v1.13). Na „dziś” tryb wygląda jak w US-009. *Obali:* autor po wejściu w tryb oczekuje całej rodziny, a widzi
   rok sprzed lat (zostawiony na suwaku) — wtedy Z1.
+- **D43 — prior art: ścieżka od „mnie”, czas baneru jak Snackbar, komunikat stanu** (v1.16, [[ISSUE-039-connect-two-people]]). **Źródła** (odczyt 2026-10-14):
+  - FamilySearch pokazuje ścieżkę pokrewieństwa tylko od „mnie”, z nazwą u góry („My Grandmother”) — D8. Drzewo robi to samo na tym samym drzewie (D6); „Od” inne niż Ty to
+    przypadek, którego tam nie ma — stąd D47;
+  - **Snackbar** w Material Components Androida (`Snackbar.getDuration()`,
+    [material-components-android](https://github.com/material-components/material-components-android/blob/master/lib/java/com/google/android/material/snackbar/Snackbar.java)): od
+    Androida 10 *„accessibilityManager.getRecommendedTimeoutMillis(userSetDuration, controlsFlag | FLAG_CONTENT_ICONS | FLAG_CONTENT_TEXT)”*, a `FLAG_CONTENT_CONTROLS` tylko przy
+    przycisku działania; na stałe zostaje tylko komunikat z działaniem przy czytniku (starsze Androidy). Baner nie ma działania, więc dostaje ten sam czas co Snackbar, a nie regułę
+    sterowania z D40 (tam są przyciski);
+  - **WCAG 2.2 SC 4.1.3 Status Messages** ([Understanding](https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html)): komunikat o wyniku działania ma dać się przeczytać
+    czytnikowi *„without receiving focus”* — baner to wynik wyboru „Do”.
+
+  **Pomiar** — *Candidates — ISSUE-039* → *Pomiar*. *Obali:* na telefonie z czytnikiem baner znika, zanim czytnik skończy go czytać — wtedy baner do końca podświetlenia, jak D40.
+
+  **v1.17** (przegląd `ui` [[ISSUE-039-connect-two-people]], odstępstwo 1 `dev`, 2026-10-14): czytnik dostaje baner jako **region na żywo** (`Semantics(liveRegion: true)`), a nie
+  przez `SemanticsService` — tak jak pigułkę poziomu na tym samym ekranie (element 3). Tekst baneru jest na ekranie, więc czytnik czyta węzeł, który widać, a nie osobny komunikat
+  bez miejsca; to webowy odpowiednik `role=status`, technika wystarczająca dla SC 4.1.3 (ARIA22 w [Understanding 4.1.3](https://www.w3.org/WAI/WCAG22/Understanding/status-messages.html)).
+  Na emulatorze baner jest węzłem z tekstem (`uiautomator dump`); mowy TalkBack agent nie słyszy — odsłuch zostaje do [[ISSUE-032-mvp-install]] → *Hand checks*. *Obali:* TalkBack
+  na telefonie nie czyta baneru, gdy się pojawia — wtedy ogłoszenie przez `SemanticsService`, jak rok w karcie.
+- **D44 — ikona „Połącz dwie osoby”: `link_outlined` (A1)** (v1.16, **decyzja autora na stopie #1 — „Tak”, 2026-10-14**; zamyka *Open* 1a). Ta sama ikona stoi w [[osoba]] 7 nad łańcuchem „Jak
+  łączy się ze mną”, a ścieżka na drzewie to ten łańcuch narysowany — jeden znak dla jednej rzeczy. Istnieje we Flutterze 3.41.1 (`icons.dart`, sprawdzone w SDK 2026-10-14; tak samo
+  `route_outlined` i `polyline_outlined`, a `conversion_path` — nie). *Obali:* autor na makiecie albo emulatorze bierze ją za „udostępnij link”.
+- **D45 — „Do” staje w środku (W2)** (v1.16, **decyzja autora na stopie #1 — „Tak”, 2026-10-14**). Przestawienie środka jak po dotknięciu (element 4), więc karta mówi, kim jest „Do” dla mnie, także po zniknięciu baneru, a
+  „Pokaż ›” prowadzi do tej osoby. Poziom i kadr liczą się od „Do”; linia dalej biegnie od „Od” (D5). W pomiarze ścieżka przy W2 częściej mieści się w skali poziomu (25 razy nie, przy W1 —
+  55). *Obali:* autor chce, żeby po końcu podświetlenia drzewo było przy „Od” — wtedy W1.
+- **D46 — długa ścieżka: drzewo maleje, aż cała ścieżka się zmieści (F2)** (v1.16, **decyzja autora na stopie #1 — „Tak”, 2026-10-14**). Kadr najpierw w skali poziomu (S2); gdy ścieżka się w niej nie mieści — mniejsza
+  skala, najmniej 0,15 (w makiecie najmniej 0,34 przy 100% i 0,17 przy 200%). Linia ma tę samą grubość przy każdej skali. Po końcu podświetlenia skala wraca do 0,4 (dół zakresu S2)
+  z osobą w środku. Imiona ze ścieżki mają pierwszeństwo przy chowaniu nakładających się (I2). Kadr liczy skrajne osoby ścieżki z ich miejscem; `dev` sprawdza, czy imię na skraju nie
+  wychodzi poza ekran (w makiecie przy 200% wyszło — imię rośnie o 1/skala). *Obali:* na prawdziwej rodzinie osoby spoza ścieżki jako kropki gubią kontekst — wtedy F1.
+  **v1.17** (przegląd `ui` [[ISSUE-039-connect-two-people]], odstępstwo 2 `dev`, 2026-10-14): **na poziomie 1 kadr w skali 1,3**, czyli na dole zakresu poziomu, a nie „aż do 2,0”. Krótka
+  ścieżka (Ja → córka) w skali 2,0 miałaby okręgi 88 dp i imiona 26 sp — większe niż w każdym innym widoku drzewa, które startuje w skali 1. Na pozostałych poziomach kadr bierze
+  największą skalę poziomu, w której ścieżka się mieści. Tak było w makiecie; na emulatorze — zrzut `29` (Ja → Zofia).
+- **D47 — baner, gdy „Od” to nie Ty: dwie linie bez odmiany imion (O2)** (v1.16, **decyzja autora na stopie #1 — „Tak”, 2026-10-14**). Pierwsza linia: „Imię Nazwisko → Imię Nazwisko” w mianowniku (bez „z d.”; „Ja”,
+  gdy to Ty). Druga: nazwa z tych samych odcinków co w G2 (D6, D12), bez zaimka przy ostatnim odcinku — „Wnuczka”, „Siostrzenica bratowej”, „Ciotka (siostra taty)”. Słownik się nie
+  zmienia; odpada tylko „mój / moja / mojej / mojego”. Gdy „Od” to Ty — jedna linia jak w AC-3. *Obali:* autor czyta drugą linię bez pierwszej i myli kierunek („Wnuczka” — czyja?)
+  — wtedy O3 z tabelą odmiany imion i testami.
+- **D48 — ścieżka przestawia rok na „dziś” (Y1)** (v1.16, **decyzja autora na stopie #1 — „Tak”, 2026-10-14**; **zmienia D37** dla jednego wejścia). Wybór „Do” zatrzymuje ▶ i ustawia suwak na „dziś”, jak wejście z paska.
+  Pokrewieństwo nie zależy od roku, a w roku Y część ścieżki byłaby pustymi pierścieniami bez imion. *Obali:* autor przygotowuje opowieść w roku Y i chce w nim zostać — wtedy Y2.
+- **D49 — „Połącz dwie osoby”: decyzje projektowe** (v1.16, bez pytania; „tak” na stopie #1 przyjmuje je z planem):
+  - **poziom:** najniższy z całą ścieżką od osoby w środku; dalej niż poziom 4 — poziom 4 i brakujące osoby ścieżki (od „Ja” 9 ze 105; we wszystkich parach 60%, bo od osoby na brzegu
+    rodziny poziomy są małe);
+  - **linia po liniach rodziny**, a nie na skos: autor mówił *„powoli linie idą odemnie do kolejnych osób”* ([[SPIKE-004-mvp-flow-prototype]] D26), a skos przecinałby inne osoby;
+  - **baner, gdy linia dojdzie do „Do”** — nazwa na końcu drogi, nie na początku; kadr zostawia mu miejsce u góry;
+  - **koniec podświetlenia:** każde działanie, które zmienia drzewo (dotknięcie, wstecz, poziom, rok, ▶, przesyłanie). Przeciąganie nie kończy, żeby dało się obejrzeć ścieżkę. Pierwsze
+    dotknięcie osoby tylko kończy podświetlenie, żeby przypadkowe dotknięcie nie przestawiło środka. **v1.17** (przegląd `ui` [[ISSUE-039-connect-two-people]], odstępstwo 3 `dev`): kończy je
+    też **zmiana danych drzewa** — osoby ścieżki mogły zniknąć albo zmienić rodzinę, a linia biegłaby po starym układzie;
+  - **wyszarzenie** (v1.17, odstępstwo 5 z przeglądu ISSUE-039 — w *Dev report* go nie ma): przy 30% są osoby spoza ścieżki i **wszystkie** linie rodziny ze śladami, także osób ze ścieżki.
+    Linie to jedna warstwa (plan D7: wyszarzenie grupy jedną warstwą), a linia rodziny przy osobie ze ścieżki prowadzi albo do osoby wyszarzonej, albo leży pod linią w akcencie. Ślad
+    dalszej rodziny przy osobie ze ścieżki w czasie podświetlenia niczego nie dodaje. *Obali:* autor na emulatorze gubi, gdzie osoba ze ścieżki ma dalszą rodzinę — wtedy linie i ślady osób
+    ze ścieżki w pełnym kryciu, w osobnej warstwie;
+  - **okno:** okno z dwoma kaflami, jak chciał autor (*„pojawia mi się pop-up z dwoma kaflami”*, SPIKE-004 D26). Lista — tryb wyboru jak „Która osoba to Ty?” (`MePickerScreen`,
+    [[style-b]] reguła 12), bez osoby z drugiego kafla (ta sama osoba nie ma ścieżki). Każde otwarcie zaczyna od „Ja”;
+  - **tryb prezentacji bez „Połącz dwie osoby”** w MVP — nie ma tam paska z ikonami, a „Przesyłaj na telewizor” kończy podświetlenie. Ścieżka na telewizorze to wejście do
+    [[2026-10-14-opowiesc-rodziny-i-wieniec]];
+  - **pigułka poziomu** nie pokazuje się przy przejściu do ścieżki — w tym miejscu stoi baner.
+
+  *Obali:* autor na emulatorze chce kończyć podświetlenie tylko przez wstecz albo chce, żeby okno pamiętało ostatnie „Od”.
 
 ## Open
 1. ~~⚠️ OPEN — sterowanie poziomami — nowy wygląd~~ — rozstrzygnięte 2026-10-13: S2 (element 3), 4 progi (autor na stopie #1
    SPIKE-002: *„Tak”*).
-1a. **Ikona „Połącz dwie osoby”** (element 1): `conversion_path` **nie istnieje** w `Icons` Fluttera 3.41.1 (sprawdzone w SDK
+1a. ~~⚠️ OPEN — ikona „Połącz dwie osoby”~~ — **rozstrzygnięte 2026-10-14: A1** `link_outlined` (stop #1 [[ISSUE-039-connect-two-people]], *„Tak”*; D44). Zapis sprzed
+   decyzji: (element 1) `conversion_path` **nie istnieje** w `Icons` Fluttera 3.41.1 (sprawdzone w SDK
    2026-10-09, przy [[osoba]] D18). Do wyboru przy pozycji drzewa: `link` (jak „Jak łączy się ze mną” w [[osoba]] — ta sama
-   idea) albo własna ikona wektorowa.
+   idea) albo własna ikona wektorowa. **v1.16:** kandydaci A1–A4 na makiecie `drzewo-039.html`, rekomendacja **A1** `link_outlined` (D44) — na stop #1
+   [[ISSUE-039-connect-two-people]], razem z *Open* 10.
 2. ~~⚠️ OPEN — pokazanie drzewa na telewizorze~~ — rozstrzygnięte 2026-10-13: D11.
 2a. ~~⚠️ OPEN — trzeci rodzaj linii (adopcja)~~ — nie (autor: *„linie są super”*).
 3. ~~⚠️ OPEN — czytelność ok. 100 osób na telefonie~~ — **rozstrzygnięte 2026-10-13 ([[SPIKE-002-tree-on-a-phone]] → *Findings*,
@@ -829,3 +1000,7 @@ z bliska, rok z kanapy. Wraca na [[ISSUE-032-mvp-install]] → *Hand checks* (te
    Zapis sprzed decyzji: ([[ISSUE-038-history-on-tv-and-tempo]], v1.14; kandydaci, pomiar i rekomendacja — *Candidates — ISSUE-038*, makieta
    `drzewo-038.html`). **Rekomendacja: L1, B2, V2, Z2** (D39–D42). Elementy 6 i 11, *Navigation*, *States*, *Sketch* i *AC → element* są zapisane według rekomendacji; przy innym
    wyborze `ui` zmienia je przed planem. V2 zmienia US-010 AC-3 (tempo zamiast „ok. 7 s”), a Z2 — D37. Na stop #1.
+10. ~~⚠️ OPEN — „Połącz dwie osoby”: A, W, F, O, Y~~ — **rozstrzygnięte 2026-10-14: A1, W2, F2, O2, Y1** (stop #1 [[ISSUE-039-connect-two-people]], *„Tak”*; D44–D48).
+   Zapis sprzed decyzji: ([[ISSUE-039-connect-two-people]], v1.16; kandydaci, pomiar i rekomendacja — *Candidates — ISSUE-039*, makieta
+   `drzewo-039.html`). **Rekomendacja: A1, W2, F2, O2, Y1** (D44–D48), do tego decyzje projektowe D49. Elementy 1, 7–10, *Navigation*, *States*, *Sketch* i *AC → element* są
+   zapisane według rekomendacji; przy innym wyborze `ui` zmienia je przed planem. Y1 zmienia D37 (ścieżka ustawia „dziś”), F1 zmieniłoby brzmienie US-011 AC-2. Na stop #1.

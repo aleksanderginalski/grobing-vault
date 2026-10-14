@@ -21,10 +21,12 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
 - **Po [[2026-10-13-retro-03]] (R1–R10, decyzja autora 2026-10-13):** ~~[[ISSUE-031-command-guard]]~~ i ~~[[SPIKE-002-tree-on-a-phone]]~~ —
   zamknięte 2026-10-13 (*Recently done*). Dalej droga do instalacji MVP: ~~[[US-009-drzewo-od-osoby]]~~ **zamknięta 2026-10-14** (~~ISSUE-033~~,
   ~~ISSUE-034~~, ~~ISSUE-035~~, ~~ISSUE-036~~); ~~[[US-010-czas-na-drzewie]]~~ **zamknięta 2026-10-14** (~~ISSUE-037~~, ~~ISSUE-038~~ — historia na telewizorze i
-  tempo, zamknięte 2026-10-14). **Następna: [[US-011-polacz-dwie-osoby]]** (kolejność autora z 2026-10-14) — US bez ISSUE, a ekran zmienia się, więc rozpisanie i `ui` →
-  `planning` (*Do retro*: US bez ISSUE na starcie łańcucha).
+  tempo, zamknięte 2026-10-14); ~~[[US-011-polacz-dwie-osoby]]~~ **zamknięta 2026-10-14** (~~ISSUE-039~~). **Wszystkie US
+  [[EPIC-003-zrozumienie]] zamknięte** (EPIC zostaje `draft` do instalacji — jego rzeczy w ręce są na [[ISSUE-032-mvp-install]] → *Hand checks*). **Następna:
+  [[US-006-eksport-dla-rodziny]]** (punkt 8 drogi niżej; `ready`, bez ISSUE — rozpisanie `docs` przed `ui`, jak przy US-011; nowy ekran eksportu → `ui` z
+  makietą), potem [[NT-007-hand-over-note]].
 
-  Specyfikacja: [[drzewo]] v1.15, [[osoba]] v2.4, [[style-b]] v1.31.
+  Specyfikacja: [[drzewo]] v1.17, [[osoba]] v2.4, [[style-b]] v1.31.
 - **Prawdziwe dane rodziny dopiero po instalacji MVP** (decyzja autora 2026-10-08 w `/pm`): budujemy produkt gotowy do
   instalacji na telefonie (MVP = brief §5, M1–M11); do tego czasu autor ocenia aplikację na wymyślonych danych. Rozmowa z babcią
   (~2026-11-02) jest na kartce, a odpowiedzi trafią do aplikacji po instalacji.
@@ -40,8 +42,8 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   7. ~~[[SPIKE-002-tree-on-a-phone]]~~ — zamknięty 2026-10-13 → ~~[[US-009-drzewo-od-osoby]]~~ — zamknięta 2026-10-14 (~~ISSUE-033~~, ~~ISSUE-034~~,
      ~~ISSUE-035~~, ~~ISSUE-036~~; drzewo od osoby, S2, ślad dalszej rodziny, słownik nazw złożonych, „Pokaż w drzewie”, tryb prezentacji, „Przesyłaj na
      telewizor”) → ~~[[US-010-czas-na-drzewie]]~~ — zamknięta 2026-10-14 (~~ISSUE-037~~; suwak czasu, daty niepewne, „//”; ~~ISSUE-038~~ — historia na telewizorze i
-     tempo) → **[[US-011-polacz-dwie-osoby]]** (następna; [[drzewo]] elementy 7–10, [[EPIC-003-zrozumienie]]);
-  8. [[US-006-eksport-dla-rodziny]] i [[NT-007-hand-over-note]];
+     tempo) → ~~[[US-011-polacz-dwie-osoby]]~~ — zamknięta 2026-10-14 (~~ISSUE-039~~; okno „Połącz dwie osoby”, ścieżka na drzewie, baner);
+  8. **[[US-006-eksport-dla-rodziny]]** (następna) i [[NT-007-hand-over-note]];
   → **[[ISSUE-032-mvp-install]]** (`draft`): audyt pól modelu ↔ ekrany (R9), lista rzeczy niesprawdzonych w ręce (R8), warunki
   przed pierwszymi danymi → build release na telefonie → prawdziwe dane ([[NT-002-transcribe-the-notes]]).
   Wpisy o zamkniętych pozycjach: retro 3 → *Archive*.
@@ -89,7 +91,14 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   - **tabliczka imienia zasłania ślad dalszej rodziny w dół przy oddaleniu** ([[ISSUE-035-tree-names-shrink-my-voice]] → *Verification*, przegląd
     `ui`, MINOR od [[ISSUE-033-tree-from-a-person]]): przy I2 tabliczka rośnie o 1/skala, a kreska „dzieci poza widokiem” (D9) zaczyna się w stałym
     miejscu pod imieniem — przy tekście 100% znika od skali ok. 0,48, przy 200% od ok. 0,65; na poziomie 2 zostaje. Poprawka: kreska od dolnej
-    krawędzi tabliczki na ekranie. Kandydat na małą pozycję.
+    krawędzi tabliczki na ekranie. Kandydat na małą pozycję. Przegląd `ui` [[ISSUE-039-connect-two-people]] dorzucił obok: linia od pary do dzieci biegnie
+    tuż przy końcu tabliczki długiego imienia („Agnieszka”) — przy ścieżce w akcencie bardziej to widać;
+  - **rodzeństwo przyrodnie w słowniku** ([[ISSUE-039-connect-two-people]] → *Dev report* → *Found, poza pozycją*): przyrodni brat dziadka to „Syn mojej
+    prababci” — w karcie i na banerze „Połącz dwie osoby”. `KinGraph` łączy rodzeństwem tylko dzieci tej samej rodziny, a słownik
+    ([[ISSUE-025-gender-kinship-together-since]] D2) nie ma „przyrodni”. Kandydat na małą pozycję, przed prawdziwymi danymi (powtórne związki są w notatkach);
+  - **imiona przy ścieżce przy tekście 200%** ([[ISSUE-039-connect-two-people]] → *Verification*, obserwacja): przy długiej ścieżce w skali ok. 0,17 imiona dwóch osób
+    ścieżki chowają się (nachodzą na inne imiona ścieżki), a wyszarzone imię spoza ścieżki, które na nic nie nachodzi, zostaje. Do oceny autora — np. bez imion
+    wyszarzonych w trakcie podświetlenia.
 - **Przed pierwszymi prawdziwymi danymi w aplikacji:** kopia jest gotowa (US-001 ✅), poprawki z retro 2 też
   ([[ISSUE-021-small-fixes-after-retro-2]] ✅). Zostały hasło i
   miejsce pliku klucza w notce przekazania ([[NT-007-hand-over-note]]): utrata któregoś z nich = utrata
@@ -130,7 +139,9 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     (wymyślone dane), logi testów i klatek — do kosza. Z sesji ISSUE-037 (`555909c3-…\scratchpad\`): cały katalog do kosza — makieta `drzewo-037.html`, zrzuty
     `shots-037\`, `shots-emu\` (wymyślone; makieta ISSUE-038 już z nich powstała), `base\` (kopia drzewa roboczego `grobing-code` z buildem, ok. 0,5 GB, **bez**
     `key.properties`), `fjar\`, `ref\` (PDF-y TimeNets i genogramu), logi klatek i skrypty. Z sesji ISSUE-038 (`baf00b7b-…\scratchpad\`): makieta `drzewo-038.html`, zrzuty
-    `shots-038\` i `shots-emu\` (wymyślone), `base\` (dwa APK profile, ok. 80 MB), `chr\` (profil Chrome bez okna), źródła Media3, skrypty — do kosza;
+    `shots-038\` i `shots-emu\` (wymyślone), `base\` (dwa APK profile, ok. 80 MB), `chr\` (profil Chrome bez okna), źródła Media3, skrypty — do kosza. Z sesji ISSUE-039
+    (`0558e715-…\scratchpad\`): makieta `drzewo-039.html` z częściami (`parts\`), zrzuty `shots-039\` i `emu\shots\` (wymyślone), `emu\base\` (APK profile ISSUE-038 i ISSUE-039,
+    ok. 80 MB), `chr\` (profil Chrome bez okna), wyniki testów i skrypty — do kosza;
   - **repo nie mają pliku `LICENSE`** — kod można oglądać, ale nie wolno go używać. Licencję można dodać później.
 - **Emulatory (po ISSUE-033):** `Medium_Phone` — release v12 na danych testowych autora, kopia skonfigurowana od nowa z hasłem
   testowym (wymyślone, z sesji ISSUE-029), pliki `grobing-klucz-029.age` i `grobing-kopia-029.age` w Pobranych; grób „Jozef” ma
@@ -144,7 +155,9 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   tylko naprzemienne z buildem odniesienia (ISSUE-037 → *Dev report* → *Measurements*). **Po ISSUE-038:** build profile z tempem i historią w trybie prezentacji (`FRAME_LOG`);
   tekst, gęstość i animacje domyślne, „Czas na działanie” usunięty, TalkBack wyłączony (okno zgody TalkBack na powiadomienia zamknięte „Nie zezwalaj”). Build odniesienia
   do pomiaru klatek: APK zainstalowany na emulatorze, ściągnięty przed instalacją nowego (`adb shell pm path com.grobing.app`, `adb pull`; sposób z ISSUE-038) — kopia drzewa
-  roboczego niepotrzebna.
+  roboczego niepotrzebna. **Po ISSUE-039:** build profile z „Połącz dwie osoby” (`FRAME_LOG`, `--split-per-abi`, bo zainstalowany ma `versionCode` 4001); dane aplikacji
+  wyczyszczone (`pm clear`) i wymyślona rodzina dodana od nowa — **107 osób, z Teofilem bez rodziny**; tekst, gęstość, animacje i „Czas na działanie” domyślne. Klatki tego dnia:
+  przestawienie środka 52–57% wolnych w obu buildach (przy ISSUE-033 2–8%) — porównanie tylko naprzemienne.
 - **[[EPIC-002-wizyta]] gotowy do rozpisania na US** — pytanie „jak znaleźć grób bez pinezki” ma kierunek autora
   (2026-10-08): adres z wyszukiwarki zarządcy → kwatera zaznaczona według planu zarządcy → na miejscu plan offline i
   GPS → pinezka. Wejście do pierwszej US (mapa cmentarza): EPIC-002 → *Input from SPIKE-001*. Ekran: `ui` →
@@ -161,7 +174,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   paczki (decyzja autora 2026-10-07); treść wychodzących zmian sprawdza strażnik treści ([[ISSUE-020-content-guard]]) przy każdym `git add`/`commit`.
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **8** (ostatnie retro: [[2026-10-13-retro-03]]). Co **10** → retro + pytanie o 3–5
+- Zamknięte pozycje od ostatniego retro: **9** (ostatnie retro: [[2026-10-13-retro-03]]). Co **10** → retro + pytanie o 3–5
   nośnych faktów (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**; podbija go `docs` przy zamknięciu, a zeruje go retro.
 - Do retro (zebrane po drodze, bez decyzji):
   - **US bez ISSUE na starcie łańcucha** ([[ISSUE-033-tree-from-a-person]]): `pm` skierował [[US-009-drzewo-od-osoby]] prosto do `ui`, a plan nie miał
@@ -198,6 +211,15 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     nie wykonało ([[ISSUE-031-command-guard]] działa). Kandydat: nic do zmiany, wpis jako dowód mechanizmu.
   - **Stop #2 „pomiń” we wszystkich krokach** ([[ISSUE-038-history-on-tv-and-tempo]]): trzy kroki odczucia na emulatorze, a odpowiedź jedna. Lista [[ISSUE-032-mvp-install]] →
     *Hand checks* rośnie o pozycję (siedem wierszy). Kandydat: pytanie na retro, czy kroki odczucia przy pozycjach z telewizorem odkładać od razu do telefonu z telewizorem.
+    **Drugi raz z rzędu** w [[ISSUE-039-connect-two-people]] (bez telewizora): trzy kroki, „Pomiń”. Lista *Hand checks* ma już ponad 40 wierszy.
+  - **Pomiar makiety dołożył pytanie przed stopem #1** ([[ISSUE-039-connect-two-people]], `ui`): AC-2 „ustawia ścieżkę w kadrze” na 360 dp nie zawsze się da (10 ze 105 ścieżek
+    nawet przy 0,4) — stąd F1/F2. Dowód, że kandydaci z pomiarem przed rekomendacją (retro 2, R6) łapią rzeczy, których AC nie widziało; test układu potwierdził liczbę makiety (9
+    ścieżek „4 +”).
+  - **Przegląd `ui` znalazł MAJOR po zielonym przejściu i testach** ([[ISSUE-039-connect-two-people]]): imiona przy kadrze F2 przy 200% — przejście `dev` przy 200% szło krótką
+    ścieżką (Piotr → Zofia), a najszersza ścieżka (Zdzisław) tylko przy 100%. Kandydat: przy regule „mieści się / kadr” przejście 200% na **najgorszym** przypadku z pomiaru, nie na przykładzie.
+  - **Test trafiał w kartę pod listą** ([[ISSUE-039-connect-two-people]], `qa`): `find.text('Wanda …')` znajdował kartę drzewa pod ekranem wyboru, więc dotknięcie szło w inną osobę
+    i siedem testów padło z mylącymi powodami. Kandydat: w testach z kilkoma trasami na ekranie szukać w trasie (`find.descendant(of: ekran)`).
+  - **Strażnik komend złapał `python -I -` drugi raz** ([[ISSUE-039-connect-two-people]], `qa`) — odmowa przy próbie, nic się nie wykonało; dowód mechanizmu jak w ISSUE-038.
   - Poprzednią listę rozliczyło [[2026-10-13-retro-03]] → *The "Do retro" list*.
 
 ## Parked (waiting on someone outside the session)
@@ -218,6 +240,21 @@ Format wpisu: `źródło (babcia / cmentarz X) · pytanie bez danych rodziny · 
 ## Recently done
 > Tylko wpisy od ostatniego retro ([[2026-10-13-retro-03]], R5). Starsze są w plikach retro → *Archive*:
 > [[2026-10-13-retro-03]] · [[2026-10-08-retro-02]] · [[2026-10-06-retro-01]].
+
+- 2026-10-14 — [[ISSUE-039-connect-two-people]] zamknięte — **[[US-011-polacz-dwie-osoby]] zamknięta** (AC-1–AC-4), **wszystkie US [[EPIC-003-zrozumienie]] zamknięte**.
+  **„Połącz dwie osoby” na drzewie:**
+  - rozpisanie `docs` przed `ui` (lekcja z *Do retro*); prior art ([[drzewo]] D43): FamilySearch — ścieżka tylko od „mnie”; Snackbar Androida bierze czas z „Czasu na działanie”
+    (flaga treści, bez sterowania); WCAG SC 4.1.3. Pomiar makiety: 10 ze 105 ścieżek od „Ja” nie mieści się na 360 dp nawet przy 0,4 → pytanie F;
+  - **decyzje autora na stopie #1 (*„Tak”*):** A1 — ikona `link_outlined` · W2 — „Do” w środku, karta trzyma nazwę · F2 — drzewo maleje, aż cała ścieżka się zmieści ·
+    O2 — przy „Od” innym niż Ty dwie linie bez odmiany imion („Piotr Przykładowy → Zofia Wymyślona” / „Wnuczka”) · Y1 — ścieżka ustawia „dziś”; bez „ja” ikony nie ma;
+    Teofil Przykładowski (bez rodziny) w wymyślonej rodzinie;
+  - linia w akcencie po liniach rodziny, 0,7 s na krok, reszta przy 30% i poza czytnikiem; baner po dojściu linii, 4 s albo dłużej z ustawienia; koniec podświetlenia na każde
+    działanie z D49;
+  - **złapane przed stopem:** kadr za wysoko przy klawiaturze, baner zasłaniający ścieżkę przy 200% (`dev`), węzeł baneru dla czytnika (test `qa`), imiona poza kadrem F2 przy 200%
+    (MAJOR przeglądu `ui`) i 5 MINOR → [[drzewo]] v1.17.
+
+  Stop #2 „pomiń”; pięć wierszy na [[ISSUE-032-mvp-install]] → *Hand checks*. Rodzeństwo przyrodnie w słowniku → *Poza tą kolejnością*. Testy: 773 zielone. Werdykt `qa`:
+  APPROVED (self-check, z uwagami). Licznik retro: 8 → 9.
 
 - 2026-10-14 — [[ISSUE-038-history-on-tv-and-tempo]] zamknięte ([[US-010-czas-na-drzewie]] AC-3 — nowe brzmienie). **Historia na telewizorze i tempo lat:**
   - prior art ([[drzewo]] D38): skala TV Androida (36 sp dla liczb), margines 5% (48 dp), wysokość znaku w kącie widzenia (ISO 9241: min. 16′); rok w 36 sp ma z 3 m 23–46′
