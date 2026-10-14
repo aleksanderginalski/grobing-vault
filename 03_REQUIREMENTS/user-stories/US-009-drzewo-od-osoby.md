@@ -8,13 +8,13 @@ moscow: [M9]
 journey-steps: "n/a — funkcja widoku 5 (PROJECT_BRIEF §4a)"
 FR: ["[[FR-002-rodzina-jako-rekord]]"]
 NFR: ["[[NFR-005-dane-nie-opuszczaja-telefonu]]"]
-issues: ["[[ISSUE-033-tree-from-a-person]]", "[[ISSUE-034-tree-presentation-mode]]"]
+issues: ["[[ISSUE-033-tree-from-a-person]]", "[[ISSUE-034-tree-presentation-mode]]", "[[ISSUE-035-tree-names-shrink-my-voice]]", "[[ISSUE-036-cast-from-the-app]]"]
 quality-verdict: pending
 verdict-date: null
 verdict-reviewer: null
 source: "[[SPIKE-002-tree-on-a-phone]] → *Findings*, *Rekomendacja* · [[drzewo]] v1.4 (elementy 1–5, D1–D3, D6, D8–D11) · [[SPIKE-004-mvp-flow-prototype]] D20, D25 · [[ISSUE-024-person-view]] (dawne AC-6)"
 created: 2026-10-13
-updated: 2026-10-13
+updated: 2026-10-14
 ---
 
 # US-009 — Drzewo od osoby
@@ -35,14 +35,17 @@ na kolejne osoby, **żeby** zrozumieć, jak łączą się ze sobą ludzie z grob
 - **AC-5 — nazwa pokrewieństwa w karcie** (dawne AC-6 [[ISSUE-024-person-view]]). *Given* ścieżka Ja → tata → jego rodzic → jego córka
   *Then* karta mówi „ciotka”; brat ojca — „stryj”, brat matki — „wuj”; dziecko siostry ojca — „brat/siostra cioteczna”; dalsze
   pokrewieństwo — opis z odcinków („Siostra cioteczna babci Twojej żony”, [[drzewo]] D6, D12; „Twojej” — decyzja autora G1 na stopie #1
-  [[ISSUE-033-tree-from-a-person]], 2026-10-13). Słownik ze źródłem:
+  [[ISSUE-033-tree-from-a-person]], 2026-10-13; **zmieniona na G2 „mojej”** na stopie #1 [[ISSUE-034-tree-presentation-mode]], 2026-10-14 —
+  buduje [[ISSUE-035-tree-names-shrink-my-voice]]). Słownik ze źródłem:
   [[ISSUE-025-gender-kinship-together-since]] → *Prior art* i D2.
 - **AC-6 — „Pokaż w drzewie”.** *When* w widoku osoby dotykam „Pokaż w drzewie” *Then* drzewo otwiera się z tą osobą w środku
   ([[osoba]] D11).
 - **AC-7 — tekst 200% na 360 dp.** Imiona nie są ucięte tak, że mylą osoby (miejsce osoby rośnie z tekstem jak w mini-drzewie, najwyżej
   160 dp — [[osoba]] v2.2), inicjały mieszczą się w okręgu.
 - **AC-8 — tryb prezentacji** ([[drzewo]] D11). *When* włączam tryb prezentacji *Then* drzewo jest poziomo, na pełnym ekranie, na poziomie 2,
-  bez przycisków; obraz na telewizor daje systemowe „Przesyłaj ekran”. *Może wyjść do osobnej pozycji przy planowaniu.*
+  bez przycisków; obraz na telewizor daje systemowe przesyłanie ekranu (nazwa kafelka zależy od telefonu — [[drzewo]] D26). Zbudowane w
+  [[ISSUE-034-tree-presentation-mode]]; wejście jednym przyciskiem z aplikacji („jak „Przesyłaj” w Zdjęciach”, decyzja autora na stopie #2
+  ISSUE-034) → [[ISSUE-036-cast-from-the-app]].
 
 ## Out of scope
 - Czas na drzewie → [[US-010-czas-na-drzewie]]; „Połącz dwie osoby” → [[US-011-polacz-dwie-osoby]].
@@ -55,3 +58,7 @@ na kolejne osoby, **żeby** zrozumieć, jak łączą się ze sobą ludzie z grob
 - **Wejścia z *Findings*:** optymalizacja rysowania przy przejściu między poziomami (M3), skala S2 z osi x, a nie z
   `getMaxScaleOnAxis()`, imiona przy oddalaniu ([[drzewo]] *Open* 5), ikona „Połącz dwie osoby” ([[drzewo]] *Open* 1a).
 - Na fizycznym telefonie (czas „kim jest X dla mnie”, płynność, progi S2) → [[ISSUE-032-mvp-install]] → *Hand checks*.
+- **Stan (2026-10-14):** AC-1–AC-8 zbudowane ([[ISSUE-033-tree-from-a-person]], [[ISSUE-034-tree-presentation-mode]]). US zostaje otwarta: autor
+  zmienił imiona przy oddalaniu na I1 i głos karty na G2 (AC-5) → [[ISSUE-035-tree-names-shrink-my-voice]], a wejście w przesyłanie ekranu
+  chce mieć w aplikacji → [[ISSUE-036-cast-from-the-app]]. Casting, w którym telewizor sam rysuje drzewo (odbiornik Google Cast) — po MVP i tylko
+  gdy przesyłanie ekranu nie wystarczy (wymaga zmiany [[NFR-005-dane-nie-opuszczaja-telefonu]]).

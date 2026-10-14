@@ -3,7 +3,7 @@ title: "Grobing — Current State"
 type: meta
 status: active
 created: 2026-10-05
-updated: 2026-10-13
+updated: 2026-10-14
 ---
 
 # Grobing — Current State
@@ -19,9 +19,13 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
 
 ## In progress
 - **Po [[2026-10-13-retro-03]] (R1–R10, decyzja autora 2026-10-13):** ~~[[ISSUE-031-command-guard]]~~ i ~~[[SPIKE-002-tree-on-a-phone]]~~ —
-  zamknięte 2026-10-13 (*Recently done*). Dalej droga do instalacji MVP — **w toku: [[US-009-drzewo-od-osoby]]** (punkt 7 niżej),
-  rozpisana 2026-10-13 na ~~[[ISSUE-033-tree-from-a-person]]~~ (AC-1–AC-7, zamknięte 2026-10-13) i **następna: [[ISSUE-034-tree-presentation-mode]]**
-  (AC-8, tryb prezentacji). Specyfikacja: [[drzewo]] v1.7, [[osoba]] v2.4, [[style-b]] v1.27.
+  zamknięte 2026-10-13 (*Recently done*). Dalej droga do instalacji MVP — **w toku: [[US-009-drzewo-od-osoby]]** (punkt 7 niżej):
+  ~~[[ISSUE-033-tree-from-a-person]]~~ (AC-1–AC-7) i ~~[[ISSUE-034-tree-presentation-mode]]~~ (AC-8) zamknięte; **zostały dwie pozycje z decyzji
+  autora 2026-10-14**, obie `ui` → `planning`, kolejność ustala `pm` z autorem:
+  - [[ISSUE-035-tree-names-shrink-my-voice]] — imiona maleją przy oddalaniu (I1) i karta mówi „Moja babcia” (G2), zamiast zbudowanych I2 i G1;
+  - [[ISSUE-036-cast-from-the-app]] — przycisk „Przesyłaj” w drzewie otwiera systemową listę przesyłania ekranu (jak „Przesyłaj” w Zdjęciach).
+
+  Specyfikacja: [[drzewo]] v1.8, [[osoba]] v2.4, [[style-b]] v1.27.
 - **Prawdziwe dane rodziny dopiero po instalacji MVP** (decyzja autora 2026-10-08 w `/pm`): budujemy produkt gotowy do
   instalacji na telefonie (MVP = brief §5, M1–M11); do tego czasu autor ocenia aplikację na wymyślonych danych. Rozmowa z babcią
   (~2026-11-02) jest na kartce, a odpowiedzi trafią do aplikacji po instalacji.
@@ -34,7 +38,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   6. ~~[[US-008-pinezka-na-miejscu]]~~ — zamknięta 2026-10-12 (~~ISSUE-029~~). **Teren czeka:** build release na
      telefonie przed zaduszkami (~2026-11-02) → *Parked* (cel autora z `/pm`: jedna wizyta da pomiar i sprawdzenie AC-1, AC-4).
      Kandydaci z [[cmentarz]] D29 i nachodzące znicze → [[ISSUE-030-sector-on-a-visit]] (`draft`, **czeka na wizytę** — D5, stop #1);
-  7. ~~[[SPIKE-002-tree-on-a-phone]]~~ — zamknięty 2026-10-13 → **w toku: [[US-009-drzewo-od-osoby]]** (~~ISSUE-033~~ → ISSUE-034; drzewo od osoby, S2, ślad dalszej
+  7. ~~[[SPIKE-002-tree-on-a-phone]]~~ — zamknięty 2026-10-13 → **w toku: [[US-009-drzewo-od-osoby]]** (~~ISSUE-033~~, ~~ISSUE-034~~ → ISSUE-035, ISSUE-036; drzewo od osoby, S2, ślad dalszej
      rodziny, słownik nazw złożonych — dawne AC-6 ISSUE-024, „Pokaż w drzewie”, tryb prezentacji) → [[US-010-czas-na-drzewie]] →
      [[US-011-polacz-dwie-osoby]] ([[drzewo]] v1.4, [[EPIC-003-zrozumienie]]);
   8. [[US-006-eksport-dla-rodziny]] i [[NT-007-hand-over-note]];
@@ -111,12 +115,15 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   - **katalogi tymczasowe sesji** w `%TEMP%\claude\c--Programowanie-Grobing-grobing-agents\` (poza bieżącą sesją): makiety,
     prototypy, zrzuty, pliki Natural Earth i kopie `-0NN` z wymyślonymi danymi — do kosza. Z drzewa zostały: `220a9b6c-…\scratchpad\drzewo-spike002.html`
     (makieta kandydatów SPIKE-002) i `c3868f5f-…\scratchpad\` — makieta `drzewo-us009.html`, zrzuty `shots-033\`, kopia bazy testowej
-    `test-grobing.db` i kopia konfiguracji AVD (wszystko wymyślone) — przydadzą się przy [[ISSUE-034-tree-presentation-mode]], potem do kosza;
+    `test-grobing.db` i kopia konfiguracji AVD (wszystko wymyślone) — makieta przyda się przy [[ISSUE-035-tree-names-shrink-my-voice]], potem do
+    kosza. Z sesji ISSUE-034 (`940e38e7-…\scratchpad\`): zrzuty `shots-034\`, kopie bazy testowej `test-034*.db` (wymyślone), APK SystemUI z
+    emulatora (`sysui\`, ok. 45 MB, do odczytu nazwy kafelka) i skrypty — do kosza;
   - **repo nie mają pliku `LICENSE`** — kod można oglądać, ale nie wolno go używać. Licencję można dodać później.
 - **Emulatory (po ISSUE-033):** `Medium_Phone` — release v12 na danych testowych autora, kopia skonfigurowana od nowa z hasłem
   testowym (wymyślone, z sesji ISSUE-029), pliki `grobing-klucz-029.age` i `grobing-kopia-029.age` w Pobranych; grób „Jozef” ma
   pinezkę z poprawki autora; **wyłączony** na czas ISSUE-033, dane nietknięte. `Grobing_Restore` — **build profile** (podpis debug,
-  `--dart-define=FRAME_LOG=true` — czasy klatek w logcat `GROBING_FRAME`) z wymyśloną rodziną do drzewa (106 osób, „ja” = Mateusz); release z
+  `--dart-define=FRAME_LOG=true` — czasy klatek w logcat `GROBING_FRAME`; od ISSUE-034 z trybem prezentacji, systemowe okno „Viewing full screen”
+  już potwierdzone, ustawienia ekranu i nawigacja gestami jak przed testami) z wymyśloną rodziną do drzewa (106 osób, „ja” = Mateusz); release z
   danymi kopii `-029` odinstalowany (D5 ISSUE-033); **`hw.gpu.enabled=yes`** (było `no` — rysowanie programowe zawyżało czasy klatek). Release na
   `Grobing_Restore` wymaga odinstalowania profile (inny podpis). Następna pozycja z kopią: nowe hasło testowe.
 - **[[EPIC-002-wizyta]] gotowy do rozpisania na US** — pytanie „jak znaleźć grób bez pinezki” ma kierunek autora
@@ -135,12 +142,18 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   paczki (decyzja autora 2026-10-07); treść wychodzących zmian sprawdza strażnik treści ([[ISSUE-020-content-guard]]) przy każdym `git add`/`commit`.
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **3** (ostatnie retro: [[2026-10-13-retro-03]]). Co **10** → retro + pytanie o 3–5
+- Zamknięte pozycje od ostatniego retro: **4** (ostatnie retro: [[2026-10-13-retro-03]]). Co **10** → retro + pytanie o 3–5
   nośnych faktów (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**; podbija go `docs` przy zamknięciu, a zeruje go retro.
 - Do retro (zebrane po drodze, bez decyzji):
   - **US bez ISSUE na starcie łańcucha** ([[ISSUE-033-tree-from-a-person]]): `pm` skierował [[US-009-drzewo-od-osoby]] prosto do `ui`, a plan nie miał
     pliku, w którym mógłby stanąć — `planning` zawołał `docs` do rozpisania w środku łańcucha. Przy US-007 i US-008 rozpisanie (`docs`) szło przed
     `ui`; tabela *Routing* w `pm` tego kroku nie zna.
+  - **Makieta podana jako ścieżka z `%TEMP%` się nie otwiera** ([[ISSUE-034-tree-presentation-mode]], stop #1): przeglądarka nie rozwija `%TEMP%`.
+    Autor otworzył `drzewo-us009.html` dopiero z adresem `file:///` i zmienił dwie decyzje ze stopu #1 ISSUE-033 (I2 → I1, G1 → G2) — tamto „Tak”
+    zapadło najpewniej bez makiety. Koszt: jedna pozycja ([[ISSUE-035-tree-names-shrink-my-voice]]).
+  - **Słowa techniczne przy wyborze techniki** ([[ISSUE-034-tree-presentation-mode]], stop #2): D11 („Przesyłaj ekran” + tryb, bez Google Cast)
+    przyjęte na stopie #1 SPIKE-002, a autor rozumiał „tryb telewizora” jak przesyłanie w YouTube. Różnica *casting* / *przesyłanie ekranu* wyszła
+    dopiero na stopie #2, po budowie.
   - Poprzednią listę rozliczyło [[2026-10-13-retro-03]] → *The "Do retro" list*.
 
 ## Parked (waiting on someone outside the session)
@@ -161,6 +174,21 @@ Format wpisu: `źródło (babcia / cmentarz X) · pytanie bez danych rodziny · 
 ## Recently done
 > Tylko wpisy od ostatniego retro ([[2026-10-13-retro-03]], R5). Starsze są w plikach retro → *Archive*:
 > [[2026-10-13-retro-03]] · [[2026-10-08-retro-02]] · [[2026-10-06-retro-01]].
+
+- 2026-10-14 — [[ISSUE-034-tree-presentation-mode]] zamknięte ([[US-009-drzewo-od-osoby]] AC-8). **Tryb prezentacji drzewa — obraz na telewizor
+  przez systemowe przesyłanie ekranu:**
+  - ikona telewizora w pasku drzewa → poziomo, bez pasków systemu i przycisków, poziom 2 dopasowany do ekranu; dotknięcie osoby — ona w środku;
+    pusty dotyk → na 3 s „Zakończ prezentację”; wstecz też kończy; po wyjściu pion, ta sama osoba, karta. Bez sieci i nowych uprawnień;
+  - krok 0: `immersiveSticky` działa przy `targetSdk 36` (dokumentacja Fluttera w SDK twierdziła, że nie) — kanał natywny niepotrzebny;
+  - **błąd złapany na emulatorze:** paski chowane w trakcie obrotu zostawiały aplikację w pionowym rozmiarze w poziomym oknie (6 z 8 wejść przy
+    200%) — paski dopiero po obrocie, 16 z 16; przeciągnięcie od krawędzi przesuwało drzewo — pasy 24 dp przy czterech krawędziach;
+  - przegląd `ui`: 0 BLOCKER, 0 MAJOR, 2 MINOR poprawione; 6 odstępstw przyjętych → [[drzewo]] v1.8 (D25, D26 — podpowiedź mówi o funkcji, bo
+    kafelek to „Przesyłanie” na Pixelu, „Smart View” u Samsunga);
+  - **decyzje autora:** stop #1 — I1 i „Moja” (osobna pozycja [[ISSUE-035-tree-names-shrink-my-voice]]); stop #2 — chciał „jak w YouTube”:
+    zostaje przesyłanie ekranu (jego telewizor to odbiornik Google Cast), wejście z aplikacji → [[ISSUE-036-cast-from-the-app]], casting — po MVP.
+
+  Stop #2 „ok” — krok 1 ze śladem, krok 2 częściowo; sześć wierszy na [[ISSUE-032-mvp-install]] → *Hand checks*. Testy: 727 zielonych. Werdykt
+  `qa`: APPROVED (self-check, z uwagami). Licznik retro: 3 → 4.
 
 - 2026-10-13 — [[ISSUE-033-tree-from-a-person]] zamknięte ([[US-009-drzewo-od-osoby]] AC-1–AC-7). **Zakładka Drzewo działa — od „Ja”, z poziomami:**
   - wymyślona rodzina o kształcie prawdziwej (106 osób, debug i profile — przycisk w „Stanie danych”); układ = port makiety SPIKE-002, liczby

@@ -10,7 +10,7 @@ verdict-date: null
 verdict-reviewer: null
 source: "[[2026-10-13-retro-03]] R8, R9 · `CURRENT_STATE.md` → *Droga do instalacji MVP* (ostatni krok bez pozycji)"
 created: 2026-10-13
-updated: 2026-10-13
+updated: 2026-10-14
 ---
 
 # ISSUE-032 — Instalacja MVP na telefonie autora
@@ -82,6 +82,15 @@ Warunki — każdy ma swój dom, tutaj tylko lista:
 - „Pokaż w drzewie” z widoku osoby otwiera drzewo tam, gdzie się go spodziewasz — „ok” bez śladu ([[ISSUE-033-tree-from-a-person]], krok 3);
 - TalkBack na drzewie: opisy węzłów („…, Twoja babcia, w środek”) i pigułka poziomu — nieprzetestowane na żywo, tylko `uiautomator` i testy
   ([[ISSUE-033-tree-from-a-person]]).
+
+**Drzewo — tryb prezentacji** ([[ISSUE-034-tree-presentation-mode]] → *Verification*)
+- przesyłanie ekranu z trybu prezentacji na telewizor autora z kafelka szybkich ustawień — nieprzetestowane na żywo (emulator nie przesyła;
+  telewizor autora jest odbiornikiem Google Cast — zrzut autora z Zdjęć);
+- nazwa kafelka przesyłania ekranu na telefonie autora — podpowiedź mówi o funkcji ([[drzewo]] D26);
+- paski, obrót i przeciągnięcie od krawędzi na fizycznym telefonie, przy nawigacji, której używa autor — nieprzetestowane na żywo;
+- systemowe okno „pełny ekran” przy pierwszym wejściu — przed pierwszym pokazem wejść w tryb raz bez przesyłania;
+- TalkBack w trybie prezentacji — nieprzetestowane na żywo;
+- wyjście z trybu przyciskiem Wstecz — „ok” bez śladu (stop #2, krok 2; sprawdzone przez agenta i w teście).
 
 **Do decyzji autora, gdy zobaczy swoje cmentarze** (nie sprawdzenie, tylko wybór): grubość alejek i znicze, które nachodzą na
 siebie ([[cmentarz]] → *Open*, [[ISSUE-030-sector-on-a-visit]]).

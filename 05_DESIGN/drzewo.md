@@ -1,10 +1,10 @@
 ---
 screen: "Drzewo — rodzina od osoby, poziomy połączeń, czas; połącz dwie osoby"
-items: ["[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-024-person-view]]", "[[SPIKE-002-tree-on-a-phone]]", "[[US-009-drzewo-od-osoby]]", "[[ISSUE-033-tree-from-a-person]]"]
+items: ["[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-024-person-view]]", "[[SPIKE-002-tree-on-a-phone]]", "[[US-009-drzewo-od-osoby]]", "[[ISSUE-033-tree-from-a-person]]", "[[ISSUE-034-tree-presentation-mode]]"]
 us: "[[US-009-drzewo-od-osoby]] (M9) · [[US-010-czas-na-drzewie]] (M10) · [[US-011-polacz-dwie-osoby]] (M11) — [[EPIC-003-zrozumienie]]"
 journey-step: "widok 5 (M9–M11, R3)"
 mockup: "2026-10-13: drzewo-us009.html (US-009: imiona przy oddalaniu I1–I3, karta z nazwami pokrewieństwa, tekst 200%, tryb prezentacji, stany) — katalog tymczasowy sesji `c3868f5f-…\\scratchpad`; 2026-10-13: drzewo-spike002.html (SPIKE-002, kandydaci na 106 wymyślonych osobach) — `220a9b6c-…\\scratchpad`; wcześniej 2026-10-08: grobing-prototyp.html (SPIKE-004, panel 6, runda 2)"
-updated: 2026-10-13
+updated: 2026-10-14
 ---
 
 # Drzewo — specyfikacja
@@ -57,6 +57,13 @@ updated: 2026-10-13
 > *Deviations*): imię na tabliczce w kolorze tła zamiast obwódki liter (1 → D23, [[style-b]] v1.26) · drzewo nie ucieka z kadru (2, 3 → D21) ·
 > zmarły = zapisany zgon albo pochówek (4 → D22) · imię ucięte w miejscu osoby także przy 100% (5 → D24) · „Pokaż w drzewie” z widoku otwartego z
 > drzewa zaczyna drzewo od nowa (6 → D15) · źródło form dopełniacza (7 → D12). Odstępstwo 8 (ustawienie emulatora) nie dotyczy ekranu.
+>
+> **Wersja 1.8 — przegląd `ui` zbudowanego trybu prezentacji [[ISSUE-034-tree-presentation-mode]] (2026-10-14), przyjęte odstępstwa `dev`**
+> (*Dev report* → *Deviations*): dotknięcie osoby w środku dopasowuje poziom od nowa (1 → D25) · pasy przy krawędziach bez dotyku (2 → D25) ·
+> „Zakończ prezentację” chowa podpowiedź (3 → D25) · podpowiedź na 4 s nad górnym rzędem (4 → D26) · tekst 200% w trybie zostaje do pozycji I1 (5
+> → element 11, *Open* 5) · **podpowiedź bez nazwy kafelka** — na Pixelu po polsku kafelek to „Przesyłanie”, u Samsunga „Smart View”, więc tekst
+> mówi o funkcji, a nie o nazwie (6 → element 11, D26). **Zmiana decyzji autora** na stopie #1 ISSUE-034 (2026-10-14): *Open* 5 → **I1**, *Open* 6
+> → **G2** — buduje to osobna pozycja „drzewo: I1 i „Moja””; do tego czasu w kodzie są I2 i G1 (elementy 4, 5).
 
 ## Purpose
 Zobaczyć rodzinę wokół wybranej osoby i jak się łączy (M9), jak zmieniała się w czasie (M10) i jak dowolne dwie osoby
@@ -86,7 +93,7 @@ są spokrewnione (M11). Tak samo zbudowane jest mini-drzewo w [[osoba]] (element
 | 4 | **Drzewo**: rzędy według pokolenia (wyżej starsze), osoba w środku z pierścieniem w akcencie; rodzeństwo z boku osoby, po stronie dalszej od partnera; **rodzina partnera po prawej**, bez przeplatania z krewnymi. Węzeł 44 dp (profilowe albo inicjały), imię 13 sp półgrube (v1.2, D10); **zmarły ma znicz** w rogu węzła ([[style-b]] reguła 8, R3); zmarły = zapisany zgon albo pochówek, z datą albo bez (v1.7, D22). Linie: **rodzic–dziecko** — kolor relacji rodzic–dziecko, łamana z góry w dół; **małżeństwo** — kolor partnerów, ciągła, pozioma; **razem (bez ślubu)** — kolor partnerów, przerywana 5/4. **Ślad dalszej rodziny** (v1.3, D9): osoba z rodziną poza widokiem dostaje krótką przerywaną kreskę 3/3, 14 dp, w kolorze relacji o kryciu 60% — w górę rodzice, w dół dzieci, w bok partner, **na zewnątrz od środka** (na lewo od osoby w środku — w lewo, na prawo i u niej samej — w prawo; v1.7, przegląd `ui` ISSUE-033: zawsze w prawo celował u osób po lewej w środek i mylił się z linią „razem”). Przewijanie w obu osiach, środek ustawia się na osobie. **Drzewo nie ucieka z kadru** (v1.7, D21): gdy w kadrze nie ma nikogo, widok wraca płynnie (ok. 0,35 s) do osoby w środku, a palec na ekranie przerywa powrót; nowy rozmiar obszaru drzewa przed pierwszym dotknięciem ustawia środek od nowa. **„Ja”** (v1.5, D14): okrąg ze znakiem „Ja” (inicjały „Ja” w akcencie, obrys w kolorze obrysu, także przy profilowym — jak [[osoby]] D4), podpis „Ja”; pierścień i poświatę w akcencie ma tylko osoba w środku. **Przestawienie środka** (AC-2, v1.5): węzły przesuwają się na nowe miejsca w ok. 0,45 s, nowe osoby się pojawiają, odchodzące gasną, a widok jedzie tak, że nowa osoba staje w środku (ok. 42% wysokości obszaru drzewa). Przy systemowym ograniczeniu animacji — od razu (SC 2.3.3, jak D5). **Imiona przy oddalaniu** (v1.6, I2 — decyzja autora): przy skali < 1 imię nie maleje — na ekranie ma 13 sp × skala tekstu, na tabliczce w kolorze tła (zaokrąglona 4 dp, 3 dp z boków; v1.7, D23); gdy dwa imiona by się nałożyły, zostaje to bliżej osoby w środku (najpierw poziom z D2, potem odległość w poziomie), a reszta chowa się do przybliżenia. **Tekst systemu** (AC-7, v1.5): miejsce osoby 80 dp × skala tekstu, najwyżej 160 dp (jak mini-drzewo, [[osoba]] v2.2); rząd rośnie z podpisem (104 dp → 124 dp przy 200%); inicjały najwyżej 1,3×; imię w jednej linii, „…” dopiero poza miejscem osoby (przy 100% to ok. 10 liter, także przy oddaleniu — v1.7, D24). **Cel dotyku** = miejsce osoby × skala drzewa (D17). **Czytnik:** „Zofia Wymyślona, 1928–2010, Twoja babcia — w środek”, osoba w środku „… — otwórz”; kolejność rzędami, z góry i od lewej; linie i ślad poza czytnikiem | drzewo | dotknięcie → osoba w środek; drugie → [[osoba]] | „Ja” | — | R3 · D1, D3, D4, D9 · AC-1, AC-2, AC-4, AC-7 · D14, D17 |
 | 5 | **Karta osoby w środku** (dolny arkusz, powierzchnia; v1.5): okrąg 40 dp z pierścieniem w akcencie (profilowe w kadrze albo inicjały; „ja” — znak „Ja”) · **imię i nazwisko** z „z d.” (16 sp, półgruby, tekst, do dwóch linii) · pod spodem **lata · kim jest dla Ciebie** (14 sp, tekst pomocniczy, **zawija się, bez ucinania**): nazwa ze słownika, z nawiasem tam, gdzie słownik go ma („1928–2010 · Twoja babcia”, „ur. 1951 · Twój stryj (brat taty)”), a dalej opis z odcinków („1925–2010 · Siostra cioteczna Twojego dziadka”; D12, D13; aplikacja mówi do Ciebie — G1, v1.6). „Ja”: „ur. 1983 · to Ty”. Bez ścieżki do „ja”: „… · nie wiadomo jeszcze, kim jest dla Ciebie”. Bez „ja” (wejście z „Pokaż w drzewie”): same lata. Po prawej przycisk tekstowy „Pokaż ›” (akcent, cel 48 dp); **przy tekście systemu ≥ 150% „Pokaż ›” przechodzi pod tekst, do prawej** (D20) | karta | „Pokaż” → [[osoba]] | — | — | D1 · AC-2, AC-5 · D12, D13, D20 |
 | 6 | **US-010. Czas (M10):** przycisk ▶ / ❚❚ (36 dp, akcent), „1880”, suwak (akcent), rok w akcencie („dziś” na końcu). **Rok Y:** osoba urodzona po Y znika (miejsce zostaje, żeby drzewo nie skakało); para łączy się linią „razem” od daty początku związku, a ciągłą od ślubu; zmarły do Y ma znicz. ▶ przechodzi od 1880 do dziś w ok. 7 s | suwak + przycisk | przeciągnięcie; ▶ | dziś | — | R3 (suwak) · **decyzja autora** (D20) · D4 |
-| 11 | **Tryb prezentacji** (AC-8, D11; v1.5, D16): ekran poziomo, na pełnym ekranie (bez pasków systemu i aplikacji, bez karty i + / −), **poziom 2 dopasowany do ekranu** i wyśrodkowany. Przy wejściu na ok. 4 s pigułka „Obraz na telewizor: „Przesyłaj ekran” w szybkich ustawieniach Androida”. **Dotknięcie osoby** → ona w środku, poziom 2 dopasowany na nowo. Przeciąganie przesuwa; **bez szczypania** — poziom stały. **Dotknięcie pustego miejsca** → na 3 s przycisk „Zakończ prezentację” w prawym górnym rogu (`close` w akcencie + napis w kolorze tekstu, powierzchnia z obrysem, cel 48 dp); **wstecz** też kończy. Po wyjściu — drzewo pionowo, ta sama osoba w środku, poziom 2 | tryb | dotknięcie osoby · pustego miejsca · wstecz | poziom 2 | — | **decyzja autora** (D11) · AC-8 · D16 |
+| 11 | **Tryb prezentacji** (AC-8, D11; v1.5, D16): ekran poziomo, na pełnym ekranie (bez pasków systemu i aplikacji, bez karty i + / −), **poziom 2 dopasowany do ekranu** (w obszarze bezpiecznym, margines 24 dp) i wyśrodkowany. Przy wejściu na ok. 4 s pigułka u góry, w miejscu pigułki poziomu: „Obraz na telewizor: przesyłanie ekranu w szybkich ustawieniach telefonu” (v1.8, D26 — funkcja, nie nazwa kafelka; twarda spacja po „w”, [[style-b]] reguła 6). Przez te 4 s może przykryć górny rząd, a dotyk przechodzi do osób pod nią (D26). **Dotknięcie osoby** → ona w środku, poziom 2 dopasowany na nowo — **także osoby, która już jest w środku**: po przeciągnięciu to droga z powrotem; jej widok się nie otwiera, a czytnik nie mówi „otwórz” (v1.8, D25). Przeciąganie przesuwa; **bez szczypania** — poziom stały. **Pasy 24 dp przy krawędziach, od których system wysuwa paski, nie przyjmują dotyku** (v1.8, D25). **Dotknięcie pustego miejsca** → na 3 s przycisk „Zakończ prezentację” w prawym górnym rogu (`close` w akcencie + napis w kolorze tekstu, powierzchnia z obrysem, cel 48 dp); podpowiedź, jeśli jeszcze jest, znika (v1.8, D25); **wstecz** też kończy. Po wyjściu — drzewo pionowo, ta sama osoba w środku, poziom 2, skala 1. **Tekst 200%** (v1.8, odstępstwo 5 ISSUE-034): imiona jak w elemencie 4 — dziś I2, więc na ekranie 360 dp imię 26 sp przy okręgu ok. 20 dp i część imion schowana; zmieni to pozycja I1 (*Open* 5) | tryb | dotknięcie osoby · pustego miejsca · wstecz | poziom 2 | — | **decyzja autora** (D11) · AC-8 · D16 · D25, D26 |
 
 **„Połącz dwie osoby” na drzewie (M11, v1.1)** — US-011
 
@@ -155,7 +162,8 @@ n/a — ekran do oglądania.
   10,98:1.
 - **Cel dotyku (v1.5):** na poziomie 4 poniżej 48 dp — wyjątek w [[style-b]] *Thresholds* (v1.24), D17.
 - **Tryb prezentacji (v1.5):** „Zakończ prezentację” — powierzchnia z obrysem (3,40:1 na tle), `close` w akcencie (8,04:1 na powierzchni),
-  napis w kolorze tekstu (10,02:1); pigułki na powierzchni w kolorze tekstu (10,02:1).
+  napis w kolorze tekstu (10,02:1); pigułki na powierzchni w kolorze tekstu (10,02:1). Ikona telewizora w pasku — akcent na tle 8,81:1 (reguła 3:
+  działanie). **v1.8:** zbudowane tak samo, pary przeliczone z `theme.dart` 2026-10-14 — wyniki te same.
 - **Tokeny (v1.5):** bez nowych — tylko istniejące pary (przeliczone z `theme.dart` 2026-10-13).
 
 ## AC → element
@@ -320,7 +328,9 @@ Co z tego wynika dla ekranu:
   prezentację”) albo wstecz. **Poziom 2 stały:** oddalanie zmieniałoby skład osób na ekranie, który ogląda rodzina, a + / − tu nie ma.
   Dotknięcie osoby wystarczy, żeby przejść po rodzinie. Podpowiedź o „Przesyłaj ekran” pojawia się przy każdym wejściu, bo sam tryb niczego
   nie wysyła. Po co: rodzina patrzy na telewizor, a osoba z telefonem prowadzi. *Obali:* autor chce oddalać na telewizorze — wtedy szczypanie
-  jak w drzewie.
+  jak w drzewie. **v1.8** ([[ISSUE-034-tree-presentation-mode]]): podpowiedź mówi o funkcji, a nie o nazwie kafelka (D26). Przy pierwszym pełnym
+  ekranie aplikacji system raz pokazuje własne okno o tym, jak wyjść z pełnego ekranu. To okno systemu, nie aplikacji. Jeśli przesyłanie już trwa,
+  zobaczy je też telewizor, więc przed pierwszym pokazem warto raz wejść w tryb bez przesyłania.
 - **D17 — cel dotyku przy oddaleniu poniżej 48 dp** (v1.5). Cel to miejsce osoby × skala drzewa. Przy skali ≥ 0,6 ma ≥ 48 dp (prawie cały
   poziom 3; od 0,55 — 44 dp). Na poziomie 4 ma 38 dp przy 0,48 i 32 dp przy najmniejszej skali 0,4. Węzły nie mogą rosnąć, bo wtedy drzewo
   przestałoby być oddalone. Najmniejsza skala 0,4 trzyma cel ≥ 24 dp — [WCAG 2.2](https://www.w3.org/TR/WCAG22/) SC 2.5.8 Target Size
@@ -364,6 +374,26 @@ Co z tego wynika dla ekranu:
   mini-drzewie ([[osoba]] v2.2). Pełne imię i nazwisko daje karta (5) i czytnik. Przy 200% miejsce osoby rośnie do 160 dp i imiona mieszczą się
   w całości (AC-7). *Obali:* autor myli osoby po uciętym imieniu (np. Bronisław i Bronisława) — wtedy przy skali < 1 imię może sięgać szerzej
   niż miejsce osoby, bo I2 i tak chowa nakładające się.
+- **D25 — tryb prezentacji: dotyk** (v1.8, odstępstwa 1–3 `dev` w [[ISSUE-034-tree-presentation-mode]], przyjęte w przeglądzie `ui`).
+  **(a) Osoba w środku:** dotknięcie dopasowuje poziom 2 od nowa, płynnie, jak powrót drzewa do kadru (D21). Plan ISSUE-034 (D5) mówił „nic”, ale
+  element 11 mówi „dotknięcie osoby → … poziom 2 dopasowany na nowo”, a po przeciągnięciu to jedyna droga z powrotem bez wychodzenia z trybu.
+  Widok osoby się nie otwiera, bo w pionie przerwałby pokaz, a czytnik nie mówi „otwórz”. **(b) Pasy przy krawędziach:** w trybie pełnego ekranu
+  przeciągnięcie od krawędzi, które wysuwa paski systemu, trafia też do aplikacji i przesuwało drzewo (Flutter 3.41.1, `services/system_chrome.dart`,
+  `SystemUiMode.immersiveSticky`: *„A swipe gesture from the edge of the screen displays overlays. In contrast to [SystemUiMode.immersive], this
+  gesture is received by the application”* — sprawdzone w SDK 2026-10-14). Pas 24 dp przy takiej krawędzi nie przyjmuje dotyku. Dopasowany poziom
+  i tak trzyma 24 dp od krawędzi (element 11). Zbudowane przy górze i dole; przy nawigacji trzema przyciskami pasek w poziomie stoi z boku — tam
+  też (przegląd v1.8, do sprawdzenia na emulatorze).
+  **(c) „Zakończ prezentację” chowa podpowiedź**, gdy pusty dotyk przyjdzie w ciągu jej 4 s: kto szuka wyjścia, podpowiedź już widział, a przy
+  tekście 200% oba stałyby w tym samym miejscu. **Nie da:** dotknięcia osoby pod pasem po przeciągnięciu — trzeba ją odsunąć od krawędzi.
+  *Obali:* autor na telefonie trafia w pas, chcąc dotknąć osoby — wtedy węższy pas albo pas tylko przy krawędzi paska nawigacji.
+- **D26 — tryb prezentacji: podpowiedź** (v1.8, odstępstwa 4 i 6). **Tekst mówi o funkcji, a nie o nazwie kafelka:** „Obraz na telewizor:
+  przesyłanie ekranu w szybkich ustawieniach telefonu”. Nazwa kafelka zależy od producenta: na Pixelu (Android 16, po polsku) to „Przesyłanie”
+  (`quick_settings_cast_title` w zasobach SystemUI emulatora — *Dev report* ISSUE-034), u Samsunga „Smart View”, a v1.5 cytowała „Przesyłaj
+  ekran”, którego nie ma na żadnym sprawdzonym telefonie. Nazwa w cudzysłowie obiecuje napis, którego użytkownik może nie znaleźć; opis funkcji
+  pasuje do każdego. **Miejsce:** u góry, jak pigułka poziomu (element 3), na 4 s; może przykryć górny rząd (zrzut `02` ISSUE-034), ale nie
+  przyjmuje dotyku, więc dotknięcie trafia w osobę pod nią. Komunikat na chwilę nad treścią to zwykła forma podpowiedzi, a stałe miejsce na nią
+  pomniejszyłoby drzewo na cały pokaz. *Obali:* na telefonie autora kafelek ma inną nazwę i autor go nie znajduje — wtedy w podpowiedzi nazwa z
+  jego telefonu, w cudzysłowie ([[ISSUE-032-mvp-install]] → *Hand checks*).
 
 ## Open
 1. ~~⚠️ OPEN — sterowanie poziomami — nowy wygląd~~ — rozstrzygnięte 2026-10-13: S2 (element 3), 4 progi (autor na stopie #1
@@ -385,7 +415,10 @@ Co z tego wynika dla ekranu:
    chowają · **I3** od poziomu 3 imię ma tylko osoba w środku. **Rekomendacja: I2.** Na poziomie 4 widać 63 z 99 imion w 13 sp, a nie 99
    nieczytelnych (I1) albo jedno (I3). Pierwszeństwo osób bliżej środka to ta sama reguła co poziomy (D2, D8), a mapa pokazuje podpisy
    tak samo, więc aplikacja wszędzie zachowuje się podobnie. **Nie da:** stałego zestawu imion — przy oddalaniu część imion znika i wraca.
-   *Obali:* miganie imion przy szczypaniu przeszkadza — wtedy I3.
+   *Obali:* miganie imion przy szczypaniu przeszkadza — wtedy I3. **v1.8 — zmiana decyzji autora** (stop #1
+   [[ISSUE-034-tree-presentation-mode]], 2026-10-14): **I1**, w osobnej pozycji „drzewo: I1 i „Moja””. Jej `ui` mierzy też tryb prezentacji przy
+   tekście 200% na ekranie 360 dp (zrzut `18b` ISSUE-034, przy I2: skala 0,45, imiona 26 sp przy okręgach ok. 20 dp, 13 z 20 imion widać, a
+   tabliczki zasłaniają linie między rzędami).
 4. ~~⚠️ OPEN — całe drzewo (K1) jako dodatkowy tryb? i ślad dalszej rodziny (D9) — tak czy nie?~~ — rozstrzygnięte 2026-10-13: K2
    bez K1, ślad — tak.
 6. ~~⚠️ OPEN — kto mówi w karcie~~ — **rozstrzygnięte 2026-10-13: G1** (stop #1 [[ISSUE-033-tree-from-a-person]], *„Tak”*; dotyczy też
@@ -393,4 +426,5 @@ Co z tego wynika dla ekranu:
    „Siostra cioteczna babci mojej żony”. **Rekomendacja: G1.** Aplikacja wszędzie mówi do Ciebie („Wybierz, która osoba to Ty”, „…łączy się
    z Tobą”), a nagłówek „Jak łączy się ze mną” to pytanie, które sam zadajesz. Wybór obowiązuje też baner „Połącz dwie osoby” (9, US-011):
    przy G1 przykład z D6 brzmi „Siostra cioteczna babci Twojej żony”, a przykład w AC-5 US-009 trzeba poprawić. **Nie da:** zdania Twoim
-   głosem, jak w notatkach. *Obali:* „Twoja” brzmi obco w aplikacji o własnej rodzinie.
+   głosem, jak w notatkach. *Obali:* „Twoja” brzmi obco w aplikacji o własnej rodzinie. **v1.8 — zmiana decyzji autora** (stop #1
+   [[ISSUE-034-tree-presentation-mode]], 2026-10-14): **G2** („Moja babcia”), w tej samej osobnej pozycji co I1 (*Open* 5).
