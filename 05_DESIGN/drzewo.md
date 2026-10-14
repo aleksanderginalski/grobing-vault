@@ -1,9 +1,9 @@
 ---
 screen: "Drzewo — rodzina od osoby, poziomy połączeń, czas; połącz dwie osoby"
-items: ["[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-024-person-view]]", "[[SPIKE-002-tree-on-a-phone]]", "[[US-009-drzewo-od-osoby]]", "[[ISSUE-033-tree-from-a-person]]", "[[ISSUE-034-tree-presentation-mode]]", "[[ISSUE-035-tree-names-shrink-my-voice]]"]
+items: ["[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-024-person-view]]", "[[SPIKE-002-tree-on-a-phone]]", "[[US-009-drzewo-od-osoby]]", "[[ISSUE-033-tree-from-a-person]]", "[[ISSUE-034-tree-presentation-mode]]", "[[ISSUE-035-tree-names-shrink-my-voice]]", "[[ISSUE-036-cast-from-the-app]]"]
 us: "[[US-009-drzewo-od-osoby]] (M9) · [[US-010-czas-na-drzewie]] (M10) · [[US-011-polacz-dwie-osoby]] (M11) — [[EPIC-003-zrozumienie]]"
 journey-step: "widok 5 (M9–M11, R3)"
-mockup: "2026-10-13: drzewo-us009.html (US-009: imiona przy oddalaniu I1–I3, karta z nazwami pokrewieństwa, tekst 200%, tryb prezentacji, stany) — katalog tymczasowy sesji `c3868f5f-…\\scratchpad`; 2026-10-13: drzewo-spike002.html (SPIKE-002, kandydaci na 106 wymyślonych osobach) — `220a9b6c-…\\scratchpad`; wcześniej 2026-10-08: grobing-prototyp.html (SPIKE-004, panel 6, runda 2)"
+mockup: "2026-10-14: drzewo-036.html (ISSUE-036: kandydaci P1–P3 wejścia w przesyłanie, zrzuty z emulatora `shots-036\\`) — katalog tymczasowy sesji `fa865b36-…\\scratchpad`; 2026-10-13: drzewo-us009.html (US-009: imiona przy oddalaniu I1–I3, karta z nazwami pokrewieństwa, tekst 200%, tryb prezentacji, stany) — katalog tymczasowy sesji `c3868f5f-…\\scratchpad`; 2026-10-13: drzewo-spike002.html (SPIKE-002, kandydaci na 106 wymyślonych osobach) — `220a9b6c-…\\scratchpad`; wcześniej 2026-10-08: grobing-prototyp.html (SPIKE-004, panel 6, runda 2)"
 updated: 2026-10-14
 ---
 
@@ -70,6 +70,17 @@ updated: 2026-10-14
 > aplikacja, zostają w drugiej osobie, np. „Wybierz, która osoba to Ty” (D28; [[style-b]] reguła 7, v1.28). **Imiona przy oddalaniu:** `ui` rozpisał
 > I1, ale na stopie #1 ISSUE-035 autor odpowiedział na sekcje makiety `drzewo-us009.html`: *„1 I2, 2 „moja babcia”, 3 100%, 4 ok, 5 ok, 6 ok”*. Zostaje
 > więc I2, które już jest w kodzie (D27). Zapis I1 cofnięty przed budową.
+>
+> **Wersja 1.10 — `ui` przed planem [[ISSUE-036-cast-from-the-app]] (2026-10-14): wejście w przesyłanie z aplikacji.** Prior art i pomiar (D29): aplikacja
+> bez Google Cast może tylko **otworzyć systemowy ekran przesyłania** — pełny ekran ustawień („Google Cast”, zrzut `01` w makiecie), a nie okienko z listą
+> nad drzewem jak w Zdjęciach. Samo przesyłanie włącza system. Kandydaci wejścia P1–P3 (*Candidates — ISSUE-036*), **rekomendacja P2**: jedna ikona
+> „Przesyłaj na telewizor” zamiast ikony telewizora, czyli ekran systemu, a po powrocie tryb prezentacji (elementy 1 i 11 zapisane według P2, *Open* 7 — na stop #1).
+> Makieta: `drzewo-036.html`. **Decyzja autora na stopie #1 (2026-10-14, *„tak”*): P2** (D30).
+>
+> **Wersja 1.11 — przegląd `ui` zbudowanego wejścia [[ISSUE-036-cast-from-the-app]] (2026-10-14), przyjęte odstępstwa `dev`** (*Dev report* →
+> *Deviations*): powrót z ekranu systemu rozpoznany po tym, że aplikacja znów ma fokus, a nie po tym, że była schowana — szybki wstecz jej nie chowa,
+> a ekran przesyłania w oknie nad aplikacją też by jej nie schował (1 → *Navigation*, D30 a) · drugie dotknięcie ikony w trakcie otwierania nic nie
+> robi, a ikona się nie zmienia — wyszarzenie mignęłoby tylko na ułamek sekundy (2 → element 1, D30 b).
 
 ## Purpose
 Zobaczyć rodzinę wokół wybranej osoby i jak się łączy (M9), jak zmieniała się w czasie (M10) i jak dowolne dwie osoby
@@ -83,7 +94,11 @@ są spokrewnione (M11). Tak samo zbudowane jest mini-drzewo w [[osoba]] (element
   drzewo zaczyna od nowa, z tą osobą w środku (v1.7, D15).
 - **Dotknięcie osoby → ona staje w środku**; dotknięcie osoby w środku albo „Pokaż” w karcie → [[osoba]] (zakładka Drzewo
   zostaje aktywna). Wstecz z widoku osoby wraca do drzewa z tym samym środkiem i skalą.
-- **Ikona „Tryb prezentacji”** w pasku → tryb prezentacji (element 11); wstecz albo „Zakończ prezentację” wraca do drzewa (US-009).
+- **Ikona „Przesyłaj na telewizor”** w pasku (v1.10, D30) → **systemowy ekran przesyłania** (ustawienia telefonu, nie ekran aplikacji) → po powrocie
+  (wstecz albo wybór telewizora i wstecz) **tryb prezentacji** (element 11). Telefon bez tego ekranu → od razu tryb prezentacji z podpowiedzią (D26).
+  Wstecz albo „Zakończ prezentację” wraca do drzewa (US-009). Do v1.9 ikona telewizora otwierała sam tryb prezentacji. **Powrót** to chwila, gdy
+  aplikacja znów ma fokus po ekranie systemu, a nie gdy była schowana (v1.11, D30 a). Home z ekranu systemu i powrót do Grobinga pokazuje znowu
+  ekran systemu (to samo zadanie); tryb włącza dopiero wstecz.
 - **Ikona „Połącz dwie osoby”** w pasku → okno z dwoma kaflami → po wybraniu drugiej osoby **z powrotem na drzewie**, z
   animacją ścieżki (v1.1, D26). Dotknięcie drzewa albo wstecz kończy podświetlenie (US-011).
 - **Bez „ja”:** „Wybierz, która osoba to Ty” → wybór „ja” ([[osoby]] 6–7) → po wyborze z powrotem na drzewie, z tą osobą w środku (D19).
@@ -93,13 +108,13 @@ są spokrewnione (M11). Tak samo zbudowane jest mini-drzewo w [[osoba]] (element
 
 | # | Element | Typ | Klawiatura / akcja | Domyślnie | Walidacja | Źródło |
 |---|---|---|---|---|---|---|
-| 1 | Pasek „Drzewo” (20 sp, półgruby), po prawej ikony **bez podpisu** (v1.1): **„Tryb prezentacji”** (`tv_outlined`, akcent, cel 48 dp, `tooltip` „Tryb prezentacji” — **US-009**, v1.5) i na lewo od niej **„Połącz dwie osoby”** (akcent, cel 48 dp, `tooltip` „Połącz dwie osoby” — **US-011**; ikona — *Open* 1a). W stanach bez drzewa (bez „ja”, pusta baza) ikon nie ma | pasek + przyciski-ikony | → tryb prezentacji (11) · → okno wyboru (7) | — | — | R3 · **decyzja autora** (D26, D11) · AC-8 |
+| 1 | Pasek „Drzewo” (20 sp, półgruby), po prawej ikony **bez podpisu** (v1.1): **„Przesyłaj na telewizor”** (`cast_outlined`, akcent, cel 48 dp, `tooltip` „Przesyłaj na telewizor”, czytnik: „Przesyłaj na telewizor — w ustawieniach telefonu” — **US-009**, v1.10, [[ISSUE-036-cast-from-the-app]]; **zastępuje** `tv_outlined` „Tryb prezentacji” z v1.5 — D30; drugie dotknięcie, zanim otworzy się ekran systemu, nic nie robi, a ikona się nie zmienia — v1.11, D30 b) i na lewo od niej **„Połącz dwie osoby”** (akcent, cel 48 dp, `tooltip` „Połącz dwie osoby” — **US-011**; ikona — *Open* 1a). W stanach bez drzewa (bez „ja”, pusta baza) ikon nie ma | pasek + przyciski-ikony | → systemowy ekran przesyłania → po powrocie tryb prezentacji (11) · → okno wyboru (7) | — | — | R3 · **decyzja autora** (D26, D11; stop #2 ISSUE-034 — „jak w YouTube”) · AC-8 · D29 |
 | 2 | ~~Legenda linii~~ — **bez legendy** (v1.1, D25). Rodzaj linii niesie kształt i styl (łamana z góry — rodzic–dziecko; pozioma ciągła — małżeństwo; przerywana — razem), więc kolor nie jest jedynym nośnikiem (SC 1.4.1) | — | — | — | — | **decyzja autora** (D25) |
 | 3 | **Poziom połączeń — oddalanie odsłania dalszą rodzinę** (v1.3, S2): bez przycisków „−/Poziom 2/+” w pasku. Poziom zmienia oddalanie i przybliżanie, **próg za progiem**: oddalasz — dokłada się poziom, przybliżasz — dalsza rodzina znika. **4 progi** (poziomy 1–4; od 4 to prawie wszyscy). Przy zmianie na chwilę pigułka „Poziom 3 · 66 osób” (13 sp, powierzchnia). **Przyciski + / −** (cel 48 dp, powierzchnia z obrysem) w prawym dolnym rogu drzewa — alternatywa jednym dotknięciem (SC 2.5.1): + przybliża, − oddala. **Poziom 1:** rodzice, partnerzy, dzieci. **Poziom k ≥ 2:** do tego rodzice, partnerzy, dzieci i **rodzeństwo** każdej osoby z poziomu k−1 (np. rodzeństwo, rodzeństwo partnerów, dziadkowie, teściowie, wnuki). **Wartości** (v1.5, D18 — z prototypu SPIKE-002, do potwierdzenia w ręce): skala 0,4–2,0, start 1,0; **poziom 1** przy skali ≥ 1,3 · **2** — 0,85–1,3 · **3** — 0,55–0,85 · **4** — poniżej 0,55. + / − mnożą skalę przez 1,45 (mniej więcej poziom na dotknięcie); **podwójne dotknięcie pustego miejsca** przybliża tak samo (AC-3). Pigułka ok. 1,5 s; ten sam tekst ogłasza czytnik. Zmiana poziomu zostawia osobę w środku w tym samym miejscu ekranu | gest + przycisk-ikona ×2 + pigułka | dwa palce (oddal / przybliż) · + / − · podwójne dotknięcie | 2 | — | **decyzja autora** (stop #1 SPIKE-002) · D2 · D8 · AC-3 · D18 |
 | 4 | **Drzewo**: rzędy według pokolenia (wyżej starsze), osoba w środku z pierścieniem w akcencie; rodzeństwo z boku osoby, po stronie dalszej od partnera; **rodzina partnera po prawej**, bez przeplatania z krewnymi. Węzeł 44 dp (profilowe albo inicjały), imię 13 sp półgrube (v1.2, D10); **zmarły ma znicz** w rogu węzła ([[style-b]] reguła 8, R3); zmarły = zapisany zgon albo pochówek, z datą albo bez (v1.7, D22). Linie: **rodzic–dziecko** — kolor relacji rodzic–dziecko, łamana z góry w dół; **małżeństwo** — kolor partnerów, ciągła, pozioma; **razem (bez ślubu)** — kolor partnerów, przerywana 5/4. **Ślad dalszej rodziny** (v1.3, D9): osoba z rodziną poza widokiem dostaje krótką przerywaną kreskę 3/3, 14 dp, w kolorze relacji o kryciu 60% — w górę rodzice, w dół dzieci, w bok partner, **na zewnątrz od środka** (na lewo od osoby w środku — w lewo, na prawo i u niej samej — w prawo; v1.7, przegląd `ui` ISSUE-033: zawsze w prawo celował u osób po lewej w środek i mylił się z linią „razem”). Przewijanie w obu osiach, środek ustawia się na osobie. **Drzewo nie ucieka z kadru** (v1.7, D21): gdy w kadrze nie ma nikogo, widok wraca płynnie (ok. 0,35 s) do osoby w środku, a palec na ekranie przerywa powrót; nowy rozmiar obszaru drzewa przed pierwszym dotknięciem ustawia środek od nowa. **„Ja”** (v1.5, D14): okrąg ze znakiem „Ja” (inicjały „Ja” w akcencie, obrys w kolorze obrysu, także przy profilowym — jak [[osoby]] D4), podpis „Ja”; pierścień i poświatę w akcencie ma tylko osoba w środku. **Przestawienie środka** (AC-2, v1.5): węzły przesuwają się na nowe miejsca w ok. 0,45 s, nowe osoby się pojawiają, odchodzące gasną, a widok jedzie tak, że nowa osoba staje w środku (ok. 42% wysokości obszaru drzewa). Przy systemowym ograniczeniu animacji — od razu (SC 2.3.3, jak D5). **Imiona przy oddalaniu** (v1.6, I2 — decyzja autora; potwierdzona w v1.9, D27): przy skali < 1 imię nie maleje — na ekranie ma 13 sp × skala tekstu, na tabliczce w kolorze tła (zaokrąglona 4 dp, 3 dp z boków; v1.7, D23); gdy dwa imiona by się nałożyły, zostaje to bliżej osoby w środku (najpierw poziom z D2, potem odległość w poziomie), a reszta chowa się do przybliżenia. **Tekst systemu** (AC-7, v1.5): miejsce osoby 80 dp × skala tekstu, najwyżej 160 dp (jak mini-drzewo, [[osoba]] v2.2); rząd rośnie z podpisem (104 dp → 124 dp przy 200%); inicjały najwyżej 1,3×; imię w jednej linii, „…” dopiero poza miejscem osoby (przy 100% to ok. 10 liter, także przy oddaleniu — v1.7, D24). **Cel dotyku** = miejsce osoby × skala drzewa (D17). **Czytnik:** „Zofia Wymyślona, 1928–2010, Moja babcia — w środek” (v1.9, G2 — ten sam tekst co karta, D28), osoba w środku „… — otwórz”; kolejność rzędami, z góry i od lewej; linie i ślad poza czytnikiem | drzewo | dotknięcie → osoba w środek; drugie → [[osoba]] | „Ja” | — | R3 · D1, D3, D4, D9 · AC-1, AC-2, AC-4, AC-7 · D14, D17 |
 | 5 | **Karta osoby w środku** (dolny arkusz, powierzchnia; v1.5): okrąg 40 dp z pierścieniem w akcencie (profilowe w kadrze albo inicjały; „ja” — znak „Ja”) · **imię i nazwisko** z „z d.” (16 sp, półgruby, tekst, do dwóch linii) · pod spodem **lata · kim jest dla mnie** (14 sp, tekst pomocniczy, **zawija się, bez ucinania**): nazwa ze słownika, z nawiasem tam, gdzie słownik go ma („1928–2010 · Moja babcia”, „ur. 1951 · Mój stryj (brat taty)”, „Moje rodzeństwo” przy osobie bez płci), a dalej opis z odcinków („1925–2010 · Siostra cioteczna mojego dziadka”, „Siostra cioteczna babci mojej żony”; D12, D13; **mówisz Ty — G2, v1.9, D28**). „Ja”: „ur. 1983 · to ja”. Bez ścieżki do „ja”: „… · nie wiadomo jeszcze, kim jest dla mnie”. Zaimek zawsze z małej litery w środku opisu („…babci mojej żony”), z wielkiej tylko na początku nazwy („Moja babcia”). Bez „ja” (wejście z „Pokaż w drzewie”): same lata. Po prawej przycisk tekstowy „Pokaż ›” (akcent, cel 48 dp); **przy tekście systemu ≥ 150% „Pokaż ›” przechodzi pod tekst, do prawej** (D20) | karta | „Pokaż” → [[osoba]] | — | — | D1 · AC-2, AC-5 · D12, D13, D20 |
 | 6 | **US-010. Czas (M10):** przycisk ▶ / ❚❚ (36 dp, akcent), „1880”, suwak (akcent), rok w akcencie („dziś” na końcu). **Rok Y:** osoba urodzona po Y znika (miejsce zostaje, żeby drzewo nie skakało); para łączy się linią „razem” od daty początku związku, a ciągłą od ślubu; zmarły do Y ma znicz. ▶ przechodzi od 1880 do dziś w ok. 7 s | suwak + przycisk | przeciągnięcie; ▶ | dziś | — | R3 (suwak) · **decyzja autora** (D20) · D4 |
-| 11 | **Tryb prezentacji** (AC-8, D11; v1.5, D16): ekran poziomo, na pełnym ekranie (bez pasków systemu i aplikacji, bez karty i + / −), **poziom 2 dopasowany do ekranu** (w obszarze bezpiecznym, margines 24 dp) i wyśrodkowany. Przy wejściu na ok. 4 s pigułka u góry, w miejscu pigułki poziomu: „Obraz na telewizor: przesyłanie ekranu w szybkich ustawieniach telefonu” (v1.8, D26 — funkcja, nie nazwa kafelka; twarda spacja po „w”, [[style-b]] reguła 6). Przez te 4 s może przykryć górny rząd, a dotyk przechodzi do osób pod nią (D26). **Dotknięcie osoby** → ona w środku, poziom 2 dopasowany na nowo — **także osoby, która już jest w środku**: po przeciągnięciu to droga z powrotem; jej widok się nie otwiera, a czytnik nie mówi „otwórz” (v1.8, D25). Przeciąganie przesuwa; **bez szczypania** — poziom stały. **Pasy 24 dp przy krawędziach, od których system wysuwa paski, nie przyjmują dotyku** (v1.8, D25). **Dotknięcie pustego miejsca** → na 3 s przycisk „Zakończ prezentację” w prawym górnym rogu (`close` w akcencie + napis w kolorze tekstu, powierzchnia z obrysem, cel 48 dp); podpowiedź, jeśli jeszcze jest, znika (v1.8, D25); **wstecz** też kończy. Po wyjściu — drzewo pionowo, ta sama osoba w środku, poziom 2, skala 1. **Tekst 200%** (v1.8, odstępstwo 5 ISSUE-034; v1.9 — I2 zostaje, D27): imiona jak w elemencie 4, więc na ekranie 360 dp imię ma 26 sp przy okręgu ok. 20 dp (skala ok. 0,45), widać 13 z 20 imion, a tabliczki zasłaniają linie między rzędami (zrzut `18b`). Przy I1 byłoby 20 z 20 imion, ok. 11,7 sp (przeliczenie `ui`, v1.9) | tryb | dotknięcie osoby · pustego miejsca · wstecz | poziom 2 | — | **decyzja autora** (D11) · AC-8 · D16 · D25, D26 |
+| 11 | **Tryb prezentacji** (AC-8, D11; v1.5, D16): ekran poziomo, na pełnym ekranie (bez pasków systemu i aplikacji, bez karty i + / −), **poziom 2 dopasowany do ekranu** (w obszarze bezpiecznym, margines 24 dp) i wyśrodkowany. **Wejście (v1.10, P2):** po powrocie z systemowego ekranu przesyłania — **bez podpowiedzi** (przesyłanie właśnie wybrane, a podpowiedź trafiłaby na telewizor). **Tylko gdy telefon nie ma tego ekranu** (ISSUE-036 AC-2) tryb włącza się od razu i na ok. 4 s pokazuje pigułkę u góry, w miejscu pigułki poziomu: „Obraz na telewizor: przesyłanie ekranu w szybkich ustawieniach telefonu” (v1.8, D26 — funkcja, nie nazwa kafelka; twarda spacja po „w”, [[style-b]] reguła 6). Przez te 4 s może przykryć górny rząd, a dotyk przechodzi do osób pod nią (D26). **Dotknięcie osoby** → ona w środku, poziom 2 dopasowany na nowo — **także osoby, która już jest w środku**: po przeciągnięciu to droga z powrotem; jej widok się nie otwiera, a czytnik nie mówi „otwórz” (v1.8, D25). Przeciąganie przesuwa; **bez szczypania** — poziom stały. **Pasy 24 dp przy krawędziach, od których system wysuwa paski, nie przyjmują dotyku** (v1.8, D25). **Dotknięcie pustego miejsca** → na 3 s przycisk „Zakończ prezentację” w prawym górnym rogu (`close` w akcencie + napis w kolorze tekstu, powierzchnia z obrysem, cel 48 dp); podpowiedź, jeśli jeszcze jest, znika (v1.8, D25); **wstecz** też kończy. Po wyjściu — drzewo pionowo, ta sama osoba w środku, poziom 2, skala 1. **Tekst 200%** (v1.8, odstępstwo 5 ISSUE-034; v1.9 — I2 zostaje, D27): imiona jak w elemencie 4, więc na ekranie 360 dp imię ma 26 sp przy okręgu ok. 20 dp (skala ok. 0,45), widać 13 z 20 imion, a tabliczki zasłaniają linie między rzędami (zrzut `18b`). Przy I1 byłoby 20 z 20 imion, ok. 11,7 sp (przeliczenie `ui`, v1.9) | tryb | dotknięcie osoby · pustego miejsca · wstecz | poziom 2 | — | **decyzja autora** (D11) · AC-8 · D16 · D25, D26 |
 
 **„Połącz dwie osoby” na drzewie (M11, v1.1)** — US-011
 
@@ -124,14 +139,16 @@ są spokrewnione (M11). Tak samo zbudowane jest mini-drzewo w [[osoba]] (element
 | „ja” niewybrane | 1 bez ikon; w miejscu drzewa, na środku: „Aplikacja nie wie jeszcze, która osoba to Ty.” (16 sp, tekst pomocniczy) i przycisk tekstowy w akcencie „Wybierz, która osoba to Ty” (jak [[osoba]] element 7); bez karty i + / −. Wejście z „Pokaż w drzewie” działa — wtedy 5 bez pokrewieństwa (D19) |
 | pusta baza | 1 bez ikon; na środku „Tu pojawi się drzewo — osoby z grobów i ich rodziny.” (16 sp, tekst pomocniczy; jak „pusta baza” w [[osoby]]), bez działania (D19) |
 | tekst 200% | 4 z szerszym miejscem osoby; 5 z „Pokaż ›” pod tekstem; + / − bez zmian, 48 dp (D20) |
-| tryb prezentacji | 11 |
+| przesyłanie — ekran systemu (v1.10) | nie ekran aplikacji: ustawienia telefonu („Google Cast” na emulatorze z Androidem 16; jasny, w języku telefonu), lista telewizorów w tej samej sieci Wi-Fi albo „No nearby devices were found.” (zrzut `01`). Wstecz wraca do aplikacji |
+| tryb prezentacji | 11 — po ekranie systemu bez podpowiedzi |
+| tryb prezentacji — telefon bez ekranu przesyłania (v1.10, ISSUE-036 AC-2) | 11 z podpowiedzią D26; aplikacja nie pada |
 | błąd odczytu | „Nie udało się odczytać drzewa.” (tekst pomocniczy) i przycisk z obrysem „Spróbuj ponownie” (jak w [[osoby]]) |
 | wczytywanie | wskaźnik postępu (lokalna baza — zwykle niewidoczny) |
 
 ## Sketch
 ```
 ┌──────────────────────────────────┐
-│ Drzewo                    ↝  [▭] │  ← [▭] „Tryb prezentacji” (US-009) · ↝ „Połącz dwie osoby” (US-011)
+│ Drzewo                    ↝  [⌔] │  ← [⌔] „Przesyłaj na telewizor” (US-009, v1.10 — P2) · ↝ „Połącz dwie osoby” (US-011)
 │  (R)━(A)       (J)━(M)           │  ← ━ małżeństwo (róż), │ rodzic–dziecko (niebieski)
 │    │             │               │
 │ (E) (M)━━━━━(A)  (S)  (P)━(H)    │  ← rodzina partnera po prawej
@@ -173,6 +190,10 @@ n/a — ekran do oglądania.
   napis w kolorze tekstu (10,02:1); pigułki na powierzchni w kolorze tekstu (10,02:1). Ikona telewizora w pasku — akcent na tle 8,81:1 (reguła 3:
   działanie). **v1.8:** zbudowane tak samo, pary przeliczone z `theme.dart` 2026-10-14 — wyniki te same.
 - **Tokeny (v1.5):** bez nowych — tylko istniejące pary (przeliczone z `theme.dart` 2026-10-13).
+- **„Przesyłaj na telewizor” (v1.10):** `cast_outlined` (istnieje we Flutterze 3.41.1 — `icons.dart`, sprawdzone w SDK 2026-10-14) w akcencie, jak ikona
+  telewizora przed nią: działanie (reguła 3), 8,81:1 na tle; bez nowych tokenów. Ikona ma `tooltip` (reguła 3). Czytnik dostaje dopisek „w ustawieniach
+  telefonu”, bo dotknięcie prowadzi poza aplikację, tak jak „w innej aplikacji” przy linku zewnętrznym (reguła 1). Ikona zostaje ta sama także w czasie
+  przesyłania (`cast_connected` odpada — D29: aplikacja nie wie, czy przesyłanie trwa).
 
 ## AC → element
 | AC | Element(y) | Jak widać spełnienie |
@@ -185,7 +206,9 @@ n/a — ekran do oglądania.
 | US-009 AC-5 — nazwa pokrewieństwa w karcie | 5 | „Moja ciotka (siostra taty)” · „Mój stryj (brat taty)” · „Mój wuj (brat mamy)” · „Moja siostra cioteczna (córka siostry taty)” · „Siostra cioteczna mojego dziadka” · ścieżka Ja → żona → jej mama → jej mama → jej rodzic → jego rodzeństwo → jego dziecko: „Siostra cioteczna babci mojej żony” · mama taty: „Moja babcia” (v1.9, G2 — D28; makieta, sekcja 2; D12) |
 | US-009 AC-6 — „Pokaż w drzewie” | [[osoba]] 6 → 4, 5 | w widoku Franciszka „Pokaż w drzewie” → zakładka Drzewo, Franciszek w środku, poziom 2 |
 | US-009 AC-7 — tekst 200% na 360 dp | 4, 5 | miejsce osoby 160 dp, imię 26 sp bez ucięcia, inicjały 1,3× w okręgu; „Pokaż ›” pod tekstem karty |
-| US-009 AC-8 — tryb prezentacji | 1, 11 | ikona telewizora → poziomo, poziom 2 dopasowany, bez przycisków; dotknięcie pustego miejsca → „Zakończ prezentację” |
+| US-009 AC-8 — tryb prezentacji | 1, 11 | „Przesyłaj na telewizor” → ekran systemu → wstecz → poziomo, poziom 2 dopasowany, bez przycisków; dotknięcie pustego miejsca → „Zakończ prezentację” (v1.10; do v1.9 — ikona telewizora) |
+| ISSUE-036 AC-1 — „Przesyłaj” otwiera systemową listę | 1 | dotknięcie `cast_outlined` → ekran ustawień „Google Cast” z listą urządzeń w pobliżu (emulator: pusta, zrzut `01`); po powrocie tryb prezentacji bez podpowiedzi |
+| ISSUE-036 AC-2 — telefon bez listy | 1, 11 | brak ekranu przesyłania → aplikacja nie pada, tryb prezentacji z podpowiedzią „Obraz na telewizor: przesyłanie ekranu w szybkich ustawieniach telefonu” (D26) |
 | M10 — suwak czasu: urodzenia, związki, zgony (US-010) | 6 | rok 1984: „Ja” jest, rodzice „razem” (przerywana), ślub 1985 — ciągła |
 | M11 — ścieżka między dowolnymi dwiema osobami (US-011) | 7–9 | „Ja” → „Wanda Przykładowa” (v1.2: przykład z wymyślonych rdzeni, retro 3 R7): drzewo na poziomie 3, linia biegnie przez Kasię i Piotra, reszta wyszarzona, baner „Babcia mojej żony” |
 
@@ -247,6 +270,28 @@ Co z tego wynika dla ekranu:
 | 3 · 0,69 | 66 | 9,0 sp | 62 z 66 | 1 z 66 | 55 dp ✅ |
 | 4 · 0,48 | 99 | 6,2 sp | 63 z 99 | 1 z 99 | 38 dp (D17) |
 | 4 · 0,40 (najmniejsza skala) | 99 | 5,2 sp | nie mierzone | 1 z 99 | 32 dp (D17) |
+
+## Candidates — ISSUE-036 (2026-10-14)
+> Makieta `drzewo-036.html` (*mockup* we frontmatterze) składa każdy wariant ze zrzutów z emulatora `Grobing_Restore` (Android 16, system po angielsku,
+> wymyślona rodzina): drzewo, systemowy ekran przesyłania i tryb prezentacji. **Nie** pokazuje telewizora ani tego, co system pokaże po wyborze telewizora,
+> bo emulator nie widzi żadnego (D29 → *Nie da*).
+
+**Co naprawdę otwiera przycisk** (pomiar 2026-10-14, `am start -a android.settings.CAST_SETTINGS`): `com.android.settings/.Settings$WifiDisplaySettingsActivity` —
+pełny, jasny ekran ustawień z tytułem „Google Cast”, ikoną przesyłania i listą urządzeń w pobliżu (na emulatorze „No nearby devices were found.”). Wstecz
+wraca do aplikacji. **To nie jest okienko z listą nad treścią, jak „Przesyłaj” w Zdjęciach i YouTube** — tamto daje Google Cast SDK, którego tu nie ma (D11, D29).
+
+| # | Kandydat | Co widać | Gdzie się dotyka | Dotknięć do obrazu na telewizorze |
+|---|---|---|---|---|
+| P1 | **Dwie ikony:** `cast_outlined` „Przesyłaj na telewizor” obok `tv_outlined` „Tryb prezentacji” | „Przesyłaj” → ekran systemu → po powrocie tryb prezentacji bez podpowiedzi; telewizor → tryb z podpowiedzią, jak dziś | ikona przesyłania · telewizor · wybór telewizora · wstecz | 3 (przesyłaj, telewizor na liście, wstecz) |
+| P2 | **Jedna ikona `cast_outlined` zamiast telewizora** | ekran systemu → po powrocie tryb prezentacji bez podpowiedzi; telefon bez ekranu przesyłania → od razu tryb z podpowiedzią | ikona przesyłania · wybór telewizora · wstecz | 3; **sam tryb bez telewizora** — też 2 (ikona, wstecz) |
+| P3 | **Przesyłanie z trybu prezentacji:** telewizor jak dziś, w trybie podpowiedź staje się przyciskiem „Przesyłaj ›” (4 s), a pusty dotyk pokazuje „Przesyłaj” obok „Zakończ prezentację” | tryb poziomo → ekran systemu (pionowo albo poziomo, zależnie od ustawienia obracania) → z powrotem tryb | telewizor · „Przesyłaj ›” · wybór telewizora · wstecz | 4, ekran obraca się w trakcie |
+
+**Rekomendacja: P2.** Autor na stopie #2 ISSUE-034: *„chciałem aby ten tryb telewizora streamował obraz do smart TV … jak w YouTube”*, czyli przycisk telewizora
+miał wysyłać obraz. P2 robi to jednym przyciskiem. Ma ikonę przesyłania, tę samą co ekran systemu, kafelek w szybkich ustawieniach i YouTube. Stoi tam, gdzie Google
+każe stawiać przycisk przesyłania: *„In mobile apps, display the Cast button on the right side of the screen”*, a *„the Cast button is not specific to Google
+Cast”* ([Google Cast Design Checklist → Cast button](https://developers.google.com/cast/docs/design_checklist/cast-button), odczyt 2026-10-14). P1 stawia obok
+siebie dwie ikony o podobnym znaczeniu, a po US-011 w pasku byłyby trzy. P3 obraca ekran w trakcie i kosztuje dotknięcie więcej.
+**Nie da (P2):** trybu prezentacji jednym dotknięciem bez telewizora (wchodzi się przez ekran systemu i wstecz).
 
 ## Decisions
 - **D1 — drzewo od osoby z przestawianiem środka** (SPIKE-004 D20; kandydat 3 ze SPIKE-002). Na telefonie całe drzewo
@@ -338,7 +383,8 @@ Co z tego wynika dla ekranu:
   nie wysyła. Po co: rodzina patrzy na telewizor, a osoba z telefonem prowadzi. *Obali:* autor chce oddalać na telewizorze — wtedy szczypanie
   jak w drzewie. **v1.8** ([[ISSUE-034-tree-presentation-mode]]): podpowiedź mówi o funkcji, a nie o nazwie kafelka (D26). Przy pierwszym pełnym
   ekranie aplikacji system raz pokazuje własne okno o tym, jak wyjść z pełnego ekranu. To okno systemu, nie aplikacji. Jeśli przesyłanie już trwa,
-  zobaczy je też telewizor, więc przed pierwszym pokazem warto raz wejść w tryb bez przesyłania.
+  zobaczy je też telewizor, więc przed pierwszym pokazem warto raz wejść w tryb bez przesyłania. **v1.10** ([[ISSUE-036-cast-from-the-app]], D30):
+  wejście przez ekran przesyłania systemu, a podpowiedź tylko na telefonie bez tego ekranu. Wejście bez przesyłania to ekran systemu i wstecz.
 - **D17 — cel dotyku przy oddaleniu poniżej 48 dp** (v1.5). Cel to miejsce osoby × skala drzewa. Przy skali ≥ 0,6 ma ≥ 48 dp (prawie cały
   poziom 3; od 0,55 — 44 dp). Na poziomie 4 ma 38 dp przy 0,48 i 32 dp przy najmniejszej skali 0,4. Węzły nie mogą rosnąć, bo wtedy drzewo
   przestałoby być oddalone. Najmniejsza skala 0,4 trzyma cel ≥ 24 dp — [WCAG 2.2](https://www.w3.org/TR/WCAG22/) SC 2.5.8 Target Size
@@ -428,6 +474,39 @@ Co z tego wynika dla ekranu:
   (`cardSub` w `drzewo-us009.html`), więc pytanie (a) z ISSUE-035 rozstrzyga sama makieta. **Nie da:** jednego głosu w całej aplikacji — są dwa, każdy
   ze swoją rolą. *Obali:* autor uzna, że zdania aplikacji obok „Moja babcia” brzmią obco (np. „Wybierz, która osoba to Ty” nad kartą „to ja”). Wtedy
   osobna pozycja na zdania aplikacji w pierwszej osobie („Wybierz, która osoba to ja”).
+- **D29 — co aplikacja bez Google Cast może otworzyć** (v1.10, [[ISSUE-036-cast-from-the-app]]; prior art przed wyborem wejścia). **Źródła:**
+  - `Settings.ACTION_CAST_SETTINGS` (źródła SDK Androida 36, `android/provider/Settings.java`, odczyt 2026-10-14): *„Activity Action: Show settings to allow
+    configuration of cast endpoints. In some cases, a matching Activity may not exist, so ensure you safeguard against this.”* To jedyne publiczne wejście, stąd
+    ISSUE-036 AC-2;
+  - przesyłanie ekranu włącza system: typ trasy „remote display” w `android/media/MediaRouter.java` jest `@hide`, a stan przesyłania synchronizują *„System UI
+    and Settings”* z uprawnieniem systemowym `CONFIGURE_WIFI_DISPLAY`. Aplikacja nie otworzy więc okienka z szybkich ustawień ani nie zacznie przesyłania sama;
+  - [pomoc Google → Cast your Android screen](https://support.google.com/chromecast/answer/6059461) (odczyt 2026-10-14): przesyłanie ekranu na urządzenie Google
+    Cast działa od Androida 8.0; druga droga to aplikacja Google Home („Cast my screen”, „Cast one app”);
+  - Android 15 pozwala przesyłać jedną aplikację zamiast całego ekranu, a po wyjściu z niej telewizor jest czarny
+    ([Android Authority](https://androidauthority.com/android-partial-screenshare-task-switcher-3488494)) — źródło wtórne.
+
+  **Pomiar:** ekran z *Candidates — ISSUE-036*. **Wniosek:** przycisk otwiera ekran ustawień, a aplikacja **nie wie, czy przesyłanie ruszyło**. Dlatego po
+  powrocie zawsze włącza tryb prezentacji (P2), a ikona nie zmienia się w `cast_connected`. **Nie da:** okienka z listą nad drzewem jak w Zdjęciach (to casting,
+  po MVP — ISSUE-036 *Out of scope*) · pewności, że na telefonie autora po wyborze telewizora system nie zapyta jeszcze o zgodę albo o „cały ekran / jedna
+  aplikacja” · pewności, że telefon innego producenta otworzy ekran z telewizorami Google Cast, a nie np. tylko Miracast. Wtedy podpowiedź się nie pokaże, bo
+  ekran istnieje. Wszystkie trzy sprawdza telefon autora z jego telewizorem ([[ISSUE-032-mvp-install]] → *Hand checks*). *Obali:* na telefonie autora ekran
+  systemu nie pokazuje jego telewizora, choć kafelek w szybkich ustawieniach go pokazuje. Wtedy przycisk otwiera tryb z podpowiedzią (stan z AC-2) zamiast
+  ekranu systemu.
+- **D30 — jedna ikona „Przesyłaj na telewizor” zamiast ikony telewizora (P2)** (v1.10, decyzja autora na stopie #1 [[ISSUE-036-cast-from-the-app]], 2026-10-14:
+  *„tak”*; dawne *Open* 7). Ikona `cast_outlined` otwiera systemowy ekran przesyłania, a po powrocie włącza tryb prezentacji bez podpowiedzi. Telefon bez tego
+  ekranu włącza od razu tryb z podpowiedzią D26. Powód: autor chciał, żeby przycisk telewizora wysyłał obraz (stop #2 [[ISSUE-034-tree-presentation-mode]]: *„jak
+  w YouTube”*), a ikona przesyłania jest ta sama co w systemie i w YouTube (*Candidates — ISSUE-036*). **Nie da:** trybu bez telewizora jednym dotknięciem —
+  ikona i wstecz. *Obali:* autor na telefonie często pokazuje drzewo poziomo bez telewizora — wtedy P1 (druga ikona `tv_outlined`).
+  **v1.11** (przegląd `ui`, odstępstwa 1–2 `dev` w [[ISSUE-036-cast-from-the-app]]):
+  **(a) Powrót = aplikacja znów ma fokus** (we Flutterze `inactive` → `resumed`), a nie „aplikacja była schowana” (`hidden` → `resumed`, plan D1). Pomiar `dev`
+  na emulatorze: przy wstecz po ok. 1 s Android nie zdążył schować aplikacji, więc według planu tryb by się nie włączył. Flutter 3.41.1 (`dart:ui`,
+  `AppLifecycleState.inactive`, odczyt 2026-10-14): na Androidzie aplikacja jest `inactive` m.in. *„when the app is partially obscured or another activity is
+  focused, a app running in a split screen that isn't the current app”*. Ten sam sygnał obejmuje więc ekran przesyłania, który u innego producenta byłby oknem
+  nad aplikacją i jej nie chował. **Skutki:** przy podzielonym ekranie tryb włączy się, gdy wrócisz palcem do Grobinga; Home z ekranu systemu i powrót do
+  Grobinga pokazuje znowu ekran systemu (to samo zadanie), a tryb włącza dopiero wstecz, czyli „nie da” z planu D1 (z innej aplikacji prosto w tryb) jest
+  łagodniejsze. **(b) Drugie dotknięcie** w czasie otwierania ekranu systemu nic nie robi, a ikona się nie zmienia. Wyszarzenie mignęłoby na ułamek sekundy,
+  zanim ekran systemu przykryje drzewo, a po powrocie ikony i tak nie widać, bo jest tryb prezentacji. *Obali:* na telefonie autora ikona przestaje reagować,
+  a tryb się nie włącza (czekanie bez końca) — wtedy koniec czekania po czasie i widoczny stan czekania.
 
 ## Open
 1. ~~⚠️ OPEN — sterowanie poziomami — nowy wygląd~~ — rozstrzygnięte 2026-10-13: S2 (element 3), 4 progi (autor na stopie #1
@@ -465,3 +544,8 @@ Co z tego wynika dla ekranu:
    [[ISSUE-034-tree-presentation-mode]], 2026-10-14): **G2** („Moja babcia”), w tej samej osobnej pozycji co I1 (*Open* 5). **v1.9 — specyfikacja
    G2** (potwierdzone na stopie #1 ISSUE-035: *„2 „moja babcia””*): elementy 4, 5, 9, D28 (nazwa pokrewieństwa Twoim głosem, zdania aplikacji do Ciebie — [[style-b]] reguła 7 v1.28). Buduje
    [[ISSUE-035-tree-names-shrink-my-voice]].
+7. ~~⚠️ OPEN — wejście w przesyłanie z aplikacji: P1, P2 czy P3?~~ — **rozstrzygnięte 2026-10-14: P2** (stop #1 [[ISSUE-036-cast-from-the-app]], *„tak”*; D30).
+   Zapis sprzed decyzji: ([[ISSUE-036-cast-from-the-app]], v1.10; kandydaci i rekomendacja — *Candidates — ISSUE-036*,
+   makieta `drzewo-036.html`.) **Rekomendacja: P2** — jedna ikona `cast_outlined` „Przesyłaj na telewizor” zamiast ikony telewizora; ekran systemu, a po powrocie
+   tryb prezentacji. Elementy 1 i 11, *Navigation*, *States* i *AC → element* są zapisane według P2. Przy P1 albo P3 `ui` zmienia je przed planem. Na stop #1,
+   razem z zrzutem tego, co przycisk naprawdę otwiera (D29).

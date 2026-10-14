@@ -1,7 +1,7 @@
 ---
 title: "US-009 — See the family around one person and how it connects (drzewo od osoby)"
 type: user-story
-status: in-progress
+status: done
 epic: "[[EPIC-003-zrozumienie]]"
 persona: "[[P1-zbierajacy]]"
 moscow: [M9]
@@ -9,9 +9,9 @@ journey-steps: "n/a — funkcja widoku 5 (PROJECT_BRIEF §4a)"
 FR: ["[[FR-002-rodzina-jako-rekord]]"]
 NFR: ["[[NFR-005-dane-nie-opuszczaja-telefonu]]"]
 issues: ["[[ISSUE-033-tree-from-a-person]]", "[[ISSUE-034-tree-presentation-mode]]", "[[ISSUE-035-tree-names-shrink-my-voice]]", "[[ISSUE-036-cast-from-the-app]]"]
-quality-verdict: pending
-verdict-date: null
-verdict-reviewer: null
+quality-verdict: APPROVED
+verdict-date: 2026-10-14
+verdict-reviewer: self-check
 source: "[[SPIKE-002-tree-on-a-phone]] → *Findings*, *Rekomendacja* · [[drzewo]] v1.4 (elementy 1–5, D1–D3, D6, D8–D11) · [[SPIKE-004-mvp-flow-prototype]] D20, D25 · [[ISSUE-024-person-view]] (dawne AC-6)"
 created: 2026-10-13
 updated: 2026-10-14
@@ -59,6 +59,9 @@ na kolejne osoby, **żeby** zrozumieć, jak łączą się ze sobą ludzie z grob
   `getMaxScaleOnAxis()`, imiona przy oddalaniu ([[drzewo]] *Open* 5), ikona „Połącz dwie osoby” ([[drzewo]] *Open* 1a).
 - Na fizycznym telefonie (czas „kim jest X dla mnie”, płynność, progi S2) → [[ISSUE-032-mvp-install]] → *Hand checks*.
 - **Stan (2026-10-14):** AC-1–AC-8 zbudowane ([[ISSUE-033-tree-from-a-person]], [[ISSUE-034-tree-presentation-mode]]); głos karty G2 (AC-5) —
-  [[ISSUE-035-tree-names-shrink-my-voice]], a imiona przy oddalaniu zostają I2 (autor na stopie #1 ISSUE-035 wycofał I1 — [[drzewo]] D27). US zostaje
-  otwarta: wejście w przesyłanie ekranu autor chce mieć w aplikacji → [[ISSUE-036-cast-from-the-app]]. Casting, w którym telewizor sam rysuje drzewo (odbiornik Google Cast) — po MVP i tylko
-  gdy przesyłanie ekranu nie wystarczy (wymaga zmiany [[NFR-005-dane-nie-opuszczaja-telefonu]]).
+  [[ISSUE-035-tree-names-shrink-my-voice]], a imiona przy oddalaniu zostają I2 (autor na stopie #1 ISSUE-035 wycofał I1 — [[drzewo]] D27). Wejście w
+  przesyłanie ekranu z aplikacji — [[ISSUE-036-cast-from-the-app]] (P2: jedna ikona „Przesyłaj na telewizor” → ekran systemu → tryb prezentacji, [[drzewo]] D30).
+  Casting, w którym telewizor sam rysuje drzewo (odbiornik Google Cast) — po MVP i tylko gdy przesyłanie ekranu nie wystarczy (wymaga zmiany
+  [[NFR-005-dane-nie-opuszczaja-telefonu]]).
+- **Zamknięta 2026-10-14** (`docs`): AC-1–AC-8 z testami happy-path w czterech pozycjach, każda z werdyktem `qa` APPROVED (self-check, z uwagami) — [[TRACEABILITY]].
+  Werdykt US to suma werdyktów pozycji, nie osobny przegląd. Co zostało do ręki → [[ISSUE-032-mvp-install]] → *Hand checks* (drzewo).

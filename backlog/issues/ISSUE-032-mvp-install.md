@@ -98,6 +98,13 @@ Warunki — każdy ma swój dom, tutaj tylko lista:
 - stan „osoba bez rodziny” („nie wiadomo jeszcze, kim jest dla mnie”) — tylko test widżetu, w bazie testowej nie ma takiej osoby;
 - opis z trzech odcinków („Siostra cioteczna babci mojej żony”) — tylko test jednostkowy, na emulatorze widać opisy z dwóch odcinków.
 
+**Drzewo — „Przesyłaj na telewizor”** ([[ISSUE-036-cast-from-the-app]] → *Verification* → *Not tested live*)
+- telewizor autora na liście systemowego ekranu przesyłania — emulator nie widzi żadnego, nieprzetestowane na żywo;
+- co system pokazuje po wyborze telewizora (zgoda, „cały ekran / jedna aplikacja”) i czy drzewo staje poziomo na telewizorze — nieprzetestowane na żywo;
+- jednorazowe okno systemu o pełnym ekranie — czy trafia na telewizor przy pierwszym pokazie ([[drzewo]] D16);
+- telefon innego producenta (np. Samsung): czy ma ekran przesyłania i czy widzi telewizor Google Cast ([[drzewo]] D29 *Obali*) — nieprzetestowane;
+- przejście po powrocie z ekranu systemu na telefonie — na emulatorze ok. 1,1 s z chwilą niedopasowanego drzewa (pierwsze klatki po powrocie 64–100 ms).
+
 **Do decyzji autora, gdy zobaczy swoje cmentarze** (nie sprawdzenie, tylko wybór): grubość alejek i znicze, które nachodzą na
 siebie ([[cmentarz]] → *Open*, [[ISSUE-030-sector-on-a-visit]]).
 

@@ -19,12 +19,11 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
 
 ## In progress
 - **Po [[2026-10-13-retro-03]] (R1–R10, decyzja autora 2026-10-13):** ~~[[ISSUE-031-command-guard]]~~ i ~~[[SPIKE-002-tree-on-a-phone]]~~ —
-  zamknięte 2026-10-13 (*Recently done*). Dalej droga do instalacji MVP — **w toku: [[US-009-drzewo-od-osoby]]** (punkt 7 niżej):
-  ~~[[ISSUE-033-tree-from-a-person]]~~ (AC-1–AC-7), ~~[[ISSUE-034-tree-presentation-mode]]~~ (AC-8) i ~~[[ISSUE-035-tree-names-shrink-my-voice]]~~
-  (G2 — „Moja babcia”; imiona zostają I2) zamknięte; **została jedna pozycja z decyzji autora 2026-10-14**, `ui` → `planning`:
-  - [[ISSUE-036-cast-from-the-app]] — przycisk „Przesyłaj” w drzewie otwiera systemową listę przesyłania ekranu (jak „Przesyłaj” w Zdjęciach).
+  zamknięte 2026-10-13 (*Recently done*). Dalej droga do instalacji MVP: ~~[[US-009-drzewo-od-osoby]]~~ **zamknięta 2026-10-14** (~~ISSUE-033~~,
+  ~~ISSUE-034~~, ~~ISSUE-035~~, ~~ISSUE-036~~). **Następna: [[US-010-czas-na-drzewie]]** (punkt 7 niżej) — bez pozycji ISSUE; przed `ui` rozpisanie
+  przez `docs` („Do retro” niżej: US bez ISSUE na starcie łańcucha).
 
-  Specyfikacja: [[drzewo]] v1.9, [[osoba]] v2.4, [[style-b]] v1.28.
+  Specyfikacja: [[drzewo]] v1.11, [[osoba]] v2.4, [[style-b]] v1.28.
 - **Prawdziwe dane rodziny dopiero po instalacji MVP** (decyzja autora 2026-10-08 w `/pm`): budujemy produkt gotowy do
   instalacji na telefonie (MVP = brief §5, M1–M11); do tego czasu autor ocenia aplikację na wymyślonych danych. Rozmowa z babcią
   (~2026-11-02) jest na kartce, a odpowiedzi trafią do aplikacji po instalacji.
@@ -37,9 +36,9 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   6. ~~[[US-008-pinezka-na-miejscu]]~~ — zamknięta 2026-10-12 (~~ISSUE-029~~). **Teren czeka:** build release na
      telefonie przed zaduszkami (~2026-11-02) → *Parked* (cel autora z `/pm`: jedna wizyta da pomiar i sprawdzenie AC-1, AC-4).
      Kandydaci z [[cmentarz]] D29 i nachodzące znicze → [[ISSUE-030-sector-on-a-visit]] (`draft`, **czeka na wizytę** — D5, stop #1);
-  7. ~~[[SPIKE-002-tree-on-a-phone]]~~ — zamknięty 2026-10-13 → **w toku: [[US-009-drzewo-od-osoby]]** (~~ISSUE-033~~, ~~ISSUE-034~~, ~~ISSUE-035~~ → ISSUE-036; drzewo od osoby, S2, ślad dalszej
-     rodziny, słownik nazw złożonych — dawne AC-6 ISSUE-024, „Pokaż w drzewie”, tryb prezentacji) → [[US-010-czas-na-drzewie]] →
-     [[US-011-polacz-dwie-osoby]] ([[drzewo]] v1.4, [[EPIC-003-zrozumienie]]);
+  7. ~~[[SPIKE-002-tree-on-a-phone]]~~ — zamknięty 2026-10-13 → ~~[[US-009-drzewo-od-osoby]]~~ — zamknięta 2026-10-14 (~~ISSUE-033~~, ~~ISSUE-034~~,
+     ~~ISSUE-035~~, ~~ISSUE-036~~; drzewo od osoby, S2, ślad dalszej rodziny, słownik nazw złożonych, „Pokaż w drzewie”, tryb prezentacji, „Przesyłaj na
+     telewizor”) → **[[US-010-czas-na-drzewie]]** → [[US-011-polacz-dwie-osoby]] ([[drzewo]] v1.11, [[EPIC-003-zrozumienie]]);
   8. [[US-006-eksport-dla-rodziny]] i [[NT-007-hand-over-note]];
   → **[[ISSUE-032-mvp-install]]** (`draft`): audyt pól modelu ↔ ekrany (R9), lista rzeczy niesprawdzonych w ręce (R8), warunki
   przed pierwszymi danymi → build release na telefonie → prawdziwe dane ([[NT-002-transcribe-the-notes]]).
@@ -122,13 +121,14 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     wrócił temat imion przy oddalaniu, kandydaci są opisani w [[drzewo]] *Candidates — US-009*). Z sesji ISSUE-034 (`940e38e7-…\scratchpad\`): zrzuty
     `shots-034\`, kopie bazy testowej `test-034*.db` (wymyślone), APK SystemUI z emulatora (`sysui\`, ok. 45 MB, do odczytu nazwy kafelka) i skrypty — do
     kosza. Z sesji ISSUE-035 (`da0c23f6-…\scratchpad\`): zrzuty `shots-035\`, kopia bazy testowej `test-035.db` (wymyślone), pliki planu i raportów,
-    skrypty, powiększenia z przeglądu `ui` — do kosza;
+    skrypty, powiększenia z przeglądu `ui` — do kosza. Z sesji ISSUE-036 (`fa865b36-…\scratchpad\`): makieta `drzewo-036.html`, zrzuty i nagrania ekranu `shots-036\`
+    (wymyślone dane), logi testów i klatek — do kosza;
   - **repo nie mają pliku `LICENSE`** — kod można oglądać, ale nie wolno go używać. Licencję można dodać później.
 - **Emulatory (po ISSUE-033):** `Medium_Phone` — release v12 na danych testowych autora, kopia skonfigurowana od nowa z hasłem
   testowym (wymyślone, z sesji ISSUE-029), pliki `grobing-klucz-029.age` i `grobing-kopia-029.age` w Pobranych; grób „Jozef” ma
   pinezkę z poprawki autora; **wyłączony** na czas ISSUE-033, dane nietknięte. `Grobing_Restore` — **build profile** (podpis debug,
-  `--dart-define=FRAME_LOG=true` — czasy klatek w logcat `GROBING_FRAME`; od ISSUE-034 z trybem prezentacji, od ISSUE-035 z kartą w G2, systemowe okno „Viewing full screen”
-  już potwierdzone, ustawienia ekranu i nawigacja gestami jak przed testami) z wymyśloną rodziną do drzewa (106 osób, „ja” = Mateusz); release z
+  `--dart-define=FRAME_LOG=true` — czasy klatek w logcat `GROBING_FRAME`; od ISSUE-034 z trybem prezentacji, od ISSUE-035 z kartą w G2, od ISSUE-036 z ikoną
+  „Przesyłaj na telewizor”; system po angielsku, ekran „Google Cast” bez urządzeń; systemowe okno „Viewing full screen” już potwierdzone, ustawienia ekranu i nawigacja gestami jak przed testami) z wymyśloną rodziną do drzewa (106 osób, „ja” = Mateusz); release z
   danymi kopii `-029` odinstalowany (D5 ISSUE-033); **`hw.gpu.enabled=yes`** (było `no` — rysowanie programowe zawyżało czasy klatek). Release na
   `Grobing_Restore` wymaga odinstalowania profile (inny podpis). Następna pozycja z kopią: nowe hasło testowe.
 - **[[EPIC-002-wizyta]] gotowy do rozpisania na US** — pytanie „jak znaleźć grób bez pinezki” ma kierunek autora
@@ -147,7 +147,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   paczki (decyzja autora 2026-10-07); treść wychodzących zmian sprawdza strażnik treści ([[ISSUE-020-content-guard]]) przy każdym `git add`/`commit`.
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **5** (ostatnie retro: [[2026-10-13-retro-03]]). Co **10** → retro + pytanie o 3–5
+- Zamknięte pozycje od ostatniego retro: **6** (ostatnie retro: [[2026-10-13-retro-03]]). Co **10** → retro + pytanie o 3–5
   nośnych faktów (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**; podbija go `docs` przy zamknięciu, a zeruje go retro.
 - Do retro (zebrane po drodze, bez decyzji):
   - **US bez ISSUE na starcie łańcucha** ([[ISSUE-033-tree-from-a-person]]): `pm` skierował [[US-009-drzewo-od-osoby]] prosto do `ui`, a plan nie miał
@@ -163,6 +163,11 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     (stop #1 ISSUE-034) → I2 (stop #1 ISSUE-035). `ui` i `planning` rozpisali I1 (specyfikacja, wyjątek w [[style-b]], plan), a autor przy
     odpowiedzi na sekcje makiety wybrał I2 — zapis cofnięty przed budową. Pozycja założona na zmianie decyzji ruszyła bez potwierdzenia jej na
     makiecie przed `ui`.
+  - **Kanon dał zły sygnał, pomiar go złapał** ([[ISSUE-036-cast-from-the-app]], krok 0 `dev`): plan oparł powrót z ekranu systemu na `hidden` → `resumed`
+    (stany Fluttera), a na emulatorze szybki powrót wstecz w ogóle nie chowa aplikacji — Android zatrzymuje ją dopiero po chwili. Pierwsza wersja `dev` miała
+    też bezpiecznik 2 s, który zwalniał czekanie, zanim przyszło `hidden`. Krok 0 przed budową znalazł oba w jednej rundzie; bez niego wyszłoby to na stopie #2.
+  - **Pełny `flutter test` zawisł raz** ([[ISSUE-036-cast-from-the-app]] → *Verification*): jeden proces `flutter_tester` stał 13 min bez wskazania testu; drugi
+    przebieg z `--timeout 120s` — 728 zielonych w 1:25. Kandydat: `--timeout` na stałe w rytuale WZ-024, żeby zawieszenie nazwało test.
   - Poprzednią listę rozliczyło [[2026-10-13-retro-03]] → *The "Do retro" list*.
 
 ## Parked (waiting on someone outside the session)
@@ -183,6 +188,18 @@ Format wpisu: `źródło (babcia / cmentarz X) · pytanie bez danych rodziny · 
 ## Recently done
 > Tylko wpisy od ostatniego retro ([[2026-10-13-retro-03]], R5). Starsze są w plikach retro → *Archive*:
 > [[2026-10-13-retro-03]] · [[2026-10-08-retro-02]] · [[2026-10-06-retro-01]].
+
+- 2026-10-14 — [[ISSUE-036-cast-from-the-app]] zamknięte — **[[US-009-drzewo-od-osoby]] zamknięta** (AC-8). **„Przesyłaj na telewizor” w drzewie:**
+  - prior art ([[drzewo]] D29, źródła SDK Androida): aplikacja bez Google Cast może tylko **otworzyć systemowy ekran przesyłania** („Google Cast”, ustawienia
+    telefonu) — okienka z listą nad treścią jak w Zdjęciach nie da się zrobić, a samo przesyłanie włącza system;
+  - **decyzja autora na stopie #1 (*„tak”*): P2** — jedna ikona `cast_outlined` zamiast ikony telewizora: ekran systemu → wstecz → tryb prezentacji bez podpowiedzi;
+    telefon bez tego ekranu → od razu tryb z podpowiedzią ([[drzewo]] D30); kandydaci P1–P3 na makiecie ze zrzutów z emulatora;
+  - krok 0 `dev`: powrót rozpoznawany po `inactive` → `resumed`, bo szybki powrót nie chowa aplikacji (*Do retro*); AC-2 sprawdzone jednorazową sondą bez ekranu
+    przesyłania; przejście po powrocie ok. 1,1 s z chwilą niedopasowanego drzewa (pamięć grafiki zwolniona po zatrzymaniu) — obserwacja, na telefon;
+  - przegląd `ui`: 0 BLOCKER, 0 MAJOR, 2 MINOR zamknięte; odstępstwa `dev` przyjęte → [[drzewo]] v1.11. Bez sieci, uprawnień i zależności (NFR-005).
+
+  Stop #2 „ok” — oba kroki ze śladem na urządzeniu; pięć wierszy na [[ISSUE-032-mvp-install]] → *Hand checks*. Testy: 728 zielonych. Werdykt `qa`: APPROVED
+  (self-check, z uwagami). Licznik retro: 5 → 6.
 
 - 2026-10-14 — [[ISSUE-035-tree-names-shrink-my-voice]] zamknięte ([[US-009-drzewo-od-osoby]] AC-5). **Karta drzewa mówi Twoim głosem:**
   - „Moja babcia”, „Mój stryj (brat taty)”, „Babcia mojej żony”, „Brat wujeczny mojego taty”, „to ja”, „nie wiadomo jeszcze, kim jest dla mnie”; opis dla
