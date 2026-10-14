@@ -1,5 +1,5 @@
 ---
-title: "Style B — visual guidelines (v1.29)"
+title: "Style B — visual guidelines (v1.31)"
 type: design-guidelines
 status: active
 owner: ui
@@ -58,6 +58,7 @@ sam (SC 1.4.1):
 | gesty | **przesunięcie i gest kilkoma palcami mają alternatywę jednym dotknięciem** (przyciski poprzednie/następne, podwójne dotknięcie zamiast rozsunięcia palców) (v1.7) | WCAG 2.2 SC 2.5.1 Pointer Gestures, A: *„All functionality that uses multipoint or path-based gestures for operation can be operated with a single pointer without a path-based gesture”* ([Understanding 2.5.1](https://www.w3.org/WAI/WCAG22/Understanding/pointer-gestures.html)) |
 | cel dotyku | **≥ 48 × 48 dp**. **Wyjątek — węzeł drzewa przy oddaleniu** (v1.24, [[drzewo]] D17): cel to miejsce osoby × skala drzewa, na poziomie 4 38–32 dp, nigdy poniżej 24 dp (najmniejsza skala 0,4); przybliżenie (+) daje ≥ 48 dp jednym dotknięciem. Węzły nie mogą rosnąć, bo drzewo przestałoby być oddalone, a pomyłka tylko przestawia środek | [Android — Make apps more accessible](https://developer.android.com/guide/topics/ui/accessibility/apps) → *Use large, simple controls*: *„at least 48dp×48dp”*. Wyjątek: [WCAG 2.2](https://www.w3.org/TR/WCAG22/) SC 2.5.8 Target Size (Minimum), AA: *„The size of the target for pointer inputs is at least 24 by 24 CSS pixels”*, z wyjątkiem *Equivalent*: *„The function can be achieved through a different control on the same page that meets this criterion”* (odczyt 2026-10-13) |
 | rozmiary tekstu | treść i tekst wpisywany **≥ 16 sp**; drobny tekst pomocniczy ≥ 13 sp; etykieta przycisku 14–16 sp, waga 500. **Wyjątek — podpis zakładki w dolnym pasku: 12 sp, półgruby** (v1.17, [[cmentarze]] element 18), bo to krótka etykieta pod ikoną, a nie tekst do czytania; rośnie z systemowym rozmiarem tekstu (przy 200% mieści się w pasku 72 dp). **Wyjątek — podpis pola „Dodaj zdjęcie” w miejscu miniatury cmentarza 96 × 80 dp: 12 sp, półgruby** (v1.20, [[cmentarze]] 6a). To krótka etykieta pod ikoną w polu, które ma rozmiar miniatury, a przy 14 sp podpis nie mieści się w jednej linii. Rośnie z tekstem: przy 200% pole rośnie, a podpis przechodzi do dwóch linii. **Wyjątek — podpis źródła mapy („© OpenStreetMap”, „Ortofotomapa: GUGiK”): 11 sp, tekst pomocniczy, na małej plakietce w kolorze powierzchni** (v1.21, [[cmentarz]] v5.1). To wymagany podpis licencji, a nie treść do czytania przy grobie; rośnie z tekstem systemu | decyzja projektowa (nie norma) — dane wpisuje się szybko i trzeba je odczytać bez mrużenia oczu. Wyjątek: podpis zakładki w pasku nawigacji Material 3 to *label medium*, 12 sp (Flutter 3.41.1, `material/navigation_bar.dart` → `_NavigationBarDefaultsM3` używa `labelMedium`; `material/typography.dart` → `_M3Typography`: `labelMedium` 12.0, w500 — sprawdzone w SDK 2026-10-08) |
+| **tekst dla telewizora** (tryb prezentacji, od v1.30) | to, co rodzina ma przeczytać z kanapy (rok historii): **≥ 36 sp** i **≥ 48 dp od bocznych krawędzi**; rośnie z tekstem systemu najwyżej do 1,3× (jak podpisy na mapie, reguła 13 — napis już jest duży i stoi na drzewie). Pomiar: telefon poziomo wypełnia szerokość telewizora 16:9, więc 36 sp ma z 3 m 23′ (32″) – 46′ (65″), a 13 sp tylko 8–17′ ([[drzewo]] *Candidates — ISSUE-038*). Sterowanie dla osoby z telefonem (listwa, „Zakończ prezentację”) — progi telefonu | czytelność: ISO 9241-3xx, wysokość znaku zwykle 20–22′, min. 16′ (za [listą CSS W3C](https://lists.w3.org/Archives/Public/public-css-archive/2020Jun/0612.html)); skala: [Android TV → Typography](https://developer.android.com/design/ui/tv/guides/styles/typography) (display small 36 sp — *„reserved for short, important text passages, or numerals”*); margines: [Android TV → Layouts](https://developer.android.com/design/ui/tv/guides/styles/layouts) — *„a 5% margin of 48dp on the left and right sides”* (odczyt 2026-10-14; [[drzewo]] D38) |
 | **ekrany wizyty** (od v1.21) | **≥ 7:1** dla tekstu czytanego przy grobie (adres, liczby, stan planu); w tekście pomocniczym tylko to, czego nie czyta się przy grobie | WCAG 2.2 SC 1.4.6 Contrast (Enhanced), AAA. **Miara [[NFR-004-czytelnosc-w-sloncu]]** — decyzja autora 2026-10-12 (W2, stop #1 [[ISSUE-027-cemetery-map-plan-photo-states]]); pierwszy ekran: [[cmentarz]] v5. Test w słońcu — przy instalacji MVP |
 
 ## Measurement — 2026-10-06
@@ -123,6 +124,11 @@ zostaje bez zmian.
 5. **Odstępy:** siatka 8 dp. Na ekranach z listą albo formularzem margines boczny 16 dp, odstęp między
    grupami 24 dp, wewnątrz grupy 8–12 dp, a między kartami 8 dp. Kompozycje wyśrodkowane (pusty stan,
    nagłówek osoby z R4) biorą większe odstępy z tej samej siatki.
+   **Stała szerokość zmiennego napisu** (v1.31): napis, którego wartość się zmienia, a obok stoi kontrolka do przeciągania
+   (rok przy suwaku, nazwa tempa), ma szerokość najszerszej ze swoich wartości w tym samym kroju i skali tekstu. Inaczej
+   suwak zmienia długość przy każdej zmianie napisu, a uchwyt ucieka spod palca. Dwie instancje: rok w karcie drzewa (v1.13,
+   znalezione na emulatorze w [[ISSUE-037-time-on-the-tree]]) i przycisk tempa ([[ISSUE-038-history-on-tv-and-tempo]]; [[drzewo]]
+   element 6).
 6. **Formaty po polsku:**
    - lata życia: `1921–1987`, a z dopiskiem `ok. 1890 – 14.03.1951` (spacje wokół kreski, gdy którakolwiek
      strona ma więcej niż sam rok);
@@ -470,3 +476,10 @@ wysokokontrastowy, bez rezygnacji ze stylu B. Wynik i data trafiają tutaj i do
   - koniec związku — „//” w kolorze partnerów przez linię pary (genogram), jak linia, którą przecina.
 
   Tokeny bez zmian.
+- 2026-10-14 — **v1.30** (`ui` przed planem [[ISSUE-038-history-on-tv-and-tempo]]; [[drzewo]] v1.14, D38, D39): *Thresholds* — **tekst dla telewizora**: co rodzina czyta z kanapy, ma
+  ≥ 36 sp i stoi ≥ 48 dp od bocznych krawędzi, a z tekstem systemu rośnie najwyżej do 1,3×. Pierwsza instancja: rok historii w trybie prezentacji. Próg stoi niezależnie od wyboru
+  miejsca roku na stopie #1 (L1–L3). Tokeny bez zmian. Pomiar (wzór WCAG z wartości w `theme.dart`, 2026-10-14): rok w akcencie na tle 8,81:1; tekst o kryciu 10% na tle (kandydat L3)
+  1,20:1, przy 40% — 2,70:1, poniżej 3:1 dla dużego tekstu.
+- 2026-10-14 — **v1.31** (przegląd `ui` zbudowanej [[ISSUE-038-history-on-tv-and-tempo]], odstępstwo 3 `dev` przyjęte; [[drzewo]] v1.15): reguła 5 — **stała szerokość
+  zmiennego napisu** obok kontrolki do przeciągania (szerokość najszerszej wartości). Reguła, bo to druga instancja: rok w karcie (v1.13) i przycisk tempa. Tokeny bez zmian.
+  Pomiar (wzór WCAG z wartości w `theme.dart`, 2026-10-14): tempo w kolorze tekstu na powierzchni 10,02:1; rok w rogu na tabliczce w kolorze tła 8,81:1.

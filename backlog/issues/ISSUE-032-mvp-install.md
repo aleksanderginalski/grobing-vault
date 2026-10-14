@@ -110,6 +110,15 @@ Warunki — każdy ma swój dom, tutaj tylko lista:
 - czytnik TalkBack: suwak „Rok” zmienia rok co 10 lat, po ❚❚ pada rok — nieprzetestowane na żywo (tylko test semantyki);
 - płynność ▶ i przesuwania drzewa na telefonie — emulator zaszumiony (przesuwanie 10–26% wolnych klatek także przed ISSUE-037), ▶ 7–9%.
 
+**Drzewo — historia na telewizorze i tempo** ([[ISSUE-038-history-on-tv-and-tempo]] → *Verification* → *For ISSUE-032 → Hand checks*)
+- tempo „Średnio” / „Wolno” przy oglądaniu historii z rodziną; czy przycisk tempa obok „dziś” wygląda na dotykalny (MINOR przeglądu `ui`) — stop #2 „pomiń” (krok 1);
+- rok w rogu i listwa w trybie prezentacji na prawdziwym telewizorze — czy to obraz do pokazania — stop #2 „pomiń” (krok 2);
+- tryb prezentacji otwarty z roku z karty (Z2) — czy start od 1950, a nie od „dziś”, jest naturalny — stop #2 „pomiń” (krok 3);
+- TalkBack w trybie prezentacji — sterowanie od wejścia, rok w rogu bez ogłaszania w trakcie ▶ — nieprzetestowane na żywo (okno zgody TalkBack na emulatorze);
+- czytelność roku z kanapy na telewizorze autora i czy obraz telefonu wypełnia szerokość telewizora ([[drzewo]] D38 → *Obali*) — nieprzetestowane na żywo;
+- imiona w trybie prezentacji z kanapy — 13 sp ≈ 14′ z 3 m na 55″, poniżej 16′ (I2, [[drzewo]] D27) — nieprzetestowane na żywo;
+- „Czas na działanie” z ustawień telefonu wydłuża sterowanie w trybie (Android 10+) — nieprzetestowane na żywo (na emulatorze przez adb).
+
 **Do decyzji autora, gdy zobaczy swoje cmentarze** (nie sprawdzenie, tylko wybór): grubość alejek i znicze, które nachodzą na
 siebie ([[cmentarz]] → *Open*, [[ISSUE-030-sector-on-a-visit]]).
 

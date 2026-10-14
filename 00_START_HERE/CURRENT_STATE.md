@@ -20,11 +20,11 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
 ## In progress
 - **Po [[2026-10-13-retro-03]] (R1–R10, decyzja autora 2026-10-13):** ~~[[ISSUE-031-command-guard]]~~ i ~~[[SPIKE-002-tree-on-a-phone]]~~ —
   zamknięte 2026-10-13 (*Recently done*). Dalej droga do instalacji MVP: ~~[[US-009-drzewo-od-osoby]]~~ **zamknięta 2026-10-14** (~~ISSUE-033~~,
-  ~~ISSUE-034~~, ~~ISSUE-035~~, ~~ISSUE-036~~); ~~[[US-010-czas-na-drzewie]]~~ **zamknięta 2026-10-14** (~~ISSUE-037~~). **Następna:
-  [[ISSUE-038-history-on-tv-and-tempo]]** — historia na telewizorze i tempo lat (prośba autora ze stopu #2 ISSUE-037; kolejność autora: przed US-011); ekran, więc
-  `ui` → `planning`.
+  ~~ISSUE-034~~, ~~ISSUE-035~~, ~~ISSUE-036~~); ~~[[US-010-czas-na-drzewie]]~~ **zamknięta 2026-10-14** (~~ISSUE-037~~, ~~ISSUE-038~~ — historia na telewizorze i
+  tempo, zamknięte 2026-10-14). **Następna: [[US-011-polacz-dwie-osoby]]** (kolejność autora z 2026-10-14) — US bez ISSUE, a ekran zmienia się, więc rozpisanie i `ui` →
+  `planning` (*Do retro*: US bez ISSUE na starcie łańcucha).
 
-  Specyfikacja: [[drzewo]] v1.13, [[osoba]] v2.4, [[style-b]] v1.29.
+  Specyfikacja: [[drzewo]] v1.15, [[osoba]] v2.4, [[style-b]] v1.31.
 - **Prawdziwe dane rodziny dopiero po instalacji MVP** (decyzja autora 2026-10-08 w `/pm`): budujemy produkt gotowy do
   instalacji na telefonie (MVP = brief §5, M1–M11); do tego czasu autor ocenia aplikację na wymyślonych danych. Rozmowa z babcią
   (~2026-11-02) jest na kartce, a odpowiedzi trafią do aplikacji po instalacji.
@@ -39,8 +39,8 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
      Kandydaci z [[cmentarz]] D29 i nachodzące znicze → [[ISSUE-030-sector-on-a-visit]] (`draft`, **czeka na wizytę** — D5, stop #1);
   7. ~~[[SPIKE-002-tree-on-a-phone]]~~ — zamknięty 2026-10-13 → ~~[[US-009-drzewo-od-osoby]]~~ — zamknięta 2026-10-14 (~~ISSUE-033~~, ~~ISSUE-034~~,
      ~~ISSUE-035~~, ~~ISSUE-036~~; drzewo od osoby, S2, ślad dalszej rodziny, słownik nazw złożonych, „Pokaż w drzewie”, tryb prezentacji, „Przesyłaj na
-     telewizor”) → ~~[[US-010-czas-na-drzewie]]~~ — zamknięta 2026-10-14 (~~ISSUE-037~~; suwak czasu, daty niepewne, „//”) → **[[ISSUE-038-history-on-tv-and-tempo]]**
-     (historia na telewizorze i tempo; kolejność potwierdzona przez autora 2026-10-14: *„ok”*) → [[US-011-polacz-dwie-osoby]] ([[drzewo]] v1.11, [[EPIC-003-zrozumienie]]);
+     telewizor”) → ~~[[US-010-czas-na-drzewie]]~~ — zamknięta 2026-10-14 (~~ISSUE-037~~; suwak czasu, daty niepewne, „//”; ~~ISSUE-038~~ — historia na telewizorze i
+     tempo) → **[[US-011-polacz-dwie-osoby]]** (następna; [[drzewo]] elementy 7–10, [[EPIC-003-zrozumienie]]);
   8. [[US-006-eksport-dla-rodziny]] i [[NT-007-hand-over-note]];
   → **[[ISSUE-032-mvp-install]]** (`draft`): audyt pól modelu ↔ ekrany (R9), lista rzeczy niesprawdzonych w ręce (R8), warunki
   przed pierwszymi danymi → build release na telefonie → prawdziwe dane ([[NT-002-transcribe-the-notes]]).
@@ -127,10 +127,10 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     `shots-034\`, kopie bazy testowej `test-034*.db` (wymyślone), APK SystemUI z emulatora (`sysui\`, ok. 45 MB, do odczytu nazwy kafelka) i skrypty — do
     kosza. Z sesji ISSUE-035 (`da0c23f6-…\scratchpad\`): zrzuty `shots-035\`, kopia bazy testowej `test-035.db` (wymyślone), pliki planu i raportów,
     skrypty, powiększenia z przeglądu `ui` — do kosza. Z sesji ISSUE-036 (`fa865b36-…\scratchpad\`): makieta `drzewo-036.html`, zrzuty i nagrania ekranu `shots-036\`
-    (wymyślone dane), logi testów i klatek — do kosza. Z sesji ISSUE-037 (`555909c3-…\scratchpad\`): makieta `drzewo-037.html` i zrzuty `shots-037\`, `shots-emu\`
-    (wymyślone) — **zostają do [[ISSUE-038-history-on-tv-and-tempo]]** (podstawa makiety telewizora i tempa), potem do kosza; do kosza od razu: `base\` (kopia drzewa
-    roboczego `grobing-code` z buildem, ok. 0,5 GB, do pomiaru odniesienia, **bez** `key.properties`), `fjar\`, `ref\` (PDF-y TimeNets i genogramu), logi klatek i
-    skrypty;
+    (wymyślone dane), logi testów i klatek — do kosza. Z sesji ISSUE-037 (`555909c3-…\scratchpad\`): cały katalog do kosza — makieta `drzewo-037.html`, zrzuty
+    `shots-037\`, `shots-emu\` (wymyślone; makieta ISSUE-038 już z nich powstała), `base\` (kopia drzewa roboczego `grobing-code` z buildem, ok. 0,5 GB, **bez**
+    `key.properties`), `fjar\`, `ref\` (PDF-y TimeNets i genogramu), logi klatek i skrypty. Z sesji ISSUE-038 (`baf00b7b-…\scratchpad\`): makieta `drzewo-038.html`, zrzuty
+    `shots-038\` i `shots-emu\` (wymyślone), `base\` (dwa APK profile, ok. 80 MB), `chr\` (profil Chrome bez okna), źródła Media3, skrypty — do kosza;
   - **repo nie mają pliku `LICENSE`** — kod można oglądać, ale nie wolno go używać. Licencję można dodać później.
 - **Emulatory (po ISSUE-033):** `Medium_Phone` — release v12 na danych testowych autora, kopia skonfigurowana od nowa z hasłem
   testowym (wymyślone, z sesji ISSUE-029), pliki `grobing-klucz-029.age` i `grobing-kopia-029.age` w Pobranych; grób „Jozef” ma
@@ -141,7 +141,10 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   `Grobing_Restore` wymaga odinstalowania profile (inny podpis). Następna pozycja z kopią: nowe hasło testowe. **Po ISSUE-037:** build profile z suwakiem czasu, dane
   aplikacji wyczyszczone (`pm clear`, D4) i wymyślona rodzina dodana od nowa — z datami niepewnymi (ok., między, przed, po, bez daty) i trzema ślubami bez daty; skale
   animacji i tekstu z powrotem na 1. **Pomiar klatek na nim jest dziś zaszumiony** (przesuwanie 10–26% wolnych klatek także na buildzie sprzed ISSUE-037) — porównanie
-  tylko naprzemienne z buildem odniesienia (ISSUE-037 → *Dev report* → *Measurements*).
+  tylko naprzemienne z buildem odniesienia (ISSUE-037 → *Dev report* → *Measurements*). **Po ISSUE-038:** build profile z tempem i historią w trybie prezentacji (`FRAME_LOG`);
+  tekst, gęstość i animacje domyślne, „Czas na działanie” usunięty, TalkBack wyłączony (okno zgody TalkBack na powiadomienia zamknięte „Nie zezwalaj”). Build odniesienia
+  do pomiaru klatek: APK zainstalowany na emulatorze, ściągnięty przed instalacją nowego (`adb shell pm path com.grobing.app`, `adb pull`; sposób z ISSUE-038) — kopia drzewa
+  roboczego niepotrzebna.
 - **[[EPIC-002-wizyta]] gotowy do rozpisania na US** — pytanie „jak znaleźć grób bez pinezki” ma kierunek autora
   (2026-10-08): adres z wyszukiwarki zarządcy → kwatera zaznaczona według planu zarządcy → na miejscu plan offline i
   GPS → pinezka. Wejście do pierwszej US (mapa cmentarza): EPIC-002 → *Input from SPIKE-001*. Ekran: `ui` →
@@ -158,7 +161,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   paczki (decyzja autora 2026-10-07); treść wychodzących zmian sprawdza strażnik treści ([[ISSUE-020-content-guard]]) przy każdym `git add`/`commit`.
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **7** (ostatnie retro: [[2026-10-13-retro-03]]). Co **10** → retro + pytanie o 3–5
+- Zamknięte pozycje od ostatniego retro: **8** (ostatnie retro: [[2026-10-13-retro-03]]). Co **10** → retro + pytanie o 3–5
   nośnych faktów (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**; podbija go `docs` przy zamknięciu, a zeruje go retro.
 - Do retro (zebrane po drodze, bez decyzji):
   - **US bez ISSUE na starcie łańcucha** ([[ISSUE-033-tree-from-a-person]]): `pm` skierował [[US-009-drzewo-od-osoby]] prosto do `ui`, a plan nie miał
@@ -188,6 +191,13 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   - **Dwa pytania w jednej odpowiedzi przy otwartym stopie #2** ([[ISSUE-037-time-on-the-tree]]): pytanie o nowe zadania i otwarte kroki stopu #2 w jednej wiadomości — autor
     odpisał „ok” i nie było wiadomo, na co. Rozstrzygnął stan emulatora (bez śladu kroków) i ponowne pytanie. Kandydat: przy otwartym stopie każde inne pytanie osobno albo
     z jawnym „na które odpowiadasz?”.
+  - **Przegląd `ui` ze zrzutów znalazł usterkę z poprzedniej pozycji** ([[ISSUE-038-history-on-tv-and-tempo]] → *Dev report* → Found d): dopasowanie poziomu 2 w trybie
+    prezentacji przegrywało porównanie przez zaokrąglenie (z ISSUE-034). `dev` uznał, że „drzewo jest szersze niż ekran”, a test w czcionce testowej granicy nie trafia — przyczynę
+    wyliczył przegląd z geometrii zrzutu (skala, szerokość, położenie środka). Kandydat: przy „nie mieści się” w *Dev report* — liczba, nie opis.
+  - **Strażnik komend złapał pomyłkę agenta** ([[ISSUE-038-history-on-tv-and-tempo]], `ui`): do komendy z `sed` trafiło przez pomyłkę `python -I -` — odmowa przy próbie, nic się
+    nie wykonało ([[ISSUE-031-command-guard]] działa). Kandydat: nic do zmiany, wpis jako dowód mechanizmu.
+  - **Stop #2 „pomiń” we wszystkich krokach** ([[ISSUE-038-history-on-tv-and-tempo]]): trzy kroki odczucia na emulatorze, a odpowiedź jedna. Lista [[ISSUE-032-mvp-install]] →
+    *Hand checks* rośnie o pozycję (siedem wierszy). Kandydat: pytanie na retro, czy kroki odczucia przy pozycjach z telewizorem odkładać od razu do telefonu z telewizorem.
   - Poprzednią listę rozliczyło [[2026-10-13-retro-03]] → *The "Do retro" list*.
 
 ## Parked (waiting on someone outside the session)
@@ -208,6 +218,19 @@ Format wpisu: `źródło (babcia / cmentarz X) · pytanie bez danych rodziny · 
 ## Recently done
 > Tylko wpisy od ostatniego retro ([[2026-10-13-retro-03]], R5). Starsze są w plikach retro → *Archive*:
 > [[2026-10-13-retro-03]] · [[2026-10-08-retro-02]] · [[2026-10-06-retro-01]].
+
+- 2026-10-14 — [[ISSUE-038-history-on-tv-and-tempo]] zamknięte ([[US-010-czas-na-drzewie]] AC-3 — nowe brzmienie). **Historia na telewizorze i tempo lat:**
+  - prior art ([[drzewo]] D38): skala TV Androida (36 sp dla liczb), margines 5% (48 dp), wysokość znaku w kącie widzenia (ISO 9241: min. 16′); rok w 36 sp ma z 3 m 23–46′
+    (32–65″); odtwarzacz Media3 — sterowanie chowa się po 5 s, dotknięcie chowa;
+  - **decyzje autora na stopie #1 (*„Ok”*):** L1 — rok w lewym górnym rogu · B2 — listwa na dole jak w odtwarzaczu (▶, suwak, tempo) i „Zakończ prezentację”, 5 s · V2 — „Wolno” ·
+    „Średnio” · „Szybko” = 5 · 10 · 20 lat/s, domyślnie „Średnio” (od 1880 ok. 15 s) · Z2 — tryb z rokiem z karty (zmienia D37); kandydaci na makiecie `drzewo-038.html` z
+    podglądem „z kanapy”;
+  - „Czas na działanie” z ułatwień dostępu wydłuża sterowanie (kanał `grobing/external`, Android 10+); z czytnikiem sterowanie jest od wejścia i nie znika;
+  - przegląd `ui`: 2 MAJOR poprawione przed stopem — tabliczka roku przechwytywała dotyk, a dopasowanie poziomu przy 200% przegrywało przez zaokrąglenie (usterka z ISSUE-034,
+    poprawka poza pierwotnym zakresem, zgłoszona na stopie #2); 3 odstępstwa `dev` przyjęte → [[drzewo]] v1.15, [[style-b]] v1.31; płynność w szumie buildu odniesienia.
+
+  Stop #2 „pomiń” we wszystkich krokach; siedem wierszy na [[ISSUE-032-mvp-install]] → *Hand checks*. Imiona na telewizorze poniżej progu czytelności → wejście do
+  [[2026-10-14-opowiesc-rodziny-i-wieniec]]. Testy: 754 zielone. Werdykt `qa`: APPROVED (self-check, z uwagami). Licznik retro: 7 → 8.
 
 - 2026-10-14 — [[ISSUE-037-time-on-the-tree]] zamknięte — **[[US-010-czas-na-drzewie]] zamknięta** (AC-1–AC-3). **Czas na drzewie — suwak w karcie:**
   - prior art ([[drzewo]] D31): TimeNets szacuje brakujące daty z rodziny i pokazuje niepewność; liczby okna z Gramps (20 lat między pokoleniami, 110 lat życia);

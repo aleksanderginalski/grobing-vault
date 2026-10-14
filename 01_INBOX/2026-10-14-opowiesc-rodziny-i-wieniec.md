@@ -18,6 +18,9 @@ inny, „zbliżenia” na momenty w których zawierane są małżeństwa, rodzą
 3. **Daty niepewne** (N3, [[drzewo]] D32): czy zbliżać zdarzenie „ok. 1890” i jak je pokazać.
 4. **Ograniczenie animacji** (WCAG SC 2.3.3, D36): co zostaje, gdy system wyłącza animacje — zbliżenia to ruch.
 5. **Płynność:** zbliżenia i efekty to więcej pracy rastra niż dziś (▶: 7–9% wolnych klatek na emulatorze) — pomiar na prototypie we Flutterze, nie tylko w HTML.
+6. **Imiona na telewizorze** (wejście z [[ISSUE-038-history-on-tv-and-tempo]], 2026-10-14): w trybie prezentacji imię ma 13 sp, czyli z 3 m na 55″ ok. 14′ — poniżej minimum 16′
+   (ISO 9241, [[drzewo]] D38, *Candidates — ISSUE-038* → *Zauważone*). Rok w rogu czyta się z kanapy, imiona tylko z bliska. Opowieść na telewizorze może potrzebować większych imion
+   osób, o których akurat mowa — dziś to I2 ([[drzewo]] D27).
 
 ## d) Wieniec przy portrecie związany z nazwiskiem
 Słowa autora: *„Chciałbym móc w wyborze portretu dla niej customowy wieniec który byłby związany z danym nazwiskiem”*.

@@ -1,16 +1,16 @@
 ---
 screen: "Drzewo — rodzina od osoby, poziomy połączeń, czas; połącz dwie osoby"
-items: ["[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-024-person-view]]", "[[SPIKE-002-tree-on-a-phone]]", "[[US-009-drzewo-od-osoby]]", "[[ISSUE-033-tree-from-a-person]]", "[[ISSUE-034-tree-presentation-mode]]", "[[ISSUE-035-tree-names-shrink-my-voice]]", "[[ISSUE-036-cast-from-the-app]]", "[[ISSUE-037-time-on-the-tree]]"]
+items: ["[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-024-person-view]]", "[[SPIKE-002-tree-on-a-phone]]", "[[US-009-drzewo-od-osoby]]", "[[ISSUE-033-tree-from-a-person]]", "[[ISSUE-034-tree-presentation-mode]]", "[[ISSUE-035-tree-names-shrink-my-voice]]", "[[ISSUE-036-cast-from-the-app]]", "[[ISSUE-037-time-on-the-tree]]", "[[ISSUE-038-history-on-tv-and-tempo]]"]
 us: "[[US-009-drzewo-od-osoby]] (M9) · [[US-010-czas-na-drzewie]] (M10) · [[US-011-polacz-dwie-osoby]] (M11) — [[EPIC-003-zrozumienie]]"
 journey-step: "widok 5 (M9–M11, R3)"
-mockup: "2026-10-14: drzewo-037.html (ISSUE-037: suwak czasu, kandydaci N1–N3, C1–C2, T1–T2, E1–E3, R1–R2 na wymyślonej rodzinie z datami niepewnymi; zrzuty `shots-037\\`) — katalog tymczasowy sesji `555909c3-…\\scratchpad`; 2026-10-14: drzewo-036.html (ISSUE-036: kandydaci P1–P3 wejścia w przesyłanie, zrzuty z emulatora `shots-036\\`) — katalog tymczasowy sesji `fa865b36-…\\scratchpad`; 2026-10-13: drzewo-us009.html (US-009: imiona przy oddalaniu I1–I3, karta z nazwami pokrewieństwa, tekst 200%, tryb prezentacji, stany) — katalog tymczasowy sesji `c3868f5f-…\\scratchpad`; 2026-10-13: drzewo-spike002.html (SPIKE-002, kandydaci na 106 wymyślonych osobach) — `220a9b6c-…\\scratchpad`; wcześniej 2026-10-08: grobing-prototyp.html (SPIKE-004, panel 6, runda 2)"
+mockup: "2026-10-14: drzewo-038.html (ISSUE-038: tryb prezentacji poziomo z rokiem L1–L3, sterowaniem B1–B3, tempem V1–V3, wejściem Z1–Z2 i podglądem „z kanapy” 32–65″; zrzuty `shots-038\\`) — katalog tymczasowy sesji `baf00b7b-…\\scratchpad`; 2026-10-14: drzewo-037.html (ISSUE-037: suwak czasu, kandydaci N1–N3, C1–C2, T1–T2, E1–E3, R1–R2 na wymyślonej rodzinie z datami niepewnymi; zrzuty `shots-037\\`) — katalog tymczasowy sesji `555909c3-…\\scratchpad`; 2026-10-14: drzewo-036.html (ISSUE-036: kandydaci P1–P3 wejścia w przesyłanie, zrzuty z emulatora `shots-036\\`) — katalog tymczasowy sesji `fa865b36-…\\scratchpad`; 2026-10-13: drzewo-us009.html (US-009: imiona przy oddalaniu I1–I3, karta z nazwami pokrewieństwa, tekst 200%, tryb prezentacji, stany) — katalog tymczasowy sesji `c3868f5f-…\\scratchpad`; 2026-10-13: drzewo-spike002.html (SPIKE-002, kandydaci na 106 wymyślonych osobach) — `220a9b6c-…\\scratchpad`; wcześniej 2026-10-08: grobing-prototyp.html (SPIKE-004, panel 6, runda 2)"
 updated: 2026-10-14
 ---
 
 # Drzewo — specyfikacja
 
 > Żywy plik: `ui` aktualizuje go przy każdej pozycji, która ten ekran zmienia. Prawdą o ekranie jest ten
-> plik; szkic i makieta to podgląd. Wytyczne: [[style-b]] (v1.29) · referencja: [[references]] → **R3**.
+> plik; szkic i makieta to podgląd. Wytyczne: [[style-b]] (v1.31) · referencja: [[references]] → **R3**.
 >
 > **Wersja 1 — discovery na prototypie, panel 6 ([[SPIKE-004-mvp-flow-prototype]] D20, D21, 2026-10-08).** Kierunek
 > autora: drzewo **od osoby** (kandydat „od osoby z rozwijaniem” ze [[SPIKE-002-tree-on-a-phone]]), z poziomami
@@ -94,6 +94,23 @@ updated: 2026-10-14
 > zmierzone ok. 19,7 lat/s (1 → *AC → element*, US-010 AC-3) · napis roku w stałym miejscu (2 → element 6) · przenikanie przerywane w trakcie ▶ (4 → element 6).
 > Odstępstwo 3 (karta w osobnej warstwie) — techniczne, bez zapisu. Dwie usterki z przeglądu poprawione przed stopem #2 → D37: ślad w bok dopiero od początku związku,
 > widok osoby zatrzymuje ▶.
+>
+> **Wersja 1.14 — `ui` przed planem [[ISSUE-038-history-on-tv-and-tempo]] (2026-10-14): historia na telewizorze i tempo lat.** Prośba autora ze stopu #2 ISSUE-037: *„a) Można
+> było tą historie odtwarzać na telewizorze, b) dostosowanie prędkości tych lat”*, *„dla mnie za szybko”*. Prior art i pomiar (D38): telefon poziomo wypełnia szerokość
+> telewizora 16:9, więc tekst z telefonu liczy się w kącie widzenia z kanapy. Rok w 36 sp ma z 3 m od 23′ (32″) do 46′ (65″), czyli powyżej minimum 16′ z ISO 9241. Imię w 13 sp
+> ma 8–17′, więc od 55″ w dół jest poniżej minimum. **Kandydaci na stop #1** (*Candidates — ISSUE-038*, makieta `drzewo-038.html`):
+> - rok na telewizorze **L1–L3** — rekomendacja **L1**, rok w rogu (D39);
+> - sterowanie w prezentacji **B1–B3** — rekomendacja **B2**, listwa jak w odtwarzaczu (D40);
+> - tempo **V1–V3** — rekomendacja **V2**: „Wolno” · „Średnio” · „Szybko”, 5 · 10 · 20 lat/s, domyślnie „Średnio” (D41);
+> - wejście z roku Y **Z1–Z2** — rekomendacja **Z2**, rok przechodzi do trybu; to zmiana D37 (D42).
+>
+> Elementy 6 i 11, *Navigation*, *States*, *Sketch* i *AC → element* są zapisane według rekomendacji. Przy innym wyborze `ui` zmienia je przed planem (*Open* 9). **Decyzja
+> autora na stopie #1 (2026-10-14, *„Ok”*): L1, B2, V2, Z2** — zapis bez zmian; tempo domyślne „Średnio” bez uwag.
+>
+> **Wersja 1.15 — przegląd `ui` zbudowanej historii na telewizorze [[ISSUE-038-history-on-tv-and-tempo]] (2026-10-14), przyjęte odstępstwa `dev`** (*Dev report* →
+> *Deviations*): z czytnikiem ekranu sterowanie jest od wejścia w tryb i nie chowa się wcale, bo pustego miejsca czytnik nie dotknie (1 → element 11, *States*, D40) · górny
+> rząd karty przy tekście ≥ 150% przenosi rok do następnej linii, zamiast go uciąć, gdy trzy elementy się nie mieszczą (2 → element 6) · przycisk tempa ma szerokość
+> najszerszego słowa (3 → element 6; druga instancja po roku z v1.13, więc reguła — [[style-b]] reguła 5, v1.31).
 
 ## Purpose
 Zobaczyć rodzinę wokół wybranej osoby i jak się łączy (M9), jak zmieniała się w czasie (M10) i jak dowolne dwie osoby
@@ -114,8 +131,10 @@ są spokrewnione (M11). Tak samo zbudowane jest mini-drzewo w [[osoba]] (element
   ekran systemu (to samo zadanie); tryb włącza dopiero wstecz.
 - **Ikona „Połącz dwie osoby”** w pasku → okno z dwoma kaflami → po wybraniu drugiej osoby **z powrotem na drzewie**, z
   animacją ścieżki (v1.1, D26). Dotknięcie drzewa albo wstecz kończy podświetlenie (US-011).
-- **Rok na suwaku** (US-010, v1.12, D37): zostaje przy przestawieniu środka, zmianie poziomu i powrocie wstecz z widoku osoby; wejście z paska, „Pokaż w drzewie” i
-  tryb prezentacji pokazują „dziś”.
+- **Rok na suwaku** (US-010, v1.12, D37): zostaje przy przestawieniu środka, zmianie poziomu i powrocie wstecz z widoku osoby; wejście z paska i „Pokaż w drzewie”
+  pokazują „dziś”. **Tryb prezentacji** (v1.14, Z2 — D42): rok przechodzi do trybu i wraca z niego, tak jak osoba w środku; ▶ stoi, bo po drodze był ekran systemu. Do v1.13
+  tryb zawsze pokazywał „dziś”.
+- **Tempo** (v1.14, D41): wybrane tempo zostaje, dopóki aplikacja działa — w karcie i w trybie prezentacji to samo; po zamknięciu aplikacji wraca „Średnio”.
 - **Bez „ja”:** „Wybierz, która osoba to Ty” → wybór „ja” ([[osoby]] 6–7) → po wyborze z powrotem na drzewie, z tą osobą w środku (D19).
 
 ## Elements in order
@@ -128,8 +147,8 @@ są spokrewnione (M11). Tak samo zbudowane jest mini-drzewo w [[osoba]] (element
 | 3 | **Poziom połączeń — oddalanie odsłania dalszą rodzinę** (v1.3, S2): bez przycisków „−/Poziom 2/+” w pasku. Poziom zmienia oddalanie i przybliżanie, **próg za progiem**: oddalasz — dokłada się poziom, przybliżasz — dalsza rodzina znika. **4 progi** (poziomy 1–4; od 4 to prawie wszyscy). Przy zmianie na chwilę pigułka „Poziom 3 · 66 osób” (13 sp, powierzchnia). **Przyciski + / −** (cel 48 dp, powierzchnia z obrysem) w prawym dolnym rogu drzewa — alternatywa jednym dotknięciem (SC 2.5.1): + przybliża, − oddala. **Poziom 1:** rodzice, partnerzy, dzieci. **Poziom k ≥ 2:** do tego rodzice, partnerzy, dzieci i **rodzeństwo** każdej osoby z poziomu k−1 (np. rodzeństwo, rodzeństwo partnerów, dziadkowie, teściowie, wnuki). **Wartości** (v1.5, D18 — z prototypu SPIKE-002, do potwierdzenia w ręce): skala 0,4–2,0, start 1,0; **poziom 1** przy skali ≥ 1,3 · **2** — 0,85–1,3 · **3** — 0,55–0,85 · **4** — poniżej 0,55. + / − mnożą skalę przez 1,45 (mniej więcej poziom na dotknięcie); **podwójne dotknięcie pustego miejsca** przybliża tak samo (AC-3). Pigułka ok. 1,5 s; ten sam tekst ogłasza czytnik. Zmiana poziomu zostawia osobę w środku w tym samym miejscu ekranu | gest + przycisk-ikona ×2 + pigułka | dwa palce (oddal / przybliż) · + / − · podwójne dotknięcie | 2 | — | **decyzja autora** (stop #1 SPIKE-002) · D2 · D8 · AC-3 · D18 |
 | 4 | **Drzewo**: rzędy według pokolenia (wyżej starsze), osoba w środku z pierścieniem w akcencie; rodzeństwo z boku osoby, po stronie dalszej od partnera; **rodzina partnera po prawej**, bez przeplatania z krewnymi. Węzeł 44 dp (profilowe albo inicjały), imię 13 sp półgrube (v1.2, D10); **zmarły ma znicz** w rogu węzła ([[style-b]] reguła 8, R3); zmarły = zapisany zgon albo pochówek, z datą albo bez (v1.7, D22). Linie: **rodzic–dziecko** — kolor relacji rodzic–dziecko, łamana z góry w dół; **małżeństwo** — kolor partnerów, ciągła, pozioma; **razem (bez ślubu)** — kolor partnerów, przerywana 5/4. **Koniec związku** (v1.12, E3 — D35): od roku końca dwie ukośne kreski „//” przez środek linii pary (kolor partnerów, 2 dp, ok. 12 × 12 dp), także na „dziś”; koniec bez daty — tylko na „dziś”; linia do dzieci zostaje. **Ślad dalszej rodziny** (v1.3, D9): osoba z rodziną poza widokiem dostaje krótką przerywaną kreskę 3/3, 14 dp, w kolorze relacji o kryciu 60% — w górę rodzice, w dół dzieci, w bok partner, **na zewnątrz od środka** (na lewo od osoby w środku — w lewo, na prawo i u niej samej — w prawo; v1.7, przegląd `ui` ISSUE-033: zawsze w prawo celował u osób po lewej w środek i mylił się z linią „razem”). Przewijanie w obu osiach, środek ustawia się na osobie. **Drzewo nie ucieka z kadru** (v1.7, D21): gdy w kadrze nie ma nikogo, widok wraca płynnie (ok. 0,35 s) do osoby w środku, a palec na ekranie przerywa powrót; nowy rozmiar obszaru drzewa przed pierwszym dotknięciem ustawia środek od nowa. **„Ja”** (v1.5, D14): okrąg ze znakiem „Ja” (inicjały „Ja” w akcencie, obrys w kolorze obrysu, także przy profilowym — jak [[osoby]] D4), podpis „Ja”; pierścień i poświatę w akcencie ma tylko osoba w środku. **Przestawienie środka** (AC-2, v1.5): węzły przesuwają się na nowe miejsca w ok. 0,45 s, nowe osoby się pojawiają, odchodzące gasną, a widok jedzie tak, że nowa osoba staje w środku (ok. 42% wysokości obszaru drzewa). Przy systemowym ograniczeniu animacji — od razu (SC 2.3.3, jak D5). **Imiona przy oddalaniu** (v1.6, I2 — decyzja autora; potwierdzona w v1.9, D27): przy skali < 1 imię nie maleje — na ekranie ma 13 sp × skala tekstu, na tabliczce w kolorze tła (zaokrąglona 4 dp, 3 dp z boków; v1.7, D23); gdy dwa imiona by się nałożyły, zostaje to bliżej osoby w środku (najpierw poziom z D2, potem odległość w poziomie), a reszta chowa się do przybliżenia. **Tekst systemu** (AC-7, v1.5): miejsce osoby 80 dp × skala tekstu, najwyżej 160 dp (jak mini-drzewo, [[osoba]] v2.2); rząd rośnie z podpisem (104 dp → 124 dp przy 200%); inicjały najwyżej 1,3×; imię w jednej linii, „…” dopiero poza miejscem osoby (przy 100% to ok. 10 liter, także przy oddaleniu — v1.7, D24). **Cel dotyku** = miejsce osoby × skala drzewa (D17). **Czytnik:** „Zofia Wymyślona, 1928–2010, Moja babcia — w środek” (v1.9, G2 — ten sam tekst co karta, D28), osoba w środku „… — otwórz”; kolejność rzędami, z góry i od lewej; linie i ślad poza czytnikiem | drzewo | dotknięcie → osoba w środek; drugie → [[osoba]] | „Ja” | — | R3 · D1, D3, D4, D9 · AC-1, AC-2, AC-4, AC-7 · D14, D17 |
 | 5 | **Karta osoby w środku** (dolny arkusz, powierzchnia; v1.5): okrąg 40 dp z pierścieniem w akcencie (profilowe w kadrze albo inicjały; „ja” — znak „Ja”) · **imię i nazwisko** z „z d.” (16 sp, półgruby, tekst, do dwóch linii) · pod spodem **lata · kim jest dla mnie** (14 sp, tekst pomocniczy, **zawija się, bez ucinania**): nazwa ze słownika, z nawiasem tam, gdzie słownik go ma („1928–2010 · Moja babcia”, „ur. 1951 · Mój stryj (brat taty)”, „Moje rodzeństwo” przy osobie bez płci), a dalej opis z odcinków („1925–2010 · Siostra cioteczna mojego dziadka”, „Siostra cioteczna babci mojej żony”; D12, D13; **mówisz Ty — G2, v1.9, D28**). „Ja”: „ur. 1983 · to ja”. Bez ścieżki do „ja”: „… · nie wiadomo jeszcze, kim jest dla mnie”. Zaimek zawsze z małej litery w środku opisu („…babci mojej żony”), z wielkiej tylko na początku nazwy („Moja babcia”). Bez „ja” (wejście z „Pokaż w drzewie”): same lata. Po prawej przycisk tekstowy „Pokaż ›” (akcent, cel 48 dp); **przy tekście systemu ≥ 150% „Pokaż ›” przechodzi pod tekst, do prawej** (D20) | karta | „Pokaż” → [[osoba]] | — | — | D1 · AC-2, AC-5 · D12, D13, D20 |
-| 6 | **US-010. Czas (M10; v1.12 — [[ISSUE-037-time-on-the-tree]]):** w karcie (5), pod imieniem i opisem, jeden rząd: **▶ / ❚❚** (okrąg 36 dp w akcencie, ikona `play_arrow` / `pause` w kolorze tła, cel 48 dp, `tooltip` „Odtwórz historię” / „Zatrzymaj”) · **rok początku** (13 sp, tekst pomocniczy) · **suwak** (`Slider`: aktywny tor i uchwyt w akcencie, tor nieaktywny w kolorze obrysu, wysokość 48 dp, krok 1 rok) · **rok** (16 sp, półgruby, akcent, cyfry o stałej szerokości; na końcu suwaka „dziś”) — w stałym miejscu na szerokość najszerszego z „dziś” i „8888”, żeby tor suwaka nie zmieniał długości pod palcem (v1.13, odstępstwo 2 ISSUE-037). **Domyślnie „dziś”** — drzewo jak w US-009: nic nie znika i nic nie jest przerywane. **Początek suwaka** (T2, D34): pełna dekada przed najwcześniejszą datą urodzenia w bazie, najpóźniej 1880. **Rok Y** (AC-1, AC-2): osoba, która w roku Y jeszcze się nie urodziła, znika razem ze swoimi liniami i imieniem, a jej miejsce zostaje (układ liczony jak na „dziś”, rok go nie zmienia); nie jest celem dotyku i nie ma jej w czytniku. Zmarły do Y ma znicz. Para: do początku związku bez linii, od początku przerywana „razem”, od ślubu ciągła; **związek bez daty** — od urodzenia najstarszego wspólnego dziecka, a bez dzieci — od 20. roku życia młodszego z pary (D31); koniec związku — „//” (element 4, E3). **Data niepewna i brak daty** (N3, D32): każda data ma okno [najwcześniej, na pewno]. Osoba pojawia się na początku okna urodzenia i do jego końca ma **przerywany obrys okręgu** (2 dp, kreska 4/3, kolor obrysu; u osoby w środku pierścień w akcencie przerywany). W oknie śmierci — ten sam obrys, a znicz dopiero na końcu okna. Okno: dokładnie Y — Y; „ok. Y” — Y−5 … Y+5; „między A a B” — A … B; „przed Y” — najwcześniej z rodziny … Y; „po Y” — Y … na pewno z rodziny; brak daty — oba końce z rodziny (D32). **Osoba w środku przed narodzinami** (C1, D33): pusty pierścień w akcencie w jej miejscu, bez okręgu, imienia i znicza; karta bez zmian. **▶** (AC-3): od początku suwaka (albo od bieżącego roku, gdy to nie „dziś”) do „dziś”, stale ok. 21 lat na sekundę (1880 → dziś w ok. 7 s); osoby pojawiają się i gasną przenikaniem 150 ms — w trakcie ▶ najwyżej do następnego roku (ok. 50 ms), pełne 150 ms przy przesuwaniu suwaka palcem (v1.13, odstępstwo 4 ISSUE-037; *Obali:* autor widzi miganie osób przy ▶ — wtedy przenikanie od roku narodzin, bez przerywania); na „dziś” ▶ się zatrzymuje, a czytnik raz ogłasza rok („Rok 1923”, „dziś”) — także po ❚❚. ❚❚ zatrzymuje na bieżącym roku; przeciągnięcie suwaka też zatrzymuje. **Ograniczenie animacji** (R2, D36): ▶ przeskakuje o pełną dekadę co ok. 1 s, osoby pojawiają się od razu, bez przenikania. **Tekst ≥ 150%** (D20): rok początku i rok w rzędzie nad suwakiem (po lewej i po prawej), ▶ i suwak w rzędzie pod nimi. **Czytnik:** ▶ „Odtwórz historię” / „Zatrzymaj”; suwak „Rok” z wartością „1923” albo „dziś”, zwiększanie i zmniejszanie o 10 lat (krok co rok to do 166 gestów); w trakcie ▶ rok nie jest ogłaszany co zmianę, po zatrzymaniu — tak. Osoba z przerywanym obrysem: do opisu z elementu 4 dochodzi „nie wiadomo, czy już żyje” (okno urodzenia) albo „nie wiadomo, czy jeszcze żyje” (okno śmierci); pusty pierścień: „… — przed narodzinami” | suwak + przycisk | przeciągnięcie · ▶ / ❚❚ | dziś | — | R3 (suwak) · **decyzja autora** (D20) · D4 · AC-1–AC-3 · D31–D37 |
-| 11 | **Tryb prezentacji** (AC-8, D11; v1.5, D16): ekran poziomo, na pełnym ekranie (bez pasków systemu i aplikacji, bez karty i + / −), **poziom 2 dopasowany do ekranu** (w obszarze bezpiecznym, margines 24 dp) i wyśrodkowany. **Wejście (v1.10, P2):** po powrocie z systemowego ekranu przesyłania — **bez podpowiedzi** (przesyłanie właśnie wybrane, a podpowiedź trafiłaby na telewizor). **Tylko gdy telefon nie ma tego ekranu** (ISSUE-036 AC-2) tryb włącza się od razu i na ok. 4 s pokazuje pigułkę u góry, w miejscu pigułki poziomu: „Obraz na telewizor: przesyłanie ekranu w szybkich ustawieniach telefonu” (v1.8, D26 — funkcja, nie nazwa kafelka; twarda spacja po „w”, [[style-b]] reguła 6). Przez te 4 s może przykryć górny rząd, a dotyk przechodzi do osób pod nią (D26). **Dotknięcie osoby** → ona w środku, poziom 2 dopasowany na nowo — **także osoby, która już jest w środku**: po przeciągnięciu to droga z powrotem; jej widok się nie otwiera, a czytnik nie mówi „otwórz” (v1.8, D25). Przeciąganie przesuwa; **bez szczypania** — poziom stały. **Pasy 24 dp przy krawędziach, od których system wysuwa paski, nie przyjmują dotyku** (v1.8, D25). **Dotknięcie pustego miejsca** → na 3 s przycisk „Zakończ prezentację” w prawym górnym rogu (`close` w akcencie + napis w kolorze tekstu, powierzchnia z obrysem, cel 48 dp); podpowiedź, jeśli jeszcze jest, znika (v1.8, D25); **wstecz** też kończy. Po wyjściu — drzewo pionowo, ta sama osoba w środku, poziom 2, skala 1. **Tekst 200%** (v1.8, odstępstwo 5 ISSUE-034; v1.9 — I2 zostaje, D27): imiona jak w elemencie 4, więc na ekranie 360 dp imię ma 26 sp przy okręgu ok. 20 dp (skala ok. 0,45), widać 13 z 20 imion, a tabliczki zasłaniają linie między rzędami (zrzut `18b`). Przy I1 byłoby 20 z 20 imion, ok. 11,7 sp (przeliczenie `ui`, v1.9) | tryb | dotknięcie osoby · pustego miejsca · wstecz | poziom 2 | — | **decyzja autora** (D11) · AC-8 · D16 · D25, D26 |
+| 6 | **US-010. Czas (M10; v1.12 — [[ISSUE-037-time-on-the-tree]]):** w karcie (5), pod imieniem i opisem, jeden rząd: **▶ / ❚❚** (okrąg 36 dp w akcencie, ikona `play_arrow` / `pause` w kolorze tła, cel 48 dp, `tooltip` „Odtwórz historię” / „Zatrzymaj”) · **rok początku** (13 sp, tekst pomocniczy) · **suwak** (`Slider`: aktywny tor i uchwyt w akcencie, tor nieaktywny w kolorze obrysu, wysokość 48 dp, krok 1 rok) · **rok** (16 sp, półgruby, akcent, cyfry o stałej szerokości; na końcu suwaka „dziś”) — w stałym miejscu na szerokość najszerszego z „dziś” i „8888”, żeby tor suwaka nie zmieniał długości pod palcem (v1.13, odstępstwo 2 ISSUE-037) · **tempo** (v1.14, V2 — D41): przycisk tekstowy z nazwą tempa, „Średnio” (14 sp, waga 500, kolor tekstu — stoi obok wypełnionego ▶, [[style-b]] reguła 1; cel 48 dp, `tooltip` i czytnik „Tempo historii: średnio — zmień”) — na szerokość najszerszego słowa („Średnio”), słowo na środku, żeby tor suwaka nie zmieniał długości przy przełączaniu (v1.15, odstępstwo 3 ISSUE-038; [[style-b]] reguła 5). Dotknięcie przełącza „Wolno” → „Średnio” → „Szybko” → „Wolno”; w trakcie ▶ odtwarzanie biegnie dalej od bieżącego roku w nowym tempie. Przy tekście 100% suwak jest przez to krótszy: 129–137 dp zamiast 193 dp (makieta, ekran 360 dp). **Domyślnie „dziś”** — drzewo jak w US-009: nic nie znika i nic nie jest przerywane. **Początek suwaka** (T2, D34): pełna dekada przed najwcześniejszą datą urodzenia w bazie, najpóźniej 1880. **Rok Y** (AC-1, AC-2): osoba, która w roku Y jeszcze się nie urodziła, znika razem ze swoimi liniami i imieniem, a jej miejsce zostaje (układ liczony jak na „dziś”, rok go nie zmienia); nie jest celem dotyku i nie ma jej w czytniku. Zmarły do Y ma znicz. Para: do początku związku bez linii, od początku przerywana „razem”, od ślubu ciągła; **związek bez daty** — od urodzenia najstarszego wspólnego dziecka, a bez dzieci — od 20. roku życia młodszego z pary (D31); koniec związku — „//” (element 4, E3). **Data niepewna i brak daty** (N3, D32): każda data ma okno [najwcześniej, na pewno]. Osoba pojawia się na początku okna urodzenia i do jego końca ma **przerywany obrys okręgu** (2 dp, kreska 4/3, kolor obrysu; u osoby w środku pierścień w akcencie przerywany). W oknie śmierci — ten sam obrys, a znicz dopiero na końcu okna. Okno: dokładnie Y — Y; „ok. Y” — Y−5 … Y+5; „między A a B” — A … B; „przed Y” — najwcześniej z rodziny … Y; „po Y” — Y … na pewno z rodziny; brak daty — oba końce z rodziny (D32). **Osoba w środku przed narodzinami** (C1, D33): pusty pierścień w akcencie w jej miejscu, bez okręgu, imienia i znicza; karta bez zmian. **▶** (AC-3): od początku suwaka (albo od bieżącego roku, gdy to nie „dziś”) do „dziś”, **w wybranym tempie** (v1.14, D41): „Wolno” 5, „Średnio” 10, „Szybko” 20 lat na sekundę, czyli od 1880 do dziś ok. 29 · 15 · 7 s (do v1.13 stale ok. 21 lat/s); osoby pojawiają się i gasną przenikaniem 150 ms — w trakcie ▶ najwyżej do następnego roku (przy „Wolno” pełne 150 ms, przy „Średnio” ok. 100 ms, przy „Szybko” ok. 50 ms), pełne 150 ms przy przesuwaniu suwaka palcem (v1.13, odstępstwo 4 ISSUE-037; *Obali:* autor widzi miganie osób przy ▶ — wtedy przenikanie od roku narodzin, bez przerywania); na „dziś” ▶ się zatrzymuje, a czytnik raz ogłasza rok („Rok 1923”, „dziś”) — także po ❚❚. ❚❚ zatrzymuje na bieżącym roku; przeciągnięcie suwaka też zatrzymuje. **Ograniczenie animacji** (R2, D36): ▶ przeskakuje o pełną dekadę, osoby pojawiają się od razu, bez przenikania; odstęp skoków daje tempo — co ok. 2 · 1 · 0,5 s (v1.14, D41). **Tekst ≥ 150%** (D20): rok początku i rok w rzędzie nad suwakiem (po lewej i po prawej), **tempo między nimi** (v1.14 — suwak bez zmian, 278 dp przy 200%), ▶ i suwak w rzędzie pod nimi. Gdy trzy się nie mieszczą (telefon węższy niż 360 dp albo szerszy krój), rok przechodzi do następnej linii, na lewo, zamiast się uciąć; na 360 dp przy 200% w Roboto stoją w jednej linii (v1.15, odstępstwo 2 ISSUE-038). **Czytnik:** ▶ „Odtwórz historię” / „Zatrzymaj”; suwak „Rok” z wartością „1923” albo „dziś”, zwiększanie i zmniejszanie o 10 lat (krok co rok to do 166 gestów); w trakcie ▶ rok nie jest ogłaszany co zmianę, po zatrzymaniu — tak. Osoba z przerywanym obrysem: do opisu z elementu 4 dochodzi „nie wiadomo, czy już żyje” (okno urodzenia) albo „nie wiadomo, czy jeszcze żyje” (okno śmierci); pusty pierścień: „… — przed narodzinami” | suwak + przycisk ×2 | przeciągnięcie · ▶ / ❚❚ · tempo | dziś · „Średnio” | — | R3 (suwak) · **decyzja autora** (D20) · D4 · AC-1–AC-3 · D31–D37 · D41 (ISSUE-038) |
+| 11 | **Tryb prezentacji** (AC-8, D11; v1.5, D16): ekran poziomo, na pełnym ekranie (bez pasków systemu i aplikacji, bez karty i + / −), **poziom 2 dopasowany do ekranu** (w obszarze bezpiecznym, margines 24 dp) i wyśrodkowany. **Wejście (v1.10, P2):** po powrocie z systemowego ekranu przesyłania — **bez podpowiedzi** (przesyłanie właśnie wybrane, a podpowiedź trafiłaby na telewizor). **Tylko gdy telefon nie ma tego ekranu** (ISSUE-036 AC-2) tryb włącza się od razu i na ok. 4 s pokazuje pigułkę u góry, w miejscu pigułki poziomu: „Obraz na telewizor: przesyłanie ekranu w szybkich ustawieniach telefonu” (v1.8, D26 — funkcja, nie nazwa kafelka; twarda spacja po „w”, [[style-b]] reguła 6). Przez te 4 s może przykryć górny rząd, a dotyk przechodzi do osób pod nią (D26). **Dotknięcie osoby** → ona w środku, poziom 2 dopasowany na nowo — **także osoby, która już jest w środku**: po przeciągnięciu to droga z powrotem; jej widok się nie otwiera, a czytnik nie mówi „otwórz” (v1.8, D25). Przeciąganie przesuwa; **bez szczypania** — poziom stały. **Pasy 24 dp przy krawędziach, od których system wysuwa paski, nie przyjmują dotyku** (v1.8, D25). **Dotknięcie pustego miejsca** → **sterowanie** (v1.14, B2 — D40; do v1.13 sam przycisk na 3 s): w prawym górnym rogu przycisk „Zakończ prezentację” (`close` w akcencie + napis w kolorze tekstu, powierzchnia z obrysem, cel 48 dp), a na dole **listwa** na powierzchni (zaokrąglona 16 dp, 24 dp od krawędzi — nad pasami bez dotyku z D25): ▶ / ❚❚, rok początku, suwak i tempo, te same co w elemencie 6, ale bez roku na końcu, bo rok stoi w rogu. Sterowanie chowa się po 5 s od ostatniego dotyku albo po czasie z ustawienia systemu „Czas na działanie”, gdy jest dłuższy. Drugi pusty dotyk chowa je od razu. **Z czytnikiem ekranu** (TalkBack, a także Switch Access i Voice Access — wszystko, co ustawia `accessibleNavigation`) sterowanie jest **od wejścia w tryb i nie chowa się wcale**: pusty obszar nie ma węzła semantyki, więc czytnik nie umie go dotknąć, a schowane sterowanie byłoby nie do odzyskania; wyjście — „Zakończ prezentację” albo wstecz (v1.15, odstępstwo 1 ISSUE-038; D40). Podpowiedź, jeśli jeszcze jest, znika (v1.8, D25). Przeciągnięcie suwaka zatrzymuje ▶ (D37), a dotknięcie osoby nie zatrzymuje, tylko stawia ją w środku. Przez te 5 s listwa przykrywa dolny rząd drzewa — także na telewizorze. **Wstecz** też kończy. Po wyjściu — drzewo pionowo, ta sama osoba w środku, poziom 2, skala 1, **ten sam rok** (Z2 — D42). **Rok na telewizorze** (v1.14, L1 — D39): w lewym górnym rogu, 36 sp, półgruby, akcent, cyfry o stałej szerokości, na tabliczce w kolorze tła (zaokrąglona 8 dp, 6 dp z boków). Stoi **48 dp od lewej krawędzi** (5% szerokości — telewizor może przyciąć brzeg obrazu, D38) i 24 dp od góry. Widać go, gdy rok nie jest „dziś”, i zawsze, gdy widać sterowanie; gdy ▶ dojdzie do „dziś”, napis „dziś” zostaje jeszcze 3 s. Drzewo dopasowuje się tak samo jak bez roku — w makiecie rok nie przykrywa nikogo przy żadnym ze 106 środków na ekranie 914 dp, a na 360 dp przy jednym (*Candidates — ISSUE-038* → *Pomiar*). Rośnie z tekstem systemu najwyżej do 1,3× (47 sp; [[style-b]] *Thresholds*). Czytnik: „Rok 1950” albo „dziś”, w trakcie ▶ bez ogłaszania (jak element 6). **Wejście z roku Y** (Z2 — D42): tryb pokazuje rok z karty, ▶ stoi. **Tekst 200%** (v1.8, odstępstwo 5 ISSUE-034; v1.9 — I2 zostaje, D27): imiona jak w elemencie 4, więc na ekranie 360 dp imię ma 26 sp przy okręgu ok. 20 dp (skala ok. 0,45), widać 13 z 20 imion, a tabliczki zasłaniają linie między rzędami (zrzut `18b`). Przy I1 byłoby 20 z 20 imion, ok. 11,7 sp (przeliczenie `ui`, v1.9). Na ekranie 914 dp przy 200% widać 17 z 20 imion (makieta ISSUE-038), a przy 100% — 20 z 20 | tryb | dotknięcie osoby · pustego miejsca (sterowanie) · ▶ / ❚❚ · suwak · tempo · wstecz | poziom 2 · rok z karty | — | **decyzja autora** (D11) · AC-8 · D16 · D25, D26 · D38–D42 (ISSUE-038) |
 
 **„Połącz dwie osoby” na drzewie (M11, v1.1)** — US-011
 
@@ -147,8 +166,8 @@ są spokrewnione (M11). Tak samo zbudowane jest mini-drzewo w [[osoba]] (element
 | oddalenie (poziom 3–4) | 1, 3–5; imiona według I2 — czytelne, nakładające się chowają (element 4, D27); na chwilę pigułka „Poziom 3 · 66 osób” |
 | rok w przeszłości (US-010) | 4 bez osób nieurodzonych (miejsca zostają), linie par według dat związku, znicze zmarłych do tego roku, przerywany obrys przy osobach w oknie daty (N3); ślad dalszej rodziny i pigułka poziomu liczą tylko osoby, które w tym roku już są (D37); 5 bez zmian; 6 z rokiem (v1.12) |
 | osoba w środku przed narodzinami (US-010) | 4: w jej miejscu pusty pierścień w akcencie (C1, D33); 5 bez zmian; czytnik „… — przed narodzinami” |
-| odtwarzanie (US-010) | 6: ❚❚ zamiast ▶, rok biegnie ok. 21 lat na sekundę; dotknięcie osoby i oddalanie działają dalej (D37) |
-| ograniczenie animacji (US-010) | jak odtwarzanie, ale rok skacze o dekadę co ok. 1 s, osoby pojawiają się od razu (R2, D36) |
+| odtwarzanie (US-010) | 6: ❚❚ zamiast ▶, rok biegnie w wybranym tempie (domyślnie „Średnio”, 10 lat na sekundę — v1.14, D41); dotknięcie osoby i oddalanie działają dalej (D37) |
+| ograniczenie animacji (US-010) | jak odtwarzanie, ale rok skacze o dekadę co ok. 2 · 1 · 0,5 s według tempa, osoby pojawiają się od razu (R2, D36, D41) |
 | połącz — wybór (US-011) | 1, okno 7 nad drzewem |
 | połącz — ścieżka (US-011) | 1, 3–6, 8 (reszta wyszarzona), 9 przez ok. 4 s |
 | bez ścieżki (US-011) | 1, 3–6, 10 |
@@ -158,7 +177,9 @@ są spokrewnione (M11). Tak samo zbudowane jest mini-drzewo w [[osoba]] (element
 | pusta baza | 1 bez ikon; na środku „Tu pojawi się drzewo — osoby z grobów i ich rodziny.” (16 sp, tekst pomocniczy; jak „pusta baza” w [[osoby]]), bez działania (D19) |
 | tekst 200% | 4 z szerszym miejscem osoby; 5 z „Pokaż ›” pod tekstem; + / − bez zmian, 48 dp (D20) |
 | przesyłanie — ekran systemu (v1.10) | nie ekran aplikacji: ustawienia telefonu („Google Cast” na emulatorze z Androidem 16; jasny, w języku telefonu), lista telewizorów w tej samej sieci Wi-Fi albo „No nearby devices were found.” (zrzut `01`). Wstecz wraca do aplikacji |
-| tryb prezentacji | 11 — po ekranie systemu bez podpowiedzi |
+| tryb prezentacji | 11 — po ekranie systemu bez podpowiedzi; rok z karty (Z2), w rogu, gdy nie jest „dziś” (L1) |
+| tryb prezentacji — sterowanie (v1.14, ISSUE-038) | 11 + „Zakończ prezentację” u góry po prawej i listwa na dole (▶ / ❚❚, rok początku, suwak, tempo); rok w rogu także na „dziś”; 5 s od ostatniego dotyku (B2, D40); z czytnikiem ekranu od wejścia w tryb i bez chowania (v1.15) |
+| tryb prezentacji — historia (v1.14, ISSUE-038) | 11 jak „rok w przeszłości” i „odtwarzanie”; rok w rogu zmienia się z ▶, sterowanie schowane; na „dziś” napis „dziś” jeszcze 3 s (L1, D39) |
 | tryb prezentacji — telefon bez ekranu przesyłania (v1.10, ISSUE-036 AC-2) | 11 z podpowiedzią D26; aplikacja nie pada |
 | błąd odczytu | „Nie udało się odczytać drzewa.” (tekst pomocniczy) i przycisk z obrysem „Spróbuj ponownie” (jak w [[osoby]]) |
 | wczytywanie | wskaźnik postępu (lokalna baza — zwykle niewidoczny) |
@@ -177,10 +198,25 @@ są spokrewnione (M11). Tak samo zbudowane jest mini-drzewo w [[osoba]] (element
 │ ╭──────────────────────────────╮ │
 │ │ (Ja) Mateusz Wymyślony       │ │
 │ │      ur. 1983 · to ja Pokaż ›│ │
-│ │ (▶) 1860 ━━━━━━━━━━●━━━  1984 │ │  ← suwak czasu — US-010 (v1.12): ▶ 36 dp, rok w akcencie, „dziś” na końcu
+│ │(▶) 1860 ━━━━━●━━ 1984 Średnio│ │  ← suwak czasu — US-010 (v1.12): ▶ 36 dp, rok w akcencie, „dziś” na końcu; tempo (v1.14, V2)
 │ ╰──────────────────────────────╯ │
 │  Mapa      Osoby      Drzewo     │
 └──────────────────────────────────┘
+```
+
+**Tryb prezentacji z historią** (v1.14 — ISSUE-038; poziomo, telefon 914 × 411 dp, obraz na telewizorze ten sam):
+```
+┌────────────────────────────────────────────────────────────────────────┐
+│     ┌──────┐                                    ┌────────────────────┐ │
+│     │ 1950 │  (J)━(Z)        (H) (K)            │ ✕ Zakończ prezent. │ │  ← rok L1: 36 sp, akcent, 48 dp od lewej · „Zakończ” tylko ze sterowaniem
+│     └──────┘    │                               └────────────────────┘ │
+│   (J)···                                                                │
+│                         ◯                                               │  ← ◯ „Ja” przed narodzinami (C1)
+│                                                                         │
+│  ╭──────────────────────────────────────────────────────────────────╮  │
+│  │ (▶) 1860 ━━━━━━━━━━━━━━━━━━━━━━━━━━●━━━━━━━━━━━━━━━━━━━━━  Średnio │  │  ← listwa B2: pusty dotyk → na 5 s; rok stoi w rogu, nie na końcu suwaka
+│  ╰──────────────────────────────────────────────────────────────────╯  │
+└────────────────────────────────────────────────────────────────────────┘
 ```
 
 ## Tempo
@@ -218,6 +254,15 @@ n/a — ekran do oglądania.
   10,98:1. Przenikanie (N2) odrzucone pomiarem: imię przy kryciu 30–50% ma 2,04–3,56:1, próg 4,5:1 osiąga dopiero przy 60% (*Candidates — ISSUE-037* → *Pomiar*).
   Pusty pierścień (C1) — akcent na tle 8,81:1. „//” (E3) — kolor partnerów, jak linia, którą przecina. Bez nowych tokenów (przeliczone z `theme.dart` 2026-10-14).
   **Tabliczka imienia (D23) bez zmian:** suwak jest w karcie, więc tło drzewa zostaje jednolite i warunek *Obali* z D23 nie zachodzi.
+- **Historia na telewizorze (v1.14, ISSUE-038):** rok w rogu — akcent na tabliczce w kolorze tła, 8,81:1 (reguła 1: to wartość suwaka, jak rok w karcie). Tabliczka, a nie
+  obwódka liter, bo tło drzewa jest jednolite (reguła 13, D23). L3 odpada pomiarem: rok w tle jako tekst o kryciu 10% ma 1,20:1, a próg dla dużego tekstu (SC 1.4.3) to 3:1;
+  przy kryciu 40% wciąż ma tylko 2,70:1, a tabliczki imion odcinają się od niego jak prostokąty, czyli spełnia się *Obali* z D23. Listwa — powierzchnia; ▶ jak w karcie
+  (akcent 8,04:1 na powierzchni); tempo — przycisk tekstowy w kolorze tekstu (10,02:1 na powierzchni), bo stoi obok wypełnionego ▶ (reguła 1); tor suwaka jak w karcie. **Tekst
+  dla telewizora** ma osobny próg w [[style-b]] *Thresholds* (v1.30): co rodzina ma przeczytać z kanapy — co najmniej 36 sp i 48 dp od bocznych krawędzi. Bez nowych tokenów
+  (przeliczone z `theme.dart` 2026-10-14).
+- **Stała szerokość zmiennego napisu (v1.15, [[style-b]] reguła 5, v1.31):** rok w karcie (v1.13) i przycisk tempa (v1.15) mają szerokość najszerszej swojej wartości, więc tor suwaka
+  obok nich ma stałą długość. Pary bez zmian (przeliczone z `theme.dart` 2026-10-14, przegląd `ui`): rok w rogu 8,81:1 na tabliczce · ▶ i aktywny tor 8,04:1 · ikona na ▶ 8,81:1 ·
+  tempo i napis „Zakończ” 10,02:1 · rok początku 5,01:1 · tor nieaktywny 3,10:1 · obrys „Zakończ” 3,40:1 na tle.
 
 ## AC → element
 | AC | Element(y) | Jak widać spełnienie |
@@ -240,6 +285,11 @@ n/a — ekran do oglądania.
 | ISSUE-037 — data niepewna i brak daty | 4, 6 | „ur. przed 1900” w roku 1890: osoba z przerywanym obrysem (N3); „zm., data nieznana” w roku 1960: przerywany obrys, znicz dopiero na końcu okna |
 | ISSUE-037 — tekst 200% na 360 dp | 5, 6 | rok początku i rok nad suwakiem, ▶ (cel 48 × 48 dp) i suwak w rzędzie pod nimi; nic nie jest ucięte |
 | ISSUE-037 — koniec związku (E3) | 4 | para rozstana w 1995: w 2000 i na „dziś” „//” na linii pary, linia do dzieci zostaje |
+| ISSUE-038 — ▶ w prezentacji, rok na telewizorze | 11 | pusty dotyk → listwa; ▶ od 1860 do „dziś”, rok w rogu zmienia się z ▶, ❚❚ zatrzymuje; „dziś” zostaje 3 s; rok w 36 sp, 48 dp od lewej (L1, B2) |
+| ISSUE-038 — tempo w karcie i w prezentacji | 6, 11 | „Średnio” → „Wolno”: od 1880 do dziś ok. 29 s zamiast ok. 15 s, „Szybko” — ok. 7 s; to samo tempo w karcie i w listwie (makieta, `#playtest`: po 3,5 s od 1860 rok 1877 · 1895 · 1930) (V2) |
+| ISSUE-038 — ograniczenie animacji | 6 | „Usuń animacje”: dekada co ok. 2 · 1 · 0,5 s według tempa, bez przenikania (R2 zostaje) |
+| ISSUE-038 — prezentacja z roku Y | 11 | karta na 1950 → „Przesyłaj na telewizor” → wstecz: tryb w roku 1950, ▶ stoi; „Zakończ prezentację” → karta w roku 1950 (Z2) |
+| ISSUE-038 — tekst 200% | 6, 11 | tempo w górnym rzędzie karty, suwak 278 dp bez zmian; listwa w jednym rzędzie (suwak 614 dp na 914 dp); rok w rogu 47 sp |
 | M11 — ścieżka między dowolnymi dwiema osobami (US-011) | 7–9 | „Ja” → „Wanda Przykładowa” (v1.2: przykład z wymyślonych rdzeni, retro 3 R7): drzewo na poziomie 3, linia biegnie przez Kasię i Piotra, reszta wyszarzona, baner „Babcia mojej żony” |
 
 ## Candidates — SPIKE-002 (2026-10-13)
@@ -368,6 +418,65 @@ w jednym).
   „dziś”** (element 4) — decyzja projektowa, nie z AC. **Nie da:** rozróżnienia rozwodu i rozstania (genogram ma na to „/” i „//”, a model ma jeden „koniec związku” —
   [[rodzina]] A6).
 - **R2:** historia odtwarza się dalej, ale nic się nie przesuwa ani nie przenika. R1 zostawia ▶ bez działania. **Nie da:** płynnego biegu przy ograniczeniu animacji.
+
+## Candidates — ISSUE-038 (2026-10-14)
+> Makieta `drzewo-038.html` (*mockup* we frontmatterze) to makieta ISSUE-037 (106 wymyślonych osób, ten sam układ i te same daty niepewne) z **trybem prezentacji poziomo**
+> (914 × 411 dp jak emulator `Medium_Phone`, przełącznik na 780 × 360 dp) i **podglądem „z kanapy”**: drzewo w wielkości, w jakiej widać telewizor 32–65″ z 3 m, gdy siedzi
+> się ok. 60 cm od monitora. Przełączniki w sekcjach 1–4, „Pokaż, gdzie się dotyka”, tekst 200%, „Usuń animacje”, self-test `#test=1` i `#playtest=1`. **Nie** pokazuje
+> płynności Fluttera, prawdziwego telewizora (proporcji obrazu po przesłaniu, opóźnienia) ani zdjęć w węzłach. Zrzuty `shots-038\`.
+
+| # | Kandydat | Co widać | Gdzie się dotyka | Źródło |
+|---|---|---|---|---|
+| L1 | **Rok w lewym górnym rogu** | 36 sp w akcencie na tabliczce w kolorze tła, 48 dp od lewej i 24 dp od góry; drzewo tej samej wielkości co dziś | — | skala TV Androida (display small, „numerals”), margines 5% (D38) |
+| L2 | **Pas u góry, rok na środku** | rok 36 sp na środku u góry; drzewo dopasowane od 75 dp od góry zamiast od 24 dp | — | — |
+| L3 | **Wielki rok w tle, za drzewem** | ok. 220 sp, tekst o kryciu 10% | — | „watermark year” w Gapminder (D38) |
+| B1 | **▶ i tempo obok „Zakończ prezentację”** | pusty dotyk: w prawym górnym rogu ▶ / ❚❚, tempo, „Zakończ prezentację”; bez suwaka | pusty dotyk · ▶ · tempo | dziś: „Zakończ prezentację” (D25) |
+| B2 | **Listwa na dole, jak w odtwarzaczu** | pusty dotyk: na dole ▶ / ❚❚, rok początku, suwak, tempo; u góry „Zakończ prezentację”; 5 s | pusty dotyk · ▶ · suwak · tempo · drugi pusty dotyk chowa | Media3 `PlayerControlView` (D38) |
+| B3 | **Gest dwoma palcami** | bez przycisków; dwa palce w poziomie zmieniają rok | dwa palce · pusty dotyk (wyjście) | — |
+| V1 | **Dwa tempa: „Wolno” · „Szybko”** | 10 · 20 lat/s, domyślnie „Wolno” | przycisk tempa (przełącza) | autor: *„dla mnie za szybko”* |
+| V2 | **Trzy tempa słowami: „Wolno” · „Średnio” · „Szybko”** | 5 · 10 · 20 lat/s, domyślnie „Średnio” | przycisk tempa (przełącza) | jw. |
+| V3 | **Trzy tempa jak w odtwarzaczu: „0,5×” · „1×” · „2×”** | te same 5 · 10 · 20 lat/s, domyślnie „1×” | przycisk tempa (przełącza) | prędkości w Media3 (D38) |
+| Z1 | **Prezentacja zawsze od „dziś”** | jak w D37 | — | D37 |
+| Z2 | **Prezentacja z rokiem z karty** | rok przechodzi do trybu i wraca, jak osoba w środku | — | D37 (rok to stan widoku) |
+
+**Pomiar** (makieta i skrypt `tv_legibility.py` w katalogu sesji, 2026-10-14):
+
+| Wysokość cyfry z 3 m (telefon 914 dp wypełnia szerokość telewizora 16:9) | 32″ | 43″ | 55″ | 65″ | Próg (ISO 9241, D38) |
+|---|---|---|---|---|---|
+| imię w drzewie, 13 sp | 8′ | 11′ | 14′ | 17′ | min. 16′, zwykle 20–22′ |
+| rok w karcie, 16 sp | 10′ | 14′ | 17′ | 21′ | jw. |
+| 24 sp (TV „headline small”) | 15′ | 20′ | 26′ | 31′ | jw. |
+| **rok L1 / L2, 36 sp** (TV „display small”) | **23′** | **31′** | **39′** | **46′** | jw. — z 3,5 m na 32″: 19,5′ |
+
+| Co | L1 | L2 | L3 |
+|---|---|---|---|
+| środki (ze 106, poziom 2, „dziś”), przy których rok przykrywa okrąg · imię — 914 dp | 0 · 0 | 0 · 0 | — (za drzewem) |
+| to samo — 780 × 360 dp | 1 · 1 | 0 · 0 | — |
+| to samo — tekst 200%, 914 dp | 2 · 1 | 0 · 0 | — |
+| wielkość drzewa wobec dzisiejszej (mediana) — 914 dp · 780 dp · 200% | 100% | 86% (86–91%) · 84% · 82% | 100% |
+| kontrast roku na tle (próg dla dużego tekstu 3:1) | 8,81:1 | 8,81:1 | 1,20:1 przy kryciu 10% · 2,04 przy 30% · 2,70 przy 40% |
+
+Tempo (makieta, `#playtest`, od 1860): po 3,5 s rok 1877 · 1895 · 1930, po 9 s 1905 · 1950 · „dziś” (5 · 10 · 20 lat/s); „Usuń animacje” przy „Średnio” — 1890 i 1950, przy „Wolno” — 1870 i
+1900. Suwak w karcie na 360 dp: przy 100% 193 dp bez przycisku tempa, z przyciskiem 129–137 dp; przy 200% 278 dp w obu. Listwa B2: suwak 691 dp (100%) i 614 dp (200%), listwa
+w jednym rzędzie. Tryb prezentacji od „Ja” na „dziś”: L1 i L2 — 20 z 20 imion (100%), L1 przy 200% — 17 z 20.
+
+**Rekomendacja: L1, B2, V2, Z2.**
+- **L1:** rok czytelny z kanapy na każdym telewizorze z tabeli (≥ 16′ także na 32″ z 3,5 m), stoi tam, gdzie liczbę na ekranie stawia telewizja, i w makiecie nie przykrył nikogo przy
+  żadnym ze 106 środków (na 360 dp przy jednym). L2 zabiera drzewu 14% wielkości w każdym pokazie, także na „dziś”, za przypadek, który w L1 prawie się nie zdarza. L3 nie spełnia
+  progu kontrastu dużego tekstu nawet przy kryciu 40% i odsłania tabliczki imion (D23 → *Obali*). **Nie da:** gwarancji, że rok nigdy nie przykryje osoby — przy innym kształcie
+  rodziny w rogu może ktoś stać, a dotknięcie osoby obok przestawia drzewo.
+- **B2:** jeden suwak i jedno ▶ w dwóch miejscach, układ jak w odtwarzaczach, które ludzie znają z telewizora (YouTube, Media3), i rok przewijany ręcznie bez wychodzenia z trybu.
+  B1 nie ma suwaka, więc powrót do 1950 to wyjście z trybu. B3 nie ma alternatywy jednym palcem (SC 2.5.1), bo jeden palec przeciąga drzewo (D25), a ▶ i tak potrzebuje przycisku.
+  **Nie da:** sterowania niewidocznego dla rodziny — listwa przez 5 s jest też na telewizorze i przykrywa dolny rząd.
+- **V2:** autor uznał 20 lat/s za za szybkie, więc domyślne jest o połowę wolniejsze, a „Szybko” zostaje dla tego, kto chce dzisiejszego tempa. „Wolno” daje ok. 5 s na pokolenie na
+  opowiadanie przy telewizorze. Słowa mówią, co się stanie; „1×” w V3 nie mówi, ile to lat, a „2×” to tempo, które było za szybkie. V1 nie ma tempa na opowiadanie. **Zmienia
+  US-010 AC-3** („od 1880 w ok. 7 s” → „w wybranym tempie, domyślnie ok. 15 s od 1880”) i szkic AC z ISSUE-038 (14 · 7 · 4 s → ok. 29 · 15 · 7 s). **Nie da:** tempa dobranego co do
+  roku, tempa zapamiętanego po zamknięciu aplikacji (D41) i dłuższego suwaka w karcie przy 100% (193 → ok. 133 dp).
+- **Z2:** rok to stan widoku, jak środek (D37), a tryb już przenosi osobę w środku; opowieść przygotowana na telefonie (osoba, rok) zaczyna się na telewizorze od tego miejsca.
+  **Zmienia D37.** **Nie da:** pewności, że tryb pokazuje całą rodzinę — kto zostawił suwak na 1950, zobaczy 1950 (rok widać w rogu).
+
+**Zauważone przy pomiarze, poza pozycją:** imiona w trybie prezentacji mają 13 sp (I2, D27), czyli z 3 m na 55″ ok. 14′, poniżej minimum 16′ — na telewizorze imiona czyta się
+z bliska, rok z kanapy. Wraca na [[ISSUE-032-mvp-install]] → *Hand checks* (telewizor autora) i jako wejście do [[2026-10-14-opowiesc-rodziny-i-wieniec]] (opowieść na telewizorze).
 
 ## Decisions
 - **D1 — drzewo od osoby z przestawianiem środka** (SPIKE-004 D20; kandydat 3 ze SPIKE-002). Na telefonie całe drzewo
@@ -620,7 +729,56 @@ w jednym).
   suwak w trybie prezentacji — poza ISSUE-037). Dotknięcie osoby i oddalanie w czasie ▶ **nie zatrzymują** odtwarzania; przeciągnięcie suwaka — zatrzymuje. Pigułka poziomu
   i ślad dalszej rodziny liczą tylko osoby, które w tym roku już są — dziecko, które jeszcze się nie urodziło, nie jest „rodziną poza widokiem”. *Obali:* autor po powrocie z
   widoku osoby spodziewa się „dziś”. **v1.13** (przegląd `ui` ISSUE-037): ślad w bok dopiero od początku związku, tak jak linia pary (AC-2); otwarcie widoku osoby
-  zatrzymuje ▶ na bieżącym roku.
+  zatrzymuje ▶ na bieżącym roku. **v1.14** ([[ISSUE-038-history-on-tv-and-tempo]], Z2 — D42): tryb prezentacji ma już rok, więc rok przechodzi do trybu i z niego wraca, a nie
+  zmienia się na „dziś”.
+- **D38 — prior art: tekst na telewizorze liczy się w kącie widzenia, sterowanie odtwarzacza chowa się samo** (v1.14, [[ISSUE-038-history-on-tv-and-tempo]]). **Źródła**
+  (odczyt 2026-10-14):
+  - [Android TV → Typography](https://developer.android.com/design/ui/tv/guides/styles/typography): *„As television screens are typically viewed from a distance, interfaces
+    that use larger typography are more legible and comfortable for users”*; style „display” są *„reserved for short, important text passages, or numerals”*. Wielkości ze
+    źródeł biblioteki TV (`androidx/tv/material3/tokens/TypeScaleTokens.kt`): display small **36 sp**, medium 45, large 57; headline small 24;
+  - [Android TV → Layouts](https://developer.android.com/design/ui/tv/guides/styles/layouts): ekran TV projektuje się jako **960 × 540 dp**; *„position the elements with a 5% margin
+    of 48dp on the left and right sides, and 27dp on the top and bottom of a layout. This ensures that the layout's screen elements are within the overscan”*, z dopiskiem *„Most
+    modern TVs no longer have overscan issues”*. Telefon 914 dp poziomo to prawie te same 960 dp (×1,05), a 780 dp — ×1,23, więc skala TV stosuje się do trybu prezentacji wprost.
+    Telefon jest szerszy niż 16:9, więc jego obraz wypełnia **szerokość** telewizora i tylko boczne krawędzie mogą wpaść w przycięcie (u góry i u dołu są czarne pasy);
+  - **czytelność z odległości:** ISO 9241-3xx podaje wysokość znaku w kącie widzenia: *„Usual LCG character heights are then 20′ to 22′ with a minimum of 16′”* — za
+    [listą CSS W3C](https://lists.w3.org/Archives/Public/public-css-archive/2020Jun/0612.html); samej normy (płatnej) nie czytałem;
+  - **odtwarzacz Androida** — Media3, `PlayerControlView.java` ([androidx/media](https://github.com/androidx/media), gałąź `release`): `DEFAULT_SHOW_TIMEOUT_MS = 5_000` —
+    *„The time between the last user interaction and the controls being automatically hidden”*; prędkości `{0.25f, 0.5f, 0.75f, 1f, 1.25f, 1.5f, 2f}` w menu ustawień;
+    `PlayerView`: `controllerHideOnTouch = true` (dotknięcie chowa sterowanie);
+  - **czas dla sterowania:** `AccessibilityManager.getRecommendedTimeoutMillis` (źródła SDK Androida 36): *„Controls should remain on the screen for at least this long to give
+    users time to react”* — ustawienie „Czas na działanie” w ułatwieniach dostępu, od Androida 10. We Flutterze 3.41.1 nie ma go wprost (kanał natywny, jak `openCastSettings`);
+    `MediaQuery.accessibleNavigation` mówi, że działa czytnik ekranu;
+  - **Gapminder:** rok jako duży napis w tle wykresu („watermark year”) — źródło wtórne,
+    [omówienie grafiki Gapminder](https://lively-kernel.org/lively4/BP2019RH1/doc/research/styles/gapminder.md); animację prowadzą tam ▶ i suwak.
+
+  **Pomiar:** *Candidates — ISSUE-038* → *Pomiar* (wysokość cyfry Roboto = wysokość wersalika, 1456/2048 em). *Obali:* na telefonie autora obraz na telewizorze nie wypełnia szerokości
+  (np. system przesyła pion albo dokłada ramkę) — wtedy rok jest mniejszy, niż wynika z tabeli. Sprawdza to telewizor autora ([[ISSUE-032-mvp-install]] → *Hand checks*).
+- **D39 — rok na telewizorze w lewym górnym rogu (L1)** (v1.14, **decyzja autora na stopie #1 — „Ok”, 2026-10-14**). 36 sp (display small, D38) w akcencie, jak rok w karcie, bo to ta sama
+  wartość suwaka (reguła 1); na tabliczce w kolorze tła, bo przy oddaleniu linie przechodzą pod napisem (reguła 13, D23). 48 dp od lewej krawędzi (5% szerokości, D38), 24 dp od góry, jak
+  dopasowany poziom (element 11). Widać go, gdy rok nie jest „dziś”, i zawsze ze sterowaniem; na „dziś” po ▶ — jeszcze 3 s, żeby rodzina zobaczyła, że historia doszła do dziś. Rośnie z
+  tekstem najwyżej do 1,3× (47 sp): przy 2× miałby 72 sp i zasłaniał dwa rzędy, a już jest ponad dwa razy większy od roku w karcie ([[style-b]] *Thresholds*, wyjątek jak podpisy na
+  mapie). *Obali:* na prawdziwej rodzinie rok w rogu często przykrywa osobę — wtedy L2.
+- **D40 — sterowanie w prezentacji: listwa jak w odtwarzaczu (B2)** (v1.14, **decyzja autora na stopie #1 — „Ok”, 2026-10-14**). Pusty dotyk pokazuje listwę (▶ / ❚❚, rok początku, suwak,
+  tempo) i „Zakończ prezentację”; drugi pusty dotyk chowa oba (Media3 `controllerHideOnTouch`). **Czas:** 5 s od ostatniego dotyku (Media3 `DEFAULT_SHOW_TIMEOUT_MS`) — dotyczy też
+  „Zakończ prezentację”, które od ISSUE-034 było na 3 s (D25); z suwakiem 3 s to za mało. Dłużej, gdy ustawienie „Czas na działanie” zaleca więcej (`getRecommendedTimeoutMillis`); z
+  czytnikiem ekranu sterowanie nie chowa się samo — znika po pustym dotyku (dwukrotnym w czytniku) albo po wyjściu. Czy „Czas na działanie” czytać przez kanał natywny, wybiera
+  `planning` (koszt: jedna metoda w kanale, który już jest). Rok przy suwaku jest tylko w rogu (L1), nie drugi raz w listwie. Listwa stoi 24 dp nad dolną krawędzią, nad pasem bez dotyku
+  (D25). *Obali:* rodzina przy telewizorze odbiera listwę jako zasłonę drzewa — wtedy B1. **v1.15** (przegląd `ui` [[ISSUE-038-history-on-tv-and-tempo]], odstępstwo 1 `dev`,
+  2026-10-14): z czytnikiem sterowanie jest od wejścia w tryb i **nie znika wcale**, także po pustym dotyku. Zapis „znika po pustym dotyku (dwukrotnym w czytniku)” był błędny: pusty
+  obszar nie ma węzła semantyki, więc TalkBack ani Switch Access nie mają go czym aktywować, a sterowanie schowane raz nie wróciłoby. Koszt: przy czytniku listwa stale przykrywa
+  dolny rząd, także na telewizorze — osoba z czytnikiem prowadzi pokaz, więc sterowanie jest dla niej ważniejsze niż pełny dolny rząd.
+- **D41 — tempo: trzy słowa, domyślnie „Średnio” (V2)** (v1.14, **decyzja autora na stopie #1 — „Ok”, 2026-10-14**). „Wolno” 5 · „Średnio” 10 · „Szybko” 20 lat na sekundę (od 1880 do dziś ok.
+  29 · 15 · 7 s); „Szybko” to tempo z ISSUE-037 (ok. 21 lat/s, D34). **Przycisk przełącza** po kolei, a nie otwiera menu: trzy wartości mieszczą się w jednym dotknięciu, a menu w Media3
+  jest dla siedmiu (D38). Tekst przycisku to nazwa bieżącego tempa, czytnik: „Tempo historii: średnio — zmień”. Zmiana w trakcie ▶ nie zatrzymuje odtwarzania. Przy „Usuń animacje”
+  zostaje R2 (D36), a tempo zmienia tylko odstęp skoków o dekadę: co ok. 2 · 1 · 0,5 s. Pół sekundy to 2 zmiany na sekundę, poniżej progu 3 błysków ([WCAG 2.2](https://www.w3.org/TR/WCAG22/)
+  SC 2.3.1). **Tempo pamięta aplikacja, dopóki działa:** w karcie i w trybie to samo, a po zamknięciu wraca „Średnio”. Zapamiętanie po zamknięciu to kolumna w tabeli `Settings`
+  (jeden wiersz, dziś tylko osoba „ja” — `lib/data/database.dart`), czyli zmiana schematu z migracją, testem migracji i próbnym odtworzeniem kopii (DoD warstwy danych), albo nowa
+  zależność (`pubspec.yaml` nie ma `shared_preferences`). Dla jednego przycisku to więcej, niż daje. **Zmienia US-010 AC-3**
+  (tempo, domyślnie ok. 15 s od 1880). *Obali:* autor przy telewizorze za każdym razem przełącza na to samo tempo — wtedy zapamiętane tempo osobną pozycją; albo „Średnio” jest dla niego
+  dalej za szybko — wtedy inne wartości (np. 3 · 6 · 12 lat/s).
+- **D42 — tryb prezentacji z rokiem z karty (Z2)** (v1.14, **decyzja autora na stopie #1 — „Ok”, 2026-10-14**; zmienia D37). Rok przechodzi do trybu i z niego wraca, tak jak osoba w środku; ▶
+  stoi, bo po drodze był ekran systemu (jak przy widoku osoby, D37 v1.13). Na „dziś” tryb wygląda jak w US-009. *Obali:* autor po wejściu w tryb oczekuje całej rodziny, a widzi
+  rok sprzed lat (zostawiony na suwaku) — wtedy Z1.
 
 ## Open
 1. ~~⚠️ OPEN — sterowanie poziomami — nowy wygląd~~ — rozstrzygnięte 2026-10-13: S2 (element 3), 4 progi (autor na stopie #1
@@ -667,3 +825,7 @@ w jednym).
    Zapis sprzed decyzji: ([[ISSUE-037-time-on-the-tree]], v1.12; kandydaci, pomiar i rekomendacja — *Candidates — ISSUE-037*, makieta
    `drzewo-037.html`). **Rekomendacja: N3, C1, T2, E3, R2** (D32–D36). Elementy 4 i 6, *States*, *Sketch* i *AC → element* są zapisane według rekomendacji. Przy innym
    wyborze `ui` zmienia je przed planem. T2 zmienia brzmienie US-010 AC-3, a E3 — drzewo na „dziś” (element 4). Na stop #1.
+9. ~~⚠️ OPEN — historia na telewizorze i tempo: L, B, V, Z~~ — **rozstrzygnięte 2026-10-14: L1, B2, V2, Z2** (stop #1 [[ISSUE-038-history-on-tv-and-tempo]], *„Ok”*; D39–D42).
+   Zapis sprzed decyzji: ([[ISSUE-038-history-on-tv-and-tempo]], v1.14; kandydaci, pomiar i rekomendacja — *Candidates — ISSUE-038*, makieta
+   `drzewo-038.html`). **Rekomendacja: L1, B2, V2, Z2** (D39–D42). Elementy 6 i 11, *Navigation*, *States*, *Sketch* i *AC → element* są zapisane według rekomendacji; przy innym
+   wyborze `ui` zmienia je przed planem. V2 zmienia US-010 AC-3 (tempo zamiast „ok. 7 s”), a Z2 — D37. Na stop #1.
