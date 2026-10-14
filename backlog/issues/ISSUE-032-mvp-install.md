@@ -105,6 +105,11 @@ Warunki — każdy ma swój dom, tutaj tylko lista:
 - telefon innego producenta (np. Samsung): czy ma ekran przesyłania i czy widzi telewizor Google Cast ([[drzewo]] D29 *Obali*) — nieprzetestowane;
 - przejście po powrocie z ekranu systemu na telefonie — na emulatorze ok. 1,1 s z chwilą niedopasowanego drzewa (pierwsze klatki po powrocie 64–100 ms).
 
+**Drzewo — czas na suwaku** ([[ISSUE-037-time-on-the-tree]] → *Verification* → *For ISSUE-032 → Hand checks*)
+- przerywany obrys u osoby z datą „przed” (Kazimierz, lata 1880–1910) mówi „nie wiadomo, czy już żył” — „ok” bez osobnego śladu na urządzeniu (stop #2, krok 2);
+- czytnik TalkBack: suwak „Rok” zmienia rok co 10 lat, po ❚❚ pada rok — nieprzetestowane na żywo (tylko test semantyki);
+- płynność ▶ i przesuwania drzewa na telefonie — emulator zaszumiony (przesuwanie 10–26% wolnych klatek także przed ISSUE-037), ▶ 7–9%.
+
 **Do decyzji autora, gdy zobaczy swoje cmentarze** (nie sprawdzenie, tylko wybór): grubość alejek i znicze, które nachodzą na
 siebie ([[cmentarz]] → *Open*, [[ISSUE-030-sector-on-a-visit]]).
 

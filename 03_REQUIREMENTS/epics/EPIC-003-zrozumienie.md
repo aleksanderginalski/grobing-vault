@@ -70,5 +70,5 @@ przeglądzie `kickoff/` (retro 1, R4, 2026-10-06).
 
 ## Open questions
 - brak `⚠️ OPEN` w zakresie z briefu. ~~Kształt M10 (na drzewie czy osobna oś) rozstrzyga się po SPIKE-002.~~ → **na drzewie**
-  (SPIKE-004 D20, [[drzewo]] element 6; [[US-010-czas-na-drzewie]]). Otwarte w US: data z dopiskiem na suwaku ([[US-010-czas-na-drzewie]]
-  → *Notes*), imiona przy oddalaniu ([[drzewo]] *Open* 5).
+  (SPIKE-004 D20, [[drzewo]] element 6; [[US-010-czas-na-drzewie]]). ~~Otwarte w US: data z dopiskiem na suwaku, imiona przy oddalaniu~~ — rozstrzygnięte:
+  N3 ([[drzewo]] D32, [[ISSUE-037-time-on-the-tree]], 2026-10-14) i I2 ([[drzewo]] D27).

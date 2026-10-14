@@ -1,5 +1,5 @@
 ---
-title: "Style B — visual guidelines (v1.28)"
+title: "Style B — visual guidelines (v1.29)"
 type: design-guidelines
 status: active
 owner: ui
@@ -80,6 +80,7 @@ wzorem. **Przelicz przy każdej zmianie tokenów.**
 | linia kwatery — tekst, krycie 75% *(v1.22, 2026-10-12)* | 6,56 | 6,16 | 3 (SC 1.4.11) | ✅ |
 | kwatera wybrana (akcent) wobec linii kwatery *(v1.22)* | — | 1,31 (między sobą) | — | wybór niesie też grubość i nazwa (SC 1.4.1) |
 | ślad dalszej rodziny — rodzic–dziecko · partnerzy, krycie 60% *(v1.24, 2026-10-13)* | 3,75 · 3,66 | — | 3 (SC 1.4.11) | ✅ — kształt (przerywana 3/3, krótka) odróżnia ślad od linii, nie tylko kolor (SC 1.4.1) |
+| przerywany obrys węzła — data niepewna na suwaku czasu, obrys *(v1.29, 2026-10-14, [[drzewo]] D32)* | 3,40 | — | 3 (SC 1.4.11) | ✅ — niepewność niesie kształt (kreska 4/3), nie krycie: imię zostaje tekstem na tle 10,98:1 |
 
 **Wniosek:** wszystkie pary spełniają AA, a tekst pomocniczy nie spełnia 7:1. **Ekrany wizyty przyjęły 7:1** (v1.21, W2,
 2026-10-12): informacja potrzebna na cmentarzu (adres kwatery, liczby, stan planu) jest w kolorze tekstu, a token pomocniczy
@@ -462,3 +463,10 @@ wysokokontrastowy, bez rezygnacji ze stylu B. Wynik i data trafiają tutaj i do
 
   Tokeny bez zmian. Pomiar (wzór WCAG z wartości w `theme.dart`, 2026-10-14): linia karty (tekst pomocniczy na powierzchni) 5,01:1, imię na tle
   10,98:1.
+- 2026-10-14 — **v1.29** ([[ISSUE-037-time-on-the-tree]]; decyzja autora na stopie #1, *„tak”*; [[drzewo]] v1.12, D32, D35):
+  - **niepewność niesie kształt, nie krycie** — na suwaku czasu osoba z datą niepewną ma przerywany obrys okręgu (kolor obrysu, kreska 4/3), a nie bladość.
+    Przenikanie odrzucone pomiarem: imię przy kryciu 30–50% ma 2,04–3,56:1, 4,5:1 dopiero przy 60%. Krycie ok. 30% zostaje dla „wyszarzenia” w US-011;
+  - reguła 8 — znicz na węźle znaczy „na pewno nie żyje”: w oknie niepewnej śmierci jest przerywany obrys, a znicz dopiero na końcu okna;
+  - koniec związku — „//” w kolorze partnerów przez linię pary (genogram), jak linia, którą przecina.
+
+  Tokeny bez zmian.

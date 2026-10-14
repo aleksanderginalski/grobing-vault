@@ -28,6 +28,9 @@ Każda data zdarzenia (urodzenie, zgon, małżeństwo, koniec rodziny, pochówek
 - Suwak czasu (M10) musi umieć ustawić zdarzenie z datą niepewną.
 
 ## Coverage notes
+- **2026-10-14 — suwak czasu (M10) ustawia zdarzenie z datą niepewną** ([[ISSUE-037-time-on-the-tree]], [[US-010-czas-na-drzewie]] ✅): każda data ma okno
+  [najwcześniej, na pewno] — „ok.” ±5 lat, „między”, „przed” i „po” z granicami z rodziny, brak daty — oba końce z rodziny (liczby Gramps); w oknie osoba ma przerywany
+  obrys ([[drzewo]] D31, D32). Reguła *„Suwak czasu musi umieć ustawić zdarzenie z datą niepewną”* — pokryta.
 - **2026-10-07 — data pochówku nie ma pola w formularzu** (decyzja autora, [[ISSUE-012-transcribe-grave-screen]] D7).
   Model przechowuje ją jak każde zdarzenie, a widok grobu pokazuje ją z dopiskiem, ale żadna zamknięta US nie daje
   dziś drogi jej wpisania. Przy werdykcie [[EPIC-001-zabezpiecz-i-przepisz]] ta część FR **nie liczy się jako
