@@ -1,12 +1,12 @@
 ---
-title: "Style B — visual guidelines (v1.27)"
+title: "Style B — visual guidelines (v1.28)"
 type: design-guidelines
 status: active
 owner: ui
 source: "PROJECT_BRIEF §6a (Style B, chosen by the author 2026-10-05) · references.md (R1–R4, the kick-off images) · grobing-code/lib/app/theme.dart · WCAG 2.2 · Android accessibility"
 non-tech-item: "[[NT-006-visual-guidelines]]"
 created: 2026-10-06
-updated: 2026-10-13
+updated: 2026-10-14
 ---
 
 # Styl B — wytyczne wizualne
@@ -137,6 +137,14 @@ zostaje bez zmian.
 7. **Ton tekstów:** spokojny i rzeczowy. Bez wykrzykników, bez „Sukces!”, bez emotikonów. Brak czegoś
    opisujemy faktem i tym, kiedy się uzupełni („Bez adresu kwatery · uzupełnisz przy wizycie”), a nie
    ostrzeżeniem.
+   **Kto mówi** (v1.28, [[drzewo]] D28 — G2, decyzja autora 2026-10-14). Aplikacja zwraca się do Ciebie: pyta, zaprasza, wyjaśnia („Wybierz, która
+   osoba to Ty”, „Nie wiadomo jeszcze, jak łączy się z Tobą — …”). **Nazwa pokrewieństwa** jest etykietą z Twojego punktu widzenia, więc mówi Twoim
+   głosem: „Moja babcia”, „Siostra cioteczna babci mojej żony”, „to ja”, „nie wiadomo jeszcze, kim jest dla mnie”. Tak samo pytanie zadawane przez
+   Ciebie, np. nagłówek „Jak łączy się ze mną”. W jednym miejscu jeden głos: linia pod imieniem w karcie drzewa jest cała w pierwszej osobie.
+   „Mój” piszemy małą literą, chyba że zaczyna nazwę. Źródło: [Microsoft Writing Style Guide → Person](https://learn.microsoft.com/en-us/style-guide/grammar/person)
+   (odczyt 2026-10-14): *„In general, use second-person pronouns (you, your)”*; *„First-person singular pronouns can be used in product UI to show
+   someone's control”*; *„it's OK to use "my" in navigation or filter labels if you need to distinguish a person's content”*. W genealogii FamilySearch
+   pisze „My Grandmother” ([[drzewo]] D8).
 8. **Znicz to znak aplikacji** (R1–R3). Występuje w logo (znicz + „Grobing”), w pinezce (znicz w kształcie
    pinezki), na głównym działaniu prowadzącym do miejsca pamięci („Otwórz cmentarz”, „Pokaż grób”) i jako
    znacznik osoby zmarłej (węzeł drzewa, R3). **Znicz oznacza miejsce i pamięć**, a nie zwykłe działania:
@@ -191,7 +199,8 @@ zostaje bez zmian.
       Podpis jest przypięty do punktu na mapie i nie może się odsunąć, więc w 200% podpisy zachodziłyby na siebie i na
       znicze — to też utrata treści (SC 1.4.4). Treść, która coś znaczy (nazwy cmentarzy), rośnie w pełni w arkuszu i w
       wyszukiwarce. Znacznik podpisu ma wysokość podpisu w tej skali, żeby nie ucinał liter;
-    - **imiona w drzewie przy oddaleniu** (v1.25, [[drzewo]] v1.6 — I2, decyzja autora na stopie #1 [[ISSUE-033-tree-from-a-person]]):
+    - **imiona w drzewie przy oddaleniu** (v1.25, [[drzewo]] v1.6 — I2, decyzja autora na stopie #1 [[ISSUE-033-tree-from-a-person]]; potwierdzona
+      na stopie #1 [[ISSUE-035-tree-names-shrink-my-voice]], 2026-10-14 — [[drzewo]] D27):
       ta sama zasada co podpisy na mapie. Imię nie maleje z drzewem poniżej 13 sp × skala tekstu, stoi na **tabliczce w kolorze tła**
       (zaokrąglona 4 dp, 3 dp z boków — v1.26), a z nakładających się zostaje to bliżej osoby w środku; reszta wraca po przybliżeniu. Mniej
       imion, ale każde czytelne. **Tabliczka zamiast obwódki liter tylko na jednolitym tle** (v1.26, [[drzewo]] D23): na tle drzewa wygląda tak
@@ -444,3 +453,12 @@ wysokokontrastowy, bez rezygnacji ze stylu B. Wynik i data trafiają tutaj i do
 - 2026-10-13 — **v1.27** (przegląd `ui` [[ISSUE-033-tree-from-a-person]], MAJOR; poprawka w drzewie, mini-drzewie i portrecie — autor: „ok” na
   stopie #2): reguła 2 — poświata pod okręgiem, nad nim tylko pierścień. Pomiar: wnętrze okręgu „Ja” na zrzucie `#1C1B19` (= powierzchnia), przed
   poprawką `#594626`; znak „Ja” 8,04:1. Tokeny bez zmian.
+- 2026-10-14 — **v1.28** ([[ISSUE-035-tree-names-shrink-my-voice]]; G2 — decyzja autora na stopie #1 [[ISSUE-034-tree-presentation-mode]],
+  potwierdzona na stopie #1 ISSUE-035; [[drzewo]] v1.9, D28):
+  - reguła 7 — **kto mówi**: nazwa pokrewieństwa Twoim głosem („Moja babcia”), zdania aplikacji do Ciebie („Wybierz, która osoba to Ty”); źródło
+    Microsoft Writing Style Guide → Person;
+  - reguła 13 — imiona w drzewie zostają przy I2: na stopie #1 ISSUE-035 autor wybrał I2, a nie I1 ze stopu #1 ISSUE-034 ([[drzewo]] D27). Wyjątek od
+    13 sp, który `ui` dopisał dla I1, wycofany przed planem.
+
+  Tokeny bez zmian. Pomiar (wzór WCAG z wartości w `theme.dart`, 2026-10-14): linia karty (tekst pomocniczy na powierzchni) 5,01:1, imię na tle
+  10,98:1.

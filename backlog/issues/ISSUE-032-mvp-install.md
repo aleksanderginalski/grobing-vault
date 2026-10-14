@@ -80,8 +80,8 @@ Warunki — każdy ma swój dom, tutaj tylko lista:
 - progi S2 (oddalanie odsłania dalszą rodzinę) przy szczypaniu palcami — nieprzetestowane na żywo, na emulatorze tylko przyciski i mysz
   ([[SPIKE-002-tree-on-a-phone]]);
 - „Pokaż w drzewie” z widoku osoby otwiera drzewo tam, gdzie się go spodziewasz — „ok” bez śladu ([[ISSUE-033-tree-from-a-person]], krok 3);
-- TalkBack na drzewie: opisy węzłów („…, Twoja babcia, w środek”) i pigułka poziomu — nieprzetestowane na żywo, tylko `uiautomator` i testy
-  ([[ISSUE-033-tree-from-a-person]]).
+- TalkBack na drzewie: opisy węzłów („…, Moja babcia, w środek” — od [[ISSUE-035-tree-names-shrink-my-voice]], wcześniej „Twoja”) i pigułka poziomu —
+  nieprzetestowane na żywo, tylko `uiautomator` i testy ([[ISSUE-033-tree-from-a-person]]).
 
 **Drzewo — tryb prezentacji** ([[ISSUE-034-tree-presentation-mode]] → *Verification*)
 - przesyłanie ekranu z trybu prezentacji na telewizor autora z kafelka szybkich ustawień — nieprzetestowane na żywo (emulator nie przesyła;
@@ -91,6 +91,12 @@ Warunki — każdy ma swój dom, tutaj tylko lista:
 - systemowe okno „pełny ekran” przy pierwszym wejściu — przed pierwszym pokazem wejść w tryb raz bez przesyłania;
 - TalkBack w trybie prezentacji — nieprzetestowane na żywo;
 - wyjście z trybu przyciskiem Wstecz — „ok” bez śladu (stop #2, krok 2; sprawdzone przez agenta i w teście).
+
+**Drzewo — karta Twoim głosem** ([[ISSUE-035-tree-names-shrink-my-voice]] → *Verification*)
+- karta w G2 („Moja babcia”, „…babci mojej żony”, „to ja”) brzmi tak, jak autor mówi o rodzinie — „ok” bez śladu na urządzeniu (stop #2, krok 1; autor:
+  „zapisz bez śladu”);
+- stan „osoba bez rodziny” („nie wiadomo jeszcze, kim jest dla mnie”) — tylko test widżetu, w bazie testowej nie ma takiej osoby;
+- opis z trzech odcinków („Siostra cioteczna babci mojej żony”) — tylko test jednostkowy, na emulatorze widać opisy z dwóch odcinków.
 
 **Do decyzji autora, gdy zobaczy swoje cmentarze** (nie sprawdzenie, tylko wybór): grubość alejek i znicze, które nachodzą na
 siebie ([[cmentarz]] → *Open*, [[ISSUE-030-sector-on-a-visit]]).
