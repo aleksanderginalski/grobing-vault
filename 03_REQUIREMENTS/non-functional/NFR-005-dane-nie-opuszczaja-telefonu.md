@@ -8,7 +8,7 @@ verdict-date: null
 verdict-reviewer: null
 source: "PROJECT_BRIEF §Security (ASVS-lite translated, off-phone copy) · Step 0 (local-first: privacy) · §2 value ('private')"
 created: 2026-10-05
-updated: 2026-10-12
+updated: 2026-10-16
 ---
 
 # NFR-005 — Dane nie opuszczają telefonu poza kopią
@@ -16,8 +16,9 @@ updated: 2026-10-12
 ## Requirement
 Dane rodziny opuszczają telefon **wyłącznie** jako:
 1. **kopia zaszyfrowana w telefonie** (hasłem) przed wysłaniem do folderu w chmurze autora;
-2. **okresowy eksport** czytelny bez aplikacji, przechowywany offline u rodziny (§Security: *„a periodic
-   plain export kept offline by the family"*).
+2. ~~**okresowy eksport** czytelny bez aplikacji, przechowywany offline u rodziny (§Security: *„a periodic
+   plain export kept offline by the family"*)~~ — **wycofany 2026-10-16** ([[ADR-018-export-is-the-backup]]): eksportem jest kopia,
+   więc dane opuszczają telefon wyłącznie zaszyfrowane.
 
 Nic więcej: **bez analityki, bez crash reportingu wysyłającego dane, bez danych rodziny w logach**, bez
 SDK wysyłających dane z telefonu (np. Firebase).
@@ -88,7 +89,8 @@ SDK wysyłających dane z telefonu (np. Firebase).
 
   **Czego to nie łapie:** ustawienia telefonu „Dokładność lokalizacji Google” — to sprawa systemu, nie aplikacji; aplikacja z niego
   nie korzysta.
-- Eksport nie jest szyfrowany z założenia (czytelność jest jego celem) — dlatego żyje offline, nie w chmurze
-  (§Security).
+- ~~Eksport nie jest szyfrowany z założenia (czytelność jest jego celem) — dlatego żyje offline, nie w chmurze
+  (§Security).~~ Od [[ADR-018-export-is-the-backup]] (2026-10-16) jawnego eksportu nie ma — odszyfrowane wnętrze kopii powstaje dopiero na PC,
+  rękami tego, kto ma plik klucza i hasło.
 - Hipoteza prawna (wyłączenie domowe RODO) jest najmocniejsza, gdy chmura trzyma tylko szyfrogram →
   [[NT-003-verify-household-exemption]].

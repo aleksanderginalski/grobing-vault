@@ -5,9 +5,9 @@ status: open
 category: stakeholder
 priority: MUST
 source: "PROJECT_BRIEF §5 M8 (G2), §Security"
-wake-condition: "backup + export exist (SPIKE-003 → ADR-004, export US)"
+wake-condition: "backup + export exist (SPIKE-003 → ADR-004; export = the backup since ADR-018 — ISSUE-040)"
 created: 2026-10-05
-updated: 2026-10-06
+updated: 2026-10-16
 ---
 
 # NT-007 — Notka przekazania dla rodziny
@@ -72,6 +72,13 @@ Notka powinna też powiedzieć:
   `age-plugin-batchpass`). Przy pisaniu notki przejść ją raz, na wymyślonych danych.
 - Kopia robi się sama ok. 10 min po ostatniej zmianie ([[ISSUE-010-background-backup]]); dla rodziny nic
   się przez to nie zmienia — odtworzenie nadal = plik kopii + plik klucza + hasło.
+
+## Input from ISSUE-040 (2026-10-16) — the export is the backup
+- **Osobnego eksportu dla rodziny nie ma** (decyzja autora, [[ADR-018-export-is-the-backup]]): punkt „gdzie leży eksport czytelny bez aplikacji”
+  wypada z notki i z ekranu notki w aplikacji. Dane poza aplikacją = kopia otwarta drogą z notki (plik kopii + plik klucza + hasło + `age`).
+- Warunek obudzenia („backup + export exist”) jest spełniony, gdy zamknie się [[ISSUE-040-export-is-the-backup]].
+- Skutek dla rodziny: bez autora dane czyta ktoś, kto przejdzie `age` → `tar` → SQLite. Notka powinna więc mówić te trzy kroki wprost (już mówi:
+  *Input from ISSUE-008*).
 
 ## Resolution (fill when done — this is the DoD)
 [notka przekazana (komu — rola, nie nazwisko) · data · data ostatniego sprawdzenia]

@@ -12,7 +12,7 @@ verdict-date: null
 verdict-reviewer: null
 source: "PROJECT_BRIEF §5 M1, M8 · Step 0 (domain canon) · MD2"
 created: 2026-10-05
-updated: 2026-10-05
+updated: 2026-10-16
 ---
 
 # EPIC-001 — Zabezpiecz i przepisz
@@ -36,7 +36,8 @@ modelem (MD2): ten EPIC jest pierwszy.
   trzeba, żeby przepisać ok. 100 osób z notatek. Wprowadzanie **całymi rodzinami** (G6,
   [[FR-002-rodzina-jako-rekord]]).
 - **M8 — przeżywa telefon i aplikację:** kopia poza telefonem **ze sprawdzonym odtworzeniem** (G1) ·
-  eksport czytelny bez aplikacji · notka przekazania dla rodziny (G2 — poza kodem, [[NT-007-hand-over-note]]).
+  ~~eksport czytelny bez aplikacji~~ — **od 2026-10-16 eksportem jest kopia** (dane do wyjęcia poza aplikację, [[ADR-018-export-is-the-backup]],
+  [[US-006-eksport-dla-rodziny]]) · notka przekazania dla rodziny (G2 — poza kodem, [[NT-007-hand-over-note]]).
 - ⚠️ **Kolejność wewnątrz EPIC-a (MD2):** kopia + odtwarzanie **przed masowym przepisywaniem** — od
   pierwszej przepisanej osoby telefon jest jedyną cyfrową kopią, czyli problem papieru od nowa.
 

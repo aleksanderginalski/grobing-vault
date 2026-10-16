@@ -6,7 +6,7 @@ source: "PROJECT_BRIEF §Architecture → Data model (accepted by the author, 20
 FR: ["[[FR-001-provenance]]", "[[FR-002-rodzina-jako-rekord]]", "[[FR-003-wiele-osob-w-grobie]]", "[[FR-004-data-z-dopiskiem]]", "[[FR-005-nazwisko-rodowe]]"]
 ADR: ["[[ADR-001-local-first]]", "[[ADR-006-claimed-value-separate-structures]]", "[[ADR-011-relation-claims-family-and-child-link]]", "[[ADR-012-person-sex-and-union-timeline]]", "[[ADR-013-person-background-on-photo-link]]", "[[ADR-014-cemetery-photo-on-media]]", "[[ADR-015-cemetery-plan-in-database]]", "[[ADR-016-sector-record-and-grave-link]]", "[[ADR-017-location-from-gnss-only]]"]
 created: 2026-10-05
-updated: 2026-10-12
+updated: 2026-10-16
 ---
 
 # Grobing — Data model
@@ -43,7 +43,7 @@ erDiagram
 
 | Entity | Carries | Why this shape |
 |---|---|---|
-| **Person** | imiona · nazwisko · **nazwisko rodowe** · **płeć** (kobieta / mężczyzna, pusta = nieznana — `SEX` w GEDCOM 7; schemat v7, [[ADR-012-person-sex-and-union-timeline]]) · kim była (tekst) · `is_living` | nazwisko rodowe — [[FR-005-nazwisko-rodowe]]; `is_living` steruje prywatnością w eksporcie |
+| **Person** | imiona · nazwisko · **nazwisko rodowe** · **płeć** (kobieta / mężczyzna, pusta = nieznana — `SEX` w GEDCOM 7; schemat v7, [[ADR-012-person-sex-and-union-timeline]]) · kim była (tekst) · `is_living` | nazwisko rodowe — [[FR-005-nazwisko-rodowe]]; `is_living` — **nieużywane**: żaden ekran go nie ustawia (domyślnie „nie żyje”), a od [[ADR-018-export-is-the-backup]] (2026-10-16) nic od niego nie zależy; zostaje w schemacie bez migracji. Kto nie żyje, mówi zapisany zgon albo pochówek ([[drzewo]] D22) |
 | **Family** | **związek** (małżeństwo albo nie): 1-2 partnerów · dzieci (**według daty urodzenia**, bez daty na końcu — GEDCOM 7 „chronological by birth”, [[ISSUE-019-family-relations]] D4) · **oś czasu związku**: własne zdarzenia „razem od”, ślubu i końca — ślub albo koniec, o których wiadomo, że były, bez daty to zdarzenie bez daty (`MARR Y` w GEDCOM 7; [[ADR-012-person-sex-and-union-timeline]]); twierdzenie o parze przy rodzinie, o dziecku przy jego łączu ([[ADR-011-relation-claims-family-and-child-link]]) | osoba może być partnerem w kilku rodzinach → powtórne małżeństwo działa z konstrukcji ([[FR-002-rodzina-jako-rekord]]) |
 | **Event** | typ · **data + kwalifikator** (dokładnie / około / przed / po / między) · miejsce | „ok. 1890" i „przed 1920" to normalne dane ([[FR-004-data-z-dopiskiem]]). Typy: osoby — urodzenie, zgon, **pochówek** (`glossary.md` → *pochówek*: data pochówku to Event, nie cecha powiązania); rodziny — **razem od** (od v7; eksport jako `EVEN` + `TYPE`), małżeństwo, koniec. Data może być nieznana przy zdarzeniu, o którym wiadomo, że było (ślub, koniec — v7). Diagram z briefu wymienia tylko birth, death |
 | **Cemetery** | nazwa · miejscowość · punkt środka · **zdjęcie** (jedno, wiersz *Media* z `cemetery_id` — schemat v9, [[ADR-014-cemetery-photo-on-media]]) · **plan** (obrys i alejki z OSM, pobrany raz — tabela `cemetery_plans`, schemat v10, [[ADR-015-cemetery-plan-in-database]]; brak wiersza = jeszcze nie pobrany, zaślepka) · link do Grobonetu albo **wyszukiwarki zarządcy** (decyzja autora przy US mapy cmentarza) | widok 1–2; plan i link — [[ADR-003-map-source-offline]] (2026-10-08). Ortofotomapa nie jest zapisywana (tylko online) |
@@ -55,6 +55,29 @@ erDiagram
 | **PersonMedia** (łącze zdjęcia) | osoba ↔ zdjęcie z **pozycją** (jak `OBJE` w GEDCOM 7) — schemat v4, [[ISSUE-017-person-photos]]. **Profilowe = pierwsze łącze osoby**, osobno dla każdej osoby; jedno zdjęcie (np. grupowe) ma łącza od wielu osób, a plik jest jeden. Zmiany zdjęć osoby zapisują się w transakcji jej wpisu ([[ADR-009-person-photos-record-and-link]]) | kto jest na zdjęciu — bez źródła ([[FR-001-provenance]]: daty, relacje, pochówek; łącze w GEDCOM 7 nie ma `SOUR`). **Kadr profilowego** (schemat v5): `CROP` przy łączu — cztery kolumny `crop_*` w pikselach pliku zdjęcia; brak = środek; każda osoba na zdjęciu ma własny ([[ADR-010-profile-photo-crop-pixels]]). **Tło** (schemat v8): `is_background` przy łączu — najwyżej jedno na osobę (częściowy indeks unikalny), rozszerzenie aplikacji, bo łącze w GEDCOM 7 zna tylko `CROP` i `TITL` ([[ADR-013-person-background-on-photo-link]]) |
 | **Setting: „ja"** | która osoba to autor | kotwica „jak łączą się ze mną" (M5). W kodzie: tabela `settings` od v1, jeden wiersz `id = 1`, zapisywany przy pierwszym wyborze w ustawieniach albo w zakładce Osoby ([[ISSUE-022-app-skeleton-tabs-people-settings]]); jedzie w kopii razem z bazą |
 
+## Tables in `grobing.db` — schema v12 (for reading a backup without Grobing)
+
+> Dopisane przy [[ISSUE-040-export-is-the-backup]] (2026-10-16, US-006 AC-2): **eksportem jest kopia** ([[ADR-018-export-is-the-backup]]), więc ktoś
+> z bazą z kopii (`backup-format.md`) musi wiedzieć, która tabela to która encja wyżej. Kolumny i ograniczenia — schemat w samej bazie
+> (`SELECT sql FROM sqlite_master`); wersja — `PRAGMA user_version`. Daty zdarzeń są w kolumnach liczbowych, nie w tekście.
+
+| Tabela | Encja | Co w niej jest |
+|---|---|---|
+| `persons` | *Person* | imiona, nazwisko, nazwisko rodowe, płeć, „kim była” (`bio`), `bio_source` i `is_living` (oba bez ekranu — nieużywane) |
+| `families` | *Family* | sam związek (id); partnerzy i dzieci w dwóch tabelach niżej, daty związku w `events` |
+| `family_partners` | *Family* — partnerzy | para `family_id` ↔ `person_id`, 1–2 wiersze na rodzinę |
+| `family_children` | *Family* — dzieci | `family_id` ↔ `person_id` dziecka; twierdzenie o łączu dziecka w `assertions` ([[ADR-011-relation-claims-family-and-child-link]]) |
+| `events` | *Event* | typ (urodzenie, zgon, pochówek; razem od, małżeństwo, koniec), `person_id` **albo** `family_id`, data jako `qualifier` + `year`/`month`/`day` i druga data `year_to`/`month_to`/`day_to` przy „między”, miejsce (`place`) |
+| `assertions` | *Assertion* | twierdzenie przy zdarzeniu, pochówku, rodzinie albo łączu dziecka: rodzaj źródła, opis, status, czas zapisu (bez ekranu od [[SPIKE-004-mvp-flow-prototype]] D28 — wiersze zostają) |
+| `cemeteries` | *Cemetery* | nazwa, miejscowość, punkt środka (`center_lat`, `center_lon`), adres Grobonetu |
+| `cemetery_plans` | *Cemetery* — plan | obrys i alejki z OSM jako JSON współrzędnych, status, czas pobrania, serwer ([[ADR-015-cemetery-plan-in-database]]) |
+| `sectors` | *Sector* | kwatera cmentarza: nazwa, klucz nazwy, strefa (JSON współrzędnych, opcjonalna) ([[ADR-016-sector-record-and-grave-link]]) |
+| `graves` | *Grave* | cmentarz, nazwa, kwatera (`sector_id`), rząd, miejsce, **pinezka** (`lat`, `lon`, źródło, dokładność w metrach, czas) |
+| `burials` | *Burial* | osoba ↔ grób |
+| `media` | *Media* | ścieżka pliku względem `media/` w kopii (`relative_path`), `grave_id` (zdjęcie nagrobka) albo `cemetery_id` (zdjęcie cmentarza) |
+| `person_media` | *PersonMedia* | osoba ↔ zdjęcie: pozycja (0 = profilowe), kadr w pikselach (`crop_*`, [[ADR-010-profile-photo-crop-pixels]]), czy tło ([[ADR-013-person-background-on-photo-link]]) |
+| `settings` | *Setting: „ja”* | jeden wiersz `id = 1`: `me_person_id` |
+
 ## Rules that are not tables
 
 - **Ścieżka między dwiema osobami** = najkrótsza droga po krawędziach osoba–rodzina (partner, dziecko),
@@ -63,7 +86,7 @@ erDiagram
   pochówku** — to, o co się spiera; „kim była" niesie jedną linię źródła. Źródło na każdym polu
   spowolniłoby przepisywanie ~100 osób (G6).
 - **Gdzie żyje:** lokalny SQLite + zdjęcia w prywatnym magazynie aplikacji ([[ADR-001-local-first]]);
-  kopia i eksport — [[ADR-004-backup-format-encryption-destination]].
+  kopia — [[ADR-004-backup-format-encryption-destination]]; eksportem danych jest kopia ([[ADR-018-export-is-the-backup]], 2026-10-16).
 
 ## In code
 

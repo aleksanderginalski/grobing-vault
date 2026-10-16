@@ -9,7 +9,7 @@ verdict-reviewer: null
 decided-by: "[[SPIKE-003-backup-and-restore]]"
 source: "PROJECT_BRIEF §Security → The off-phone copy · §Architecture → shape · Sufficiency A4 · §5 M8"
 created: 2026-10-05
-updated: 2026-10-06
+updated: 2026-10-16
 ---
 
 # ADR-004 — Kopia: format, szyfrowanie, miejsce
@@ -108,6 +108,8 @@ bez zmian.*
   - termin kopii w tle wyznacza Android, nie aplikacja (zmierzone: od ~1 min do > 44 min);
   - własny moduł kryptograficzny do utrzymania (mały, za bramką zgodności z oficjalnym CLI).
 - **Follow-ups:**
+  - **2026-10-16 — część *Eksport (A4)* zastąpiona przez [[ADR-018-export-is-the-backup]]** (decyzja autora): osobnego eksportu HTML + PDF
+    nie ma, eksportem danych jest kopia (SQLite + zdjęcia + manifest, oficjalne `age`). Reszta tego ADR obowiązuje bez zmian.
   - [[SPIKE-003-backup-and-restore]] **poprzedza masowe przepisywanie** (MD2) — ✅ spike zamknięty
     2026-10-05; produkcyjna funkcja kopii to pozycja z rozpisania [[EPIC-001-zabezpiecz-i-przepisz]].
   - ✅ **2026-10-05 — kopia sprzed migracji schematu** (było ⚠️ OPEN): zmierzone w spike'u, krok 5. Kopia

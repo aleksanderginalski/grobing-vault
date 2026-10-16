@@ -1,10 +1,10 @@
 ---
-screen: "Ustawienia — ja, kopia, eksport dla rodziny, notka przekazania, stan danych"
-items: ["[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-022-app-skeleton-tabs-people-settings]]"]
-us: "[[US-006-eksport-dla-rodziny]] (eksport) · [[US-001-kopia-z-odtworzeniem]] (kopia, zbudowana) · ustawienie „ja” (M5, [[data-model]])"
+screen: "Ustawienia — ja, kopia, notka przekazania, stan danych"
+items: ["[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-022-app-skeleton-tabs-people-settings]]", "[[ISSUE-040-export-is-the-backup]]"]
+us: "[[US-001-kopia-z-odtworzeniem]] (kopia, zbudowana) · [[US-006-eksport-dla-rodziny]] (eksport = kopia — bez własnego wiersza) · ustawienie „ja” (M5, [[data-model]])"
 journey-step: "n/a — M8 (przeżywa telefon i aplikację)"
 mockup: "2026-10-08: grobing-prototyp.html (SPIKE-004, panel 9) — katalog tymczasowy sesji, ścieżka w SPIKE-004"
-updated: 2026-10-08
+updated: 2026-10-16
 ---
 
 # Ustawienia — specyfikacja
@@ -14,7 +14,7 @@ updated: 2026-10-08
 >
 > **Wersja 1 — discovery na prototypie, panel 9 ([[SPIKE-004-mvp-flow-prototype]] D23, 2026-10-08).** Autor: *„7. ok”*.
 > Dziś koło zębate otwiera od razu „Stan danych” (ekran techniczny z ISSUE-007…010). Ustawienia stają przed nim jako
-> lista, a „Stan danych” schodzi o poziom niżej. Ekran eksportu jest tu, bo prowadzi do niego tylko ta lista.
+> lista, a „Stan danych” schodzi o poziom niżej. Ekran eksportu był tu, bo prowadziła do niego tylko ta lista.
 >
 > **Wersja 2 — zbudowane w [[ISSUE-022-app-skeleton-tabs-people-settings]] (elementy 1–7), przegląd `ui` (2026-10-08).**
 > Decyzje ze stopu #1 (D1 = A, D3, D4) i odstępstwa `dev` przyjęte albo poprawione w przeglądzie (*Dev report →
@@ -25,19 +25,23 @@ updated: 2026-10-08
 > - **ekran notki przekazania** (element 6a, D8); zaślepka eksportu do US-006 (element 5);
 > - „Stan danych” z ikoną `storage_outlined`; osobna sekcja „O aplikacji” (element 7, D9);
 > - margines boczny 16 dp, pole ikony 40 dp.
+>
+> **Wersja 3 — eksport znika ([[ISSUE-040-export-is-the-backup]], `ui`, 2026-10-16).** Autor przy planowaniu eksportu: *„nie zależy mi na
+> estetyce, a na zachowaniu danych”* — eksportem jest kopia ([[ADR-018-export-is-the-backup]]). Wiersz „Eksport dla rodziny” z zaślepką (element 5) i
+> ekran eksportu (elementy 8–11 z v1) wypadają; notka przekazania traci punkt (5) „gdzie leży eksport” (6a). Projekt ekranu eksportu z tego dnia
+> (lista „kto może żyć”, dwa okna zapisu) nie wszedł — ślad w [[ISSUE-040-export-is-the-backup]] → *Notes*.
 
 ## Purpose
-Jedno miejsce na to, co nie jest rodziną ani mapą: **kim jestem w drzewie** („ja”), **czy kopia działa**, **eksport i
-notka dla rodziny** (M8: przeżywa telefon i aplikację) i dane techniczne.
+Jedno miejsce na to, co nie jest rodziną ani mapą: **kim jestem w drzewie** („ja”), **czy kopia działa** (kopia jest też
+eksportem danych — ADR-018), **notka dla rodziny** (M8: przeżywa telefon i aplikację) i dane techniczne.
 
 ## Navigation
 - **Koło zębate na ekranie głównym** ([[cmentarze]] element 1) → ta lista. Bez dolnego paska — to nie jest zakładka
-  ([[style-b]] reguła 12); ekrany pod nią (wybór „ja”, notka, eksport, odtworzenie, „Stan danych”) też go nie mają.
+  ([[style-b]] reguła 12); ekrany pod nią (wybór „ja”, notka, odtworzenie, „Stan danych”) też go nie mają.
 - „Ja” → **wybór „ja”** — „Która osoba to Ty?” ([[osoby]] elementy 6–7); wybór zapisuje i wraca tu.
 - **„Odtwórz z kopii” → ekran odtworzenia wprost** (ten sam, co z „Stanu danych”, US-001; D4).
 - „Stan danych” → dzisiejszy ekran „Stan danych” (bez zmian; tam też jest „Odtwórz z kopii”).
 - „Kopia nie jest skonfigurowana” → „Skonfiguruj kopię” → dzisiejsza konfiguracja kopii.
-- „Eksport dla rodziny” → ekran eksportu (elementy 8–11); **do [[US-006-eksport-dla-rodziny]] — zaślepka** (element 5).
 - „Notka przekazania” → ekran notki (element 6a).
 - Wstecz → ekran główny.
 
@@ -53,29 +57,20 @@ elementem (tytuł + opis).
 | 2 | **Kopia — „Ostatnia udana kopia”**: `cloud_done_outlined` w zieleni stanu (`stateOk`), opis: **kiedy** („dziś, 11:42”, „wczoraj, 18:05”, „03.10.2026, 09:30” — czas telefonu), „ (w tle)”, gdy kopię zrobiło tło, i **gdzie** po „ · ”: „Dysk Google”, „Pobrane” albo „pamięć telefonu” — z dostawcy pliku wybranego w oknie zapisu; **nieznany dostawca → bez miejsca**. Kopii jeszcze nie było → `cloud_queue` (tekst pomocniczy), opis „jeszcze nie było”. Zmianę wiersza czytnik ogłasza sam | wiersz (informacja) | — | — | — | US-001 (zbudowane: „Stan danych”) · ISSUE-022 odstępstwa 3, 8 · D5 |
 | 3 | **„Zrób kopię teraz”** (`backup_outlined`, akcent), bez chevronu. W trakcie: wskaźnik postępu zamiast ikony, „Robię kopię…”, wiersz nieaktywny; czytnik ogłasza zmianę | wiersz | zrób kopię | — | błąd → pasek komunikatu z treścią błędu; wiersz 2 pokazuje stan „nieudana” | US-001 · ISSUE-022 odstępstwo 4 · D6 |
 | 4 | **„Odtwórz z kopii”** (`settings_backup_restore`, akcent) — „Nowy telefon albo utracone dane”, chevron. Podczas kopii nieaktywny i przygaszony (tytuł w kolorze tekstu pomocniczego) | wiersz | → **ekran odtworzenia wprost** (D4) | — | — | US-001 · [[NFR-002-odtworzenie-na-nowym-telefonie]] · przegląd `ui` |
-| 5 | **Dla rodziny — „Eksport dla rodziny”** (`ios_share`, akcent) — „HTML i PDF — otworzą się bez Grobing”, chevron | wiersz | → eksport (8–11); **do US-006 zaślepka**: pasek wstecz + „Eksport dla rodziny” i tekst pomocniczy na środku „Eksport powstanie z US-006: jeden plik HTML i jeden PDF, które otworzą się bez Grobing.” | — | — | [[US-006-eksport-dla-rodziny]] · ISSUE-022 D1 = A |
-| 6 | **„Notka przekazania”** (`description_outlined`, akcent) — „Gdzie jest kopia i jak ją otworzyć — na papierze, u rodziny”, chevron | wiersz | → ekran notki (6a); sama notka jest poza aplikacją | — | — | M8 · G2 · NT-007 |
+| ~~5~~ | ~~**Dla rodziny — „Eksport dla rodziny”**~~ — **usunięty w v3** (D10, [[ADR-018-export-is-the-backup]]); sekcja „Dla rodziny” zostaje z jednym wierszem 6 | — | — | — | — | [[ISSUE-040-export-is-the-backup]] |
+| 6 | **Dla rodziny — „Notka przekazania”** (`description_outlined`, akcent) — „Gdzie jest kopia i jak ją otworzyć — na papierze, u rodziny”, chevron | wiersz | → ekran notki (6a); sama notka jest poza aplikacją | — | — | M8 · G2 · NT-007 |
 | 7 | **Techniczne — „Stan danych”** (`storage_outlined`, tekst pomocniczy — w Material Icons Fluttera nie ma `database`) — „Wersja bazy, odcisk danych, liczby”, chevron; podczas kopii nieaktywny i przygaszony. **Sekcja „O aplikacji”**: `info_outline`, tytuł „Grobing <wersja>” (wersja z `pubspec.yaml`), opis „Mapy: © autorzy OpenStreetMap (ODbL) · Natural Earth”; „ · Ortofotomapa: GUGiK” dochodzi z [[US-007-mapa-cmentarza]]. Bez działania i bez chevronu | wiersze | „Stan danych” → dzisiejszy ekran | — | — | ISSUE-007 · licencje (ODbL) · ISSUE-022 odstępstwa 6, 9 · D9 |
 
 **Notka przekazania** ([[ISSUE-022-app-skeleton-tabs-people-settings]] D4, [[NT-007-hand-over-note]]; bez paska dolnego)
 
 | # | Element | Typ | Klawiatura / akcja | Domyślnie | Walidacja | Źródło |
 |---|---|---|---|---|---|---|
-| 6a | Pasek wstecz + „Notka przekazania”. **Wstęp** (16 sp, tekst): „Kartka u rodziny — poza telefonem i poza chmurą. Bez niej rodzina nie otworzy kopii. Na kartce:”. **Lista 1–5** (numery w kolorze tekstu pomocniczego, treść 16 sp, tekst): (1) że kopia istnieje — Grobing robi ją sam, kilka minut po zmianach; (2) gdzie leży kopia: folder i nazwy obu plików — kopii (np. `grobing-kopia.age`) i klucza (np. `grobing-klucz.age`); (3) hasło do pliku klucza — nigdy w tej samej chmurze co kopia; zgubione hasło albo plik klucza to utracona kopia; (4) jak otworzyć kopię bez Grobing: program `age` odszyfrowuje plik, w środku jest archiwum `tar` z bazą SQLite i zdjęciami; (5) gdzie leży eksport dla rodziny — otworzy się w zwykłej przeglądarce. **Przypis** (14 sp, tekst pomocniczy): „„Skonfiguruj kopię od nowa” tworzy nowy klucz — wtedy notkę trzeba wymienić. Zmiana telefonu jej nie zmienia.” Margines boczny 16 dp | tekst | — | — | — | ISSUE-022 D4 · NT-007 · D8 |
-
-**Eksport dla rodziny** ([[US-006-eksport-dla-rodziny]])
-
-| # | Element | Typ | Klawiatura / akcja | Domyślnie | Walidacja | Źródło |
-|---|---|---|---|---|---|---|
-| 8 | Pasek wstecz + „Eksport dla rodziny”; **opis**: „Czytelna kopia dla rodziny: jeden plik HTML i jeden PDF z osobami, rodzinami, grobami i datami. Otworzy się w zwykłej przeglądarce, bez Grobing.” (14 sp) | tekst | — | — | — | US-006 AC-1 |
-| 9 | **„Zdjęcia”** — przełącznik (akcent, gdy włączony): „Portrety i nagrobki w pliku” | przełącznik | dotknięcie | włączony | — | decyzja projektowa (rozmiar pliku) |
-| 10 | **„Osoby żyjące”** — przełącznik: „Domyślnie bez — eksport może trafić do innych” | przełącznik | dotknięcie | **wyłączony** | — | **decyzja autora** (D23) · brief §6 N3 (RODO, żyjący) |
-| 11 | „Plik zapiszesz tam, gdzie wskażesz. Grobing nigdzie go nie wysyła.” (13 sp, tekst pomocniczy) i **wypełniony „Utwórz eksport”** (`ios_share`) | tekst + przycisk główny | → systemowe okno zapisu pliku → HTML i PDF | — | brak miejsca / błąd zapisu: komunikat z ikoną błędu nad przyciskiem | US-006 AC-3 · [[NFR-005-dane-nie-opuszczaja-telefonu]] |
+| 6a | Pasek wstecz + „Notka przekazania”. **Wstęp** (16 sp, tekst): „Kartka u rodziny — poza telefonem i poza chmurą. Bez niej rodzina nie otworzy kopii. Na kartce:”. **Lista 1–4** (v3; numery w kolorze tekstu pomocniczego, treść 16 sp, tekst): (1) że kopia istnieje — Grobing robi ją sam, kilka minut po zmianach; (2) gdzie leży kopia: folder i nazwy obu plików — kopii (np. `grobing-kopia.age`) i klucza (np. `grobing-klucz.age`); (3) hasło do pliku klucza — nigdy w tej samej chmurze co kopia; zgubione hasło albo plik klucza to utracona kopia; (4) jak otworzyć kopię bez Grobing: program `age` odszyfrowuje plik, w środku jest archiwum `tar` z bazą SQLite i zdjęciami. ~~(5) gdzie leży eksport dla rodziny~~ — usunięte w v3 (D10). **Przypis** (14 sp, tekst pomocniczy): „„Skonfiguruj kopię od nowa” tworzy nowy klucz — wtedy notkę trzeba wymienić. Zmiana telefonu jej nie zmienia.” Margines boczny 16 dp | tekst | — | — | — | ISSUE-022 D4 · NT-007 · D8 · D10 |
 
 ## States
 | Stan | Co widać |
 |---|---|
-| lista | 1–7 |
+| lista | 1–4, 6, 7 |
 | „ja” niewybrane | 1 z „Ja” i opisem „Wybierz, która osoba to Ty” |
 | kopia nieskonfigurowana | 2: `cloud_off_outlined` (tekst pomocniczy) „Kopia nie jest skonfigurowana”, opis „Do jej otwarcia będą potrzebne: plik kopii, plik klucza i hasło” + 3 jako „Skonfiguruj kopię” (`backup_outlined`, akcent, chevron) |
 | kopii jeszcze nie było | 2: `cloud_queue` (tekst pomocniczy), „Ostatnia udana kopia” — „jeszcze nie było” |
@@ -83,33 +78,28 @@ elementem (tytuł + opis).
 | kopia w toku | 3: wskaźnik postępu, „Robię kopię…”; 4 i 7 nieaktywne i przygaszone |
 | błąd odczytu ustawień kopii | 2: `error_outline` w kolorze błędu, „Nie udało się odczytać ustawień kopii” |
 | notka | 6a |
-| eksport przed US-006 | zaślepka z elementu 5 |
-| eksport | 8–11 |
-| eksport w toku | 11: wskaźnik postępu w przycisku, przycisk nieaktywny |
-| eksport gotowy | ciche potwierdzenie (reguła 10): „Zapisano: grobing-eksport-2026-10-08.html i .pdf” pod przyciskiem |
 
 ## Sketch
 ```
 ┌──────────────────────────────────┐   ┌──────────────────────────────────┐
-│ ←  Ustawienia                    │   │ ←  Eksport dla rodziny           │
-│ Ty w drzewie                     │   │ Czytelna kopia dla rodziny: HTML │
-│ (◉) Ja                         › │   │ i PDF z osobami, rodzinami, …    │
-│     Ewa Wymyślona                │   │ ▣ Zdjęcia                  [●━]  │
-│     Od tej osoby liczą się …     │   │ ◯ Osoby żyjące             [━○]  │
-│ Kopia                            │   │ Plik zapiszesz tam, gdzie …      │
-│ ☁✓ Ostatnia udana kopia          │   │ ╭──────────────────────────────╮ │
-│    dziś, 11:42 (w tle) · Dysk G… │   │ │      ⇪  Utwórz eksport       │ │
-│ ⤒  Zrób kopię teraz              │   │ ╰──────────────────────────────╯ │
-│ ↺  Odtwórz z kopii             › │   └──────────────────────────────────┘
-│ Dla rodziny                      │   ┌──────────────────────────────────┐
-│ ⇪  Eksport dla rodziny         › │   │ ←  Notka przekazania             │
-│ ▤  Notka przekazania           › │   │ Kartka u rodziny — poza telefo-  │
-│ Techniczne                       │   │ nem i poza chmurą. Bez niej …    │
-│ ⛁  Stan danych                 › │   │ 1. Że kopia istnieje. …          │
-│ O aplikacji                      │   │ 2. Gdzie leży kopia: folder …    │
-│ ⓘ  Grobing 1.0.0                 │   │ …                                │
-│    Mapy: © autorzy OpenStreet…   │   │ „Skonfiguruj kopię od nowa” …    │
-└──────────────────────────────────┘   └──────────────────────────────────┘
+│ ←  Ustawienia                    │   │ ←  Notka przekazania             │
+│ Ty w drzewie                     │   │ Kartka u rodziny — poza telefo-  │
+│ (◉) Ja                         › │   │ nem i poza chmurą. Bez niej …    │
+│     Ewa Wymyślona                │   │ 1. Że kopia istnieje. …          │
+│     Od tej osoby liczą się …     │   │ 2. Gdzie leży kopia: folder …    │
+│ Kopia                            │   │ 3. Hasło do pliku klucza …       │
+│ ☁✓ Ostatnia udana kopia          │   │ 4. Jak otworzyć kopię bez …      │
+│    dziś, 11:42 (w tle) · Dysk G… │   │ „Skonfiguruj kopię od nowa” …    │
+│ ⤒  Zrób kopię teraz              │   └──────────────────────────────────┘
+│ ↺  Odtwórz z kopii             › │
+│ Dla rodziny                      │
+│ ▤  Notka przekazania           › │
+│ Techniczne                       │
+│ ⛁  Stan danych                 › │
+│ O aplikacji                      │
+│ ⓘ  Grobing 1.0.0                 │
+│    Mapy: © autorzy OpenStreet…   │
+└──────────────────────────────────┘
 ```
 
 ## Tempo
@@ -117,33 +107,29 @@ n/a — ekran ustawień.
 
 ## Style B rules applied
 - **Reguła 12:** bez dolnego paska — ustawienia są pod kołem zębatym, nie zakładką; ekrany pod nimi też bez paska.
-- **Reguła 1:** jeden wypełniony przycisk („Utwórz eksport”); wiersze bez wypełnienia.
+- **Reguła 1:** na liście nie ma wypełnionego przycisku; wiersze bez wypełnienia (od v3 — bez ekranu eksportu, który miał „Utwórz eksport”).
 - **Reguła 3 i kolory stanu:** ikony działań w akcencie, informacji w tekście pomocniczym. Stan kopii w zieleni stanu
   (`stateOk`, 8,97:1 na tle — wiersz stoi na tle) i błąd (6,45:1) — zawsze z ikoną i tekstem, nigdy sam kolor.
 - **Role tokenów:** numery listy w notce w kolorze tekstu pomocniczego — akcent nie jest ozdobnikiem.
 - **Reguła 5:** margines boczny 16 dp w liście i w notce.
 - **Reguła 7:** ton notki spokojny i rzeczowy: „Bez niej rodzina nie otworzy kopii.”
-- **Reguła 10:** eksport kończy się cichym potwierdzeniem, nie oknem; wybór „ja” — widokiem wybranej osoby w wierszu 1.
+- **Reguła 10:** wybór „ja” kończy się widokiem wybranej osoby w wierszu 1.
 - **Reguła 14:** profilowe w wierszu 1 — okrąg 40 dp, ten sam rozmiar co miniatura osoby w karcie.
-- **Tokeny:** `stateOk` wpisany do `theme.dart` w ISSUE-022 ([[style-b]] v1.17 → *State colours*); przełącznik — akcent
-  (włączony) i obrys (wyłączony): istniejące pary.
+- **Tokeny:** `stateOk` wpisany do `theme.dart` w ISSUE-022 ([[style-b]] v1.17 → *State colours*).
 
 ## AC → element
 | AC | Element(y) | Jak widać spełnienie |
 |---|---|---|
-| US-006 AC-1 — HTML i PDF bez aplikacji | 8, 11 | opis i przycisk; zapis dwóch plików |
-| US-006 AC-3 — eksport nie idzie do chmury sam | 11 | systemowe okno zapisu; podpis „Grobing nigdzie go nie wysyła” |
+| US-006 AC-3 — bez osobnego eksportu (v3) | lista · 6a | w liście nie ma „Eksport dla rodziny”; notka ma cztery punkty, żaden o eksporcie |
 | M8 / G2 — rodzina wie, że kopia istnieje | 6, 6a | wiersz notki przekazania i ekran z listą tego, co ma być na kartce |
 | (ISSUE-022) AC-3 — koło zębate → ustawienia; „Stan danych” otwiera dzisiejszy ekran | lista · 7 | koło → „Ustawienia”; „Stan danych” → ekran z wersją schematu i odciskiem |
 | (ISSUE-022) AC-4 — wybór „ja” zapisany i na górze Osób | 1 · [[osoby]] 3, 6–7 | „Ja” → „Która osoba to Ty?” → Ewa → w wierszu jej profilowe i „Ewa Wymyślona”; w Osobach pod „Ja” |
-| (ISSUE-022) D4 — notka z listą tego, co ma być na kartce | 6a | sześć rzeczy z D4: pięć punktów i przypis o nowym kluczu |
+| (ISSUE-022) D4 — notka z listą tego, co ma być na kartce | 6a | od v3 cztery punkty i przypis o nowym kluczu |
 
 ## Decisions
-- **D1 — koło zębate → lista ustawień, „Stan danych” niżej** (D23). Kopia, eksport i „ja” to sprawy użytkownika, a
+- **D1 — koło zębate → lista ustawień, „Stan danych” niżej** (D23). Kopia i „ja” to sprawy użytkownika, a
   „Stan danych” to diagnostyka. *Obali:* autor używa „Stanu danych” codziennie — wtedy wiersz na górze.
-- **D2 — eksport domyślnie bez osób żyjących** (D23: *„7. ok”* na pytanie wprost). Eksport ma trafić do rodziny i może
-  pójść dalej; dane żyjących chroni brief §6 N3. *Obali:* rodzina chce kompletnego drzewa z żyjącymi — przełącznik już
-  jest.
+- ~~**D2 — eksport domyślnie bez osób żyjących**~~ (D23) — **nieaktualne od v3**: eksportu nie ma (D10).
 - **D3 — notka przekazania jako opis, nie generator** — notka to kartka u rodziny (NT-007), poza aplikacją; aplikacja
   przypomina, co ma w niej być.
 - **D4 — „Odtwórz z kopii” otwiera odtworzenie wprost** (v2; przegląd `ui` ISSUE-022, odstępstwo 5; zmienia
@@ -175,6 +161,11 @@ n/a — ekran ustawień.
   (`2026-10-08 11:42`). **Znana rozbieżność, poza zakresem ISSUE-022:** „Stan danych” mówi „Zapisana w Dysku na
   telefonie…”, także gdy kopia leży w „Pobranych” — poprawka przy następnej zmianie tamtego ekranu (to samo
   rozpoznanie miejsca co w elemencie 2).
+- **D10 — bez wiersza i ekranu eksportu; kopia jest eksportem** (v3; decyzja autora 2026-10-16, [[ADR-018-export-is-the-backup]]). Autor chce
+  zachować dane i móc użyć ich w innym produkcie, nie czytelnego pliku — a kopia już jest bazą SQLite ze zdjęciami w otwartym, opisanym formacie.
+  Drugi wiersz o tym samym byłby obietnicą bez treści, a punkt (5) notki wskazywałby plik, którego nie ma. Sekcja „Dla rodziny” zostaje z notką:
+  nagłówek mówi, dla kogo jest kartka. *Obali:* autor wraca do czytelnego pliku dla rodziny albo pojawia się produkt docelowy dla GEDCOM — wtedy
+  nowy wiersz z nowej pozycji.
 
 ## Open
 brak.

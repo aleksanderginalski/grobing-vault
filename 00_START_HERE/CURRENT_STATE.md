@@ -3,7 +3,7 @@ title: "Grobing — Current State"
 type: meta
 status: active
 created: 2026-10-05
-updated: 2026-10-14
+updated: 2026-10-16
 ---
 
 # Grobing — Current State
@@ -22,9 +22,12 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   zamknięte 2026-10-13 (*Recently done*). Dalej droga do instalacji MVP: ~~[[US-009-drzewo-od-osoby]]~~ **zamknięta 2026-10-14** (~~ISSUE-033~~,
   ~~ISSUE-034~~, ~~ISSUE-035~~, ~~ISSUE-036~~); ~~[[US-010-czas-na-drzewie]]~~ **zamknięta 2026-10-14** (~~ISSUE-037~~, ~~ISSUE-038~~ — historia na telewizorze i
   tempo, zamknięte 2026-10-14); ~~[[US-011-polacz-dwie-osoby]]~~ **zamknięta 2026-10-14** (~~ISSUE-039~~). **Wszystkie US
-  [[EPIC-003-zrozumienie]] zamknięte** (EPIC zostaje `draft` do instalacji — jego rzeczy w ręce są na [[ISSUE-032-mvp-install]] → *Hand checks*). **Następna:
-  [[US-006-eksport-dla-rodziny]]** (punkt 8 drogi niżej; `ready`, bez ISSUE — rozpisanie `docs` przed `ui`, jak przy US-011; nowy ekran eksportu → `ui` z
-  makietą), potem [[NT-007-hand-over-note]].
+  [[EPIC-003-zrozumienie]] zamknięte** (EPIC zostaje `draft` do instalacji — jego rzeczy w ręce są na [[ISSUE-032-mvp-install]] → *Hand checks*). ~~[[US-006-eksport-dla-rodziny]]~~
+  **zamknięta 2026-10-16** (~~ISSUE-040~~) — **eksportem jest kopia** (decyzja autora, HTML + PDF wycofane → [[ADR-018-export-is-the-backup]]). **Wszystkie US
+  [[EPIC-001-zabezpiecz-i-przepisz]] zamknięte** (EPIC zostaje `draft` — jego NFR, np. odtworzenie na nowym telefonie i słońce, sprawdza instalacja). **Licznik retro
+  doszedł do 10 → najpierw retro 4** (`pm`), potem [[NT-007-hand-over-note]] (warunek obudzenia spełniony: kopia jest i jest eksportem) i [[ISSUE-032-mvp-install]].
+- **Sygnał dla agenta `architect`** (`CLAUDE.md` → *Na sygnał*: „pierwszy ADR zastąpiony po akceptacji”, retro 2 R7): [[ADR-018-export-is-the-backup]] zastępuje
+  część [[ADR-004-backup-format-encryption-destination]] i [[ADR-001-local-first]] (2026-10-16). `pm` proponuje dodanie agenta — decyzja autora, kandydat na retro 4.
 
   Specyfikacja: [[drzewo]] v1.17, [[osoba]] v2.4, [[style-b]] v1.31.
 - **Prawdziwe dane rodziny dopiero po instalacji MVP** (decyzja autora 2026-10-08 w `/pm`): budujemy produkt gotowy do
@@ -43,7 +46,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
      ~~ISSUE-035~~, ~~ISSUE-036~~; drzewo od osoby, S2, ślad dalszej rodziny, słownik nazw złożonych, „Pokaż w drzewie”, tryb prezentacji, „Przesyłaj na
      telewizor”) → ~~[[US-010-czas-na-drzewie]]~~ — zamknięta 2026-10-14 (~~ISSUE-037~~; suwak czasu, daty niepewne, „//”; ~~ISSUE-038~~ — historia na telewizorze i
      tempo) → ~~[[US-011-polacz-dwie-osoby]]~~ — zamknięta 2026-10-14 (~~ISSUE-039~~; okno „Połącz dwie osoby”, ścieżka na drzewie, baner);
-  8. **[[US-006-eksport-dla-rodziny]]** (następna) i [[NT-007-hand-over-note]];
+  8. ~~[[US-006-eksport-dla-rodziny]]~~ — zamknięta 2026-10-16 (~~ISSUE-040~~; eksport = kopia, [[ADR-018-export-is-the-backup]]) i [[NT-007-hand-over-note]] (następna po retro 4);
   → **[[ISSUE-032-mvp-install]]** (`draft`): audyt pól modelu ↔ ekrany (R9), lista rzeczy niesprawdzonych w ręce (R8), warunki
   przed pierwszymi danymi → build release na telefonie → prawdziwe dane ([[NT-002-transcribe-the-notes]]).
   Wpisy o zamkniętych pozycjach: retro 3 → *Archive*.
@@ -141,7 +144,9 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     `key.properties`), `fjar\`, `ref\` (PDF-y TimeNets i genogramu), logi klatek i skrypty. Z sesji ISSUE-038 (`baf00b7b-…\scratchpad\`): makieta `drzewo-038.html`, zrzuty
     `shots-038\` i `shots-emu\` (wymyślone), `base\` (dwa APK profile, ok. 80 MB), `chr\` (profil Chrome bez okna), źródła Media3, skrypty — do kosza. Z sesji ISSUE-039
     (`0558e715-…\scratchpad\`): makieta `drzewo-039.html` z częściami (`parts\`), zrzuty `shots-039\` i `emu\shots\` (wymyślone), `emu\base\` (APK profile ISSUE-038 i ISSUE-039,
-    ok. 80 MB), `chr\` (profil Chrome bez okna), wyniki testów i skrypty — do kosza;
+    ok. 80 MB), `chr\` (profil Chrome bez okna), wyniki testów i skrypty — do kosza. Z sesji ISSUE-040 (`cbd907af-…\scratchpad\`): wycofana makieta `eksport-040.html`,
+    zrzuty `shots\`, `gate\` (kopia `grobing-*-040.age`, odszyfrowany plik klucza i `tar` z bazą — **wymyślone dane, hasło testowe**), `agebin\` (oficjalne `age` v1.3.2 —
+    można zachować do notki NT-007), obraz testowy, `chr\` i skrypty — do kosza;
   - **repo nie mają pliku `LICENSE`** — kod można oglądać, ale nie wolno go używać. Licencję można dodać później.
 - **Emulatory (po ISSUE-033):** `Medium_Phone` — release v12 na danych testowych autora, kopia skonfigurowana od nowa z hasłem
   testowym (wymyślone, z sesji ISSUE-029), pliki `grobing-klucz-029.age` i `grobing-kopia-029.age` w Pobranych; grób „Jozef” ma
@@ -157,7 +162,9 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   do pomiaru klatek: APK zainstalowany na emulatorze, ściągnięty przed instalacją nowego (`adb shell pm path com.grobing.app`, `adb pull`; sposób z ISSUE-038) — kopia drzewa
   roboczego niepotrzebna. **Po ISSUE-039:** build profile z „Połącz dwie osoby” (`FRAME_LOG`, `--split-per-abi`, bo zainstalowany ma `versionCode` 4001); dane aplikacji
   wyczyszczone (`pm clear`) i wymyślona rodzina dodana od nowa — **107 osób, z Teofilem bez rodziny**; tekst, gęstość, animacje i „Czas na działanie” domyślne. Klatki tego dnia:
-  przestawienie środka 52–57% wolnych w obu buildach (przy ISSUE-033 2–8%) — porównanie tylko naprzemienne.
+  przestawienie środka 52–57% wolnych w obu buildach (przy ISSUE-033 2–8%) — porównanie tylko naprzemienne. **Po ISSUE-040:** build profile bez wiersza eksportu; Mateusz
+  („ja”) ma profilowe z obrazu testowego (`testowy-obraz-040.jpg` w Zdjęciach emulatora); **kopia skonfigurowana z nowym hasłem testowym** (z sesji ISSUE-040) do
+  `grobing-klucz-040.age` i `grobing-kopia-040.age` w Pobranych — kopia w tle nadpisuje ten plik.
 - **[[EPIC-002-wizyta]] gotowy do rozpisania na US** — pytanie „jak znaleźć grób bez pinezki” ma kierunek autora
   (2026-10-08): adres z wyszukiwarki zarządcy → kwatera zaznaczona według planu zarządcy → na miejscu plan offline i
   GPS → pinezka. Wejście do pierwszej US (mapa cmentarza): EPIC-002 → *Input from SPIKE-001*. Ekran: `ui` →
@@ -174,7 +181,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   paczki (decyzja autora 2026-10-07); treść wychodzących zmian sprawdza strażnik treści ([[ISSUE-020-content-guard]]) przy każdym `git add`/`commit`.
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **9** (ostatnie retro: [[2026-10-13-retro-03]]). Co **10** → retro + pytanie o 3–5
+- Zamknięte pozycje od ostatniego retro: **10 — retro 4 przed następną pozycją** (ostatnie retro: [[2026-10-13-retro-03]]). Co **10** → retro + pytanie o 3–5
   nośnych faktów (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**; podbija go `docs` przy zamknięciu, a zeruje go retro.
 - Do retro (zebrane po drodze, bez decyzji):
   - **US bez ISSUE na starcie łańcucha** ([[ISSUE-033-tree-from-a-person]]): `pm` skierował [[US-009-drzewo-od-osoby]] prosto do `ui`, a plan nie miał
@@ -220,6 +227,13 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   - **Test trafiał w kartę pod listą** ([[ISSUE-039-connect-two-people]], `qa`): `find.text('Wanda …')` znajdował kartę drzewa pod ekranem wyboru, więc dotknięcie szło w inną osobę
     i siedem testów padło z mylącymi powodami. Kandydat: w testach z kilkoma trasami na ekranie szukać w trasie (`find.descendant(of: ekran)`).
   - **Strażnik komend złapał `python -I -` drugi raz** ([[ISSUE-039-connect-two-people]], `qa`) — odmowa przy próbie, nic się nie wykonało; dowód mechanizmu jak w ISSUE-038.
+  - **Plan z kick-offu wycofany na stopie #1, po całym projekcie** ([[ISSUE-040-export-is-the-backup]]): `docs`, `ui` i `planning` rozpisały eksport HTML + PDF/A dla
+    rodziny (specyfikacja pliku, makieta z pięcioma pytaniami, przegląd biblioteki PDF), a autor na stopie #1: *„nie zależy mi na estetyce, a na zachowaniu danych”* —
+    eksportem została kopia, bez nowego kodu. Brief zapisał M8/G2 jedenaście dni wcześniej; nikt nie zapytał, po co autorowi eksport **dziś**. Kandydat: przy US
+    prosto z kick-offu `pm` (albo `planning` przed `ui`) zadaje jedno pytanie o cel, zanim ruszy projekt.
+  - **Pole w modelu bez ekranu znalezione przy rozpisaniu** ([[ISSUE-040-export-is-the-backup]] → *Notes*): `is_living` — domyślnie „nie żyje”, nikt go nie ustawia, a
+    specyfikacja eksportu na nim stała. Dowód dla audytu pól modelu ↔ ekrany w [[ISSUE-032-mvp-install]] (retro 3, R9); zapis w [[data-model]].
+  - **Sygnał dla `architect`** — pierwszy ADR zastąpiony po akceptacji ([[ADR-018-export-is-the-backup]]); *In progress*.
   - Poprzednią listę rozliczyło [[2026-10-13-retro-03]] → *The "Do retro" list*.
 
 ## Parked (waiting on someone outside the session)
@@ -240,6 +254,19 @@ Format wpisu: `źródło (babcia / cmentarz X) · pytanie bez danych rodziny · 
 ## Recently done
 > Tylko wpisy od ostatniego retro ([[2026-10-13-retro-03]], R5). Starsze są w plikach retro → *Archive*:
 > [[2026-10-13-retro-03]] · [[2026-10-08-retro-02]] · [[2026-10-06-retro-01]].
+
+- 2026-10-16 — [[ISSUE-040-export-is-the-backup]] zamknięte — **[[US-006-eksport-dla-rodziny]] zamknięta** (przepisana), **wszystkie US [[EPIC-001-zabezpiecz-i-przepisz]]
+  zamknięte**. **Eksportem jest kopia:**
+  - pierwszy plan — eksport HTML + PDF/A dla rodziny (specyfikacja pliku, makieta, `pdf` 3.12.0 jako ostatnia wersja zgodna z Dartem 3.11) — **wycofany przez autora na
+    stopie #1**: *„nie zależy mi na estetyce, a na zachowaniu danych”*, potem *„tak, wystarczy”* na „kopia jako eksport” → [[ADR-018-export-is-the-backup]] (zastępuje
+    część ADR-001 i ADR-004; LoC: SQLite *Preferred* dla zbiorów danych; GEDCOM 7 — gdy będzie produkt docelowy);
+  - **kopia z dzisiejszym schematem otwarta na PC oficjalnym `age` v1.3.2** i sprawdzona Pythonem bez kodu Grobing: `integrity_check` ok, schemat 12, 14 tabel i pliki
+    zgodne z manifestem, odcisk `d425b2b3242343c7` = ekran; `data-model.md` dostał mapę tabel `grobing.db` (`events`, `family_partners`, `family_children` nie miały nazw);
+  - z aplikacji zniknął wiersz „Eksport dla rodziny” z zaślepką i punkt (5) notki przekazania; [[ustawienia]] v3, słowniczek, NFR-005, EPIC-001, NT-007 zaktualizowane;
+    `is_living` opisane jako nieużywane.
+
+  Kroki oddane agentowi (bez nowego ekranu); nic na [[ISSUE-032-mvp-install]] → *Hand checks*. Testy: 773 zielone. Werdykt `qa`: APPROVED (self-check). Licznik retro:
+  9 → **10 — retro 4**. **Sygnał `architect`** (pierwszy ADR zastąpiony) — *In progress*.
 
 - 2026-10-14 — [[ISSUE-039-connect-two-people]] zamknięte — **[[US-011-polacz-dwie-osoby]] zamknięta** (AC-1–AC-4), **wszystkie US [[EPIC-003-zrozumienie]] zamknięte**.
   **„Połącz dwie osoby” na drzewie:**

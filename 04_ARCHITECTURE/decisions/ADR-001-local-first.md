@@ -8,7 +8,7 @@ verdict-date: null
 verdict-reviewer: null
 source: "PROJECT_BRIEF Step 0 (local-first canon) · §Architecture → shape · §Security · §3a"
 created: 2026-10-05
-updated: 2026-10-05
+updated: 2026-10-16
 ---
 
 # ADR-001 — Local-first
@@ -50,6 +50,8 @@ offline) — kopia nie jest bazą w chmurze, którą telefon odzwierciedla.
 - **Negative / trade-offs:** od pierwszej przepisanej osoby telefon jest **jedyną cyfrową kopią** —
   dlatego kopia + odtwarzanie **przed masowym przepisywaniem** (MD2, [[NFR-002-odtworzenie-na-nowym-telefonie]]);
   brak współdzielenia (W1) — świadomie.
+- **2026-10-16 — „eksport czytelny bez aplikacji (HTML + PDF)” zastąpiony przez [[ADR-018-export-is-the-backup]]** (decyzja autora):
+  długowieczność danych niesie kopia w otwartym formacie (SQLite + zdjęcia), osobnego eksportu nie ma. Reszta decyzji bez zmian.
 - **Follow-ups:** [[ADR-004-backup-format-encryption-destination]] (kopia) ·
   [[SPIKE-003-backup-and-restore]] · [[NT-003-verify-household-exemption]] (miejsce kopii a RODO) ·
   model danych: `04_ARCHITECTURE/data-model.md`.

@@ -3,7 +3,7 @@ title: "Grobing — Glossary"
 type: meta
 status: active
 created: 2026-10-05
-updated: 2026-10-12
+updated: 2026-10-16
 ---
 
 # Grobing — Glossary
@@ -49,7 +49,7 @@ updated: 2026-10-12
 | **„ja"** | wskazanie, która osoba w danych to autor — kotwica ścieżki pokrewieństwa | kontem użytkownika (kont nie ma) |
 | **ścieżka pokrewieństwa** | najkrótsza droga po rodzinach między dwiema osobami, wyliczana na bieżąco | czymś zapisanym w bazie |
 | **kopia** (backup) | pełna, **zaszyfrowana w telefonie**, automatyczna, sprawdzona odtworzeniem — do przywrócenia na nowym telefonie | eksportem |
-| **eksport** | **czytelny bez aplikacji** (HTML + PDF), dla rodziny, przechowywany offline | kopią — nie da się go zaszyfrować, bo czytelność jest jego celem |
+| **eksport** | **odszyfrowane wnętrze kopii** — baza SQLite, zdjęcia i manifest, otwierane na PC oficjalnym `age` bez Grobing (od 2026-10-16, [[ADR-018-export-is-the-backup]]; wcześniej: HTML + PDF dla rodziny — wycofane) | osobnym plikiem — aplikacja nie ma drugiej drogi wyjścia danych poza kopią |
 | **dane rodziny** | cokolwiek o prawdziwych osobach: imiona, daty, zdjęcia, pozycje grobów, pliki bazy, eksporty | dokumentacją, kodem albo danymi testowymi z **wymyślonymi** osobami |
 | **zaparkowane** | sprawa czekająca na kogoś spoza sesji (babcia, cmentarz) z **warunkiem obudzenia** | blokadą łańcucha |
 | **Zbierający** | jedyny użytkownik — autor (persona P1) | rodziną, która dziedziczy dane |
