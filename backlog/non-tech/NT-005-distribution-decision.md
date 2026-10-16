@@ -1,7 +1,7 @@
 ---
 title: "NT-005 — Distribution: direct install vs a store track (ADR — next free number)"
 type: non-code-item
-status: open
+status: done
 category: decision
 priority: COULD
 source: "PROJECT_BRIEF §6 N6"
@@ -29,6 +29,7 @@ Dystrybucja przez sklep to też trigger [[DEF-002-full-l1-review]] (druga osoba 
   autor jedynym testerem, **klucz podpisu wygenerowany przez Google** (Play App Signing), konto to samo co przy Friendsheet — *„tak zróbmy
   to”*. Powód autora: aktualizacja ze sklepu jak we Friendsheet, bez obawy o dane. Warunek obudzenia („pierwszy build wart codziennego
   używania”) — instalacja MVP najpóźniej 2026-10-29.
-- ⏳ **ADR-019** (≥3 opcje) pisze łańcuch [[ISSUE-041-google-play-and-safe-update]]; ta pozycja zamyka się razem z nim.
+- ✅ **[[ADR-019-distribution-play-internal-testing]]** (2026-10-16, łańcuch [[ISSUE-041-google-play-and-safe-update]]) — pozycja zamknięta. Wpis w
+  Play Console i pierwsza instalacja ze sklepu — [[ISSUE-032-mvp-install]] → *Before install* 0.
 - [[DEF-002-full-l1-review]]: ścieżka testów wewnętrznych z jednym testerem to nie „druga osoba / sklep publiczny” — warunek obudzenia
   nie zachodzi (do potwierdzenia w ADR-019).

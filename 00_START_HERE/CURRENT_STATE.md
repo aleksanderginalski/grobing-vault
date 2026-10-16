@@ -20,9 +20,11 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
 ## In progress
 - **Po [[2026-10-16-retro-04]] (R1–R7, decyzja autora 2026-10-16) — kolejka przed instalacją MVP**, ustalona w `/pm` tego dnia (retro 4 →
   *Product decisions*). **Instalacja ze sklepu najpóźniej 2026-10-29**; prawdziwe dane autor wpisuje w trakcie wyjazdu na Wszystkie Święte:
-  1. [[ISSUE-041-google-play-and-safe-update]] — **następna**: Google Play (testy wewnętrzne, klucz od Google), numer wersji, kopia sprzed aktualizacji,
-     próba aktualizacji na telefonie autora, ADR-019 (zamyka [[NT-005-distribution-decision]]); równolegle `ui` daje prompty do DALL-E z [[ISSUE-046-icons]];
-  2. [[ISSUE-042-places-of-residence]] — gdzie kto mieszkał i kiedy, od kraju do adresu (zmiana bazy);
+  1. ~~[[ISSUE-041-google-play-and-safe-update]]~~ — **zamknięte 2026-10-16** w części kodu: migawka bazy przed migracją, numer wersji, README *Wydanie*,
+     [[ADR-019-distribution-play-internal-testing]] (zamyka [[NT-005-distribution-decision]]). **Część w sklepie** (Play Console, instalacja z odtworzeniem,
+     aktualizacja na telefonie) — decyzją autora przed samą instalacją: [[ISSUE-032-mvp-install]] → *Before install* 0. Prompty do DALL-E z
+     [[ISSUE-046-icons]] gotowe (katalog tymczasowy sesji `b20ca21c-…\scratchpad\dalle-prompts-046.md`);
+  2. [[ISSUE-042-places-of-residence]] — **następna**: gdzie kto mieszkał i kiedy, od kraju do adresu (zmiana bazy);
   3. [[ISSUE-043-grave-paid-until]] — „opłacone do” na dole profilu grobu (zmiana bazy);
   4. [[ISSUE-044-family-wreaths]] — wieńce rodzin; prototyp `ui` (discovery) może iść równolegle z 1–3 (zmiana bazy);
   5. [[ISSUE-045-migration-map]] — mapa migracji na suwaku czasu i na telewizorze (bez zmiany bazy);
@@ -170,7 +172,10 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   wyczyszczone (`pm clear`) i wymyślona rodzina dodana od nowa — **107 osób, z Teofilem bez rodziny**; tekst, gęstość, animacje i „Czas na działanie” domyślne. Klatki tego dnia:
   przestawienie środka 52–57% wolnych w obu buildach (przy ISSUE-033 2–8%) — porównanie tylko naprzemienne. **Po ISSUE-040:** build profile bez wiersza eksportu; Mateusz
   („ja”) ma profilowe z obrazu testowego (`testowy-obraz-040.jpg` w Zdjęciach emulatora); **kopia skonfigurowana z nowym hasłem testowym** (z sesji ISSUE-040) do
-  `grobing-klucz-040.age` i `grobing-kopia-040.age` w Pobranych — kopia w tle nadpisuje ten plik.
+  `grobing-klucz-040.age` i `grobing-kopia-040.age` w Pobranych — kopia w tle nadpisuje ten plik. **Po ISSUE-041:** build profile `0.9.0` z migawką
+  sprzed aktualizacji; baza przeszła v11 → v12 z wstrzykniętej kopii v11 (te same wymyślone dane), w `files/pre-update/` migawka v11. **Po 13:19 (czas
+  emulatora) ktoś poza agentem dodał w aplikacji cmentarz** (publiczny, z bazy OSM) — agent wstrzymał odtworzenie, żeby go nie zastąpić; przed następnym
+  użyciem emulatora pytanie do autora, czy jego dane można zastąpić.
 - **[[EPIC-002-wizyta]] gotowy do rozpisania na US** — pytanie „jak znaleźć grób bez pinezki” ma kierunek autora
   (2026-10-08): adres z wyszukiwarki zarządcy → kwatera zaznaczona według planu zarządcy → na miejscu plan offline i
   GPS → pinezka. Wejście do pierwszej US (mapa cmentarza): EPIC-002 → *Input from SPIKE-001*. Ekran: `ui` →
@@ -187,7 +192,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   paczki (decyzja autora 2026-10-07); treść wychodzących zmian sprawdza strażnik treści ([[ISSUE-020-content-guard]]) przy każdym `git add`/`commit`.
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **0** (ostatnie retro: [[2026-10-16-retro-04]]). Co **10** → retro + pytanie o 3–5
+- Zamknięte pozycje od ostatniego retro: **1** (ostatnie retro: [[2026-10-16-retro-04]]). Co **10** → retro + pytanie o 3–5
   nośnych faktów (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**; podbija go `docs` przy zamknięciu, a zeruje go retro.
 - Do retro (zebrane po drodze, bez decyzji):
   - Poprzednią listę rozliczyło [[2026-10-16-retro-04]] → *The "Do retro" list*.
@@ -210,6 +215,16 @@ Format wpisu: `źródło (babcia / cmentarz X) · pytanie bez danych rodziny · 
 ## Recently done
 > Tylko wpisy od ostatniego retro ([[2026-10-16-retro-04]]; zasada R5 z retro 3). Starsze są w plikach retro → *Archive*:
 > [[2026-10-16-retro-04]] · [[2026-10-13-retro-03]] · [[2026-10-08-retro-02]] · [[2026-10-06-retro-01]].
+
+- 2026-10-16 — [[ISSUE-041-google-play-and-safe-update]] zamknięte (w części kodu). **Aktualizacja bez utraty danych:**
+  - decyzja autora: **Google Play, testy wewnętrzne, klucz od Google** → [[ADR-019-distribution-play-internal-testing]] (zamyka [[NT-005-distribution-decision]]);
+    na telefon nic poza sklepem;
+  - **migawka bazy przed migracją** (K3, stop #1 *„tak”*): `pre-update/grobing-v<stara>.db`, 3 najnowsze; sonda i test pokazały, że po przerwanym zapisie
+    (gorący dziennik 1,4 MB) migawka ma zatwierdzone dane i wersję; na emulatorze v11 → v12, 750 wierszy przed i po; numer wersji `0.9.0+1`; README →
+    *Wydanie* z drogą powrotu przy złej migracji;
+  - **na stopie #2 autor wolał najpierw funkcje z kolejki** — część w sklepie (AC-1) przeszła do [[ISSUE-032-mvp-install]] → *Before install* 0.
+
+  Trzy wiersze listy A na [[ISSUE-032-mvp-install]] → *Hand checks*. Testy: 777 zielonych. Werdykt `qa`: APPROVED (self-check, z uwagami). Licznik retro: 0 → 1.
 
 - 2026-10-16 — **retro 4** ([[2026-10-16-retro-04]]): licznik 10 → 0. Decyzja autora: „wszystko ok” dla R1–R7:
   - `pm`: jedno pytanie o cel przed `ui` przy US z kick-offu i nowych pomysłach (R1); US bez ISSUE → `docs` rozpisuje przed `ui` (R2);

@@ -30,7 +30,12 @@ pierwszym prawdziwym wpisem.
 
 ## Before install
 Warunki — każdy ma swój dom, tutaj tylko lista:
-0. **[[ISSUE-041-google-play-and-safe-update]] zamknięte** — aplikacja w sklepie, próba aktualizacji na wymyślonych danych przeszła (lista A niżej);
+0. **Sklep — przeniesione z [[ISSUE-041-google-play-and-safe-update]] (AC-1, decyzja autora 2026-10-16: najpierw funkcje z kolejki, potem sklep).**
+   Kod jest gotowy (migawka sprzed aktualizacji, numer wersji, README → *Wydanie*); zostały kroki z ISSUE-041 → *Implementation plan* → *Steps*:
+   A1 — paczka (`flutter build appbundle --release`, numer z `pubspec.yaml`) i wpis w Play Console przez autora (aplikacja, testerzy, pierwsza
+   wersja z **kluczem wygenerowanym przez Google**; **nazwa `com.grobing.app` zajęta → STOP**); A2 — telefon: zaproszenie testera, instalacja ze
+   sklepu (Grobing z APK wcześniej → odinstalować); C6 — wymyślona rodzina z kopii zrobionej na emulatorze z nowym hasłem testowym, „Odtwórz z
+   kopii”, odcisk w „Stanie danych”; C7 — następny numer wersji, wysyłka, aktualizacja ze sklepu, **ten sam odcisk**. Wynik → lista A niżej;
 1. **Audyt pól modelu ↔ ekrany** (retro 3, R9): każde pole [[data-model]] ma ekran, który je zapisuje, albo jawne „nie zapisuje go
    żaden ekran, bo…”. Powód: adres kwatery (M1) miał kolumny od v1, a ekran dopiero w [[ISSUE-028-cemetery-sectors]]. Robi agent;
    wynik to tabela w tej pozycji. Znani kandydaci: `is_living` ([[ISSUE-040-export-is-the-backup]] → *Notes*) i `grobonetUrl` (link wycofany —
@@ -57,9 +62,12 @@ Warunki — każdy ma swój dom, tutaj tylko lista:
 > Krok w terenie (GPS przy grobach, słońce, tryb samolotowy) jest w `CURRENT_STATE.md` → *Parked*, nie tutaj.
 
 ### A — dane (przed pierwszymi prawdziwymi danymi)
-- instalacja ze sklepu i aktualizacja tą samą drogą — wymyślone dane i kopia bez zmian ([[ISSUE-041-google-play-and-safe-update]] AC-1, próba
-  generalna);
-- kopia sprzed aktualizacji istnieje i odtworzenie ją przyjmuje ([[ISSUE-041-google-play-and-safe-update]] AC-2);
+- instalacja ze sklepu i aktualizacja tą samą drogą — wymyślone dane i kopia bez zmian (AC-1 z [[ISSUE-041-google-play-and-safe-update]], krok
+  *Before install* 0);
+- odtworzenie kopii na telefonie po starcie z migawką — na emulatorze wstrzymane (emulator był w użyciu poza agentem), w kroku C6 na telefonie
+  ([[ISSUE-041-google-play-and-safe-update]] → *Verification*);
+- pierwsza aktualizacja **ze zmianą schematu** przez sklep: migawka `pre-update/grobing-v<stara>.db` powstaje na telefonie (AC-2 z ISSUE-041 —
+  sprawdzone testami i na emulatorze, na telefonie jeszcze nie; [[ADR-019-distribution-play-internal-testing]]);
 - po zmianie danych pojawia się „(w tle)” — w AOT sprawdzał to tylko build profile ([[ISSUE-010-background-backup]]);
 - rozpoznanie „Dysk Google” w wierszu kopii — tylko test ([[ISSUE-022-app-skeleton-tabs-people-settings]]);
 - kopia z telefonu otwiera się drogą z notki przekazania ([[NT-007-hand-over-note]]) albo odtwarza na emulatorze ([[NFR-002-odtworzenie-na-nowym-telefonie]]).

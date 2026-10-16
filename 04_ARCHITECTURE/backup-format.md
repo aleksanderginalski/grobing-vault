@@ -91,8 +91,9 @@ sprawdza manifest (rozmiary, SHA-256, liczby, odcisk).
   nowa.
 - **Brak historii kopii:** plik jest nadpisywany, więc kopia zepsutych danych zastępuje dobrą. Poprzednia
   wersja istnieje najwyżej w historii wersji Dysku — **niesprawdzone**. Przy aktualizacji ze złą migracją to ryzyko utraty danych: kopia
-  zamawia się zaraz po migracji. Sprawdzenie i ewentualna „kopia sprzed aktualizacji” → [[ISSUE-041-google-play-and-safe-update]] (retro 4,
-  2026-10-16).
+  zamawia się zaraz po migracji. **Rozstrzygnięte dla aktualizacji (2026-10-16, [[ADR-019-distribution-play-internal-testing]],
+  [[ISSUE-041-google-play-and-safe-update]]):** przed migracją start zapisuje migawkę bazy w starej wersji w prywatnym katalogu aplikacji
+  (`pre-update/`, poza kopią i poza tym formatem). Kopia zepsutych danych zrobionych ręcznie (nie przez migrację) dalej zastępuje dobrą.
 
 ## Evidence
 Zgodność z oficjalnym CLI `age` v1.3.2 w obie strony, 92 oficjalne wektory testowe C2SP i plik kopii z

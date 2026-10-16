@@ -8,7 +8,7 @@ verdict-date: null
 verdict-reviewer: null
 source: "PROJECT_BRIEF §Architecture → Sufficiency pass A1 · DoD ISSUE"
 created: 2026-10-05
-updated: 2026-10-08
+updated: 2026-10-16
 ---
 
 # NFR-003 — Migracje schematu
@@ -61,3 +61,7 @@ niezastępowalne i będą żyć latami — aktualizacja aplikacji ze złą migra
   by odmówiło. Zasada dla kolejnych: **krok dopisuje wiersze tylko do tabeli, której starsza kopia nie ma.** Test z danymi
   v5→v6 i wygenerowane v1…v5→v6; kopia v5 z rodzinami odtwarza się w v6 (test). Na dwóch emulatorach build v6 wgrany na
   v5: liczby wierszy bez zmian.
+- **2026-10-16 — migawka sprzed aktualizacji** ([[ISSUE-041-google-play-and-safe-update]], [[ADR-019-distribution-play-internal-testing]]): zanim
+  start przeniesie bazę na nowszy schemat, zapisuje jej spójną kopię w starej wersji (`pre-update/grobing-v<stara>.db`, 3 najnowsze), także
+  po przerwanym zapisie (gorący dziennik cofnięty przed kopią — test). Zła migracja ma drogę powrotu: wersja z poprawką wraca do migawki
+  (README `grobing-code` → *Wydanie*). Kopia na Dysku tej roli nie pełni, bo start nadpisuje ją zaraz po migracji.
