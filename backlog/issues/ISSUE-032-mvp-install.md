@@ -68,7 +68,10 @@ Warunki — każdy ma swój dom, tutaj tylko lista:
   ([[ISSUE-041-google-play-and-safe-update]] → *Verification*);
 - pierwsza aktualizacja **ze zmianą schematu** przez sklep: migawka `pre-update/grobing-v<stara>.db` powstaje na telefonie (AC-2 z ISSUE-041 —
   sprawdzone testami i na emulatorze, na telefonie jeszcze nie; [[ADR-019-distribution-play-internal-testing]]) — także v12 → v13 z migawką
-  `grobing-v12.db` ([[ISSUE-042-places-of-residence]]: na emulatorze przeszła, liczby wierszy bez zmian);
+  `grobing-v12.db` ([[ISSUE-042-places-of-residence]]: na emulatorze przeszła, liczby wierszy bez zmian) i v13 → v14 z migawką `grobing-v13.db`
+  ([[ISSUE-043-grave-paid-until]]: na emulatorze przeszła, liczby wierszy bez zmian);
+- odtworzenie kopii **v14 z datą opłaty grobu** z odciskiem zgodnym — na emulatorze niezrobione z tego samego powodu co v13 niżej; testy odtworzenia
+  v13 → v14 i v14 przeszły ([[ISSUE-043-grave-paid-until]] → *Verification*);
 - odtworzenie kopii **v13 z zamieszkaniami** z odciskiem zgodnym — na emulatorze niezrobione (hasła testowego kopii nie ma, a odtworzenie zastąpiłoby
   dane spoza agenta na obu emulatorach); testy odtworzenia v12 → v13 i v13 przeszły, kopia w tle v13 na emulatorze też
   ([[ISSUE-042-places-of-residence]] → *Verification*);

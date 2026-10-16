@@ -27,7 +27,8 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   2. ~~[[ISSUE-042-places-of-residence]]~~ — **zamknięte 2026-10-16**: miejsca zamieszkania od kraju do adresu (schemat v13,
      [[ADR-020-residences-place-in-the-row]]), lista miejsc w aplikacji poza gitem, pusty koniec z następnego miejsca (D12 — decyzja autora na stopie #2);
      wejście dla [[ISSUE-045-migration-map]] → *Notes*;
-  3. [[ISSUE-043-grave-paid-until]] — „opłacone do” na dole profilu grobu (zmiana bazy);
+  3. ~~[[ISSUE-043-grave-paid-until]]~~ — **zamknięte 2026-10-16**: sama data „opłacone do” na dole widoku grobu (wariant B, schemat v14); przypomnienie
+     — później aktualizacją, przed najwcześniejszą zapisaną datą;
   4. [[ISSUE-044-family-wreaths]] — wieńce rodzin; prototyp `ui` (discovery) może iść równolegle z 1–3 (zmiana bazy);
   5. [[ISSUE-045-migration-map]] — mapa migracji na suwaku czasu i na telewizorze (bez zmiany bazy);
   6. [[ISSUE-046-icons]] — ikona aplikacji i ikony w aplikacji, wybór na makiecie (bez zmiany bazy);
@@ -40,7 +41,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
 - **Agent `architect` — nie teraz** (retro 4, R7): sygnał „pierwszy ADR zastąpiony” ([[ADR-018-export-is-the-backup]]) rozliczony; nowy warunek w `CLAUDE.md` →
   *Na sygnał*.
 
-  Specyfikacja: [[drzewo]] v1.17, [[osoba]] v2.5, [[wpis-osoby]] v5.9, [[zamieszkanie]] v1.2, [[style-b]] v1.32.
+  Specyfikacja: [[drzewo]] v1.17, [[osoba]] v2.5, [[wpis-osoby]] v5.9, [[zamieszkanie]] v1.2, [[grob]] v8.1, [[style-b]] v1.32.
 - **Prawdziwe dane rodziny dopiero po instalacji MVP** (decyzja autora 2026-10-08 w `/pm`): budujemy produkt gotowy do
   instalacji na telefonie (MVP = brief §5, M1–M11); do tego czasu autor ocenia aplikację na wymyślonych danych. Rozmowa z babcią
   (~2026-11-02) jest na kartce, a odpowiedzi trafią do aplikacji po instalacji.
@@ -110,6 +111,8 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   - **rodzeństwo przyrodnie w słowniku** ([[ISSUE-039-connect-two-people]] → *Dev report* → *Found, poza pozycją*): przyrodni brat dziadka to „Syn mojej
     prababci” — w karcie i na banerze „Połącz dwie osoby”. `KinGraph` łączy rodzeństwem tylko dzieci tej samej rodziny, a słownik
     ([[ISSUE-025-gender-kinship-together-since]] D2) nie ma „przyrodni”. Kandydat na małą pozycję, przed prawdziwymi danymi (powtórne związki są w notatkach);
+  - **komunikat błędu pod polem nie jest ogłaszany przez czytnik ekranu** ([[ISSUE-043-grave-paid-until]] → *Verification*, przegląd `ui`): `ErrorLine` nie
+    jest regionem na żywo — ten sam wzorzec w bloku daty osoby i w oknie „Popraw grób”. Kandydat na drobną pozycję dla całej aplikacji (TalkBack);
   - **imiona przy ścieżce przy tekście 200%** ([[ISSUE-039-connect-two-people]] → *Verification*, obserwacja): przy długiej ścieżce w skali ok. 0,17 imiona dwóch osób
     ścieżki chowają się (nachodzą na inne imiona ścieżki), a wyszarzone imię spoza ścieżki, które na nic nie nachodzi, zostaje. Do oceny autora — np. bez imion
     wyszarzonych w trakcie podświetlenia.
@@ -160,7 +163,9 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     `makieta-042.html` i jej zrzut, `chr042\`, `emu041\`, wiadomości commitów — do kosza po [[ISSUE-046-icons]] (tam leżą prompty `dalle-prompts-046.md`). Z sesji
     ISSUE-042 (`574c5666-…\scratchpad\`): `dl\` i `src\` — pobrane pliki GeoNames i Natural Earth (ok. 1 GB, dane publiczne; potrzebne tylko do
     ponownej budowy listy miejsc — README `grobing-code` → *Lista miejsc*), `emu042\` (zrzuty, kopia `files/` sprzed pozycji z `Grobing_Restore` —
-    **wymyślone dane** i cmentarz dodany poza agentem — oraz APK odniesienia), `ui042\`, `tools\`, logi testów — do kosza;
+    **wymyślone dane** i cmentarz dodany poza agentem — oraz APK odniesienia), `ui042\`, `tools\`, logi testów — do kosza. Z sesji ISSUE-043
+    (`6983a70d-…\scratchpad\`): `emu043\` (zrzuty `01`–`21`, kopia danych `Grobing_Restore` sprzed pozycji i kopie bazy do liczenia — **wymyślone dane** i
+    cmentarz dodany poza agentem), `fonts043\` i skrypty pomiaru przeglądu `ui`, `ui.py`, `counts.py`, logi testów — do kosza;
   - **repo nie mają pliku `LICENSE`** — kod można oglądać, ale nie wolno go używać. Licencję można dodać później.
 - **Emulatory (po ISSUE-033):** `Medium_Phone` — release v12 na danych testowych autora, kopia skonfigurowana od nowa z hasłem
   testowym (wymyślone, z sesji ISSUE-029), pliki `grobing-klucz-029.age` i `grobing-kopia-029.age` w Pobranych; grób „Jozef” ma
@@ -184,7 +189,10 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   użyciem emulatora pytanie do autora, czy jego dane można zastąpić. **Po ISSUE-042:** build profile z miejscami zamieszkania (`FRAME_LOG`), baza v13
   (migawki v11 i v12 w `files/pre-update/`), lista miejsc w `files/places/`; zamieszkania u wymyślonych osób (Bronisława — 2, Mateusz — 2 z samym „Od”,
   nowa osoba w nowym grobie na cmentarzu dodanym poza agentem — 1); ustawienia zmienione do przejścia: `stylus_handwriting_enabled 0` (nakładka rysika
-  Gboard), `show_ime_with_hard_keyboard 1` (klawiatura ekranowa przy sprzętowej); kopia w tle v13 z 17:00 UTC przeszła.
+  Gboard), `show_ime_with_hard_keyboard 1` (klawiatura ekranowa przy sprzętowej); kopia w tle v13 z 17:00 UTC przeszła. **Po ISSUE-043:** build profile v14
+  z „Opłacone do” (`FRAME_LOG`, `--split-per-abi`), baza v14 (migawki v11–v13 w `files/pre-update/`), tekst i ekran domyślne. **Na stopie #2 autor dodał
+  własny grób z datą opłaty** (nazwy nie zapisujemy) — przed następnym użyciem emulatora pytanie do autora, czy jego wpisy (cmentarz i ten grób) można
+  zastąpić.
 - **[[EPIC-002-wizyta]] gotowy do rozpisania na US** — pytanie „jak znaleźć grób bez pinezki” ma kierunek autora
   (2026-10-08): adres z wyszukiwarki zarządcy → kwatera zaznaczona według planu zarządcy → na miejscu plan offline i
   GPS → pinezka. Wejście do pierwszej US (mapa cmentarza): EPIC-002 → *Input from SPIKE-001*. Ekran: `ui` →
@@ -201,7 +209,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   paczki (decyzja autora 2026-10-07); treść wychodzących zmian sprawdza strażnik treści ([[ISSUE-020-content-guard]]) przy każdym `git add`/`commit`.
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **2** (ostatnie retro: [[2026-10-16-retro-04]]). Co **10** → retro + pytanie o 3–5
+- Zamknięte pozycje od ostatniego retro: **3** (ostatnie retro: [[2026-10-16-retro-04]]). Co **10** → retro + pytanie o 3–5
   nośnych faktów (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**; podbija go `docs` przy zamknięciu, a zeruje go retro.
 - Do retro (zebrane po drodze, bez decyzji):
   - Poprzednią listę rozliczyło [[2026-10-16-retro-04]] → *The "Do retro" list*.
@@ -224,6 +232,16 @@ Format wpisu: `źródło (babcia / cmentarz X) · pytanie bez danych rodziny · 
 ## Recently done
 > Tylko wpisy od ostatniego retro ([[2026-10-16-retro-04]]; zasada R5 z retro 3). Starsze są w plikach retro → *Archive*:
 > [[2026-10-16-retro-04]] · [[2026-10-13-retro-03]] · [[2026-10-08-retro-02]] · [[2026-10-06-retro-01]].
+
+- 2026-10-16 — [[ISSUE-043-grave-paid-until]] zamknięte. **„Opłacone do” przy grobie:**
+  - zakres B z `/pm` (decyzja autora): **sama data**, bez „kto płaci” i bez przypomnienia — przypomnienie bazy nie zmienia, więc przyjdzie aktualizacją ze
+    sklepu przed najwcześniejszą zapisaną datą; na stopie #1 **W1** — grób bez daty ma wiersz „nie wiadomo” i „Wpisz” ([[grob]] v8, D15–D19);
+  - schemat **v14** (`graves.paid_until_*`, [[data-model]]); pole przyjmuje lata do bieżącego + 50, daty osoby dalej bez przyszłości; zapis okna „wszystko
+    albo nic”;
+  - przejście `dev` znalazło okno, które nie przewijało się do pola przy 200% z klawiaturą; test `qa` pokazał, że poprawka zależała od tempa klawiatury —
+    teraz przewija przy zmianie wysokości okna; przegląd `ui`: 0 BLOCKER / 0 MAJOR, 1 MINOR poprawiony, odstępstwa przyjęte ([[grob]] v8.1).
+
+  Dwa wiersze listy A na [[ISSUE-032-mvp-install]] → *Hand checks*. Testy: 844 zielonych. Werdykt `qa`: APPROVED (self-check, z uwagami). Licznik retro: 2 → 3.
 
 - 2026-10-16 — [[ISSUE-042-places-of-residence]] zamknięte. **Gdzie kto mieszkał i kiedy:**
   - stop #1 potwierdzony w `/pm`: **A1** (adres tekstem, punkt w środku miejscowości) i **N2** (nazwa z tamtego czasu obok miejsca z listy);
