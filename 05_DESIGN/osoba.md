@@ -1,10 +1,10 @@
 ---
 screen: "Osoba — widok osoby (kim była, rodzina, jak łączy się ze mną, daty, pochówek, zdjęcia)"
-items: ["[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-024-person-view]]", "[[ISSUE-027-cemetery-map-plan-photo-states]]", "[[US-009-drzewo-od-osoby]]"]
+items: ["[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-024-person-view]]", "[[ISSUE-027-cemetery-map-plan-photo-states]]", "[[US-009-drzewo-od-osoby]]", "[[ISSUE-042-places-of-residence]]"]
 us: "M5 (brief §5, widok 4) — [[ISSUE-024-person-view]] AC-1…AC-5 (AC-6 → drzewo, v2.1)"
 journey-step: "UJ-001 · 5 (widok 4, M5, R4 prawy)"
 mockup: "2026-10-09: issue-024-widok-osoby.html (ISSUE-024; runda 1 stopu #1 — W2, łańcuch po imionach, pusta sekcja „Zdjęcia”) — katalog tymczasowy sesji, ścieżka w ISSUE-024 → Implementation plan · 2026-10-08: grobing-prototyp.html (SPIKE-004, panel 4)"
-updated: 2026-10-12
+updated: 2026-10-16
 ---
 
 # Osoba — specyfikacja
@@ -60,6 +60,9 @@ updated: 2026-10-12
 > **Wersja 2.4 (2026-10-13, `ui` przed planem [[US-009-drzewo-od-osoby]], AC-6):** **„Pokaż w drzewie” wraca** (D11): przycisk tekstowy pod
 > mini-drzewem, gdy osoba ma rodzinę. Prowadzi na zakładkę Drzewo z tą osobą w środku ([[drzewo]] D15). Do widoku osoby prowadzi też osoba w
 > środku drzewa i „Pokaż” w jego karcie.
+>
+> **Wersja 2.5 (2026-10-16, `ui` przed planem [[ISSUE-042-places-of-residence]]):** nowa sekcja **„Miejsca zamieszkania”** (element 9a) po „Datach”,
+> przed „Zdjęciami”; tylko do oglądania, a bez miejsc — „Dodaj miejsce” jak „Dodaj zdjęcie” (D20). Elementy, stany i decyzje: [[zamieszkanie]].
 
 ## Purpose
 Zbierający stoi przy grobie albo przegląda notatki i chce wiedzieć, **kim była ta osoba i jak łączy się z nim** (UJ-001
@@ -105,6 +108,7 @@ wejście, ✎ ([[style-b]] reguła 15).
 | 7 | **Jak łączy się ze mną** — nagłówek (16 sp, półgruby) z ikoną `link` w akcencie (R4; D18). **Łańcuch od „Ja” — same imiona i relacja każdego kroku** (v2.1, D13'): wiersze ≥ 48 dp (v2.2) — okrąg 40 dp z pierścieniem 2 dp w akcencie nad zdjęciem (profilowe albo inicjały; **„Ja” zawsze jako znak „Ja”** w akcencie, jak w [[osoby]] D4) i podpis (16 sp, półgruby): **relacja do poprzedniej osoby i imię**, jak karta ścieżki w R3 — „Ja” · „Mama Anna” · „Jej mama Maria”; „Ja” · „Żona Kasia” · „Jej tata Marek” · „Jego siostra Ewa”. Relacje jednego kroku z płci osoby w wierszu: mama / tata, córka / syn, siostra / brat, żona / mąż (małżeństwo), partnerka / partner („razem”); bez płci — rodzic, dziecko, rodzeństwo, małżonek (małżeństwo) albo partner („razem”; v2.2). Zaimek „jej” / „jego” według rodzaju gramatycznego relacji w wierszu wyżej — mama, córka, siostra, żona, partnerka → „jej”; tata, syn, brat, mąż, partner, a także neutralne rodzic, dziecko, rodzeństwo → „jego” (rodzaj słowa, nie płeć osoby); pierwszy krok, po „Ja” — bez zaimka. **Bez nazw złożonych** („babcia”, „stryj”, „siostra cioteczna”) — te są w [[drzewo]] przy łączeniu dwóch osób (D6). Okręgi połączone pionową linią 2 dp w akcencie, bez przerw między okręgami (v2.2). Wiersze krewnych prowadzą do ich widoków; ostatni wiersz to ta osoba — bez akcji. Ścieżka: najkrótsza w grafie osoba–rodzina (krawędzie: rodzic, dziecko, rodzeństwo — dzieci tej samej rodziny, para); przy równej — mniej krawędzi „para”; dalej stała kolejność `id` (ISSUE-025 D2); liczona przy otwarciu, nie zapisywana ([[data-model]]). **Bez ścieżki:** „Nie wiadomo jeszcze, jak łączy się z Tobą — w drzewie brakuje rodziny między wami.” (16 sp, tekst pomocniczy). **Bez „ja”:** „Aplikacja nie wie jeszcze, która osoba to Ty.” i przycisk tekstowy w akcencie „Wybierz, która osoba to Ty”. **To „ja”** — sekcji nie ma | łańcuch | wiersz krewnego → jego widok; „Wybierz…” → wybór „ja” | najkrótsza ścieżka | — | R4 · R3 (karta ścieżki) · M5 · AC-3 · **decyzja autora** (stop #1) · D6, D13' |
 | 8 | **Daty** — nagłówek (16 sp, półgruby) z ikoną `event_note_outlined` w akcencie. Wiersze z linią podziału w kolorze obrysu, ≥ 48 dp: etykieta (96 dp, 14 sp, tekst pomocniczy; gdy przy większym tekście się nie mieści — nad wartością, v2.2) · wartość (16 sp, tekst, reguła 6, z dopiskiem: „ok. 1890”, „między 1893 a 1895”). Wiersze: **Urodzenie**, **Zgon** (gdy są). Bez źródła i statusu (D10); wartość to pierwsza ([[ADR-006-claimed-value-separate-structures]] D3). Bez dat i bez pochówku — sekcji nie ma | lista wierszy | — (poprawa przez ✎) | — | — | **decyzja autora** (SPIKE-004 D27, D28) · D10 |
 | 9 | **Pochówek** — ostatni wiersz sekcji 8, ≥ 64 dp: etykieta „Pochówek” · tytuł grobu (16 sp, tekst; bez nazwy — „Grób”, [[grob]] D1), pod nim nazwa cmentarza (14 sp, tekst pomocniczy) i adres kwatery, gdy jest („Kwatera B · Rząd 4 · Miejsce 12”, 14 sp, tekst pomocniczy); chevron. Opis dla czytnika: „Pochówek: Grób rodzinny Wymyślonych, Cmentarz parafialny w Wymyślonowie — pokaż na cmentarzu”. Bez pochówku (osoba żyjąca, osoba bez grobu w aplikacji) — brak wiersza | wiersz | → [[cmentarz]] z zaznaczonym grobem (D17) | — | — | M4 · FR-003 · AC-4 · **decyzja autora** (SPIKE-004 D19) · D9, D17 |
+| 9a | **Miejsca zamieszkania** (v2.5) — nagłówek z `home_outlined` w akcencie; wiersze jak w 8: lata · miejsce (kraj / miejscowość / adres; przy N2 nazwa z tamtego czasu i „dziś: …”), bez akcji; kolejność według lat. **Bez miejsc:** „Nie ma jeszcze zapisanych miejsc.” + przycisk z obrysem „Dodaj miejsce”. Szczegóły: [[zamieszkanie]] 1–4 | lista wierszy / pusty stan z przyciskiem | „Dodaj miejsce” → [[wpis-osoby]] „poprawa” z otwartym oknem zamieszkania | — | — | [[ISSUE-042-places-of-residence]] · [[zamieszkanie]] D1 |
 | 10 | **Zdjęcia · 4** — nagłówek (16 sp, półgruby) z ikoną `photo_library_outlined` w akcencie; rząd do 4 miniatur 56 dp (kwadraty, promień 8 dp, ze środka — reguła 14) i chevron; cały wiersz to jeden cel. Opis dla czytnika: „Zdjęcia osoby, 4 — otwórz”. **Bez zdjęć (v2.1, D20) — sekcja zostaje:** nagłówek „Zdjęcia”, pod nim „Ta osoba nie ma jeszcze zdjęć.” (16 sp, tekst pomocniczy) i przycisk z obrysem **„Dodaj zdjęcie”** (`add_a_photo_outlined` w akcencie, ≥ 48 dp, szerokość treści — reguły 1, 9) | rząd miniatur / pusty stan z przyciskiem | miniatury → [[zdjecia-osoby]] w trybie oglądania; „Dodaj zdjęcie” → poprawa z arkuszem źródła (*Navigation*) | — | — | [[US-005-zdjecia]] · **decyzja autora** (stop #1, D20) |
 
 Odstępy ([[style-b]] reguła 5): margines boczny 16 dp, między sekcjami 24 dp, nagłówek sekcji → treść 8 dp.
@@ -131,6 +135,7 @@ Odstępy ([[style-b]] reguła 5): margines boczny 16 dp, między sekcjami 24 dp,
 | to „ja” | bez 7 |
 | osoba żyjąca | lata „ur. 1952”; bez „Zgon” i bez 9 |
 | bez dat i pochówku | bez 8 i 9 |
+| bez miejsc zamieszkania (v2.5) | 9a: „Nie ma jeszcze zapisanych miejsc.” + „Dodaj miejsce” ([[zamieszkanie]]) |
 | mini-drzewo szersze niż ekran | 6 przewija się w poziomie, osoba na środku, ucięty węzeł przy krawędzi |
 | wczytywanie | tło (lokalna baza — ułamek sekundy, bez wskaźnika, jak [[zdjecie]] „B — wczytywanie”) |
 | błąd odczytu | „Nie udało się odczytać wpisu.” (16 sp, tekst pomocniczy) + przycisk tekstowy w akcencie „Spróbuj ponownie” |
@@ -215,6 +220,7 @@ n/a — ekran do oglądania. Poprawa idzie przez [[wpis-osoby]] (✎).
 | AC-5 — tło nad portretem; stara kopia bez tła | 2, 3 · [[zdjecia-osoby]] v1.4 · [[zdjecie]] B4'' | pasmo → „Zdjęcie w tle” → zdjęcie (albo nowe z aparatu, galerii) → widok z tłem od razu (D21); druga droga: ✎ → zdjęcia → podgląd → „Ustaw jako tło” → „Zapisz” |
 | ~~AC-6 — słownik: ciotka, stryj, wuj, siostra cioteczna~~ | — | **→ [[drzewo]]** (v2.1, decyzja autora: nazwy złożone przy łączeniu dwóch osób) |
 | [[US-009-drzewo-od-osoby]] AC-6 — „Pokaż w drzewie” (v2.4) | 6 → [[drzewo]] 4, 5 | w widoku Franciszka pod mini-drzewem „Pokaż w drzewie” → zakładka Drzewo, Franciszek w środku, poziom 2; u osoby bez rodziny przycisku nie ma |
+| [[ISSUE-042-places-of-residence]] AC-1, AC-2 — miejsca zamieszkania w widoku (v2.5) | 9a · [[zamieszkanie]] | „ok. 1930 – ok. 1945 · Ukraina · cały kraj — miejscowość nieznana”; po doprecyzowaniu — jeden wiersz z adresem |
 | D20 — miejsce na zdjęcia bez zdjęć | 10 | Józef bez zdjęć: „Ta osoba nie ma jeszcze zdjęć.” + „Dodaj zdjęcie” → poprawa z arkuszem źródła → zdjęcie → „Zapisz” → widok z portretem |
 | *Input from ISSUE-025* — chipy i karta partnera → widok osoby | *Navigation* · [[wpis-osoby]] 9a v5.8 | w formularzu Marii chip „Syn: Stanisław” → widok Stanisława; wstecz → formularz z wpisanymi danymi |
 | M5 — kim była, relacje, łańcuch do „ja” | 4–7 | jak wyżej |

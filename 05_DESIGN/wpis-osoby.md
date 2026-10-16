@@ -1,10 +1,10 @@
 ---
 screen: "Wpis osoby w grobie — formularz"
-items: ["[[ISSUE-012-transcribe-grave-screen]]", "[[ISSUE-017-person-photos]]", "[[ISSUE-018-profile-photo-crop]]", "[[ISSUE-019-family-relations]]", "[[ISSUE-025-gender-kinship-together-since]]", "[[ISSUE-024-person-view]]"]
+items: ["[[ISSUE-012-transcribe-grave-screen]]", "[[ISSUE-017-person-photos]]", "[[ISSUE-018-profile-photo-crop]]", "[[ISSUE-019-family-relations]]", "[[ISSUE-025-gender-kinship-together-since]]", "[[ISSUE-024-person-view]]", "[[ISSUE-042-places-of-residence]]"]
 us: "[[US-002-przepisanie-grobu]] · [[US-005-zdjecia]] · [[US-003-przepisanie-rodziny]]"
 journey-step: "n/a — M1 (warunek kroku 1 UJ-001)"
 mockup: "katalog tymczasowy sesji 2026-10-07: makieta-cmentarz-grob-osoba.html (ramki 3–4, ISSUE-012) · makieta-zdjecia.html (ramki 7–8 — kierunek sprzed stopu #1 ISSUE-016) · makieta-zdjecia-osoby.html (ramki 1–2, ISSUE-017) · makieta-rodzina.html (ramki 1–2, ISSUE-019)"
-updated: 2026-10-09
+updated: 2026-10-16
 ---
 
 # Wpis osoby — specyfikacja
@@ -125,6 +125,10 @@ updated: 2026-10-09
 >   leży w stosie, nie otwiera się drugi raz ([[osoba]] D15);
 > - **„Dodaj zdjęcie” w pustej sekcji „Zdjęcia” widoku osoby** ([[osoba]] D20) otwiera poprawę z arkuszem źródła nad nią
 >   (jak element 1a bez zdjęć); po wyborze formularz pokazuje nowe zdjęcie, a „Zapisz” wraca do widoku.
+>
+> **Wersja 5.9 (2026-10-16, przed planem [[ISSUE-042-places-of-residence]]):** sekcja **„Miejsca zamieszkania”** (element 9b) po „Kim była” i
+> „Rodzinie” — **w każdym trybie**, karty z ✎ i „Dodaj miejsce” → okno „Miejsce zamieszkania” i wybór miejsca. Zmiany zapisują się **razem z
+> „Zapisz”** (całość wpisu), inaczej niż „Rodzina”. Elementy i *Tempo*: [[zamieszkanie]].
 
 ## Purpose
 Wpisanie jednej osoby pochowanej w grobie, tak jak stoi w notatkach: zdjęcie (gdy jest), imiona, nazwisko,
@@ -175,6 +179,7 @@ nazwisko rodowe, płeć, daty urodzenia i zgonu z dopiskiem oraz **krótka biogr
 | ~~9~~ | ~~**Źródło „kim była”**~~ — **usunięte** (v5.4, [[SPIKE-004-mvp-flow-prototype]] D28: bez źródeł w aplikacji) | — | — | — | — | — |
 | 9a | **Rodzina** (v5) — **tylko w poprawie**; elementy niżej (*Sekcja „Rodzina”*). Odstęp 24 dp od 9 | sekcja | chip → wpis krewnego; ✎ i przyciski → [[rodzina]] A. **Poza `next`** | — | — | US-003 AC-1, AC-2 · R4 prawy · uwaga autora 2026-10-06 |
 | ~~10~~ | ~~**Źródło dat i pochówku**~~ — **usunięte** (v5.4, [[SPIKE-004-mvp-flow-prototype]] D28) | — | — | — | — | — |
+| 9b | **Miejsca zamieszkania** (v5.9) — nagłówek z `home_outlined` w akcencie; karta za każde zamieszkanie (lata · miejsce · ✎) i przycisk z obrysem „Dodaj miejsce”. **W każdym trybie**, zapis z „Zapisz”. Szczegóły: [[zamieszkanie]] 5–21 | sekcja | ✎ / „Dodaj miejsce” → okno „Miejsce zamieszkania”. **Poza `next`** | — | — | [[ISSUE-042-places-of-residence]] · [[zamieszkanie]] D5 |
 | 11 | **Zapisz** | przycisk wypełniony (zaokrąglony prostokąt, ≥ 52 dp), **przypięty na dole, nad klawiaturą**; bez znicza ([[style-b]] reguła 8) | dotknięcie | — | błąd → komunikaty przy polach, fokus i przewinięcie do pierwszego błędu, nic się nie zapisuje | AC-1…AC-4 |
 
 ### Blok daty (pola 5, 6, 7)

@@ -67,7 +67,11 @@ Warunki — każdy ma swój dom, tutaj tylko lista:
 - odtworzenie kopii na telefonie po starcie z migawką — na emulatorze wstrzymane (emulator był w użyciu poza agentem), w kroku C6 na telefonie
   ([[ISSUE-041-google-play-and-safe-update]] → *Verification*);
 - pierwsza aktualizacja **ze zmianą schematu** przez sklep: migawka `pre-update/grobing-v<stara>.db` powstaje na telefonie (AC-2 z ISSUE-041 —
-  sprawdzone testami i na emulatorze, na telefonie jeszcze nie; [[ADR-019-distribution-play-internal-testing]]);
+  sprawdzone testami i na emulatorze, na telefonie jeszcze nie; [[ADR-019-distribution-play-internal-testing]]) — także v12 → v13 z migawką
+  `grobing-v12.db` ([[ISSUE-042-places-of-residence]]: na emulatorze przeszła, liczby wierszy bez zmian);
+- odtworzenie kopii **v13 z zamieszkaniami** z odciskiem zgodnym — na emulatorze niezrobione (hasła testowego kopii nie ma, a odtworzenie zastąpiłoby
+  dane spoza agenta na obu emulatorach); testy odtworzenia v12 → v13 i v13 przeszły, kopia w tle v13 na emulatorze też
+  ([[ISSUE-042-places-of-residence]] → *Verification*);
 - po zmianie danych pojawia się „(w tle)” — w AOT sprawdzał to tylko build profile ([[ISSUE-010-background-backup]]);
 - rozpoznanie „Dysk Google” w wierszu kopii — tylko test ([[ISSUE-022-app-skeleton-tabs-people-settings]]);
 - kopia z telefonu otwiera się drogą z notki przekazania ([[NT-007-hand-over-note]]) albo odtwarza na emulatorze ([[NFR-002-odtworzenie-na-nowym-telefonie]]).
@@ -152,6 +156,13 @@ Warunki — każdy ma swój dom, tutaj tylko lista:
 - „Od” inne niż Ty (Piotr → Zofia): czy baner w dwóch liniach jasno mówi, kto kim jest dla kogo (O2) — stop #2 „pomiń” (krok 3);
 - TalkBack czyta baner raz, gdy się pokaże (region na żywo) — nieprzetestowane na żywo;
 - płynność ścieżki na telefonie — linia, wyszarzenie, poziom 4 — nieprzetestowane na żywo (emulator w szumie: przestawienie środka 52–57% wolnych klatek w obu buildach).
+
+**Miejsca zamieszkania** ([[ISSUE-042-places-of-residence]] → *Verification* → *For ISSUE-032 → Hand checks*)
+- sekcja w widoku osoby po „Zapisz” — autor ocenił karty w formularzu, wpis został niezapisany (stop #2, krok 1);
+- „Nazwa z tamtego czasu” i druga linia „dziś: …” w widoku — „ok” bez śladu na urządzeniu (krok 3);
+- koniec z następnego miejsca („od 2024” + „od 2026” → „2024–2026”, [[zamieszkanie]] D12) — „pomiń” (krok domykający);
+- wybór miejsca na telefonie: kraj na górze po 3 literach (D8), płynność pisania i czas wyszukiwania (emulator ≤ 13 ms na zimnym dysku) —
+  nieprzetestowane na żywo; przy wolnym telefonie — wyszukiwanie do `Isolate` (D-dev 8).
 
 **Do decyzji autora, gdy zobaczy swoje cmentarze** (nie sprawdzenie, tylko wybór): grubość alejek i znicze, które nachodzą na
 siebie ([[cmentarz]] → *Open*, [[ISSUE-030-sector-on-a-visit]]).

@@ -53,9 +53,10 @@ erDiagram
 | **Assertion** (provenance) | **źródło** (nagrobek / notatki / babcia / krewny / akt) + szczegół (kto, który akt) · **status** `CLAIMED / CONFIRMED / CONTRADICTED / UNKNOWN` · kiedy — **przy wierszu *Event* albo *Burial***, którego wartość potwierdza, **albo przy rodzinie i łączu dziecka** (relacje, schemat v6 — [[ADR-011-relation-claims-family-and-child-link]]); wartość („co twierdzimy”) żyje w tym wierszu | cytowanie źródła jak w GEDCOM 7; **dwa sprzeczne twierdzenia współistnieją** jako dwa wiersze, każdy ze swoim twierdzeniem ([[FR-001-provenance]], [[ADR-006-claimed-value-separate-structures]]) **Od 2026-10-08 uśpione:** aplikacja nie pokazuje i nie zbiera źródła ani statusu ([[SPIKE-004-mvp-flow-prototype]] D28); kolumny zostają, formularz wpisuje domyślne źródło. |
 | **Media** | **zdjęcie jako rekord** (jak `MULTIMEDIA_RECORD` w GEDCOM 7): plik w prywatnym magazynie aplikacji i, dla nagrobka, grób, a dla zdjęcia cmentarza — cmentarz (`cemetery_id`, schemat v9). **Zdjęcie = kopia dostępowa:** JPEG 2048 px, bez EXIF ([[ADR-008-photos-access-copy-and-backup-consistency]]); pliki `media/groby/<id>/…`, `media/cmentarze/<id>/…` i `media/zdjecia/<czas>-<losowe>.jpg` (zdjęcia osób, bez id osoby — bywają wspólne). **Grób i cmentarz — najwyżej jedno zdjęcie** (pierwsze = najniższe `id`; jedna droga zapisu). Usunięcie kasuje wiersz, plik usuwa sprzątanie (ADR-008 pkt 3). Wiersz bez grobu, bez cmentarza i bez łącza znika w tej samej transakcji ([[ADR-009-person-photos-record-and-link]], [[ADR-014-cemetery-photo-on-media]]) | oryginał zostaje w galerii albo na papierze |
 | **PersonMedia** (łącze zdjęcia) | osoba ↔ zdjęcie z **pozycją** (jak `OBJE` w GEDCOM 7) — schemat v4, [[ISSUE-017-person-photos]]. **Profilowe = pierwsze łącze osoby**, osobno dla każdej osoby; jedno zdjęcie (np. grupowe) ma łącza od wielu osób, a plik jest jeden. Zmiany zdjęć osoby zapisują się w transakcji jej wpisu ([[ADR-009-person-photos-record-and-link]]) | kto jest na zdjęciu — bez źródła ([[FR-001-provenance]]: daty, relacje, pochówek; łącze w GEDCOM 7 nie ma `SOUR`). **Kadr profilowego** (schemat v5): `CROP` przy łączu — cztery kolumny `crop_*` w pikselach pliku zdjęcia; brak = środek; każda osoba na zdjęciu ma własny ([[ADR-010-profile-photo-crop-pixels]]). **Tło** (schemat v8): `is_background` przy łączu — najwyżej jedno na osobę (częściowy indeks unikalny), rozszerzenie aplikacji, bo łącze w GEDCOM 7 zna tylko `CROP` i `TITL` ([[ADR-013-person-background-on-photo-link]]) |
+| **Residence** (zamieszkanie — schemat v13, [[ADR-020-residences-place-in-the-row]]) | osoba · **od** i **do** (każde z dopiskiem dokładnie / około, każde może być puste — okres `FROM … TO …` w GEDCOM 7) · **poziom miejsca** kraj / miejscowość / adres · **miejsce słowami w wierszu** (nazwa dziś, jednostka, kraj, punkt, id GeoNames) · nazwa z tamtego czasu · adres (tekst) | kopia czyta się bez listy miejsc z aplikacji; **puste „do” kończy się początkiem następnego zamieszkania — wyliczone przy odczycie, nie zapisane** (D12 w [[zamieszkanie]]). Lista miejsc (GeoNames, Natural Earth) to asset poza gitem i poza kopią |
 | **Setting: „ja"** | która osoba to autor | kotwica „jak łączą się ze mną" (M5). W kodzie: tabela `settings` od v1, jeden wiersz `id = 1`, zapisywany przy pierwszym wyborze w ustawieniach albo w zakładce Osoby ([[ISSUE-022-app-skeleton-tabs-people-settings]]); jedzie w kopii razem z bazą |
 
-## Tables in `grobing.db` — schema v12 (for reading a backup without Grobing)
+## Tables in `grobing.db` — schema v13 (for reading a backup without Grobing)
 
 > Dopisane przy [[ISSUE-040-export-is-the-backup]] (2026-10-16, US-006 AC-2): **eksportem jest kopia** ([[ADR-018-export-is-the-backup]]), więc ktoś
 > z bazą z kopii (`backup-format.md`) musi wiedzieć, która tabela to która encja wyżej. Kolumny i ograniczenia — schemat w samej bazie
@@ -76,6 +77,7 @@ erDiagram
 | `burials` | *Burial* | osoba ↔ grób |
 | `media` | *Media* | ścieżka pliku względem `media/` w kopii (`relative_path`), `grave_id` (zdjęcie nagrobka) albo `cemetery_id` (zdjęcie cmentarza) |
 | `person_media` | *PersonMedia* | osoba ↔ zdjęcie: pozycja (0 = profilowe), kadr w pikselach (`crop_*`, [[ADR-010-profile-photo-crop-pixels]]), czy tło ([[ADR-013-person-background-on-photo-link]]) |
+| `residences` | *Residence* | osoba, `from_*` i `to_*` (dopisek, rok, miesiąc, dzień — puste dozwolone), `level`, `place_name`, `place_unit`, `country_code`, `country_name`, punkt (`lat`, `lon`), `geonames_id`, `name_then`, `address` ([[ADR-020-residences-place-in-the-row]]); koniec pustego `to_*` z następnego zamieszkania nie jest zapisany |
 | `settings` | *Setting: „ja”* | jeden wiersz `id = 1`: `me_person_id` |
 
 ## Rules that are not tables
@@ -146,6 +148,9 @@ erDiagram
   bez daty. **Pinezkę pierwszy raz stawia ekran** (tryb D [[cmentarz]] 12, z [[grob]] 4 albo z „Popraw pinezkę”): źródło = to, z czego
   wzięła się pozycja ([[cmentarz]] D33) — `gps` z dokładnością telefonu, `plan` albo `satellite` (ręka autora) bez dokładności. Pozycja
   telefonu: [[ADR-017-location-from-gnss-only]].
+- **2026-10-16 — schemat v13** ([[ISSUE-042-places-of-residence]], [[ADR-020-residences-place-in-the-row]]): tabela `residences` z indeksem
+  `residences_person`. Migracja v12→v13 to `createTable` — kopie v12 odtwarzają się z osobami bez zamieszkań. Zapis z „Zapisz” wpisu osoby, w jego
+  transakcji; koniec pustego „do” wyliczany przy odczycie (`impliedEnds`, D12).
 
 ## Known consequence — not a model change
 

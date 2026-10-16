@@ -35,3 +35,7 @@ updated: 2026-10-16
 
 ## Notes
 - Zależy od [[ISSUE-042-places-of-residence]]. Płynność: pomiar klatek naprzemiennie z buildem odniesienia (retro 4, R3).
+- **Input from [[ISSUE-042-places-of-residence]]** (zamknięte 2026-10-16): dane w tabeli `residences` ([[ADR-020-residences-place-in-the-row]]) — punkt na
+  każdym poziomie (kraj: punkt etykiety, miejscowość i adres: środek miejscowości), lata `od`/`do` z dopiskiem dokładnie/około. **Pusty koniec bierze się z
+  następnego zamieszkania** — `impliedEnds` w `lib/data/residences.dart` ([[zamieszkanie]] D12, decyzja autora); mapa liczy ten sam koniec, nie własny.
+  Bez lat — zamieszkanie bez miejsca na osi czasu (do decyzji przy projekcie mapy).

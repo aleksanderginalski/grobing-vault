@@ -1,12 +1,12 @@
 ---
-title: "Style B — visual guidelines (v1.31)"
+title: "Style B — visual guidelines (v1.32)"
 type: design-guidelines
 status: active
 owner: ui
 source: "PROJECT_BRIEF §6a (Style B, chosen by the author 2026-10-05) · references.md (R1–R4, the kick-off images) · grobing-code/lib/app/theme.dart · WCAG 2.2 · Android accessibility"
 non-tech-item: "[[NT-006-visual-guidelines]]"
 created: 2026-10-06
-updated: 2026-10-14
+updated: 2026-10-16
 ---
 
 # Styl B — wytyczne wizualne
@@ -141,6 +141,12 @@ zostaje bez zmian.
      (v1.17; instancje z przeglądu [[ISSUE-022-app-skeleton-tabs-people-settings]]: „…na papierze, u⏎rodziny” w
      ustawieniach, „Na⏎kartce”, „w⏎środku”, „i⏎zdjęciami” w notce przekazania). **Kod jeszcze tej reguły nie
      stosuje** — obejmuje całą aplikację i `personName`, więc wejdzie osobną drobną pozycją, a nie w ISSUE-022.
+     **Nowe stałe teksty stosują ją od razu** (przegląd [[ISSUE-039-connect-two-people]] i [[ISSUE-042-places-of-residence]]);
+   - **linia nie kończy się separatorem ani dopiskiem** (v1.32): po „·” w linii złożonej z części stoi twarda spacja, więc linia
+     łamie się **przed** „·” („Wymyślowo⏎· woj. testowe”), nigdy po nim; dopisek przed rokiem albo nazwą („ok.”, „od”, „do”,
+     „dziś”) trzyma się następnego słowa, a lata okresu łamią się tylko za „–” („ok. 1930 –⏎ok. 1945”). Dwie instancje: linia
+     miejscowości w bazie cmentarzy ([[cmentarze]] D25) i lata oraz linie miejsca zamieszkania ([[zamieszkanie]] v1.1 — zobaczone na
+     emulatorze w [[ISSUE-042-places-of-residence]]: „ok.” na końcu linii w kolumnie 112 dp, „·” na końcu linii przy tekście 200%).
 7. **Ton tekstów:** spokojny i rzeczowy. Bez wykrzykników, bez „Sukces!”, bez emotikonów. Brak czegoś
    opisujemy faktem i tym, kiedy się uzupełni („Bez adresu kwatery · uzupełnisz przy wizycie”), a nie
    ostrzeżeniem.
@@ -483,3 +489,8 @@ wysokokontrastowy, bez rezygnacji ze stylu B. Wynik i data trafiają tutaj i do
 - 2026-10-14 — **v1.31** (przegląd `ui` zbudowanej [[ISSUE-038-history-on-tv-and-tempo]], odstępstwo 3 `dev` przyjęte; [[drzewo]] v1.15): reguła 5 — **stała szerokość
   zmiennego napisu** obok kontrolki do przeciągania (szerokość najszerszej wartości). Reguła, bo to druga instancja: rok w karcie (v1.13) i przycisk tempa. Tokeny bez zmian.
   Pomiar (wzór WCAG z wartości w `theme.dart`, 2026-10-14): tempo w kolorze tekstu na powierzchni 10,02:1; rok w rogu na tabliczce w kolorze tła 8,81:1.
+- 2026-10-16 — **v1.32** (przegląd `ui` zbudowanej [[ISSUE-042-places-of-residence]]; [[zamieszkanie]] v1.1): reguła 6 — **linia nie kończy się separatorem
+  ani dopiskiem** (twarda spacja po „·” i po „ok.”, „od”, „do”, „dziś”; lata okresu łamią się za „–”). Reguła, bo to druga instancja: linia miejscowości w bazie
+  cmentarzy ([[cmentarze]] D25) i linie zamieszkania. Twarda spacja po jednoliterowych słowach — w nowych stałych tekstach od razu. Tokeny bez zmian. Pomiar
+  (wzór WCAG z wartości w `theme.dart`, 2026-10-16; wyniki te same): tekst 10,98 / 10,02 · tekst pomocniczy 5,50 / 5,01 · akcent 8,81 / 8,04 · obrys 3,40 / 3,10 ·
+  błąd 6,45 / 5,89 (na tle / na powierzchni) · tło na akcencie 8,81.

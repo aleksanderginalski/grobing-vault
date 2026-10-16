@@ -24,7 +24,9 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
      [[ADR-019-distribution-play-internal-testing]] (zamyka [[NT-005-distribution-decision]]). **Część w sklepie** (Play Console, instalacja z odtworzeniem,
      aktualizacja na telefonie) — decyzją autora przed samą instalacją: [[ISSUE-032-mvp-install]] → *Before install* 0. Prompty do DALL-E z
      [[ISSUE-046-icons]] gotowe (katalog tymczasowy sesji `b20ca21c-…\scratchpad\dalle-prompts-046.md`);
-  2. [[ISSUE-042-places-of-residence]] — **następna**: gdzie kto mieszkał i kiedy, od kraju do adresu (zmiana bazy);
+  2. ~~[[ISSUE-042-places-of-residence]]~~ — **zamknięte 2026-10-16**: miejsca zamieszkania od kraju do adresu (schemat v13,
+     [[ADR-020-residences-place-in-the-row]]), lista miejsc w aplikacji poza gitem, pusty koniec z następnego miejsca (D12 — decyzja autora na stopie #2);
+     wejście dla [[ISSUE-045-migration-map]] → *Notes*;
   3. [[ISSUE-043-grave-paid-until]] — „opłacone do” na dole profilu grobu (zmiana bazy);
   4. [[ISSUE-044-family-wreaths]] — wieńce rodzin; prototyp `ui` (discovery) może iść równolegle z 1–3 (zmiana bazy);
   5. [[ISSUE-045-migration-map]] — mapa migracji na suwaku czasu i na telewizorze (bez zmiany bazy);
@@ -38,7 +40,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
 - **Agent `architect` — nie teraz** (retro 4, R7): sygnał „pierwszy ADR zastąpiony” ([[ADR-018-export-is-the-backup]]) rozliczony; nowy warunek w `CLAUDE.md` →
   *Na sygnał*.
 
-  Specyfikacja: [[drzewo]] v1.17, [[osoba]] v2.4, [[style-b]] v1.31.
+  Specyfikacja: [[drzewo]] v1.17, [[osoba]] v2.5, [[wpis-osoby]] v5.9, [[zamieszkanie]] v1.2, [[style-b]] v1.32.
 - **Prawdziwe dane rodziny dopiero po instalacji MVP** (decyzja autora 2026-10-08 w `/pm`): budujemy produkt gotowy do
   instalacji na telefonie (MVP = brief §5, M1–M11); do tego czasu autor ocenia aplikację na wymyślonych danych. Rozmowa z babcią
   (~2026-11-02) jest na kartce, a odpowiedzi trafią do aplikacji po instalacji.
@@ -154,7 +156,11 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     (`0558e715-…\scratchpad\`): makieta `drzewo-039.html` z częściami (`parts\`), zrzuty `shots-039\` i `emu\shots\` (wymyślone), `emu\base\` (APK profile ISSUE-038 i ISSUE-039,
     ok. 80 MB), `chr\` (profil Chrome bez okna), wyniki testów i skrypty — do kosza. Z sesji ISSUE-040 (`cbd907af-…\scratchpad\`): wycofana makieta `eksport-040.html`,
     zrzuty `shots\`, `gate\` (kopia `grobing-*-040.age`, odszyfrowany plik klucza i `tar` z bazą — **wymyślone dane, hasło testowe**), `agebin\` (oficjalne `age` v1.3.2 —
-    można zachować do notki NT-007), obraz testowy, `chr\` i skrypty — do kosza;
+    można zachować do notki NT-007), obraz testowy, `chr\` i skrypty — do kosza. Z sesji ISSUE-041/042 (`b20ca21c-…\scratchpad\`): makieta
+    `makieta-042.html` i jej zrzut, `chr042\`, `emu041\`, wiadomości commitów — do kosza po [[ISSUE-046-icons]] (tam leżą prompty `dalle-prompts-046.md`). Z sesji
+    ISSUE-042 (`574c5666-…\scratchpad\`): `dl\` i `src\` — pobrane pliki GeoNames i Natural Earth (ok. 1 GB, dane publiczne; potrzebne tylko do
+    ponownej budowy listy miejsc — README `grobing-code` → *Lista miejsc*), `emu042\` (zrzuty, kopia `files/` sprzed pozycji z `Grobing_Restore` —
+    **wymyślone dane** i cmentarz dodany poza agentem — oraz APK odniesienia), `ui042\`, `tools\`, logi testów — do kosza;
   - **repo nie mają pliku `LICENSE`** — kod można oglądać, ale nie wolno go używać. Licencję można dodać później.
 - **Emulatory (po ISSUE-033):** `Medium_Phone` — release v12 na danych testowych autora, kopia skonfigurowana od nowa z hasłem
   testowym (wymyślone, z sesji ISSUE-029), pliki `grobing-klucz-029.age` i `grobing-kopia-029.age` w Pobranych; grób „Jozef” ma
@@ -175,7 +181,10 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   `grobing-klucz-040.age` i `grobing-kopia-040.age` w Pobranych — kopia w tle nadpisuje ten plik. **Po ISSUE-041:** build profile `0.9.0` z migawką
   sprzed aktualizacji; baza przeszła v11 → v12 z wstrzykniętej kopii v11 (te same wymyślone dane), w `files/pre-update/` migawka v11. **Po 13:19 (czas
   emulatora) ktoś poza agentem dodał w aplikacji cmentarz** (publiczny, z bazy OSM) — agent wstrzymał odtworzenie, żeby go nie zastąpić; przed następnym
-  użyciem emulatora pytanie do autora, czy jego dane można zastąpić.
+  użyciem emulatora pytanie do autora, czy jego dane można zastąpić. **Po ISSUE-042:** build profile z miejscami zamieszkania (`FRAME_LOG`), baza v13
+  (migawki v11 i v12 w `files/pre-update/`), lista miejsc w `files/places/`; zamieszkania u wymyślonych osób (Bronisława — 2, Mateusz — 2 z samym „Od”,
+  nowa osoba w nowym grobie na cmentarzu dodanym poza agentem — 1); ustawienia zmienione do przejścia: `stylus_handwriting_enabled 0` (nakładka rysika
+  Gboard), `show_ime_with_hard_keyboard 1` (klawiatura ekranowa przy sprzętowej); kopia w tle v13 z 17:00 UTC przeszła.
 - **[[EPIC-002-wizyta]] gotowy do rozpisania na US** — pytanie „jak znaleźć grób bez pinezki” ma kierunek autora
   (2026-10-08): adres z wyszukiwarki zarządcy → kwatera zaznaczona według planu zarządcy → na miejscu plan offline i
   GPS → pinezka. Wejście do pierwszej US (mapa cmentarza): EPIC-002 → *Input from SPIKE-001*. Ekran: `ui` →
@@ -192,7 +201,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   paczki (decyzja autora 2026-10-07); treść wychodzących zmian sprawdza strażnik treści ([[ISSUE-020-content-guard]]) przy każdym `git add`/`commit`.
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **1** (ostatnie retro: [[2026-10-16-retro-04]]). Co **10** → retro + pytanie o 3–5
+- Zamknięte pozycje od ostatniego retro: **2** (ostatnie retro: [[2026-10-16-retro-04]]). Co **10** → retro + pytanie o 3–5
   nośnych faktów (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**; podbija go `docs` przy zamknięciu, a zeruje go retro.
 - Do retro (zebrane po drodze, bez decyzji):
   - Poprzednią listę rozliczyło [[2026-10-16-retro-04]] → *The "Do retro" list*.
@@ -215,6 +224,15 @@ Format wpisu: `źródło (babcia / cmentarz X) · pytanie bez danych rodziny · 
 ## Recently done
 > Tylko wpisy od ostatniego retro ([[2026-10-16-retro-04]]; zasada R5 z retro 3). Starsze są w plikach retro → *Archive*:
 > [[2026-10-16-retro-04]] · [[2026-10-13-retro-03]] · [[2026-10-08-retro-02]] · [[2026-10-06-retro-01]].
+
+- 2026-10-16 — [[ISSUE-042-places-of-residence]] zamknięte. **Gdzie kto mieszkał i kiedy:**
+  - stop #1 potwierdzony w `/pm`: **A1** (adres tekstem, punkt w środku miejscowości) i **N2** (nazwa z tamtego czasu obok miejsca z listy);
+  - **lista miejsc w aplikacji** (11,7 MB, 239 krajów, ok. 188 tys. miejscowości — 4 kraje w całości, świat `cities5000`; `cities1000` przekroczył próg 15 MB),
+    **poza gitem i poza kopią** (G1), wyszukiwanie ≤ 13 ms na emulatorze; schemat **v13** (`residences`, [[ADR-020-residences-place-in-the-row]]);
+  - przegląd `ui`: 1 MAJOR (kraje pod 30 miejscowościami — błąd specyfikacji v1, D8) i 3 MINOR — poprawione; [[zamieszkanie]] v1.1, [[style-b]] v1.32;
+  - **na stopie #2 decyzja autora D12:** pusty „Do” kończy się początkiem następnego miejsca, wyliczone przy odczycie, nie zapisane ([[zamieszkanie]] v1.2).
+
+  Lista A i B w [[ISSUE-032-mvp-install]] → *Hand checks*. Testy: 820 zielonych. Werdykt `qa`: APPROVED (self-check, z uwagami). Licznik retro: 1 → 2.
 
 - 2026-10-16 — [[ISSUE-041-google-play-and-safe-update]] zamknięte (w części kodu). **Aktualizacja bez utraty danych:**
   - decyzja autora: **Google Play, testy wewnętrzne, klucz od Google** → [[ADR-019-distribution-play-internal-testing]] (zamyka [[NT-005-distribution-decision]]);
