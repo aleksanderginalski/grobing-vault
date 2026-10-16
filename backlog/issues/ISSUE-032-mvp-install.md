@@ -10,14 +10,18 @@ verdict-date: null
 verdict-reviewer: null
 source: "[[2026-10-13-retro-03]] R8, R9 · `CURRENT_STATE.md` → *Droga do instalacji MVP* (ostatni krok bez pozycji)"
 created: 2026-10-13
-updated: 2026-10-14
+updated: 2026-10-16
 ---
 
 # ISSUE-032 — Instalacja MVP na telefonie autora
 
 > **`draft`: dom dla dwóch decyzji retro 3, a nie plan.** Droga do instalacji MVP kończyła się krokiem bez pozycji; retro 3
 > dało mu dwie rzeczy — audyt (R9) i jedną listę rzeczy niesprawdzonych w ręce (R8). Plan pisze `planning`, gdy droga dojdzie
-> do tego kroku (po [[US-006-eksport-dla-rodziny]] i [[NT-007-hand-over-note]]).
+> do tego kroku (po [[ISSUE-041-google-play-and-safe-update]] … [[ISSUE-046-icons]] i [[NT-007-hand-over-note]] — kolejka w `CURRENT_STATE.md`).
+>
+> **2026-10-16 ([[2026-10-16-retro-04]]):** instalacja **ze sklepu** (Google Play, testy wewnętrzne — [[ISSUE-041-google-play-and-safe-update]]), nie
+> `adb install`; **najpóźniej 2026-10-29** — prawdziwe dane autor wpisuje w trakcie wyjazdu na Wszystkie Święte. Telefon: Motorola moto g82 5G,
+> Android 13. *Hand checks* w dwóch listach (R4).
 
 ## Why
 Po instalacji na telefon trafiają **prawdziwe dane rodziny** (decyzja autora 2026-10-08) — od tej chwili błąd kosztuje dane, a nie
@@ -26,27 +30,41 @@ pierwszym prawdziwym wpisem.
 
 ## Before install
 Warunki — każdy ma swój dom, tutaj tylko lista:
+0. **[[ISSUE-041-google-play-and-safe-update]] zamknięte** — aplikacja w sklepie, próba aktualizacji na wymyślonych danych przeszła (lista A niżej);
 1. **Audyt pól modelu ↔ ekrany** (retro 3, R9): każde pole [[data-model]] ma ekran, który je zapisuje, albo jawne „nie zapisuje go
    żaden ekran, bo…”. Powód: adres kwatery (M1) miał kolumny od v1, a ekran dopiero w [[ISSUE-028-cemetery-sectors]]. Robi agent;
-   wynik to tabela w tej pozycji;
-2. **klucz wydania** (`.jks` i oba hasła) w zaszyfrowanym miejscu — autor (`CURRENT_STATE.md` → *Autor, poza sesją*; pytanie z retro
-   1, 2 i 3 bez odpowiedzi);
+   wynik to tabela w tej pozycji. Znani kandydaci: `is_living` ([[ISSUE-040-export-is-the-backup]] → *Notes*) i `grobonetUrl` (link wycofany —
+   [[cmentarz]] D12; zauważone w `/pm` 2026-10-16);
+2. ~~**klucz wydania** (`.jks` i oba hasła) w zaszyfrowanym miejscu~~ — **po [[ISSUE-041-google-play-and-safe-update]] nie blokuje** ([[2026-10-16-retro-04]]):
+   klucz podpisu trzyma Google, a obecny klucz wydania zostaje kluczem przesyłania, który da się zresetować. Kopia dalej wskazana;
 3. **notka przekazania** sprawdzona jej własną drogą — [[NT-007-hand-over-note]];
-4. **dane aplikacji wyczyszczone** po buildzie z wizyty (wymyślone dane) — `CURRENT_STATE.md` → *Autor, poza sesją*;
+4. **dane aplikacji wyczyszczone** po próbie aktualizacji z [[ISSUE-041-google-play-and-safe-update]] (wymyślone dane) — Ustawienia → Aplikacje →
+   Grobing → Pamięć;
 5. kandydaci na małe pozycje „przed instalacją MVP” — `CURRENT_STATE.md` → *Poza tą kolejnością* (np. mapa cmentarza przy
    tekście 200%);
 6. *kandydat, nie decyzja retro:* testy dostępności dotyku z R2 (`meetsGuideline`) na ekranach zbudowanych przed retro 3 — decyzja
    przy planowaniu.
 
 ## Hand checks — rzeczy niesprawdzone w ręce
-> **Jedna lista** (retro 3, R8). Pisze `docs` przy zamknięciu każdej pozycji: każde „pomiń”, „ok” bez śladu na urządzeniu i
-> „nieprzetestowane na żywo” z *Verification* → jeden wiersz ze źródłem. Na telefonie z buildem release, na wymyślonych danych,
-> **przed** pierwszymi prawdziwymi. Krok w terenie (GPS przy grobach, słońce, tryb samolotowy) jest w `CURRENT_STATE.md` →
-> *Parked*, nie tutaj.
+> **Jedno miejsce, dwie listy** (retro 3, R8; podział — [[2026-10-16-retro-04]], R4). Pisze `docs` przy zamknięciu każdej pozycji: każde
+> „pomiń”, „ok” bez śladu na urządzeniu i „nieprzetestowane na żywo” z *Verification* → jeden wiersz ze źródłem, w liście A albo B.
+> - **A — dane** (kopia, odtworzenie, aktualizacja ze sklepu, migracja): na telefonie z buildem ze sklepu, na wymyślonych danych, **przed**
+>   pierwszymi prawdziwymi. To jest bramka.
+> - **B — odczucie** (telewizor, TalkBack, płynność, wygląd, przepływ): **w trakcie używania, bez bramki** — R4 zmienia tu R8 z retro 3, bo lista
+>   urosła ponad 40 wierszy, a stop #2 „pomiń” dwa razy z rzędu (ISSUE-038, ISSUE-039). Kroki stopu #2, które wymagają telewizora albo telefonu,
+>   trafiają tu od razu.
+>
+> Krok w terenie (GPS przy grobach, słońce, tryb samolotowy) jest w `CURRENT_STATE.md` → *Parked*, nie tutaj.
 
-**Kopia**
+### A — dane (przed pierwszymi prawdziwymi danymi)
+- instalacja ze sklepu i aktualizacja tą samą drogą — wymyślone dane i kopia bez zmian ([[ISSUE-041-google-play-and-safe-update]] AC-1, próba
+  generalna);
+- kopia sprzed aktualizacji istnieje i odtworzenie ją przyjmuje ([[ISSUE-041-google-play-and-safe-update]] AC-2);
 - po zmianie danych pojawia się „(w tle)” — w AOT sprawdzał to tylko build profile ([[ISSUE-010-background-backup]]);
-- rozpoznanie „Dysk Google” w wierszu kopii — tylko test ([[ISSUE-022-app-skeleton-tabs-people-settings]]).
+- rozpoznanie „Dysk Google” w wierszu kopii — tylko test ([[ISSUE-022-app-skeleton-tabs-people-settings]]);
+- kopia z telefonu otwiera się drogą z notki przekazania ([[NT-007-hand-over-note]]) albo odtwarza na emulatorze ([[NFR-002-odtworzenie-na-nowym-telefonie]]).
+
+### B — odczucie (w trakcie używania, bez bramki)
 
 **Zdjęcia**
 - zdjęcie HEIF z telefonu — emulator ich nie robi ([[ISSUE-016-photos-grave-and-person]]);
@@ -86,7 +104,8 @@ Warunki — każdy ma swój dom, tutaj tylko lista:
 **Drzewo — tryb prezentacji** ([[ISSUE-034-tree-presentation-mode]] → *Verification*)
 - przesyłanie ekranu z trybu prezentacji na telewizor autora z kafelka szybkich ustawień — nieprzetestowane na żywo (emulator nie przesyła;
   telewizor autora jest odbiornikiem Google Cast — zrzut autora z Zdjęć);
-- nazwa kafelka przesyłania ekranu na telefonie autora — podpowiedź mówi o funkcji ([[drzewo]] D26);
+- nazwa kafelka przesyłania ekranu na telefonie autora — podpowiedź mówi o funkcji ([[drzewo]] D26); telefon to **Motorola moto g82 5G, Android 13**
+  ([[2026-10-16-retro-04]] → fakt 1) — ani Pixel, ani Samsung;
 - paski, obrót i przeciągnięcie od krawędzi na fizycznym telefonie, przy nawigacji, której używa autor — nieprzetestowane na żywo;
 - systemowe okno „pełny ekran” przy pierwszym wejściu — przed pierwszym pokazem wejść w tryb raz bez przesyłania;
 - TalkBack w trybie prezentacji — nieprzetestowane na żywo;

@@ -3,7 +3,7 @@ title: "Grobing — Definition of Ready / Done"
 type: contract
 status: active
 created: 2026-10-05
-updated: 2026-10-13
+updated: 2026-10-16
 ---
 
 # Grobing — Definition of Ready / Done
@@ -53,6 +53,12 @@ updated: 2026-10-13
 > dalej nie blokuje. Każde „pomiń”, „ok” bez śladu na urządzeniu i „nieprzetestowane na żywo” z *Verification* trafia
 > przy zamknięciu (`docs`) na **jedną listę**: [[ISSUE-032-mvp-install]] → *Hand checks* — sprawdzaną na telefonie
 > przed pierwszymi prawdziwymi danymi. Wcześniej te rzeczy leżały rozsypane po wpisach „Dla autora”.
+>
+> **Dwie listy zamiast jednej bramki — decyzja autora 2026-10-16 ([[2026-10-16-retro-04]], R4; zmienia R8 wyżej).** *Hand checks* ma listę
+> **A — dane** (kopia, odtworzenie, aktualizacja ze sklepu, migracja): sprawdzana na telefonie **przed** pierwszymi prawdziwymi danymi — to
+> jest bramka; i listę **B — odczucie** (telewizor, TalkBack, płynność, wygląd, przepływ): sprawdzana **w trakcie używania, bez bramki**. Kroki
+> stopu #2, które wymagają telewizora albo telefonu, nie idą na emulator — `qa` wpisuje je od razu jako wiersze listy B. Powód: stop #2
+> „pomiń” we wszystkich krokach dwa razy z rzędu (ISSUE-038, ISSUE-039), a jedna lista urosła ponad 40 wierszy.
 
 ## DoD scaling by maturity stage (current: MVP)
 

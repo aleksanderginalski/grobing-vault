@@ -6,7 +6,7 @@ category: risk
 priority: MUST
 source: "PROJECT_BRIEF §6 N1"
 created: 2026-10-05
-updated: 2026-10-06
+updated: 2026-10-16
 ---
 
 # NT-001 — Zdjęcia wszystkich stron notatek
@@ -33,3 +33,6 @@ aplikacja. Najtańsze zabezpieczenie w całym projekcie, niezależne od budowy.
     niezaszyfrowana;
   - sprawdzić, że kopia się otwiera.
 - **Pozycja zostaje `open`** do tych trzech kroków.
+- **2026-10-16 — decyzja autora** ([[2026-10-16-retro-04]] → fakt 3, pytane czwarty raz): *„Mam je koło siebie — nie musisz się o to
+  martwić”*. Trzy kroki wyżej zostają po stronie autora; **`pm` i retro już o nie nie pytają**. Pozycja zostaje `open` jako zapis, nie
+  przypomnienie.

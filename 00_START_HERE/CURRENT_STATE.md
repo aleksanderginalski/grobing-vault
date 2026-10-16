@@ -18,16 +18,23 @@ updated: 2026-10-16
 MVP — od startu, cały produkt (Meta-decyzja 4).
 
 ## In progress
-- **Po [[2026-10-13-retro-03]] (R1–R10, decyzja autora 2026-10-13):** ~~[[ISSUE-031-command-guard]]~~ i ~~[[SPIKE-002-tree-on-a-phone]]~~ —
-  zamknięte 2026-10-13 (*Recently done*). Dalej droga do instalacji MVP: ~~[[US-009-drzewo-od-osoby]]~~ **zamknięta 2026-10-14** (~~ISSUE-033~~,
-  ~~ISSUE-034~~, ~~ISSUE-035~~, ~~ISSUE-036~~); ~~[[US-010-czas-na-drzewie]]~~ **zamknięta 2026-10-14** (~~ISSUE-037~~, ~~ISSUE-038~~ — historia na telewizorze i
-  tempo, zamknięte 2026-10-14); ~~[[US-011-polacz-dwie-osoby]]~~ **zamknięta 2026-10-14** (~~ISSUE-039~~). **Wszystkie US
-  [[EPIC-003-zrozumienie]] zamknięte** (EPIC zostaje `draft` do instalacji — jego rzeczy w ręce są na [[ISSUE-032-mvp-install]] → *Hand checks*). ~~[[US-006-eksport-dla-rodziny]]~~
-  **zamknięta 2026-10-16** (~~ISSUE-040~~) — **eksportem jest kopia** (decyzja autora, HTML + PDF wycofane → [[ADR-018-export-is-the-backup]]). **Wszystkie US
-  [[EPIC-001-zabezpiecz-i-przepisz]] zamknięte** (EPIC zostaje `draft` — jego NFR, np. odtworzenie na nowym telefonie i słońce, sprawdza instalacja). **Licznik retro
-  doszedł do 10 → najpierw retro 4** (`pm`), potem [[NT-007-hand-over-note]] (warunek obudzenia spełniony: kopia jest i jest eksportem) i [[ISSUE-032-mvp-install]].
-- **Sygnał dla agenta `architect`** (`CLAUDE.md` → *Na sygnał*: „pierwszy ADR zastąpiony po akceptacji”, retro 2 R7): [[ADR-018-export-is-the-backup]] zastępuje
-  część [[ADR-004-backup-format-encryption-destination]] i [[ADR-001-local-first]] (2026-10-16). `pm` proponuje dodanie agenta — decyzja autora, kandydat na retro 4.
+- **Po [[2026-10-16-retro-04]] (R1–R7, decyzja autora 2026-10-16) — kolejka przed instalacją MVP**, ustalona w `/pm` tego dnia (retro 4 →
+  *Product decisions*). **Instalacja ze sklepu najpóźniej 2026-10-29**; prawdziwe dane autor wpisuje w trakcie wyjazdu na Wszystkie Święte:
+  1. [[ISSUE-041-google-play-and-safe-update]] — **następna**: Google Play (testy wewnętrzne, klucz od Google), numer wersji, kopia sprzed aktualizacji,
+     próba aktualizacji na telefonie autora, ADR-019 (zamyka [[NT-005-distribution-decision]]); równolegle `ui` daje prompty do DALL-E z [[ISSUE-046-icons]];
+  2. [[ISSUE-042-places-of-residence]] — gdzie kto mieszkał i kiedy, od kraju do adresu (zmiana bazy);
+  3. [[ISSUE-043-grave-paid-until]] — „opłacone do” na dole profilu grobu (zmiana bazy);
+  4. [[ISSUE-044-family-wreaths]] — wieńce rodzin; prototyp `ui` (discovery) może iść równolegle z 1–3 (zmiana bazy);
+  5. [[ISSUE-045-migration-map]] — mapa migracji na suwaku czasu i na telewizorze (bez zmiany bazy);
+  6. [[ISSUE-046-icons]] — ikona aplikacji i ikony w aplikacji, wybór na makiecie (bez zmiany bazy);
+  7. [[NT-007-hand-over-note]] (warunek obudzenia spełniony: kopia jest i jest eksportem) i [[ISSUE-032-mvp-install]] — audyt, małe poprawki „przed
+     instalacją”, lista A *Hand checks*, instalacja ze sklepu.
+
+  **Zasady terminu:** przed instalacją wszystko, co zmienia bazę; widoki bez zmiany bazy (5, 6) mogą przyjść później jako aktualizacja ze sklepu; **w trakcie
+  wyjazdu żadnych aktualizacji**. Wszystkie US [[EPIC-001-zabezpiecz-i-przepisz]] i [[EPIC-003-zrozumienie]] zamknięte (EPIC-i zostają `draft` do instalacji —
+  ich NFR i rzeczy w ręce sprawdza [[ISSUE-032-mvp-install]]).
+- **Agent `architect` — nie teraz** (retro 4, R7): sygnał „pierwszy ADR zastąpiony” ([[ADR-018-export-is-the-backup]]) rozliczony; nowy warunek w `CLAUDE.md` →
+  *Na sygnał*.
 
   Specyfikacja: [[drzewo]] v1.17, [[osoba]] v2.4, [[style-b]] v1.31.
 - **Prawdziwe dane rodziny dopiero po instalacji MVP** (decyzja autora 2026-10-08 w `/pm`): budujemy produkt gotowy do
@@ -46,21 +53,21 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
      ~~ISSUE-035~~, ~~ISSUE-036~~; drzewo od osoby, S2, ślad dalszej rodziny, słownik nazw złożonych, „Pokaż w drzewie”, tryb prezentacji, „Przesyłaj na
      telewizor”) → ~~[[US-010-czas-na-drzewie]]~~ — zamknięta 2026-10-14 (~~ISSUE-037~~; suwak czasu, daty niepewne, „//”; ~~ISSUE-038~~ — historia na telewizorze i
      tempo) → ~~[[US-011-polacz-dwie-osoby]]~~ — zamknięta 2026-10-14 (~~ISSUE-039~~; okno „Połącz dwie osoby”, ścieżka na drzewie, baner);
-  8. ~~[[US-006-eksport-dla-rodziny]]~~ — zamknięta 2026-10-16 (~~ISSUE-040~~; eksport = kopia, [[ADR-018-export-is-the-backup]]) i [[NT-007-hand-over-note]] (następna po retro 4);
-  → **[[ISSUE-032-mvp-install]]** (`draft`): audyt pól modelu ↔ ekrany (R9), lista rzeczy niesprawdzonych w ręce (R8), warunki
-  przed pierwszymi danymi → build release na telefonie → prawdziwe dane ([[NT-002-transcribe-the-notes]]).
-  Wpisy o zamkniętych pozycjach: retro 3 → *Archive*.
+  8. ~~[[US-006-eksport-dla-rodziny]]~~ — zamknięta 2026-10-16 (~~ISSUE-040~~; eksport = kopia, [[ADR-018-export-is-the-backup]]);
+  → dalej kolejka z retro 4 (wyżej) → **[[ISSUE-032-mvp-install]]** (`draft`): audyt pól modelu ↔ ekrany (R9), lista A *Hand checks*, warunki
+  przed pierwszymi danymi → **instalacja ze sklepu** ([[ISSUE-041-google-play-and-safe-update]]) → prawdziwe dane ([[NT-002-transcribe-the-notes]]) w trakcie wyjazdu.
+  Wpisy o zamkniętych pozycjach: retro 3 i retro 4 → *Archive*.
 
   **EPIC-001:** [[US-004-fakt-od-babci]] **wycofana** (SPIKE-004 D28 — bez źródeł; wiedza od babci przez zwykłą
-  poprawę); [[US-006-eksport-dla-rodziny]] `ready`.
+  poprawę); [[US-006-eksport-dla-rodziny]] zamknięta (eksportem jest kopia).
 - **[[SPIKE-001-map-source-offline]] zamknięty 2026-10-08** → [[ADR-003-map-source-offline]] `accepted`: mapa
   cmentarza to **plan schematyczny z OSM offline** + ortofotomapa GUGiK online + kwatery i pinezki autora.
 - **Każda pozycja z ekranem: `ui` → `planning`** (`autonomous-flow.md`). Wygląd: `05_DESIGN/brand/` (wytyczne i
   referencje R1–R4 z kick-offu). Kolejność autora z 2026-10-06 (ISSUE-014 → SPIKE-001) wyczerpana — retro 2 → *Archive*.
 - Poza tą kolejnością:
-  - **opowieść rodziny na drzewie i wieniec przy portrecie według nazwiska** — pomysły autora ze stopu #2 ISSUE-037 (c, d) w
-    [[2026-10-14-opowiesc-rodziny-i-wieniec]] (INBOX): najpierw prototyp `ui` w trybie discovery, potem pozycje. Wieniec zmienia decyzję „bez gałązek”
-    ([[style-b]] reguła 8, [[osoba]] D3) i schemat (nowa tabela). **Po instalacji MVP** (decyzja autora 2026-10-14);
+  - **opowieść rodziny na drzewie** — pomysł autora ze stopu #2 ISSUE-037 (c) w [[2026-10-14-opowiesc-rodziny-i-wieniec]] (INBOX): najpierw prototyp `ui`
+    w trybie discovery, potem pozycje. **Po instalacji MVP** (decyzja autora 2026-10-14). Wieniec (d) przeszedł 2026-10-16 do kolejki jako
+    [[ISSUE-044-family-wreaths]];
   - [[ISSUE-026-link-existing-photo-to-person]] — zdjęcie, które już jest w aplikacji, dodane osobie od jej strony („połączyć z
     istniejącymi”, decyzja autora na stopie #1 ISSUE-024); nowy ekran wyboru, więc `ui` → `planning`. Dziś działa od strony zdjęcia;
   - [[NT-001-photograph-the-notes]]: zdjęcia zrobione (33). Zostało: zaszyfrowane miejsce, sprawdzenie
@@ -107,25 +114,24 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   miejsce pliku klucza w notce przekazania ([[NT-007-hand-over-note]]): utrata któregoś z nich = utrata
   kopii. Notkę sprawdzić raz jej własną drogą (`age -d -i …` z hasłem w terminalu — NT-007 → *Input from
   US-001 closure*). Wszystkie warunki przed instalacją zbiera [[ISSUE-032-mvp-install]] → *Before install*.
-- **Budowa bez terminu** (decyzja autora 2026-10-05). 1 listopada niczego nie wyznacza; przy wizytach
-  autor robi zdjęcia nagrobków z lokalizacją → `TRACEABILITY.md` → *Open gaps* 2.
-- **Weryfikacja na emulatorze do MVP** (decyzja autora 2026-10-05). Na telefon trafi dopiero MVP, jako
-  build release; wyjątki są w `DEFINITION_OF_DONE.md`.
+- **Termin instalacji: najpóźniej 2026-10-29** (decyzja autora 2026-10-16 — retro 4 → *Product decisions*): prawdziwe dane autor wpisuje w trakcie
+  wyjazdu na Wszystkie Święte. Do 2026-10-16 obowiązywało „budowa bez terminu” (2026-10-05); przy wizytach autor robi zdjęcia nagrobków z lokalizacją →
+  `TRACEABILITY.md` → *Open gaps* 2.
+- **Weryfikacja na emulatorze do MVP** (decyzja autora 2026-10-05). Na telefon trafi dopiero MVP, jako build **ze sklepu** (Google Play, testy
+  wewnętrzne — [[ISSUE-041-google-play-and-safe-update]]); wyjątki są w `DEFINITION_OF_DONE.md`.
 - **Autor, poza sesją:**
-  - kopia klucza wydania (`.jks` + oba hasła) w zaszyfrowanym miejscu przed pierwszymi danymi. To **nie**
-    klucz kopii z testów. Klucz wydania (`release_keystore_dir` w `project-config.md`) podpisuje build, a
-    bez niego telefon z danymi nie przyjmie aktualizacji bez odinstalowania, które kasuje bazę (retro 1,
-    fakt 4);
+  - kopia klucza wydania (`.jks` + oba hasła) w zaszyfrowanym miejscu — **po [[ISSUE-041-google-play-and-safe-update]] nie blokuje** (retro 4): klucz
+    podpisu aplikacji ze sklepu trzyma Google, a klucz z `release_keystore_dir` zostaje kluczem przesyłania, który da się zresetować (jak w Friendsheet).
+    To **nie** klucz kopii z testów;
   - **notatki rodziny na PC** leżą w `family_data_dir` (`project-config.md`), poza repo. Docelowo
     zdjęcia stron trafiają do zaszyfrowanego miejsca (NT-001);
   - **lista rdzeni strażnika** (`rdzenie-straznika.txt` w `family_data_dir`, spisana przez agenta z notatek 2026-10-08):
     4 nazwiska mają niepewny odczyt pisma (oznaczone na liście). Poprawki — w pliku albo w czacie z agentem. Każde nowe
     nazwisko z przepisywania warto dopisać: rdzeń działa od następnego `git add`;
   - opcjonalnie zmiana hasła klucza (README `grobing-code` → *Podpis wydania*);
-  - **build release na telefon przed wizytą na cmentarzu (~2026-11-02)** — README `grobing-code` → *Lokalizacja* (`flutter build apk
-    --release --split-per-abi --target-platform android-arm64`, `adb install -r`), albo agent przez `adb`, gdy podłączysz telefon. Podpisany
-    kluczem wydania, więc MVP wejdzie później jako aktualizacja. Na telefonie tylko wymyślone dane; **przed prawdziwymi danymi — wyczyść
-    dane aplikacji** (Ustawienia → Aplikacje → Grobing → Pamięć);
+  - ~~build release na telefon przez `adb` przed wizytą~~ — **zastąpione 2026-10-16** (retro 4): na telefon (Motorola moto g82 5G, Android 13) trafia MVP
+    **ze sklepu**, najpierw na wymyślonych danych do próby aktualizacji ([[ISSUE-041-google-play-and-safe-update]]), potem **wyczyść dane aplikacji**
+    (Ustawienia → Aplikacje → Grobing → Pamięć) i prawdziwe dane. **Nie instaluj APK przez `adb` na telefon** — inny podpis i numer wersji niż w sklepie;
   - po SPIKE-003: usunąć folder `Grobing-spike` na Dysku (wymyślone dane, zaszyfrowane). Dwa pliki `grobing-*.age`
     z Pobranych na PC agent przeniósł do Kosza Windows 2026-10-08, na prośbę autora. Folderów na Dysku agent nie
     usunął, bo podłączony do Claude Dysk Google to inne konto niż to na emulatorach;
@@ -181,60 +187,10 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   paczki (decyzja autora 2026-10-07); treść wychodzących zmian sprawdza strażnik treści ([[ISSUE-020-content-guard]]) przy każdym `git add`/`commit`.
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **10 — retro 4 przed następną pozycją** (ostatnie retro: [[2026-10-13-retro-03]]). Co **10** → retro + pytanie o 3–5
+- Zamknięte pozycje od ostatniego retro: **0** (ostatnie retro: [[2026-10-16-retro-04]]). Co **10** → retro + pytanie o 3–5
   nośnych faktów (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**; podbija go `docs` przy zamknięciu, a zeruje go retro.
 - Do retro (zebrane po drodze, bez decyzji):
-  - **US bez ISSUE na starcie łańcucha** ([[ISSUE-033-tree-from-a-person]]): `pm` skierował [[US-009-drzewo-od-osoby]] prosto do `ui`, a plan nie miał
-    pliku, w którym mógłby stanąć — `planning` zawołał `docs` do rozpisania w środku łańcucha. Przy US-007 i US-008 rozpisanie (`docs`) szło przed
-    `ui`; tabela *Routing* w `pm` tego kroku nie zna.
-  - **Makieta podana jako ścieżka z `%TEMP%` się nie otwiera** ([[ISSUE-034-tree-presentation-mode]], stop #1): przeglądarka nie rozwija `%TEMP%`.
-    Autor otworzył `drzewo-us009.html` dopiero z adresem `file:///` i zmienił dwie decyzje ze stopu #1 ISSUE-033 (I2 → I1, G1 → G2) — tamto „Tak”
-    zapadło najpewniej bez makiety. Koszt: jedna pozycja ([[ISSUE-035-tree-names-shrink-my-voice]]).
-  - **Słowa techniczne przy wyborze techniki** ([[ISSUE-034-tree-presentation-mode]], stop #2): D11 („Przesyłaj ekran” + tryb, bez Google Cast)
-    przyjęte na stopie #1 SPIKE-002, a autor rozumiał „tryb telewizora” jak przesyłanie w YouTube. Różnica *casting* / *przesyłanie ekranu* wyszła
-    dopiero na stopie #2, po budowie.
-  - **Ta sama decyzja zmieniona dwa razy** ([[ISSUE-035-tree-names-shrink-my-voice]], stop #1): imiona przy oddalaniu I2 (stop #1 ISSUE-033) → I1
-    (stop #1 ISSUE-034) → I2 (stop #1 ISSUE-035). `ui` i `planning` rozpisali I1 (specyfikacja, wyjątek w [[style-b]], plan), a autor przy
-    odpowiedzi na sekcje makiety wybrał I2 — zapis cofnięty przed budową. Pozycja założona na zmianie decyzji ruszyła bez potwierdzenia jej na
-    makiecie przed `ui`.
-  - **Kanon dał zły sygnał, pomiar go złapał** ([[ISSUE-036-cast-from-the-app]], krok 0 `dev`): plan oparł powrót z ekranu systemu na `hidden` → `resumed`
-    (stany Fluttera), a na emulatorze szybki powrót wstecz w ogóle nie chowa aplikacji — Android zatrzymuje ją dopiero po chwili. Pierwsza wersja `dev` miała
-    też bezpiecznik 2 s, który zwalniał czekanie, zanim przyszło `hidden`. Krok 0 przed budową znalazł oba w jednej rundzie; bez niego wyszłoby to na stopie #2.
-  - **Pełny `flutter test` zawisł raz** ([[ISSUE-036-cast-from-the-app]] → *Verification*): jeden proces `flutter_tester` stał 13 min bez wskazania testu; drugi
-    przebieg z `--timeout 120s` — 728 zielonych w 1:25. Kandydat: `--timeout` na stałe w rytuale WZ-024, żeby zawieszenie nazwało test.
-  - **Lekcja z ISSUE-033 powtórzona w kodzie, który ją cytuje** ([[ISSUE-037-time-on-the-tree]] → *Dev report* → *Found* a): komentarz w `tree_screen.dart` mówił
-    „one layer for all who appear … an Opacity on each person was a layer each”, a pierwsza wersja suwaka dała `AnimatedOpacity` każdej osobie — 14,6% wolnych klatek przy
-    ▶. Złapał to pomiar klatki z listy przejścia AC (retro 3, R3), nie przegląd. Kandydat: zasada „przenikanie grupy — jedna warstwa” w `dev`, nie tylko w komentarzu.
-  - **Punkt odniesienia dla pomiaru klatek** ([[ISSUE-037-time-on-the-tree]] → *Measurements*): przesuwanie na emulatorze dało dziś 20–30% wolnych klatek i wyglądało na
-    regres; dopiero build z ostatniego commita (kopia drzewa roboczego z `git show HEAD:…`, bo `git archive` jest poza listą strażnika) pokazał 10–25% — szum hosta (ok. 46%
-    obciążenia). Kandydat: pomiar klatek zawsze naprzemiennie z buildem odniesienia.
-  - **Dwa pytania w jednej odpowiedzi przy otwartym stopie #2** ([[ISSUE-037-time-on-the-tree]]): pytanie o nowe zadania i otwarte kroki stopu #2 w jednej wiadomości — autor
-    odpisał „ok” i nie było wiadomo, na co. Rozstrzygnął stan emulatora (bez śladu kroków) i ponowne pytanie. Kandydat: przy otwartym stopie każde inne pytanie osobno albo
-    z jawnym „na które odpowiadasz?”.
-  - **Przegląd `ui` ze zrzutów znalazł usterkę z poprzedniej pozycji** ([[ISSUE-038-history-on-tv-and-tempo]] → *Dev report* → Found d): dopasowanie poziomu 2 w trybie
-    prezentacji przegrywało porównanie przez zaokrąglenie (z ISSUE-034). `dev` uznał, że „drzewo jest szersze niż ekran”, a test w czcionce testowej granicy nie trafia — przyczynę
-    wyliczył przegląd z geometrii zrzutu (skala, szerokość, położenie środka). Kandydat: przy „nie mieści się” w *Dev report* — liczba, nie opis.
-  - **Strażnik komend złapał pomyłkę agenta** ([[ISSUE-038-history-on-tv-and-tempo]], `ui`): do komendy z `sed` trafiło przez pomyłkę `python -I -` — odmowa przy próbie, nic się
-    nie wykonało ([[ISSUE-031-command-guard]] działa). Kandydat: nic do zmiany, wpis jako dowód mechanizmu.
-  - **Stop #2 „pomiń” we wszystkich krokach** ([[ISSUE-038-history-on-tv-and-tempo]]): trzy kroki odczucia na emulatorze, a odpowiedź jedna. Lista [[ISSUE-032-mvp-install]] →
-    *Hand checks* rośnie o pozycję (siedem wierszy). Kandydat: pytanie na retro, czy kroki odczucia przy pozycjach z telewizorem odkładać od razu do telefonu z telewizorem.
-    **Drugi raz z rzędu** w [[ISSUE-039-connect-two-people]] (bez telewizora): trzy kroki, „Pomiń”. Lista *Hand checks* ma już ponad 40 wierszy.
-  - **Pomiar makiety dołożył pytanie przed stopem #1** ([[ISSUE-039-connect-two-people]], `ui`): AC-2 „ustawia ścieżkę w kadrze” na 360 dp nie zawsze się da (10 ze 105 ścieżek
-    nawet przy 0,4) — stąd F1/F2. Dowód, że kandydaci z pomiarem przed rekomendacją (retro 2, R6) łapią rzeczy, których AC nie widziało; test układu potwierdził liczbę makiety (9
-    ścieżek „4 +”).
-  - **Przegląd `ui` znalazł MAJOR po zielonym przejściu i testach** ([[ISSUE-039-connect-two-people]]): imiona przy kadrze F2 przy 200% — przejście `dev` przy 200% szło krótką
-    ścieżką (Piotr → Zofia), a najszersza ścieżka (Zdzisław) tylko przy 100%. Kandydat: przy regule „mieści się / kadr” przejście 200% na **najgorszym** przypadku z pomiaru, nie na przykładzie.
-  - **Test trafiał w kartę pod listą** ([[ISSUE-039-connect-two-people]], `qa`): `find.text('Wanda …')` znajdował kartę drzewa pod ekranem wyboru, więc dotknięcie szło w inną osobę
-    i siedem testów padło z mylącymi powodami. Kandydat: w testach z kilkoma trasami na ekranie szukać w trasie (`find.descendant(of: ekran)`).
-  - **Strażnik komend złapał `python -I -` drugi raz** ([[ISSUE-039-connect-two-people]], `qa`) — odmowa przy próbie, nic się nie wykonało; dowód mechanizmu jak w ISSUE-038.
-  - **Plan z kick-offu wycofany na stopie #1, po całym projekcie** ([[ISSUE-040-export-is-the-backup]]): `docs`, `ui` i `planning` rozpisały eksport HTML + PDF/A dla
-    rodziny (specyfikacja pliku, makieta z pięcioma pytaniami, przegląd biblioteki PDF), a autor na stopie #1: *„nie zależy mi na estetyce, a na zachowaniu danych”* —
-    eksportem została kopia, bez nowego kodu. Brief zapisał M8/G2 jedenaście dni wcześniej; nikt nie zapytał, po co autorowi eksport **dziś**. Kandydat: przy US
-    prosto z kick-offu `pm` (albo `planning` przed `ui`) zadaje jedno pytanie o cel, zanim ruszy projekt.
-  - **Pole w modelu bez ekranu znalezione przy rozpisaniu** ([[ISSUE-040-export-is-the-backup]] → *Notes*): `is_living` — domyślnie „nie żyje”, nikt go nie ustawia, a
-    specyfikacja eksportu na nim stała. Dowód dla audytu pól modelu ↔ ekrany w [[ISSUE-032-mvp-install]] (retro 3, R9); zapis w [[data-model]].
-  - **Sygnał dla `architect`** — pierwszy ADR zastąpiony po akceptacji ([[ADR-018-export-is-the-backup]]); *In progress*.
-  - Poprzednią listę rozliczyło [[2026-10-13-retro-03]] → *The "Do retro" list*.
+  - Poprzednią listę rozliczyło [[2026-10-16-retro-04]] → *The "Do retro" list*.
 
 ## Parked (waiting on someone outside the session)
 - **cmentarz (którykolwiek z cmentarzy autora)** · przy 3 grobach, które autor zna: (a) dokładność GPS telefonu
@@ -242,175 +198,28 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   aleję; (c) czy przy bramie wisi plan z kwaterami. Odpowiedź w czacie: **same liczby i tak/nie**, bez nazw i
   położeń · warunek obudzenia: **najbliższa wizyta na cmentarzu** · 2026-10-08 ([[SPIKE-001-map-source-offline]] D5;
   mierzy H3 i H9 przed budową pinezek w [[EPIC-002-wizyta]]). Prawdopodobna okazja: wyjazd autora na zaduszki
-  (~2026-11-02, ten sam co rozmowa z babcią — *In progress*). **Krok w terenie [[ISSUE-029-pin-on-site-gps]] (D4, 2026-10-12):** z buildem
-  release na telefonie, na wymyślonym grobie — kropka i jej dokładność przy 3 grobach, pinezka postawiona i poprawiona, tryb samolotowy,
-  czytelność w słońcu ([[NFR-004-czytelnosc-w-sloncu]]); wynik ustawia próg „słaby sygnał” (`weakSignalM`, dziś tymczasowo 15 m) i decyduje
-  o [[ISSUE-030-sector-on-a-visit]]. Odpowiedź w czacie: same liczby i tak/nie. **Ta sama wizyta** sprawdzi w terenie
-  [[ISSUE-029-pin-on-site-gps]] (build release na telefonie, wymyślony grób) — cel autora z 2026-10-12.
+  (~2026-11-02, ten sam co rozmowa z babcią — *In progress*). **Krok w terenie [[ISSUE-029-pin-on-site-gps]] (D4, 2026-10-12):** z MVP
+  **ze sklepu** na telefonie (instalacja najpóźniej 2026-10-29, prawdziwe dane wpisywane w trakcie wyjazdu — retro 4) — kropka i jej dokładność przy
+  3 grobach, pinezka postawiona i poprawiona, tryb samolotowy, czytelność w słońcu ([[NFR-004-czytelnosc-w-sloncu]]); wynik ustawia próg „słaby
+  sygnał” (`weakSignalM`, dziś tymczasowo 15 m) i decyduje o [[ISSUE-030-sector-on-a-visit]]. Odpowiedź w czacie: same liczby i tak/nie. **Ta sama
+  wizyta** sprawdzi w terenie [[ISSUE-029-pin-on-site-gps]] — cel autora z 2026-10-12.
 
 Format wpisu: `źródło (babcia / cmentarz X) · pytanie bez danych rodziny · warunek obudzenia
 (zdarzenie) · data zapytania`. **Odpowiedź z faktami o rodzinie trafia do aplikacji, nie tutaj.**
 
 ## Recently done
-> Tylko wpisy od ostatniego retro ([[2026-10-13-retro-03]], R5). Starsze są w plikach retro → *Archive*:
-> [[2026-10-13-retro-03]] · [[2026-10-08-retro-02]] · [[2026-10-06-retro-01]].
+> Tylko wpisy od ostatniego retro ([[2026-10-16-retro-04]]; zasada R5 z retro 3). Starsze są w plikach retro → *Archive*:
+> [[2026-10-16-retro-04]] · [[2026-10-13-retro-03]] · [[2026-10-08-retro-02]] · [[2026-10-06-retro-01]].
 
-- 2026-10-16 — [[ISSUE-040-export-is-the-backup]] zamknięte — **[[US-006-eksport-dla-rodziny]] zamknięta** (przepisana), **wszystkie US [[EPIC-001-zabezpiecz-i-przepisz]]
-  zamknięte**. **Eksportem jest kopia:**
-  - pierwszy plan — eksport HTML + PDF/A dla rodziny (specyfikacja pliku, makieta, `pdf` 3.12.0 jako ostatnia wersja zgodna z Dartem 3.11) — **wycofany przez autora na
-    stopie #1**: *„nie zależy mi na estetyce, a na zachowaniu danych”*, potem *„tak, wystarczy”* na „kopia jako eksport” → [[ADR-018-export-is-the-backup]] (zastępuje
-    część ADR-001 i ADR-004; LoC: SQLite *Preferred* dla zbiorów danych; GEDCOM 7 — gdy będzie produkt docelowy);
-  - **kopia z dzisiejszym schematem otwarta na PC oficjalnym `age` v1.3.2** i sprawdzona Pythonem bez kodu Grobing: `integrity_check` ok, schemat 12, 14 tabel i pliki
-    zgodne z manifestem, odcisk `d425b2b3242343c7` = ekran; `data-model.md` dostał mapę tabel `grobing.db` (`events`, `family_partners`, `family_children` nie miały nazw);
-  - z aplikacji zniknął wiersz „Eksport dla rodziny” z zaślepką i punkt (5) notki przekazania; [[ustawienia]] v3, słowniczek, NFR-005, EPIC-001, NT-007 zaktualizowane;
-    `is_living` opisane jako nieużywane.
+- 2026-10-16 — **retro 4** ([[2026-10-16-retro-04]]): licznik 10 → 0. Decyzja autora: „wszystko ok” dla R1–R7:
+  - `pm`: jedno pytanie o cel przed `ui` przy US z kick-offu i nowych pomysłach (R1); US bez ISSUE → `docs` rozpisuje przed `ui` (R2);
+  - `ui`, `planning`: makieta jako `file:///`, wybór techniki opisany tym, co autor widzi i robi, zmiana decyzji potwierdzona na makiecie przed
+    specyfikacją (R1);
+  - `dev`: „mieści się” = liczba i najgorszy przypadek, pomiar klatek naprzemiennie z buildem odniesienia, przenikanie grupy = jedna warstwa (R3);
+  - **Hand checks w dwóch listach:** A — dane, bramka przed prawdziwymi danymi; B — odczucie, w trakcie używania, bez bramki (R4, zmienia R8 z retro 3);
+  - `qa`: `flutter test --timeout 120s`, szukanie w trasie (R5); przy otwartym stopie jedno pytanie na raz (R6); `architect` nie teraz, nowy warunek (R7).
 
-  Kroki oddane agentowi (bez nowego ekranu); nic na [[ISSUE-032-mvp-install]] → *Hand checks*. Testy: 773 zielone. Werdykt `qa`: APPROVED (self-check). Licznik retro:
-  9 → **10 — retro 4**. **Sygnał `architect`** (pierwszy ADR zastąpiony) — *In progress*.
-
-- 2026-10-14 — [[ISSUE-039-connect-two-people]] zamknięte — **[[US-011-polacz-dwie-osoby]] zamknięta** (AC-1–AC-4), **wszystkie US [[EPIC-003-zrozumienie]] zamknięte**.
-  **„Połącz dwie osoby” na drzewie:**
-  - rozpisanie `docs` przed `ui` (lekcja z *Do retro*); prior art ([[drzewo]] D43): FamilySearch — ścieżka tylko od „mnie”; Snackbar Androida bierze czas z „Czasu na działanie”
-    (flaga treści, bez sterowania); WCAG SC 4.1.3. Pomiar makiety: 10 ze 105 ścieżek od „Ja” nie mieści się na 360 dp nawet przy 0,4 → pytanie F;
-  - **decyzje autora na stopie #1 (*„Tak”*):** A1 — ikona `link_outlined` · W2 — „Do” w środku, karta trzyma nazwę · F2 — drzewo maleje, aż cała ścieżka się zmieści ·
-    O2 — przy „Od” innym niż Ty dwie linie bez odmiany imion („Piotr Przykładowy → Zofia Wymyślona” / „Wnuczka”) · Y1 — ścieżka ustawia „dziś”; bez „ja” ikony nie ma;
-    Teofil Przykładowski (bez rodziny) w wymyślonej rodzinie;
-  - linia w akcencie po liniach rodziny, 0,7 s na krok, reszta przy 30% i poza czytnikiem; baner po dojściu linii, 4 s albo dłużej z ustawienia; koniec podświetlenia na każde
-    działanie z D49;
-  - **złapane przed stopem:** kadr za wysoko przy klawiaturze, baner zasłaniający ścieżkę przy 200% (`dev`), węzeł baneru dla czytnika (test `qa`), imiona poza kadrem F2 przy 200%
-    (MAJOR przeglądu `ui`) i 5 MINOR → [[drzewo]] v1.17.
-
-  Stop #2 „pomiń”; pięć wierszy na [[ISSUE-032-mvp-install]] → *Hand checks*. Rodzeństwo przyrodnie w słowniku → *Poza tą kolejnością*. Testy: 773 zielone. Werdykt `qa`:
-  APPROVED (self-check, z uwagami). Licznik retro: 8 → 9.
-
-- 2026-10-14 — [[ISSUE-038-history-on-tv-and-tempo]] zamknięte ([[US-010-czas-na-drzewie]] AC-3 — nowe brzmienie). **Historia na telewizorze i tempo lat:**
-  - prior art ([[drzewo]] D38): skala TV Androida (36 sp dla liczb), margines 5% (48 dp), wysokość znaku w kącie widzenia (ISO 9241: min. 16′); rok w 36 sp ma z 3 m 23–46′
-    (32–65″); odtwarzacz Media3 — sterowanie chowa się po 5 s, dotknięcie chowa;
-  - **decyzje autora na stopie #1 (*„Ok”*):** L1 — rok w lewym górnym rogu · B2 — listwa na dole jak w odtwarzaczu (▶, suwak, tempo) i „Zakończ prezentację”, 5 s · V2 — „Wolno” ·
-    „Średnio” · „Szybko” = 5 · 10 · 20 lat/s, domyślnie „Średnio” (od 1880 ok. 15 s) · Z2 — tryb z rokiem z karty (zmienia D37); kandydaci na makiecie `drzewo-038.html` z
-    podglądem „z kanapy”;
-  - „Czas na działanie” z ułatwień dostępu wydłuża sterowanie (kanał `grobing/external`, Android 10+); z czytnikiem sterowanie jest od wejścia i nie znika;
-  - przegląd `ui`: 2 MAJOR poprawione przed stopem — tabliczka roku przechwytywała dotyk, a dopasowanie poziomu przy 200% przegrywało przez zaokrąglenie (usterka z ISSUE-034,
-    poprawka poza pierwotnym zakresem, zgłoszona na stopie #2); 3 odstępstwa `dev` przyjęte → [[drzewo]] v1.15, [[style-b]] v1.31; płynność w szumie buildu odniesienia.
-
-  Stop #2 „pomiń” we wszystkich krokach; siedem wierszy na [[ISSUE-032-mvp-install]] → *Hand checks*. Imiona na telewizorze poniżej progu czytelności → wejście do
-  [[2026-10-14-opowiesc-rodziny-i-wieniec]]. Testy: 754 zielone. Werdykt `qa`: APPROVED (self-check, z uwagami). Licznik retro: 7 → 8.
-
-- 2026-10-14 — [[ISSUE-037-time-on-the-tree]] zamknięte — **[[US-010-czas-na-drzewie]] zamknięta** (AC-1–AC-3). **Czas na drzewie — suwak w karcie:**
-  - prior art ([[drzewo]] D31): TimeNets szacuje brakujące daty z rodziny i pokazuje niepewność; liczby okna z Gramps (20 lat między pokoleniami, 110 lat życia);
-    „//” rozwodu z genogramu (D35); [[FR-004-data-z-dopiskiem]] pokryte w części suwaka;
-  - **decyzje autora na stopie #1 (*„tak”*):** N3 — przerywany obrys „nie wiadomo, czy w tym roku żyje”, znicz dopiero na pewno · C1 — pusty pierścień „Ja” przed
-    narodzinami · T2 — suwak od dekady przed najwcześniejszą datą (tu 1860), AC-3 przeredagowane · E3 — „//” od końca związku, także na „dziś” · R2 — przy
-    „Usuń animacje” dekada co sekundę; kandydaci na makiecie `drzewo-037.html`;
-  - wymyślona rodzina z datami jak w notatkach (ok., między, przed, po, bez daty, zgon bez daty, trzy śluby bez daty) — układ drzewa bez zmian (D3);
-  - **złapane na emulatorze:** warstwa przezroczystości na każdej osobie (▶: 14,6% → 7–9% wolnych klatek po wspólnych warstwach i timerze na rok) i suwak skaczący pod
-    palcem; przegląd `ui`: 0 BLOCKER, 0 MAJOR, 3 MINOR poprawione przed stopem → [[drzewo]] v1.13, [[style-b]] v1.29.
-
-  Stop #2 „ok” ze śladem na urządzeniu; autor: *„dla mnie za szybko”* → tempo w [[ISSUE-038-history-on-tv-and-tempo]] (następna); animacje związków, zbliżenia i wieniec
-  przy portrecie → [[2026-10-14-opowiesc-rodziny-i-wieniec]] (po instalacji MVP). Trzy wiersze na [[ISSUE-032-mvp-install]] → *Hand checks*. Testy: 742 zielone.
-  Werdykt `qa`: APPROVED (self-check, z uwagami). Licznik retro: 6 → 7.
-
-- 2026-10-14 — [[ISSUE-036-cast-from-the-app]] zamknięte — **[[US-009-drzewo-od-osoby]] zamknięta** (AC-8). **„Przesyłaj na telewizor” w drzewie:**
-  - prior art ([[drzewo]] D29, źródła SDK Androida): aplikacja bez Google Cast może tylko **otworzyć systemowy ekran przesyłania** („Google Cast”, ustawienia
-    telefonu) — okienka z listą nad treścią jak w Zdjęciach nie da się zrobić, a samo przesyłanie włącza system;
-  - **decyzja autora na stopie #1 (*„tak”*): P2** — jedna ikona `cast_outlined` zamiast ikony telewizora: ekran systemu → wstecz → tryb prezentacji bez podpowiedzi;
-    telefon bez tego ekranu → od razu tryb z podpowiedzią ([[drzewo]] D30); kandydaci P1–P3 na makiecie ze zrzutów z emulatora;
-  - krok 0 `dev`: powrót rozpoznawany po `inactive` → `resumed`, bo szybki powrót nie chowa aplikacji (*Do retro*); AC-2 sprawdzone jednorazową sondą bez ekranu
-    przesyłania; przejście po powrocie ok. 1,1 s z chwilą niedopasowanego drzewa (pamięć grafiki zwolniona po zatrzymaniu) — obserwacja, na telefon;
-  - przegląd `ui`: 0 BLOCKER, 0 MAJOR, 2 MINOR zamknięte; odstępstwa `dev` przyjęte → [[drzewo]] v1.11. Bez sieci, uprawnień i zależności (NFR-005).
-
-  Stop #2 „ok” — oba kroki ze śladem na urządzeniu; pięć wierszy na [[ISSUE-032-mvp-install]] → *Hand checks*. Testy: 728 zielonych. Werdykt `qa`: APPROVED
-  (self-check, z uwagami). Licznik retro: 5 → 6.
-
-- 2026-10-14 — [[ISSUE-035-tree-names-shrink-my-voice]] zamknięte ([[US-009-drzewo-od-osoby]] AC-5). **Karta drzewa mówi Twoim głosem:**
-  - „Moja babcia”, „Mój stryj (brat taty)”, „Babcia mojej żony”, „Brat wujeczny mojego taty”, „to ja”, „nie wiadomo jeszcze, kim jest dla mnie”; opis dla
-    czytnika ten sam. Zdania aplikacji („Wybierz, która osoba to Ty”, „Twoje cmentarze”) zostają w drugiej osobie — [[drzewo]] D28, nowa zasada „kto
-    mówi” w [[style-b]] reguła 7 (źródło: Microsoft Writing Style Guide → Person; FamilySearch „My Grandmother”);
-  - **imiona przy oddalaniu zostają I2** — na stopie #1 autor odpowiedział na sekcje makiety „1 I2” (wcześniej I1 na stopie #1 ISSUE-034); zapis I1 w
-    specyfikacji i wytycznych cofnięty przed budową ([[drzewo]] D27). Skutek: tryb prezentacji przy tekście 200% pokazuje 13 z 20 imion;
-  - 2 pliki kodu, bez zmian w rysowaniu; przegląd `ui`: 0 BLOCKER, 0 MAJOR, 1 MINOR spoza pozycji (ślad w dół pod tabliczką — *In progress* → *Poza tą
-    kolejnością*).
-
-  Stop #2 „ok” bez śladu na urządzeniu (autor: „zapisz bez śladu”); trzy wiersze na [[ISSUE-032-mvp-install]] → *Hand checks*. Testy: 727 zielonych.
-  Werdykt `qa`: APPROVED (self-check, z uwagami). Licznik retro: 4 → 5.
-
-- 2026-10-14 — [[ISSUE-034-tree-presentation-mode]] zamknięte ([[US-009-drzewo-od-osoby]] AC-8). **Tryb prezentacji drzewa — obraz na telewizor
-  przez systemowe przesyłanie ekranu:**
-  - ikona telewizora w pasku drzewa → poziomo, bez pasków systemu i przycisków, poziom 2 dopasowany do ekranu; dotknięcie osoby — ona w środku;
-    pusty dotyk → na 3 s „Zakończ prezentację”; wstecz też kończy; po wyjściu pion, ta sama osoba, karta. Bez sieci i nowych uprawnień;
-  - krok 0: `immersiveSticky` działa przy `targetSdk 36` (dokumentacja Fluttera w SDK twierdziła, że nie) — kanał natywny niepotrzebny;
-  - **błąd złapany na emulatorze:** paski chowane w trakcie obrotu zostawiały aplikację w pionowym rozmiarze w poziomym oknie (6 z 8 wejść przy
-    200%) — paski dopiero po obrocie, 16 z 16; przeciągnięcie od krawędzi przesuwało drzewo — pasy 24 dp przy czterech krawędziach;
-  - przegląd `ui`: 0 BLOCKER, 0 MAJOR, 2 MINOR poprawione; 6 odstępstw przyjętych → [[drzewo]] v1.8 (D25, D26 — podpowiedź mówi o funkcji, bo
-    kafelek to „Przesyłanie” na Pixelu, „Smart View” u Samsunga);
-  - **decyzje autora:** stop #1 — I1 i „Moja” (osobna pozycja [[ISSUE-035-tree-names-shrink-my-voice]]); stop #2 — chciał „jak w YouTube”:
-    zostaje przesyłanie ekranu (jego telewizor to odbiornik Google Cast), wejście z aplikacji → [[ISSUE-036-cast-from-the-app]], casting — po MVP.
-
-  Stop #2 „ok” — krok 1 ze śladem, krok 2 częściowo; sześć wierszy na [[ISSUE-032-mvp-install]] → *Hand checks*. Testy: 727 zielonych. Werdykt
-  `qa`: APPROVED (self-check, z uwagami). Licznik retro: 3 → 4.
-
-- 2026-10-13 — [[ISSUE-033-tree-from-a-person]] zamknięte ([[US-009-drzewo-od-osoby]] AC-1–AC-7). **Zakładka Drzewo działa — od „Ja”, z poziomami:**
-  - wymyślona rodzina o kształcie prawdziwej (106 osób, debug i profile — przycisk w „Stanie danych”); układ = port makiety SPIKE-002, liczby
-    6 / 20 / 66 / 99 identyczne z M1; bez nowej zależności;
-  - dotknięcie stawia osobę w środku, oddalanie i + / − dokładają poziomy (pigułka „Poziom 3 · 66 osób”), podwójne dotknięcie przybliża,
-    ślad dalszej rodziny na zewnątrz od środka; drzewo wraca do kadru, gdy ucieknie;
-  - karta: „Twoja ciotka (siostra taty)”, „Siostra cioteczna babci Twojej żony” — słownik ISSUE-025 z odcinkami liczonymi od drugiej osoby
-    ([[drzewo]] D12); „Pokaż w drzewie” w widoku osoby; tekst 200%;
-  - **decyzje autora na stopie #1 (*„Tak”*):** I2 (imiona czytelne, nakładające się chowają), G1 („Twoja babcia”), dwie pozycje ([[ISSUE-034-tree-presentation-mode]]
-    następna), wymyślone dane za `!kReleaseMode`;
-  - przejścia między poziomami: 2–8% wolnych klatek na emulatorze z GPU (SPIKE-002: do 55%) — po zamianie cieni pod imionami na tabliczkę i
-    jednej warstwie przezroczystości;
-  - przegląd `ui`: 1 MAJOR (poświata nad okręgiem zabarwiała „Ja” i zdjęcia) + 3 MINOR — poprawione przed stopem; poświata poprawiona też w
-    mini-drzewie i portrecie osoby („ok” autora na stopie #2) — [[style-b]] v1.27; [[drzewo]] v1.7.
-
-  Stop #2 „ok” — kroki 1–2 ze śladem na emulatorze, krok 3 bez śladu; dwa wiersze na [[ISSUE-032-mvp-install]] → *Hand checks*. Testy: 721
-  zielonych. Werdykt `qa`: APPROVED (self-check, z uwagami). Licznik retro: 2 → 3.
-
-- 2026-10-13 — [[SPIKE-002-tree-on-a-phone]] zamknięty (H4). **Drzewo ok. 100 osób czyta się od osoby, z przesuwaniem — całości naraz nie:**
-  - prior art ze źródłami ([[drzewo]] D8: TimeNets, drzewa podwójne, FamilySearch) — rodzina to krata, pokazuje się wycinek według zainteresowania,
-    czyli poziomy z D2;
-  - makieta kandydatów na 106 wymyślonych osobach; pomiar: bez przesuwania mieści się tylko poziom 1, poziomy rosną 6 → 20 → 66 → 99 → 106;
-  - **decyzje autora na stopie #1 (*„Tak”*):** K2 bez całego drzewa, S2 (oddalanie odsłania dalszą rodzinę, 4 progi), ślad dalszej rodziny,
-    telewizor przez „Przesyłaj ekran” + tryb prezentacji ([[drzewo]] v1.3);
-  - prototyp we Flutterze poza repo: własny układ wygrał z `graphview` w każdej mierze (bez ADR, bez nowej zależności); przesuwanie płynne,
-    przejście między poziomami szarpie na emulatorze, tekst 200% wymaga reguły mini-drzewa (*Findings*);
-  - EPIC-003 rozpisany: [[US-009-drzewo-od-osoby]] → [[US-010-czas-na-drzewie]] → [[US-011-polacz-dwie-osoby]]; słownik nazw złożonych w zakresie
-    (decyzja autora 2026-10-09).
-
-  Stop #2 „ok” — kroki 1–2 ze śladem na emulatorze, zadanie na czas „pomiń”; trzy wiersze na [[ISSUE-032-mvp-install]] → *Hand checks*.
-  Werdykt `qa`: APPROVED (self-check, z uwagami). Prototyp usunięty, `grobing-code` bez zmian. Licznik retro: 1 → 2.
-
-- 2026-10-13 — [[ISSUE-031-command-guard]] zamknięte (retro 3, R1). **Strażnik komend: mechanizm zamiast pamięci:**
-  - hook `command-guard.ps1` przy każdej komendzie Bash i PowerShell — z gita przechodzi tylko **lista dozwolonych**: odczyt,
-    `git add` jawnych plików, `git commit` bez `--amend`/`-a`/`--no-verify`, `git push origin main`. Reszta — także `reset`,
-    `stash`, `fetch`, `revert`, `clean`, `gh` — dostaje odmowę przy próbie, również z `-C`/`-c`, w `&&`, `$(…)`, `bash -c`,
-    `powershell -Command`;
-  - **Python ze skryptem z wejścia** (`python -`, `python -I -`, REPL) — odmowa z podpowiedzią „zapisz skrypt i uruchom plik”;
-  - tekst w cudzysłowach i heredoc to tekst: `grep 'git reset'` i opis commita przechodzą;
-  - **komendy „po go”** (`git init`, `git remote`, `gh`) wykonuje autor w terminalu VS Code — agent podaje komendę
-    (`git-autonomy-boundary.md`);
-  - **luka w strażniku danych rodziny zamknięta:** przy przekroczeniu `timeout` przepuszczał po cichu — teraz oba hooki mają
-    `"onFailure": "block"`.
-
-  Testy: strażnik komend 369/369, strażnik danych rodziny 150/150 bez regresji; odmowy sprawdzone na żywo w Bash i PowerShell.
-  Koszt ok. 0,4–0,5 s na komendę, równolegle ze strażnikiem danych rodziny. Kroki oddane agentowi (pozycja bez ekranu); nic na
-  listę [[ISSUE-032-mvp-install]] → *Hand checks*. Werdykt `qa`: APPROVED (self-check, z uwagami). Licznik retro: 0 → 1.
-
-  **Dla autora:** `claude` 2.1.238 w terminalu nie zna `onFailure` — sesje idą przez rozszerzenie VS Code 2.1.296, które go zna.
-
-- 2026-10-13 — **retro 3** ([[2026-10-13-retro-03]]): licznik 10 → 0. Decyzja autora: „tak” dla R1–R10:
-  - **hook na zakazane komendy** (Python ze skryptem z wejścia, komendy git spoza listy) → [[ISSUE-031-command-guard]], następna (R1);
-  - `qa`: testy dostępności dotyku `meetsGuideline` przy każdym ekranie (R2), logcat bez współrzędnych i adresów przy pozycji z
-    siecią (R7);
-  - `dev`: przejście AC ze stanami z *States*, tekstem 200% na 360 dp i pomiarem klatki (R3); `ui`: tryb discovery, makieta „gdzie się
-    dotyka”, przegląd zapisuje przyjęte odstępstwa (R4); `planning`: „przed czym chronimy?” (R7); przykłady tylko z wymyślonych
-    rdzeni (R7);
-  - twardy stop „fakt o rodzinie bez źródła” usunięty (R6);
-  - **ten plik schudł** (R5): *Recently done* trzyma tylko wpisy od ostatniego retro;
-  - **jedna lista rzeczy niesprawdzonych w ręce** i audyt pól modelu ↔ ekrany przed instalacją → [[ISSUE-032-mvp-install]]
-    (`draft`; R8, R9);
-  - [[ISSUE-003-setup-quality-critic]], [[ISSUE-004-setup-freshness-gate]], [[ISSUE-005-setup-session-start-state]] → `deferred` z
-    warunkami obudzenia (R10).
-
-  Na cztery pytania o fakty autor nie odpowiedział — zapisane jako „bez odpowiedzi”, wracają tam, gdzie od nich coś zależy
-  (retro 3 → *Load-bearing facts*).
+  Fakty: telefon Motorola moto g82 5G, Android 13; konto Play to samo co przy Friendsheet; zdjęcia notatek przy autorze — pytanie zamknięte decyzją autora.
+  **W tej samej sesji** decyzje produktowe: Google Play (testy wewnętrzne, klucz od Google), instalacja najpóźniej 2026-10-29, kolejka
+  [[ISSUE-041-google-play-and-safe-update]] … [[ISSUE-046-icons]] → [[ISSUE-032-mvp-install]], odrzucone propozycje — *In progress* i retro 4 →
+  *Product decisions*.

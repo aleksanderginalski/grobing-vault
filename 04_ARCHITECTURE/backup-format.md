@@ -4,7 +4,7 @@ type: architecture
 status: active
 source: "ADR-004 pkt 1-3 · ISSUE-008 D2 (format v1, 2026-10-06)"
 created: 2026-10-06
-updated: 2026-10-08
+updated: 2026-10-16
 ---
 
 # Format kopii — v1
@@ -90,7 +90,9 @@ sprawdza manifest (rozmiary, SHA-256, liczby, odcisk).
   znikają z kopii. Po zmianie telefonu stary trzeba wyłączyć z kopii albo skonfigurować na nim kopię od
   nowa.
 - **Brak historii kopii:** plik jest nadpisywany, więc kopia zepsutych danych zastępuje dobrą. Poprzednia
-  wersja istnieje najwyżej w historii wersji Dysku — **niesprawdzone** (pytanie do retro).
+  wersja istnieje najwyżej w historii wersji Dysku — **niesprawdzone**. Przy aktualizacji ze złą migracją to ryzyko utraty danych: kopia
+  zamawia się zaraz po migracji. Sprawdzenie i ewentualna „kopia sprzed aktualizacji” → [[ISSUE-041-google-play-and-safe-update]] (retro 4,
+  2026-10-16).
 
 ## Evidence
 Zgodność z oficjalnym CLI `age` v1.3.2 w obie strony, 92 oficjalne wektory testowe C2SP i plik kopii z

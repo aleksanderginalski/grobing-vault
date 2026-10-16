@@ -42,3 +42,8 @@ Słowa autora: *„Chciałbym móc w wyborze portretu dla niej customowy wieniec
 ## Kolejność — decyzja autora 2026-10-14 (*„ok”*)
 Propozycja łańcucha, przyjęta: [[ISSUE-038-history-on-tv-and-tempo]] zaraz po [[ISSUE-037-time-on-the-tree]]; c) i d) — po instalacji MVP ([[ISSUE-032-mvp-install]]),
 bo prawdziwe dane czekają na instalację, a wartość z briefu §2 to notatki *„uzupełniane, póki babcia może opowiedzieć”*.
+
+## Zmiana 2026-10-16 — d) przeniesione do backlogu (decyzja autora w `/pm`)
+**d) jest teraz [[ISSUE-044-family-wreaths]]** — przed instalacją, nie po niej (*„tak róbmy to”*, [[2026-10-16-retro-04]] → *Product decisions*). Autor
+doprecyzował definicję: wieńce **symbolizujące rodziny, z których wywodzi się osoba, domyślnie dzieci przejmują po ojcu** (zamiast „według nazwiska”).
+Pytania 1–5 z d) przeszły do pozycji. **c) zostaje tutaj** — po instalacji MVP, jak w decyzji z 2026-10-14.
