@@ -4,7 +4,7 @@ type: architecture
 status: active
 source: "ADR-004 pkt 1-3 · ISSUE-008 D2 (format v1, 2026-10-06)"
 created: 2026-10-06
-updated: 2026-10-16
+updated: 2026-10-17
 ---
 
 # Format kopii — v1
@@ -41,7 +41,7 @@ updated: 2026-10-16
 ## Files inside
 | Ścieżka | Co to jest |
 |---|---|
-| `grobing.db` | migawka bazy SQLite (`VACUUM INTO`) — schemat: `data-model.md`, wersja w `PRAGMA user_version`. Od schematu v6 rodziny z twierdzeniami przy rodzinie i łączu dziecka ([[ADR-011-relation-claims-family-and-child-link]]) — w bazie i w odcisku danych; od schematu v13 zamieszkania (`residences`) z miejscem słowami — czytają się bez listy miejsc, której kopia nie zawiera ([[ADR-020-residences-place-in-the-row]]); od schematu v14 opłata grobu ważna do (`graves.paid_until_*`, [[ISSUE-043-grave-paid-until]]); format v1 bez zmian |
+| `grobing.db` | migawka bazy SQLite (`VACUUM INTO`) — schemat: `data-model.md`, wersja w `PRAGMA user_version`. Od schematu v6 rodziny z twierdzeniami przy rodzinie i łączu dziecka ([[ADR-011-relation-claims-family-and-child-link]]) — w bazie i w odcisku danych; od schematu v13 zamieszkania (`residences`) z miejscem słowami — czytają się bez listy miejsc, której kopia nie zawiera ([[ADR-020-residences-place-in-the-row]]); od schematu v14 opłata grobu ważna do (`graves.paid_until_*`, [[ISSUE-043-grave-paid-until]]); od schematu v15 rody (`clans`) i wybór rodu przy osobie (`persons.clan_id`, `persons.no_wreath`) — wieniec liczy się z nich przy odczycie, obrazów wzorów kopia nie niesie, bo są w aplikacji ([[ADR-021-clans-choice-at-the-person]]); format v1 bez zmian |
 | `media/<ścieżka>` | każdy plik zdjęcia z prywatnego katalogu aplikacji, ścieżka względna jak w tabeli `media`: `groby/…` (nagrobki) i od schematu v4 `zdjecia/…` (zdjęcia osób). Łącza osoba–zdjęcie są w tabeli `person_media` w `grobing.db` ([[ADR-009-person-photos-record-and-link]]), od schematu v5 z kadrem profilowego w kolumnach `crop_*` ([[ADR-010-profile-photo-crop-pixels]]) — kadr jest w bazie i w odcisku danych, plik zdjęcia się nie zmienia; format v1 bez zmian |
 | `manifest.json` | opis kopii (niżej) — ostatni, bo sumy liczone są w tym samym przebiegu, w którym plik trafia do archiwum |
 

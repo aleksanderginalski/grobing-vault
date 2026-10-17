@@ -1,10 +1,10 @@
 ---
 screen: "Osoba — widok osoby (kim była, rodzina, jak łączy się ze mną, daty, pochówek, zdjęcia)"
-items: ["[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-024-person-view]]", "[[ISSUE-027-cemetery-map-plan-photo-states]]", "[[US-009-drzewo-od-osoby]]", "[[ISSUE-042-places-of-residence]]"]
+items: ["[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-024-person-view]]", "[[ISSUE-027-cemetery-map-plan-photo-states]]", "[[US-009-drzewo-od-osoby]]", "[[ISSUE-042-places-of-residence]]", "[[ISSUE-044-family-wreaths]]"]
 us: "M5 (brief §5, widok 4) — [[ISSUE-024-person-view]] AC-1…AC-5 (AC-6 → drzewo, v2.1)"
 journey-step: "UJ-001 · 5 (widok 4, M5, R4 prawy)"
 mockup: "2026-10-09: issue-024-widok-osoby.html (ISSUE-024; runda 1 stopu #1 — W2, łańcuch po imionach, pusta sekcja „Zdjęcia”) — katalog tymczasowy sesji, ścieżka w ISSUE-024 → Implementation plan · 2026-10-08: grobing-prototyp.html (SPIKE-004, panel 4)"
-updated: 2026-10-16
+updated: 2026-10-17
 ---
 
 # Osoba — specyfikacja
@@ -63,6 +63,10 @@ updated: 2026-10-16
 >
 > **Wersja 2.5 (2026-10-16, `ui` przed planem [[ISSUE-042-places-of-residence]]):** nowa sekcja **„Miejsca zamieszkania”** (element 9a) po „Datach”,
 > przed „Zdjęciami”; tylko do oglądania, a bez miejsc — „Dodaj miejsce” jak „Dodaj zdjęcie” (D20). Elementy, stany i decyzje: [[zamieszkanie]].
+>
+> **Wersja 2.6 (2026-10-17, `ui` przed planem [[ISSUE-044-family-wreaths]], decyzja autora na prototypie):** **wieniec rodu wokół portretu**
+> (element 3) i **podpis „Ród: …”** pod latami (element 4a). Zmienia D3: gałązki wracają jako wieniec, a zdjęcie w tle zostaje. Wieniec, jego
+> liczenie i wybór rodu: [[wieniec]].
 
 ## Purpose
 Zbierający stoi przy grobie albo przegląda notatki i chce wiedzieć, **kim była ta osoba i jak łączy się z nim** (UJ-001
@@ -101,8 +105,9 @@ wejście, ✎ ([[style-b]] reguła 15).
 |---|---|---|---|---|---|---|
 | 1 | **Pasek** na tle: wstecz; po prawej ✎ (`edit_outlined`, akcent, cel 48 dp, `tooltip` „Popraw wpis”). Bez tytułu — imię niesie nagłówek (4) | pasek | wstecz; ✎ → [[wpis-osoby]] „poprawa” (D15) | — | — | R4 · [[style-b]] reguła 15 · D1 |
 | 2 | **Pasmo tła — zawsze** (v2.3, D21) pod paskiem, na pełną szerokość, 140 dp, bez zaokrąglenia. **Z tłem:** zdjęcie przycięte ze środka, nic na nim (reguła 14). **Bez tła:** zwykłe tło — pasmo w kolorze powierzchni, w prawym dolnym rogu (12 dp od krawędzi) ikona `add_photo_alternate_outlined` w akcencie (24 dp) jako znak, że pasmo da się dotknąć (reguła 14: puste miejsce na zdjęcie tylko jako przycisk). Całe pasmo to jeden cel, a ikona ma `tooltip` „Zdjęcie w tle”. Opis dla czytnika: „Zdjęcie w tle — wybierz”, bez tła — „Zdjęcie w tle: brak — wybierz” | pasmo-przycisk | → wybór tła ([[zdjecia-osoby]] v1.4) | bez tła | — | **decyzja autora** (SPIKE-004 D17; stop #2, D21) · D3 |
-| 3 | **Portret:** okrąg 104 dp z pierścieniem 2 dp w akcencie i delikatną poświatą, wyśrodkowany; **z tłem nachodzi do połowy na jego dolną krawędź**. Profilowe w kadrze łącza ([[kadr-profilowego]]), bez kadru — ze środka. Opis dla czytnika: „Zdjęcie profilowe — otwórz”. **Portret zawsze nachodzi na dolną krawędź pasma** (v2.3). **Bez zdjęcia:** okrąg 104 dp na powierzchni z obrysem 2 dp (obrys, nie akcent: to nie zdjęcie) i inicjałami (34 sp, półgrube, tekst pomocniczy), **bez akcji** i poza czytnikiem — jak węzeł bez zdjęcia w mini-drzewie (6); miejsce na dodanie zdjęć jest na dole (10) | zdjęcie / inicjały | zdjęcie → podgląd profilowego w trybie oglądania | — | — | R4 · **decyzja autora** (SPIKE-004 D14; W2 na stopie #1) · D2 |
-| 4 | **Imię i nazwisko z „z d.”** (22 sp, półgruby, tekst, wyśrodkowane, zawijane bez ucinania) · **lata życia** (16 sp, tekst pomocniczy; [[style-b]] reguła 6: `1925–2004`, `ok. 1890 – 14.03.1951`, `ur. 1952`, `zm. 1951`, bez dat — nic). Odstęp 12 dp od portretu | tekst | — | — | — | R4 |
+| 3 | **Portret:** okrąg 104 dp z pierścieniem 2 dp w akcencie i delikatną poświatą, wyśrodkowany; **z tłem nachodzi do połowy na jego dolną krawędź**. Profilowe w kadrze łącza ([[kadr-profilowego]]), bez kadru — ze środka. Opis dla czytnika: „Zdjęcie profilowe — otwórz”. **Portret zawsze nachodzi na dolną krawędź pasma** (v2.3). **Bez zdjęcia:** okrąg 104 dp na powierzchni z obrysem 2 dp (obrys, nie akcent: to nie zdjęcie) i inicjałami (34 sp, półgrube, tekst pomocniczy), **bez akcji** i poza czytnikiem — jak węzeł bez zdjęcia w mini-drzewie (6); miejsce na dodanie zdjęć jest na dole (10). **Wieniec rodu** (v2.6): gdy osoba ma ród, pod portretem leży wieniec — płótno 208 dp, portret w jego (0,50; 0,434), górą wchodzi na pasmo tła, liście z obwódką w kolorze tła; bez akcji i poza czytnikiem (ród czyta 4a). Wymiary, kolor, pół na pół: [[wieniec]] A, C1 | zdjęcie / inicjały (+ wieniec) | zdjęcie → podgląd profilowego w trybie oglądania | — | — | R4 · **decyzja autora** (SPIKE-004 D14; W2 na stopie #1) · D2 |
+| 4 | **Imię i nazwisko z „z d.”** (22 sp, półgruby, tekst, wyśrodkowane, zawijane bez ucinania) · **lata życia** (16 sp, tekst pomocniczy; [[style-b]] reguła 6: `1925–2004`, `ok. 1890 – 14.03.1951`, `ur. 1952`, `zm. 1951`, bez dat — nic). Odstęp 12 dp od portretu; **z wieńcem — 8 dp od dolnej krawędzi wieńca** (99 dp pod środkiem portretu, v2.6) | tekst | — | — | — | R4 · [[wieniec]] C3 |
+| 4a | **Podpis rodu** (v2.6): „Ród: Wymyślscy”, przy kobiecie po ślubie „Ród: Zmyśleńscy · po mężu Wymyślscy” (14 sp, tekst pomocniczy, wyśrodkowany, zawija się, 4 dp pod latami). Bez wieńca — nic | tekst | — | — | — | [[wieniec]] C2, D11, D14 |
 | 5 | **„Kim była”** w całości (16 sp, tekst, wyśrodkowane, odstęp 12 dp). Bez „kim była” — nic. **Bez linii źródła** (D10) | tekst | — | — | — | R4 · D16 |
 | 6 | **Rodzina** — nagłówek sekcji (16 sp, półgruby) z ikoną `people_outline` w akcencie, jak w formularzu ([[wpis-osoby]] 9a). **Mini-drzewo jednego poziomu** (D5, D12): rząd rodziców nad osobą; w środku **osoba** z pierścieniem 2 dp w akcencie i poświatą, obok partnerzy (jeden — po prawej; dwa — wcześniejszy związek po lewej, późniejszy po prawej; kolejność pierwszej daty związku, bez dat — kolejność wpisania; trzeci i dalsi — dalej po prawej); **dzieci pod swoim związkiem** według daty urodzenia (rodzina jednego rodzica — pod osobą); przy dwóch związkach z dziećmi dzieci lewego kończą się przed osobą, a prawego zaczynają za nią, więc ich szyny się nie stykają. **Węzeł** (miejsce 80 dp, przy większym tekście systemowym szersze w tej samej proporcji, najwyżej 160 dp — v2.2): okrąg 44 dp (profilowe w kadrze albo inicjały na powierzchni z obrysem), pod nim **rola** (13 sp, tekst pomocniczy: „Matka”, „Ojciec”, „Mąż”, „Żona”, „Partner”, „Partnerka”, „Syn”, „Córka”; bez płci — „Rodzic”, „Małżonek” (małżeństwo), „Partner” („razem”), „Dziecko” — [[rodzina]] *Role names*; v2.2) i **imię** (13 sp, półgruby, tekst, jedna linia, ucięte „…”). **Linie jak w [[drzewo]]:** para — pozioma, kolor partnerów, ciągła przy małżeństwie, przerywana 5/4 przy „razem”; rodzic–dziecko — kolor relacji rodzic–dziecko, z połowy linii pary w dół, poziomą szyną do każdego dziecka. Bez zniczy (mini-drzewo nie ma czasu). **Szersze niż ekran → przewija się w poziomie**, na starcie osoba na środku, a ucięty węzeł przy krawędzi mówi, że jest dalej. Opis węzła dla czytnika: „Matka: Anna Wymyślona, 1897–1970 — otwórz”; linie poza czytnikiem. **„Pokaż w drzewie”** (v2.4, D11): pod mini-drzewem, do lewej, przycisk tekstowy w akcencie z ikoną `account_tree_outlined` (jedyne działanie dalej w sekcji — [[style-b]] reguła 1), cel 48 dp. Jest tylko wtedy, gdy osoba ma rodzinę — bez rodziny drzewo pokazałoby ją samą. Prowadzi na zakładkę Drzewo z tą osobą w środku, na poziomie 2 ([[drzewo]] D15). **Bez rodziny:** „Rodziny jeszcze nie ma. Dodasz ją pod ✎.” (16 sp, tekst pomocniczy) | mini-drzewo + przycisk tekstowy | węzeł krewnego → jego widok; węzeł osoby — bez akcji; „Pokaż w drzewie” → [[drzewo]] | — | — | R4 · **decyzja autora** (SPIKE-004 D15, D16, D18) · AC-2 · D4, D5, D12 |
 | 7 | **Jak łączy się ze mną** — nagłówek (16 sp, półgruby) z ikoną `link` w akcencie (R4; D18). **Łańcuch od „Ja” — same imiona i relacja każdego kroku** (v2.1, D13'): wiersze ≥ 48 dp (v2.2) — okrąg 40 dp z pierścieniem 2 dp w akcencie nad zdjęciem (profilowe albo inicjały; **„Ja” zawsze jako znak „Ja”** w akcencie, jak w [[osoby]] D4) i podpis (16 sp, półgruby): **relacja do poprzedniej osoby i imię**, jak karta ścieżki w R3 — „Ja” · „Mama Anna” · „Jej mama Maria”; „Ja” · „Żona Kasia” · „Jej tata Marek” · „Jego siostra Ewa”. Relacje jednego kroku z płci osoby w wierszu: mama / tata, córka / syn, siostra / brat, żona / mąż (małżeństwo), partnerka / partner („razem”); bez płci — rodzic, dziecko, rodzeństwo, małżonek (małżeństwo) albo partner („razem”; v2.2). Zaimek „jej” / „jego” według rodzaju gramatycznego relacji w wierszu wyżej — mama, córka, siostra, żona, partnerka → „jej”; tata, syn, brat, mąż, partner, a także neutralne rodzic, dziecko, rodzeństwo → „jego” (rodzaj słowa, nie płeć osoby); pierwszy krok, po „Ja” — bez zaimka. **Bez nazw złożonych** („babcia”, „stryj”, „siostra cioteczna”) — te są w [[drzewo]] przy łączeniu dwóch osób (D6). Okręgi połączone pionową linią 2 dp w akcencie, bez przerw między okręgami (v2.2). Wiersze krewnych prowadzą do ich widoków; ostatni wiersz to ta osoba — bez akcji. Ścieżka: najkrótsza w grafie osoba–rodzina (krawędzie: rodzic, dziecko, rodzeństwo — dzieci tej samej rodziny, para); przy równej — mniej krawędzi „para”; dalej stała kolejność `id` (ISSUE-025 D2); liczona przy otwarciu, nie zapisywana ([[data-model]]). **Bez ścieżki:** „Nie wiadomo jeszcze, jak łączy się z Tobą — w drzewie brakuje rodziny między wami.” (16 sp, tekst pomocniczy). **Bez „ja”:** „Aplikacja nie wie jeszcze, która osoba to Ty.” i przycisk tekstowy w akcencie „Wybierz, która osoba to Ty”. **To „ja”** — sekcji nie ma | łańcuch | wiersz krewnego → jego widok; „Wybierz…” → wybór „ja” | najkrótsza ścieżka | — | R4 · R3 (karta ścieżki) · M5 · AC-3 · **decyzja autora** (stop #1) · D6, D13' |
@@ -126,6 +131,7 @@ Odstępy ([[style-b]] reguła 5): margines boczny 16 dp, między sekcjami 24 dp,
 | Stan | Co widać |
 |---|---|
 | pełny | 1–10 |
+| z wieńcem rodu (v2.6) | 3 z wieńcem, 4 niżej o ok. 43 dp, 4a „Ród: …”; stany wieńca (pół na pół, bez rodu): [[wieniec]] *States* |
 | bez tła, z portretem | 1, pasmo w kolorze powierzchni z ikoną, portret na jego krawędzi, 4–10 |
 | bez zdjęć | pasmo jak wyżej, okrąg z inicjałami na jego krawędzi; 10: „Ta osoba nie ma jeszcze zdjęć.” + „Dodaj zdjęcie” |
 | bez rodziny | 6: „Rodziny jeszcze nie ma. Dodasz ją pod ✎.”; 7: bez ścieżki |
@@ -194,7 +200,8 @@ n/a — ekran do oglądania. Poprawa idzie przez [[wpis-osoby]] (✎).
 - **Reguła 14:** portret — okrąg w kadrze łącza; tło — prostokąt na pełną szerokość, przycięty ze środka, nic na nim;
   miniatury — kwadraty 56 dp, promień 8 dp. Okrąg z inicjałami bez zdjęcia nie jest pustym miejscem na zdjęcie (bez akcji,
   jak węzeł drzewa), więc nie łamie „puste miejsce tylko jako przycisk”; miejsce na zdjęcia to przycisk w sekcji 10.
-- **Reguła 8:** bez gałązek (D3); bez zniczy w mini-drzewie (D12).
+- **Reguła 8:** ~~bez gałązek (D3)~~ — **wieniec rodu** wokół portretu, rośliny bez znaczenia religijnego (v2.6, [[wieniec]]); bez zniczy w
+  mini-drzewie (D12).
 - **Reguła 3:** ikony nagłówków sekcji w akcencie (R4).
 - **Reguła 11:** łańcuch i mini-drzewo to węzły bez chevronu; cel dotyku ≥ 48 dp (węzeł z podpisem, wiersz łańcucha).
   Wiersze z chevronem (9, 10) prowadzą dalej jak karty.
@@ -221,6 +228,7 @@ n/a — ekran do oglądania. Poprawa idzie przez [[wpis-osoby]] (✎).
 | ~~AC-6 — słownik: ciotka, stryj, wuj, siostra cioteczna~~ | — | **→ [[drzewo]]** (v2.1, decyzja autora: nazwy złożone przy łączeniu dwóch osób) |
 | [[US-009-drzewo-od-osoby]] AC-6 — „Pokaż w drzewie” (v2.4) | 6 → [[drzewo]] 4, 5 | w widoku Franciszka pod mini-drzewem „Pokaż w drzewie” → zakładka Drzewo, Franciszek w środku, poziom 2; u osoby bez rodziny przycisku nie ma |
 | [[ISSUE-042-places-of-residence]] AC-1, AC-2 — miejsca zamieszkania w widoku (v2.5) | 9a · [[zamieszkanie]] | „ok. 1930 – ok. 1945 · Ukraina · cały kraj — miejscowość nieznana”; po doprecyzowaniu — jeden wiersz z adresem |
+| [[ISSUE-044-family-wreaths]] AC-1, AC-4 — wieniec rodu w widoku (v2.6) | 3, 4a · [[wieniec]] C | Jan: dąb w starym złocie wokół portretu, „Ród: Wymyślscy”; Anna z d. Zmyśleńska: pół laur, pół dąb, „Ród: Zmyśleńscy · po mężu Wymyślscy” |
 | D20 — miejsce na zdjęcia bez zdjęć | 10 | Józef bez zdjęć: „Ta osoba nie ma jeszcze zdjęć.” + „Dodaj zdjęcie” → poprawa z arkuszem źródła → zdjęcie → „Zapisz” → widok z portretem |
 | *Input from ISSUE-025* — chipy i karta partnera → widok osoby | *Navigation* · [[wpis-osoby]] 9a v5.8 | w formularzu Marii chip „Syn: Stanisław” → widok Stanisława; wstecz → formularz z wpisanymi danymi |
 | M5 — kim była, relacje, łańcuch do „ja” | 4–7 | jak wyżej |
@@ -234,6 +242,8 @@ n/a — ekran do oglądania. Poprawa idzie przez [[wpis-osoby]] (✎).
   osoba–zdjęcie ([[ADR-009-person-photos-record-and-link]]) i działanie „Ustaw jako tło” w podglądzie ([[zdjecie]] v1.5).
   *Obali:* większość osób nie ma żadnego zdjęcia poza portretem — wtedy pasmo „Dodaj zdjęcie w tle” stoi pusto na
   większości ekranów (to jeden z powodów rekomendacji W2, *Open* 1).
+  **v2.6 (2026-10-17, [[ISSUE-044-family-wreaths]]):** „bez gałązek” zmienione decyzją autora na prototypie — **gałązki wracają jako wieniec rodu**
+  wokół portretu ([[wieniec]] D5, D14, D15; R4 prawy ma gałązki). Zdjęcie w tle zostaje; wieniec górą wchodzi na pasmo z obwódką w kolorze tła.
 - **D4 — płeć; nazwy pokrewieństwa po polsku** (SPIKE-004 D16). Zbudowane w ISSUE-025 (płeć, role); słownik i ścieżka —
   ISSUE-024 (D13).
 - **D5 — „Rodzina” jako mini-drzewo** (SPIKE-004 D15, D18). Autor: *„widzielibyśmy najbliższą rodzinę danej osoby (rodzice,

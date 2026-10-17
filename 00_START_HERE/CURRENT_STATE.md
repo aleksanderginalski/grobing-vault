@@ -3,7 +3,7 @@ title: "Grobing — Current State"
 type: meta
 status: active
 created: 2026-10-05
-updated: 2026-10-16
+updated: 2026-10-17
 ---
 
 # Grobing — Current State
@@ -29,7 +29,9 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
      wejście dla [[ISSUE-045-migration-map]] → *Notes*;
   3. ~~[[ISSUE-043-grave-paid-until]]~~ — **zamknięte 2026-10-16**: sama data „opłacone do” na dole widoku grobu (wariant B, schemat v14); przypomnienie
      — później aktualizacją, przed najwcześniejszą zapisaną datą;
-  4. [[ISSUE-044-family-wreaths]] — wieńce rodzin; prototyp `ui` (discovery) może iść równolegle z 1–3 (zmiana bazy);
+  4. ~~[[ISSUE-044-family-wreaths]]~~ — **zamknięte 2026-10-17**: wieńce rodów przy portrecie, na drzewie i w trybie prezentacji (schemat v15,
+     [[ADR-021-clans-choice-at-the-person]]); kobieta po ślubie pół na pół (D14), ród odróżnia para wzór + kolor (D20 — decyzja autora na stopie #2);
+     **wszystko, co zmienia bazę przed instalacją, jest zrobione**;
   5. [[ISSUE-045-migration-map]] — mapa migracji na suwaku czasu i na telewizorze (bez zmiany bazy);
   6. [[ISSUE-046-icons]] — ikona aplikacji i ikony w aplikacji, wybór na makiecie (bez zmiany bazy);
   7. [[NT-007-hand-over-note]] (warunek obudzenia spełniony: kopia jest i jest eksportem) i [[ISSUE-032-mvp-install]] — audyt, małe poprawki „przed
@@ -41,7 +43,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
 - **Agent `architect` — nie teraz** (retro 4, R7): sygnał „pierwszy ADR zastąpiony” ([[ADR-018-export-is-the-backup]]) rozliczony; nowy warunek w `CLAUDE.md` →
   *Na sygnał*.
 
-  Specyfikacja: [[drzewo]] v1.17, [[osoba]] v2.5, [[wpis-osoby]] v5.9, [[zamieszkanie]] v1.2, [[grob]] v8.1, [[style-b]] v1.32.
+  Specyfikacja: [[drzewo]] v1.19, [[osoba]] v2.6, [[wpis-osoby]] v5.10, [[wieniec]] v1.2, [[zamieszkanie]] v1.2, [[grob]] v8.1, [[style-b]] v1.33.
 - **Prawdziwe dane rodziny dopiero po instalacji MVP** (decyzja autora 2026-10-08 w `/pm`): budujemy produkt gotowy do
   instalacji na telefonie (MVP = brief §5, M1–M11); do tego czasu autor ocenia aplikację na wymyślonych danych. Rozmowa z babcią
   (~2026-11-02) jest na kartce, a odpowiedzi trafią do aplikacji po instalacji.
@@ -72,7 +74,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
 - Poza tą kolejnością:
   - **opowieść rodziny na drzewie** — pomysł autora ze stopu #2 ISSUE-037 (c) w [[2026-10-14-opowiesc-rodziny-i-wieniec]] (INBOX): najpierw prototyp `ui`
     w trybie discovery, potem pozycje. **Po instalacji MVP** (decyzja autora 2026-10-14). Wieniec (d) przeszedł 2026-10-16 do kolejki jako
-    [[ISSUE-044-family-wreaths]];
+    [[ISSUE-044-family-wreaths]] (zamknięte 2026-10-17);
   - [[ISSUE-026-link-existing-photo-to-person]] — zdjęcie, które już jest w aplikacji, dodane osobie od jej strony („połączyć z
     istniejącymi”, decyzja autora na stopie #1 ISSUE-024); nowy ekran wyboru, więc `ui` → `planning`. Dziś działa od strony zdjęcia;
   - [[NT-001-photograph-the-notes]]: zdjęcia zrobione (33). Zostało: zaszyfrowane miejsce, sprawdzenie
@@ -165,7 +167,11 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     ponownej budowy listy miejsc — README `grobing-code` → *Lista miejsc*), `emu042\` (zrzuty, kopia `files/` sprzed pozycji z `Grobing_Restore` —
     **wymyślone dane** i cmentarz dodany poza agentem — oraz APK odniesienia), `ui042\`, `tools\`, logi testów — do kosza. Z sesji ISSUE-043
     (`6983a70d-…\scratchpad\`): `emu043\` (zrzuty `01`–`21`, kopia danych `Grobing_Restore` sprzed pozycji i kopie bazy do liczenia — **wymyślone dane** i
-    cmentarz dodany poza agentem), `fonts043\` i skrypty pomiaru przeglądu `ui`, `ui.py`, `counts.py`, logi testów — do kosza;
+    cmentarz dodany poza agentem), `fonts043\` i skrypty pomiaru przeglądu `ui`, `ui.py`, `counts.py`, logi testów — do kosza. Z sesji ISSUE-044:
+    `2aa5d062-…\scratchpad\` (prototyp `wience-044.html`, panele 1–6) — do kosza; `3c71c787-…\scratchpad\` — **`src044\` zachowaj**: 19 oryginałów z DALL-E
+    nazwanych kluczami wzorów (`<klucz>.png`), czyli dokładnie wejście do przebudowy wzorów (README `grobing-code` → *Wieńce*; te same obrazy leżą w
+    Pobranych pod nazwami z ChatGPT) — przenieś je w swoje stałe miejsce; reszta do kosza: prototyp `wience-044-b.html` i jego obrazy, zrzuty `emu044\`
+    (wymyślone dane), APK odniesienia `base-043.apk`, logi klatek i testów, skrypty;
   - **repo nie mają pliku `LICENSE`** — kod można oglądać, ale nie wolno go używać. Licencję można dodać później.
 - **Emulatory (po ISSUE-033):** `Medium_Phone` — release v12 na danych testowych autora, kopia skonfigurowana od nowa z hasłem
   testowym (wymyślone, z sesji ISSUE-029), pliki `grobing-klucz-029.age` i `grobing-kopia-029.age` w Pobranych; grób „Jozef” ma
@@ -192,7 +198,10 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   Gboard), `show_ime_with_hard_keyboard 1` (klawiatura ekranowa przy sprzętowej); kopia w tle v13 z 17:00 UTC przeszła. **Po ISSUE-043:** build profile v14
   z „Opłacone do” (`FRAME_LOG`, `--split-per-abi`), baza v14 (migawki v11–v13 w `files/pre-update/`), tekst i ekran domyślne. **Na stopie #2 autor dodał
   własny grób z datą opłaty** (nazwy nie zapisujemy) — przed następnym użyciem emulatora pytanie do autora, czy jego wpisy (cmentarz i ten grób) można
-  zastąpić.
+  zastąpić. **Po ISSUE-044:** build profile v15 z wieńcami (`--split-per-abi`, **bez** `FRAME_LOG` — ostatnia instalacja po D20; do pomiaru klatek zbudować z
+  `--dart-define=FRAME_LOG=true`), baza v15 nad danymi (migawki v11–v14 w `files/pre-update/`); **13 rodów u wymyślonych osób** (nazwy ASCII z wymyślonych
+  rdzeni): ród Antoniego „Wymyslonowie” w kolorze Miedź, Marianna „Przykladowscy” (kłosy, rubin — założony przez autora na stopie #2), Wiktoria pół na pół.
+  Wpisy autora (cmentarz i grób) nietknięte; tekst, gęstość i animacje domyślne.
 - **[[EPIC-002-wizyta]] gotowy do rozpisania na US** — pytanie „jak znaleźć grób bez pinezki” ma kierunek autora
   (2026-10-08): adres z wyszukiwarki zarządcy → kwatera zaznaczona według planu zarządcy → na miejscu plan offline i
   GPS → pinezka. Wejście do pierwszej US (mapa cmentarza): EPIC-002 → *Input from SPIKE-001*. Ekran: `ui` →
@@ -209,7 +218,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   paczki (decyzja autora 2026-10-07); treść wychodzących zmian sprawdza strażnik treści ([[ISSUE-020-content-guard]]) przy każdym `git add`/`commit`.
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **3** (ostatnie retro: [[2026-10-16-retro-04]]). Co **10** → retro + pytanie o 3–5
+- Zamknięte pozycje od ostatniego retro: **4** (ostatnie retro: [[2026-10-16-retro-04]]). Co **10** → retro + pytanie o 3–5
   nośnych faktów (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**; podbija go `docs` przy zamknięciu, a zeruje go retro.
 - Do retro (zebrane po drodze, bez decyzji):
   - Poprzednią listę rozliczyło [[2026-10-16-retro-04]] → *The "Do retro" list*.
@@ -232,6 +241,20 @@ Format wpisu: `źródło (babcia / cmentarz X) · pytanie bez danych rodziny · 
 ## Recently done
 > Tylko wpisy od ostatniego retro ([[2026-10-16-retro-04]]; zasada R5 z retro 3). Starsze są w plikach retro → *Archive*:
 > [[2026-10-16-retro-04]] · [[2026-10-13-retro-03]] · [[2026-10-08-retro-02]] · [[2026-10-06-retro-01]].
+
+- 2026-10-17 — [[ISSUE-044-family-wreaths]] zamknięte. **Wieńce rodów:**
+  - discovery `ui` (dwa prototypy, 20 decyzji w [[wieniec]]): K2 — dwie gałązki otwarte u góry, 19 wzorów z DALL-E od autora (bez maku), paleta 12
+    kolorów z cieniowaniem C3, cały wieniec po ojcu, ród wybierany raz u szczytu linii, **kobieta po ślubie pół panieński, pół po mężu** (D14 — pomysł
+    autora), widok osoby, drzewo i telewizor;
+  - stop #1 *„tak”* — **droga R**: obrazy w `grobing-code/assets/wreaths/`, wąski wyjątek w `.gitignore` i strażniku (tylko szary PNG z przezroczystością
+    640 × 640); schemat **v15** (`clans`, `persons.clan_id`, `persons.no_wreath`, [[ADR-021-clans-choice-at-the-person]]) — zapisany tylko wybór, wieniec
+    liczony z drzewa;
+  - przejście `dev`: migracja nad danymi bez zmian liczb, przerwana migracja zostawiła v14 całe; klatki drzewa z wieńcami nie gorsze od buildu
+    odniesienia; 200% na 360 dp wymusiło układ dużego tekstu (D19); przegląd `ui`: 1 MAJOR i 4 MINOR — poprawione, 10 odstępstw przyjętych ([[wieniec]] v1.1);
+  - **na stopie #2 decyzja autora D20:** ród odróżnia para wzór + kolor — „też: …” tylko dla tej samej pary ([[wieniec]] v1.2).
+
+  Lista A i B w [[ISSUE-032-mvp-install]] → *Hand checks*. Testy: 891 zielonych (strażnik 164). Werdykt `qa`: APPROVED (self-check, z uwagami). Licznik
+  retro: 3 → 4.
 
 - 2026-10-16 — [[ISSUE-043-grave-paid-until]] zamknięte. **„Opłacone do” przy grobie:**
   - zakres B z `/pm` (decyzja autora): **sama data**, bez „kto płaci” i bez przypomnienia — przypomnienie bazy nie zmienia, więc przyjdzie aktualizacją ze

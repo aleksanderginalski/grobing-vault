@@ -68,8 +68,11 @@ Warunki — każdy ma swój dom, tutaj tylko lista:
   ([[ISSUE-041-google-play-and-safe-update]] → *Verification*);
 - pierwsza aktualizacja **ze zmianą schematu** przez sklep: migawka `pre-update/grobing-v<stara>.db` powstaje na telefonie (AC-2 z ISSUE-041 —
   sprawdzone testami i na emulatorze, na telefonie jeszcze nie; [[ADR-019-distribution-play-internal-testing]]) — także v12 → v13 z migawką
-  `grobing-v12.db` ([[ISSUE-042-places-of-residence]]: na emulatorze przeszła, liczby wierszy bez zmian) i v13 → v14 z migawką `grobing-v13.db`
-  ([[ISSUE-043-grave-paid-until]]: na emulatorze przeszła, liczby wierszy bez zmian);
+  `grobing-v12.db` ([[ISSUE-042-places-of-residence]]: na emulatorze przeszła, liczby wierszy bez zmian), v13 → v14 z migawką `grobing-v13.db`
+  ([[ISSUE-043-grave-paid-until]]: na emulatorze przeszła, liczby wierszy bez zmian) i v14 → v15 z migawką `grobing-v14.db`
+  ([[ISSUE-044-family-wreaths]]: na emulatorze przeszła, liczby wierszy bez zmian, przerwana migracja zostawiła v14 całe);
+- odtworzenie kopii **v15 z rodami** z odciskiem zgodnym — na emulatorze niezrobione z tego samego powodu co v13 niżej; testy odtworzenia v14 → v15 i
+  v15 z rodami przeszły ([[ISSUE-044-family-wreaths]] → *Verification*);
 - odtworzenie kopii **v14 z datą opłaty grobu** z odciskiem zgodnym — na emulatorze niezrobione z tego samego powodu co v13 niżej; testy odtworzenia
   v13 → v14 i v14 przeszły ([[ISSUE-043-grave-paid-until]] → *Verification*);
 - odtworzenie kopii **v13 z zamieszkaniami** z odciskiem zgodnym — na emulatorze niezrobione (hasła testowego kopii nie ma, a odtworzenie zastąpiłoby
@@ -166,6 +169,12 @@ Warunki — każdy ma swój dom, tutaj tylko lista:
 - koniec z następnego miejsca („od 2024” + „od 2026” → „2024–2026”, [[zamieszkanie]] D12) — „pomiń” (krok domykający);
 - wybór miejsca na telefonie: kraj na górze po 3 literach (D8), płynność pisania i czas wyszukiwania (emulator ≤ 13 ms na zimnym dysku) —
   nieprzetestowane na żywo; przy wolnym telefonie — wyszukiwanie do `Isolate` (D-dev 8).
+
+**Wieńce rodów** ([[ISSUE-044-family-wreaths]] → *Verification* → *For ISSUE-032 → Hand checks*)
+- wieńce w trybie prezentacji na telewizorze z kanapy: czy rody widać i czy drzewo nie jest za gęste (96 dp na osobę) — krok z telewizorem, poza stopem #2;
+- płynność drzewa z wieńcami na telefonie — nieprzetestowane na żywo (emulator: bez regresji wobec buildu odniesienia, 12,5–15,0% wolnych klatek wobec
+  17,4–18,1%);
+- TalkBack przy wierszu „Wieniec rodu” (dwa węzły: słowa i przycisk) i w arkuszu (stan „zaznaczone”) — sprawdzone w drzewie semantyki, nie na żywo.
 
 **Do decyzji autora, gdy zobaczy swoje cmentarze** (nie sprawdzenie, tylko wybór): grubość alejek i znicze, które nachodzą na
 siebie ([[cmentarz]] → *Open*, [[ISSUE-030-sector-on-a-visit]]).

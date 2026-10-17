@@ -1,10 +1,10 @@
 ---
 screen: "Wpis osoby w grobie — formularz"
-items: ["[[ISSUE-012-transcribe-grave-screen]]", "[[ISSUE-017-person-photos]]", "[[ISSUE-018-profile-photo-crop]]", "[[ISSUE-019-family-relations]]", "[[ISSUE-025-gender-kinship-together-since]]", "[[ISSUE-024-person-view]]", "[[ISSUE-042-places-of-residence]]"]
+items: ["[[ISSUE-012-transcribe-grave-screen]]", "[[ISSUE-017-person-photos]]", "[[ISSUE-018-profile-photo-crop]]", "[[ISSUE-019-family-relations]]", "[[ISSUE-025-gender-kinship-together-since]]", "[[ISSUE-024-person-view]]", "[[ISSUE-042-places-of-residence]]", "[[ISSUE-044-family-wreaths]]"]
 us: "[[US-002-przepisanie-grobu]] · [[US-005-zdjecia]] · [[US-003-przepisanie-rodziny]]"
 journey-step: "n/a — M1 (warunek kroku 1 UJ-001)"
 mockup: "katalog tymczasowy sesji 2026-10-07: makieta-cmentarz-grob-osoba.html (ramki 3–4, ISSUE-012) · makieta-zdjecia.html (ramki 7–8 — kierunek sprzed stopu #1 ISSUE-016) · makieta-zdjecia-osoby.html (ramki 1–2, ISSUE-017) · makieta-rodzina.html (ramki 1–2, ISSUE-019)"
-updated: 2026-10-16
+updated: 2026-10-17
 ---
 
 # Wpis osoby — specyfikacja
@@ -129,6 +129,10 @@ updated: 2026-10-16
 > **Wersja 5.9 (2026-10-16, przed planem [[ISSUE-042-places-of-residence]]):** sekcja **„Miejsca zamieszkania”** (element 9b) po „Kim była” i
 > „Rodzinie” — **w każdym trybie**, karty z ✎ i „Dodaj miejsce” → okno „Miejsce zamieszkania” i wybór miejsca. Zmiany zapisują się **razem z
 > „Zapisz”** (całość wpisu), inaczej niż „Rodzina”. Elementy i *Tempo*: [[zamieszkanie]].
+>
+> **Wersja 5.10 (2026-10-17, przed planem [[ISSUE-044-family-wreaths]]):** wiersz **„Wieniec rodu”** (element 4b) po „Nazwisku rodowym” — **tylko w
+> poprawie**, poza `next`. „Wybierz ród” / „Zmień” → arkusz rodów, „Nowy ród” i poprawa rodu. Wybór zapisuje się **od razu**, jak „Rodzina”
+> ([[wieniec]] D16), a nie z „Zapisz”. Elementy, stany wiersza i *Tempo*: [[wieniec]] E, F.
 
 ## Purpose
 Wpisanie jednej osoby pochowanej w grobie, tak jak stoi w notatkach: zdjęcie (gdy jest), imiona, nazwisko,
@@ -172,6 +176,7 @@ nazwisko rodowe, płeć, daty urodzenia i zgonu z dopiskiem oraz **krótka biogr
 | 3 | **Nazwisko** | pole tekstowe, wielka litera na początku słów | `next` | w trybie „kolejna osoba”: nazwisko ostatnio wpisanej osoby w tym grobie, **zaznaczone** (pisanie je zastępuje) | jak 2 | AC-2 · decyzja (tempo) |
 | 4 | **Nazwisko rodowe** — etykieta „Nazwisko rodowe (z domu)” | pole tekstowe, wielka litera na początku słów | `next` | pusto | — | AC-2 · [[FR-005-nazwisko-rodowe]] |
 | 4a | **Płeć** (v5.6) — **dwa przyciski-ikony w wierszu „Imiona”, po prawej od pola**: ♀ `female_outlined` i ♂ `male_outlined`, każdy 48 × 56 dp (wysokość pola), promień 8 dp, odstęp 6 dp. Wybór jednokrotny, **pusty dozwolony** (dotknięcie wybranej ikony ją zdejmuje = płeć nieznana). **Wybrana:** tło w kolorze powierzchni, obrys 2 dp i ikona w akcencie; **niewybrana:** bez tła, obrys 1 dp w kolorze obrysu, ikona w kolorze tekstu pomocniczego. Wybór niesie też tło i grubość obrysu, nie sam kolor (SC 1.4.1). Dla czytnika i `tooltip`: „Kobieta” / „Mężczyzna”, stan „zaznaczone” (SC 1.1.1, 4.1.2). Pole „Imiona” zwęża się o 102 dp. ~~v5.5: segment „Kobieta · Mężczyzna” pod nazwiskiem rodowym~~ | przyciski-ikony | dotknięcie ikony. **Poza kolejnością `next`, nie bierze fokusu** — `next` z „Imiona” idzie do „Nazwisko” | **podpowiedź z pierwszego imienia** (*D-płeć*), liczona na bieżąco przy pisaniu „Imiona”, dopóki autor nie dotknie ikony — wtedy wygrywa jego wybór; bez imion — nic. W poprawie: zapisana płeć; **bez zapisanej płci — podpowiedź jak przy nowej osobie** | — | ISSUE-025 AC-1 · [[osoba]] D4 · SPIKE-004 D16 · *D-płeć* |
+| 4b | **Wieniec rodu** (v5.10) — etykieta i ramka ≥ 64 dp: znak wieńca 56 dp · ród i wyjaśnienie („Po ojcu: Józef Wymyślski.”) · „Zmień” (akcent); bez rodu — „Brak” i przycisk z obrysem „Wybierz ród”; przy wyjątku — „Wróć do wieńca po ojcu”. **Tylko w poprawie.** Stany: [[wieniec]] E1 | wiersz | „Zmień” / „Wybierz ród” → arkusz „Wieniec rodu” ([[wieniec]] E2, F). **Poza `next`**; zapis od razu, nie z „Zapisz” | wieniec liczony z drzewa (po ojcu) | — | [[ISSUE-044-family-wreaths]] · [[wieniec]] D9, D16 |
 | 5 | **Urodzenie** | blok daty (niżej) | `next` | dopisek „dokładnie”, data pusta | blok daty | AC-3 · [[FR-004-data-z-dopiskiem]] |
 | 6 | **Zgon** | blok daty | `next` | jak 5 | jak 5 | AC-3 |
 | 7 | ~~**Pochówek** (data pochówku)~~ — **usunięte w v2.2** (decyzja autora, stop #2 ISSUE-012) | — | — | — | — | AC-3 (bez pochówku) |

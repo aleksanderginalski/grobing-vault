@@ -1,12 +1,12 @@
 ---
-title: "Style B — visual guidelines (v1.32)"
+title: "Style B — visual guidelines (v1.33)"
 type: design-guidelines
 status: active
 owner: ui
 source: "PROJECT_BRIEF §6a (Style B, chosen by the author 2026-10-05) · references.md (R1–R4, the kick-off images) · grobing-code/lib/app/theme.dart · WCAG 2.2 · Android accessibility"
 non-tech-item: "[[NT-006-visual-guidelines]]"
 created: 2026-10-06
-updated: 2026-10-16
+updated: 2026-10-17
 ---
 
 # Styl B — wytyczne wizualne
@@ -37,6 +37,7 @@ autor, też używają znicza (reguła 8).
 | błąd *(nowy — wchodzi z ISSUE-014)* | proponowany `GrobingColors.error` | komunikat błędu pod polem, jego ikona, ramka pola z błędem | cokolwiek poza błędem |
 | woda *(nowa, v1.13 — [[SPIKE-004-mvp-flow-prototype]] D6, [[cmentarze]] D29)* | `GrobingColors.water` (morze, jeziora) i `GrobingColors.waterLine` (rzeki) — w `theme.dart` od [[ISSUE-023-poland-map-r1-cemetery-photo]] (v1.20) | woda na mapie Polski jak w R1 | cokolwiek poza mapą; nośnik znaczenia (to dekoracja — brzeg niesie granica) |
 | relacje w drzewie *(nowa, v1.16 — [[SPIKE-004-mvp-flow-prototype]] D20, [[drzewo]] D3)* | proponowane `GrobingColors.relParentChild` (`#8FB3C9`, rodzic–dziecko) i `GrobingColors.relPartners` (`#D39BB0`, partnerzy: ciągła — małżeństwo, przerywana — razem); **do `theme.dart` wchodzą z [[ISSUE-024-person-view]]** (mini-drzewo w [[osoba]] — pierwsze użycie, v1.18) | linie relacji w drzewie i mini-drzewie; **ślad dalszej rodziny** w drzewie — te same kolory przy kryciu 60%, kreska przerywana 3/3, 14 dp ([[drzewo]] D9, v1.24) | jedyny nośnik rodzaju relacji — kształt i styl linii niosą go też (SC 1.4.1); **bez legendy** (decyzja autora, SPIKE-004 D25); cokolwiek poza liniami relacji |
+| kolory rodu *(nowe, v1.33 — [[wieniec]] D6, D15)* | proponowane, 12 wartości z [[wieniec]] → *Style B rules applied* (stare złoto, brąz, miedź, srebro, kość słoniowa, grafit, patyna, oliwka, błękit, lawenda, wrzos, rubin); **do `theme.dart` wchodzą z [[ISSUE-044-family-wreaths]]** | **wyłącznie wieniec rodu** — wzór w kolorze rodu z cieniowaniem C3 (najciemniej 80% koloru) i obwódką w kolorze tła, w widoku osoby, na drzewie, w znaku wieńca w formularzu, w kole wyboru koloru | działania, tekst, wybór i fokus (to akcent); jedyny nośnik rodu — niesie go wzór i podpis „Ród: …” (SC 1.4.1); kolor dowolny spoza palety |
 
 ### State colours — beyond the accent
 Poza akcentem występują tylko **kolory stanu**. Każdy pojawia się zawsze razem z ikoną albo tekstem, nigdy
@@ -82,6 +83,7 @@ wzorem. **Przelicz przy każdej zmianie tokenów.**
 | kwatera wybrana (akcent) wobec linii kwatery *(v1.22)* | — | 1,31 (między sobą) | — | wybór niesie też grubość i nazwa (SC 1.4.1) |
 | ślad dalszej rodziny — rodzic–dziecko · partnerzy, krycie 60% *(v1.24, 2026-10-13)* | 3,75 · 3,66 | — | 3 (SC 1.4.11) | ✅ — kształt (przerywana 3/3, krótka) odróżnia ślad od linii, nie tylko kolor (SC 1.4.1) |
 | przerywany obrys węzła — data niepewna na suwaku czasu, obrys *(v1.29, 2026-10-14, [[drzewo]] D32)* | 3,40 | — | 3 (SC 1.4.11) | ✅ — niepewność niesie kształt (kreska 4/3), nie krycie: imię zostaje tekstem na tle 10,98:1 |
+| kolory rodu — wieniec, najsłabszy z 12 (brąz): płaski · C3, najciemniejsze 5% liści *(v1.33, 2026-10-17, [[wieniec]] D15)* | 4,46 · 3,10 | 4,07 · — | 3 (SC 1.4.11) | ✅ — obwódka w kolorze tła sprawia, że liść zawsze sąsiaduje z tłem, także na powierzchni i na zdjęciu; pełna tabela: [[wieniec]] |
 
 **Wniosek:** wszystkie pary spełniają AA, a tekst pomocniczy nie spełnia 7:1. **Ekrany wizyty przyjęły 7:1** (v1.21, W2,
 2026-10-12): informacja potrzebna na cmentarzu (adres kwatery, liczby, stan planu) jest w kolorze tekstu, a token pomocniczy
@@ -110,11 +112,16 @@ zostaje bez zmian.
      - podkreślenie obejmuje sam tekst;
      - cel dotyku ma ≥ 48 dp wysokości i rośnie, a tekst zawija się przy dużej czcionce zamiast się uciąć;
      - czytnik ekranu czyta link z dopiskiem „w innej aplikacji”.
+
+   **Wyjątek — wieniec rodu** (v1.33, [[wieniec]] D6): wieniec ma kolor rodu z palety 12 kolorów (*Token roles*), a nie akcent. To drugi kolor
+   obok akcentu, ale tylko w tej jednej roli; pierścień portretu, wybór i działania przy wieńcu zostają w akcencie.
 2. **Głębia subtelna:** tło → powierzchnia (zaokrąglone karty, promień 12–16 dp, i dolny arkusz). Głównemu
    przyciskowi i zaznaczonemu elementowi (wybrana pinezka, węzeł na ścieżce) wolno mieć **delikatną
    bursztynową poświatę**. Bez twardych cieni i bez gradientów tła. **Poświata leży pod okręgiem, nie na nim** — nad
    okręgiem leży tylko pierścień (v1.27): poświata nad okręgiem zabarwiała go (znak „Ja” spadał poniżej 4,5:1, zdjęcie dostawało
    odcień — reguła 14). Trzy instancje: osoba w środku drzewa, w mini-drzewie i portret osoby (przegląd `ui` [[ISSUE-033-tree-from-a-person]]).
+   **Wieniec rodu ma głębię wpieczoną w obraz** (v1.33, [[wieniec]] D15): przejście tonu jak gałązki w R4 i tłoczenie liści, liczone raz przy
+   budowie z obrazu wzoru. To nie gradient tła i nie rozmyty cień rysowany w każdej klatce — tych przy ok. 100 węzłach drzewa nadal nie ma.
 3. **Ikony cienkie:** warianty `outlined` z Material Icons. Ikona jest w kolorze tekstu pomocniczego, a
    **w akcencie wtedy, gdy oznacza działanie albo nagłówek sekcji** (R4: „Rodzina”, „Dodaj osobę”). Ikona,
    która niesie znaczenie, ma podpis albo `tooltip`.
@@ -163,8 +170,10 @@ zostaje bez zmian.
    znacznik osoby zmarłej (węzeł drzewa, R3). **Znicz oznacza miejsce i pamięć**, a nie zwykłe działania:
    „Zapisz” i „Dodaj” go nie mają. **Krzyż ani inne symbole religijne nie pojawiają się w interfejsie** —
    są tylko na zdjęciach, czyli w treści użytkownika (R4). ~~Gałązki wokół portretu (R4, osoba) to opcja
-   widoku osoby, rozstrzygana przy tym ekranie.~~ **Rozstrzygnięte (v1.15, [[osoba]] D3): bez gałązek** — zamiast nich
-   zdjęcie w tle, jak na Facebooku (decyzja autora, [[SPIKE-004-mvp-flow-prototype]] D17).
+   widoku osoby, rozstrzygana przy tym ekranie.~~ ~~**Rozstrzygnięte (v1.15, [[osoba]] D3): bez gałązek**~~ — zamiast nich
+   zdjęcie w tle, jak na Facebooku (decyzja autora, [[SPIKE-004-mvp-flow-prototype]] D17). **v1.33 (decyzja autora na prototypie,
+   [[wieniec]] D5): gałązki wracają jako wieniec rodu** wokół portretu i na węźle drzewa, obok zdjęcia w tle. Wzory to rośliny bez
+   znaczenia religijnego: bez palmy, ciernia, lilii, oliwki i winorośli, bez gałązek iglastych (materiał wieńców pogrzebowych — „bez ponurości”).
 9. **Puste stany** mówią, co tu będzie, i dają jedno działanie. Bez ilustracji.
 10. **Potwierdzenia ciche:** zapis kończy się widokiem tego, co zapisano, a nie komunikatem w okienku.
     Okno dialogowe tylko wtedy, gdy coś może przepaść (niezapisany wpis).
@@ -276,6 +285,8 @@ zostaje bez zmian.
       (v1.19);
     - **wyjątek — pasmo tła bez zdjęcia** ([[osoba]] D21, decyzja autora: „zwykłe tło”): powierzchnia z samą ikoną w akcencie
       (z `tooltip`), bez obrysu i podpisu — całe pasmo jest przyciskiem (v1.19);
+    - **wieniec rodu nad zdjęciem w tle** (v1.33, [[wieniec]] A5): górne liście wchodzą na pasmo, więc każdy liść ma obwódkę w kolorze tła
+      (0,75% płótna, 1,5 dp w widoku osoby) — jak ramka kadru. Tekstu na zdjęciu dalej nie ma;
     - **usuwanie zdjęcia bez koloru błędu:** przycisk tekstowy z ikoną `delete_outline` w kolorze tekstu, a gdy
       usunięcie działa od razu — okno z bezpiecznym działaniem w akcencie (reguła 10).
 15. **Widok przed poprawą** (v1.12, [[SPIKE-004-mvp-flow-prototype]] D4, autor 2026-10-08: *„ok”*). Dotknięcie
@@ -494,3 +505,11 @@ wysokokontrastowy, bez rezygnacji ze stylu B. Wynik i data trafiają tutaj i do
   cmentarzy ([[cmentarze]] D25) i linie zamieszkania. Twarda spacja po jednoliterowych słowach — w nowych stałych tekstach od razu. Tokeny bez zmian. Pomiar
   (wzór WCAG z wartości w `theme.dart`, 2026-10-16; wyniki te same): tekst 10,98 / 10,02 · tekst pomocniczy 5,50 / 5,01 · akcent 8,81 / 8,04 · obrys 3,40 / 3,10 ·
   błąd 6,45 / 5,89 (na tle / na powierzchni) · tło na akcencie 8,81.
+- 2026-10-17 — **v1.33** (`ui` przed planem [[ISSUE-044-family-wreaths]]; decyzje autora na prototypie — wieniec K2, paleta, Ś3, C3: [[wieniec]] D5, D6, D14, D15):
+  - reguła 8 — **gałązki wracają jako wieniec rodu** (zmienia v1.15 „bez gałązek”, [[osoba]] D3 v2.6); wzory to rośliny bez znaczenia religijnego, bez iglastych;
+  - reguła 1 — wyjątek: **kolor rodu** z palety 12 kolorów, tylko dla wieńca;
+  - reguła 2 — głębia wieńca (przejście tonu i tłoczenie) **wpieczona w obraz przy budowie**, a nie gradient tła ani rozmyty cień w klatce;
+  - reguła 14 — liście nad zdjęciem w tle z obwódką w kolorze tła.
+
+  Nowa rola tokenów: kolory rodu (do `theme.dart` z ISSUE-044). Pomiar (wzór WCAG, 2026-10-17): 12 kolorów płasko 4,46–12,16:1 na tle, 4,07–11,09:1 na
+  powierzchni; po cieniowaniu C3 najciemniejsze 5% liści ≥ 3,10:1 na tle (brąz) — tabela w [[wieniec]]. Pozostałe tokeny bez zmian.

@@ -4,9 +4,9 @@ type: data-model
 status: active
 source: "PROJECT_BRIEF §Architecture → Data model (accepted by the author, 2026-10-05)"
 FR: ["[[FR-001-provenance]]", "[[FR-002-rodzina-jako-rekord]]", "[[FR-003-wiele-osob-w-grobie]]", "[[FR-004-data-z-dopiskiem]]", "[[FR-005-nazwisko-rodowe]]"]
-ADR: ["[[ADR-001-local-first]]", "[[ADR-006-claimed-value-separate-structures]]", "[[ADR-011-relation-claims-family-and-child-link]]", "[[ADR-012-person-sex-and-union-timeline]]", "[[ADR-013-person-background-on-photo-link]]", "[[ADR-014-cemetery-photo-on-media]]", "[[ADR-015-cemetery-plan-in-database]]", "[[ADR-016-sector-record-and-grave-link]]", "[[ADR-017-location-from-gnss-only]]"]
+ADR: ["[[ADR-001-local-first]]", "[[ADR-006-claimed-value-separate-structures]]", "[[ADR-011-relation-claims-family-and-child-link]]", "[[ADR-012-person-sex-and-union-timeline]]", "[[ADR-013-person-background-on-photo-link]]", "[[ADR-014-cemetery-photo-on-media]]", "[[ADR-015-cemetery-plan-in-database]]", "[[ADR-016-sector-record-and-grave-link]]", "[[ADR-017-location-from-gnss-only]]", "[[ADR-020-residences-place-in-the-row]]", "[[ADR-021-clans-choice-at-the-person]]"]
 created: 2026-10-05
-updated: 2026-10-16
+updated: 2026-10-17
 ---
 
 # Grobing — Data model
@@ -27,6 +27,7 @@ erDiagram
     FAMILY ||--o{ FAMILY_CHILD : "has children"
     PERSON ||--o{ FAMILY_CHILD : "is child in"
     PERSON ||--o{ EVENT : "birth, death"
+    CLAN |o--o{ PERSON : "chosen at (the top of a line)"
     FAMILY ||--o{ EVENT : "together, marriage, end"
     CEMETERY ||--o{ GRAVE : contains
     GRAVE ||--o{ BURIAL : "holds many"
@@ -54,9 +55,10 @@ erDiagram
 | **Media** | **zdjęcie jako rekord** (jak `MULTIMEDIA_RECORD` w GEDCOM 7): plik w prywatnym magazynie aplikacji i, dla nagrobka, grób, a dla zdjęcia cmentarza — cmentarz (`cemetery_id`, schemat v9). **Zdjęcie = kopia dostępowa:** JPEG 2048 px, bez EXIF ([[ADR-008-photos-access-copy-and-backup-consistency]]); pliki `media/groby/<id>/…`, `media/cmentarze/<id>/…` i `media/zdjecia/<czas>-<losowe>.jpg` (zdjęcia osób, bez id osoby — bywają wspólne). **Grób i cmentarz — najwyżej jedno zdjęcie** (pierwsze = najniższe `id`; jedna droga zapisu). Usunięcie kasuje wiersz, plik usuwa sprzątanie (ADR-008 pkt 3). Wiersz bez grobu, bez cmentarza i bez łącza znika w tej samej transakcji ([[ADR-009-person-photos-record-and-link]], [[ADR-014-cemetery-photo-on-media]]) | oryginał zostaje w galerii albo na papierze |
 | **PersonMedia** (łącze zdjęcia) | osoba ↔ zdjęcie z **pozycją** (jak `OBJE` w GEDCOM 7) — schemat v4, [[ISSUE-017-person-photos]]. **Profilowe = pierwsze łącze osoby**, osobno dla każdej osoby; jedno zdjęcie (np. grupowe) ma łącza od wielu osób, a plik jest jeden. Zmiany zdjęć osoby zapisują się w transakcji jej wpisu ([[ADR-009-person-photos-record-and-link]]) | kto jest na zdjęciu — bez źródła ([[FR-001-provenance]]: daty, relacje, pochówek; łącze w GEDCOM 7 nie ma `SOUR`). **Kadr profilowego** (schemat v5): `CROP` przy łączu — cztery kolumny `crop_*` w pikselach pliku zdjęcia; brak = środek; każda osoba na zdjęciu ma własny ([[ADR-010-profile-photo-crop-pixels]]). **Tło** (schemat v8): `is_background` przy łączu — najwyżej jedno na osobę (częściowy indeks unikalny), rozszerzenie aplikacji, bo łącze w GEDCOM 7 zna tylko `CROP` i `TITL` ([[ADR-013-person-background-on-photo-link]]) |
 | **Residence** (zamieszkanie — schemat v13, [[ADR-020-residences-place-in-the-row]]) | osoba · **od** i **do** (każde z dopiskiem dokładnie / około, każde może być puste — okres `FROM … TO …` w GEDCOM 7) · **poziom miejsca** kraj / miejscowość / adres · **miejsce słowami w wierszu** (nazwa dziś, jednostka, kraj, punkt, id GeoNames) · nazwa z tamtego czasu · adres (tekst) | kopia czyta się bez listy miejsc z aplikacji; **puste „do” kończy się początkiem następnego zamieszkania — wyliczone przy odczycie, nie zapisane** (D12 w [[zamieszkanie]]). Lista miejsc (GeoNames, Natural Earth) to asset poza gitem i poza kopią |
+| **Clan** (ród — schemat v15, [[ADR-021-clans-choice-at-the-person]]) | nazwa (unikalna bez wielkości liter i polskich znaków) · **klucz wzoru** wieńca (19 obrazów w aplikacji) · **klucz koloru** (12 kolorów palety). Przy osobie: **ród wybrany tutaj** (`clan_id`) albo **„bez wieńca”** (`no_wreath`) — zwykle tylko u szczytu linii | wieniec rodu przy portrecie i na drzewie ([[wieniec]]); **zapisany jest tylko wybór, wieniec liczy się z drzewa** po linii ojca, a kobieta po ślubie ma pół rodu własnego i pół rodu męża (reguły niżej). Ród odróżnia para wzór + kolor ([[wieniec]] D20) |
 | **Setting: „ja"** | która osoba to autor | kotwica „jak łączą się ze mną" (M5). W kodzie: tabela `settings` od v1, jeden wiersz `id = 1`, zapisywany przy pierwszym wyborze w ustawieniach albo w zakładce Osoby ([[ISSUE-022-app-skeleton-tabs-people-settings]]); jedzie w kopii razem z bazą |
 
-## Tables in `grobing.db` — schema v14 (for reading a backup without Grobing)
+## Tables in `grobing.db` — schema v15 (for reading a backup without Grobing)
 
 > Dopisane przy [[ISSUE-040-export-is-the-backup]] (2026-10-16, US-006 AC-2): **eksportem jest kopia** ([[ADR-018-export-is-the-backup]]), więc ktoś
 > z bazą z kopii (`backup-format.md`) musi wiedzieć, która tabela to która encja wyżej. Kolumny i ograniczenia — schemat w samej bazie
@@ -64,7 +66,8 @@ erDiagram
 
 | Tabela | Encja | Co w niej jest |
 |---|---|---|
-| `persons` | *Person* | imiona, nazwisko, nazwisko rodowe, płeć, „kim była” (`bio`), `bio_source` i `is_living` (oba bez ekranu — nieużywane) |
+| `persons` | *Person* | imiona, nazwisko, nazwisko rodowe, płeć, „kim była” (`bio`), `bio_source` i `is_living` (oba bez ekranu — nieużywane), ród wybrany przy osobie (`clan_id`) i „bez wieńca” (`no_wreath`) — od v15 |
+| `clans` | *Clan* | nazwa, klucz wzoru (`motif`, np. `klosy`), klucz koloru (`colour`, np. `rubin`) — od v15 ([[ADR-021-clans-choice-at-the-person]]) |
 | `families` | *Family* | sam związek (id); partnerzy i dzieci w dwóch tabelach niżej, daty związku w `events` |
 | `family_partners` | *Family* — partnerzy | para `family_id` ↔ `person_id`, 1–2 wiersze na rodzinę |
 | `family_children` | *Family* — dzieci | `family_id` ↔ `person_id` dziecka; twierdzenie o łączu dziecka w `assertions` ([[ADR-011-relation-claims-family-and-child-link]]) |
@@ -84,6 +87,9 @@ erDiagram
 
 - **Ścieżka między dwiema osobami** = najkrótsza droga po krawędziach osoba–rodzina (partner, dziecko),
   pokazywana jako łańcuch („ja → żona → jej ojciec → …"). **Liczona, nigdy zapisywana.**
+- **Wieniec rodu** = ród wybrany przy osobie, inaczej ród ojca (rodzic „mężczyzna” w pierwszej rodzinie, w której osoba jest dzieckiem), w górę
+  linii; kobieta z małżeństwem — pół rodu własnego, pół rodu męża z ostatniego małżeństwa ([[wieniec]] B1–B7, [[ADR-021-clans-choice-at-the-person]]).
+  **Liczony, nigdy zapisywany** — zapisany jest tylko wybór (`clan_id`, `no_wreath`).
 - **Ziarnistość źródeł (decyzja kosztowa z kick-offu):** twierdzenia na **datach, relacjach i miejscu
   pochówku** — to, o co się spiera; „kim była" niesie jedną linię źródła. Źródło na każdym polu
   spowolniłoby przepisywanie ~100 osób (G6).
@@ -156,6 +162,10 @@ erDiagram
   później wyliczyć najbliższy termin. Bez twierdzeń (D28) i bez ADR — jedna opcjonalna wartość istniejącego rekordu, jak data pinezki w v12.
   Migracja v13→v14 to trzy `addColumn` — kopie v13 odtwarzają się z grobami „nie wiadomo”. Zapis w oknie „Popraw grób” razem z nazwą i adresem
   (`setGraveDetails`). **„Kto płaci” i przypomnienie — nie teraz** (decyzja autora w `/pm` 2026-10-16, wariant B).
+- **2026-10-17 — schemat v15** ([[ISSUE-044-family-wreaths]], [[ADR-021-clans-choice-at-the-person]]): tabela `clans` (nazwa, klucz wzoru, klucz
+  koloru) i `persons.clan_id`, `persons.no_wreath`. Migracja v14→v15 to `createTable` + dwa `addColumn` — kopie v14 odtwarzają się bez rodów i bez
+  wieńców. Wybór rodu i ród zapisują się od razu z wiersza „Wieniec rodu” w poprawie osoby, nie z „Zapisz” ([[wieniec]] D16); wieniec liczy
+  `WreathGraph` (`lib/data/wreaths.dart`) przy odczycie drzewa. **Usuwania rodu nie ma** (D16).
 
 ## Known consequence — not a model change
 
