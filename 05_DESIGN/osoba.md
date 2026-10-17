@@ -1,6 +1,6 @@
 ---
 screen: "Osoba — widok osoby (kim była, rodzina, jak łączy się ze mną, daty, pochówek, zdjęcia)"
-items: ["[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-024-person-view]]", "[[ISSUE-027-cemetery-map-plan-photo-states]]", "[[US-009-drzewo-od-osoby]]", "[[ISSUE-042-places-of-residence]]", "[[ISSUE-044-family-wreaths]]"]
+items: ["[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-024-person-view]]", "[[ISSUE-027-cemetery-map-plan-photo-states]]", "[[US-009-drzewo-od-osoby]]", "[[ISSUE-042-places-of-residence]]", "[[ISSUE-044-family-wreaths]]", "[[ISSUE-045-migration-map]]"]
 us: "M5 (brief §5, widok 4) — [[ISSUE-024-person-view]] AC-1…AC-5 (AC-6 → drzewo, v2.1)"
 journey-step: "UJ-001 · 5 (widok 4, M5, R4 prawy)"
 mockup: "2026-10-09: issue-024-widok-osoby.html (ISSUE-024; runda 1 stopu #1 — W2, łańcuch po imionach, pusta sekcja „Zdjęcia”) — katalog tymczasowy sesji, ścieżka w ISSUE-024 → Implementation plan · 2026-10-08: grobing-prototyp.html (SPIKE-004, panel 4)"
@@ -67,6 +67,12 @@ updated: 2026-10-17
 > **Wersja 2.6 (2026-10-17, `ui` przed planem [[ISSUE-044-family-wreaths]], decyzja autora na prototypie):** **wieniec rodu wokół portretu**
 > (element 3) i **podpis „Ród: …”** pod latami (element 4a). Zmienia D3: gałązki wracają jako wieniec, a zdjęcie w tle zostaje. Wieniec, jego
 > liczenie i wybór rodu: [[wieniec]].
+>
+> **Wersja 2.7 (2026-10-17, `ui` przed planem [[ISSUE-045-migration-map]]):** **„Pokaż na mapie”** pod wierszami „Miejsc zamieszkania” (element 9a), gdy
+> osoba ma zamieszkanie. Prowadzi na mapę migracji z tą osobą w środku i jej drogą, tak jak „Pokaż w drzewie” prowadzi do drzewa (D22). Mapa: [[mapa-migracji]].
+>
+> **Wersja 2.8 (2026-10-17, przegląd `ui` zbudowanej [[ISSUE-045-migration-map]]):** ikona „Pokaż na mapie” (9a) to `public_outlined` ([[style-b]] reguła 3 —
+> cienkie ikony; v2.7 podawała `public`).
 
 ## Purpose
 Zbierający stoi przy grobie albo przegląda notatki i chce wiedzieć, **kim była ta osoba i jak łączy się z nim** (UJ-001
@@ -82,6 +88,8 @@ wejście, ✎ ([[style-b]] reguła 15).
     formularzem, który zostaje pod spodem z wpisanymi danymi; wstecz wraca do formularza;
   - węzeł mini-drzewa (6) i węzeł łańcucha (7) w innym widoku osoby;
   - osoba w środku drzewa albo „Pokaż” w karcie drzewa ([[drzewo]] 4, 5; v2.4) — zakładka Drzewo zostaje aktywna, wstecz wraca do drzewa.
+- **„Pokaż na mapie” (9a, v2.7) → [[mapa-migracji]]** z tą osobą w środku, rok „dziś”; stos widoku znika jak przy „Pokaż w drzewie” ([[drzewo]] D15).
+  Wejście na mapę zależy od wyboru W ([[mapa-migracji]] *Open* 1): część „Mapa” zakładki Drzewo (W2) albo ekran „Mapa migracji” (W1).
 - **Krewny → jego widok osoby**, na tym samym stosie: wstecz wraca do poprzedniej osoby.
 - **✎ w pasku → [[wpis-osoby]] w trybie „poprawa”.** Po zapisie wraca tutaj, a widok pokazuje nowe dane (reguła 10).
   **Jeśli poprawa tej osoby już leży niżej w stosie** (np. formularz → chip męża → jego mini-drzewo → ta sama osoba),
@@ -113,7 +121,7 @@ wejście, ✎ ([[style-b]] reguła 15).
 | 7 | **Jak łączy się ze mną** — nagłówek (16 sp, półgruby) z ikoną `link` w akcencie (R4; D18). **Łańcuch od „Ja” — same imiona i relacja każdego kroku** (v2.1, D13'): wiersze ≥ 48 dp (v2.2) — okrąg 40 dp z pierścieniem 2 dp w akcencie nad zdjęciem (profilowe albo inicjały; **„Ja” zawsze jako znak „Ja”** w akcencie, jak w [[osoby]] D4) i podpis (16 sp, półgruby): **relacja do poprzedniej osoby i imię**, jak karta ścieżki w R3 — „Ja” · „Mama Anna” · „Jej mama Maria”; „Ja” · „Żona Kasia” · „Jej tata Marek” · „Jego siostra Ewa”. Relacje jednego kroku z płci osoby w wierszu: mama / tata, córka / syn, siostra / brat, żona / mąż (małżeństwo), partnerka / partner („razem”); bez płci — rodzic, dziecko, rodzeństwo, małżonek (małżeństwo) albo partner („razem”; v2.2). Zaimek „jej” / „jego” według rodzaju gramatycznego relacji w wierszu wyżej — mama, córka, siostra, żona, partnerka → „jej”; tata, syn, brat, mąż, partner, a także neutralne rodzic, dziecko, rodzeństwo → „jego” (rodzaj słowa, nie płeć osoby); pierwszy krok, po „Ja” — bez zaimka. **Bez nazw złożonych** („babcia”, „stryj”, „siostra cioteczna”) — te są w [[drzewo]] przy łączeniu dwóch osób (D6). Okręgi połączone pionową linią 2 dp w akcencie, bez przerw między okręgami (v2.2). Wiersze krewnych prowadzą do ich widoków; ostatni wiersz to ta osoba — bez akcji. Ścieżka: najkrótsza w grafie osoba–rodzina (krawędzie: rodzic, dziecko, rodzeństwo — dzieci tej samej rodziny, para); przy równej — mniej krawędzi „para”; dalej stała kolejność `id` (ISSUE-025 D2); liczona przy otwarciu, nie zapisywana ([[data-model]]). **Bez ścieżki:** „Nie wiadomo jeszcze, jak łączy się z Tobą — w drzewie brakuje rodziny między wami.” (16 sp, tekst pomocniczy). **Bez „ja”:** „Aplikacja nie wie jeszcze, która osoba to Ty.” i przycisk tekstowy w akcencie „Wybierz, która osoba to Ty”. **To „ja”** — sekcji nie ma | łańcuch | wiersz krewnego → jego widok; „Wybierz…” → wybór „ja” | najkrótsza ścieżka | — | R4 · R3 (karta ścieżki) · M5 · AC-3 · **decyzja autora** (stop #1) · D6, D13' |
 | 8 | **Daty** — nagłówek (16 sp, półgruby) z ikoną `event_note_outlined` w akcencie. Wiersze z linią podziału w kolorze obrysu, ≥ 48 dp: etykieta (96 dp, 14 sp, tekst pomocniczy; gdy przy większym tekście się nie mieści — nad wartością, v2.2) · wartość (16 sp, tekst, reguła 6, z dopiskiem: „ok. 1890”, „między 1893 a 1895”). Wiersze: **Urodzenie**, **Zgon** (gdy są). Bez źródła i statusu (D10); wartość to pierwsza ([[ADR-006-claimed-value-separate-structures]] D3). Bez dat i bez pochówku — sekcji nie ma | lista wierszy | — (poprawa przez ✎) | — | — | **decyzja autora** (SPIKE-004 D27, D28) · D10 |
 | 9 | **Pochówek** — ostatni wiersz sekcji 8, ≥ 64 dp: etykieta „Pochówek” · tytuł grobu (16 sp, tekst; bez nazwy — „Grób”, [[grob]] D1), pod nim nazwa cmentarza (14 sp, tekst pomocniczy) i adres kwatery, gdy jest („Kwatera B · Rząd 4 · Miejsce 12”, 14 sp, tekst pomocniczy); chevron. Opis dla czytnika: „Pochówek: Grób rodzinny Wymyślonych, Cmentarz parafialny w Wymyślonowie — pokaż na cmentarzu”. Bez pochówku (osoba żyjąca, osoba bez grobu w aplikacji) — brak wiersza | wiersz | → [[cmentarz]] z zaznaczonym grobem (D17) | — | — | M4 · FR-003 · AC-4 · **decyzja autora** (SPIKE-004 D19) · D9, D17 |
-| 9a | **Miejsca zamieszkania** (v2.5) — nagłówek z `home_outlined` w akcencie; wiersze jak w 8: lata · miejsce (kraj / miejscowość / adres; przy N2 nazwa z tamtego czasu i „dziś: …”), bez akcji; kolejność według lat. **Bez miejsc:** „Nie ma jeszcze zapisanych miejsc.” + przycisk z obrysem „Dodaj miejsce”. Szczegóły: [[zamieszkanie]] 1–4 | lista wierszy / pusty stan z przyciskiem | „Dodaj miejsce” → [[wpis-osoby]] „poprawa” z otwartym oknem zamieszkania | — | — | [[ISSUE-042-places-of-residence]] · [[zamieszkanie]] D1 |
+| 9a | **Miejsca zamieszkania** (v2.5) — nagłówek z `home_outlined` w akcencie; wiersze jak w 8: lata · miejsce (kraj / miejscowość / adres; przy N2 nazwa z tamtego czasu i „dziś: …”), bez akcji; kolejność według lat. Pod wierszami **„Pokaż na mapie”** (v2.7): przycisk tekstowy w akcencie z ikoną `public_outlined` (v2.8), do lewej, cel 48 dp — jak „Pokaż w drzewie” (6). **Bez miejsc:** „Nie ma jeszcze zapisanych miejsc.” + przycisk z obrysem „Dodaj miejsce”, bez „Pokaż na mapie”. Szczegóły: [[zamieszkanie]] 1–4a | lista wierszy + przycisk tekstowy / pusty stan z przyciskiem | „Pokaż na mapie” → [[mapa-migracji]] (D22) · „Dodaj miejsce” → [[wpis-osoby]] „poprawa” z otwartym oknem zamieszkania | — | — | [[ISSUE-042-places-of-residence]] · [[zamieszkanie]] D1 · [[ISSUE-045-migration-map]] |
 | 10 | **Zdjęcia · 4** — nagłówek (16 sp, półgruby) z ikoną `photo_library_outlined` w akcencie; rząd do 4 miniatur 56 dp (kwadraty, promień 8 dp, ze środka — reguła 14) i chevron; cały wiersz to jeden cel. Opis dla czytnika: „Zdjęcia osoby, 4 — otwórz”. **Bez zdjęć (v2.1, D20) — sekcja zostaje:** nagłówek „Zdjęcia”, pod nim „Ta osoba nie ma jeszcze zdjęć.” (16 sp, tekst pomocniczy) i przycisk z obrysem **„Dodaj zdjęcie”** (`add_a_photo_outlined` w akcencie, ≥ 48 dp, szerokość treści — reguły 1, 9) | rząd miniatur / pusty stan z przyciskiem | miniatury → [[zdjecia-osoby]] w trybie oglądania; „Dodaj zdjęcie” → poprawa z arkuszem źródła (*Navigation*) | — | — | [[US-005-zdjecia]] · **decyzja autora** (stop #1, D20) |
 
 Odstępy ([[style-b]] reguła 5): margines boczny 16 dp, między sekcjami 24 dp, nagłówek sekcji → treść 8 dp.
@@ -312,6 +320,10 @@ n/a — ekran do oglądania. Poprawa idzie przez [[wpis-osoby]] (✎).
   dotykalne miejsce byłoby niewidoczne — reguła 14). Zdjęcie dodane osobie bez zdjęć staje się też jej profilowym: pierwsze zdjęcie
   osoby jest profilowym ([[ADR-009-person-photos-record-and-link]]); profilowe zmienia się pod ✎. *Obali:* autor chce z pasma też
   obejrzeć zdjęcie tła na pełnym ekranie — wtedy w wyborze tła przycisk „Pokaż”.
+- **D22 — „Pokaż na mapie” pod miejscami zamieszkania** (v2.7, [[ISSUE-045-migration-map]]). Mapa migracji pokazuje drogę osoby w środku, a widok
+  osoby to miejsce, w którym autor o tę drogę pyta. Ten sam wzorzec co „Pokaż w drzewie” pod mini-drzewem (D11): jedno działanie dalej w sekcji, przycisk
+  tekstowy w akcencie. Tylko przy osobie z zamieszkaniem — bez miejsc mapa nie ma drogi do pokazania ([[mapa-migracji]] D10). *Obali:* autor szuka
+  wejścia na mapę przy pochówku osoby bez zamieszkań.
 - **D19 — rozmiary tekstu według progów** (v2). v1.3 (z prototypu) miała rolę 10 sp, imię w węźle 12 sp, „kim była” 15 sp,
   łańcuch i daty 14 sp. Progi [[style-b]]: treść ≥ 16 sp, drobny tekst ≥ 13 sp. Treść (imię, „kim była”, daty, łańcuch)
   — 16 sp; etykiety węzłów mini-drzewa — 13 sp (krótka etykieta pod okręgiem, jak podpis zakładki — ale bez wyjątku od

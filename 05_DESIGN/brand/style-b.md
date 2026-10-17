@@ -1,5 +1,5 @@
 ---
-title: "Style B — visual guidelines (v1.33)"
+title: "Style B — visual guidelines (v1.36)"
 type: design-guidelines
 status: active
 owner: ui
@@ -251,6 +251,15 @@ zostaje bez zmian.
       **Znicz w obrysie** (bursztynowy kontur, wnętrze w kolorze lądu) oznacza miejsce jeszcze nie zapisane,
       np. podgląd cmentarza z bazy przed dodaniem;
     - **kolory stanu** tylko z *State colours* (zieleń offline, niebieska kropka „tu jesteś” — mapa cmentarza).
+    - **mapa świata** (v1.34, [[mapa-migracji]], decyzje autora na stopie #1 [[ISSUE-045-migration-map]]): **ląd** — powierzchnia, **morze** — woda, **granice
+      i brzegi** — obrys przy kryciu 70% (2,17:1, dekoracja: ląd i woda mają tę samą jasność, a znaczenie niosą osoby). **Bez podpisów miejsc i bez nazw
+      krajów** (v1.35, decyzja autora 2026-10-17, [[mapa-migracji]] D18: *„wystarczą awatary i kontury krajów”*): kraj rozpoznaje się po konturze, a gdzie kto
+      jest, mówi słowami karta osoby w środku i czytnik ekranu. Z tekstu na mapie zostają liczby („+N”, pigułka). **Osoba to okrąg** (profilowe albo inicjały,
+      32 dp, obrys), a nie pinezka: znicz zostaje znakiem grobu na mapie Polski i cmentarza, a na mapie świata grobów nie ma (K2). **Stosy osób, które leżałyby na
+      sobie, łączą się w jeden stos z „+N”**, a dotknięcie przybliża do ich miejsc (v1.35, [[mapa-migracji]] D19) — jak znicze z liczbą wyżej. **Miejsce znane
+      tylko do kraju** stoi w punkcie nazwy kraju, bez obszaru i bez zaznaczonej granicy — niepewność mówi słowo „cały kraj” w karcie i w czytniku (O3). **Ruch**
+      (przeprowadzka) — sam przejazd okręgu, **bez śladu i bez innego efektu** (v1.36, decyzja autora 2026-10-17, [[mapa-migracji]] D25).
+      Przerywany obrys okręgu znaczy tylko niepewną datę, jak w drzewie.
 14. **Zdjęcia to treść użytkownika** (v1.7, R2, R4; pierwsze: [[grob]], [[wpis-osoby]], [[cmentarz]], [[zdjecie]]):
     - **bez filtrów i tonowania** — sepia z R4 jest w samych starych zdjęciach, a nie w aplikacji. Krzyż, znicze
       i napisy na nagrobku to treść zdjęcia (reguła 8);
@@ -513,3 +522,15 @@ wysokokontrastowy, bez rezygnacji ze stylu B. Wynik i data trafiają tutaj i do
 
   Nowa rola tokenów: kolory rodu (do `theme.dart` z ISSUE-044). Pomiar (wzór WCAG, 2026-10-17): 12 kolorów płasko 4,46–12,16:1 na tle, 4,07–11,09:1 na
   powierzchni; po cieniowaniu C3 najciemniejsze 5% liści ≥ 3,10:1 na tle (brąz) — tabela w [[wieniec]]. Pozostałe tokeny bez zmian.
+- 2026-10-17 — **v1.34** (`ui` po stopie #1 [[ISSUE-045-migration-map]]; decyzje autora W2, K2, O3, D2, R4 — [[mapa-migracji]] v1.1): reguła 13 — punkt **mapa
+  świata** (ląd, morze, granice jako dekoracja, osoba jako okrąg, „cały kraj” w punkcie nazwy kraju bez obszaru, ślad ruchu). Tokeny bez zmian; pary zmierzone
+  wzorem WCAG z `theme.dart` 2026-10-17 (tabela w [[mapa-migracji]]).
+- 2026-10-17 — **v1.35** (przegląd `ui` zbudowanej [[ISSUE-045-migration-map]]; decyzja autora w trakcie przeglądu — [[mapa-migracji]] v1.2, D18, D19): reguła 13,
+  punkt **mapa świata** — **bez podpisów miejsc i nazw krajów** (zdanie o nazwach krajów 13 sp usunięte; „cały kraj” mówi karta i czytnik); stosy, które leżałyby
+  na sobie, łączą się w jeden stos z „+N” i dotknięcie przybliża (druga instancja łączenia po zniczach z liczbą na mapie Polski); ślad osoby w środku — akcent przy
+  kryciu 90%. Tokeny bez zmian. Pomiar (wzór WCAG z wartości w `theme.dart`, 2026-10-17): ślad — tekst 50% 3,48:1 na lądzie, 3,46:1 na wodzie (v1.34 podawała 3,49
+  — zaokrąglenie); akcent 90% 6,74:1 na lądzie, 6,75:1 na wodzie; pozostałe pary bez zmian (tekst 10,98 / 10,02 · tekst pomocniczy 5,50 / 5,01 · akcent 8,81 /
+  8,04 · obrys 3,40 / 3,10, na wodzie 3,11 — na tle / na powierzchni).
+- 2026-10-17 — **v1.36** (stop #2 [[ISSUE-045-migration-map]] — decyzja autora, [[mapa-migracji]] v1.4, D25): reguła 13, punkt **mapa świata** —
+  przeprowadzka to sam przejazd okręgu, **bez śladu** (*„bez tych linii szarych (nie ma potrzeby żadnego dodatkowego efektu)”*). Pary śladu z v1.35 (3,48 i
+  6,74:1) nieaktualne. Tokeny bez zmian.

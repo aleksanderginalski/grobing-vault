@@ -32,7 +32,9 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   4. ~~[[ISSUE-044-family-wreaths]]~~ — **zamknięte 2026-10-17**: wieńce rodów przy portrecie, na drzewie i w trybie prezentacji (schemat v15,
      [[ADR-021-clans-choice-at-the-person]]); kobieta po ślubie pół na pół (D14), ród odróżnia para wzór + kolor (D20 — decyzja autora na stopie #2);
      **wszystko, co zmienia bazę przed instalacją, jest zrobione**;
-  5. [[ISSUE-045-migration-map]] — mapa migracji na suwaku czasu i na telewizorze (bez zmiany bazy);
+  5. ~~[[ISSUE-045-migration-map]]~~ — **zamknięte 2026-10-17**: mapa migracji w części „Mapa” zakładki Drzewo — świat z Natural Earth bez sieci, osoby
+     w swoich miejscach w roku suwaka, przejazd przy przeprowadzce, kadr z Twoich gestów, tryb prezentacji na telewizor; bez nazw, bez śladu, awatary
+     (decyzje autora D18, D25, D26);
   6. [[ISSUE-046-icons]] — ikona aplikacji i ikony w aplikacji, wybór na makiecie (bez zmiany bazy);
   7. [[NT-007-hand-over-note]] (warunek obudzenia spełniony: kopia jest i jest eksportem) i [[ISSUE-032-mvp-install]] — audyt, małe poprawki „przed
      instalacją”, lista A *Hand checks*, instalacja ze sklepu.
@@ -43,7 +45,8 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
 - **Agent `architect` — nie teraz** (retro 4, R7): sygnał „pierwszy ADR zastąpiony” ([[ADR-018-export-is-the-backup]]) rozliczony; nowy warunek w `CLAUDE.md` →
   *Na sygnał*.
 
-  Specyfikacja: [[drzewo]] v1.19, [[osoba]] v2.6, [[wpis-osoby]] v5.10, [[wieniec]] v1.2, [[zamieszkanie]] v1.2, [[grob]] v8.1, [[style-b]] v1.33.
+  Specyfikacja: [[drzewo]] v1.22, [[osoba]] v2.8, [[wpis-osoby]] v5.10, [[wieniec]] v1.2, [[zamieszkanie]] v1.4, [[mapa-migracji]] v1.4, [[grob]] v8.1,
+  [[style-b]] v1.36.
 - **Prawdziwe dane rodziny dopiero po instalacji MVP** (decyzja autora 2026-10-08 w `/pm`): budujemy produkt gotowy do
   instalacji na telefonie (MVP = brief §5, M1–M11); do tego czasu autor ocenia aplikację na wymyślonych danych. Rozmowa z babcią
   (~2026-11-02) jest na kartce, a odpowiedzi trafią do aplikacji po instalacji.
@@ -218,7 +221,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   paczki (decyzja autora 2026-10-07); treść wychodzących zmian sprawdza strażnik treści ([[ISSUE-020-content-guard]]) przy każdym `git add`/`commit`.
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **4** (ostatnie retro: [[2026-10-16-retro-04]]). Co **10** → retro + pytanie o 3–5
+- Zamknięte pozycje od ostatniego retro: **5** (ostatnie retro: [[2026-10-16-retro-04]]). Co **10** → retro + pytanie o 3–5
   nośnych faktów (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**; podbija go `docs` przy zamknięciu, a zeruje go retro.
 - Do retro (zebrane po drodze, bez decyzji):
   - Poprzednią listę rozliczyło [[2026-10-16-retro-04]] → *The "Do retro" list*.
@@ -241,6 +244,18 @@ Format wpisu: `źródło (babcia / cmentarz X) · pytanie bez danych rodziny · 
 ## Recently done
 > Tylko wpisy od ostatniego retro ([[2026-10-16-retro-04]]; zasada R5 z retro 3). Starsze są w plikach retro → *Archive*:
 > [[2026-10-16-retro-04]] · [[2026-10-13-retro-03]] · [[2026-10-08-retro-02]] · [[2026-10-06-retro-01]].
+
+- 2026-10-17 — [[ISSUE-045-migration-map]] zamknięte. **Mapa migracji** (cel autora „na wyjazd” — pokaz rodzinie na telewizorze):
+  - stop #1 na makiecie: **W2 · K2 · O3 · D2 · R4** — przełącznik „Drzewo | Mapa”, bez cmentarzy, kraj w punkcie nazwy bez obszaru, droga tylko w ruchu,
+    kadr tylko z Twoich gestów (O3 i R4 — warianty autora); [[mapa-migracji]] v1.1;
+  - mapa świata wbudowana (Natural Earth, 182 kraje, 508 KB), bez sieci; **bez zmiany bazy** (schemat v15); skupienia miejsc z przybliżeniem; ląd rysowany
+    do obrazu, gdy kamera stoi — klatki w zakresie drzewa z wieńcami;
+  - decyzje autora w trakcie: **D18** — bez nazw krajów i miejsc („wystarczą awatary i kontury krajów”), **D25** — przeprowadzka bez śladu, **D26** —
+    zdjęcie profilowe także u „ja” na mapie (drzewo i lista przy „Ja”); imiona w rozsunięciu i linia karty zostają (stop #2);
+  - przeglądy `ui` (dwa): 1 MAJOR (przejazd ucinany co rok) i 13 MINOR — poprawione; testy `qa` znalazły przełącznik pod „Zakończ prezentację” przy 200%
+    (D24); [[drzewo]] v1.22, [[osoba]] v2.8, [[zamieszkanie]] v1.4, [[style-b]] v1.36; przycisk „Wymyślone miejsca zamieszkania i portrety” w „Stanie danych”.
+
+  Lista B w [[ISSUE-032-mvp-install]] → *Hand checks*. Testy: 923 zielonych. Werdykt `qa`: APPROVED (self-check, z uwagami). Licznik retro: 4 → 5.
 
 - 2026-10-17 — [[ISSUE-044-family-wreaths]] zamknięte. **Wieńce rodów:**
   - discovery `ui` (dwa prototypy, 20 decyzji w [[wieniec]]): K2 — dwie gałązki otwarte u góry, 19 wzorów z DALL-E od autora (bez maku), paleta 12

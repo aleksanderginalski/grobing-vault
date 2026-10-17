@@ -1,10 +1,10 @@
 ---
 screen: "Miejsca zamieszkania — sekcja w widoku osoby i w formularzu, okno „Miejsce zamieszkania”, wybór miejsca"
-items: ["[[ISSUE-042-places-of-residence]]"]
+items: ["[[ISSUE-042-places-of-residence]]", "[[ISSUE-045-migration-map]]"]
 us: "n/a — pozycja z refinementu 2026-10-16 ([[2026-10-16-retro-04]] → *Product decisions*), bez US; [[EPIC-003-zrozumienie]]"
 journey-step: "n/a — widok osoby (M5) i wpis osoby (M1); dane dla [[ISSUE-045-migration-map]]"
 mockup: "2026-10-16: makieta-042.html — katalog tymczasowy sesji b20ca21c-…\\scratchpad (ramki 1–5, kandydaci A i N); link w ISSUE-042 → Implementation plan"
-updated: 2026-10-16
+updated: 2026-10-17
 ---
 
 # Miejsca zamieszkania — specyfikacja
@@ -29,6 +29,13 @@ updated: 2026-10-16
 > „od 2026”: *„czy system wie, że już nie mieszkam [w pierwszym], a [w drugim]? Czy myśli, że w dwóch miejscach mieszkam? Wolałbym, aby od razu zakładał,
 > że jeżeli data jest nowsza, to poprzednia wtedy się kończyła”* → po rekomendacji *„tak”*:
 > **pobyt bez „Do” kończy się początkiem następnego** — wyliczone przy odczycie, nie zapisane (D12; elementy 2, 6, 10).
+>
+> **Wersja 1.3 (2026-10-17, `ui` przed planem [[ISSUE-045-migration-map]]).** Pod wierszami w widoku osoby **„Pokaż na mapie”** (element 4a) →
+> [[mapa-migracji]]. Mapa liczy koniec pobytu tak samo jak D12, a zamieszkanie bez lat nie stoi na osi czasu ([[mapa-migracji]] D4). *Open* 3 (miejsce
+> urodzenia i zgonu) — przy projekcie mapy: **nie w ISSUE-045** ([[mapa-migracji]] D12).
+>
+> **Wersja 1.4 (2026-10-17, przegląd `ui` zbudowanej [[ISSUE-045-migration-map]]):** ikona „Pokaż na mapie” (4a) to `public_outlined` ([[style-b]] reguła 3;
+> v1.3 podawała `public`).
 
 ## Purpose
 Zbierający zapisuje, **gdzie i kiedy osoba mieszkała** — tak dokładnie, jak wie: sam kraj, miejscowość albo adres — i widzi to w widoku osoby.
@@ -70,6 +77,7 @@ wpis musi przyjąć niepewność: „ok. 1925”, „sam kraj”, bez lat.
 | 2 | **Wiersz zamieszkania** — jak wiersze „Daty” ([[osoba]] 8): linia podziału w kolorze obrysu, ≥ 48 dp; **lata** (lewa kolumna 112 dp, 14 sp, tekst pomocniczy; przy większym tekście nad wartością, jak v2.2 w [[osoba]]) · **miejsce** (16 sp, tekst): **adres** („ul. Przykładowa 3, Wymyślowo”, druga linia: kraj) · **miejscowość** („Wymyślowo, Polska”) · **kraj** („Ukraina”, druga linia „cały kraj — miejscowość nieznana”, 14 sp, tekst pomocniczy). Przy N2 z nazwą z tamtego czasu: ta nazwa w pierwszej linii, w drugiej „dziś: Zmyślin, Ukraina”; **adres + N2** — „ul. Przykładowa 3, Zmyślin, Polska” / „dziś: Zmyślin, Ukraina”; **kraj + N2** — „Zmyślin, Polska” / „dziś: Ukraina — cały kraj” (v1.1, D10). **Puste „Do” przed późniejszym miejscem** (v1.2, D12): lata kończą się początkiem następnego zamieszkania — „od 2024” i „od 2026” to wiersze „2024–2026” i „od 2026”; wpisane „Do” zawsze wygrywa. Lata według [[style-b]] reguła 6 i D3: `1946–1978`, `ok. 1925 – 1945`, `od 1946`, `do ok. 1925`; bez lat — kolumna pusta. **Łamanie linii** (v1.1, [[style-b]] reguła 6, v1.32): lata łamią się tylko za „–” — „ok.”, „od”, „do” trzymają się roku, a „–” poprzedniej części; „dziś:” trzyma się nazwy. Opis dla czytnika: „ok. 1925 – 1945: Zmyślin, Polska, dziś Zmyślin, Ukraina”. **Bez akcji** (wejście na mapę — [[ISSUE-045-migration-map]]) | lista wierszy | — | — | — | ISSUE-042 · D2, D3 |
 | 3 | **Kolejność:** według początku („Od”), a bez „Od” — według końca; bez lat na końcu, w kolejności wpisania | — | — | — | — | D4 |
 | 4 | **Bez miejsc:** „Nie ma jeszcze zapisanych miejsc.” (16 sp, tekst pomocniczy) i przycisk z obrysem **„Dodaj miejsce”** (`add_home_outlined` w akcencie, ≥ 48 dp, szerokość treści) | pusty stan + przycisk | → [[wpis-osoby]] „poprawa” z otwartym oknem (A) | — | — | [[style-b]] reguła 9 · D20 w [[osoba]] |
+| 4a | **„Pokaż na mapie”** (v1.3) — pod ostatnim wierszem, do lewej: przycisk tekstowy w akcencie z ikoną `public_outlined` (v1.4), cel 48 dp, jak „Pokaż w drzewie” w [[osoba]] 6. Tylko przy co najmniej jednym zamieszkaniu; bez miejsc go nie ma (4) | przycisk tekstowy | → [[mapa-migracji]] z tą osobą w środku | — | — | [[ISSUE-045-migration-map]] · [[osoba]] D22 |
 
 ### Formularz — sekcja „Miejsca zamieszkania” ([[wpis-osoby]] 9b)
 | # | Element | Typ | Klawiatura / akcja | Domyślnie | Walidacja | Źródło |
@@ -241,4 +249,5 @@ WIDOK OSOBY                         OKNO (A)
      wiersza („Zmyślin, Polska” · „dziś: Zmyślin, Ukraina”).
 3. **Miejsce urodzenia i zgonu — nie w tej pozycji.** `events.place` jest w schemacie, a żaden ekran go nie zapisuje (audyt R9 w
    [[ISSUE-032-mvp-install]]). Ten sam wybór miejsca dałby mapie migracji punkt początku i końca — kandydat po [[ISSUE-045-migration-map]], decyzja
-   autora przy jej projekcie.
+   autora przy jej projekcie. **v1.3:** przy projekcie mapy — **nie w ISSUE-045**, bo punkt wymaga zmiany bazy (`events.place` to sam tekst); kandydat po
+   wyjeździe, widoczny na stopie #1 ([[mapa-migracji]] D12).

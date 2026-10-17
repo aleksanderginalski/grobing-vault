@@ -176,6 +176,14 @@ Warunki — każdy ma swój dom, tutaj tylko lista:
   17,4–18,1%);
 - TalkBack przy wierszu „Wieniec rodu” (dwa węzły: słowa i przycisk) i w arkuszu (stan „zaznaczone”) — sprawdzone w drzewie semantyki, nie na żywo.
 
+**Mapa migracji** ([[ISSUE-045-migration-map]] → *Verification* → *Manual verification*)
+- mapa z kanapy na telewizorze: kontury krajów, okręgi 32 dp z twarzami albo inicjałami, rok w rogu — czy rodzina rozpoznaje, kto gdzie jest — krok z
+  telewizorem, poza stopem #2;
+- płynność ▶ na mapie na telefonie — nieprzetestowane na żywo (emulator: 9–20% wolnych klatek, bez regresji wobec wcześniejszego buildu);
+- TalkBack na mapie: okrąg, stos, skupienie, przełącznik — sprawdzone w drzewie semantyki i testach, nie na żywo;
+- tryb prezentacji mapy z przełącznikiem „Drzewo · Mapa” w sterowaniu ([[mapa-migracji]] D24) — stop #2, krok 3: **pomiń**;
+- „Pokaż na mapie” z widoku osoby i rozsunięcie stosu z imionami — stop #2, krok 2: **ok bez śladu na urządzeniu**.
+
 **Do decyzji autora, gdy zobaczy swoje cmentarze** (nie sprawdzenie, tylko wybór): grubość alejek i znicze, które nachodzą na
 siebie ([[cmentarz]] → *Open*, [[ISSUE-030-sector-on-a-visit]]).
 
