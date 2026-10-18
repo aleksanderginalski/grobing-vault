@@ -1,12 +1,12 @@
 ---
-title: "Style B — visual guidelines (v1.36)"
+title: "Style B — visual guidelines (v1.42)"
 type: design-guidelines
 status: active
 owner: ui
 source: "PROJECT_BRIEF §6a (Style B, chosen by the author 2026-10-05) · references.md (R1–R4, the kick-off images) · grobing-code/lib/app/theme.dart · WCAG 2.2 · Android accessibility"
 non-tech-item: "[[NT-006-visual-guidelines]]"
 created: 2026-10-06
-updated: 2026-10-17
+updated: 2026-10-18
 ---
 
 # Styl B — wytyczne wizualne
@@ -122,10 +122,30 @@ zostaje bez zmian.
    odcień — reguła 14). Trzy instancje: osoba w środku drzewa, w mini-drzewie i portret osoby (przegląd `ui` [[ISSUE-033-tree-from-a-person]]).
    **Wieniec rodu ma głębię wpieczoną w obraz** (v1.33, [[wieniec]] D15): przejście tonu jak gałązki w R4 i tłoczenie liści, liczone raz przy
    budowie z obrazu wzoru. To nie gradient tła i nie rozmyty cień rysowany w każdej klatce — tych przy ok. 100 węzłach drzewa nadal nie ma.
-3. **Ikony cienkie:** warianty `outlined` z Material Icons. Ikona jest w kolorze tekstu pomocniczego, a
-   **w akcencie wtedy, gdy oznacza działanie albo nagłówek sekcji** (R4: „Rodzina”, „Dodaj osobę”). Ikona,
-   która niesie znaczenie, ma podpis albo `tooltip`.
-4. **Krój:** systemowy bezszeryfowy (Roboto na Androidzie), bez własnych fontów w aplikacji. **Tytuły i
+3. **Ikony cienkie, w dwóch tonach** (v1.38, [[ISSUE-046-icons]] decyzje 1–3 autora, 2026-10-18 — kierunek z arkusza DALL-E: *„to jest kierunek, w
+   który chcę iść”*): **Material Symbols, końce zaokrąglone (Rounded), grubość 300**, i **wypełnienie 25%** — ten sam glif wypełniony, w kolorze ikony przy
+   kryciu 25%, pod glifem z kreską (`GrobingIcon`). Wypełnienie jest dekoracją: znaczenie i kontrast ≥ 3:1 niesie kreska. Metafory z arkusza tam, gdzie mówią
+   więcej niż ogólny kształt: poprawa to **pióro** (`ink_pen`), dodanie zdjęcia to **zdjęcie z krajobrazem** (`add_photo_alternate`), drzewo to **drzewo
+   liściaste** (`nature`) — nie schemat i nie iglaste (reguła 8). Ikona jest w kolorze tekstu pomocniczego, a **w akcencie wtedy, gdy oznacza działanie albo
+   nagłówek sekcji** (R4: „Rodzina”, „Dodaj osobę”). Ikona, która niesie znaczenie, ma podpis albo `tooltip`. **Ikona obok tekstu rośnie z tekstem** (przyciski,
+   nagłówki sekcji, wiersze); pasek ekranu i dolne zakładki zostają 24 dp (decyzja 2). **Stałe 24 dp są też** (v1.39, przegląd `ui`, odstępstwo 3 `dev`):
+   przełącznik widoku „Drzewo | Mapa” (stoi w pasku jak zakładki, a przy dużym tekście zostają w nim same ikony), przyciski z samą ikoną (`IconButton`,
+   okrągłe przyciski mapy i drzewa) i ikony w pudełkach o stałym rozmiarze (miniatura, portret, miejsce na zdjęcie, kafelek dodawania). Znicz
+   (`CandleIcon`) zostaje własną ikoną, z kreską 1,5.
+   **Skąd glify** (v1.39, odstępstwa 1 i 2 `dev`): własny font ikon `grobing-symbols.ttf`, wycięty z Material Symbols Rounded razem z podmianami osi FILL — pakiet
+   `material_symbols_icons` po wycinaniu ikon przez Fluttera gubił część glifów (`group`, `settings` puste). Grubość 300 to jedna stała `GrobingIcon.weight`,
+   więc zmiana na 400 (*Obali* w *Candidates — ISSUE-046*, słońce) to jedna linia.
+   **Dziewięć ikon z arkusza autora** (v1.40, [[ISSUE-046-icons]] decyzja 1' na stopie #2 — *„chciałem te »odpicowane«”*): zakładki Mapa, Osoby, Drzewo,
+   lupa, ustawienia, dodaj zdjęcie, pinezka ze zniczem, pióro, telewizor to rysunki z arkusza DALL-E autora (mapa z trasą, rodzina z dzieckiem, drzewo z kropkami,
+   zdjęcie z krajobrazem, pinezka ze zniczem, stalówka, telewizor z drzewem) — przerysowane do wektora w tym samym foncie (linie i wypełnienie jako dwa glify),
+   w tych samych rolach kolorów i rozmiarach. Pozostałe ikony (strzałki, ✕, ✓, „›”, kalendarz, nagłówki sekcji spoza arkusza…) zostają z Material Symbols.
+   Autor zna koszt: przy 24 dp najdrobniejsze detale rysunków się zlewają. Nowa ikona „ważna” (zakładka, główne działanie) — najpierw arkusz w tym stylu.
+   **Grubość linii arkusza** (v1.41, przegląd `ui` rundy 4): przy 24 dp rysunek miał 0,6–0,75 dp kreski wobec 1,5 dp Material przy 300 — linie są poszerzone
+   o ≈ 0,3 dp (`THICKEN` w `tool/icons/build_symbols.py`; więcej zlewa koronę drzewa). Glify z arkusza są statyczne — `GrobingIcon.weight` ich nie zmienia,
+   więc w słońcu (NFR-004) dźwignią jest `THICKEN` i przebudowa fontu. Pinezki informacyjne (adres grobu, poprawa pinezki, brak lokalizacji) zostają z Material.
+   ~~Warianty `outlined` z Material Icons~~ (do v1.37).
+4. **Krój:** systemowy bezszeryfowy (Roboto na Androidzie), bez własnych krojów tekstu w aplikacji (font ikon z reguły 3 to ikony, nie krój —
+   v1.39). **Tytuły i
    imiona półgrube (waga 500–600)**, jak w R1–R4. Treść ma wagę regularną. Krój szeryfowy z R2 był
    przypadkiem generatora i nie obowiązuje.
 5. **Odstępy:** siatka 8 dp. Na ekranach z listą albo formularzem margines boczny 16 dp, odstęp między
@@ -165,7 +185,11 @@ zostaje bez zmian.
    (odczyt 2026-10-14): *„In general, use second-person pronouns (you, your)”*; *„First-person singular pronouns can be used in product UI to show
    someone's control”*; *„it's OK to use "my" in navigation or filter labels if you need to distinguish a person's content”*. W genealogii FamilySearch
    pisze „My Grandmother” ([[drzewo]] D8).
-8. **Znicz to znak aplikacji** (R1–R3). Występuje w logo (znicz + „Grobing”), w pinezce (znicz w kształcie
+8. **Znicz to znak aplikacji** (R1–R3). **Rysunek znicza** (v1.42, [[ISSUE-046-icons]], stop #2 — autor: *„te trzy … dlaczego nie zmieniłeś”*): znicz autora
+   z DALL-E, ten sam znak co ikona aplikacji L1 — w dwóch tonach w logo i na przyciskach, pełny z wyciętymi detalami w pinezce (kropla z kodu, czubek co do
+   piksela) i w znaczniku zmarłych w drzewie; przerysowany do fontu ikon (`Glyphs.candle`, `Glyphs.candleSolid`). **Pinezka ze zniczem z arkusza autora** (v1.41) to pinezka aplikacji — także na przyciskach, które stawiają nową
+   pinezkę („Dodaj cmentarz”, „Dodaj ten cmentarz”, „Dodaj ręcznie”, „Postaw pinezkę”); „Zapisz” i inne „Dodaj” dalej znicza nie mają. Występuje w **ikonie aplikacji** (v1.38, [[ISSUE-046-icons]] decyzja 4 autora: znicz L1 z DALL-E w dwóch tonach,
+   akcent na tle `grobing_background`, warstwa jednobarwna z samych linii), w logo (znicz + „Grobing”), w pinezce (znicz w kształcie
    pinezki), na głównym działaniu prowadzącym do miejsca pamięci („Otwórz cmentarz”, „Pokaż grób”) i jako
    znacznik osoby zmarłej (węzeł drzewa, R3). **Znicz oznacza miejsce i pamięć**, a nie zwykłe działania:
    „Zapisz” i „Dodaj” go nie mają. **Krzyż ani inne symbole religijne nie pojawiają się w interfejsie** —
@@ -322,9 +346,77 @@ wysokokontrastowy, bez rezygnacji ze stylu B. Wynik i data trafiają tutaj i do
 - ~~**Nazwa grobu**~~ — rozstrzygnięte 2026-10-07: opcjonalne pole w schemacie, wpisywane ręcznie, bez
   wyliczania z nazwisk (decyzja autora, [[ISSUE-012-transcribe-grave-screen]]; [[grob]] D1). Bez nazwy grób
   ma tytuł „Grób”, a na liście [[cmentarz]] tytułem są osoby.
-- **Ikona znicza** nie istnieje w Material Icons. Własna ikona wektorowa, jedna na całą aplikację (wersja
-  liniowa i wypełniona), powstaje z [[ISSUE-014-home-map-of-poland]]; sylwetka i wersje: [[cmentarze]] →
-  *Style B rules applied*.
+- **Ikona znicza** nie istnieje w Material Icons. Własna ikona, jedna na całą aplikację (wersja w dwóch tonach i pełna) —
+  ~~sylwetka z [[ISSUE-014-home-map-of-poland]] ([[cmentarze]] → *Style B rules applied*)~~; od v1.42 rysunek autora z DALL-E w foncie ikon
+  (reguła 8, [[ISSUE-046-icons]]).
+
+## Candidates — ISSUE-046 (2026-10-18)
+> Kandydaci do [[ISSUE-046-icons]], **bez zmiany reguł**: reguła 3 i ikona aplikacji zmieniają się dopiero po wyborze autora na stopie #1
+> (retro 4, R1 — zmiana decyzji najpierw na makiecie). Makieta `ikony-046.html` w katalogu tymczasowym sesji `1f978d57-…\scratchpad\makieta-046\`
+> (poza repo; fonty z tego samego źródła co w aplikacji). **Nie pokazuje** pikseli Fluttera, słońca ([[NFR-004-czytelnosc-w-sloncu]]) ani opcji C —
+> ta czeka na obrazy autora (prompty: katalog tymczasowy `b20ca21c-…\scratchpad\dalle-prompts-046.md`; decyzja autora w `/pm` 2026-10-18: wybór przy komplecie).
+
+**Stan dziś:** 77 różnych ikon `Icons.*` w ok. 180 miejscach (`grep` w `lib/`), font Material Icons z Fluttera 3.41.1 — jedna grubość (kreska ok. 2 dp), końce
+kanciaste. Z tekstem rosną tylko strzałka linku (`north_east`, reguła 1) i ikona w podglądzie z bazy; reszta ma stałe 16–24 dp. Znicz (`candle.dart`) ma kreskę
+1,5 w siatce 24, czyli jest cieńszy od reszty. Kanon: brief §6a *„Thin line icons”*; R1 i R4 mają ikony cienkie, z zaokrąglonymi końcami, a „Drzewo” w R1 to
+gałązka drzewa liściastego, nie schemat.
+
+| # | Kandydat | Co widać | Koszt | Źródło |
+|---|---|---|---|---|
+| A | Material Icons `outlined` (dziś) | kreska ok. 2 dp, końce kanciaste; grubsze niż znicz i niż R1/R4 | 0 | `flutter/bin/cache/artifacts/material_fonts/materialicons-regular.otf` |
+| B | Material Symbols — pakiet `material_symbols_icons` 4.2960.0 (Apache-2.0, fonty zmienne Outlined · Rounded · Sharp, osie FILL, GRAD, `opsz` 20–48, `wght` 100–700) | grubość i końce (zaokrąglone · kanciaste) jednym ustawieniem motywu; przy 300 kreska zbliża się do znicza | nowa zależność; ok. 180 odwołań `Icons.*` do podmiany (mechanicznie); ok. 0,2 MB w APK | [pub.dev](https://pub.dev/packages/material_symbols_icons) (odczyt 2026-10-18); fonty z [google/material-design-icons](https://github.com/google/material-design-icons/tree/master/variablefont) |
+| C | arkusz 9 ikon z DALL-E | czeka na obrazy | raster przy 24 dp, kolor nie zmienia się ze stanem bez przerysowania do wektora; 68 ikon spoza arkusza zostaje z A albo B | prompty z 2026-10-16 |
+
+**Pomiar i sonda (2026-10-18):**
+- **Odpowiedniki:** 77 z 77 ikon jest w Material Symbols — zwykle ta sama nazwa bez przyrostka `_outlined`/`_outline`; `people_outline` → `group`, `favorite_border`
+  → `favorite`.
+- **Wycinanie ikon przy buildzie release nie gubi grubości:** `font-subset` z Fluttera 3.41.1 (ten sam, który wycina nieużywane ikony) zostawił tabele `fvar`, `gvar`,
+  `avar`, `HVAR` i cztery osie. 9 ikon Rounded: 36 KB z 15,2 MB; 75 ikon Rounded: 227 KB (A dziś: 11 KB). Czy silnik rysuje wybraną grubość na telefonie, potwierdzi
+  build release w `dev` (zrzut 300 obok 400).
+- **Kontrast** (wzór WCAG z `theme.dart`): ikona w tekście pomocniczym 5,50 na tle / 5,01 na powierzchni, w akcencie 8,81 / 8,04 — wszystkie ≥ 3:1 (SC 1.4.11) przy
+  każdej opcji. Próg liczy kolor, nie grubość kreski, więc cienka kreska w słońcu to pytanie do NFR-004, nie do SC 1.4.11.
+- **Dla planu (fakty, nie decyzje):** wbudowane widżety Fluttera (np. „wstecz”, „zamknij” w pasku) rysują własne `Icons.*` — przy B trzeba je podmienić w motywie
+  (`ActionIconThemeData` → `backButtonIconBuilder`, `closeButtonIconBuilder`), inaczej zostaną grubsze. `opticalSize` = rozmiar ikony. Pakiet zależy tylko od `flutter`,
+  fonty są w pakiecie, nic nie idzie do sieci — do potwierdzenia przy planie ([[NFR-005-dane-nie-opuszczaja-telefonu]]).
+
+**Ikona aplikacji:** dziś domyślna ikona Fluttera — tylko `mipmap-*/ic_launcher.png`, bez ikony adaptacyjnej i bez jednobarwnej (motywy Androida 13+ jej nie
+przekolorują). Kandydaci: **V — znicz z aplikacji** (decyzja projektowa `ui`, bez DALL-E): sylwetka z `candle.dart` jako wektor, płomień wypełniony, kreska
+grubsza (1,9 w siatce 24), w strefie bezpiecznej 66 z 108 dp; wersja jednobarwna to ta sama ścieżka · **L1–L3** z promptów DALL-E (znicz · płomień z drzewem
+rodziny · ścieżka „jak łączy się ze mną”) — czekają.
+
+✅ **Rozstrzygnięte na stopie #1 (autor, 2026-10-18)** — 1: **B w kierunku arkusza** (zaokrąglone, 300, wypełnienie 25%, pióro, zdjęcie z krajobrazem) ·
+2: **rośnie obok tekstu** · 3: **`nature`** · 4: **L1**. Reguły 3 i 8 przepisane w v1.38; zapis decyzji — [[ISSUE-046-icons]] → *Implementation plan*.
+~~⚠️ **OPEN — na stop #1**~~ (po kolei, jedno pytanie na raz — `autonomous-flow.md`):
+1. **Ikony w aplikacji:** A · B (końce, grubość) · C.
+2. **AC-2 „rosną z tekstem”** — dziś nie rosną. Kandydaci: **stała 24 dp** (jak Android: rozmiar czcionki zmienia `sp`, a ikony w `dp` rosną tylko z „rozmiarem
+   wyświetlania”; Flutter `IconThemeData.applyTextScaling` domyślnie `false`) · **rośnie obok tekstu** (przyciski, nagłówki sekcji, wiersze; pasek ekranu i
+   zakładki stałe). Przy 200% ikona obok tekstu ma 48 dp — na makiecie to widać.
+3. **Zakładka „Drzewo”** (przy B): `account_tree` (schemat, dziś) · `family_history` (drzewo rodziny: osoby jako kółka) · `nature` (drzewo liściaste, jak gałązka
+   w R1). `park` odpada — drzewo iglaste, a iglaste to materiał wieńców pogrzebowych (reguła 8).
+4. **Ikona aplikacji:** V · L1 · L2 · L3.
+
+**Arkusz C od autora (2026-10-18, `_ikony-dalle\C-arkusz-bursztyn.png`, poza repo) — kierunek wybrany przez autora: bursztyn, dwa tony, charakter**
+([[ISSUE-046-icons]] → *Implementation plan*). Na makiecie 9 ikon arkusza jako maski (kolor ze stanu działa — ta sama technika co wieniec, [[wieniec]]):
+przy 96 px cały charakter; **przy 24 dp — rozmiar w aplikacji — detale znikają**: drzewo to rozmyta kula, trasa i poziomice mapy to szum, twarze rodziny to plamy,
+stalówka to słaba kreska; czytelne zostają lupa, koło zębate i pinezka ze zniczem. Arkusz ma 9 z 77 ikon, reszta zostałaby z B. Na makiecie dodane dwa
+przełączniki B, które przenoszą kierunek na wektor: **wypełnienie 25%** (glif wypełniony pod glifem z kreską — ten sam kształt, więc się pokrywają) i
+**metafory z arkusza** (`ink_pen` zamiast ołówka, `add_photo_alternate` — zdjęcie z krajobrazem). `family_restroom` odrzucone — pełne postacie jak znak
+toalety, nie pasuje do „godny”.
+
+**Ikona aplikacji od autora (2026-10-18):** L1 — znicz z perforowaną pokrywką, L2 — drzewo z kropkami i płomieniem (`_ikony-dalle`, poza repo); L3 nie
+powstała. Na makiecie jako maski: tło `grobing_background` i akcent z aplikacji, a nie z obrazu; warstwa jednobarwna = same linie (alfa > 0,55), wyprowadzona z
+kolorowej. Obie czytelne przy 56 px na ekranie głównym i w motywie Androida 13. Przy wyborze L ikona powstaje tak samo jak wieńce: obraz → maska → PNG na
+gęstość w `res/mipmap-*` (wyjątek strażnika już obejmuje `res/`).
+
+**AC → element:** AC-1 → ikona aplikacji (V albo L) jako adaptacyjna z warstwą jednobarwną, w miejsce `mipmap-*/ic_launcher.png`. AC-2 → jedna rodzina (OPEN 1),
+kontrast — pomiar wyżej, rośnięcie z tekstem — OPEN 2, cele dotyku — zmiana ikon nie zmienia przycisków (≥ 48 dp, *Known gaps*); przy „rośnie obok tekstu” przycisk
+z podpisem rośnie razem z tekstem, a ikona mieści się w jego wysokości.
+
+**Rekomendacja `ui`** (po kandydatach): **B, końce zaokrąglone, grubość 300** — najbliżej R1/R4 i *„Thin line icons”*, jedna grubość ze zniczem; **rośnie obok
+tekstu** (AC-2 tak, jak je zapisano, bez ruszania pasków); **`family_history`** — mówi „rodzina”, a nie „schemat”; **V**, chyba że któraś L wyraźnie wygra —
+V jest wektorem z tej samej ścieżki co znicz w aplikacji, więc nic nie trzeba przerysowywać. **Nie da:** wyglądu 1:1 z R1 — ikony R1 przypominają inną rodzinę
+(cienkie, z zaokrąglonymi końcami, w stylu Lucide), której makieta nie pokazuje. *Obali:* kreska 300 w tekście pomocniczym słabo widoczna w słońcu (NFR-004,
+telefon) → grubość 400 z zaokrąglonymi końcami, jednym parametrem.
 
 ## Changelog
 - 2026-10-06 — v1 (`ui`, pierwsze uruchomienie, [[ISSUE-013-setup-ui-agent]] przy
@@ -534,3 +626,23 @@ wysokokontrastowy, bez rezygnacji ze stylu B. Wynik i data trafiają tutaj i do
 - 2026-10-17 — **v1.36** (stop #2 [[ISSUE-045-migration-map]] — decyzja autora, [[mapa-migracji]] v1.4, D25): reguła 13, punkt **mapa świata** —
   przeprowadzka to sam przejazd okręgu, **bez śladu** (*„bez tych linii szarych (nie ma potrzeby żadnego dodatkowego efektu)”*). Pary śladu z v1.35 (3,48 i
   6,74:1) nieaktualne. Tokeny bez zmian.
+- 2026-10-18 — **v1.37** (`ui` przed planem [[ISSUE-046-icons]]): sekcja *Candidates — ISSUE-046* — opcje A i B na makiecie (C czeka na obrazy autora), ikona
+  aplikacji V, sonda wycinania fontu zmiennego, 4 pytania na stop #1. **Reguły bez zmian** do wyboru autora. Tokeny bez zmian; pary ikon (wzór WCAG z
+  `theme.dart`, 2026-10-18): tekst pomocniczy 5,50 / 5,01 · akcent 8,81 / 8,04 (na tle / na powierzchni).
+- 2026-10-18 — **v1.38** (stop #1 [[ISSUE-046-icons]], decyzje 1–4 autora): reguła 3 — **Material Symbols, zaokrąglone, grubość 300, wypełnienie 25%**
+  (dekoracja; znaczenie i ≥ 3:1 niesie kreska), metafory z arkusza (pióro, zdjęcie z krajobrazem, drzewo liściaste), ikona obok tekstu rośnie z tekstem, pasek i
+  zakładki 24 dp; reguła 8 — znicz L1 to ikona aplikacji. Tokeny bez zmian; pary bez zmian (tekst pomocniczy 5,50 / 5,01 · akcent 8,81 / 8,04).
+- 2026-10-18 — **v1.39** (przegląd `ui` zbudowanej [[ISSUE-046-icons]] — przyjęte odstępstwa `dev` 1–3): reguła 3 — stałe 24 dp także przełącznik „Drzewo | Mapa”,
+  przyciski z samą ikoną i ikony w pudełkach o stałym rozmiarze (odstępstwo 3; reguła mówiła tylko o pasku i zakładkach); glify z własnego wyciętego fontu
+  zamiast pakietu (odstępstwo 1 — sonda: wycinanie Fluttera gubiło glify), grubość jedną stałą w widżecie (odstępstwo 2); reguła 4 — „bez własnych krojów
+  tekstu”, bo font ikon nie jest krojem. Odstępstwo 4 (ta sama ikona dla obu „dodaj zdjęcie”) to już reguła 3 — bez zmiany. Tokeny bez zmian. Pary ikon (wzór
+  WCAG z `theme.dart`, 2026-10-18): kreska na tle / powierzchni — tekst pomocniczy 5,50 / 5,01, tekst 10,98 / 10,02, akcent 8,81 / 8,04, `stateOk` 8,97 / 8,19,
+  błąd 6,45 / 5,89, `here` 6,99 / 6,38, tło na akcencie 8,81; **kreska wobec własnego wypełnienia 25%** (szczegół wewnątrz ikony) — najsłabsza para: tekst
+  pomocniczy na powierzchni 3,47:1, akcent 4,81, tło na akcencie 5,41 — wszystkie ≥ 3:1 (SC 1.4.11); wypełnienie wobec tła 1,41–1,77:1 — dekoracja.
+- 2026-10-18 — **v1.40** (stop #2 [[ISSUE-046-icons]], decyzja 1' autora): reguła 3 — **dziewięć ikon z arkusza DALL-E autora** (zakładki, lupa, ustawienia,
+  dodaj zdjęcie, pinezka, pióro, telewizor) przerysowane do wektora w foncie ikon; reszta z Material Symbols. Na stopie #2 autor zobaczył B (ikony Google w jego
+  kolorach) i wskazał, że chciał swoje rysunki — opis opcji B na stopie #1 był myląco nazwany kierunkiem. Tokeny bez zmian.
+- 2026-10-18 — **v1.41** (przegląd `ui` rundy 4 [[ISSUE-046-icons]]): reguła 3 — linie z arkusza poszerzone o ≈ 0,3 dp (`THICKEN`), dźwignia na słońce dla
+  glifów z arkusza, pinezki informacyjne zostają z Material; reguła 8 — pinezka ze zniczem także na przyciskach, które stawiają nową pinezkę. Tokeny bez zmian.
+- 2026-10-18 — **v1.42** (stop #2 [[ISSUE-046-icons]], prośba autora): reguła 8 — znicz aplikacji to rysunek autora z DALL-E (ten sam znak co ikona L1): dwa
+  tony w logo i na przyciskach, pełny w pinezce i w znaczniku zmarłych; *Known gaps* — stara sylwetka zastąpiona. Tokeny bez zmian.

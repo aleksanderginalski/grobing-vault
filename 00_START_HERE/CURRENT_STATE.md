@@ -3,7 +3,7 @@ title: "Grobing — Current State"
 type: meta
 status: active
 created: 2026-10-05
-updated: 2026-10-17
+updated: 2026-10-18
 ---
 
 # Grobing — Current State
@@ -22,8 +22,8 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   *Product decisions*). **Instalacja ze sklepu najpóźniej 2026-10-29**; prawdziwe dane autor wpisuje w trakcie wyjazdu na Wszystkie Święte:
   1. ~~[[ISSUE-041-google-play-and-safe-update]]~~ — **zamknięte 2026-10-16** w części kodu: migawka bazy przed migracją, numer wersji, README *Wydanie*,
      [[ADR-019-distribution-play-internal-testing]] (zamyka [[NT-005-distribution-decision]]). **Część w sklepie** (Play Console, instalacja z odtworzeniem,
-     aktualizacja na telefonie) — decyzją autora przed samą instalacją: [[ISSUE-032-mvp-install]] → *Before install* 0. Prompty do DALL-E z
-     [[ISSUE-046-icons]] gotowe (katalog tymczasowy sesji `b20ca21c-…\scratchpad\dalle-prompts-046.md`);
+     aktualizacja na telefonie) — decyzją autora przed samą instalacją: [[ISSUE-032-mvp-install]] → *Before install* 0 (ikona 512 do karty sklepu gotowa —
+     [[ISSUE-046-icons]]);
   2. ~~[[ISSUE-042-places-of-residence]]~~ — **zamknięte 2026-10-16**: miejsca zamieszkania od kraju do adresu (schemat v13,
      [[ADR-020-residences-place-in-the-row]]), lista miejsc w aplikacji poza gitem, pusty koniec z następnego miejsca (D12 — decyzja autora na stopie #2);
      wejście dla [[ISSUE-045-migration-map]] → *Notes*;
@@ -35,7 +35,9 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   5. ~~[[ISSUE-045-migration-map]]~~ — **zamknięte 2026-10-17**: mapa migracji w części „Mapa” zakładki Drzewo — świat z Natural Earth bez sieci, osoby
      w swoich miejscach w roku suwaka, przejazd przy przeprowadzce, kadr z Twoich gestów, tryb prezentacji na telewizor; bez nazw, bez śladu, awatary
      (decyzje autora D18, D25, D26);
-  6. [[ISSUE-046-icons]] — ikona aplikacji i ikony w aplikacji, wybór na makiecie (bez zmiany bazy);
+  6. ~~[[ISSUE-046-icons]]~~ — **zamknięte 2026-10-18**: ikona aplikacji — znicz L1 autora (adaptacyjna z jednobarwną); w aplikacji własny font ikon —
+     9 ikon z arkusza DALL-E autora i znicz autora przerysowane do wektora, reszta Material Symbols Rounded 300 w dwóch tonach; ikona obok tekstu rośnie
+     z tekstem (decyzje autora 1', 2–4); bez zmiany bazy;
   7. [[NT-007-hand-over-note]] (warunek obudzenia spełniony: kopia jest i jest eksportem) i [[ISSUE-032-mvp-install]] — audyt, małe poprawki „przed
      instalacją”, lista A *Hand checks*, instalacja ze sklepu.
 
@@ -46,7 +48,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   *Na sygnał*.
 
   Specyfikacja: [[drzewo]] v1.22, [[osoba]] v2.8, [[wpis-osoby]] v5.10, [[wieniec]] v1.2, [[zamieszkanie]] v1.4, [[mapa-migracji]] v1.4, [[grob]] v8.1,
-  [[style-b]] v1.36.
+  [[style-b]] v1.42.
 - **Prawdziwe dane rodziny dopiero po instalacji MVP** (decyzja autora 2026-10-08 w `/pm`): budujemy produkt gotowy do
   instalacji na telefonie (MVP = brief §5, M1–M11); do tego czasu autor ocenia aplikację na wymyślonych danych. Rozmowa z babcią
   (~2026-11-02) jest na kartce, a odpowiedzi trafią do aplikacji po instalacji.
@@ -165,7 +167,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     ok. 80 MB), `chr\` (profil Chrome bez okna), wyniki testów i skrypty — do kosza. Z sesji ISSUE-040 (`cbd907af-…\scratchpad\`): wycofana makieta `eksport-040.html`,
     zrzuty `shots\`, `gate\` (kopia `grobing-*-040.age`, odszyfrowany plik klucza i `tar` z bazą — **wymyślone dane, hasło testowe**), `agebin\` (oficjalne `age` v1.3.2 —
     można zachować do notki NT-007), obraz testowy, `chr\` i skrypty — do kosza. Z sesji ISSUE-041/042 (`b20ca21c-…\scratchpad\`): makieta
-    `makieta-042.html` i jej zrzut, `chr042\`, `emu041\`, wiadomości commitów — do kosza po [[ISSUE-046-icons]] (tam leżą prompty `dalle-prompts-046.md`). Z sesji
+    `makieta-042.html` i jej zrzut, `chr042\`, `emu041\`, wiadomości commitów — do kosza (także prompty `dalle-prompts-046.md` — [[ISSUE-046-icons]] zamknięte). Z sesji
     ISSUE-042 (`574c5666-…\scratchpad\`): `dl\` i `src\` — pobrane pliki GeoNames i Natural Earth (ok. 1 GB, dane publiczne; potrzebne tylko do
     ponownej budowy listy miejsc — README `grobing-code` → *Lista miejsc*), `emu042\` (zrzuty, kopia `files/` sprzed pozycji z `Grobing_Restore` —
     **wymyślone dane** i cmentarz dodany poza agentem — oraz APK odniesienia), `ui042\`, `tools\`, logi testów — do kosza. Z sesji ISSUE-043
@@ -174,7 +176,13 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     `2aa5d062-…\scratchpad\` (prototyp `wience-044.html`, panele 1–6) — do kosza; `3c71c787-…\scratchpad\` — **`src044\` zachowaj**: 19 oryginałów z DALL-E
     nazwanych kluczami wzorów (`<klucz>.png`), czyli dokładnie wejście do przebudowy wzorów (README `grobing-code` → *Wieńce*; te same obrazy leżą w
     Pobranych pod nazwami z ChatGPT) — przenieś je w swoje stałe miejsce; reszta do kosza: prototyp `wience-044-b.html` i jego obrazy, zrzuty `emu044\`
-    (wymyślone dane), APK odniesienia `base-043.apk`, logi klatek i testów, skrypty;
+    (wymyślone dane), APK odniesienia `base-043.apk`, logi klatek i testów, skrypty. Z sesji ISSUE-046 (`1f978d57-…\scratchpad\`): makieta `makieta-046\`,
+    zrzuty `emu046\` (wymyślone osoby, demo i jeden wpis autora), `stan-przed-046.tar` (dane pokazu — zwyczajne nazwiska, kopia jest w `_pokaz`) i
+    `stan-po-046.tar` (stan sprzed pokazu z wpisami autora), `dl-symbols\` (fonty Google — wejście do przebudowy fontu, do pobrania z README), `fonttest\`,
+    `review046\`, `lib-before-046\` (kopia `lib/` sprzed podmiany), `chr*\`, logi i skrypty — do kosza; poza katalogiem sesji `%TEMP%\gsonda`, `%TEMP%\gcmp`
+    i `%TEMP%\gvenv` (środowisko Pythona z fontTools i potracer) — do kosza. **`C:\Programowanie\Grobing\_ikony-dalle\` zachowaj** (poza repo): arkusz,
+    `L1-znicz.png`, `Z-znicz.png`, `Z-znicz-pelny.png` to wejście do przebudowy fontu i ikony aplikacji (README `grobing-code` → *Ikony*), a
+    `sklep-ikona-512.png` idzie do Play Console; `L2-drzewo.png` i `P-pinezka.png` — niepotrzebne;
   - **repo nie mają pliku `LICENSE`** — kod można oglądać, ale nie wolno go używać. Licencję można dodać później.
 - **Emulatory (po ISSUE-033):** `Medium_Phone` — release v12 na danych testowych autora, kopia skonfigurowana od nowa z hasłem
   testowym (wymyślone, z sesji ISSUE-029), pliki `grobing-klucz-029.age` i `grobing-kopia-029.age` w Pobranych; grób „Jozef” ma
@@ -204,7 +212,11 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   zastąpić. **Po ISSUE-044:** build profile v15 z wieńcami (`--split-per-abi`, **bez** `FRAME_LOG` — ostatnia instalacja po D20; do pomiaru klatek zbudować z
   `--dart-define=FRAME_LOG=true`), baza v15 nad danymi (migawki v11–v14 w `files/pre-update/`); **13 rodów u wymyślonych osób** (nazwy ASCII z wymyślonych
   rdzeni): ród Antoniego „Wymyslonowie” w kolorze Miedź, Marianna „Przykladowscy” (kłosy, rubin — założony przez autora na stopie #2), Wiktoria pół na pół.
-  Wpisy autora (cmentarz i grób) nietknięte; tekst, gęstość i animacje domyślne.
+  Wpisy autora (cmentarz i grób) nietknięte; tekst, gęstość i animacje domyślne. **2026-10-18 (pokaz dla znajomych, poza pozycją):** autor pokazał demo — oba
+  stany są w `C:\Programowanie\Grobing\_pokaz\` (poza repo; README ze sposobem zamiany): **demo** (41 wymyślonych osób o zwyczajnych nazwiskach — nigdy do repo,
+  build `demo-profile.apk`) i **sprzed demo** (stan opisany wyżej). **Po ISSUE-046:** `Grobing_Restore` ma z powrotem **demo** (build demo, stara ikona
+  Fluttera; ikona Grobing dodana na ekran główny, „Themed icons” wyłączone); przed testami na nim — wgrać stan sprzed demo z `_pokaz`, nigdy `pm clear` bez
+  zapisanego tar. `Medium_Phone` — release HEAD 6f4f2fb nad danymi testowymi autora (v12 → v15, 2026-10-18, dane zachowane).
 - **[[EPIC-002-wizyta]] gotowy do rozpisania na US** — pytanie „jak znaleźć grób bez pinezki” ma kierunek autora
   (2026-10-08): adres z wyszukiwarki zarządcy → kwatera zaznaczona według planu zarządcy → na miejscu plan offline i
   GPS → pinezka. Wejście do pierwszej US (mapa cmentarza): EPIC-002 → *Input from SPIKE-001*. Ekran: `ui` →
@@ -221,10 +233,18 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   paczki (decyzja autora 2026-10-07); treść wychodzących zmian sprawdza strażnik treści ([[ISSUE-020-content-guard]]) przy każdym `git add`/`commit`.
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **5** (ostatnie retro: [[2026-10-16-retro-04]]). Co **10** → retro + pytanie o 3–5
+- Zamknięte pozycje od ostatniego retro: **6** (ostatnie retro: [[2026-10-16-retro-04]]). Co **10** → retro + pytanie o 3–5
   nośnych faktów (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**; podbija go `docs` przy zamknięciu, a zeruje go retro.
 - Do retro (zebrane po drodze, bez decyzji):
   - Poprzednią listę rozliczyło [[2026-10-16-retro-04]] → *The "Do retro" list*.
+  - **Nazwa opcji opisana kierunkiem, nie źródłem rysunku** ([[ISSUE-046-icons]] → *Stop #2 — runda 1*): opcja B na stopie #1 nazwana „Twój kierunek
+    narysowany kreską” — autor wybrał ją, myśląc o swoich ikonach z arkusza; w aplikacji B to ikony Google w jego kolorach. Wyszło dopiero na emulatorze po
+    całej budowie (dwie rundy `dev`). Kandydat: przy wyborze wariantu nazwa mówi, **skąd jest to, co autor zobaczy** („ikony Google w Twoich kolorach” vs
+    „Twoje obrazki z arkusza”), a stop #1 pokazuje telefon z tym wariantem obok jego źródła.
+  - **Wiersz macierzy ISSUE-044 bez Issue(s)/Issue Status** — `TRACEABILITY.md`, wiersz „wieńce rodzin”: pozycja zamknięta, kolumny `planning` puste
+    (zauważone przy planie ISSUE-046). Do uzupełnienia przez `planning`/`docs` przy najbliższej okazji.
+  - **Wycinanie ikon przez Fluttera gubi glify Material Symbols z podmianą wzdłuż FILL** ([[ISSUE-046-icons]] → *Probes*) — sonda przed masową podmianą
+    złapała to, zanim poszło do przodu; wiedza w README `grobing-code` → *Ikony*.
 
 ## Parked (waiting on someone outside the session)
 - **cmentarz (którykolwiek z cmentarzy autora)** · przy 3 grobach, które autor zna: (a) dokładność GPS telefonu
@@ -244,6 +264,18 @@ Format wpisu: `źródło (babcia / cmentarz X) · pytanie bez danych rodziny · 
 ## Recently done
 > Tylko wpisy od ostatniego retro ([[2026-10-16-retro-04]]; zasada R5 z retro 3). Starsze są w plikach retro → *Archive*:
 > [[2026-10-16-retro-04]] · [[2026-10-13-retro-03]] · [[2026-10-08-retro-02]] · [[2026-10-06-retro-01]].
+
+- 2026-10-18 — [[ISSUE-046-icons]] zamknięte. **Ikony** (autor: obecne „wyglądają tak mało ciekawie”):
+  - makieta A · B · C i ikony aplikacji; kierunek autora — arkusz DALL-E (bursztyn, dwa tony, charakter); stop #1: B, rośnie z tekstem, drzewo liściaste,
+    ikona aplikacji **L1** (znicz); na stopie #2 autor zobaczył B na emulatorze i wskazał, że chciał **swoje rysunki** (decyzja 1') — opis opcji był myląco nazwany
+    (*Do retro*);
+  - sonda: wycinanie ikon przez Fluttera gubiło glify Material Symbols (`group`, `settings` puste) → **własny font ikon** (`assets/fonts/grobing-symbols.ttf`,
+    `tool/icons/build_symbols.py`): Material Symbols Rounded 300 w dwóch tonach, **9 ikon z arkusza autora** i **znicz autora** (logo, przyciski, pinezki,
+    drzewo) przerysowane do wektora; bez nowej zależności, bez zmiany bazy;
+  - ikona aplikacji adaptacyjna z warstwą jednobarwną (motywy Androida 13), ikona 512 do sklepu poza repo; przeglądy `ui` (trzy): 3 MAJOR (ikona w `WidgetSpan`
+    skalowana dwa razy, znicz w ikonie aplikacji poniżej 48 dp, dwie grubości kreski) i MINOR — poprawione lub przyjęte; [[style-b]] v1.37 → v1.42.
+
+  Lista B w [[ISSUE-032-mvp-install]] → *Hand checks*. Testy: 936 zielonych. Werdykt `qa`: APPROVED (self-check, z uwagami). Licznik retro: 5 → 6.
 
 - 2026-10-17 — [[ISSUE-045-migration-map]] zamknięte. **Mapa migracji** (cel autora „na wyjazd” — pokaz rodzinie na telewizorze):
   - stop #1 na makiecie: **W2 · K2 · O3 · D2 · R4** — przełącznik „Drzewo | Mapa”, bez cmentarzy, kraj w punkcie nazwy bez obszaru, droga tylko w ruchu,

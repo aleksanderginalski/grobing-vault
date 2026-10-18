@@ -10,7 +10,7 @@ verdict-date: null
 verdict-reviewer: null
 source: "[[2026-10-13-retro-03]] R8, R9 · `CURRENT_STATE.md` → *Droga do instalacji MVP* (ostatni krok bez pozycji)"
 created: 2026-10-13
-updated: 2026-10-16
+updated: 2026-10-18
 ---
 
 # ISSUE-032 — Instalacja MVP na telefonie autora
@@ -35,7 +35,9 @@ Warunki — każdy ma swój dom, tutaj tylko lista:
    A1 — paczka (`flutter build appbundle --release`, numer z `pubspec.yaml`) i wpis w Play Console przez autora (aplikacja, testerzy, pierwsza
    wersja z **kluczem wygenerowanym przez Google**; **nazwa `com.grobing.app` zajęta → STOP**); A2 — telefon: zaproszenie testera, instalacja ze
    sklepu (Grobing z APK wcześniej → odinstalować); C6 — wymyślona rodzina z kopii zrobionej na emulatorze z nowym hasłem testowym, „Odtwórz z
-   kopii”, odcisk w „Stanie danych”; C7 — następny numer wersji, wysyłka, aktualizacja ze sklepu, **ten sam odcisk**. Wynik → lista A niżej;
+   kopii”, odcisk w „Stanie danych”; C7 — następny numer wersji, wysyłka, aktualizacja ze sklepu, **ten sam odcisk**. Wynik → lista A niżej.
+   Ikona do karty w Play Console (512 × 512, znicz L1) jest gotowa poza repo: `C:\Programowanie\Grobing\_ikony-dalle\sklep-ikona-512.png`
+   ([[ISSUE-046-icons]]; przebudowa — README `grobing-code` → *Ikony*);
 1. **Audyt pól modelu ↔ ekrany** (retro 3, R9): każde pole [[data-model]] ma ekran, który je zapisuje, albo jawne „nie zapisuje go
    żaden ekran, bo…”. Powód: adres kwatery (M1) miał kolumny od v1, a ekran dopiero w [[ISSUE-028-cemetery-sectors]]. Robi agent;
    wynik to tabela w tej pozycji. Znani kandydaci: `is_living` ([[ISSUE-040-export-is-the-backup]] → *Notes*) i `grobonetUrl` (link wycofany —
@@ -183,6 +185,11 @@ Warunki — każdy ma swój dom, tutaj tylko lista:
 - TalkBack na mapie: okrąg, stos, skupienie, przełącznik — sprawdzone w drzewie semantyki i testach, nie na żywo;
 - tryb prezentacji mapy z przełącznikiem „Drzewo · Mapa” w sterowaniu ([[mapa-migracji]] D24) — stop #2, krok 3: **pomiń**;
 - „Pokaż na mapie” z widoku osoby i rozsunięcie stosu z imionami — stop #2, krok 2: **ok bez śladu na urządzeniu**.
+
+**Ikony** ([[ISSUE-046-icons]] → *Verification* → *Hand checks*)
+- kreska ikon w kolorze tekstu pomocniczego w pełnym słońcu (NFR-004) — nieprzetestowane na żywo; przy słabej widoczności: ikony Material —
+  `GrobingIcon.weight` 300 → 400; 9 ikon z arkusza autora (w tym trzy zakładki) i znicz — `THICKEN` w `tool/icons/build_symbols.py` i przebudowa fontu;
+- ikona aplikacji (znicz L1) na Motoroli — launcher producenta (maska, motyw) może różnić się od Pixel Launchera na emulatorze — nieprzetestowane na żywo.
 
 **Do decyzji autora, gdy zobaczy swoje cmentarze** (nie sprawdzenie, tylko wybór): grubość alejek i znicze, które nachodzą na
 siebie ([[cmentarz]] → *Open*, [[ISSUE-030-sector-on-a-visit]]).
