@@ -1,10 +1,10 @@
 ---
 screen: "Wpis osoby w grobie — formularz"
-items: ["[[ISSUE-012-transcribe-grave-screen]]", "[[ISSUE-017-person-photos]]", "[[ISSUE-018-profile-photo-crop]]", "[[ISSUE-019-family-relations]]", "[[ISSUE-025-gender-kinship-together-since]]", "[[ISSUE-024-person-view]]", "[[ISSUE-042-places-of-residence]]", "[[ISSUE-044-family-wreaths]]"]
+items: ["[[ISSUE-012-transcribe-grave-screen]]", "[[ISSUE-017-person-photos]]", "[[ISSUE-018-profile-photo-crop]]", "[[ISSUE-019-family-relations]]", "[[ISSUE-025-gender-kinship-together-since]]", "[[ISSUE-024-person-view]]", "[[ISSUE-042-places-of-residence]]", "[[ISSUE-044-family-wreaths]]", "[[ISSUE-047-grave-first-then-people]]"]
 us: "[[US-002-przepisanie-grobu]] · [[US-005-zdjecia]] · [[US-003-przepisanie-rodziny]]"
 journey-step: "n/a — M1 (warunek kroku 1 UJ-001)"
-mockup: "katalog tymczasowy sesji 2026-10-07: makieta-cmentarz-grob-osoba.html (ramki 3–4, ISSUE-012) · makieta-zdjecia.html (ramki 7–8 — kierunek sprzed stopu #1 ISSUE-016) · makieta-zdjecia-osoby.html (ramki 1–2, ISSUE-017) · makieta-rodzina.html (ramki 1–2, ISSUE-019)"
-updated: 2026-10-17
+mockup: "katalog tymczasowy sesji 2026-10-07: makieta-cmentarz-grob-osoba.html (ramki 3–4, ISSUE-012) · makieta-zdjecia.html (ramki 7–8 — kierunek sprzed stopu #1 ISSUE-016) · makieta-zdjecia-osoby.html (ramki 1–2, ISSUE-017) · makieta-rodzina.html (ramki 1–2, ISSUE-019) · 2026-10-18: makieta-047.html (ISSUE-047 — tryb „nowa osoba”, ekran 7)"
+updated: 2026-10-18
 ---
 
 # Wpis osoby — specyfikacja
@@ -133,6 +133,14 @@ updated: 2026-10-17
 > **Wersja 5.10 (2026-10-17, przed planem [[ISSUE-044-family-wreaths]]):** wiersz **„Wieniec rodu”** (element 4b) po „Nazwisku rodowym” — **tylko w
 > poprawie**, poza `next`. „Wybierz ród” / „Zmień” → arkusz rodów, „Nowy ród” i poprawa rodu. Wybór zapisuje się **od razu**, jak „Rodzina”
 > ([[wieniec]] D16), a nie z „Zapisz”. Elementy, stany wiersza i *Tempo*: [[wieniec]] E, F.
+>
+> **Wersja 6 (2026-10-18, przed planem [[ISSUE-047-grave-first-then-people]]) — przyjęte na stopie #1 (autor: „Tak”, 2026-10-18): najpierw grób, potem osoby.** Decyzja
+> „Grób powstaje z pierwszą osobą” **obalona** — trafiło jej *Obali* (autor: *„chciałbym dodać po prostu grób, a następnie osobę”*). Zmiany:
+> - **tryb „nowy grób” znika** — grób powstaje oknem „Nowy grób” ([[cmentarz]] 9a), a pierwsza osoba wchodzi przez „Dodaj osobę” jak każda;
+> - **„kolejna osoba” przychodzi z wyboru osoby** ([[grob]] 10): imiona = tekst wpisany w szukaniu, kursor na końcu; w pustym grobie bez podpowiedzi
+>   nazwiska i bez liczby osób w podtytule;
+> - **nowy tryb „nowa osoba”** — z zakładki Osoby ([[osoby]] 8): osoba bez grobu. Pasek „Nowa osoba”, podtytuł „bez grobu w aplikacji”, te same
+>   pola co „kolejna osoba”; **zapis → widok tej osoby** ([[osoba]]), który zastępuje formularz na stosie. Makieta: `makieta-047.html`, ekran 7.
 
 ## Purpose
 Wpisanie jednej osoby pochowanej w grobie, tak jak stoi w notatkach: zdjęcie (gdy jest), imiona, nazwisko,
@@ -140,8 +148,11 @@ nazwisko rodowe, płeć, daty urodzenia i zgonu z dopiskiem oraz **krótka biogr
 **najczęściej używany ekran przepisywania — ok. 100 razy** (G6), więc jego miarą jest koszt jednego wpisu.
 
 ## Navigation
-- Z [[cmentarz]] → „Dodaj grób” → tryb **„nowy grób”**. Zapis tworzy grób i osobę razem.
-- Z [[grob]] → „Dodaj osobę” → tryb **„kolejna osoba”**.
+- ~~Z [[cmentarz]] → „Dodaj grób” → tryb **„nowy grób”**. Zapis tworzy grób i osobę razem.~~ — **usunięte w v6**: „Dodaj grób” otwiera okno
+  „Nowy grób” ([[cmentarz]] 9a), a pierwsza osoba wchodzi z grobu jak każda.
+- Z [[grob]] → „Dodaj osobę” → wybór osoby → **„Nowa osoba”** ([[grob]] 10, v6) → tryb **„kolejna osoba”**, imiona = tekst z szukania.
+- **Z [[osoby]] → „Dodaj osobę”** (v6, [[osoby]] 8) → tryb **„nowa osoba”** (bez grobu), imiona = tekst z szukania zakładki, jeśli był.
+  **Zapis → [[osoba]]** tej osoby, który zastępuje formularz na stosie (wstecz wraca do Osób). Wstecz z wpisanymi danymi — okno jak niżej.
 - Z [[osoba]] → ✎ → tryb **„poprawa”** (v5.3, v5.8). Do [[ISSUE-024-person-view]] — z [[grob]] przez dotknięcie osoby
   (ISSUE-012, D1).
 - **Zapis → [[grob]]**, który zastępuje formularz na stosie (wstecz z grobu wraca do cmentarza).
@@ -170,9 +181,9 @@ nazwisko rodowe, płeć, daty urodzenia i zgonu z dopiskiem oraz **krótka biogr
 ## Elements in order
 | # | Element | Typ | Klawiatura / akcja | Domyślnie | Walidacja | Źródło |
 |---|---|---|---|---|---|---|
-| 1 | Pasek: „Osoba w grobie” (w poprawie: „Poprawa wpisu”); podtytuł (tekst pomocniczy, jedna linia): w trybie „nowy grób” — „Cmentarz Wymyślony · nowy grób”; w trybie „kolejna osoba” i w poprawie — nazwa grobu, a bez nazwy nazwa cmentarza, i „· w grobie: 2 osoby” | tytuł | — | — | — | decyzja projektowa · [[grob]] D1 |
+| 1 | Pasek: „Osoba w grobie” (w poprawie: „Poprawa wpisu”; **w trybie „nowa osoba” — „Nowa osoba”**, v6); podtytuł (tekst pomocniczy, jedna linia): ~~w trybie „nowy grób” — „Cmentarz Wymyślony · nowy grób”~~ (tryb usunięty w v6); w trybie „kolejna osoba” i w poprawie — nazwa grobu, a bez nazwy nazwa cmentarza, i „· w grobie: 2 osoby” (**w pustym grobie bez liczby**, v6); **w trybie „nowa osoba” — „bez grobu w aplikacji”** (jak poprawa osoby bez grobu, v5) | tytuł | — | — | — | decyzja projektowa · [[grob]] D1 · ISSUE-047 |
 | 1a | **Zdjęcia osoby** (v4) — wyśrodkowane, okrąg **80 dp**, odstęp 24 dp do „Imiona”. **Bez zdjęć:** jak v3 — okrąg z obrysem 1 dp (kolor obrysu), w środku `add_a_photo_outlined` (28 dp, akcent), pod okręgiem „Dodaj zdjęcie” (14 sp, kolor tekstu); opis dla czytnika „Dodaj zdjęcie osoby”. **Ze zdjęciami:** **profilowe** (pierwsze łącze) w kadrze łącza ([[kadr-profilowego]], v4.1), a bez kadru przycięte do okręgu ze środka; pod okręgiem liczba zdjęć z odmianą — „1 zdjęcie” · „3 zdjęcia” · „5 zdjęć” (14 sp, tekst pomocniczy, `plural`); opis „Zdjęcia osoby: 3 — otwórz”. W obu stanach cała grupa (okrąg z podpisem) to jeden przycisk | przycisk (cel ≥ 80 dp) | dotknięcie → [[zdjecie]] A w trybie osoby (bez zdjęć) albo [[zdjecia-osoby]] (ze zdjęciami). **Poza kolejnością `next`, nie bierze fokusu** | bez zdjęć; w poprawie — profilowe i liczba zdjęć osoby | — | US-005 AC-1 · ISSUE-017 AC 4 · R4 prawy · D-zdjęcie-2…4 |
-| 2 | **Imiona** — w jednym wierszu z płcią 4a po prawej (v5.6) | pole tekstowe, wielka litera na początku słów | `next`; **fokus i klawiatura od razu po wejściu** w trybach „nowy grób” i „kolejna osoba”; w poprawie bez fokusu (v2.1) | pusto | imiona albo nazwisko, co najmniej jedno: „Podaj imiona albo nazwisko.” | AC-2 |
+| 2 | **Imiona** — w jednym wierszu z płcią 4a po prawej (v5.6) | pole tekstowe, wielka litera na początku słów | `next`; **fokus i klawiatura od razu po wejściu** w trybach ~~„nowy grób”~~ „kolejna osoba” i „nowa osoba” (v6), **kursor na końcu tekstu przeniesionego z szukania**; w poprawie bez fokusu (v2.1) | pusto; **v6: tekst z szukania** ([[grob]] 9, [[osoby]] 2), spacje na brzegach obcięte | imiona albo nazwisko, co najmniej jedno: „Podaj imiona albo nazwisko.” | AC-2 |
 | 3 | **Nazwisko** | pole tekstowe, wielka litera na początku słów | `next` | w trybie „kolejna osoba”: nazwisko ostatnio wpisanej osoby w tym grobie, **zaznaczone** (pisanie je zastępuje) | jak 2 | AC-2 · decyzja (tempo) |
 | 4 | **Nazwisko rodowe** — etykieta „Nazwisko rodowe (z domu)” | pole tekstowe, wielka litera na początku słów | `next` | pusto | — | AC-2 · [[FR-005-nazwisko-rodowe]] |
 | 4a | **Płeć** (v5.6) — **dwa przyciski-ikony w wierszu „Imiona”, po prawej od pola**: ♀ `female_outlined` i ♂ `male_outlined`, każdy 48 × 56 dp (wysokość pola), promień 8 dp, odstęp 6 dp. Wybór jednokrotny, **pusty dozwolony** (dotknięcie wybranej ikony ją zdejmuje = płeć nieznana). **Wybrana:** tło w kolorze powierzchni, obrys 2 dp i ikona w akcencie; **niewybrana:** bez tła, obrys 1 dp w kolorze obrysu, ikona w kolorze tekstu pomocniczego. Wybór niesie też tło i grubość obrysu, nie sam kolor (SC 1.4.1). Dla czytnika i `tooltip`: „Kobieta” / „Mężczyzna”, stan „zaznaczone” (SC 1.1.1, 4.1.2). Pole „Imiona” zwęża się o 102 dp. ~~v5.5: segment „Kobieta · Mężczyzna” pod nazwiskiem rodowym~~ | przyciski-ikony | dotknięcie ikony. **Poza kolejnością `next`, nie bierze fokusu** — `next` z „Imiona” idzie do „Nazwisko” | **podpowiedź z pierwszego imienia** (*D-płeć*), liczona na bieżąco przy pisaniu „Imiona”, dopóki autor nie dotknie ikony — wtedy wygrywa jego wybór; bez imion — nic. W poprawie: zapisana płeć; **bez zapisanej płci — podpowiedź jak przy nowej osobie** | — | ISSUE-025 AC-1 · [[osoba]] D4 · SPIKE-004 D16 · *D-płeć* |
@@ -238,7 +249,7 @@ będzie ([[style-b]] reguła 9).
 ## States
 | Stan | Co widać |
 |---|---|
-| pusty („nowy grób”, „kolejna osoba”) | fokus w „Imiona”, klawiatura otwarta. W „kolejnej osobie” nazwisko podpowiedziane i zaznaczone. Podglądy dat puste |
+| pusty (~~„nowy grób”~~, „kolejna osoba”, „nowa osoba” — v6) | fokus w „Imiona”, klawiatura otwarta; **v6: w „Imionach” tekst z szukania, kursor na końcu**. W „kolejnej osobie” nazwisko podpowiedziane i zaznaczone (w pustym grobie — puste). Podglądy dat puste |
 | błąd | komunikat pod polem w kolorze **błędu** z ikoną `error_outline`, a ramka pola też w kolorze błędu. Kolor nigdy sam: zawsze ikona i tekst (SC 1.4.1) |
 | wypełniony | podgląd pod każdą wpisaną datą; przy „między” dwa pola daty |
 | poprawa (D1) | wartości wpisane. Data, która ma więcej niż jedno twierdzenie (spór źródeł), jest tylko do odczytu, z dopiskiem „Kilka źródeł — tej daty tu nie poprawisz.” |
@@ -349,15 +360,15 @@ zgonu, bez daty pochówku, krótkie „kim była”.
 
 | Krok | Akcje poza pisaniem |
 |---|---|
-| „Dodaj osobę” w [[grob]] (pierwsza osoba: „Dodaj grób” w [[cmentarz]]) | 1 dotknięcie |
-| Imiona → `next` | 1 |
+| „Dodaj osobę” w [[grob]] → imiona w szukaniu → „Nowa osoba” (v6, także pierwsza osoba — grób powstaje oknem, [[cmentarz]] *Tempo*) | 2 dotknięcia (do v5.10 — 1) |
+| Imiona (v6: już wpisane w szukaniu) → `next` | 1 |
 | Nazwisko (podpowiedziane) → `next` | 1 |
 | Nazwisko rodowe (puste) → `next` | 1 |
 | Urodzenie: rok → `next` (klawiatura numeryczna sama) | 1 |
 | Zgon: data → `next` (do „Kim była”, klawiatura tekstowa sama) | 1 |
 | Kim była | 0 |
 | Zapisz | 1 |
-| **Razem** | **7 akcji, 0 ręcznych zmian klawiatury, 0 pytań o źródło** (v2.2; było 8 z „Pochówkiem”) |
+| **Razem** | **8 akcji, 0 ręcznych zmian klawiatury, 0 pytań o źródło** (v6: +1 za „Nowa osoba” w wyborze osoby; v2.2 — 7, było 8 z „Pochówkiem”) |
 
 - Dopisek inny niż „dokładnie”: **+2 dotknięcia** (menu, wybór). „Między”: +2 i drugie pole.
 - Na całe notatki (ok. 100 osób): **ok. 700 akcji** plus pisanie.
@@ -438,7 +449,8 @@ zgonu, bez daty pochówku, krótkie „kim była”.
 ## Decisions
 | Decyzja | Dlaczego | Obali |
 |---|---|---|
-| **Grób powstaje z pierwszą osobą** | grób z notatek = cmentarz + osoby (US-002); pusty grób nie ma po co istnieć | potrzeba grobu bez osób ([[cmentarz]] → *Decisions*) |
+| ~~**Grób powstaje z pierwszą osobą**~~ — **obalone w v6** (*Obali* trafione — autor 2026-10-18: *„chciałbym dodać po prostu grób, a następnie osobę (lub osoby, które tam leżą)”*; [[cmentarz]] D38, [[grob]] D22–D24) | grób z notatek = cmentarz + osoby (US-002); pusty grób nie ma po co istnieć | potrzeba grobu bez osób ([[cmentarz]] → *Decisions*) |
+| **D-nowa-osoba — „Nowa osoba” bez grobu to ten sam formularz** (v6, [[ISSUE-047-grave-first-then-people]]) | osoba z zakładki Osoby (np. żyjący krewny) ma te same pola co osoba w grobie; drugi formularz byłby drugim wzorcem do nauczenia. Zapis prowadzi do widoku osoby, bo nie ma grobu, do którego można wrócić, a z widoku jest ✎ do rodziny i zdjęć ([[osoba]]). „Rodzina” dalej tylko w poprawie (D-rodzina-1) | autor po zapisie nowej osoby od razu dodaje jej rodzinę i szuka tego w formularzu → „Zapisz i dodaj rodzinę” |
 | **Po zapisie zawsze widok grobu**, bez przycisku „Zapisz i dodaj następną” | widać, co się zapisało, i łatwo porównać z notatką; mniej przycisków. Koszt: +1 dotknięcie na osobę poza pierwszą, ok. 50 na całe notatki (ok. 2 osoby na grób) | autor na stopie #2 czuje, że powrót do grobu spowalnia → drugi przycisk |
 | **Nazwisko podpowiedziane i zaznaczone** | w grobie rodzinnym nazwisko zwykle się powtarza; zaznaczenie sprawia, że inne nazwisko po prostu się wpisuje, bez kasowania | podpowiedź myli (np. groby kilku rodzin) |
 | **Dopisek jako przycisk z menu**, nie pięć przycisków w rzędzie | trzy rzędy po pięć przycisków to szum na ekranie, który ma być minimalny. Koszt: 2 dotknięcia zamiast 1, tylko przy dacie innej niż „dokładnie” | w notatkach przeważają daty przybliżone → segmenty albo rozpoznanie „ok.” wpisanego w polu |

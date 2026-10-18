@@ -38,17 +38,27 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   6. ~~[[ISSUE-046-icons]]~~ — **zamknięte 2026-10-18**: ikona aplikacji — znicz L1 autora (adaptacyjna z jednobarwną); w aplikacji własny font ikon —
      9 ikon z arkusza DALL-E autora i znicz autora przerysowane do wektora, reszta Material Symbols Rounded 300 w dwóch tonach; ikona obok tekstu rośnie
      z tekstem (decyzje autora 1', 2–4); bez zmiany bazy;
-  7. [[NT-007-hand-over-note]] (warunek obudzenia spełniony: kopia jest i jest eksportem) i [[ISSUE-032-mvp-install]] — audyt, małe poprawki „przed
+  7. ~~[[ISSUE-047-grave-first-then-people]]~~ — **zamknięte 2026-10-18**: „Dodaj grób” otwiera okno „Nowy grób”, grób może być pusty; „Dodaj osobę” w grobie
+     najpierw szuka — osoba bez grobu (np. z drzewa) dołącza jednym dotknięciem, osoba z grobem jest wyszarzona z powodem (D23); „Dodaj osobę” w Osobach;
+     bez zmiany bazy;
+  8. [[ISSUE-048-portrait-photos]] — dotknięcie portretu: zmiana profilowego, nowe zdjęcia (wchłania [[ISSUE-026-link-existing-photo-to-person]]);
+  9. [[ISSUE-049-tree-levels-and-zoom]] — poziomy pokrewieństwa (krew, potem każde małżeństwo) niezależne od przybliżania, przybliżanie także na telewizorze;
+  10. [[ISSUE-050-next-event]] — „Następne” obok ▶ na drzewie i mapie: rok i co się w nim stało;
+
+     pozycje 7–10 — **przegląd przepływu przez autora 2026-10-18 w `/pm`** (7 punktów, podział na 4 pozycje — `pm`, autor: *„Do twojej decyzji ile tych
+     zadań”*); wszystkie z ekranem (`ui` → `planning`), prawdopodobnie bez zmiany bazy, a **przed instalacją**, bo w trakcie wyjazdu aktualizacji nie ma.
+     Gdy zabraknie czasu, `pm` pyta autora, co odpada, zanim cokolwiek odpadnie;
+  11. [[NT-007-hand-over-note]] (warunek obudzenia spełniony: kopia jest i jest eksportem) i [[ISSUE-032-mvp-install]] — audyt, małe poprawki „przed
      instalacją”, lista A *Hand checks*, instalacja ze sklepu.
 
   **Zasady terminu:** przed instalacją wszystko, co zmienia bazę; widoki bez zmiany bazy (5, 6) mogą przyjść później jako aktualizacja ze sklepu; **w trakcie
-  wyjazdu żadnych aktualizacji**. Wszystkie US [[EPIC-001-zabezpiecz-i-przepisz]] i [[EPIC-003-zrozumienie]] zamknięte (EPIC-i zostają `draft` do instalacji —
+  wyjazdu żadnych aktualizacji** — dlatego 7–10, potrzebne na wyjeździe, idą przed instalacją. Wszystkie US [[EPIC-001-zabezpiecz-i-przepisz]] i [[EPIC-003-zrozumienie]] zamknięte (EPIC-i zostają `draft` do instalacji —
   ich NFR i rzeczy w ręce sprawdza [[ISSUE-032-mvp-install]]).
 - **Agent `architect` — nie teraz** (retro 4, R7): sygnał „pierwszy ADR zastąpiony” ([[ADR-018-export-is-the-backup]]) rozliczony; nowy warunek w `CLAUDE.md` →
   *Na sygnał*.
 
-  Specyfikacja: [[drzewo]] v1.22, [[osoba]] v2.8, [[wpis-osoby]] v5.10, [[wieniec]] v1.2, [[zamieszkanie]] v1.4, [[mapa-migracji]] v1.4, [[grob]] v8.1,
-  [[style-b]] v1.42.
+  Specyfikacja: [[drzewo]] v1.22, [[osoba]] v2.8, [[wpis-osoby]] v6, [[wieniec]] v1.2, [[zamieszkanie]] v1.4, [[mapa-migracji]] v1.4, [[grob]] v9.1,
+  [[cmentarz]] v8, [[osoby]] v3.1, [[rodzina]] v2.2, [[style-b]] v1.42.
 - **Prawdziwe dane rodziny dopiero po instalacji MVP** (decyzja autora 2026-10-08 w `/pm`): budujemy produkt gotowy do
   instalacji na telefonie (MVP = brief §5, M1–M11); do tego czasu autor ocenia aplikację na wymyślonych danych. Rozmowa z babcią
   (~2026-11-02) jest na kartce, a odpowiedzi trafią do aplikacji po instalacji.
@@ -79,9 +89,11 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
 - Poza tą kolejnością:
   - **opowieść rodziny na drzewie** — pomysł autora ze stopu #2 ISSUE-037 (c) w [[2026-10-14-opowiesc-rodziny-i-wieniec]] (INBOX): najpierw prototyp `ui`
     w trybie discovery, potem pozycje. **Po instalacji MVP** (decyzja autora 2026-10-14). Wieniec (d) przeszedł 2026-10-16 do kolejki jako
-    [[ISSUE-044-family-wreaths]] (zamknięte 2026-10-17);
-  - [[ISSUE-026-link-existing-photo-to-person]] — zdjęcie, które już jest w aplikacji, dodane osobie od jej strony („połączyć z
-    istniejącymi”, decyzja autora na stopie #1 ISSUE-024); nowy ekran wyboru, więc `ui` → `planning`. Dziś działa od strony zdjęcia;
+    [[ISSUE-044-family-wreaths]] (zamknięte 2026-10-17); „następne zdarzenie” z c) — 2026-10-18 jako [[ISSUE-050-next-event]]; animacje i zbliżenia zostają;
+  - ~~[[ISSUE-026-link-existing-photo-to-person]]~~ — **wchłonięta 2026-10-18 przez [[ISSUE-048-portrait-photos]]** (AC-4, AC-5 tam);
+  - **usuwanie pustego grobu i pochówku** — w aplikacji nie ma usuwania grobów, osób ani pochówków (brief G7/C5). Od [[ISSUE-047-grave-first-then-people]]
+    pusty grób z pomyłki zostaje na liście, a osoby z grobem nie da się dodać do drugiego (napis symboliczny). Kandydat na małą pozycję, gdy któreś zacznie
+    przeszkadzać przy prawdziwych danych ([[cmentarz]] D38 *Obali* 2, [[grob]] D23 *Obali*);
   - [[NT-001-photograph-the-notes]]: zdjęcia zrobione (33). Zostało: zaszyfrowane miejsce, sprawdzenie
     kopii w WhatsAppie i otwarcie kopii — *Resolution*;
   - **wyszukiwanie w bazie cmentarzy — tematy do decyzji autora** ([[ISSUE-015-add-cemetery-from-database]] →
@@ -183,6 +195,9 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     i `%TEMP%\gvenv` (środowisko Pythona z fontTools i potracer) — do kosza. **`C:\Programowanie\Grobing\_ikony-dalle\` zachowaj** (poza repo): arkusz,
     `L1-znicz.png`, `Z-znicz.png`, `Z-znicz-pelny.png` to wejście do przebudowy fontu i ikony aplikacji (README `grobing-code` → *Ikony*), a
     `sklep-ikona-512.png` idzie do Play Console; `L2-drzewo.png` i `P-pinezka.png` — niepotrzebne;
+  - **katalog sesji ISSUE-047** (`%TEMP%\claude\c--Programowanie-Grobing-grobing-agents\cce9fe30-…\scratchpad\`): makieta `makieta-047.html` i `makieta-047.png`,
+    `emu047\` — zrzuty `01`–`20` (na 05, 08, 09 i 17a jest Twój wpis z emulatora), kopia demo sprzed pozycji `stan-przed-047.tar` + `stan-przed-047-base.apk`
+    (już wgrana z powrotem), `chr047\` (profil Chrome bez okna), skrypty `*.py` — wszystko do kosza;
   - **repo nie mają pliku `LICENSE`** — kod można oglądać, ale nie wolno go używać. Licencję można dodać później.
 - **Emulatory (po ISSUE-033):** `Medium_Phone` — release v12 na danych testowych autora, kopia skonfigurowana od nowa z hasłem
   testowym (wymyślone, z sesji ISSUE-029), pliki `grobing-klucz-029.age` i `grobing-kopia-029.age` w Pobranych; grób „Jozef” ma
@@ -216,7 +231,9 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   stany są w `C:\Programowanie\Grobing\_pokaz\` (poza repo; README ze sposobem zamiany): **demo** (41 wymyślonych osób o zwyczajnych nazwiskach — nigdy do repo,
   build `demo-profile.apk`) i **sprzed demo** (stan opisany wyżej). **Po ISSUE-046:** `Grobing_Restore` ma z powrotem **demo** (build demo, stara ikona
   Fluttera; ikona Grobing dodana na ekran główny, „Themed icons” wyłączone); przed testami na nim — wgrać stan sprzed demo z `_pokaz`, nigdy `pm clear` bez
-  zapisanego tar. `Medium_Phone` — release HEAD 6f4f2fb nad danymi testowymi autora (v12 → v15, 2026-10-18, dane zachowane).
+  zapisanego tar. `Medium_Phone` — release HEAD 6f4f2fb nad danymi testowymi autora (v12 → v15, 2026-10-18, dane zachowane). **Po ISSUE-047:**
+  `Grobing_Restore` — z powrotem **demo** (APK i dane zapisane przed pozycją, razem z Twoimi zmianami z 2026-10-18: 41 osób); na czas pozycji był tam stan
+  sprzed demo z `_pokaz` z buildem ISSUE-047 — wpisy z testów i ze stopu #2 przepadły razem z nim, plik w `_pokaz` bez zmian.
 - **[[EPIC-002-wizyta]] gotowy do rozpisania na US** — pytanie „jak znaleźć grób bez pinezki” ma kierunek autora
   (2026-10-08): adres z wyszukiwarki zarządcy → kwatera zaznaczona według planu zarządcy → na miejscu plan offline i
   GPS → pinezka. Wejście do pierwszej US (mapa cmentarza): EPIC-002 → *Input from SPIKE-001*. Ekran: `ui` →
@@ -233,7 +250,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   paczki (decyzja autora 2026-10-07); treść wychodzących zmian sprawdza strażnik treści ([[ISSUE-020-content-guard]]) przy każdym `git add`/`commit`.
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **6** (ostatnie retro: [[2026-10-16-retro-04]]). Co **10** → retro + pytanie o 3–5
+- Zamknięte pozycje od ostatniego retro: **7** (ostatnie retro: [[2026-10-16-retro-04]]). Co **10** → retro + pytanie o 3–5
   nośnych faktów (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**; podbija go `docs` przy zamknięciu, a zeruje go retro.
 - Do retro (zebrane po drodze, bez decyzji):
   - Poprzednią listę rozliczyło [[2026-10-16-retro-04]] → *The "Do retro" list*.
@@ -264,6 +281,16 @@ Format wpisu: `źródło (babcia / cmentarz X) · pytanie bez danych rodziny · 
 ## Recently done
 > Tylko wpisy od ostatniego retro ([[2026-10-16-retro-04]]; zasada R5 z retro 3). Starsze są w plikach retro → *Archive*:
 > [[2026-10-16-retro-04]] · [[2026-10-13-retro-03]] · [[2026-10-08-retro-02]] · [[2026-10-06-retro-01]].
+
+- 2026-10-18 — [[ISSUE-047-grave-first-then-people]] zamknięte. **Najpierw grób, potem osoby** (pierwsza z 4 pozycji z przeglądu przepływu przez autora w `/pm`;
+  [[ISSUE-048-portrait-photos]], [[ISSUE-049-tree-levels-and-zoom]], [[ISSUE-050-next-event]] rozpisane tego samego dnia, ISSUE-026 wchłonięta przez ISSUE-048):
+  - stop #1 na makiecie — *„Tak”*: okno „Nowy grób” (to samo co „Popraw grób”), pusty grób, wybór „Kto leży w tym grobie?” („Bez grobu” do wyboru, „W grobach”
+    wyszarzone z powodem — D23, bo pochówku nie da się cofnąć), „Dodaj osobę” w Osobach z imieniem z szukania; koszt: nowy grób z pierwszą osobą 1 → 4 dotknięcia;
+  - decyzja „Grób powstaje z pierwszą osobą” obalona (*Obali* trafione); [[cmentarz]] v8 (D38), [[grob]] v9.1 (D22–D26), [[osoby]] v3.1, [[wpis-osoby]] v6 (tryb
+    „nowa osoba”), [[rodzina]] v2.2; **bez zmiany bazy** (`burials` to osobna tabela);
+  - przegląd `ui`: 1 MAJOR (pusty tytuł arkusza grobu bez nazwy i osób, z pinezką) i 2 MINOR — poprawione przed stopem; stop #2 *„Ok”* ze śladem na urządzeniu.
+
+  Lista A i B w [[ISSUE-032-mvp-install]] → *Hand checks*. Testy: 946 zielonych. Werdykt `qa`: APPROVED (self-check, z uwagami). Licznik retro: 6 → 7.
 
 - 2026-10-18 — [[ISSUE-046-icons]] zamknięte. **Ikony** (autor: obecne „wyglądają tak mało ciekawie”):
   - makieta A · B · C i ikony aplikacji; kierunek autora — arkusz DALL-E (bursztyn, dwa tony, charakter); stop #1: B, rośnie z tekstem, drzewo liściaste,

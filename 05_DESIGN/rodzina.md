@@ -1,10 +1,10 @@
 ---
 screen: "Rodzina — arkusz rodziny (A) i wybór osoby (B)"
-items: ["[[ISSUE-019-family-relations]]", "[[ISSUE-025-gender-kinship-together-since]]"]
+items: ["[[ISSUE-019-family-relations]]", "[[ISSUE-025-gender-kinship-together-since]]", "[[ISSUE-047-grave-first-then-people]]"]
 us: "[[US-003-przepisanie-rodziny]]"
 journey-step: "n/a — M1 (warunek kroku 1 UJ-001)"
 mockup: "katalog tymczasowy sesji 2026-10-07: makieta-rodzina.html (ramki 3–6; ramki 1–2 to sekcja „Rodzina” w [[wpis-osoby]]) · 2026-10-08: issue-025-prototyp.html (v2 — kreator, karta partnera, warianty C i P; ścieżka w ISSUE-025)"
-updated: 2026-10-08
+updated: 2026-10-18
 ---
 
 # Rodzina — specyfikacja
@@ -92,6 +92,12 @@ updated: 2026-10-08
 > - D: „Rodzic” przy nieznanej płci, „Dzieci” przy związku rodziców, „Usuń” zamiast „Nie znam daty” przy „Razem od”, stopka
 >   zawija się przy dużym tekście; E: „Dziecko tej pary”, para pod pytaniem (bez odmiany imion — [[grob]] D1).
 > Dane bez zmian wobec planu ISSUE-025 (zdarzenia `together`, `marriage` — także bez daty — i `end`, `persons.sex`).
+>
+> **Wersja 2.2 (2026-10-18, przegląd `ui` [[ISSUE-047-grave-first-then-people]] — odstępstwo `dev` przyjęte):** wybór osoby (B) to ten sam widżet co
+> „Kto leży w tym grobie?” ([[grob]] 8–12). **Błąd odczytu osób** pokazuje teraz B3 „Nowa osoba” i pod nim „Nie udało się odczytać osób.” (tekst
+> pomocniczy), jak [[grob]] v9 → *Stany wyboru*; do v2.1 ekran był pusty, bez działania i bez słowa ([[style-b]] reguły 7 i 9). Nowa osoba nie wymaga
+> odczytu listy, więc wpis rodziny da się dokończyć. *Obali:* błąd odczytu jest częsty, a autor dopisuje przy nim osoby, które już są (duplikaty) —
+> wtedy przy błędzie „Spróbuj ponownie” zamiast B3.
 
 ## Purpose
 Wpisanie jednej rodziny naraz — pary i jej dzieci — tak, jak stoi w notatkach, oraz poprawa rodziny. Wybór osoby
@@ -232,6 +238,7 @@ wiadomo”; przy jednym partnerze krok też jest, bo dziecko mogło być spoza z
 | B — filtr | sekcje pokazują pasujące wiersze; nagłówek sekcji bez pasujących znika; B3 z wpisanym tekstem |
 | B — pusty wynik | B3 i „Nie ma osoby pasującej do „…”.” |
 | B — wczytywanie | samo tło (odczyt trwa ułamek sekundy — jak [[zdjecie]] D) |
+| B — błąd odczytu (v2.2) | B2, B3 (działa), pod nim „Nie udało się odczytać osób.” (tekst pomocniczy); bez sekcji B4, B5 |
 | **C — krok 1** (v2) | arkusz wysoki, fokus w B2, klawiatura otwarta, „krok 1 z 3” |
 | C — nowa osoba | C1' z fokusem w „Imiona”, płeć podpowiedziana, nazwisko zaznaczone |
 | C — krok 2 przed wyborem | dwie karty, bez bloku daty i bez „Dalej” |

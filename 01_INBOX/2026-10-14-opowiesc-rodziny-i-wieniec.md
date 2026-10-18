@@ -47,3 +47,9 @@ bo prawdziwe dane czekają na instalację, a wartość z briefu §2 to notatki *
 **d) jest teraz [[ISSUE-044-family-wreaths]]** — przed instalacją, nie po niej (*„tak róbmy to”*, [[2026-10-16-retro-04]] → *Product decisions*). Autor
 doprecyzował definicję: wieńce **symbolizujące rodziny, z których wywodzi się osoba, domyślnie dzieci przejmują po ojcu** (zamiast „według nazwiska”).
 Pytania 1–5 z d) przeszły do pozycji. **c) zostaje tutaj** — po instalacji MVP, jak w decyzji z 2026-10-14.
+
+## Zmiana 2026-10-18 — część c) przeniesiona do backlogu (przegląd autora w `/pm`)
+**„Następne zdarzenie” jest teraz [[ISSUE-050-next-event]]** — przed instalacją. Autor: *„opcja przechodzenia do next event (obok przycisku play),
+aby pokazać, co się działo, i aby dawało krótki komentarz”*, a potem *„zróbmy tylko „następne” — […] data i co się w tym roku stało”*. Z pytań c)
+przeszły tam 3 (daty niepewne), 4 (ograniczenie animacji) i 6 (czytelność na telewizorze). **Animacje połączeń i zbliżenia na zdarzenia zostają tutaj** —
+po instalacji MVP, jak w decyzji z 2026-10-14 (pytania 1, 2 i 5).

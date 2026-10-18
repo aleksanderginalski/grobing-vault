@@ -1,7 +1,7 @@
 ---
 title: "ISSUE-026 — Add a photo already in the app to a person (from the person's side)"
 type: issue
-status: ready
+status: withdrawn
 delivery-style: task-level
 priority: SHOULD
 ideal_days: null
@@ -10,10 +10,13 @@ verdict-date: null
 verdict-reviewer: null
 source: "[[ISSUE-024-person-view]] — uwaga autora na stopie #1, runda 1 („…lub połączyć z istniejącymi”), osobna pozycja decyzją autora w rundzie 2 („jest dobrze”), [[osoba]] *Open* 6"
 created: 2026-10-12
-updated: 2026-10-12
+updated: 2026-10-18
 ---
 
 # ISSUE-026 — Zdjęcie z aplikacji dla osoby
+
+> **Wchłonięta przez [[ISSUE-048-portrait-photos]] (2026-10-18, `/pm` — podział przeglądu autora na pozycje).** AC-1 i AC-2 są tam AC-4 i AC-5,
+> *What to build* niżej obowiązuje dalej. Gdy przy ISSUE-048 te AC wypadną z zakresu, ta pozycja wraca do `ready`. Treść niżej bez zmian.
 
 > Z zamknięcia [[ISSUE-024-person-view]]. Autor o sekcji „Zdjęcia” w widoku osoby: *„chciałbym mieć dla osoby bez zdjęć również
 > miejsce na »zdjęcia« abym wiedział że mogę tutaj je dodać na dole (lub połączyć z istniejącymi)”*. Pierwszą część zbudowała

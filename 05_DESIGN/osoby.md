@@ -1,10 +1,10 @@
 ---
-screen: "Osoby — zakładka: wszystkie osoby i wyszukiwanie; wybór „ja”"
-items: ["[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-022-app-skeleton-tabs-people-settings]]", "[[ISSUE-025-gender-kinship-together-since]]", "[[ISSUE-024-person-view]]"]
+screen: "Osoby — zakładka: wszystkie osoby, wyszukiwanie i dodawanie; wybór „ja”"
+items: ["[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-022-app-skeleton-tabs-people-settings]]", "[[ISSUE-025-gender-kinship-together-since]]", "[[ISSUE-024-person-view]]", "[[ISSUE-047-grave-first-then-people]]"]
 us: "do rozpisania — S5/G5 (wyszukiwanie osób; brief §5a G5 — Should, przyjęte do MVP decyzją autora na prototypie: SPIKE-004 D1, D3, D19)"
 journey-step: "n/a — wejście do widoku osoby (M5) spoza ścieżki wizyty"
-mockup: "2026-10-08: grobing-prototyp.html (SPIKE-004, panel 5) — katalog tymczasowy sesji, ścieżka w SPIKE-004"
-updated: 2026-10-09
+mockup: "2026-10-08: grobing-prototyp.html (SPIKE-004, panel 5) — katalog tymczasowy sesji, ścieżka w SPIKE-004 · 2026-10-18: makieta-047.html (ISSUE-047 — „Dodaj osobę”, ekrany 6–7)"
+updated: 2026-10-18
 ---
 
 # Osoby — specyfikacja
@@ -36,6 +36,16 @@ updated: 2026-10-09
 >
 > **Wersja 2.3 (2026-10-09, przed planem [[ISSUE-024-person-view]]):** karta osoby i karta „Ja” po wyborze otwierają
 > **widok osoby** ([[osoba]]) — koniec tymczasowego D7. Reszta listy bez zmian.
+>
+> **Wersja 3 (2026-10-18, przed planem [[ISSUE-047-grave-first-then-people]]) — przyjęte na stopie #1 (autor: „Tak”, 2026-10-18): „Dodaj osobę”.** Autor: *„w zakładce
+> Osoby nie widzę możliwości dodania nowej osoby”*. Do v2.3 osoba bez grobu powstawała tylko w arkuszu rodziny. Zmiana: **wypełniony „Dodaj osobę”
+> przypięty na dole listy** (element 8), jak „Dodaj grób” na liście grobów ([[cmentarz]] 9); przy wpisanym szukaniu — „Dodaj osobę: „Ewa””, a
+> formularz dostaje to imię (D10). Makieta: `makieta-047.html`, ekrany 6–7.
+>
+> **Wersja 3.1 (2026-10-18, przegląd `ui` zbudowanego ekranu [[ISSUE-047-grave-first-then-people]]) — przyjęte, tak jak zbudowane:**
+> - **lista kończy się 8 dp nad przyciskiem 8**, zamiast przewijać się pod nim — skutek ten sam (ostatnia karta jest cała widoczna), tak jak „Dodaj grób”
+>   po przeglądzie [[cmentarz]] v2.1;
+> - **„Dodaj osobę” jest też w stanie „błąd odczytu”** (*States*, D11).
 
 ## Purpose
 Znaleźć osobę bez wiedzy, na którym cmentarzu leży: po nazwisku albo imieniu, a w liście — zobaczyć, kim jest dla
@@ -50,6 +60,8 @@ która osoba to on („ja”) — od niej liczą się łańcuchy i nazwy pokrewi
 - **Karta „Ja”:** przed wyborem → **wybór „ja”** (elementy 6–7); po wyborze → ta osoba (jak karta osoby).
 - Wstecz z osoby wraca tu, z tym samym tekstem w wyszukiwarce, tą samą pozycją listy i **bez klawiatury** (pole oddaje
   fokus przed otwarciem osoby — błąd znaleziony na emulatorze w ISSUE-022).
+- **„Dodaj osobę” (8, v3) → [[wpis-osoby]] w trybie „nowa osoba”** (bez grobu; imiona = tekst z wyszukiwarki, jeśli był). Zapis → widok tej
+  osoby ([[osoba]]); wstecz z niego wraca tutaj, a osoba jest na liście (szukanie zostaje, jak po powrocie z osoby).
 - **Wybór „ja”** otwiera się też z wiersza „Ja” w [[ustawienia]] (element 1) — tam zawsze, także żeby zmienić wybraną
   osobę. Wybór zapisuje i wraca tam, skąd przyszedłeś; wstecz bez wyboru niczego nie zmienia.
 
@@ -63,6 +75,7 @@ która osoba to on („ja”) — od niej liczą się łańcuchy i nazwy pokrewi
 | 3 | **„Ja”** — pierwsza karta, z obrysem: inicjały „Ja” w akcencie (40 dp; **zawsze znak „Ja”, także gdy osoba ma profilowe** — D4), „Ja” (16 sp, półgruby), pod spodem jedna linia (14 sp, tekst pomocniczy): **przed wyborem** „Wybierz, która osoba to Ty”, **po wyborze** imię i nazwisko tej osoby („Ewa Wymyślona”, z „z d. …”, jeśli jest). Chevron. Przy wpisanym tekście znika | karta | przed wyborem → wybór „ja” (6–7); po wyborze → [[osoba]] dla „ja” (do ISSUE-024 — „Poprawa wpisu”) | — | — | M5 · [[data-model]] (ustawienie „ja”) · ISSUE-022 D3 · przegląd `ui` (D4) |
 | 4 | **Lista osób A–Z po nazwisku**, z nagłówkami liter (13 sp, tekst pomocniczy). Karta (reguła 11, ≥ 64 dp): profilowe 40 dp albo inicjały, „Imiona Nazwisko z d. Rodowe” (16 sp, półgruby), pod spodem **lata życia** — 14 sp, tekst pomocniczy (v2.2: bez pokrewieństwa — D2 obalone); chevron. **Lata — same lata** według reguły 6: „1926–2010”, „ur. 1955”, „zm. 1951”, „ok. 1890 – 1951”, „między 1893 a 1895 – 1960”, a bez dat „bez dat”. Pokrewieństwa w liście nie ma (v2.2, decyzja autora). **Polskie sortowanie: po nazwisku, a gdy go brak — po nazwisku rodowym** (tego samego klucza używa nagłówek litery), potem po imionach. Osoby bez nazwiska i bez nazwiska rodowego — **na końcu, pod nagłówkiem „Bez nazwiska”**. Osoba „ja” nie powtarza się na liście (stoi w 3), ale wyszukiwanie ją znajduje | lista kart | karta → [[osoba]] (do ISSUE-024 — „Poprawa wpisu”, D7) | po nazwisku, potem po imieniu | — | **decyzja autora** (D19) · [[osoba]] D4 (nazwy pokrewieństwa) · ISSUE-022 D3, odstępstwo 2 (D5) |
 | 5 | **Brak wyników:** „Nie ma osoby „<tekst>”.” (tekst pomocniczy) | tekst | — | — | — | [[style-b]] reguła 9 |
+| 8 | **„Dodaj osobę”** (v3) — **wypełniony, przypięty na dole listy** nad dolnym paskiem, na pełną szerokość (marginesy 16 dp, 16 dp nad paskiem), ≥ 52 dp, ikona `person_add_alt_outlined` w kolorze tła; **przy wpisanym szukaniu „Dodaj osobę: „Ewa””** (tekst z 2, jedna linia, ucięty „…”). ~~Lista przewija się nad nim, a ostatnia karta ma pod sobą odstęp na wysokość przycisku~~ **Lista kończy się 8 dp nad nim** (v3.1) — jak [[cmentarz]] 9 (v2.1). Przy otwartej klawiaturze przycisk stoi nad klawiaturą (pasek zakryty, [[style-b]] reguła 12) | przycisk główny | → [[wpis-osoby]] „nowa osoba”, imiona = tekst z 2 (spacje na brzegach obcięte) | — | — | **decyzja autora** (`/pm` 2026-10-18) · ISSUE-047 AC-4 · D10 |
 
 ~~**Pokrewieństwo w liście (element 4, v2.1)**~~ — wycofane w v2.2 (decyzja autora, wyżej). Reguły nazw (słownik ze
 źródłem, nawias ze ścieżką, opis z odcinków, odcinki neutralne bez płci) przechodzą do widoku osoby
@@ -78,12 +91,12 @@ która osoba to on („ja”) — od niej liczą się łańcuchy i nazwy pokrewi
 ## States
 | Stan | Co widać |
 |---|---|
-| pełny | 1–4 |
+| pełny | 1–4, 8 |
 | „ja” niewybrane | 3 z linią „Wybierz, która osoba to Ty” |
-| szukanie | 1, 2, wyniki 4 bez nagłówków liter i bez „Ja”; osoba „ja” jest w wynikach, jeśli pasuje |
-| brak wyników | 1, 2, 5 |
-| pusta baza | 1, 2, „Tu pojawią się osoby z grobów i rodzin.” (reguła 9); w wyborze „ja” — to samo zdanie |
-| błąd odczytu | „Nie udało się odczytać osób.” (tekst pomocniczy) i przycisk z obrysem „Spróbuj ponownie” |
+| szukanie | 1, 2, wyniki 4 bez nagłówków liter i bez „Ja”; osoba „ja” jest w wynikach, jeśli pasuje; 8 jako „Dodaj osobę: „<tekst>”” |
+| brak wyników | 1, 2, 5, 8 jako „Dodaj osobę: „<tekst>”” |
+| pusta baza | 1, 2, „Tu pojawią się osoby z grobów i rodzin.” (reguła 9) i 8 — jedno działanie; w wyborze „ja” — to samo zdanie, bez 8 |
+| błąd odczytu | „Nie udało się odczytać osób.” (tekst pomocniczy) i przycisk z obrysem „Spróbuj ponownie”; **8 zostaje** (v3.1, D11) |
 | wczytywanie | wskaźnik postępu (lokalna baza — zwykle niewidoczny) |
 | wybór „ja” | 6–7; szukanie, brak wyników i pusta baza jak w zakładce |
 
@@ -123,6 +136,8 @@ n/a — ekran do szukania i oglądania.
 - **Reguła 12:** zakładka Osoby aktywna; **każda zakładka szuka swojego**; wybór „ja” to tryb wyboru — bez paska.
 - **Reguła 14:** profilowe 40 dp w karcie, w kadrze łącza.
 - **Tokeny:** bez nowych. „Ja” w akcencie (8,04:1 na powierzchni), obrys karty „Ja” 3,40:1 na tle.
+- **Reguła 1 (v3):** „Dodaj osobę” to jedyny wypełniony przycisk tego ekranu — główne działanie listy, przypięte na dole, jak „Dodaj grób” (napis w
+  kolorze tła na akcencie, 8,81:1).
 
 ## AC → element
 | AC | Element(y) | Jak widać spełnienie |
@@ -132,6 +147,7 @@ n/a — ekran do szukania i oglądania.
 | (ISSUE-022) AC-2 — „Ja” i wszystkie osoby A–Z; „wymys” zostawia Wymyślony/Wymyślona | 1–5 | „Osoby” → „Ja” na górze, litery, liczba; „wymys” → tylko te osoby, bez liter i bez „Ja”; „zmys” → osoba z d. Zmyślona |
 | (ISSUE-022) AC-4 — wybrana w ustawieniach osoba jest „ja” i stoi na górze | 3, 6–7 · [[ustawienia]] 1 | wybór Ewy → pod „Ja” „Ewa Wymyślona”, Ewa nie powtarza się w A–Z |
 | (ISSUE-025) — lista bez pokrewieństwa (v2.2) | 4 | karta: imię i nazwisko, pod spodem same lata |
+| (ISSUE-047) AC-4 — osoba dodana w zakładce Osoby (v3) | 2, 5, 8 → [[wpis-osoby]] „nowa osoba” → [[osoba]] | „Maria” → „Nie ma osoby „Maria”.” → „Dodaj osobę: „Maria”” → formularz „Nowa osoba · bez grobu w aplikacji” z „Maria” → „Zmyślona” → „Zapisz” → widok Marii; wstecz → Maria Zmyślona na liście pod „Z” |
 
 ## Decisions
 - **D1 — sortowanie po nazwisku z literami** (D19: *„tak jest dobrze”*). Nazwisko grupuje rodziny. *Obali:* autor szuka
@@ -159,6 +175,16 @@ n/a — ekran do szukania i oglądania.
 
 - ~~**D8, D9** (v2.1 — nawias ze ścieżką, opis neutralny bez płci)~~ — wycofane z listą (v2.2); obie reguły przechodzą do
   widoku osoby ([[ISSUE-024-person-view]]).
+- **D10 — „Dodaj osobę” przypięty na dole, z tekstem z szukania** (v3 — przyjęte na stopie #1 (autor: „Tak”, 2026-10-18), [[ISSUE-047-grave-first-then-people]]; autor
+  2026-10-18: *„w zakładce Osoby nie widzę możliwości dodania nowej osoby”*). Ten sam wzorzec co „Dodaj grób” pod listą grobów ([[cmentarz]] 9,
+  [[style-b]] reguła 1): główne działanie listy na dole, widoczne bez szukania. Ikona w pasku byłaby mniej widoczna — tego autor nie znalazł. Ta
+  zakładka ma już wyszukiwarkę, więc „najpierw szukaj” daje się za darmo: wpisane imię zostawia na liście te osoby, a gdy nikogo nie ma, przycisk mówi
+  „Dodaj osobę: „Ewa”” i przenosi imię do formularza (jak „Nowa osoba: „Anna”” w [[rodzina]] B3). Koszt: przycisk zakrywa ok. 84 dp dołu listy (lista ma
+  pod ostatnią kartą odstęp). *Obali:* autor dodaje tu osoby rzadko, a przycisk przeszkadza w przeglądaniu — wtedy ikona `person_add` w pasku (1).
+- **D11 — „Dodaj osobę” działa także przy błędzie odczytu** (v3.1, przegląd `ui` [[ISSUE-047-grave-first-then-people]] 2026-10-18 — tak zbudowane,
+  przyjęte). Zapis nowej osoby nie zależy od odczytu listy; tak samo „Nowa osoba” w wyborze osoby ([[grob]] v9 → *Stany wyboru*, [[rodzina]] v2.2), więc
+  trzy miejsca dodawania osoby zachowują się jednakowo. „Dodaj grób” przy błędzie jest nieaktywny, bo nie wiadomo, do którego cmentarza dodaje — tu tego
+  pytania nie ma. *Obali:* jak [[rodzina]] v2.2 — przy częstym błędzie powstają duplikaty; wtedy przy błędzie tylko „Spróbuj ponownie”.
 
 ## Open
 brak.

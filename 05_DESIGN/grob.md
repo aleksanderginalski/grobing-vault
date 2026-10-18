@@ -1,10 +1,10 @@
 ---
 screen: "Grób — wszyscy pochowani"
-items: ["[[ISSUE-012-transcribe-grave-screen]]", "[[ISSUE-016-photos-grave-and-person]]", "[[ISSUE-017-person-photos]]", "[[ISSUE-018-profile-photo-crop]]", "[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-024-person-view]]", "[[ISSUE-028-cemetery-sectors]]", "[[ISSUE-029-pin-on-site-gps]]", "[[ISSUE-043-grave-paid-until]]"]
+items: ["[[ISSUE-012-transcribe-grave-screen]]", "[[ISSUE-016-photos-grave-and-person]]", "[[ISSUE-017-person-photos]]", "[[ISSUE-018-profile-photo-crop]]", "[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-024-person-view]]", "[[ISSUE-028-cemetery-sectors]]", "[[ISSUE-029-pin-on-site-gps]]", "[[ISSUE-043-grave-paid-until]]", "[[ISSUE-047-grave-first-then-people]]"]
 us: "[[US-002-przepisanie-grobu]] · [[US-005-zdjecia]] · [[US-008-pinezka-na-miejscu]] · brief §5 S4 (ISSUE-043, bez US)"
 journey-step: "n/a — M1; ten sam widok stanie się widokiem 3 (krok 4 UJ-001, M4, R4 lewy) — wizyta dojdzie tutaj"
-mockup: "katalog tymczasowy sesji 2026-10-07: makieta-cmentarz-grob-osoba.html (ramki 5–7, ISSUE-012) · makieta-zdjecia.html (ramki 1, 2, 4, ISSUE-016) · 2026-10-12: issue-028-kwatery.html (panel 4 — adres grobu, W-a/W-b) · 2026-10-12: issue-029-pinezka.html (panel 2 — „Postaw pinezkę”, linia źródła) · v8 (ISSUE-043): n/a — zmiana istniejącego ekranu, warianty W1/W2 w szkicu ASCII"
-updated: 2026-10-16
+mockup: "katalog tymczasowy sesji 2026-10-07: makieta-cmentarz-grob-osoba.html (ramki 5–7, ISSUE-012) · makieta-zdjecia.html (ramki 1, 2, 4, ISSUE-016) · 2026-10-12: issue-028-kwatery.html (panel 4 — adres grobu, W-a/W-b) · 2026-10-12: issue-029-pinezka.html (panel 2 — „Postaw pinezkę”, linia źródła) · v8 (ISSUE-043): n/a — zmiana istniejącego ekranu, warianty W1/W2 w szkicu ASCII · 2026-10-18: makieta-047.html (ISSUE-047 — pusty grób, wybór osoby, ekrany 3–5)"
+updated: 2026-10-18
 ---
 
 # Grób — specyfikacja
@@ -89,6 +89,20 @@ updated: 2026-10-16
 >   z klawiaturą pole zostawało pod krawędzią okna — to był falsyfikator z planu;
 > - **podpowiedź pod 3c ma tyle linii, ile trzeba, i nigdy nie jest ucięta** (D21). Tekst się nie zmienia. „Do 2 linii” z v8 było niezmierzone: przy
 >   100% podpowiedź ma 3 linie (411 i 360 dp), a przy 200% na 360 dp — 5. Krótszy tekst zaproponowany przez `dev` nie daje 2 linii na 360 dp.
+>
+> **Wersja 9 (2026-10-18, przed planem [[ISSUE-047-grave-first-then-people]]) — przyjęte na stopie #1 (autor: „Tak”, 2026-10-18): najpierw grób, potem osoby.** Autor:
+> *„gdy na grobie klikam „Dodaj osobę”, powinienem móc albo wybrać z istniejącej listy, albo dodać nową osobę do rodziny”*. Zmiany:
+> - **grób może być pusty** — powstaje z okna „Nowy grób” ([[cmentarz]] 9a, v8), czyli z okna 3a–3c w trybie nowego grobu. Stan „pusty” już był
+>   opisany; teraz to zwykły stan po dodaniu grobu (*States*);
+> - **„Dodaj osobę” (6) → wybór osoby „Kto leży w tym grobie?”** (8–12): najpierw szukasz; osoby **bez grobu** wybierasz jednym dotknięciem i
+>   wracasz do grobu z ich kartą; osoby, które mają grób, widać wyszarzone z powodem; „Nowa osoba” → [[wpis-osoby]] „kolejna osoba” z imionami
+>   z szukania (D22–D24). Wzór: wybór osoby z [[rodzina]] B (US-003 AC-5 — tu w drugą stronę: osoba z rodziny w grobie);
+> - makieta: `makieta-047.html`, ekrany 3–5.
+>
+> **Wersja 9.1 (2026-10-18, przegląd `ui` zbudowanego ekranu [[ISSUE-047-grave-first-then-people]]):**
+> - **nagłówki sekcji 11 i 12 — 14 sp, półgrube**, jak [[rodzina]] A2 i B4 (ten sam widżet `PersonChoiceList`); „13 sp” w v9 było błędem tej
+>   specyfikacji (D25). Pole 9 zostaje z ramką w kolorze obrysu — tak jak zbudowany wybór w arkuszu rodziny;
+> - **stan „pusty”: zdanie 40 dp pod 4** (24 dp odstępu grupy + 16 dp wokół zdania), 24 dp nad „Dodaj osobę” (D26).
 
 ## Purpose
 Wszyscy pochowani w jednym grobie, z datami z dopiskiem (US-002 AC-1, AC-3), nazwa grobu i widoczny brak
@@ -100,15 +114,19 @@ zlikwidować, a to jedyny sposób, żeby stracić sam grób, a nie wiedzę o nim
 jeszcze nie ma. Daty wpisuje się na Wszystkich Świętych, z naklejek na grobach albo w biurze zarządcy.
 
 ## Navigation
-- Z [[cmentarz]] (dotknięcie karty grobu) albo z [[wpis-osoby]] po zapisie. Formularz znika ze stosu, więc
-  wstecz z grobu wraca do [[cmentarz]], nie do formularza.
+- Z [[cmentarz]] (dotknięcie karty grobu), **z okna „Nowy grób” po zapisie** ([[cmentarz]] 9a, v9 — grób pusty) albo z [[wpis-osoby]] po
+  zapisie. Formularz znika ze stosu, więc wstecz z grobu wraca do [[cmentarz]], nie do formularza.
 - **Ikonka edycji (3) → okno „Popraw grób”** nad widokiem grobu; „Zapisz” zamyka okno, a tytuł się zmienia.
 - **„Wpisz adres” (element 4, v6 — propozycja) → to samo okno** z fokusem w polu „Kwatera”; „Zapisz” zamyka okno, a adres
   pojawia się pod tytułem.
 - **„Wpisz” w wierszu „Opłacone do” (element 7, v8) → to samo okno** z fokusem w polu „Opłacone do” (3c). Okno przewija się tak, że pole z
   etykietą stoi u góry widocznej części okna, nad klawiaturą (v8.1, D20). „Zapisz” zamyka okno, a data pojawia się w wierszu. Grób z datą nie ma
   „Wpisz”, datę poprawia się pod ✎ (D17).
-- „Dodaj osobę” → [[wpis-osoby]] w trybie „kolejna osoba”.
+- **„Dodaj osobę” → wybór osoby „Kto leży w tym grobie?”** (8–12, v9; do v8.1 — od razu [[wpis-osoby]] „kolejna osoba”):
+  - osoba z „Bez grobu” (11) → pochówek w tym grobie zapisuje się od razu → **z powrotem tutaj**, jej karta na końcu listy (5); bez okna
+    „Zapisano” ([[style-b]] reguła 10);
+  - „Nowa osoba” (10) → [[wpis-osoby]] „kolejna osoba”, imiona = tekst z szukania; zapis → tutaj, jak dotąd (formularz i wybór znikają ze stosu);
+  - wstecz → tutaj bez zmian.
 - **„Dodaj zdjęcie” → arkusz źródła** ([[zdjecie]] A) → systemowe okno wyboru (jedno zdjęcie) albo aparat → z
   powrotem tutaj, a zdjęcie zapisuje się od razu, bez formularza (v3).
 - **Dotknięcie zdjęcia nagrobka → podgląd** ([[zdjecie]] B): tam „Zmień zdjęcie” i „Usuń zdjęcie” (v3).
@@ -129,8 +147,28 @@ jeszcze nie ma. Daty wpisuje się na Wszystkich Świętych, z naklejek na grobac
 | 3c | **„Opłacone do” w oknie „Popraw grób”** (v8). Ostatnie pole okna, 16 dp pod podpisem adresu, bez podpisu grupy (etykieta mówi, co to). Pole z ramką w kolorze obrysu, etykieta **„Opłacone do”**, podpowiedź „np. 2031”, pod polem tekst pomocniczy, 13 sp, ~~do 2 linii~~ **w tylu liniach, ile trzeba, nigdy ucięty** (v8.1, D21 — przy 100% 3 linie, przy 200% na 360 dp 5): „Rok albo data z naklejki na grobie lub z pokwitowania. Zostaw puste, jeśli nie wiesz.” (twarda spacja po „z”, [[style-b]] reguła 6) | pole daty | **klawiatura numeryczna z kropką**, jak pole daty w [[wpis-osoby]] (c). `done` = „Zapisz”. Przy wejściu z „Wpisz” (7): fokus i klawiatura od razu, kursor na końcu. **Przewijanie (v8.1, D20):** przy fokusie w 3c (z „Wpisz”, z `next` w „Miejsce”, po dotknięciu pola), przy zmianie wysokości klawiatury i przy błędzie okno stawia pole u góry widocznej części, 16 dp pod jej krawędzią, żeby etykieta nad ramką nie była ucięta. Gdy treść okna kończy się wcześniej, okno pokazuje swój koniec | obecna data (`2031`, `03.2031`, `31.12.2031`) albo pusto | puste = bez daty („nie wiadomo”). **`rrrr` · `mm.rrrr` · `dd.mm.rrrr`, bez dopisku** (D18). **Lata od 1500 do bieżącego roku + 50**, a przyszłość jest dozwolona (pole daty osoby jej nie przyjmuje). Zły zapis → pod polem `error_outline` i „Nie rozumiem tej daty — wpisz rok, mm.rrrr albo dd.mm.rrrr.” (ten sam tekst co w bloku daty). Rok dalej niż za 50 lat → „Tak odległa data to raczej pomyłka — sprawdź rok.” Przy błędzie okno zostaje i **nie zapisuje się nic** (ani nazwa, ani adres). Błąd zapisu — jak 3a | brief §5 S4 · ISSUE-043 AC-1 · D18 |
 | 4 | **Adres i pinezka** pod tytułem, wyśrodkowane: adres pełnymi słowami „Kwatera B · Rząd 4 · Miejsce 12” (14 sp, tekst pomocniczy). Bez adresu: ikona `place_outlined` + „Bez adresu kwatery · bez pinezki”, a pod spodem ~~„Uzupełnisz przy wizycie.” (tekst pomocniczy)~~ **(v6 — propozycja) przycisk tekstowy w linii treści „Wpisz adres”** (akcent, [[style-b]] reguła 1, cel 48 dp), bo adres przepisuje się w domu z wyszukiwarki zarządcy, a nie przy wizycie. Z adresem, bez pinezki: adres + „· bez pinezki”. **Pinezka (v7):** grób bez pinezki — pod adresem (i pod „Wpisz adres”) **przycisk z obrysem „Postaw pinezkę”** (`add_location_alt` w akcencie, napis w kolorze tekstu, wys. 48 dp, wyśrodkowany, odstęp 8 dp); grób z pinezką — zamiast „· bez pinezki” druga linia **„Pinezka: GPS ±4 m · 12.10.2026”** (13 sp, tekst pomocniczy; teksty źródła — [[cmentarz]] 14), bez daty, gdy pinezka jej nie ma | tekst (+ przycisk tekstowy, + przycisk z obrysem) | „Wpisz adres” → okno 3a z fokusem w „Kwatera”; „Postaw pinezkę” → tryb D [[cmentarz]] (12) dla tego grobu | — | — | AC-5 · R4 · D13 · US-008 AC-2 · D14 |
 | 5 | **Karty osób** w kolejności wpisania, odstęp 8 dp. Karta: „Imiona Nazwisko z d. Rodowe” (16 sp, półgruby, zawijane); lata życia (14 sp, tekst pomocniczy): `1921–1987`, a z dopiskiem `ok. 1890 – 14.03.1951`; gdy jest data pochówku: `· poch. 18.03.1951`. Brak urodzenia: `zm. 1951`; brak zgonu: `ur. 1890`; brak dat: „bez dat”. **Chevron „›” — karta prowadzi do widoku osoby** ([[osoba]], v5; do v4.1 do poprawy). **Profilowe osoby (v4, [[ISSUE-017-person-photos]]):** okrąg 40 dp z lewej, wyśrodkowany w pionie, odstęp 12 dp do tekstu, w kadrze łącza ([[kadr-profilowego]], v4.1), a bez kadru przycięty ze środka, poza czytnikiem (kartę opisuje jej tekst); osoba bez zdjęcia — bez miniatury i bez wcięcia (D11). Plik bez odczytu: okrąg na tle z `broken_image_outlined` (20 dp, tekst pomocniczy) | lista kart na powierzchni, karta ≥ 64 dp | dotknięcie → widok osoby ([[osoba]], v5) | kolejność wpisania | — | AC-1 · AC-2 · AC-3 · R4 · ISSUE-017 AC 4 |
-| 6 | **Rząd działań:** „Dodaj osobę” — przycisk z obrysem, ikona `person_add_alt_outlined` w akcencie, napis w kolorze tekstu, ≥ 52 dp, szerokość treści, z lewej. „Dodaj zdjęcie” jest w polu 1a (v3.2, D12), nie tutaj | rząd przycisków pod listą | „Dodaj osobę” → [[wpis-osoby]] „kolejna osoba” | — | — | *What to build* 3 · R4 |
+| 6 | **Rząd działań:** „Dodaj osobę” — przycisk z obrysem, ikona `person_add_alt_outlined` w akcencie, napis w kolorze tekstu, ≥ 52 dp, szerokość treści, z lewej. „Dodaj zdjęcie” jest w polu 1a (v3.2, D12), nie tutaj | rząd przycisków pod listą | „Dodaj osobę” → wybór osoby (8–12, v9; do v8.1 — [[wpis-osoby]] „kolejna osoba”) | — | — | *What to build* 3 · R4 · ISSUE-047 AC-2, AC-3 |
 | 7 | **„Opłacone do” — ostatni element widoku** (v8, D15). 24 dp pod „Dodaj osobę” ([[style-b]] reguła 5). U góry linia podziału 1 dp w kolorze obrysu, wiersz ≥ 48 dp, taki sam jak wiersze „Daty” w [[osoba]] (8). **Etykieta** „Opłacone do” (kolumna 96 dp, 14 sp, tekst pomocniczy; przy większym tekście, gdy się nie mieści, nad wartością, jak [[osoba]] v2.2). **Wartość**: **z datą** — data jak wpisana ([[style-b]] reguła 6: `2031`, `03.2031`, `31.12.2031`; 16 sp, kolor tekstu), także data, która już minęła (D19); **bez daty (W1, D16)** — „nie wiadomo” (16 sp, tekst pomocniczy), a na końcu wiersza przycisk tekstowy **„Wpisz”** (akcent, 14 sp, półgruby 600, cel 48 dp — jak „Wpisz adres”). Gdy wartość i „Wpisz” nie mieszczą się w jednej linii (tekst 200% na 360 dp), „Wpisz” przechodzi pod wartość, z lewej. **Opis dla czytnika**: wiersz — „Opłacone do 2031” albo „Opłacone do: nie wiadomo”; przycisk — „Wpisz datę opłaty” (zawiera widoczne „Wpisz”, SC 2.5.3). **Wiersz to fakt, nie przycisk** (D17) | wiersz faktu (+ przycisk tekstowy) | „Wpisz” → okno 3a z fokusem w 3c | „nie wiadomo” | — | brief §5 S4 · ISSUE-043 AC-1, AC-2 · decyzja autora („na samym dole profilu grobu”) · D15–D17 |
+
+**Wybór osoby — „Kto leży w tym grobie?”** (v9, [[ISSUE-047-grave-first-then-people]]; pełny ekran, tryb wyboru — bez dolnego paska, [[style-b]]
+reguła 12). **Ten sam wybór co w [[rodzina]] B** (`PersonChoiceList`: pole z fokusem, „Nowa osoba” nad listą, wiersze nieaktywne z powodem
+tekstem), z innymi sekcjami:
+
+| # | Element | Typ | Klawiatura / akcja | Domyślnie | Walidacja | Źródło |
+|---|---|---|---|---|---|---|
+| 8 | **Pasek:** wstecz + „Kto leży w tym grobie?” (20 sp, półgruby); bez podtytułu — grób widać pod spodem po powrocie | pasek | wstecz → widok grobu bez zmian | — | — | decyzja projektowa |
+| 9 | **Pole „Szukaj osoby albo wpisz nową”** — jak [[rodzina]] B2: ramka w kolorze obrysu, `search` w tekście pomocniczym, filtruje 11 i 12 bez polskich znaków i wielkości liter, od początku słowa imienia, nazwiska albo nazwiska rodowego (`matchesQuery`) | pole tekstowe | **fokus i klawiatura od wejścia** (najczęściej wpisujesz imię z notatki); wielka litera na początku słów; `done` chowa klawiaturę; przewinięcie listy chowa klawiaturę | pusto | — | ISSUE-047 AC-2 · [[rodzina]] D3 |
+| 10 | **„Nowa osoba”** — pierwszy wiersz pod polem, zawsze widoczny: `person_add_alt_outlined` (akcent) i „Nowa osoba”, a przy wpisanym tekście „Nowa osoba: „Jan”” (16 sp, tekst), ≥ 56 dp — jak [[rodzina]] B3 | wiersz-przycisk | → [[wpis-osoby]] „kolejna osoba”, **imiona = tekst z 9** (spacje na brzegach obcięte), nazwisko podpowiedziane jak dotąd (z poprzedniej osoby w grobie; w pustym grobie — puste) | — | — | ISSUE-047 AC-3 |
+| 11 | **Sekcja „Bez grobu”** (nagłówek ~~13 sp~~ **14 sp, półgruby** (v9.1), tekst pomocniczy, jak [[rodzina]] B4 i A2) — osoby bez żadnego pochówku: dodane w drzewie albo arkuszem rodziny, z zakładki Osoby, także żyjące. Kolejność po nazwisku, potem imionach (`polishCompare`). **Wiersz** jak [[rodzina]] B5: imiona i nazwisko z „z d.” (16 sp, tekst), lata według [[style-b]] reguły 6, a bez dat „bez dat” (14 sp, tekst pomocniczy), ≥ 56 dp, cały wiersz to jeden cel. Bez osób bez grobu — sekcji nie ma | lista | dotknięcie → **pochówek tej osoby w tym grobie zapisuje się od razu** (ze źródłem domyślnym po cichu, jak każdy pochówek — [[wpis-osoby]] v5.4) → widok grobu z jej kartą. Błąd zapisu → pasek komunikatu „Nie udało się zapisać. Spróbuj jeszcze raz.”, wybór zostaje otwarty | — | — | ISSUE-047 AC-2 · D22 |
+| 12 | **Sekcja „W grobach”** — osoby, które mają pochówek, w tej samej kolejności. **Wszystkie nieaktywne** (D23): tekst w kolorze pomocniczym, bez dotknięcia, dla czytnika „niedostępne”, a **zamiast lat powód tekstem** (SC 1.4.1): „już w tym grobie” albo „w grobie: Grób rodzinny Zmyślonych” (nazwa grobu, a bez niej nazwa cmentarza; jedna linia, ucięta) | lista | — | — | — | D23 · [[rodzina]] *Wiersze nieaktywne* |
+
+**Stany wyboru:** pusta baza → tylko 9 i 10 · szukanie bez wyników → 9 i 10 z tekstem („Nowa osoba: „Jan””), bez sekcji · błąd odczytu → „Nie udało się
+odczytać osób.” (tekst pomocniczy) pod 10 — „Nowa osoba” działa dalej.
+
+**Dane, których ekran potrzebuje od v9** (dla `planning`, [[ISSUE-047-grave-first-then-people]]): **bez zmiany schematu** — `burials` to osobna tabela
+osoba ↔ grób ([[data-model]]), więc grób bez osób i pochówek osoby, która już jest w aplikacji, to zwykłe wiersze. Potrzebne: utworzenie grobu bez
+osoby (nazwa, adres, opłata — jedna transakcja jak „Zapisz” w 3a–3c) i dodanie pochówku istniejącej osoby (`addBurialWithClaim` w `claims.dart`); dla
+wyboru — lista osób z informacją, czy i gdzie mają pochówek (jak `loadPersonChoices`). Oba zapisy zamawiają kopię w tle jak każdy zapis.
 
 **Gdy źródła się spierają** (dwie daty urodzenia albo dwa groby jednej osoby), widok pokazuje **pierwszą**
 wartość — najniższe `id`, jak w GEDCOM 7 ([[ADR-006-claimed-value-separate-structures]] D3; `claims.dart` →
@@ -172,7 +210,7 @@ kopię w tle, jak każdy zapis. **Walidacja dat osoby się nie zmienia**: lata z
 | z pinezką (v7) | 4: adres, pod nim „Pinezka: GPS ±4 m · 12.10.2026” (albo inne źródło — [[cmentarz]] 14); bez „Postaw pinezkę” |
 | z datą opłaty (v8) | 7: „Opłacone do” · „2031” (data jak wpisana, także miniona); bez „Wpisz” |
 | bez daty opłaty (v8, W1) | 7: „Opłacone do” · „nie wiadomo” · „Wpisz” |
-| pusty | „W tym grobie nie ma jeszcze wpisanych osób.” + „Dodaj osobę”, pod nimi 7 (z interfejsu nie powstaje — patrz [[cmentarz]]) |
+| pusty | **v9: zwykły stan po „Nowy grób”** ([[cmentarz]] 9a; do v8.1 z interfejsu nie powstawał). 1a (pole „Dodaj zdjęcie nagrobka”), 2–4 (tytuł, adres, „Wpisz adres”, „Postaw pinezkę”), w miejscu kart „W tym grobie nie ma jeszcze wpisanych osób.” (16 sp, tekst pomocniczy, wyśrodkowane, ~~24 dp~~ **40 dp pod 4** (v9.1, D26) — [[style-b]] reguła 9), pod nim, 24 dp niżej, „Dodaj osobę” (6), na dole 7 |
 | okno „Popraw grób” | element 3a nad widokiem grobu |
 | okno „Popraw grób” z „Wpisz” (v8) | 3a przewinięte do 3c, fokus w „Opłacone do”, klawiatura numeryczna. **v8.1:** pole z etykietą u góry widocznej części okna (D20); przy 100% widać całe pole z podpowiedzią, przy 200% z klawiaturą — pole i początek podpowiedzi, a resztę po przewinięciu |
 | zła data w oknie (v8) | pod 3c `error_outline` + komunikat (D18) zamiast podpowiedzi, ramka i etykieta w kolorze błędu, okno zostaje i przewija pole z komunikatem na górę (v8.1), nic się nie zapisuje |
@@ -284,7 +322,11 @@ Okno „Popraw grób” — koniec okna (3c), po wejściu z „Wpisz”:
 
 ## Tempo
 Widok do oglądania. Jako krok przepisywania:
-- **1 dotknięcie** („Dodaj osobę”) na każdą osobę poza pierwszą w grobie;
+- ~~**1 dotknięcie** („Dodaj osobę”) na każdą osobę poza pierwszą w grobie~~ **v9: 2 dotknięcia na nową osobę** („Dodaj osobę”, „Nowa osoba” po
+  wpisaniu imienia w 9 — imię nie powtarza się w formularzu, więc tempo formularza bez zmian), **także dla pierwszej osoby w grobie** (grób powstaje
+  oknem — [[cmentarz]] *Tempo*). Ok. 100 osób → ok. 100 dotknięć więcej niż w v8.1, w zamian każde imię przed wpisaniem pokazuje, czy ta osoba
+  już jest (D22);
+- **osoba, która już jest w aplikacji bez grobu** (v9): „Dodaj osobę”, kilka liter, wiersz = **2 dotknięcia** — do v8.1 tylko jako druga, nowa osoba;
 - **nazwa grobu: 2 dotknięcia** (ikonka, „Zapisz”) i pisanie — tylko dla grobów, które mają nazwę. Zaraz po
   zapisie pierwszej osoby ten widok jest na ekranie, więc nazwę nadaje się bez szukania grobu.
 - **adres zarządcy (v6 — propozycja): ok. 4 dotknięcia** („Wpisz adres”, chip kwatery albo 1–2 znaki, „dalej” do rzędu i miejsca,
@@ -354,6 +396,10 @@ Widok do oglądania. Jako krok przepisywania:
 | ISSUE-043 AC-2 (v8) | 7 | grób bez wpisu: „Opłacone do” · „nie wiadomo” (W1) albo brak wiersza (W2); nigdzie daty, której nie wpisano |
 | ISSUE-043 AC-3 (v8) | 7 | po odtworzeniu kopii z wersji sprzed pozycji wiersz pokazuje „nie wiadomo”, a reszta grobu jest bez zmian. Po odtworzeniu kopii z datą — ta sama data (`qa`, migracja i próbne odtworzenie) |
 | D18 — przyszłość i literówka (v8) | 3c | „2031” zapisuje się; „2301” → „Tak odległa data to raczej pomyłka — sprawdź rok.”; „13.2031” → „Nie rozumiem tej daty…”; okno zostaje, nazwa i adres też się nie zapisują |
+| ISSUE-047 AC-1 (v9) | [[cmentarz]] 9a → stan „pusty” | „Dodaj grób” → „Grób rodzinny Wymyślonych” → „Zapisz” → ten widok: tytuł, „W tym grobie nie ma jeszcze wpisanych osób.”, „Dodaj osobę”; formularz osoby się nie otwiera |
+| ISSUE-047 AC-2 (v9) | 6 → 8–11 → 5 | „Dodaj osobę” → „Jan” → w „Bez grobu” Jan Wymyślony (dodany w drzewie jako rodzic) → z powrotem tu, karta „Jan Wymyślony”; w zakładce Osoby nadal jeden Jan, jego daty, zdjęcia i rodzina bez zmian |
+| ISSUE-047 AC-3 (v9) | 6 → 10 → [[wpis-osoby]] | „Dodaj osobę” → „Anna” → „Nowa osoba: „Anna”” → formularz „Osoba w grobie” z „Anna” w Imionach, nazwisko podpowiedziane z poprzedniej osoby |
+| ISSUE-047 — osoba z grobem (v9, D23) | 12 | Jan Zmyślony z innego grobu: wyszarzony, „w grobie: Grób rodzinny Zmyślonych”, dotknięcie nic nie robi; osoba z tego grobu — „już w tym grobie” |
 
 ## Decisions
 - **D1 — nazwa grobu wpisywana ręcznie, opcjonalna** (decyzja autora 2026-10-06: opcja (b) z wersji 1). Nie
@@ -447,6 +493,30 @@ Widok do oglądania. Jako krok przepisywania:
   ([[style-b]] reguła 7 — aplikacja zwraca się do Ciebie). Szkic v8 i tak miał 3 linie. Koszt: jedna linia (ok. 16 dp) więcej w oknie, które się
   przewija. *Obali:* autor na stopie #2 uznaje podpowiedź za za długą — wtedy „Rok albo data z naklejki na grobie. Zostaw puste, jeśli nie wiesz.”
   (2 linie na 411 dp, 4 przy 200%; bez pokwitowania).
+- **D22 — „Dodaj osobę” najpierw szuka** (v9 — przyjęte na stopie #1 (autor: „Tak”, 2026-10-18), [[ISSUE-047-grave-first-then-people]]; autor 2026-10-18: *„powinienem móc albo
+  wybrać z istniejącej listy, albo dodać nową osobę do rodziny”*). Osoby trafiają do aplikacji dwiema drogami — z grobu i z drzewa (arkusz rodziny,
+  rodzice i dzieci bez grobu) — a do v8.1 nie było drogi, by osobę z drzewa przypiąć do grobu znalezionego później: zostawało wpisać ją drugi raz.
+  Duplikat w danych genealogicznych to najdroższa poprawka, a scalania osób nie ma. Wzór „najpierw szukaj, potem nowa” już działa w [[rodzina]] (D3,
+  US-003 AC-5 — osoba z grobu w rodzinie); tu ten sam wybór w drugą stronę, ten sam kod (`PersonChoiceList`). **„Bez grobu” na górze**, bo to
+  jedyne osoby, które da się tu wybrać. Wybór zapisuje od razu, bez formularza i bez „Zapisz”: to wskazanie, a nie wpis do poprawy (jak tło w
+  [[osoba]] D21 i zdjęcie nagrobka). Koszt: 1 dotknięcie więcej na każdą nową osobę (*Tempo*). *Obali:* przy przepisywaniu notatek prawie każda
+  osoba jest nowa i wybór spowalnia — wtedy „Dodaj osobę” prosto do formularza, a wybór pod osobnym „Wybierz z aplikacji”.
+- **D23 — osoba, która ma już grób, jest nieaktywna z powodem** (v9). Model umie zapisać dwa groby jednej osoby ([[ADR-006-claimed-value-separate-structures]]
+  — pokazuje się w obu), ale **w aplikacji nie ma usuwania pochówku** ([[wpis-osoby]] *Decisions* → „Bez usuwania osoby”, brief G7/C5), więc
+  dotknięcie złego „Jana” zostawiłoby go w dwóch grobach na zawsze. Wiersz zostaje widoczny, bo bez niego autor szukający Jana, który już leży w
+  tym albo innym grobie, nic by nie znalazł i wpisałby go jako nową osobę — czyli duplikat. Powód tekstem mówi, gdzie ta osoba jest. *Obali:* w
+  notatkach ktoś jest na dwóch nagrobkach (np. napis symboliczny na grobie rodzinnym) — wtedy wiersz aktywny z oknem „Dodać także do tego grobu?”
+  albo usuwanie pochówku, osobną pozycją.
+- **D24 — pusty grób to zwykły stan, bez usuwania** (v9). Autor chce dodać grób, a osoby potem — przy wizycie najpierw zdjęcie i pinezka, osoby w domu
+  z notatek. Pusty grób, z którego autor wyszedł, zostaje na liście cmentarza („bez wpisanych osób”, [[cmentarz]] *States*) i nie znika sam: grób
+  ma nazwę, adres, pinezkę i opłatę, które mogą być prawdziwe. Usuwania nie ma tak samo jak dla osób. *Obali:* jak [[cmentarz]] D38 (2).
+- **D25 — wybór osoby wygląda jak zbudowany wybór w arkuszu rodziny** (v9.1, przegląd `ui` 2026-10-18). To ten sam widżet (`PersonChoiceList`), więc
+  dwa wybory osoby w aplikacji mają wyglądać tak samo: pole z ramką w kolorze obrysu ([[rodzina]] B2), nagłówki sekcji 14 sp półgrube ([[rodzina]] A2).
+  „13 sp” w v9 było błędem przepisania. *Obali:* nagłówki sekcji przy wierszach 16 sp wyglądają na stopie #2 jak druga lista — wtedy zmiana w obu
+  wyborach naraz.
+- **D26 — pusty grób: zdanie 40 dp pod adresem** (v9.1, przegląd `ui` 2026-10-18 — tak zbudowane, przyjęte). Pusty stan to kompozycja wyśrodkowana, a
+  takie biorą większy odstęp z tej samej siatki ([[style-b]] reguła 5); zdanie odsuwa się od przycisku „Postaw pinezkę” nad nim i stoi bliżej „Dodaj
+  osobę”, do którego prowadzi. *Obali:* na stopie #2 zdanie wygląda na zawieszone w pustce, a nie na miejsce, gdzie staną osoby — wtedy 24 dp.
 
 ## Open
 - ✅ **Rozstrzygnięte 2026-10-12 na stopie #1 [[ISSUE-028-cemetery-sectors]] (autor: „tak”):** adres zarządcy wchodzi do ISSUE-028, a
@@ -461,6 +531,9 @@ Widok do oglądania. Jako krok przepisywania:
   ~~„Wpisz” przewija okno do pola, ale wejście przez ✎ wymaga przewinięcia do końca.~~ **v8.1 (D20):** okno przewija się do 3c przy każdym fokusie
   w tym polu, także z `next` w „Miejsce”. Przez ✎ fokus jest w nazwie, więc do 3c prowadzą cztery `next` albo przewinięcie i dotknięcie pola. Przy
   200% z klawiaturą koniec podpowiedzi 3c widać dopiero po przewinięciu.
+
+- **v9 ([[ISSUE-047-grave-first-then-people]]):** oba `⚠️ OPEN` z pozycji rozstrzygnięte projektem — osoba z grobem: D23; porzucony pusty grób:
+  D24, [[cmentarz]] D38. ✅ Przyjęte na stopie #1 razem z makietą (autor: „Tak”, 2026-10-18).
 
 Usuwanie i zmiana zdjęcia nagrobka rozstrzygnięte na stopie #1 ISSUE-016 (wchodzą — [[zdjecie]] B4, C). Poprawa wpisu
 rozstrzygnięta na stopie #1 ISSUE-012 (D1 — wchodzi).

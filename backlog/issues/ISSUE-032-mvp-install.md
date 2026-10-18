@@ -73,6 +73,8 @@ Warunki — każdy ma swój dom, tutaj tylko lista:
   `grobing-v12.db` ([[ISSUE-042-places-of-residence]]: na emulatorze przeszła, liczby wierszy bez zmian), v13 → v14 z migawką `grobing-v13.db`
   ([[ISSUE-043-grave-paid-until]]: na emulatorze przeszła, liczby wierszy bez zmian) i v14 → v15 z migawką `grobing-v14.db`
   ([[ISSUE-044-family-wreaths]]: na emulatorze przeszła, liczby wierszy bez zmian, przerwana migracja zostawiła v14 całe);
+- odtworzenie kopii z **pustym grobem, osobą bez grobu i pochówkiem dodanym z wyboru** „Kto leży w tym grobie?” — na urządzeniu niezrobione (jeden
+  emulator na raz, a na `Grobing_Restore` jest demo); test kopii przeszedł ([[ISSUE-047-grave-first-then-people]] → *Verification*, AC-5);
 - odtworzenie kopii **v15 z rodami** z odciskiem zgodnym — na emulatorze niezrobione z tego samego powodu co v13 niżej; testy odtworzenia v14 → v15 i
   v15 z rodami przeszły ([[ISSUE-044-family-wreaths]] → *Verification*);
 - odtworzenie kopii **v14 z datą opłaty grobu** z odciskiem zgodnym — na emulatorze niezrobione z tego samego powodu co v13 niżej; testy odtworzenia
@@ -97,7 +99,9 @@ Warunki — każdy ma swój dom, tutaj tylko lista:
 **Osoby i rodzina**
 - tło z pasma w widoku osoby — „pomiń” ([[ISSUE-024-person-view]], krok 3 rundy 2); TalkBack w widoku osoby, ekran 360 dp;
 - TalkBack i tekst 200% w kreatorze związku ([[ISSUE-025-gender-kinship-together-since]]);
-- TalkBack i duże powiększenie tekstu na Osobach i w ustawieniach ([[ISSUE-022-app-skeleton-tabs-people-settings]]).
+- TalkBack i duże powiększenie tekstu na Osobach i w ustawieniach ([[ISSUE-022-app-skeleton-tabs-people-settings]]);
+- TalkBack na wyborze „Kto leży w tym grobie?”: wiersze „W grobach” czytane jako niedostępne, z powodem — sprawdzone w semantyce i testach, nie na żywo
+  ([[ISSUE-047-grave-first-then-people]]).
 
 **Mapa Polski**
 - znicz z liczbą i cmentarz bez punktu — kroki pominięte, pokryte testami i agentem ([[ISSUE-014-home-map-of-poland]]);
