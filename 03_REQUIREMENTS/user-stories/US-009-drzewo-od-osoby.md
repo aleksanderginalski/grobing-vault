@@ -14,7 +14,7 @@ verdict-date: 2026-10-14
 verdict-reviewer: self-check
 source: "[[SPIKE-002-tree-on-a-phone]] → *Findings*, *Rekomendacja* · [[drzewo]] v1.4 (elementy 1–5, D1–D3, D6, D8–D11) · [[SPIKE-004-mvp-flow-prototype]] D20, D25 · [[ISSUE-024-person-view]] (dawne AC-6)"
 created: 2026-10-13
-updated: 2026-10-14
+updated: 2026-10-19
 ---
 
 # US-009 — Drzewo od osoby
@@ -28,8 +28,10 @@ na kolejne osoby, **żeby** zrozumieć, jak łączą się ze sobą ludzie z grob
   dziadkowie, rodzina partnera po prawej; rzędy według pokolenia, linie według rodzaju relacji ([[drzewo]] element 4).
 - **AC-2 — przestawianie środka.** *When* dotykam osobę *Then* ona staje w środku z animacją, a karta pokazuje imię, lata i kim jest
   dla mnie; dotknięcie osoby w środku albo „Pokaż” → [[osoba]].
-- **AC-3 — dalsza rodzina (S2).** *When* oddalam (dwa palce albo przycisk −) *Then* drzewo dokłada kolejny poziom (4 progi) i na chwilę
-  pokazuje „Poziom N · M osób”; przybliżanie (dwa palce, podwójne dotknięcie albo +) zabiera dalszą rodzinę ([[drzewo]] element 3).
+- ~~**AC-3 — dalsza rodzina (S2).** *When* oddalam (dwa palce albo przycisk −) *Then* drzewo dokłada kolejny poziom (4 progi) i na chwilę
+  pokazuje „Poziom N · M osób”; przybliżanie (dwa palce, podwójne dotknięcie albo +) zabiera dalszą rodzinę ([[drzewo]] element 3).~~
+  **Zastąpione 2026-10-19 przez [[ISSUE-049-tree-levels-and-zoom]] AC-1–AC-3** (decyzja autora): poziomy według związków niezależne od przybliżania —
+  poziom zmieniają + / − ([[drzewo]] element 3, D50, D58), a przybliżanie i oddalanie zmienia tylko widok (element 3a, D51).
 - **AC-4 — ślad dalszej rodziny.** *Given* osoba ma rodzinę poza widokiem *Then* przy niej jest krótka, blada, przerywana kreska: w górę
   rodzice, w dół dzieci, w bok partner ([[drzewo]] D9).
 - **AC-5 — nazwa pokrewieństwa w karcie** (dawne AC-6 [[ISSUE-024-person-view]]). *Given* ścieżka Ja → tata → jego rodzic → jego córka

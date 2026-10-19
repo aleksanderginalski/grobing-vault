@@ -44,7 +44,9 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   8. ~~[[ISSUE-048-portrait-photos]]~~ — **zamknięte 2026-10-19**: portret → „Zdjęcie profilowe” (zmiana profilowego, „Obejrzyj zdjęcie”, „Dodaj zdjęcia”),
      okrąg z inicjałami z plakietką, zapis od razu z widoku (D24), nowy ekran „Zdjęcia w aplikacji” (wchłonięta [[ISSUE-026-link-existing-photo-to-person]]);
      bez zmiany bazy;
-  9. [[ISSUE-049-tree-levels-and-zoom]] — poziomy pokrewieństwa (krew, potem każde małżeństwo) niezależne od przybliżania, przybliżanie także na telewizorze;
+  9. ~~[[ISSUE-049-tree-levels-and-zoom]]~~ — **zamknięte 2026-10-19**: poziomy według związków („Linia krwi”, „Przez 1 związek”…) niezależne od przybliżania;
+     poziom na prostych + / − w rogu drzewa i na listwie trybu prezentacji, przycisków przybliżania nie ma (D58 — decyzja autora na stopie #2); oddalanie do
+     całego poziomu, także na telewizorze; bez zmiany bazy;
   10. [[ISSUE-050-next-event]] — „Następne” obok ▶ na drzewie i mapie: rok i co się w nim stało;
 
      pozycje 7–10 — **przegląd przepływu przez autora 2026-10-18 w `/pm`** (7 punktów, podział na 4 pozycje — `pm`, autor: *„Do twojej decyzji ile tych
@@ -59,9 +61,9 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
 - **Agent `architect` — nie teraz** (retro 4, R7): sygnał „pierwszy ADR zastąpiony” ([[ADR-018-export-is-the-backup]]) rozliczony; nowy warunek w `CLAUDE.md` →
   *Na sygnał*.
 
-  Specyfikacja: [[drzewo]] v1.22, [[osoba]] v2.9, [[wpis-osoby]] v6, [[wieniec]] v1.2, [[zamieszkanie]] v1.4, [[mapa-migracji]] v1.4, [[grob]] v9.1,
+  Specyfikacja: [[drzewo]] v1.25, [[osoba]] v2.9, [[wpis-osoby]] v6, [[wieniec]] v1.2, [[zamieszkanie]] v1.4, [[mapa-migracji]] v1.4, [[grob]] v9.1,
   [[cmentarz]] v8, [[osoby]] v3.1, [[rodzina]] v2.2, [[zdjecia-osoby]] v1.6, [[zdjecie]] v1.7, [[kadr-profilowego]] v1.3, [[zdjecia-w-aplikacji]] v1.2,
-  [[style-b]] v1.43.
+  [[style-b]] v1.46.
 - **Prawdziwe dane rodziny dopiero po instalacji MVP** (decyzja autora 2026-10-08 w `/pm`): budujemy produkt gotowy do
   instalacji na telefonie (MVP = brief §5, M1–M11); do tego czasu autor ocenia aplikację na wymyślonych danych. Rozmowa z babcią
   (~2026-11-02) jest na kartce, a odpowiedzi trafią do aplikacji po instalacji.
@@ -261,7 +263,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   paczki (decyzja autora 2026-10-07); treść wychodzących zmian sprawdza strażnik treści ([[ISSUE-020-content-guard]]) przy każdym `git add`/`commit`.
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **8** (ostatnie retro: [[2026-10-16-retro-04]]). Co **10** → retro + pytanie o 3–5
+- Zamknięte pozycje od ostatniego retro: **9** (ostatnie retro: [[2026-10-16-retro-04]]). Co **10** → retro + pytanie o 3–5
   nośnych faktów (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**; podbija go `docs` przy zamknięciu, a zeruje go retro.
 - Do retro (zebrane po drodze, bez decyzji):
   - Poprzednią listę rozliczyło [[2026-10-16-retro-04]] → *The "Do retro" list*.
@@ -279,6 +281,12 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     przegląd.
   - **„ok” na stopie #2 bez śladu dla jednego kroku** — po [[ISSUE-045-migration-map]] (krok 2) znów w [[ISSUE-048-portrait-photos]] (krok 3); pozostałe kroki ze
     śladem. Zapisane jak „pomiń” → lista B.
+  - **Zmiana sterowania na stopie #2 po „tak” na klikalnej makiecie** ([[ISSUE-049-tree-levels-and-zoom]] → *Stop #2 — runda 1*): P2 (etykieta „Linia krwi ▾” z
+    listą) przyjęte na stopie #1; zbudowane, na emulatorze autor zamienił je na proste + / − i usunął przyciski przybliżania — runda `ui`, `dev`, `qa`.
+    Specyfikacja omijała + / −, bo autor nazwał nieestetycznym „− Poziom 2 +” ([[SPIKE-004-mvp-flow-prototype]] D25), a chodziło mu chyba o napis, nie o
+    przyciski. Kandydat: gdy wcześniejsze odrzucenie jest powodem wyboru, jedno pytanie, co dokładnie było nie tak, zanim wypadnie cała rodzina wariantów.
+  - **Pomiar w specyfikacji z innego ekranu niż zapisany** (przegląd `ui` rundy 2 [[ISSUE-049-tree-levels-and-zoom]]): *States* mówiły „emulator 360 dp” przy
+    zrzucie z ekranu 411 dp (bez `wm size` / `wm density`). Kandydat: przy pomiarze „200% na 360 dp” zapis podaje `wm size` i gęstość z tej samej chwili.
 
 ## Parked (waiting on someone outside the session)
 - **cmentarz (którykolwiek z cmentarzy autora)** · przy 3 grobach, które autor zna: (a) dokładność GPS telefonu
@@ -298,6 +306,20 @@ Format wpisu: `źródło (babcia / cmentarz X) · pytanie bez danych rodziny · 
 ## Recently done
 > Tylko wpisy od ostatniego retro ([[2026-10-16-retro-04]]; zasada R5 z retro 3). Starsze są w plikach retro → *Archive*:
 > [[2026-10-16-retro-04]] · [[2026-10-13-retro-03]] · [[2026-10-08-retro-02]] · [[2026-10-06-retro-01]].
+
+- 2026-10-19 — [[ISSUE-049-tree-levels-and-zoom]] zamknięte. **Poziomy pokrewieństwa niezależne od przybliżania** (trzecia z 4 pozycji z przeglądu
+  przepływu przez autora):
+  - stop #1 na klikalnej makiecie — *„tak”*: **M2** (na „Linii krwi” krewni z mężami, żonami i partnerami, ich rodziny poziom wyżej — D50, zastępuje D2), **N2**
+    („Linia krwi”, „Przez 1 związek”, „Przez 2 związki”), **K1** (po zmianie poziomu skala i środek zostają), **T2** (poziom i dwa palce także w trybie
+    prezentacji, zmienia D16); przybliżanie to sam widok, aż do całego poziomu na środku (D51, zastępuje S2); przy bardzo małym drzewie dotknięcie przybliża
+    (D52); „Połącz dwie osoby” podnosi poziom, nie obniża go;
+  - stop #2 runda 1 — **zmiana autora (D58)**: zamiast etykiety z listą (P2) proste **+ / −** poziomu w rogu drzewa i na listwie; przycisków przybliżania nie ma —
+    oddalanie tylko dwoma palcami (wyjątek od SC 2.5.1, [[style-b]] v1.46); pigułka poziomu także na telewizorze; runda 2 *„ok”* — kroki 1–3 ze śladem w logcat;
+  - [[drzewo]] v1.25 (D50–D58), [[style-b]] v1.44–v1.46; wymyślona rodzina +10 osób (117, od „Ja” 91 → 113 → 116); **bez zmiany bazy** (v15);
+  - przegląd `ui`: runda 1 — 3 MINOR, runda 2 — 7 MINOR (cel 48 dp na listwie, nieaktywny bez obrysu, szerokość pigułki, pigułka przy roku), poprawione przed
+    stopem. `Grobing_Restore` — demo z powrotem (stan z pozycji zapisany w katalogu sesji).
+
+  Lista B w [[ISSUE-032-mvp-install]] → *Hand checks*. Testy: 964 zielone. Werdykt `qa`: APPROVED (self-check, z uwagami). Licznik retro: 8 → 9.
 
 - 2026-10-19 — [[ISSUE-048-portrait-photos]] zamknięte. **Portret jako miejsce na zdjęcia** (druga z 4 pozycji z przeglądu przepływu przez autora; wchłonięta
   [[ISSUE-026-link-existing-photo-to-person]]):

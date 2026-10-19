@@ -127,8 +127,8 @@ Warunki — każdy ma swój dom, tutaj tylko lista:
   spike'a niezmierzone);
 - płynność przesuwania i przejścia między poziomami na fizycznym telefonie — nieprzetestowane na żywo, emulator to tylko wskazówka
   ([[SPIKE-002-tree-on-a-phone]] → *Findings* M3);
-- progi S2 (oddalanie odsłania dalszą rodzinę) przy szczypaniu palcami — nieprzetestowane na żywo, na emulatorze tylko przyciski i mysz
-  ([[SPIKE-002-tree-on-a-phone]]);
+- ~~progi S2 (oddalanie odsłania dalszą rodzinę) przy szczypaniu palcami — nieprzetestowane na żywo, na emulatorze tylko przyciski i mysz
+  ([[SPIKE-002-tree-on-a-phone]]);~~ — nieaktualne: S2 zastąpione przez [[ISSUE-049-tree-levels-and-zoom]] (poziom na + / −, przybliżanie to sam widok);
 - „Pokaż w drzewie” z widoku osoby otwiera drzewo tam, gdzie się go spodziewasz — „ok” bez śladu ([[ISSUE-033-tree-from-a-person]], krok 3);
 - TalkBack na drzewie: opisy węzłów („…, Moja babcia, w środek” — od [[ISSUE-035-tree-names-shrink-my-voice]], wcześniej „Twoja”) i pigułka poziomu —
   nieprzetestowane na żywo, tylko `uiautomator` i testy ([[ISSUE-033-tree-from-a-person]]).
@@ -176,6 +176,14 @@ Warunki — każdy ma swój dom, tutaj tylko lista:
 - „Od” inne niż Ty (Piotr → Zofia): czy baner w dwóch liniach jasno mówi, kto kim jest dla kogo (O2) — stop #2 „pomiń” (krok 3);
 - TalkBack czyta baner raz, gdy się pokaże (region na żywo) — nieprzetestowane na żywo;
 - płynność ścieżki na telefonie — linia, wyszarzenie, poziom 4 — nieprzetestowane na żywo (emulator w szumie: przestawienie środka 52–57% wolnych klatek w obu buildach).
+
+**Drzewo — poziomy i przybliżanie** ([[ISSUE-049-tree-levels-and-zoom]] → *Verification* → *For ISSUE-032 → Hand checks*)
+- szczypanie na telefonie w trybie prezentacji z obrazem na telewizorze — czy przybliżanie i oddalanie płynie na telewizorze (emulator przez `adb` nie szczypie;
+  w teście ekranu dwa wskaźniki);
+- cały obraz z kanapy: drzewo oddalone do całego poziomu na telewizorze — czy widać, kto jest kim (okręgi ok. 15 dp, ok. połowa imion);
+- płynność oddalania do całego drzewa na telefonie — nieprzetestowane na żywo (emulator: ok. 4 pp więcej wolnych klatek niż build odniesienia, w jego rozrzucie);
+- oddalanie tylko dwoma palcami ([[drzewo]] D58): czy ktoś z rodziny nie radzi sobie bez przycisku — *Obali* wyjątku [[style-b]] v1.46;
+- TalkBack na żywo: „Dalsza rodzina” / „Bliższa rodzina”, słowo stanu nieaktywnego i pigułka poziomu po zmianie — sprawdzone w drzewie semantyki i testach.
 
 **Miejsca zamieszkania** ([[ISSUE-042-places-of-residence]] → *Verification* → *For ISSUE-032 → Hand checks*)
 - sekcja w widoku osoby po „Zapisz” — autor ocenił karty w formularzu, wpis został niezapisany (stop #2, krok 1);
