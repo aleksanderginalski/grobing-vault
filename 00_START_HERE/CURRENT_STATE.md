@@ -92,6 +92,9 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
 - **Każda pozycja z ekranem: `ui` → `planning`** (`autonomous-flow.md`). Wygląd: `05_DESIGN/brand/` (wytyczne i
   referencje R1–R4 z kick-offu). Kolejność autora z 2026-10-06 (ISSUE-014 → SPIKE-001) wyczerpana — retro 2 → *Archive*.
 - Poza tą kolejnością:
+  - **[[ISSUE-051-wedding-changes-wreath-and-surname]]** (`draft`, z `/pm` 2026-10-19) — ślub i koniec związku zmieniają wieniec (przed ślubem swój ród,
+    po ślubie pół na pół, po rozwodzie znowu swój — odwraca [[wieniec]] B7) i nazwisko (pytanie przy ślubie i przy końcu związku, na suwaku nazwisko z
+    danego roku); bez zmiany bazy. Rekomendacja `pm`: pierwsza aktualizacja po instalacji — **miejsce w kolejce czeka na autora** (⚠️ OPEN w pozycji);
   - **opowieść rodziny na drzewie** — pomysł autora ze stopu #2 ISSUE-037 (c) w [[2026-10-14-opowiesc-rodziny-i-wieniec]] (INBOX): najpierw prototyp `ui`
     w trybie discovery, potem pozycje. **Po instalacji MVP** (decyzja autora 2026-10-14). Wieniec (d) przeszedł 2026-10-16 do kolejki jako
     [[ISSUE-044-family-wreaths]] (zamknięte 2026-10-17); „następne zdarzenie” z c) — 2026-10-18 jako [[ISSUE-050-next-event]]; animacje i zbliżenia zostają;
