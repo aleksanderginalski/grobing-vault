@@ -10,7 +10,7 @@ verdict-date: null
 verdict-reviewer: null
 source: "[[2026-10-13-retro-03]] R8, R9 · `CURRENT_STATE.md` → *Droga do instalacji MVP* (ostatni krok bez pozycji)"
 created: 2026-10-13
-updated: 2026-10-18
+updated: 2026-10-19
 ---
 
 # ISSUE-032 — Instalacja MVP na telefonie autora
@@ -75,6 +75,8 @@ Warunki — każdy ma swój dom, tutaj tylko lista:
   ([[ISSUE-044-family-wreaths]]: na emulatorze przeszła, liczby wierszy bez zmian, przerwana migracja zostawiła v14 całe);
 - odtworzenie kopii z **pustym grobem, osobą bez grobu i pochówkiem dodanym z wyboru** „Kto leży w tym grobie?” — na urządzeniu niezrobione (jeden
   emulator na raz, a na `Grobing_Restore` jest demo); test kopii przeszedł ([[ISSUE-047-grave-first-then-people]] → *Verification*, AC-5);
+- odtworzenie kopii ze **zdjęciem dołączonym z „Zdjęć w aplikacji”** (jedno zdjęcie u dwóch osób) i **profilowym z kadrem ustawionym z portretu** — na
+  urządzeniu niezrobione; test kopii przeszedł ([[ISSUE-048-portrait-photos]] → *Verification*, `backup_archive_test.dart` „ISSUE-048”);
 - odtworzenie kopii **v15 z rodami** z odciskiem zgodnym — na emulatorze niezrobione z tego samego powodu co v13 niżej; testy odtworzenia v14 → v15 i
   v15 z rodami przeszły ([[ISSUE-044-family-wreaths]] → *Verification*);
 - odtworzenie kopii **v14 z datą opłaty grobu** z odciskiem zgodnym — na emulatorze niezrobione z tego samego powodu co v13 niżej; testy odtworzenia
@@ -94,7 +96,13 @@ Warunki — każdy ma swój dom, tutaj tylko lista:
 - nieocenione w ręce: „Ustaw jako profilowe”, siatka i okrąg, zapis zdjęć przez „Zapisz”, lista „Kto jest na zdjęciu?”
   ([[ISSUE-017-person-photos]]);
 - kadr profilowego: podwójne dotknięcie i ok. 0,3 s czekania przy pojedynczym; pamięć okręgów z małym kadrem
-  ([[ISSUE-018-profile-photo-crop]], [[ADR-010-profile-photo-crop-pixels]] → *Follow-ups*).
+  ([[ISSUE-018-profile-photo-crop]], [[ADR-010-profile-photo-crop-pixels]] → *Follow-ups*);
+- „Zdjęcia w aplikacji”: czy szukanie po osobie wystarcza przy prawdziwych zdjęciach — stop #2, krok 3: **ok bez śladu na urządzeniu**
+  ([[ISSUE-048-portrait-photos]]);
+- TalkBack: portret i okrąg z inicjałami (także stan „zapisuję zdjęcia”), „Zdjęcie profilowe”, „Zdjęcia w aplikacji” z nagłówkami osób — sprawdzone w
+  drzewie semantyki i testach, nie na żywo ([[ISSUE-048-portrait-photos]]);
+- płynność przewijania „Zdjęć w aplikacji” przy kilkuset zdjęciach na telefonie — nieprzetestowane na żywo (siatka leniwa, test z 300 zdjęciami;
+  [[ISSUE-048-portrait-photos]]).
 
 **Osoby i rodzina**
 - tło z pasma w widoku osoby — „pomiń” ([[ISSUE-024-person-view]], krok 3 rundy 2); TalkBack w widoku osoby, ekran 360 dp;

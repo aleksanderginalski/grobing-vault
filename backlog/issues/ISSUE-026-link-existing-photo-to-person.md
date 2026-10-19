@@ -17,6 +17,8 @@ updated: 2026-10-18
 
 > **Wchłonięta przez [[ISSUE-048-portrait-photos]] (2026-10-18, `/pm` — podział przeglądu autora na pozycje).** AC-1 i AC-2 są tam AC-4 i AC-5,
 > *What to build* niżej obowiązuje dalej. Gdy przy ISSUE-048 te AC wypadną z zakresu, ta pozycja wraca do `ready`. Treść niżej bez zmian.
+> **Zbudowane 2026-10-19** w ISSUE-048 (AC-4, AC-5 zostały na stopie #1): nowy ekran [[zdjecia-w-aplikacji]], trzecie źródło w arkuszu ([[zdjecie]] A4); wyboru
+> tła ta pozycja nie dostała ([[zdjecia-w-aplikacji]] D7). Status zostaje `withdrawn`.
 
 > Z zamknięcia [[ISSUE-024-person-view]]. Autor o sekcji „Zdjęcia” w widoku osoby: *„chciałbym mieć dla osoby bez zdjęć również
 > miejsce na »zdjęcia« abym wiedział że mogę tutaj je dodać na dole (lub połączyć z istniejącymi)”*. Pierwszą część zbudowała

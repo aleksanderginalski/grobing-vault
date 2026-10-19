@@ -1,10 +1,10 @@
 ---
 screen: "Zdjęcia osoby — baza zdjęć jednej osoby"
-items: ["[[ISSUE-017-person-photos]]", "[[ISSUE-018-profile-photo-crop]]", "[[ISSUE-024-person-view]]"]
+items: ["[[ISSUE-017-person-photos]]", "[[ISSUE-018-profile-photo-crop]]", "[[ISSUE-024-person-view]]", "[[ISSUE-048-portrait-photos]]"]
 us: "[[US-005-zdjecia]]"
 journey-step: "n/a — M1 (przepisywanie i zbieranie u babci); docelowo część widoku osoby (M5, R4 prawy)"
-mockup: "katalog tymczasowy sesji 2026-10-07: makieta-zdjecia-osoby.html (ramki 1–9)"
-updated: 2026-10-09
+mockup: "katalog tymczasowy sesji 2026-10-07: makieta-zdjecia-osoby.html (ramki 1–9) · 2026-10-19: makieta-048.html (ekran 2 „Zdjęcie profilowe”, ISSUE-048)"
+updated: 2026-10-19
 ---
 
 # Zdjęcia osoby — specyfikacja
@@ -40,6 +40,18 @@ updated: 2026-10-09
 > **Dotknięcie zdjęcia albo zdjęcie dodane → tło zapisuje się od razu** i ekran wraca do widoku osoby z tłem (reguła 10). Gdy tło
 > jest: pod siatką przycisk tekstowy **„Bez zdjęcia w tle”** (`hide_image_outlined`, kolor tekstu) → tło zdjęte, zdjęcie zostaje,
 > powrót do widoku. Wstecz — bez zmian. Zdjęcie dodane tutaj dołącza do zdjęć osoby (na końcu; osobie bez zdjęć — też profilowe).
+>
+> **Wersja 1.5 (2026-10-19, `ui` przed planem [[ISSUE-048-portrait-photos]] — tryb „Zdjęcie profilowe”, [[osoba]] D23):** z portretu w widoku
+> osoby. Autor: *„gdy klikam na kogoś „zdjęcie profilowe”, chciałbym od razu widzieć tam możliwość jego zmiany (lub dodania dla tej osoby nowych
+> zdjęć — podobnie jak działa zdjęcie w tle)”*. Ten sam ekran co tryb tła, z obecnym profilowym na górze i „Obejrzyj zdjęcie”. Dotknięcie zdjęcia
+> → kadr → „Gotowe” → **zapis od razu** i powrót do widoku osoby. Kafelek **„Dodaj zdjęcia”** dodaje kilka naraz (także „Ze zdjęć w aplikacji” —
+> [[zdjecia-w-aplikacji]]), **zapis od razu**, a ekran zostaje z nowymi zdjęciami w siatce. Elementy: *Tryb „Zdjęcie profilowe”* niżej. Wariant
+> **P2** — przyjęty przez autora na stopie #1 (2026-10-19, *„tak”*); odrzucony P1 (arkusz z działaniami) — [[osoba]] *Open* 7.
+> **D6 *Obali* trafione** — trzecie źródło w arkuszu: „Ze zdjęć w aplikacji” ([[zdjecie]] A4, v1.7).
+>
+> **Wersja 1.6 (2026-10-19, przegląd `ui` zbudowanej [[ISSUE-048-portrait-photos]] — przyjęte odstępstwo 2 `dev`):** nieudany zapis w trybie
+> „Zdjęcie profilowe” cofa siatkę do zapisanego stanu, **także zdjęcia dodane kafelkiem w tej próbie** — trzeba je dodać jeszcze raz (D8). v1.5 mówiła
+> tylko o profilowym.
 
 ## Purpose
 Wszystkie zdjęcia jednej osoby w jednym miejscu: tu się je dodaje (z galerii kilka naraz albo aparatem), wybiera
@@ -56,6 +68,8 @@ rozstrzyga ADR w `planning`. Ekran zakłada tylko te trzy rzeczy: łącze, kolej
 - **Wejście:** z [[wpis-osoby]] → element 1a, gdy osoba ma choć jedno zdjęcie (także dopiero wybrane, jeszcze
   niezapisane). Bez zdjęć element 1a otwiera od razu arkusz źródła ([[zdjecie]] A), bez pustej bazy.
   **Z widoku osoby** ([[osoba]] element 10, v1.2) — w trybie oglądania. Wstecz → widok osoby.
+  **Z portretu w widoku osoby** ([[osoba]] element 3, v1.5) — w trybie „Zdjęcie profilowe” (*Tryb „Zdjęcie profilowe”* niżej). Wstecz → widok
+  osoby; zdjęcia dodane kafelkiem są już zapisane.
 - **Zdjęcie w siatce albo profilowe w nagłówku** → podgląd ([[zdjecie]] B, tryb osoby): przybliżenie, poprzednie i
   następne, „Na zdjęciu”, „Ustaw jako profilowe”, „Usuń z tej osoby”.
 - **„Dodaj zdjęcie”** (kafelek w siatce) → arkusz źródła ([[zdjecie]] A, tytuł „Zdjęcia osoby”). Galeria pozwala
@@ -83,12 +97,31 @@ rozstrzyga ADR w `planning`. Ekran zakłada tylko te trzy rzeczy: łącze, kolej
 
 Miniatury dekodowane w rozmiarze komórki, jak w [[grob]].
 
+### Tryb „Zdjęcie profilowe” (v1.5, [[ISSUE-048-portrait-photos]])
+Z portretu w widoku osoby. Wzorem jest tryb „Zdjęcie w tle” (v1.4): siatka zdjęć tej osoby, obecny wybór w ramce, dotknięcie wybiera, zapis od
+razu. Różnice:
+
+| # | Element | Typ | Klawiatura / akcja | Domyślnie | Walidacja | Źródło |
+|---|---|---|---|---|---|---|
+| P1 | **Pasek:** wstecz; tytuł „Zdjęcie profilowe” (16 sp, półgruby); podtytuł — imiona i nazwisko z „z d.” (14 sp, tekst pomocniczy, jedna linia, ucięta) | pasek | wstecz → widok osoby | — | — | wzorzec v1.4 |
+| P2 | **Obecne profilowe** — jak element 2: okrąg 96 dp w kadrze łącza, wyśrodkowany, 24 dp pod paskiem; dotknięcie → podgląd. Pod nim zamiast podpisu „Profilowe” **przycisk tekstowy „Obejrzyj zdjęcie”** (akcent, 14 sp, waga 500, cel ≥ 48 dp) → [[zdjecie]] B w trybie oglądania na profilowym (jak dziś z portretu). Opis okręgu dla czytnika: „Zdjęcie profilowe — obejrzyj” | obraz-przycisk + przycisk tekstowy | → [[zdjecie]] B, tryb oglądania | — | — | AC-1 („obejrzyj”) · D2 |
+| P3 | **Linia:** „Dotknij zdjęcia, które ma być profilowym.” (14 sp, tekst pomocniczy, 16 dp marginesu) — jak linia trybu tła | tekst | — | — | — | AC-1 („zmień profilowe”) · wzorzec v1.4 |
+| P4 | **Nagłówek sekcji** — element 3 („Wszystkie zdjęcia · 3”) | tekst | — | — | — | element 3 |
+| P5 | **Siatka** jak element 4. **Obecne profilowe** (pierwsza komórka) ma ramkę jak obecne tło w v1.4 (2 dp akcentu, 2 dp tła, zdjęcie mniejsze, promień 4 dp). **Dotknięcie zdjęcia → [[kadr-profilowego]]** z kadrem łącza albo domyślnym; „Gotowe” → zdjęcie staje się pierwszym łączem z tym kadrem, **zapis od razu**, powrót do widoku osoby z nowym portretem (reguła 10). Dotknięcie obecnego profilowego → kadr („Popraw kadr”), „Gotowe” → nowy kadr, zapis od razu, widok osoby. Opis komórki dla czytnika: „Zdjęcie 1 z 3, profilowe, zaznaczone — popraw kadr”; pozostałe „Zdjęcie 2 z 3 — ustaw jako profilowe” | siatka obrazów-przycisków | → [[kadr-profilowego]] → widok osoby | — | — | AC-2 · [[osoba]] D24 · [[kadr-profilowego]] v1.3 |
+| P6 | **Kafelek „Dodaj zdjęcia”** — jak element 5, napis w liczbie mnogiej. → arkusz źródła ([[zdjecie]] A, tryb osoby, tytuł „Zdjęcia osoby”): galeria — **kilka**, aparat — jedno, **„Ze zdjęć w aplikacji”** — kilka ([[zdjecia-w-aplikacji]]). Nowe zdjęcia dołączają na końcu kolejności, **zapisują się od razu**, a ekran **zostaje** z nimi w siatce — jednym dotknięciem któreś zostaje profilowym. Profilowe się nie zmienia (osoba ma zdjęcia, więc pierwsze łącze zostaje). Przygotowanie i jego błąd — jak *States* („przygotowanie zdjęć”) | przycisk | → [[zdjecie]] A | — | — | AC-1 („dodaj zdjęcia”) · D7 |
+
+**Bez linii zapisu** (6) — nic nie czeka na „Zapisz”. **Bez „Bez profilowego”** — profilowe to pierwsze zdjęcie osoby
+([[ADR-009-person-photos-record-and-link]]); zdjęcia usuwa się dalej tylko pod ✎ (podgląd → „Usuń z tej osoby”).
+**Zapis — błąd:** pod siatką `error_outline` + „Nie udało się zapisać zdjęć. Spróbuj jeszcze raz.” (kolor błędu, 14 sp); w kadrze „Gotowe”
+wraca tu z tym komunikatem i starym profilowym. **v1.6:** siatka wraca do zapisanego stanu — zdjęcia dodane kafelkiem w tej próbie znikają z niej i
+dodaje się je jeszcze raz (D8).
+
 ## States
 | Stan | Co widać |
 |---|---|
 | wypełniony | 1–5; 6, gdy są niezapisane zmiany |
 | jedno zdjęcie | nagłówek 2 i siatka z jednym zdjęciem i kafelkiem „Dodaj zdjęcie” |
-| przygotowanie zdjęć | po powrocie z galerii albo aparatu: w miejscu każdego nowego zdjęcia komórka na powierzchni (zaokrąglenie 8 dp) ze wskaźnikiem postępu w środku; kafelek 5 nieaktywny. Zmniejszanie trwa chwilę na zdjęcie (ADR-008: 2048 px, JPEG 85). Nowe zdjęcia pojawiają się po kolei |
+| przygotowanie zdjęć | po powrocie z galerii albo aparatu: w miejscu każdego nowego zdjęcia komórka na powierzchni (zaokrąglenie 8 dp) ze wskaźnikiem postępu w środku; kafelek 5 nieaktywny. Zmniejszanie trwa chwilę na zdjęcie (ADR-008: 2048 px, JPEG 85). Nowe zdjęcia pojawiają się po kolei. **W „Zdjęciu profilowym” (v1.5, przegląd `ui` — MAJOR) czekają też zdjęcia siatki:** dotknięcie w trakcie przygotowania i zapisu nic nie robi — „Gotowe” w kadrze zamknęłoby ekran i szkic, a zdjęcia w przygotowaniu przepadłyby bez słowa |
 | przygotowanie — błąd | pod siatką: `error_outline` + „Nie udało się wczytać 1 zdjęcia z 3. Spróbuj jeszcze raz.” (kolor błędu, 14 sp; liczby z odmianą). Udane zdjęcia zostają |
 | pusty | osoba miała zdjęcia, a w tej edycji wszystkie usunięto: bez nagłówka 2; „Ta osoba nie ma zdjęć.” (14 sp, tekst pomocniczy) nad siatką z samym kafelkiem 5 (reguła 9) i linia 6. Bez zdjęć formularz tu nie prowadzi (*Navigation*) |
 | brak pliku | łącze jest, pliku nie ma albo nie da się go odczytać: komórka na powierzchni z `broken_image_outlined` (tekst pomocniczy), bez tekstu; dotknięcie → podgląd ze stanem „B — błąd odczytu”, gdzie da się zdjęcie usunąć z osoby. W nagłówku 2 ta sama ikona w okręgu na powierzchni |
@@ -132,6 +165,8 @@ ok. 50 zdjęć osób w MVP.
 | **Kilka zdjęć naraz** z galerii | 4 + 1 na każde kolejne | „Gotowe” i tak trzeba dotknąć, więc wybór kilku nic nie kosztuje (D4) |
 | **Kolejne zdjęcie** osobie, która już ma zdjęcia (1a → kafelek 5 → galeria → zdjęcie → „Gotowe”) | 5 | — |
 | **Profilowe** (zdjęcie w siatce → „Ustaw jako profilowe” → wstecz) | 3 | — |
+| **Profilowe z widoku osoby** (v1.5: portret → zdjęcie → „Gotowe” w kadrze) | **3** | zapis od razu; przez ✎ było ✎ → 1a → zdjęcie → „Ustaw jako profilowe” → „Gotowe” → wstecz → wstecz → „Zapisz” = 8 |
+| **Kolejne zdjęcia z widoku osoby** (v1.5: portret → „Dodaj zdjęcia” → „Wybierz z galerii” → zdjęcia → „Gotowe” → wstecz) | 6 + 1 na każde kolejne | zapis od razu |
 | **Zdjęcie dzielone z osobą z tego grobu** (zdjęcie → „Zmień” przy „Na zdjęciu” → zaznaczenie → „Gotowe”) | 4 | [[zdjecie]] D |
 | Zapis zmian | +1 („Zapisz” formularza) | D1. W nowej osobie „Zapisz” i tak jest, więc +0 |
 | **Osoba bez zdjęć** | **+0** | element 1a stoi poza `next` ([[wpis-osoby]] → *Tempo*) |
@@ -164,6 +199,8 @@ grupowe.
 | ISSUE-017: jedno zdjęcie u kilku osób, jeden plik | 4 → [[zdjecie]] B5, D | zdjęcie zaznaczone u drugiej osoby pojawia się w jej bazie; plik jest jeden (sprawdza `qa` w magazynie aplikacji) |
 | ISSUE-017: usunięcie u jednej osoby nie usuwa innym | 4 → [[zdjecie]] C (tryb osoby) | po „Usuń z tej osoby” zdjęcie znika z tej bazy, a w bazie drugiej osoby zostaje |
 | ISSUE-017: styl B | całość | reguły wyżej; przegląd `ui` przed stopem #2 |
+| ISSUE-048 AC-1 — z portretu widać: obejrzyj, zmień profilowe, dodaj zdjęcia (v1.5) | P2, P3, P6 | portret Jana → „Zdjęcie profilowe”: „Obejrzyj zdjęcie”, „Dotknij zdjęcia, które ma być profilowym.”, kafelek „Dodaj zdjęcia” — bez ✎ |
+| ISSUE-048 AC-2 — profilowe z portretu zapisuje się od razu (v1.5) | P5 → [[kadr-profilowego]] | zdjęcie ślubne → „Gotowe” → widok Jana z nowym portretem; po wyjściu z aplikacji i powrocie — ten sam |
 | ISSUE-017: migracja v3→v4, kopia v3 w v4, kopia zaraz po migracji | n/a — bez elementu ekranu | warstwa danych; sprawdza `qa`. Na ekranie: osoba ze zdjęciem z v3 ma po migracji to zdjęcie jako profilowe i jedyne w bazie |
 
 ## Decisions
@@ -174,7 +211,9 @@ grupowe.
 | **D3 — siatka kwadratów, kolejność łączy** | zdjęcia osoby bywają grupowe, więc kwadrat ucina mniej niż okrąg. Całość jest o jedno dotknięcie dalej, w podglądzie. Kolejność łączy (profilowe pierwsze, dalej według dodania) to porządek GEDCOM. **Bez przestawiania** zdjęć poza profilowym, bo dziś kolejność niczego poza profilowym nie zmienia | autor chce porządkować zdjęcia (np. według lat) → przestawianie albo data zdjęcia, osobna pozycja |
 | **D4 — kilka zdjęć naraz z galerii** | okno systemowe i tak wymaga „Gotowe” ([[zdjecie]] D2), więc wybór kilku nic nie kosztuje, a zdjęcia jednej osoby (np. z jednego albumu) przychodzą seriami. Obiecane w [[zdjecie]] D2 | — |
 | **D5 — „Dodaj zdjęcie” jako ostatnia komórka siatki** | działanie stoi tam, gdzie pojawi się wynik, jak „Dodaj zdjęcie nagrobka” ([[grob]] D12, decyzja autora) | osoby mają po kilkanaście zdjęć i kafelek ucieka za ekran → rząd działań nad siatką |
-| **D6 — dzielenie od strony zdjęcia** („Kto jest na zdjęciu?”, [[zdjecie]] D), a nie przez wybór „zdjęcia innej osoby” przy dodawaniu | zdjęcie grupowe zaznacza się raz, w jednym miejscu, i widać od razu wszystkich na nim. Druga droga (wybór spośród zdjęć w aplikacji) dawałaby to samo dwa razy. Dodanie zdjęcia jednej osoby kosztuje +0 | autor częściej szuka „tego zdjęcia ślubnego, które już jest u żony” niż otwiera zdjęcie → trzecia pozycja w arkuszu źródła: „Ze zdjęć w aplikacji” |
+| **D6 — dzielenie od strony zdjęcia** („Kto jest na zdjęciu?”, [[zdjecie]] D), a nie przez wybór „zdjęcia innej osoby” przy dodawaniu | zdjęcie grupowe zaznacza się raz, w jednym miejscu, i widać od razu wszystkich na nim. Druga droga (wybór spośród zdjęć w aplikacji) dawałaby to samo dwa razy. Dodanie zdjęcia jednej osoby kosztuje +0 | autor częściej szuka „tego zdjęcia ślubnego, które już jest u żony” niż otwiera zdjęcie → trzecia pozycja w arkuszu źródła: „Ze zdjęć w aplikacji”. **Trafione (v1.5, 2026-10-19):** autor przy ISSUE-024 i w przeglądzie 2026-10-18 — „lub połączyć z istniejącymi” → [[zdjecia-w-aplikacji]]; droga od strony zdjęcia zostaje |
+| **D7 — tryb „Zdjęcie profilowe” zapisuje od razu, a kafelek dodaje kilka zdjęć i zostawia ekran** (v1.5) | zapis od razu to decyzja autora w pozycji (ISSUE-048 AC-2, „jak tło”), więc D1 ma dwa wyjątki, oba z widoku osoby: wybór tła i profilowego. W formularzu dalej „Zapisz”. Autor chce tu też „dodania dla tej osoby nowych zdjęć” — w liczbie mnogiej, więc kafelek nie kończy wyboru jak w trybie tła (tam jedno zdjęcie od razu staje się tłem): dodaje, zapisuje i zostawia siatkę, żeby nowe zdjęcie mogło zostać profilowym jednym dotknięciem | autor dodaje z portretu głównie po to, żeby zmienić profilowe → kafelek przy jednym zdjęciu od razu otwiera kadr |
+| **D8 — nieudany zapis w „Zdjęciu profilowym” cofa siatkę do zapisanego stanu, także dodane zdjęcia** (v1.6; odstępstwo 2 `dev` w [[ISSUE-048-portrait-photos]], przyjęte w przeglądzie `ui` 2026-10-19) | ten tryb nie ma „Zapisz” (D7), więc zdjęcie, które zostałoby w siatce po nieudanym zapisie, wyglądałoby na zapisane, a po „wstecz” przepadłoby bez słowa (reguła 10: widać to, co zapisane). Linia błędu mówi, co zrobić. Zdjęcie z galerii albo z aplikacji wybiera się jeszcze raz, z aparatu — robi się jeszcze raz. Przypadek rzadki (zapis do bazy w telefonie) | autor po błędzie szuka dodanych zdjęć w siatce → zostają w siatce z linią „nie zapisane” i „Spróbuj jeszcze raz” |
 
 ## Open
 brak. Zakres wyboru osób na zdjęciu — [[zdjecie]] D7, **przyjęte na stopie #1** (wszystkie osoby z filtrem; zaznaczenie

@@ -1,10 +1,10 @@
 ---
 screen: "Kadr profilowego — wycinek zdjęcia w okręgu profilowego"
-items: ["[[ISSUE-018-profile-photo-crop]]"]
+items: ["[[ISSUE-018-profile-photo-crop]]", "[[ISSUE-048-portrait-photos]]"]
 us: "[[US-005-zdjecia]] (rozwinięcie po jej werdykcie — AC US-005 spełnione bez tego ekranu)"
 journey-step: "n/a — M1 (przepisywanie i zbieranie u babci); docelowo profilowe w widoku osoby (M5, R4 prawy) i w węzłach drzewa (R3)"
-mockup: "katalog tymczasowy sesji 2026-10-07: makieta-kadr-profilowego.html (ramki 1–6)"
-updated: 2026-10-07
+mockup: "katalog tymczasowy sesji 2026-10-07: makieta-kadr-profilowego.html (ramki 1–6) · 2026-10-19: makieta-048.html (ekran 4, wejście z „Zdjęcia profilowego”)"
+updated: 2026-10-19
 ---
 
 # Kadr profilowego — specyfikacja
@@ -33,6 +33,10 @@ updated: 2026-10-07
 > - **podwójne dotknięcie przybliża ×2 w miejscu dotknięcia**, a po największym przybliżeniu wraca do całości — to
 >   zastępstwo rozsunięcia palców jednym palcem (SC 2.5.1, D7'), ten sam gest co w podglądzie [[zdjecie]] B2;
 > - pojedyncze dotknięcie dalej przenosi punkt na środek, ale czeka ok. 0,3 s, czy nie przyjdzie drugie.
+>
+> **Wersja 1.3 (2026-10-19, `ui` przed planem [[ISSUE-048-portrait-photos]]):** drugie wejście — **z „Zdjęcia profilowego”** w widoku osoby
+> ([[zdjecia-osoby]] v1.5, P5). Ekran bez zmian; inne jest tylko to, co robi „Gotowe” i wstecz (*Navigation*): **zapis od razu** i powrót do widoku
+> osoby ([[osoba]] D24).
 
 ## Purpose
 Wybór wycinka zdjęcia, który pokazuje okrąg profilowego jednej osoby — twarz tej osoby ze zdjęcia grupowego, a nie
@@ -69,6 +73,10 @@ zdjęcia.
 - **Wstecz** → [[zdjecie]] B bez zmian, bez okna — przepada najwyżej ustawienie okręgu ([[style-b]] reguła 10; D9).
 - **Zapis:** kadr i profilowe trafiają do zmian formularza osoby i zapisują się z jego „Zapisz”, a „Odrzuć” je cofa
   ([[zdjecia-osoby]] D1). W [[zdjecia-osoby]] zmiana kadru pokazuje linię zapisu (element 6).
+- **Wejście z „Zdjęcia profilowego”** (v1.3, [[zdjecia-osoby]] P5): dotknięcie zdjęcia w siatce → K z kadrem łącza albo domyślnym (dotknięcie
+  obecnego profilowego = „Popraw kadr”). **„Gotowe” → zapis od razu** — zdjęcie jest pierwszym łączem z tym kadrem — i powrót do **widoku osoby** z
+  nowym portretem (reguła 10), bez podglądu B po drodze. **Wstecz** → „Zdjęcie profilowe” bez zmian. Błąd zapisu → „Zdjęcie profilowe” z
+  komunikatem ([[zdjecia-osoby]] v1.5), profilowe bez zmian.
 
 ## Elements in order
 | # | Element | Typ | Klawiatura / akcja | Domyślnie | Walidacja | Źródło |
@@ -144,6 +152,7 @@ wymaga kadru.
 |---|---|---|
 | **Profilowe z kadrem** (podgląd → „Ustaw jako profilowe” → przesunięcie albo dotknięcie twarzy, przybliżenie → „Gotowe”) | 2 + 1–3 gesty | było 1 (bez kadru) — D2 |
 | **Poprawa kadru profilowego z formularza** (1a → nagłówek profilowego → „Popraw kadr” → gesty → „Gotowe” → wstecz → „Zapisz”) | 6 + 1–3 gesty | główny przypadek: pierwsze zdjęcie osoby to zdjęcie grupowe i zostało profilowym ze środka (D3) |
+| **Poprawa kadru z widoku osoby** (v1.3: portret → obecne profilowe w siatce → gesty → „Gotowe”) | **3** + 1–3 gesty | zapis od razu ([[zdjecia-osoby]] v1.5) |
 | **Zdjęcie grupowe, każda z 4 osób z własnym kadrem** | 4 × 6 + gesty | kadr należy do łącza, więc ustawia się go w formularzu każdej osoby osobno (AC 2) |
 | Osoba, której profilowe wypada dobrze ze środka | **+0** | K się nie otwiera (D3) |
 

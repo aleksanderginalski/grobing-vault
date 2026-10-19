@@ -3,7 +3,7 @@ title: "Grobing — Current State"
 type: meta
 status: active
 created: 2026-10-05
-updated: 2026-10-18
+updated: 2026-10-19
 ---
 
 # Grobing — Current State
@@ -41,7 +41,9 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   7. ~~[[ISSUE-047-grave-first-then-people]]~~ — **zamknięte 2026-10-18**: „Dodaj grób” otwiera okno „Nowy grób”, grób może być pusty; „Dodaj osobę” w grobie
      najpierw szuka — osoba bez grobu (np. z drzewa) dołącza jednym dotknięciem, osoba z grobem jest wyszarzona z powodem (D23); „Dodaj osobę” w Osobach;
      bez zmiany bazy;
-  8. [[ISSUE-048-portrait-photos]] — dotknięcie portretu: zmiana profilowego, nowe zdjęcia (wchłania [[ISSUE-026-link-existing-photo-to-person]]);
+  8. ~~[[ISSUE-048-portrait-photos]]~~ — **zamknięte 2026-10-19**: portret → „Zdjęcie profilowe” (zmiana profilowego, „Obejrzyj zdjęcie”, „Dodaj zdjęcia”),
+     okrąg z inicjałami z plakietką, zapis od razu z widoku (D24), nowy ekran „Zdjęcia w aplikacji” (wchłonięta [[ISSUE-026-link-existing-photo-to-person]]);
+     bez zmiany bazy;
   9. [[ISSUE-049-tree-levels-and-zoom]] — poziomy pokrewieństwa (krew, potem każde małżeństwo) niezależne od przybliżania, przybliżanie także na telewizorze;
   10. [[ISSUE-050-next-event]] — „Następne” obok ▶ na drzewie i mapie: rok i co się w nim stało;
 
@@ -57,8 +59,9 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
 - **Agent `architect` — nie teraz** (retro 4, R7): sygnał „pierwszy ADR zastąpiony” ([[ADR-018-export-is-the-backup]]) rozliczony; nowy warunek w `CLAUDE.md` →
   *Na sygnał*.
 
-  Specyfikacja: [[drzewo]] v1.22, [[osoba]] v2.8, [[wpis-osoby]] v6, [[wieniec]] v1.2, [[zamieszkanie]] v1.4, [[mapa-migracji]] v1.4, [[grob]] v9.1,
-  [[cmentarz]] v8, [[osoby]] v3.1, [[rodzina]] v2.2, [[style-b]] v1.42.
+  Specyfikacja: [[drzewo]] v1.22, [[osoba]] v2.9, [[wpis-osoby]] v6, [[wieniec]] v1.2, [[zamieszkanie]] v1.4, [[mapa-migracji]] v1.4, [[grob]] v9.1,
+  [[cmentarz]] v8, [[osoby]] v3.1, [[rodzina]] v2.2, [[zdjecia-osoby]] v1.6, [[zdjecie]] v1.7, [[kadr-profilowego]] v1.3, [[zdjecia-w-aplikacji]] v1.2,
+  [[style-b]] v1.43.
 - **Prawdziwe dane rodziny dopiero po instalacji MVP** (decyzja autora 2026-10-08 w `/pm`): budujemy produkt gotowy do
   instalacji na telefonie (MVP = brief §5, M1–M11); do tego czasu autor ocenia aplikację na wymyślonych danych. Rozmowa z babcią
   (~2026-11-02) jest na kartce, a odpowiedzi trafią do aplikacji po instalacji.
@@ -90,7 +93,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   - **opowieść rodziny na drzewie** — pomysł autora ze stopu #2 ISSUE-037 (c) w [[2026-10-14-opowiesc-rodziny-i-wieniec]] (INBOX): najpierw prototyp `ui`
     w trybie discovery, potem pozycje. **Po instalacji MVP** (decyzja autora 2026-10-14). Wieniec (d) przeszedł 2026-10-16 do kolejki jako
     [[ISSUE-044-family-wreaths]] (zamknięte 2026-10-17); „następne zdarzenie” z c) — 2026-10-18 jako [[ISSUE-050-next-event]]; animacje i zbliżenia zostają;
-  - ~~[[ISSUE-026-link-existing-photo-to-person]]~~ — **wchłonięta 2026-10-18 przez [[ISSUE-048-portrait-photos]]** (AC-4, AC-5 tam);
+  - ~~[[ISSUE-026-link-existing-photo-to-person]]~~ — **wchłonięta 2026-10-18 przez [[ISSUE-048-portrait-photos]]** (AC-4, AC-5 tam) — zbudowane 2026-10-19;
   - **usuwanie pustego grobu i pochówku** — w aplikacji nie ma usuwania grobów, osób ani pochówków (brief G7/C5). Od [[ISSUE-047-grave-first-then-people]]
     pusty grób z pomyłki zostaje na liście, a osoby z grobem nie da się dodać do drugiego (napis symboliczny). Kandydat na małą pozycję, gdy któreś zacznie
     przeszkadzać przy prawdziwych danych ([[cmentarz]] D38 *Obali* 2, [[grob]] D23 *Obali*);
@@ -198,6 +201,10 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   - **katalog sesji ISSUE-047** (`%TEMP%\claude\c--Programowanie-Grobing-grobing-agents\cce9fe30-…\scratchpad\`): makieta `makieta-047.html` i `makieta-047.png`,
     `emu047\` — zrzuty `01`–`20` (na 05, 08, 09 i 17a jest Twój wpis z emulatora), kopia demo sprzed pozycji `stan-przed-047.tar` + `stan-przed-047-base.apk`
     (już wgrana z powrotem), `chr047\` (profil Chrome bez okna), skrypty `*.py` — wszystko do kosza;
+  - **katalog sesji ISSUE-048** (`%TEMP%\claude\c--Programowanie-Grobing-grobing-agents\92e37203-…\scratchpad\`): makieta `makieta-048.html` i jej zrzuty
+    `shots048\`, `fotki.html` i `fotki048\` (wymyślone rysunki — zdjęcia testowe; z galerii emulatora już usunięte), `emu048\` — zrzuty `01`–`19` (na 09 i 10
+    jest Twój wpis z emulatora) i kopia demo sprzed pozycji `stan-przed-048.tar` + `stan-przed-048-base.apk` (już wgrana z powrotem), `chr048\` (profil Chrome
+    bez okna), `tools\` (skrypty), logi testów — wszystko do kosza;
   - **repo nie mają pliku `LICENSE`** — kod można oglądać, ale nie wolno go używać. Licencję można dodać później.
 - **Emulatory (po ISSUE-033):** `Medium_Phone` — release v12 na danych testowych autora, kopia skonfigurowana od nowa z hasłem
   testowym (wymyślone, z sesji ISSUE-029), pliki `grobing-klucz-029.age` i `grobing-kopia-029.age` w Pobranych; grób „Jozef” ma
@@ -233,7 +240,11 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   Fluttera; ikona Grobing dodana na ekran główny, „Themed icons” wyłączone); przed testami na nim — wgrać stan sprzed demo z `_pokaz`, nigdy `pm clear` bez
   zapisanego tar. `Medium_Phone` — release HEAD 6f4f2fb nad danymi testowymi autora (v12 → v15, 2026-10-18, dane zachowane). **Po ISSUE-047:**
   `Grobing_Restore` — z powrotem **demo** (APK i dane zapisane przed pozycją, razem z Twoimi zmianami z 2026-10-18: 41 osób); na czas pozycji był tam stan
-  sprzed demo z `_pokaz` z buildem ISSUE-047 — wpisy z testów i ze stopu #2 przepadły razem z nim, plik w `_pokaz` bez zmian.
+  sprzed demo z `_pokaz` z buildem ISSUE-047 — wpisy z testów i ze stopu #2 przepadły razem z nim, plik w `_pokaz` bez zmian. **Po ISSUE-048:**
+  `Grobing_Restore` — z powrotem **demo** (41 osób, APK i dane zapisane przed pozycją); na czas pozycji stan sprzed demo z `_pokaz` z buildem ISSUE-048, a w
+  nim zmiany z przejścia i ze stopu #2 (nowe profilowe Mateusza, zdjęcia Zofii i Ignacego) — przepadły razem z nim, plik w `_pokaz` bez zmian. Tekst i gęstość
+  domyślne. **Emulator zawiesił się raz** (wątki QEMU bez odpowiedzi): po buildzie zostało ok. 0,9 GB wolnej pamięci — po każdym `flutter build` zatrzymać demony
+  Gradle (`android\gradlew --stop`), zanim emulator dostanie zadania.
 - **[[EPIC-002-wizyta]] gotowy do rozpisania na US** — pytanie „jak znaleźć grób bez pinezki” ma kierunek autora
   (2026-10-08): adres z wyszukiwarki zarządcy → kwatera zaznaczona według planu zarządcy → na miejscu plan offline i
   GPS → pinezka. Wejście do pierwszej US (mapa cmentarza): EPIC-002 → *Input from SPIKE-001*. Ekran: `ui` →
@@ -250,7 +261,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   paczki (decyzja autora 2026-10-07); treść wychodzących zmian sprawdza strażnik treści ([[ISSUE-020-content-guard]]) przy każdym `git add`/`commit`.
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **7** (ostatnie retro: [[2026-10-16-retro-04]]). Co **10** → retro + pytanie o 3–5
+- Zamknięte pozycje od ostatniego retro: **8** (ostatnie retro: [[2026-10-16-retro-04]]). Co **10** → retro + pytanie o 3–5
   nośnych faktów (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**; podbija go `docs` przy zamknięciu, a zeruje go retro.
 - Do retro (zebrane po drodze, bez decyzji):
   - Poprzednią listę rozliczyło [[2026-10-16-retro-04]] → *The "Do retro" list*.
@@ -262,6 +273,12 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     (zauważone przy planie ISSUE-046). Do uzupełnienia przez `planning`/`docs` przy najbliższej okazji.
   - **Wycinanie ikon przez Fluttera gubi glify Material Symbols z podmianą wzdłuż FILL** ([[ISSUE-046-icons]] → *Probes*) — sonda przed masową podmianą
     złapała to, zanim poszło do przodu; wiedza w README `grobing-code` → *Ikony*.
+  - **Zapis od razu z widoku → wyścig dwóch szkiców** ([[ISSUE-048-portrait-photos]] → *Verification*, przegląd `ui` MAJOR): przejście `dev` na emulatorze i testy
+    były zielone, a drugie dotknięcie okręgu w trakcie przygotowania zdjęć otwierało drugi szkic, którego zapis całej listy zdejmował zdjęcia pierwszego. Ten
+    sam mechanizm co D25 (otwarta poprawa). Kandydat: przy każdym zapisie „od razu” w specyfikacji stan „w toku” i pytanie o drugie wejście, zanim przyjdzie
+    przegląd.
+  - **„ok” na stopie #2 bez śladu dla jednego kroku** — po [[ISSUE-045-migration-map]] (krok 2) znów w [[ISSUE-048-portrait-photos]] (krok 3); pozostałe kroki ze
+    śladem. Zapisane jak „pomiń” → lista B.
 
 ## Parked (waiting on someone outside the session)
 - **cmentarz (którykolwiek z cmentarzy autora)** · przy 3 grobach, które autor zna: (a) dokładność GPS telefonu
@@ -281,6 +298,19 @@ Format wpisu: `źródło (babcia / cmentarz X) · pytanie bez danych rodziny · 
 ## Recently done
 > Tylko wpisy od ostatniego retro ([[2026-10-16-retro-04]]; zasada R5 z retro 3). Starsze są w plikach retro → *Archive*:
 > [[2026-10-16-retro-04]] · [[2026-10-13-retro-03]] · [[2026-10-08-retro-02]] · [[2026-10-06-retro-01]].
+
+- 2026-10-19 — [[ISSUE-048-portrait-photos]] zamknięte. **Portret jako miejsce na zdjęcia** (druga z 4 pozycji z przeglądu przepływu przez autora; wchłonięta
+  [[ISSUE-026-link-existing-photo-to-person]]):
+  - stop #1 na klikalnej makiecie — *„tak”*: **P2** — portret otwiera „Zdjęcie profilowe” jak „Zdjęcie w tle” (obecne profilowe, „Obejrzyj zdjęcie”, siatka,
+    „Dodaj zdjęcia”); P1 (arkusz z działaniami) odrzucony; AC-4, AC-5 zostały; okrąg z inicjałami z plakietką prowadzi do dodania zdjęcia (D20 *Obali* trafione);
+  - **zapis od razu z widoku** dla profilowego, kadru i dodanych zdjęć (D24), także „Dodaj zdjęcie” w pustej sekcji; poprawa tej osoby w stosie → wejścia
+    zdjęć wracają do niej (D25, ochrona przed nadpisaniem — także tło); nowy ekran **„Zdjęcia w aplikacji”** — zdjęcia innych osób według osób, „Najbliżsi”,
+    szukanie, zaznaczenie kilku, jeden plik i nowe łącze; [[osoba]] v2.9, [[zdjecia-osoby]] v1.6, [[zdjecie]] v1.7, [[kadr-profilowego]] v1.3,
+    [[zdjecia-w-aplikacji]] v1.2, [[style-b]] v1.43 (wyjątek „wybór zdjęć w widoku”); **bez zmiany bazy** (v15);
+  - przegląd `ui`: 1 MAJOR (drugi szkic w trakcie zapisu zdejmował zdjęcia — stan „w toku”) i 4 MINOR poprawione przed stopem, „z d.” poza zakresem;
+    stop #2 *„ok”* — kroki 1–2 ze śladem, krok 3 bez śladu.
+
+  Lista A i B w [[ISSUE-032-mvp-install]] → *Hand checks*. Testy: 956 zielonych. Werdykt `qa`: APPROVED (self-check, z uwagami). Licznik retro: 7 → 8.
 
 - 2026-10-18 — [[ISSUE-047-grave-first-then-people]] zamknięte. **Najpierw grób, potem osoby** (pierwsza z 4 pozycji z przeglądu przepływu przez autora w `/pm`;
   [[ISSUE-048-portrait-photos]], [[ISSUE-049-tree-levels-and-zoom]], [[ISSUE-050-next-event]] rozpisane tego samego dnia, ISSUE-026 wchłonięta przez ISSUE-048):

@@ -1,10 +1,10 @@
 ---
 screen: "Osoba — widok osoby (kim była, rodzina, jak łączy się ze mną, daty, pochówek, zdjęcia)"
-items: ["[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-024-person-view]]", "[[ISSUE-027-cemetery-map-plan-photo-states]]", "[[US-009-drzewo-od-osoby]]", "[[ISSUE-042-places-of-residence]]", "[[ISSUE-044-family-wreaths]]", "[[ISSUE-045-migration-map]]"]
+items: ["[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-024-person-view]]", "[[ISSUE-027-cemetery-map-plan-photo-states]]", "[[US-009-drzewo-od-osoby]]", "[[ISSUE-042-places-of-residence]]", "[[ISSUE-044-family-wreaths]]", "[[ISSUE-045-migration-map]]", "[[ISSUE-048-portrait-photos]]"]
 us: "M5 (brief §5, widok 4) — [[ISSUE-024-person-view]] AC-1…AC-5 (AC-6 → drzewo, v2.1)"
 journey-step: "UJ-001 · 5 (widok 4, M5, R4 prawy)"
-mockup: "2026-10-09: issue-024-widok-osoby.html (ISSUE-024; runda 1 stopu #1 — W2, łańcuch po imionach, pusta sekcja „Zdjęcia”) — katalog tymczasowy sesji, ścieżka w ISSUE-024 → Implementation plan · 2026-10-08: grobing-prototyp.html (SPIKE-004, panel 4)"
-updated: 2026-10-17
+mockup: "2026-10-19: makieta-048.html (ISSUE-048; klikalna — portret w wariantach P1 i P2, okrąg z inicjałami, „Zdjęcia w aplikacji”) · 2026-10-09: issue-024-widok-osoby.html (ISSUE-024; runda 1 stopu #1 — W2, łańcuch po imionach, pusta sekcja „Zdjęcia”) — katalog tymczasowy sesji, ścieżka w ISSUE-024 → Implementation plan · 2026-10-08: grobing-prototyp.html (SPIKE-004, panel 4)"
+updated: 2026-10-19
 ---
 
 # Osoba — specyfikacja
@@ -73,12 +73,25 @@ updated: 2026-10-17
 >
 > **Wersja 2.8 (2026-10-17, przegląd `ui` zbudowanej [[ISSUE-045-migration-map]]):** ikona „Pokaż na mapie” (9a) to `public_outlined` ([[style-b]] reguła 3 —
 > cienkie ikony; v2.7 podawała `public`).
+>
+> **Wersja 2.9 (2026-10-19, `ui` przed planem [[ISSUE-048-portrait-photos]]):** autor po przejściu całego przepływu 2026-10-18 — *„gdy klikam na kogoś
+> „zdjęcie profilowe”, chciałbym od razu widzieć tam możliwość jego zmiany (lub dodania dla tej osoby nowych zdjęć — podobnie jak działa zdjęcie w
+> tle)”*:
+> - **portret → „Zdjęcie profilowe”** ([[zdjecia-osoby]] v1.5, wariant **P2** — przyjęty na stopie #1 2026-10-19, *Open* 7): obejrzyj,
+>   zmień profilowe, dodaj zdjęcia — bez ✎ (D23);
+> - **okrąg z inicjałami → dodaj zdjęcie** (D20 *Obali* trafione): od razu arkusz źródła, a pierwsze zdjęcie jest profilowym; okrąg dostaje
+>   plakietkę z ikoną, bo stał się przyciskiem (reguła 14);
+> - **zapis od razu** dla wszystkiego, co zmienia zdjęcia z widoku: profilowe, kadr, dodane zdjęcia (D24, rozszerza D21); „Dodaj zdjęcie” w pustej
+>   sekcji 10 robi to samo co okrąg, zamiast poprawy z „Zapisz”;
+> - **poprawa tej osoby w stosie** → portret, okrąg, „Dodaj zdjęcie” i pasmo tła wracają do niej, jak ✎ (D25, ochrona danych);
+> - nowe źródło **„Ze zdjęć w aplikacji”** ([[zdjecia-w-aplikacji]], AC-4, AC-5 — mogą wypaść z zakresu na stopie #1).
 
 ## Purpose
 Zbierający stoi przy grobie albo przegląda notatki i chce wiedzieć, **kim była ta osoba i jak łączy się z nim** (UJ-001
 krok 5, M5). Widzi zdjęcie w tle, portret, „kim była”, najbliższą rodzinę, łańcuch od siebie do tej osoby, daty i miejsce
 pochówku. Stąd idzie do krewnych, na cmentarz, do zdjęć i — pod ✎ — do poprawy. **Ekran do oglądania:** poprawa ma jedno
-wejście, ✎ ([[style-b]] reguła 15).
+wejście, ✎ ([[style-b]] reguła 15). **Wyjątek — wybór zdjęć:** pasmo tła wybiera tło (D21), a portret i okrąg z inicjałami — profilowe i nowe
+zdjęcia (v2.9, D23); to wybór obrazu, nie poprawa wpisu, więc zapisuje się od razu (D24).
 
 ## Navigation
 - **Wejście** (D14):
@@ -97,12 +110,19 @@ wejście, ✎ ([[style-b]] reguła 15).
 - **Pochówek (9) → [[cmentarz]] z zaznaczonym grobem.** Do czasu [[US-007-mapa-cmentarza]] to lista grobów (dziś
   zbudowany stan C), przewinięta do grobu tej osoby (D17). Z mapą: grób z pinezką — stan B, bez pinezki — stan C z
   komunikatem (D9). Wstecz z cmentarza wraca tutaj.
-- **Zdjęcia (3, 10) — tylko do oglądania (W2, decyzja autora):** portret → podgląd profilowego w trybie oglądania, z poprzednim i następnym zdjęciem osoby;
-  „Zdjęcia · N” → baza zdjęć osoby ([[zdjecia-osoby]]) w trybie oglądania. Profilowe i kolejne zdjęcia — przez ✎ → formularz →
-  zdjęcia. **Pasmo tła → wybór tła** ([[zdjecia-osoby]] v1.4, D21): zdjęcie z siatki albo nowe (aparat, galeria) zapisuje się jako tło
-  od razu i ekran wraca do widoku z tłem; „Bez zdjęcia w tle” zdejmuje tło. Zdjęcie tła na pełnym ekranie — z „Zdjęcia”. **Osoba bez zdjęć:** „Dodaj zdjęcie” w sekcji 10 → [[wpis-osoby]] „poprawa” z otwartym od razu
-  arkuszem źródła ([[zdjecie]] A, tryb osoby) — po wyborze formularz z nowym zdjęciem, „Zapisz” → tutaj (D20; [[style-b]]
-  reguła 15: formularz otwiera się od razu przy działaniu „Dodaj …”).
+- **Zdjęcia (3, 10):**
+  - **„Zdjęcia · N” — tylko do oglądania** (W2, decyzja autora): baza zdjęć osoby ([[zdjecia-osoby]]) w trybie oglądania; usuwanie zdjęć i „Kto
+    jest na zdjęciu?” dalej tylko pod ✎;
+  - **portret → „Zdjęcie profilowe”** (v2.9, D23; [[zdjecia-osoby]] v1.5): „Obejrzyj zdjęcie” → podgląd profilowego w trybie oglądania (jak do
+    v2.8 po dotknięciu portretu); zdjęcie z siatki → [[kadr-profilowego]] → „Gotowe” → nowe profilowe zapisane od razu i powrót tutaj z nowym
+    portretem; kafelek „Dodaj zdjęcia” → arkusz źródła, zdjęcia zapisane od razu. **Wariant P1** (*Open* 7): portret → arkusz „Zdjęcie profilowe”
+    z czterema działaniami;
+  - **okrąg z inicjałami** (osoba bez zdjęć, v2.9) i **„Dodaj zdjęcie” w pustej sekcji 10** → od razu arkusz źródła ([[zdjecie]] A, tryb osoby,
+    „Zdjęcia osoby”), bez pustego ekranu zdjęć; po wyborze zdjęcia zapisują się od razu, pierwsze jest profilowym, a widok pokazuje portret
+    (D24; do v2.8 „Dodaj zdjęcie” otwierało poprawę z „Zapisz” — D20);
+  - **pasmo tła → wybór tła** ([[zdjecia-osoby]] v1.4, D21): zdjęcie z siatki albo nowe (aparat, galeria) zapisuje się jako tło od razu i
+    ekran wraca do widoku z tłem; „Bez zdjęcia w tle” zdejmuje tło. Zdjęcie tła na pełnym ekranie — z „Zdjęcia”;
+  - **poprawa tej osoby leży niżej w stosie** (D15): portret, okrąg, „Dodaj zdjęcie” i pasmo tła wracają do tamtej poprawy, jak ✎ (v2.9, D25).
 - **Bez ustawionego „ja”** — „Wybierz, która osoba to Ty” (7) → wybór „ja” ([[osoby]] elementy 6–7) → powrót tutaj z
   policzonym łańcuchem.
 - **Dolny pasek** widoczny; aktywna zakładka, z której autor przyszedł ([[style-b]] reguła 12), także gdy widok otwarto
@@ -113,7 +133,7 @@ wejście, ✎ ([[style-b]] reguła 15).
 |---|---|---|---|---|---|---|
 | 1 | **Pasek** na tle: wstecz; po prawej ✎ (`edit_outlined`, akcent, cel 48 dp, `tooltip` „Popraw wpis”). Bez tytułu — imię niesie nagłówek (4) | pasek | wstecz; ✎ → [[wpis-osoby]] „poprawa” (D15) | — | — | R4 · [[style-b]] reguła 15 · D1 |
 | 2 | **Pasmo tła — zawsze** (v2.3, D21) pod paskiem, na pełną szerokość, 140 dp, bez zaokrąglenia. **Z tłem:** zdjęcie przycięte ze środka, nic na nim (reguła 14). **Bez tła:** zwykłe tło — pasmo w kolorze powierzchni, w prawym dolnym rogu (12 dp od krawędzi) ikona `add_photo_alternate_outlined` w akcencie (24 dp) jako znak, że pasmo da się dotknąć (reguła 14: puste miejsce na zdjęcie tylko jako przycisk). Całe pasmo to jeden cel, a ikona ma `tooltip` „Zdjęcie w tle”. Opis dla czytnika: „Zdjęcie w tle — wybierz”, bez tła — „Zdjęcie w tle: brak — wybierz” | pasmo-przycisk | → wybór tła ([[zdjecia-osoby]] v1.4) | bez tła | — | **decyzja autora** (SPIKE-004 D17; stop #2, D21) · D3 |
-| 3 | **Portret:** okrąg 104 dp z pierścieniem 2 dp w akcencie i delikatną poświatą, wyśrodkowany; **z tłem nachodzi do połowy na jego dolną krawędź**. Profilowe w kadrze łącza ([[kadr-profilowego]]), bez kadru — ze środka. Opis dla czytnika: „Zdjęcie profilowe — otwórz”. **Portret zawsze nachodzi na dolną krawędź pasma** (v2.3). **Bez zdjęcia:** okrąg 104 dp na powierzchni z obrysem 2 dp (obrys, nie akcent: to nie zdjęcie) i inicjałami (34 sp, półgrube, tekst pomocniczy), **bez akcji** i poza czytnikiem — jak węzeł bez zdjęcia w mini-drzewie (6); miejsce na dodanie zdjęć jest na dole (10). **Wieniec rodu** (v2.6): gdy osoba ma ród, pod portretem leży wieniec — płótno 208 dp, portret w jego (0,50; 0,434), górą wchodzi na pasmo tła, liście z obwódką w kolorze tła; bez akcji i poza czytnikiem (ród czyta 4a). Wymiary, kolor, pół na pół: [[wieniec]] A, C1 | zdjęcie / inicjały (+ wieniec) | zdjęcie → podgląd profilowego w trybie oglądania | — | — | R4 · **decyzja autora** (SPIKE-004 D14; W2 na stopie #1) · D2 |
+| 3 | **Portret:** okrąg 104 dp z pierścieniem 2 dp w akcencie i delikatną poświatą, wyśrodkowany; **z tłem nachodzi do połowy na jego dolną krawędź**. Profilowe w kadrze łącza ([[kadr-profilowego]]), bez kadru — ze środka. Opis dla czytnika: „Zdjęcie profilowe — zmień albo obejrzyj” (v2.9; do v2.8 „— otwórz”). **Portret zawsze nachodzi na dolną krawędź pasma** (v2.3). Na zdjęciu nic więcej (reguła 14): to, że portret się dotyka, autor już wie — z tego wyszła ta pozycja. **Bez zdjęcia:** okrąg 104 dp na powierzchni z obrysem 2 dp (obrys, nie akcent: to nie zdjęcie) i inicjałami (34 sp, półgrube, tekst pomocniczy). ~~bez akcji i poza czytnikiem~~ **v2.9 — przycisk** (D20 *Obali*, AC-3): w prawym dolnym rogu okręgu (pod 45°, środek na obrysie) **plakietka 32 dp** — okrąg w kolorze tła z obrysem 1 dp w kolorze obrysu i ikoną `add_photo_alternate` 20 dp w akcencie, nad wieńcem, gdy jest; cały okrąg i plakietka to jeden cel (≥ 104 dp), `tooltip` „Dodaj zdjęcie”. Opis dla czytnika: „Zdjęcie profilowe: brak — dodaj zdjęcie”. **Wieniec rodu** (v2.6): gdy osoba ma ród, pod portretem leży wieniec — płótno 208 dp, portret w jego (0,50; 0,434), górą wchodzi na pasmo tła, liście z obwódką w kolorze tła; bez akcji i poza czytnikiem (ród czyta 4a). Wymiary, kolor, pół na pół: [[wieniec]] A, C1 | zdjęcie-przycisk / inicjały-przycisk (+ wieniec) | zdjęcie → „Zdjęcie profilowe” ([[zdjecia-osoby]] v1.5; P1 — arkusz, *Open* 7) · inicjały → arkusz źródła ([[zdjecie]] A); zapis od razu (D24) | — | — | R4 · **decyzja autora** (SPIKE-004 D14; ISSUE-048 AC-1–AC-3) · D2 · D23 |
 | 4 | **Imię i nazwisko z „z d.”** (22 sp, półgruby, tekst, wyśrodkowane, zawijane bez ucinania) · **lata życia** (16 sp, tekst pomocniczy; [[style-b]] reguła 6: `1925–2004`, `ok. 1890 – 14.03.1951`, `ur. 1952`, `zm. 1951`, bez dat — nic). Odstęp 12 dp od portretu; **z wieńcem — 8 dp od dolnej krawędzi wieńca** (99 dp pod środkiem portretu, v2.6) | tekst | — | — | — | R4 · [[wieniec]] C3 |
 | 4a | **Podpis rodu** (v2.6): „Ród: Wymyślscy”, przy kobiecie po ślubie „Ród: Zmyśleńscy · po mężu Wymyślscy” (14 sp, tekst pomocniczy, wyśrodkowany, zawija się, 4 dp pod latami). Bez wieńca — nic | tekst | — | — | — | [[wieniec]] C2, D11, D14 |
 | 5 | **„Kim była”** w całości (16 sp, tekst, wyśrodkowane, odstęp 12 dp). Bez „kim była” — nic. **Bez linii źródła** (D10) | tekst | — | — | — | R4 · D16 |
@@ -122,7 +142,7 @@ wejście, ✎ ([[style-b]] reguła 15).
 | 8 | **Daty** — nagłówek (16 sp, półgruby) z ikoną `event_note_outlined` w akcencie. Wiersze z linią podziału w kolorze obrysu, ≥ 48 dp: etykieta (96 dp, 14 sp, tekst pomocniczy; gdy przy większym tekście się nie mieści — nad wartością, v2.2) · wartość (16 sp, tekst, reguła 6, z dopiskiem: „ok. 1890”, „między 1893 a 1895”). Wiersze: **Urodzenie**, **Zgon** (gdy są). Bez źródła i statusu (D10); wartość to pierwsza ([[ADR-006-claimed-value-separate-structures]] D3). Bez dat i bez pochówku — sekcji nie ma | lista wierszy | — (poprawa przez ✎) | — | — | **decyzja autora** (SPIKE-004 D27, D28) · D10 |
 | 9 | **Pochówek** — ostatni wiersz sekcji 8, ≥ 64 dp: etykieta „Pochówek” · tytuł grobu (16 sp, tekst; bez nazwy — „Grób”, [[grob]] D1), pod nim nazwa cmentarza (14 sp, tekst pomocniczy) i adres kwatery, gdy jest („Kwatera B · Rząd 4 · Miejsce 12”, 14 sp, tekst pomocniczy); chevron. Opis dla czytnika: „Pochówek: Grób rodzinny Wymyślonych, Cmentarz parafialny w Wymyślonowie — pokaż na cmentarzu”. Bez pochówku (osoba żyjąca, osoba bez grobu w aplikacji) — brak wiersza | wiersz | → [[cmentarz]] z zaznaczonym grobem (D17) | — | — | M4 · FR-003 · AC-4 · **decyzja autora** (SPIKE-004 D19) · D9, D17 |
 | 9a | **Miejsca zamieszkania** (v2.5) — nagłówek z `home_outlined` w akcencie; wiersze jak w 8: lata · miejsce (kraj / miejscowość / adres; przy N2 nazwa z tamtego czasu i „dziś: …”), bez akcji; kolejność według lat. Pod wierszami **„Pokaż na mapie”** (v2.7): przycisk tekstowy w akcencie z ikoną `public_outlined` (v2.8), do lewej, cel 48 dp — jak „Pokaż w drzewie” (6). **Bez miejsc:** „Nie ma jeszcze zapisanych miejsc.” + przycisk z obrysem „Dodaj miejsce”, bez „Pokaż na mapie”. Szczegóły: [[zamieszkanie]] 1–4a | lista wierszy + przycisk tekstowy / pusty stan z przyciskiem | „Pokaż na mapie” → [[mapa-migracji]] (D22) · „Dodaj miejsce” → [[wpis-osoby]] „poprawa” z otwartym oknem zamieszkania | — | — | [[ISSUE-042-places-of-residence]] · [[zamieszkanie]] D1 · [[ISSUE-045-migration-map]] |
-| 10 | **Zdjęcia · 4** — nagłówek (16 sp, półgruby) z ikoną `photo_library_outlined` w akcencie; rząd do 4 miniatur 56 dp (kwadraty, promień 8 dp, ze środka — reguła 14) i chevron; cały wiersz to jeden cel. Opis dla czytnika: „Zdjęcia osoby, 4 — otwórz”. **Bez zdjęć (v2.1, D20) — sekcja zostaje:** nagłówek „Zdjęcia”, pod nim „Ta osoba nie ma jeszcze zdjęć.” (16 sp, tekst pomocniczy) i przycisk z obrysem **„Dodaj zdjęcie”** (`add_a_photo_outlined` w akcencie, ≥ 48 dp, szerokość treści — reguły 1, 9) | rząd miniatur / pusty stan z przyciskiem | miniatury → [[zdjecia-osoby]] w trybie oglądania; „Dodaj zdjęcie” → poprawa z arkuszem źródła (*Navigation*) | — | — | [[US-005-zdjecia]] · **decyzja autora** (stop #1, D20) |
+| 10 | **Zdjęcia · 4** — nagłówek (16 sp, półgruby) z ikoną `photo_library_outlined` w akcencie; rząd do 4 miniatur 56 dp (kwadraty, promień 8 dp, ze środka — reguła 14) i chevron; cały wiersz to jeden cel. Opis dla czytnika: „Zdjęcia osoby, 4 — otwórz”. **Bez zdjęć (v2.1, D20) — sekcja zostaje:** nagłówek „Zdjęcia”, pod nim „Ta osoba nie ma jeszcze zdjęć.” (16 sp, tekst pomocniczy) i przycisk z obrysem **„Dodaj zdjęcie”** (`add_a_photo_outlined` w akcencie, ≥ 48 dp, szerokość treści — reguły 1, 9) | rząd miniatur / pusty stan z przyciskiem | miniatury → [[zdjecia-osoby]] w trybie oglądania; „Dodaj zdjęcie” → arkusz źródła, zapis od razu (v2.9, D24; do v2.8 poprawa z arkuszem) | — | — | [[US-005-zdjecia]] · **decyzja autora** (stop #1, D20) · D24 |
 
 Odstępy ([[style-b]] reguła 5): margines boczny 16 dp, między sekcjami 24 dp, nagłówek sekcji → treść 8 dp.
 
@@ -141,7 +161,10 @@ Odstępy ([[style-b]] reguła 5): margines boczny 16 dp, między sekcjami 24 dp,
 | pełny | 1–10 |
 | z wieńcem rodu (v2.6) | 3 z wieńcem, 4 niżej o ok. 43 dp, 4a „Ród: …”; stany wieńca (pół na pół, bez rodu): [[wieniec]] *States* |
 | bez tła, z portretem | 1, pasmo w kolorze powierzchni z ikoną, portret na jego krawędzi, 4–10 |
-| bez zdjęć | pasmo jak wyżej, okrąg z inicjałami na jego krawędzi; 10: „Ta osoba nie ma jeszcze zdjęć.” + „Dodaj zdjęcie” |
+| bez zdjęć | pasmo jak wyżej, okrąg z inicjałami na jego krawędzi, **z plakietką dodawania** (v2.9); 10: „Ta osoba nie ma jeszcze zdjęć.” + „Dodaj zdjęcie” |
+| dodawanie w toku (v2.9, przegląd `ui` — MAJOR) | od zamknięcia arkusza (przygotowanie zdjęć) do końca zapisu: w okręgu z inicjałami wskaźnik postępu w akcencie zamiast liter (plakietka zostaje), opis „Zdjęcie profilowe: zapisuję zdjęcia”; okrąg, portret, pasmo tła i „Dodaj zdjęcie” nieaktywne, także dla czytnika — drugi szkic zapisany później zdjąłby zdjęcia pierwszego (ta sama strata co w D25) |
+| zapis zdjęć z widoku — błąd (v2.9) | komunikat u dołu ekranu „Nie udało się zapisać zdjęć. Spróbuj jeszcze raz.” (jak błąd tła); zdjęcia i profilowe bez zmian |
+| poprawa tej osoby w stosie (v2.9, D25) | wygląd bez zmian; portret, okrąg, „Dodaj zdjęcie” i pasmo prowadzą do tamtej poprawy |
 | bez rodziny | 6: „Rodziny jeszcze nie ma. Dodasz ją pod ✎.”; 7: bez ścieżki |
 | bez ścieżki | 7: „Nie wiadomo jeszcze, jak łączy się z Tobą — w drzewie brakuje rodziny między wami.” |
 | osoba bez płci w łańcuchu | jej wiersz z relacją neutralną („Jego rodzic Aleksander”); następny — „jego …” („Jego córka Zofia”) |
@@ -203,11 +226,15 @@ Odstępy ([[style-b]] reguła 5): margines boczny 16 dp, między sekcjami 24 dp,
 n/a — ekran do oglądania. Poprawa idzie przez [[wpis-osoby]] (✎).
 
 ## Style B rules applied
-- **Reguła 15:** widok przed poprawą; ✎ w pasku; zdjęcia tylko do oglądania (W2); „Dodaj zdjęcie” (10) otwiera formularz
-  od razu, bo to działanie „Dodaj …”.
+- **Reguła 15:** widok przed poprawą; ✎ w pasku; „Zdjęcia · N” tylko do oglądania (W2). ~~„Dodaj zdjęcie” (10) otwiera formularz
+  od razu, bo to działanie „Dodaj …”.~~ **v2.9:** wyjątek „wybór zdjęć w widoku” ([[style-b]] v1.43) — pasmo, portret, okrąg z inicjałami i
+  „Dodaj zdjęcie” wybierają albo dodają obraz z zapisem od razu (D21, D23, D24); poprawa wpisu dalej tylko pod ✎.
 - **Reguła 14:** portret — okrąg w kadrze łącza; tło — prostokąt na pełną szerokość, przycięty ze środka, nic na nim;
-  miniatury — kwadraty 56 dp, promień 8 dp. Okrąg z inicjałami bez zdjęcia nie jest pustym miejscem na zdjęcie (bez akcji,
-  jak węzeł drzewa), więc nie łamie „puste miejsce tylko jako przycisk”; miejsce na zdjęcia to przycisk w sekcji 10.
+  miniatury — kwadraty 56 dp, promień 8 dp. ~~Okrąg z inicjałami bez zdjęcia nie jest pustym miejscem na zdjęcie (bez akcji,
+  jak węzeł drzewa), więc nie łamie „puste miejsce tylko jako przycisk”; miejsce na zdjęcia to przycisk w sekcji 10.~~ **v2.9:** okrąg z
+  inicjałami **jest** teraz miejscem na zdjęcie, więc jest przyciskiem: obrys, ikona w akcencie na plakietce i `tooltip` (podpis niesie
+  `tooltip` i czytnik, jak w paśmie tła bez zdjęcia — wyjątek v1.19). Plakietka leży obok zdjęcia, nie na nim — na okręgu z inicjałami zdjęcia
+  nie ma, a na portrecie ze zdjęciem plakietki nie ma.
 - **Reguła 8:** ~~bez gałązek (D3)~~ — **wieniec rodu** wokół portretu, rośliny bez znaczenia religijnego (v2.6, [[wieniec]]); bez zniczy w
   mini-drzewie (D12).
 - **Reguła 3:** ikony nagłówków sekcji w akcencie (R4).
@@ -237,7 +264,11 @@ n/a — ekran do oglądania. Poprawa idzie przez [[wpis-osoby]] (✎).
 | [[US-009-drzewo-od-osoby]] AC-6 — „Pokaż w drzewie” (v2.4) | 6 → [[drzewo]] 4, 5 | w widoku Franciszka pod mini-drzewem „Pokaż w drzewie” → zakładka Drzewo, Franciszek w środku, poziom 2; u osoby bez rodziny przycisku nie ma |
 | [[ISSUE-042-places-of-residence]] AC-1, AC-2 — miejsca zamieszkania w widoku (v2.5) | 9a · [[zamieszkanie]] | „ok. 1930 – ok. 1945 · Ukraina · cały kraj — miejscowość nieznana”; po doprecyzowaniu — jeden wiersz z adresem |
 | [[ISSUE-044-family-wreaths]] AC-1, AC-4 — wieniec rodu w widoku (v2.6) | 3, 4a · [[wieniec]] C | Jan: dąb w starym złocie wokół portretu, „Ród: Wymyślscy”; Anna z d. Zmyśleńska: pół laur, pół dąb, „Ród: Zmyśleńscy · po mężu Wymyślscy” |
-| D20 — miejsce na zdjęcia bez zdjęć | 10 | Józef bez zdjęć: „Ta osoba nie ma jeszcze zdjęć.” + „Dodaj zdjęcie” → poprawa z arkuszem źródła → zdjęcie → „Zapisz” → widok z portretem |
+| D20 — miejsce na zdjęcia bez zdjęć | 10 | Józef bez zdjęć: „Ta osoba nie ma jeszcze zdjęć.” + „Dodaj zdjęcie” → ~~poprawa z arkuszem źródła → zdjęcie → „Zapisz”~~ arkusz źródła → zdjęcie (v2.9) → widok z portretem |
+| [[ISSUE-048-portrait-photos]] AC-1 — z portretu: obejrzyj, zmień, dodaj, bez ✎ (v2.9) | 3 → [[zdjecia-osoby]] P2, P3, P6 (P1: arkusz) | portret Jana → „Zdjęcie profilowe” z „Obejrzyj zdjęcie”, siatką i „Dodaj zdjęcia” |
+| ISSUE-048 AC-2 — nowe profilowe zapisane od razu, widok je pokazuje (v2.9) | 3 → [[zdjecia-osoby]] P5 → [[kadr-profilowego]] | zdjęcie ślubne → „Gotowe” → widok Jana z nowym portretem, bez „Zapisz” (D24) |
+| ISSUE-048 AC-3 — okrąg z inicjałami → zdjęcie, które jest profilowym (v2.9) | 3 (inicjały z plakietką) → [[zdjecie]] A | okrąg Marii → „Zrób zdjęcie” → widok Marii z portretem; „Zdjęcia · 1” |
+| ISSUE-048 AC-4, AC-5 — zdjęcie z aplikacji (v2.9) | [[zdjecie]] A4 → [[zdjecia-w-aplikacji]] | tam |
 | *Input from ISSUE-025* — chipy i karta partnera → widok osoby | *Navigation* · [[wpis-osoby]] 9a v5.8 | w formularzu Marii chip „Syn: Stanisław” → widok Stanisława; wstecz → formularz z wpisanymi danymi |
 | M5 — kim była, relacje, łańcuch do „ja” | 4–7 | jak wyżej |
 
@@ -314,6 +345,8 @@ n/a — ekran do oglądania. Poprawa idzie przez [[wpis-osoby]] (✎).
   Pusty stan z jednym działaniem (reguła 9); „Dodaj zdjęcie” otwiera poprawę z arkuszem źródła, więc zapis zdjęć zostaje
   jeden — „Zapisz” w formularzu (W2). Okrąg portretu bez zdjęcia zostaje bez akcji: jedno miejsce na dodanie, na dole.
   *Obali:* autor szuka dodania zdjęcia w okręgu portretu — wtedy okrąg z inicjałami też prowadzi do tego samego działania.
+  **Trafione (v2.9, 2026-10-19, [[ISSUE-048-portrait-photos]] AC-3):** okrąg z inicjałami prowadzi do arkusza źródła, a sekcja 10 zostaje. Oba
+  wejścia zapisują od razu (D24), więc „jeden zapis z „Zapisz”” z D20 już nie obowiązuje dla dodawania z widoku.
 - **D21 — pasmo tła zawsze, dotknięcie → wybór tła, zapis od razu** (v2.3, decyzja autora na stopie #2, runda 1). Autor chce
   ustawić tło jednym dotknięciem miejsca, gdzie tło stoi, a nie przez ✎ i podgląd (6 dotknięć z W2). Wybór tła zapisuje się od
   razu, jak zdjęcie nagrobka w [[grob]]: to wybór obrazu, nie wpis do poprawy. Bez tła pasmo ma małą ikonę w akcencie (inaczej
@@ -324,6 +357,27 @@ n/a — ekran do oglądania. Poprawa idzie przez [[wpis-osoby]] (✎).
   osoby to miejsce, w którym autor o tę drogę pyta. Ten sam wzorzec co „Pokaż w drzewie” pod mini-drzewem (D11): jedno działanie dalej w sekcji, przycisk
   tekstowy w akcencie. Tylko przy osobie z zamieszkaniem — bez miejsc mapa nie ma drogi do pokazania ([[mapa-migracji]] D10). *Obali:* autor szuka
   wejścia na mapę przy pochówku osoby bez zamieszkań.
+- **D23 — portret → „Zdjęcie profilowe”, ekran jak „Zdjęcie w tle”** (v2.9, wariant **P2**, rekomendacja `ui`; [[ISSUE-048-portrait-photos]] AC-1).
+  Autor sam wskazał wzór: *„podobnie jak działa zdjęcie w tle”*. Ten sam ekran z siatką zdjęć osoby, obecny wybór w ramce, dotknięcie wybiera i
+  zapisuje — autor zna go z pasma. Najczęstsza zmiana (inne zdjęcie osoby na profilowe) to 3 dotknięcia: portret → zdjęcie → „Gotowe”. Obejrzenie
+  w całości — „Obejrzyj zdjęcie” pod obecnym profilowym (2 dotknięcia, jak do v2.8). **P1 — arkusz z czterema działaniami** („Obejrzyj zdjęcie”,
+  „Popraw kadr”, „Wybierz inne profilowe”, „Dodaj zdjęcia”): każde działanie ma napis (AC-1 najbardziej dosłownie), konwencja arkusza po
+  dotknięciu zdjęcia profilowego w aplikacjach społecznościowych i w kontaktach telefonu (z doświadczenia, nie norma — falsyfikatorem jest makieta);
+  koszt: zmiana profilowego 4 dotknięcia, dodanie i ustawienie nowego jako profilowe 9 zamiast 7, i jeden poziom więcej. Kandydaci na makiecie,
+  wybór na stopie #1 (*Open* 7). *Obali:* autor na makiecie nie widzi w P2, jak obejrzeć zdjęcie, albo szuka napisów działań → P1.
+- **D24 — zmiany zdjęć z widoku zapisują się od razu** (v2.9; rozszerza D21; [[ISSUE-048-portrait-photos]] AC-2 — decyzja autora w pozycji: „jak
+  tło”). Profilowe, kadr i zdjęcia dodane z portretu, okręgu z inicjałami i z „Dodaj zdjęcie” w sekcji 10 zapisują się od razu, jak tło i zdjęcie
+  nagrobka ([[grob]]): to wybór i dodanie obrazu, nie poprawa wpisu. „Dodaj zdjęcie” w pustej sekcji 10 przechodzi na ten sam zapis, bo dwa
+  sposoby zapisu tego samego działania na jednym ekranie (okrąg — od razu, przycisk — przez formularz i „Zapisz”) byłyby niezrozumiałe. W
+  formularzu (✎) zdjęcia dalej zapisuje „Zapisz” ([[zdjecia-osoby]] D1), a **usuwanie zdjęć i „Kto jest na zdjęciu?” zostają tylko tam** — te
+  zmiany mogą coś odebrać, więc idą przez formularz z „Odrzuć”. *Obali:* autor dodaje zdjęcie przez pomyłkę i szuka „cofnij” w widoku → usunięcie
+  dalej pod ✎, a jeśli to za daleko — „Cofnij” w komunikacie po dodaniu.
+- **D25 — poprawa tej osoby w stosie: zdjęcia z widoku prowadzą do niej** (v2.9, ochrona danych; rozszerza D15 na portret, okrąg, „Dodaj zdjęcie” i
+  pasmo tła). Formularz trzyma listę zdjęć osoby wczytaną przy otwarciu, a jego zapis podaje **całą** listę w kolejności: zdjęcie, którego na niej
+  nie ma, znika z osoby (`PersonPhotoEdits.photos`, [[ADR-009-person-photos-record-and-link]]). Gdy formularz ma niezapisane zmiany zdjęć, a nad nim
+  widok tej samej osoby zapisze zdjęcia od razu, „Zapisz” formularza zdjęłoby dodane zdjęcia i cofnęło profilowe. Dziś to samo grozi przy paśmie
+  tła (D21). Rozwiązanie: tak jak ✎ (D15), te wejścia wracają do poprawy, która już leży w stosie, a zmiany zdjęć robi się tam, z „Zapisz”. Rzadki
+  przypadek (formularz → chip → … → ta sama osoba), więc koszt jest mały. *Obali:* nic — to ochrona danych.
 - **D19 — rozmiary tekstu według progów** (v2). v1.3 (z prototypu) miała rolę 10 sp, imię w węźle 12 sp, „kim była” 15 sp,
   łańcuch i daty 14 sp. Progi [[style-b]]: treść ≥ 16 sp, drobny tekst ≥ 13 sp. Treść (imię, „kim była”, daty, łańcuch)
   — 16 sp; etykiety węzłów mini-drzewa — 13 sp (krótka etykieta pod okręgiem, jak podpis zakładki — ale bez wyjątku od
@@ -353,4 +407,9 @@ n/a — ekran do oglądania. Poprawa idzie przez [[wpis-osoby]] (✎).
    zdjęciu · Zmień” → zaznaczyć tę osobę ([[zdjecie]] D). Od strony osoby potrzeba nowego źródła w arkuszu („Ze zdjęć w
    aplikacji”) i **nowego ekranu wyboru** spośród wszystkich zdjęć osób (jak znaleźć jedno wśród kilkuset — siatka według
    osób, wyszukiwarka). Rekomendacja `ui`: osobna pozycja po ISSUE-024 — nowy ekran ze specyfikacją i makietą, a ISSUE-024
-   już jest duża.
+   już jest duża. **v2.9:** projekt w [[zdjecia-w-aplikacji]] ([[ISSUE-048-portrait-photos]] AC-4, AC-5).
+7. ~~**⚠️ OPEN — co otwiera dotknięcie portretu: P2 czy P1**~~ — **P2** (decyzja autora na stopie #1 [[ISSUE-048-portrait-photos]], 2026-10-19:
+   *„tak”* na „Budujemy wariant P2 w pełnym zakresie?”). Zapis kandydatów (v2.9, D23; makieta `makieta-048.html`, przełącznik u góry). **P2 (rekomendacja):** ekran
+   „Zdjęcie profilowe” jak „Zdjęcie w tle” — obecne profilowe z „Obejrzyj zdjęcie”, siatka do wyboru, kafelek „Dodaj zdjęcia”
+   ([[zdjecia-osoby]] v1.5). **P1:** arkusz z czterema działaniami. Specyfikacja opisuje P2; przy P1 zmienia się tylko wejście
+   ([[zdjecia-osoby]] P2 i P3 znikają, a siatka i kafelek zostają pod „Wybierz inne profilowe”).

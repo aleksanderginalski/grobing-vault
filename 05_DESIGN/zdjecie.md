@@ -1,10 +1,10 @@
 ---
 screen: "Zdjęcie — wybór źródła i podgląd na pełnym ekranie"
-items: ["[[ISSUE-016-photos-grave-and-person]]", "[[ISSUE-017-person-photos]]", "[[ISSUE-018-profile-photo-crop]]", "[[ISSUE-024-person-view]]", "[[ISSUE-023-poland-map-r1-cemetery-photo]]"]
+items: ["[[ISSUE-016-photos-grave-and-person]]", "[[ISSUE-017-person-photos]]", "[[ISSUE-018-profile-photo-crop]]", "[[ISSUE-024-person-view]]", "[[ISSUE-023-poland-map-r1-cemetery-photo]]", "[[ISSUE-048-portrait-photos]]"]
 us: "[[US-005-zdjecia]]"
 journey-step: "n/a — M1; docelowo krok 3 UJ-001 (porównanie zdjęcia nagrobka z tym, co przed tobą — brief §4a)"
-mockup: "katalog tymczasowy sesji 2026-10-07: makieta-zdjecia.html (ramki 3, 5, 6 — wersja przed stopem #1 ISSUE-016) · makieta-zdjecia-osoby.html (ramki 5–8 — tryb osoby, ISSUE-017) · makieta-kadr-profilowego.html (ramki 1, 4 — B4' z kadrem, ISSUE-018) · 2026-10-09: issue-024-widok-osoby.html (ramka „Ustaw jako tło”, ISSUE-024)"
-updated: 2026-10-12
+mockup: "katalog tymczasowy sesji 2026-10-07: makieta-zdjecia.html (ramki 3, 5, 6 — wersja przed stopem #1 ISSUE-016) · makieta-zdjecia-osoby.html (ramki 5–8 — tryb osoby, ISSUE-017) · makieta-kadr-profilowego.html (ramki 1, 4 — B4' z kadrem, ISSUE-018) · 2026-10-09: issue-024-widok-osoby.html (ramka „Ustaw jako tło”, ISSUE-024) · 2026-10-19: makieta-048.html (arkusz A z „Ze zdjęć w aplikacji”, ISSUE-048)"
+updated: 2026-10-19
 ---
 
 # Zdjęcie — specyfikacja
@@ -58,6 +58,14 @@ updated: 2026-10-12
 > - B2, B4 i C1 bez zmian.
 >
 > Otwiera się z arkusza cmentarza na mapie (*Navigation*).
+>
+> **Wersja 1.7 (2026-10-19, `ui` przed planem [[ISSUE-048-portrait-photos]]) — tryb osoby, A:**
+> - **A4 — trzecie źródło „Ze zdjęć w aplikacji”** → [[zdjecia-w-aplikacji]] (AC-4, AC-5; dawna [[ISSUE-026-link-existing-photo-to-person]],
+>   [[zdjecia-osoby]] D6 *Obali* trafione). Jest tylko wtedy, gdy w aplikacji są zdjęcia innych osób, których ta osoba nie ma; nie ma go w
+>   „Zdjęciu w tle” ([[zdjecia-w-aplikacji]] D7) ani w trybach grobu i cmentarza;
+> - **A z widoku osoby zapisuje od razu** ([[osoba]] D24): z okręgu z inicjałami, z „Dodaj zdjęcie” w pustej sekcji „Zdjęcia” i z kafelka „Dodaj
+>   zdjęcia” w „Zdjęciu profilowym” ([[zdjecia-osoby]] v1.5). Zastępuje „A z widoku osoby” z v1.5 (poprawa wpisu z otwartym arkuszem i „Zapisz”).
+>   Z formularza bez zmian — z „Zapisz”.
 
 ## Purpose
 Dodanie zdjęcia nagrobka do grobu (US-005 AC-1) i obejrzenie go w całości, z przybliżeniem. Zdjęcie nagrobka ma
@@ -84,6 +92,9 @@ zaznaczenie, kto jeszcze jest na zdjęciu — jedno zdjęcie należy wtedy do ki
 **Tryb osoby (v1.3):**
 - **A** otwiera się z elementu 1a w [[wpis-osoby]] (osoba bez zdjęć) albo z kafelka „Dodaj zdjęcie” w
   [[zdjecia-osoby]]. Po wyborze z galerii wraca tam, skąd się otworzył, i nowe zdjęcia się przygotowują.
+  **v1.7 — także z widoku osoby** ([[osoba]] v2.9): okrąg z inicjałami, „Dodaj zdjęcie” w pustej sekcji „Zdjęcia”, kafelek „Dodaj zdjęcia” w
+  „Zdjęciu profilowym”. Stamtąd nowe zdjęcia **zapisują się od razu** ([[osoba]] D24) i wraca widok osoby albo „Zdjęcie profilowe” z nimi. **A4** →
+  [[zdjecia-w-aplikacji]]; „Dodaj N zdjęć” wraca tam, skąd otwarto arkusz.
 - **B** otwiera się po dotknięciu zdjęcia albo profilowego w [[zdjecia-osoby]], na tym zdjęciu. Wstecz →
   [[zdjecia-osoby]].
 - **C** otwiera się z „Usuń z tej osoby” (B4'). Po „Usuń” → [[zdjecia-osoby]] bez tego zdjęcia.
@@ -98,9 +109,10 @@ zaznaczenie, kto jeszcze jest na zdjęciu — jedno zdjęcie należy wtedy do ki
 | A1 | **Tytuł:** „Zdjęcie nagrobka” (16 sp, półgruby) | tekst | — | — | — | decyzja projektowa |
 | A2 | **„Wybierz z galerii”** — wiersz ≥ 56 dp, ikona `photo_library_outlined` w akcencie, napis w kolorze tekstu (16 sp) | wiersz-przycisk | → systemowe okno wyboru zdjęć, **jedno zdjęcie** | — | — | US-005 AC-1 · D1 · D2 |
 | A3 | **„Zrób zdjęcie”** — wiersz jak A2, ikona `photo_camera_outlined` | wiersz-przycisk | → systemowy aparat; jedno zdjęcie | — | — | US-005 AC-1 · D1 |
+| A4 | **„Ze zdjęć w aplikacji”** (tryb osoby, v1.7) — wiersz jak A2, ikona `group` w akcencie (osoby; jest w foncie ikon — bez przebudowy fontu), napis „Ze zdjęć w aplikacji” (16 sp, tekst), pod nim „zdjęcia, które już są u innych osób” (14 sp, tekst pomocniczy). Tylko gdy w aplikacji jest choć jedno zdjęcie innej osoby, którego ta osoba nie ma | wiersz-przycisk | → [[zdjecia-w-aplikacji]] (kilka zdjęć) | — | — | [[ISSUE-048-portrait-photos]] AC-4 · D10 |
 
 **Tryb osoby (v1.3):** A1 — „Zdjęcia osoby”; A2 — systemowe okno wyboru **kilku zdjęć** (bez sztucznego limitu;
-każde przygotowuje się osobno, [[zdjecia-osoby]] → *States*); A3 bez zmian. Kolejność nowych zdjęć: tak, jak
+każde przygotowuje się osobno, [[zdjecia-osoby]] → *States*); A3 bez zmian; **A4 (v1.7)** — w trybie osoby poza „Zdjęciem w tle”. Kolejność nowych zdjęć: tak, jak
 zwróci je okno systemowe (D8).
 
 ### B — podgląd na pełnym ekranie
@@ -121,7 +133,8 @@ profilowym, które jest też tłem — „Zdjęcie profilowe i tło”** (v1.5).
 
 **Tryb oglądania (v1.5 — W2, decyzja autora na stopie #1 ISSUE-024):** podgląd otwarty z widoku osoby (tło, portret, baza w
 trybie oglądania). B1 jak w trybie osoby; B2 i B3 bez zmian (poprzednie i następne zdjęcie osoby); B5 bez „Zmień”; **bez
-B4''**. Na starcie: zdjęcie, które dotknięto (portret — profilowe, tło — zdjęcie tła).
+B4''**. Na starcie: zdjęcie, które dotknięto (portret — profilowe, tło — zdjęcie tła). **v1.7:** profilowe otwiera „Obejrzyj zdjęcie” w
+„Zdjęciu profilowym” ([[zdjecia-osoby]] P2), a nie sam portret.
 
 ### C — okno „Usunąć zdjęcie?”
 | # | Element | Typ | Klawiatura / akcja | Domyślnie | Walidacja | Źródło |
@@ -277,6 +290,7 @@ Rekordem jest **zdjęcie nagrobka**: ok. 50 grobów (G6, [[NT-002-transcribe-the
 | ISSUE-018: kadr profilowego, poprawa kadru (v1.4) | B4' → [[kadr-profilowego]] | „Ustaw jako profilowe” i „Popraw kadr” otwierają kadr; po „Gotowe” okręgi profilowego pokazują wycinek |
 | ISSUE-017: zdjęcie u kilku osób, jeden plik | B5 → D | zaznaczona osoba ma to zdjęcie w swojej bazie; plik w magazynie jeden |
 | ISSUE-017: usunięcie u jednej osoby nie usuwa innym | B4' → C1' | treść okna mówi, u kogo zdjęcie zostaje; po zapisie zdjęcie jest dalej w bazie tamtej osoby |
+| ISSUE-048 AC-3, AC-4 — z widoku osoby, zapis od razu; zdjęcie z aplikacji (v1.7) | A (z widoku) · A4 → [[zdjecia-w-aplikacji]] | okrąg Marii → „Zrób zdjęcie” → widok z portretem, bez „Zapisz”; u Jana A4 → zdjęcie grupowe Marii → „Dodaj 1 zdjęcie” |
 | ISSUE-023 AC-3: zdjęcie cmentarza — podgląd, zmiana, usunięcie (v1.6) | A, B, B4, C1 (tryb cmentarza) → [[cmentarze]] 6a | podgląd z nazwą cmentarza i „Zdjęcie cmentarza”; „Zmień zdjęcie” → nowa miniatura w arkuszu; „Usuń zdjęcie” → „Usuń” → arkusz z „Dodaj zdjęcie” |
 
 ## Decisions
@@ -320,6 +334,10 @@ Rekordem jest **zdjęcie nagrobka**: ok. 50 grobów (G6, [[NT-002-transcribe-the
 - **D9 — profilowe jest osobne dla każdej osoby.** To łącze, nie zdjęcie, ma kolejność. To samo zdjęcie ślubne może być
   profilowym żony i zwykłym zdjęciem męża (GEDCOM 7: kolejność `OBJE` w strukturze każdej osoby). „Ustaw jako
   profilowe” zmienia tylko osobę z paska B1.
+- **D10 — „Ze zdjęć w aplikacji” jako trzeci wiersz arkusza, nie osobny przycisk** (v1.7). Arkusz to jedno miejsce, w którym autor mówi „skąd jest
+  zdjęcie”, a każde wejście do dodawania zdjęć osobie już go otwiera — nowe źródło jest więc wszędzie bez nowych przycisków na ekranach. Wiersz
+  ukryty, gdy nie ma czego wybrać (reguła 9 — bez działania, które prowadzi do pustki). Ostatni, bo zdjęcie z albumu najpierw trafia do galerii
+  albo aparatu (D1). *Obali:* autor szuka „połącz z istniejącym” w podglądzie zdjęcia innej osoby — ta droga i tak jest (część D, „Na zdjęciu · Zmień”).
 
 ## Open
 brak. Usuwanie i zmiana zdjęcia nagrobka rozstrzygnięte na stopie #1 ISSUE-016 (wchodzą). Zdjęcia osób — tryb osoby

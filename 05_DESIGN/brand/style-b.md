@@ -1,12 +1,12 @@
 ---
-title: "Style B — visual guidelines (v1.42)"
+title: "Style B — visual guidelines (v1.43)"
 type: design-guidelines
 status: active
 owner: ui
 source: "PROJECT_BRIEF §6a (Style B, chosen by the author 2026-10-05) · references.md (R1–R4, the kick-off images) · grobing-code/lib/app/theme.dart · WCAG 2.2 · Android accessibility"
 non-tech-item: "[[NT-006-visual-guidelines]]"
 created: 2026-10-06
-updated: 2026-10-18
+updated: 2026-10-19
 ---
 
 # Styl B — wytyczne wizualne
@@ -315,9 +315,12 @@ zostaje bez zmian.
     - **tło osoby wybiera się z pasma w widoku osoby** („Zdjęcie w tle”, [[zdjecia-osoby]] v1.4) albo w podglądzie („Ustaw jako
       tło”, [[zdjecie]] v1.5); jego stan niesie podtytuł podglądu („Zdjęcie w tle”) — jak profilowe, bez znacznika na zdjęciu
       (v1.18). **Zaznaczone zdjęcie w siatce** ma ramkę wokół, nie na zdjęciu: 2 dp akcentu, 2 dp tła, zdjęcie mniejsze w środku
-      (v1.19);
+      (v1.19). **Profilowe wybiera się z portretu** w widoku osoby („Zdjęcie profilowe”, [[zdjecia-osoby]] v1.5, v1.43) tym samym wzorcem: siatka,
+      obecny wybór w ramce, dotknięcie wybiera; ta sama ramka zaznacza kilka zdjęć naraz w [[zdjecia-w-aplikacji]];
     - **wyjątek — pasmo tła bez zdjęcia** ([[osoba]] D21, decyzja autora: „zwykłe tło”): powierzchnia z samą ikoną w akcencie
-      (z `tooltip`), bez obrysu i podpisu — całe pasmo jest przyciskiem (v1.19);
+      (z `tooltip`), bez obrysu i podpisu — całe pasmo jest przyciskiem (v1.19). **Ten sam wyjątek — okrąg z inicjałami w widoku osoby**
+      (v1.43, [[osoba]] v2.9): okrąg z obrysem i plakietką 32 dp z ikoną dodawania w akcencie, z `tooltip`, bez podpisu — cały okrąg jest
+      przyciskiem; na portrecie ze zdjęciem plakietki nie ma (nic na zdjęciu);
     - **wieniec rodu nad zdjęciem w tle** (v1.33, [[wieniec]] A5): górne liście wchodzą na pasmo, więc każdy liść ma obwódkę w kolorze tła
       (0,75% płótna, 1,5 dp w widoku osoby) — jak ramka kadru. Tekstu na zdjęciu dalej nie ma;
     - **usuwanie zdjęcia bez koloru błędu:** przycisk tekstowy z ikoną `delete_outline` w kolorze tekstu, a gdy
@@ -329,6 +332,10 @@ zostaje bez zmian.
     te wyjątki** (v1.18): karta osoby w [[grob]] i w [[osoby]] oraz chipy i karta partnera w formularzu prowadzą do widoku
     osoby ([[osoba]] D14). **Poprawa ma jedno wejście — ✎ w widoku**, a ✎ dla osoby, której poprawa już leży w stosie,
     wraca do niej zamiast otwierać drugą ([[osoba]] D15).
+    **Wyjątek — wybór zdjęć w widoku** (v1.43, [[ISSUE-048-portrait-photos]]; pierwszy raz w v1.18 przy tle): w widoku osoby pasmo tła wybiera tło,
+    a portret i okrąg z inicjałami — profilowe i nowe zdjęcia ([[osoba]] D21, D23, D24). To wybór i dodanie obrazu, nie poprawa wpisu, więc
+    **zapisuje się od razu**, jak zdjęcie nagrobka. Usuwanie zdjęć i „Kto jest na zdjęciu?” zostają pod ✎, bo mogą coś odebrać. Gdy poprawa tej
+    osoby leży w stosie, te wejścia wracają do niej, jak ✎ ([[osoba]] D25).
 
 ## Sunlight — [[NFR-004-czytelnosc-w-sloncu]]
 **Nie sprawdzone.** Test wymaga prawdziwego telefonu, buildu release i pełnego słońca
@@ -646,3 +653,7 @@ telefon) → grubość 400 z zaokrąglonymi końcami, jednym parametrem.
   glifów z arkusza, pinezki informacyjne zostają z Material; reguła 8 — pinezka ze zniczem także na przyciskach, które stawiają nową pinezkę. Tokeny bez zmian.
 - 2026-10-18 — **v1.42** (stop #2 [[ISSUE-046-icons]], prośba autora): reguła 8 — znicz aplikacji to rysunek autora z DALL-E (ten sam znak co ikona L1): dwa
   tony w logo i na przyciskach, pełny w pinezce i w znaczniku zmarłych; *Known gaps* — stara sylwetka zastąpiona. Tokeny bez zmian.
+- 2026-10-19 — **v1.43** (`ui` przed planem [[ISSUE-048-portrait-photos]]): reguła 15 — wyjątek „wybór zdjęć w widoku” nazwany wprost (tło od v1.18,
+  teraz profilowe i dodawanie zdjęć z portretu i okręgu z inicjałami, zapis od razu; usuwanie zostaje pod ✎); reguła 14 — profilowe wybierane z
+  portretu wzorcem „Zdjęcia w tle”, ramka zaznaczenia także przy wyborze kilku zdjęć ([[zdjecia-w-aplikacji]]), okrąg z inicjałami jako przycisk z
+  plakietką (ten sam wyjątek co pasmo bez zdjęcia). Tokeny bez zmian.
