@@ -185,6 +185,13 @@ Warunki — każdy ma swój dom, tutaj tylko lista:
 - oddalanie tylko dwoma palcami ([[drzewo]] D58): czy ktoś z rodziny nie radzi sobie bez przycisku — *Obali* wyjątku [[style-b]] v1.46;
 - TalkBack na żywo: „Dalsza rodzina” / „Bliższa rodzina”, słowo stanu nieaktywnego i pigułka poziomu po zmianie — sprawdzone w drzewie semantyki i testach.
 
+**„Następne” — rok i co się w nim stało** ([[ISSUE-050-next-event]] → *Verification — runda 2* → *For ISSUE-032 → Hand checks*)
+- z kanapy na Twoim telewizorze po ⏭: czy widać, kogo dotyczy zdarzenie (pierścień, poświata za wieńcem, linia pary przy ślubie) i czy rok 36 sp wystarcza, a słowa
+  mówisz Ty ([[drzewo]] D72–D73) — krok z telewizorem, poza stopem #2;
+- ⏭ na telefonie z obrazem na telewizorze: płynność podjazdu drzewa do osób z podpisu, pulsu poświaty (3,6 s) i pojedyncze wolne klatki przy zmianie roku —
+  nieprzetestowane na żywo (emulator: 130–175 ms, tak samo przy ▶ w buildzie sprzed pozycji; puls bez zmiany kosztu klatki);
+- TalkBack: po ⏭ słychać rok i zdarzenia („W 1868. Urodził się …”) na telefonie i w trybie prezentacji — sprawdzone w drzewie semantyki i testach, nie na żywo.
+
 **Miejsca zamieszkania** ([[ISSUE-042-places-of-residence]] → *Verification* → *For ISSUE-032 → Hand checks*)
 - sekcja w widoku osoby po „Zapisz” — autor ocenił karty w formularzu, wpis został niezapisany (stop #2, krok 1);
 - „Nazwa z tamtego czasu” i druga linia „dziś: …” w widoku — „ok” bez śladu na urządzeniu (krok 3);

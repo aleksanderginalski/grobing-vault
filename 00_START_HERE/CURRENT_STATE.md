@@ -47,7 +47,9 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   9. ~~[[ISSUE-049-tree-levels-and-zoom]]~~ — **zamknięte 2026-10-19**: poziomy według związków („Linia krwi”, „Przez 1 związek”…) niezależne od przybliżania;
      poziom na prostych + / − w rogu drzewa i na listwie trybu prezentacji, przycisków przybliżania nie ma (D58 — decyzja autora na stopie #2); oddalanie do
      całego poziomu, także na telewizorze; bez zmiany bazy;
-  10. [[ISSUE-050-next-event]] — „Następne” obok ▶ na drzewie i mapie: rok i co się w nim stało;
+  10. ~~[[ISSUE-050-next-event]]~~ — **zamknięte 2026-10-19**: ⏭ „Następne” zaraz za ▶ w karcie i na listwie — rok ze zdarzeniem i podpis (narodziny, śmierć,
+     „razem”, ślub; na mapie przeprowadzki „kto: skąd → dokąd”); w trybie prezentacji drobna linia na listwie, a osoby zdarzenia świecą (D72–D75, [[mapa-migracji]]
+     D30 — decyzja autora „B” na stopie #2); bez zmiany bazy;
 
      pozycje 7–10 — **przegląd przepływu przez autora 2026-10-18 w `/pm`** (7 punktów, podział na 4 pozycje — `pm`, autor: *„Do twojej decyzji ile tych
      zadań”*); wszystkie z ekranem (`ui` → `planning`), prawdopodobnie bez zmiany bazy, a **przed instalacją**, bo w trakcie wyjazdu aktualizacji nie ma.
@@ -266,7 +268,8 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   paczki (decyzja autora 2026-10-07); treść wychodzących zmian sprawdza strażnik treści ([[ISSUE-020-content-guard]]) przy każdym `git add`/`commit`.
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **9** (ostatnie retro: [[2026-10-16-retro-04]]). Co **10** → retro + pytanie o 3–5
+- Zamknięte pozycje od ostatniego retro: **10** (ostatnie retro: [[2026-10-16-retro-04]]). **Licznik doszedł do 10 → `pm`: retro 5 i pytanie o nośne
+  fakty, zanim ruszy następna pozycja.** Co **10** → retro + pytanie o 3–5
   nośnych faktów (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**; podbija go `docs` przy zamknięciu, a zeruje go retro.
 - Do retro (zebrane po drodze, bez decyzji):
   - Poprzednią listę rozliczyło [[2026-10-16-retro-04]] → *The "Do retro" list*.
@@ -290,6 +293,15 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     przyciski. Kandydat: gdy wcześniejsze odrzucenie jest powodem wyboru, jedno pytanie, co dokładnie było nie tak, zanim wypadnie cała rodzina wariantów.
   - **Pomiar w specyfikacji z innego ekranu niż zapisany** (przegląd `ui` rundy 2 [[ISSUE-049-tree-levels-and-zoom]]): *States* mówiły „emulator 360 dp” przy
     zrzucie z ekranu 411 dp (bez `wm size` / `wm density`). Kandydat: przy pomiarze „200% na 360 dp” zapis podaje `wm size` i gęstość z tej samej chwili.
+  - **Zmiana na stopie #2 po „tak” na makiecie — drugi raz z rzędu** ([[ISSUE-050-next-event]] → *Stop #2 — runda 1*): P1 (podpis 28 sp pod rokiem na
+    telewizorze) przyjęte na stopie #1; na emulatorze autor chciał podpisu „na telefonie”, a na telewizorze podświetlenia osób. Ograniczenie „w trybie
+    prezentacji telewizor dostaje kopię ekranu telefonu” znała specyfikacja (D11, D29), ale nie padło na stopie #1, a makieta pokazywała telewizor bez telefonu
+    obok. Runda `ui`, `dev`, `qa` (wariant „B”). Kandydat: przy decyzji „co widać na telewizorze” stop #1 mówi wprost, że telefon pokazuje to samo, i makieta
+    stawia oba ekrany obok siebie.
+  - **Nazwa prawdziwego miasta z bazy demo emulatora przepisana do vaulta** ([[ISSUE-050-next-event]] → *Verification — runda 2* → *Family data*): podpis mapy
+    na emulatorze pokazał miasto z danych demo, `dev` przepisał je do *Dev report* i D30 [[mapa-migracji]]; złapane przy kontroli `qa`, usunięte przed `git add`.
+    Strażnik treści by tego nie złapał (miasta nie ma na liście rdzeni). Kandydat: przy przepisywaniu tego, co widać na emulatorze, nazwy miejsc zastępuje
+    opis („przeprowadzka z Litwy”), tak jak imiona — wymyślone rdzenie.
 
 ## Parked (waiting on someone outside the session)
 - **cmentarz (którykolwiek z cmentarzy autora)** · przy 3 grobach, które autor zna: (a) dokładność GPS telefonu
@@ -309,6 +321,21 @@ Format wpisu: `źródło (babcia / cmentarz X) · pytanie bez danych rodziny · 
 ## Recently done
 > Tylko wpisy od ostatniego retro ([[2026-10-16-retro-04]]; zasada R5 z retro 3). Starsze są w plikach retro → *Archive*:
 > [[2026-10-16-retro-04]] · [[2026-10-13-retro-03]] · [[2026-10-08-retro-02]] · [[2026-10-06-retro-01]].
+
+- 2026-10-19 — [[ISSUE-050-next-event]] zamknięte. **„Następne”: rok i co się w nim stało** (czwarta i ostatnia z 4 pozycji z przeglądu przepływu przez
+  autora; cel z `/pm` — opowiadanie rodzinie przy telewizorze):
+  - stop #1 na makietach — *„tak”*: **K1** (zdarzenia osób z wybranego poziomu), **N1** (data niepewna w roku z daty, z dopiskiem), **F1** (czasownik według płci),
+    **M2** (na mapie „kto: skąd → dokąd”), **Z1** (⏭ zatrzymuje ▶), **V2** (drzewo podjeżdża do osób z podpisu), **U3** (w karcie bez roku początku); najwyżej 4
+    zdarzenia naraz, po ostatnim „dziś” i od nowa (D66, D67);
+  - stop #2 runda 1 — **zmiana autora**: podświetlenie osób zdarzenia, a słowa na telefonie; telewizor to kopia ekranu telefonu, więc wariant **„B”** — w trybie
+    prezentacji drobna linia na listwie, znika z nią po 5 s (D72, zastępuje P1); osoby zdarzenia świecą — pierścień, poświata za okręgiem i wieńcem, trzy pulsy,
+    potem stała, przy związku linia pary (D73–D75); na mapie świecą przeprowadzający się, w stosie na przodzie (D30); runda 2 *„ok”* ze śladem na emulatorze;
+  - [[drzewo]] v1.26–v1.28 (D59–D75), [[mapa-migracji]] v1.5–v1.6 (D27–D30), [[style-b]] v1.47–v1.48 (zdania na telewizorze, poświata osób z podpisu); glif
+    `skip_next` w foncie ikon; **bez zmiany bazy** (v15);
+  - przegląd `ui`: runda 1 — 1 MAJOR (dopisek daty przy związku) i 1 MINOR, runda 2 — 1 MINOR (poświata mapy na jednej warstwie, z pomiarem klatek), poprawione
+    przed stopem. `Grobing_Restore` — demo z powrotem (stan z pozycji zapisany w katalogu sesji).
+
+  Lista B w [[ISSUE-032-mvp-install]] → *Hand checks*. Testy: 989 zielonych. Werdykt `qa`: APPROVED (self-check, z uwagami). Licznik retro: 9 → 10.
 
 - 2026-10-19 — [[ISSUE-049-tree-levels-and-zoom]] zamknięte. **Poziomy pokrewieństwa niezależne od przybliżania** (trzecia z 4 pozycji z przeglądu
   przepływu przez autora):
