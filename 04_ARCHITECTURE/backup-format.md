@@ -4,7 +4,7 @@ type: architecture
 status: active
 source: "ADR-004 pkt 1-3 · ISSUE-008 D2 (format v1, 2026-10-06)"
 created: 2026-10-06
-updated: 2026-10-17
+updated: 2026-10-22
 ---
 
 # Format kopii — v1
@@ -70,6 +70,13 @@ sqlite3 kopia/grobing.db "PRAGMA integrity_check"           # albo dowolna przeg
 
 Z kodem Grobing pod ręką `dart run tool/fingerprint.dart kopia` liczy odcisk tą samą funkcją co ekran i
 sprawdza manifest (rozmiary, SHA-256, liczby, odcisk).
+
+**Czytając bazę, pomiń kolumnę `persons.is_living`:** żaden ekran jej nie ustawia, więc ma `0` („nie żyje”) także u
+żyjących. Kto nie żyje, mówi zapisany zgon albo pochówek (audyt R9 w [[ISSUE-032-mvp-install]]). Podobnie
+`assertions.source_kind` i `persons.bio_source` mają zawsze wartość domyślną „notatki” ([[SPIKE-004-mvp-flow-prototype]] D28).
+
+W PowerShellu (Windows) wynik `age` zapisuj przez `-o kopia.tar`, nie przez `>` — przekierowanie w PowerShellu 5.1 zmienia
+plik binarny w tekst.
 
 ## Known limits of v1
 - Każda kopia to całość: Dysk w oknie zapisu pliku nie pozwala na kopię przyrostową (ADR-004, *Options*).

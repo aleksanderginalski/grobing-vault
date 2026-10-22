@@ -7,7 +7,7 @@ priority: MUST
 source: "PROJECT_BRIEF §5 M8 (G2), §Security"
 wake-condition: "backup + export exist (SPIKE-003 → ADR-004; export = the backup since ADR-018 — ISSUE-040)"
 created: 2026-10-05
-updated: 2026-10-16
+updated: 2026-10-22
 ---
 
 # NT-007 — Notka przekazania dla rodziny
@@ -79,6 +79,26 @@ Notka powinna też powiedzieć:
 - Warunek obudzenia („backup + export exist”) jest spełniony, gdy zamknie się [[ISSUE-040-export-is-the-backup]].
 - Skutek dla rodziny: bez autora dane czyta ktoś, kto przejdzie `age` → `tar` → SQLite. Notka powinna więc mówić te trzy kroki wprost (już mówi:
   *Input from ISSUE-008*).
+
+## Input from ISSUE-032 (2026-10-22) — the production backup on the phone
+- **Kopia docelowa skonfigurowana 2026-10-22 13:31** na telefonie autora (Grobing 1.0.0 ze sklepu), na **Dysku Google**, domyślne nazwy
+  `grobing-kopia.age` i `grobing-klucz.age`. To **nowy klucz** — notka musi powstać z tej konfiguracji; każda następna „Skonfiguruj kopię od nowa”
+  ją unieważnia.
+- **Droga z notki niesprawdzona na tej kopii — decyzja autora** (*„na razie nie chcę tego robić — tamte działały”*): mechanizm `age` → `tar` → odcisk
+  przeszedł 2026-10-21 na kopii próbnej z emulatora ([[ISSUE-032-mvp-install]] → *Dev report*, *Step 7*), a odtworzenie na telefonie tą samą drogą.
+  **Niesprawdzone zostaje:** czy hasło zapisane do notki jest tym, które wpisano w telefonie, i czy oba pliki są na Dysku. Do czasu sprawdzenia
+  pomyłka w haśle = kopia, której nie da się otworzyć.
+- **Sprawdzenie przy pisaniu notki** (autor, terminal VS Code, PowerShell; hasło wpisuje autor — agent go nie widzi). `age` v1.3.2 czeka w
+  `C:\Programowanie\Grobing\_notka\` (poza repo):
+  1. oba pliki z Dysku do `C:\Programowanie\Grobing\_notka\`;
+  2. `.\age.exe -d -i grobing-klucz.age -o kopia.tar grobing-kopia.age` → `mkdir kopia; tar -xf kopia.tar -C kopia` (w PowerShellu `-o`, nie `>`);
+  3. w `grobing-code`: `dart run tool/fingerprint.dart C:\Programowanie\Grobing\_notka\kopia` → odcisk równy „Stanowi danych” w telefonie
+     (przy pustej bazie z 13:31: `dff49ae6db482714`; po pierwszych wpisach — ten, który pokazuje telefon);
+  4. `.\age.exe -d grobing-klucz.age` → klucz prywatny `AGE-SECRET-KEY-1…` na papier (albo kod QR); nie do czatu;
+  5. `Remove-Item -Recurse kopia, kopia.tar, grobing-*.age`.
+  Najtańsza wersja bez PC (sprawdza tylko hasło i pliki, nie drogę bez aplikacji): w Grobing „Odtwórz z kopii” z plikami z Dysku i hasłem z kartki —
+  **tylko przy pustej bazie albo zaraz po kopii**, bo odtworzenie zastępuje dane w telefonie.
+- Czytający bazę bez aplikacji pomija `persons.is_living` (zawsze 0) — `backup-format.md` → *Opening a backup without Grobing*.
 
 ## Resolution (fill when done — this is the DoD)
 [notka przekazana (komu — rola, nie nazwisko) · data · data ostatniego sprawdzenia]

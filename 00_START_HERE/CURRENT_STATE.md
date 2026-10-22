@@ -3,7 +3,7 @@ title: "Grobing — Current State"
 type: meta
 status: active
 created: 2026-10-05
-updated: 2026-10-19
+updated: 2026-10-22
 ---
 
 # Grobing — Current State
@@ -54,8 +54,12 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
      pozycje 7–10 — **przegląd przepływu przez autora 2026-10-18 w `/pm`** (7 punktów, podział na 4 pozycje — `pm`, autor: *„Do twojej decyzji ile tych
      zadań”*); wszystkie z ekranem (`ui` → `planning`), prawdopodobnie bez zmiany bazy, a **przed instalacją**, bo w trakcie wyjazdu aktualizacji nie ma.
      Gdy zabraknie czasu, `pm` pyta autora, co odpada, zanim cokolwiek odpadnie;
-  11. [[NT-007-hand-over-note]] (warunek obudzenia spełniony: kopia jest i jest eksportem) i [[ISSUE-032-mvp-install]] — audyt, małe poprawki „przed
-     instalacją”, lista A *Hand checks*, instalacja ze sklepu.
+  11. ~~[[ISSUE-032-mvp-install]]~~ — **zamknięte 2026-10-22: Grobing 1.0.0 ze sklepu na telefonie autora**, pusta baza, kopia na Dysku Google (13:31) —
+     **prawdziwe dane mogą się zacząć**. Na telefonie przeszły: aktualizacja ze zmianą bazy (v14 → v15, migawka w logcat), odtworzenie kopii z emulatora
+     (odcisk zgodny), aktualizacja do 1.0.0 bez zmiany odcisku, kopia w tle przed i po aktualizacji; audyt pól modelu bez luki przed instalacją. Zostało:
+     [[NT-007-hand-over-note]] — droga z notki **odłożona decyzją autora** (*Input from ISSUE-032*) i sama notka dla rodziny;
+  12. **dalej, do wyjazdu — aktualizacje ze sklepu bez zmiany bazy:** kandydaci z `/pm` 2026-10-21 — rodzeństwo przyrodnie w słowniku,
+     [[ISSUE-051-wedding-changes-wreath-and-surname]], mapa cmentarza przy 200% (*Poza tą kolejnością*); `pm` pyta autora, które wchodzą.
 
   **Zasady terminu:** przed instalacją wszystko, co zmienia bazę; widoki bez zmiany bazy (5, 6) mogą przyjść później jako aktualizacja ze sklepu; **w trakcie
   wyjazdu żadnych aktualizacji** — dlatego 7–10, potrzebne na wyjeździe, idą przed instalacją. Wszystkie US [[EPIC-001-zabezpiecz-i-przepisz]] i [[EPIC-003-zrozumienie]] zamknięte (EPIC-i zostają `draft` do instalacji —
@@ -67,7 +71,8 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   [[cmentarz]] v8, [[osoby]] v3.1, [[rodzina]] v2.2, [[zdjecia-osoby]] v1.6, [[zdjecie]] v1.7, [[kadr-profilowego]] v1.3, [[zdjecia-w-aplikacji]] v1.2,
   [[style-b]] v1.46.
 - **Prawdziwe dane rodziny dopiero po instalacji MVP** (decyzja autora 2026-10-08 w `/pm`): budujemy produkt gotowy do
-  instalacji na telefonie (MVP = brief §5, M1–M11); do tego czasu autor ocenia aplikację na wymyślonych danych. Rozmowa z babcią
+  instalacji na telefonie (MVP = brief §5, M1–M11); do tego czasu autor ocenia aplikację na wymyślonych danych. **Instalacja zrobiona 2026-10-22**
+  ([[ISSUE-032-mvp-install]]) — od teraz prawdziwe dane są w telefonie, a emulatory dalej tylko na wymyślonych. Rozmowa z babcią
   (~2026-11-02) jest na kartce, a odpowiedzi trafią do aplikacji po instalacji.
 - **Droga do instalacji MVP** — propozycja łańcucha przy zamknięciu SPIKE-004 (autor może zmienić kolejność):
   1. ~~[[ISSUE-022-app-skeleton-tabs-people-settings]]~~ — zamknięte 2026-10-08;
@@ -83,8 +88,8 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
      telewizor”) → ~~[[US-010-czas-na-drzewie]]~~ — zamknięta 2026-10-14 (~~ISSUE-037~~; suwak czasu, daty niepewne, „//”; ~~ISSUE-038~~ — historia na telewizorze i
      tempo) → ~~[[US-011-polacz-dwie-osoby]]~~ — zamknięta 2026-10-14 (~~ISSUE-039~~; okno „Połącz dwie osoby”, ścieżka na drzewie, baner);
   8. ~~[[US-006-eksport-dla-rodziny]]~~ — zamknięta 2026-10-16 (~~ISSUE-040~~; eksport = kopia, [[ADR-018-export-is-the-backup]]);
-  → dalej kolejka z retro 4 (wyżej) → **[[ISSUE-032-mvp-install]]** (`draft`): audyt pól modelu ↔ ekrany (R9), lista A *Hand checks*, warunki
-  przed pierwszymi danymi → **instalacja ze sklepu** ([[ISSUE-041-google-play-and-safe-update]]) → prawdziwe dane ([[NT-002-transcribe-the-notes]]) w trakcie wyjazdu.
+  → dalej kolejka z retro 4 (wyżej) → ~~[[ISSUE-032-mvp-install]]~~ — zamknięte 2026-10-22 (audyt R9, lista A, **instalacja ze sklepu**) → prawdziwe
+  dane ([[NT-002-transcribe-the-notes]]) w trakcie wyjazdu.
   Wpisy o zamkniętych pozycjach: retro 3 i retro 4 → *Archive*.
 
   **EPIC-001:** [[US-004-fakt-od-babci]] **wycofana** (SPIKE-004 D28 — bez źródeł; wiedza od babci przez zwykłą
@@ -145,16 +150,17 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   - **imiona przy ścieżce przy tekście 200%** ([[ISSUE-039-connect-two-people]] → *Verification*, obserwacja): przy długiej ścieżce w skali ok. 0,17 imiona dwóch osób
     ścieżki chowają się (nachodzą na inne imiona ścieżki), a wyszarzone imię spoza ścieżki, które na nic nie nachodzi, zostaje. Do oceny autora — np. bez imion
     wyszarzonych w trakcie podświetlenia.
-- **Przed pierwszymi prawdziwymi danymi w aplikacji:** kopia jest gotowa (US-001 ✅), poprawki z retro 2 też
-  ([[ISSUE-021-small-fixes-after-retro-2]] ✅). Zostały hasło i
-  miejsce pliku klucza w notce przekazania ([[NT-007-hand-over-note]]): utrata któregoś z nich = utrata
-  kopii. Notkę sprawdzić raz jej własną drogą (`age -d -i …` z hasłem w terminalu — NT-007 → *Input from
-  US-001 closure*). Wszystkie warunki przed instalacją zbiera [[ISSUE-032-mvp-install]] → *Before install*.
-- **Termin instalacji: najpóźniej 2026-10-29** (decyzja autora 2026-10-16 — retro 4 → *Product decisions*): prawdziwe dane autor wpisuje w trakcie
-  wyjazdu na Wszystkie Święte. Do 2026-10-16 obowiązywało „budowa bez terminu” (2026-10-05); przy wizytach autor robi zdjęcia nagrobków z lokalizacją →
+- **Przed pierwszymi prawdziwymi danymi w aplikacji:** warunki z [[ISSUE-032-mvp-install]] → *Before install* spełnione 2026-10-22 poza jednym —
+  **droga z notki na kopii docelowej odłożona decyzją autora** (*„tamte działały”*). Do czasu sprawdzenia: hasło zapisane do notki różne od wpisanego
+  w telefonie albo brak pliku klucza na Dysku = kopia, której nie da się otworzyć. Komendy i `age` w `C:\Programowanie\Grobing\_notka\` —
+  [[NT-007-hand-over-note]] → *Input from ISSUE-032*.
+- **Termin instalacji: najpóźniej 2026-10-29** (decyzja autora 2026-10-16 — retro 4 → *Product decisions*) — **dotrzymany: 2026-10-22**; prawdziwe dane
+  autor wpisuje w trakcie wyjazdu na Wszystkie Święte. Do 2026-10-16 obowiązywało „budowa bez terminu” (2026-10-05); przy wizytach autor robi zdjęcia nagrobków z lokalizacją →
   `TRACEABILITY.md` → *Open gaps* 2.
 - **Weryfikacja na emulatorze do MVP** (decyzja autora 2026-10-05). Na telefon trafi dopiero MVP, jako build **ze sklepu** (Google Play, testy
-  wewnętrzne — [[ISSUE-041-google-play-and-safe-update]]); wyjątki są w `DEFINITION_OF_DONE.md`.
+  wewnętrzne — [[ISSUE-041-google-play-and-safe-update]]); wyjątki są w `DEFINITION_OF_DONE.md`. **Od 2026-10-22 na telefonie autora jest Grobing
+  1.0.0 (`versionCode` 3) ze sklepu** — następna wysyłka ma numer 4 lub wyższy (README `grobing-code` → *Wydanie*); w Play Console jest aplikacja
+  `com.grobing.app` w stanie „wersja robocza” z samymi testami wewnętrznymi, autor jedynym testerem.
 - **Autor, poza sesją:**
   - kopia klucza wydania (`.jks` + oba hasła) w zaszyfrowanym miejscu — **po [[ISSUE-041-google-play-and-safe-update]] nie blokuje** (retro 4): klucz
     podpisu aplikacji ze sklepu trzyma Google, a klucz z `release_keystore_dir` zostaje kluczem przesyłania, który da się zresetować (jak w Friendsheet).
@@ -212,6 +218,12 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     `shots048\`, `fotki.html` i `fotki048\` (wymyślone rysunki — zdjęcia testowe; z galerii emulatora już usunięte), `emu048\` — zrzuty `01`–`19` (na 09 i 10
     jest Twój wpis z emulatora) i kopia demo sprzed pozycji `stan-przed-048.tar` + `stan-przed-048-base.apk` (już wgrana z powrotem), `chr048\` (profil Chrome
     bez okna), `tools\` (skrypty), logi testów — wszystko do kosza;
+  - **po ISSUE-032 (2026-10-22):** `C:\Programowanie\Grobing\_v14\` — kopia kodu ze schematem v14 do pierwszej wysyłki, **w środku `key.properties`
+    z hasłami klucza** — do kosza; `C:\Programowanie\Grobing\_paczki\` — trzy paczki `.aab`, już w Play Console — do kosza;
+    **`C:\Programowanie\Grobing\_notka\` zachowaj** (`age.exe` do sprawdzenia notki — [[NT-007-hand-over-note]]); katalog sesji
+    `%TEMP%\claude\c--Programowanie-Grobing-grobing-agents\c601027a-…\scratchpad\` — zrzuty `shots032\` (emulator i telefon; na zrzutach z telefonu i z
+    „Zdjęć w aplikacji” są **Twoje wpisy**), `emu032\` (APK i dane demo sprzed pozycji, kopia próbna `*-032.age` z hasłem testowym — wymyślone dane i
+    Twoje wpisy z emulatora), skrypty i logi — wszystko do kosza; na telefonie możesz wyłączyć *Opcje programisty → Debugowanie USB*;
   - **repo nie mają pliku `LICENSE`** — kod można oglądać, ale nie wolno go używać. Licencję można dodać później.
 - **Emulatory (po ISSUE-033):** `Medium_Phone` — release v12 na danych testowych autora, kopia skonfigurowana od nowa z hasłem
   testowym (wymyślone, z sesji ISSUE-029), pliki `grobing-klucz-029.age` i `grobing-kopia-029.age` w Pobranych; grób „Jozef” ma
@@ -251,7 +263,9 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   `Grobing_Restore` — z powrotem **demo** (41 osób, APK i dane zapisane przed pozycją); na czas pozycji stan sprzed demo z `_pokaz` z buildem ISSUE-048, a w
   nim zmiany z przejścia i ze stopu #2 (nowe profilowe Mateusza, zdjęcia Zofii i Ignacego) — przepadły razem z nim, plik w `_pokaz` bez zmian. Tekst i gęstość
   domyślne. **Emulator zawiesił się raz** (wątki QEMU bez odpowiedzi): po buildzie zostało ok. 0,9 GB wolnej pamięci — po każdym `flutter build` zatrzymać demony
-  Gradle (`android\gradlew --stop`), zanim emulator dostanie zadania.
+  Gradle (`android\gradlew --stop`), zanim emulator dostanie zadania. **Po ISSUE-032:** `Grobing_Restore` — z powrotem **demo** (APK `0.9.0`, 4001, i dane
+  zapisane 2026-10-21 przed pozycją, 41 osób); na czas pozycji stan sprzed demo z `_pokaz` z buildem `0.9.1` — z niego kopia próbna na telefon; plik w
+  `_pokaz` bez zmian. **Od instalacji prawdziwe dane żyją na telefonie — emulatory zostają na wymyślonych.**
 - **[[EPIC-002-wizyta]] gotowy do rozpisania na US** — pytanie „jak znaleźć grób bez pinezki” ma kierunek autora
   (2026-10-08): adres z wyszukiwarki zarządcy → kwatera zaznaczona według planu zarządcy → na miejscu plan offline i
   GPS → pinezka. Wejście do pierwszej US (mapa cmentarza): EPIC-002 → *Input from SPIKE-001*. Ekran: `ui` →
@@ -268,8 +282,8 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   paczki (decyzja autora 2026-10-07); treść wychodzących zmian sprawdza strażnik treści ([[ISSUE-020-content-guard]]) przy każdym `git add`/`commit`.
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **10** (ostatnie retro: [[2026-10-16-retro-04]]). **Licznik doszedł do 10 → `pm`: retro 5 i pytanie o nośne
-  fakty, zanim ruszy następna pozycja.** Co **10** → retro + pytanie o 3–5
+- Zamknięte pozycje od ostatniego retro: **11** (ostatnie retro: [[2026-10-16-retro-04]]). **Retro 5 odłożone decyzją autora 2026-10-21 w `/pm`**
+  (*„nie chcę robić retro”*) — licznik rośnie dalej, `pm` wraca z propozycją, gdy autor zechce. Co **10** → retro + pytanie o 3–5
   nośnych faktów (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**; podbija go `docs` przy zamknięciu, a zeruje go retro.
 - Do retro (zebrane po drodze, bez decyzji):
   - Poprzednią listę rozliczyło [[2026-10-16-retro-04]] → *The "Do retro" list*.
@@ -277,8 +291,8 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     narysowany kreską” — autor wybrał ją, myśląc o swoich ikonach z arkusza; w aplikacji B to ikony Google w jego kolorach. Wyszło dopiero na emulatorze po
     całej budowie (dwie rundy `dev`). Kandydat: przy wyborze wariantu nazwa mówi, **skąd jest to, co autor zobaczy** („ikony Google w Twoich kolorach” vs
     „Twoje obrazki z arkusza”), a stop #1 pokazuje telefon z tym wariantem obok jego źródła.
-  - **Wiersz macierzy ISSUE-044 bez Issue(s)/Issue Status** — `TRACEABILITY.md`, wiersz „wieńce rodzin”: pozycja zamknięta, kolumny `planning` puste
-    (zauważone przy planie ISSUE-046). Do uzupełnienia przez `planning`/`docs` przy najbliższej okazji.
+  - ~~**Wiersz macierzy ISSUE-044 bez Issue(s)/Issue Status**~~ — przy planie ISSUE-032 (2026-10-21) wiersz „wieńce rodzin” ma już obie kolumny
+    („ISSUE-044 done”; werdykt w wierszu UJ-001 · 5) — nic do zrobienia.
   - **Wycinanie ikon przez Fluttera gubi glify Material Symbols z podmianą wzdłuż FILL** ([[ISSUE-046-icons]] → *Probes*) — sonda przed masową podmianą
     złapała to, zanim poszło do przodu; wiedza w README `grobing-code` → *Ikony*.
   - **Zapis od razu z widoku → wyścig dwóch szkiców** ([[ISSUE-048-portrait-photos]] → *Verification*, przegląd `ui` MAJOR): przejście `dev` na emulatorze i testy
@@ -302,6 +316,13 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     na emulatorze pokazał miasto z danych demo, `dev` przepisał je do *Dev report* i D30 [[mapa-migracji]]; złapane przy kontroli `qa`, usunięte przed `git add`.
     Strażnik treści by tego nie złapał (miasta nie ma na liście rdzeni). Kandydat: przy przepisywaniu tego, co widać na emulatorze, nazwy miejsc zastępuje
     opis („przeprowadzka z Litwy”), tak jak imiona — wymyślone rdzenie.
+  - **„Dlaczego?” przy krokach bramki mimo „tak” na stopie #1** ([[ISSUE-032-mvp-install]] → *Verification*): autor zapytał „dlaczego” dwa razy — przy
+    pierwszej wysyłce starej wersji (D1) i przy drodze z notki (krok 12); D1 po wyjaśnieniu zostało, krok 12 autor odłożył (*„tamte działały”*). Powód
+    i zagrożenie były na stopie #1 („przed czym chronimy?”), ale nie w chwili kroku. Kandydat: krok z listy A dostaje w instrukcji jedno zdanie „po co i
+    co się stanie bez niego”, a krok, który sprawdza ludzką pomyłkę (hasło), mówi to wprost — mechanizm już działa.
+  - **Pierwsze wdrożenie testów wewnętrznych — „nie znaleziono elementu” przez ok. 30 min** ([[ISSUE-032-mvp-install]] → *Verification* → *Notes*):
+    zgodne z Pomocą Play (link testera działa po kilku godzinach przy pierwszym wdrożeniu); konto i lista testerów były dobre. Kandydat na zdanie w README
+    `grobing-code` → *Wydanie* (pisze `dev`) — przyda się przy drugim telefonie albo nowym testerze.
 
 ## Parked (waiting on someone outside the session)
 - **cmentarz (którykolwiek z cmentarzy autora)** · przy 3 grobach, które autor zna: (a) dokładność GPS telefonu
@@ -310,7 +331,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   położeń · warunek obudzenia: **najbliższa wizyta na cmentarzu** · 2026-10-08 ([[SPIKE-001-map-source-offline]] D5;
   mierzy H3 i H9 przed budową pinezek w [[EPIC-002-wizyta]]). Prawdopodobna okazja: wyjazd autora na zaduszki
   (~2026-11-02, ten sam co rozmowa z babcią — *In progress*). **Krok w terenie [[ISSUE-029-pin-on-site-gps]] (D4, 2026-10-12):** z MVP
-  **ze sklepu** na telefonie (instalacja najpóźniej 2026-10-29, prawdziwe dane wpisywane w trakcie wyjazdu — retro 4) — kropka i jej dokładność przy
+  **ze sklepu** na telefonie (**zainstalowane 2026-10-22**, [[ISSUE-032-mvp-install]]; prawdziwe dane wpisywane w trakcie wyjazdu — retro 4) — kropka i jej dokładność przy
   3 grobach, pinezka postawiona i poprawiona, tryb samolotowy, czytelność w słońcu ([[NFR-004-czytelnosc-w-sloncu]]); wynik ustawia próg „słaby
   sygnał” (`weakSignalM`, dziś tymczasowo 15 m) i decyduje o [[ISSUE-030-sector-on-a-visit]]. Odpowiedź w czacie: same liczby i tak/nie. **Ta sama
   wizyta** sprawdzi w terenie [[ISSUE-029-pin-on-site-gps]] — cel autora z 2026-10-12.
@@ -321,6 +342,22 @@ Format wpisu: `źródło (babcia / cmentarz X) · pytanie bez danych rodziny · 
 ## Recently done
 > Tylko wpisy od ostatniego retro ([[2026-10-16-retro-04]]; zasada R5 z retro 3). Starsze są w plikach retro → *Archive*:
 > [[2026-10-16-retro-04]] · [[2026-10-13-retro-03]] · [[2026-10-08-retro-02]] · [[2026-10-06-retro-01]].
+
+- 2026-10-22 — [[ISSUE-032-mvp-install]] zamknięte. **MVP zainstalowane ze sklepu na telefonie autora** (start z `/pm` 2026-10-21; retro 5 odłożone
+  decyzją autora):
+  - stop #1 *„tak”*: **D1** — pierwsza wysyłka to stara wersja ze schematem v14, żeby aktualizacja ze zmianą bazy przeszła raz przez sklep na telefonie
+    przed prawdziwymi danymi; D2 — telefon na kablu, agent tylko czyta i wgrywa pliki kopii, nic nie instaluje; D3, D4 (`0.9.0+1` → `0.9.1+2` → `1.0.0+3`);
+  - **audyt pól modelu ↔ ekrany (R9):** każde pole ma ekran albo powód; luki przed instalacją nie ma (`events.place` — po wyjeździe, [[mapa-migracji]]
+    D12); poprawki w [[data-model]] i `backup-format.md` (Grobonet wycofany, „pomiń `is_living`”);
+  - kod: jedna linia `GROBING_SNAPSHOT` po migawce (wersje i rozmiar), numer `1.0.0+3`; **bez zmiany bazy** (v15);
+  - na telefonie (Motorola, Android 13, każda wersja ze Sklepu Play): Play Console — `com.grobing.app` zarezerwowana, testy wewnętrzne, klucz od Google;
+    v14 → v15 z migawką w logcat i liczbami bez zmian; odtworzenie kopii wymyślonej rodziny z emulatora z odciskiem zgodnym (pusty grób, pochówek z wyboru,
+    zdjęcie u dwóch osób z kadrem, rody, zamieszkania, data opłaty); aktualizacja do 1.0.0 bez zmiany odcisku; kopia w tle przed i po; dane wyczyszczone,
+    kopia docelowa na Dysku Google;
+  - **droga z notki na kopii docelowej odłożona decyzją autora** → [[NT-007-hand-over-note]] → *Input from ISSUE-032*.
+
+  Lista A w [[ISSUE-032-mvp-install]] → *Hand checks* — sprawdzona poza jednym wierszem (⏸). Testy: 990 zielonych. Werdykt `qa`: APPROVED (self-check, z
+  uwagami). Licznik retro: 10 → 11.
 
 - 2026-10-19 — [[ISSUE-050-next-event]] zamknięte. **„Następne”: rok i co się w nim stało** (czwarta i ostatnia z 4 pozycji z przeglądu przepływu przez
   autora; cel z `/pm` — opowiadanie rodzinie przy telewizorze):
