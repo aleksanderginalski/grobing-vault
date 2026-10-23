@@ -1,12 +1,12 @@
 ---
-title: "Style B — visual guidelines (v1.48)"
+title: "Style B — visual guidelines (v1.52)"
 type: design-guidelines
 status: active
 owner: ui
 source: "PROJECT_BRIEF §6a (Style B, chosen by the author 2026-10-05) · references.md (R1–R4, the kick-off images) · grobing-code/lib/app/theme.dart · WCAG 2.2 · Android accessibility"
 non-tech-item: "[[NT-006-visual-guidelines]]"
 created: 2026-10-06
-updated: 2026-10-19
+updated: 2026-10-23
 ---
 
 # Styl B — wytyczne wizualne
@@ -29,7 +29,7 @@ autor, też używają znicza (reguła 8).
 | Rola | Token w `theme.dart` | Do czego (według R1–R4) | Nigdy |
 |---|---|---|---|
 | tło | `GrobingColors.background` | tło każdego ekranu i paska aplikacji | — |
-| powierzchnia | `GrobingColors.surface` | **karty** (osoba, grób, cmentarz), dolny arkusz, wyszukiwarka, okno, menu, chip, przycisk pływający | granica pola wpisu (tło–powierzchnia ma ok. 1,1:1, więc granicę niesie obrys) |
+| powierzchnia | `GrobingColors.surface` | **karty** (osoba, grób, cmentarz), dolny arkusz, wyszukiwarka, okno, menu, chip, przycisk pływający, pasek z „Cofnij” (z obrysem — reguła 16, v1.52) | granica pola wpisu (tło–powierzchnia ma ok. 1,1:1, więc granicę niesie obrys) |
 | tekst | `GrobingColors.text` | treść, wartości, imiona i nazwiska, tytuły | — |
 | tekst pomocniczy | `GrobingColors.textMuted` | lata, adres, liczby („6 grobów · 14 osób”), etykiety, podpowiedzi, „bez adresu kwatery”, źródło, nieaktywne zakładki | jedyny nośnik ważnej informacji na ekranie wizyty (patrz *Thresholds*) |
 | akcent | `GrobingColors.amber` | **jeden kolor, wiele ról** (reguła 1): główne działanie (wypełnione), pinezki, znicz, aktywna zakładka i segment, zaznaczenie, fokus, ikony działań i nagłówków sekcji, wyróżnione imiona na ścieżce, link zewnętrzny, wskaźnik działania w toku (v1.8) | treść ciągła (akapity), duże dekoracyjne plamy, ostrzeżenia i błędy, numery listy i inne ozdobniki (v1.17) |
@@ -84,6 +84,7 @@ wzorem. **Przelicz przy każdej zmianie tokenów.**
 | ślad dalszej rodziny — rodzic–dziecko · partnerzy, krycie 60% *(v1.24, 2026-10-13)* | 3,75 · 3,66 | — | 3 (SC 1.4.11) | ✅ — kształt (przerywana 3/3, krótka) odróżnia ślad od linii, nie tylko kolor (SC 1.4.1) |
 | przerywany obrys węzła — data niepewna na suwaku czasu, obrys *(v1.29, 2026-10-14, [[drzewo]] D32)* | 3,40 | — | 3 (SC 1.4.11) | ✅ — niepewność niesie kształt (kreska 4/3), nie krycie: imię zostaje tekstem na tle 10,98:1 |
 | kolory rodu — wieniec, najsłabszy z 12 (brąz): płaski · C3, najciemniejsze 5% liści *(v1.33, 2026-10-17, [[wieniec]] D15)* | 4,46 · 3,10 | 4,07 · — | 3 (SC 1.4.11) | ✅ — obwódka w kolorze tła sprawia, że liść zawsze sąsiaduje z tłem, także na powierzchni i na zdjęciu; pełna tabela: [[wieniec]] |
+| pasek z „Cofnij” — tekst · „Cofnij” (akcent) · obrys krawędzi *(v1.52, 2026-10-23, reguła 16)* | obrys 3,40 | tekst 10,02 · akcent 8,04 · obrys 3,10 | 4,5 (tekst) · 3 (krawędź, SC 1.4.11) | ✅ — krawędź niesie obrys, bo powierzchnia i tło mają 1,10:1. Na domyślnym jasnym pasku Material (`inverseSurface` = kolor tekstu) akcent miałby **1,25:1** — dlatego pasek leży na powierzchni |
 
 **Wniosek:** wszystkie pary spełniają AA, a tekst pomocniczy nie spełnia 7:1. **Ekrany wizyty przyjęły 7:1** (v1.21, W2,
 2026-10-12): informacja potrzebna na cmentarzu (adres kwatery, liczby, stan planu) jest w kolorze tekstu, a token pomocniczy
@@ -343,6 +344,56 @@ zostaje bez zmian.
     a portret i okrąg z inicjałami — profilowe i nowe zdjęcia ([[osoba]] D21, D23, D24). To wybór i dodanie obrazu, nie poprawa wpisu, więc
     **zapisuje się od razu**, jak zdjęcie nagrobka. Usuwanie zdjęć i „Kto jest na zdjęciu?” zostają pod ✎, bo mogą coś odebrać. Gdy poprawa tej
     osoby leży w stosie, te wejścia wracają do niej, jak ✎ ([[osoba]] D25).
+
+16. **Usuwanie** (v1.49, [[ISSUE-053-delete-cemetery-grave-person]]). Usuwa się **tylko z poprawy** (pod ✎, reguła 15), nigdy z widoku, listy ani mapy, i
+    tylko to, czego usunięcie nie zabiera niczego niewidocznego bez słowa:
+    - **przycisk:** tekstowy z ikoną `delete` **w kolorze tekstu** — nie w akcencie (reguła 1: akcent to główne działanie) i nie w kolorze błędu (błąd to
+      stan, nie działanie); w oknie **w osobnej, pierwszej linii przycisków, z lewej**, a „Anuluj” · działanie okna pod nią z prawej (v1.52 — trzy przyciski
+      nie mieszczą się w jednym wierszu okna już przy 100% na 411 dp, a zawinięty wiersz stawiał „Usuń …” z prawej, nad głównym działaniem; [[cmentarze]]
+      D41, [[grob]] D30); w panelu trybu w osobnej linii nad jego przyciskami ([[cmentarz]] 12b); w formularzu jako ostatni element treści, daleko od
+      „Zapisz” — jak „Usuń związek”;
+    - **gdy usunąć nie można**, przycisku nie ma, a w jego miejscu stoi fakt (reguła 7): „To Ty („ja”) — tego wpisu nie da się usunąć.” ([[wpis-osoby]] 12);
+    - **okno „Usunąć …?”** mówi, **co zniknie i co zostaje** — tylko to, co dotyczy tego wpisu, z liczbami (reguła 6); przyciski „Anuluj” · „Usuń” w kolorze
+      tekstu, bez akcentu;
+    - **pasek z „Cofnij”** (K2 — decyzja autora na stopie #1 ISSUE-053, 2026-10-23: *„tak K2 4s”*): po usunięciu na dole ekranu, na który się wraca: „Usunięto …” (14 sp, kolor tekstu) +
+      „Cofnij” (przycisk tekstowy w akcencie — to jedyne działanie paska, cel ≥ 48 dp). **Wygląd** (v1.52, przegląd `ui` ISSUE-053 — odstępstwo 1 `dev`
+      przyjęte): pasek **pływający**, 16 dp od bocznych krawędzi, nad dolnym paskiem zakładek (gdy ekran go ma), **na powierzchni z obrysem**, promień 8 dp — tekst 10,02:1,
+      „Cofnij” 8,04:1, krawędź 3,40:1 na tle (*Measurement*). Domyślny pasek Material jest w tym motywie jasny, a bursztyn ma na nim 1,25:1. Znika po
+      **4 s** (decyzja autora; to też domyślny czas paska we Flutterze, w zakresie 4–10 s z Material). **Przy „Czasie na działanie” trwa tyle, ile zaleca
+      system** (v1.52; `getRecommendedTimeoutMillis` z flagą sterowania — tak liczy czas natywny Snackbar z działaniem, źródło w [[drzewo]] D43; na
+      emulatorze 30 s), a **przy czytniku ekranu nie znika sam** — [WCAG 2.2 SC 2.2.1 Timing
+      Adjustable](https://www.w3.org/WAI/WCAG22/Understanding/timing-adjustable.html): *„Adjust: The user is allowed to adjust the time limit before
+      encountering it over a wide range that is at least ten times the length of the default setting”* (odczyt 2026-10-23); „Czas na działanie” to właśnie
+      takie ustawienie użytkownika, przed paskiem. Do v1.51: „przy czytniku ekranu i „Czasie na działanie” nie znika sam”. Pierwszy pasek z działaniem w
+      aplikacji — pozostałe paski to sam tekst, dziś w domyślnym jasnym wyglądzie; ujednolicenie ich z tym paskiem to kandydat poza ISSUE-053.
+    - **lżejsze obok cięższego** (v1.50): gdy w jednym miejscu da się coś odłączyć albo usunąć całość, oba przyciski stoją razem, lżejszy wyżej —
+      „Usuń z grobu” nad „Usuń osobę” ([[wpis-osoby]] 12a, 12); okno lżejszego mówi, co zostaje;
+    - **tytuły bez odmiany imion** (v1.50): aplikacja nie odmienia imion, więc okno pyta „Usunąć osobę?” albo „Usunąć z grobu?”, a imię w mianowniku stoi
+      w treści; pasek: „Usunięto: Jan Wymyślony.” Nazwy cmentarza, grobu i rodu idą w cudzysłowie („Usunięto ród „Wymyślonowie”.”); twarde spacje po
+      jednoliterowych słowach jak wszędzie (reguła 6);
+    - **mapa usuwania** (v1.50; zasada autora 2026-10-23: *„wszystko, co można dodać, można też usunąć”* — *„zrobiłbym od razu wszystko”*). Każdy ekran z
+      „Dodaj …” albo „Nowy …” mówi w specyfikacji, gdzie się to usuwa; rzecz do dodania bez wiersza w tabeli niżej to luka. Spis z kodu 2026-10-23
+      ([[ISSUE-053-delete-cemetery-grave-person]] — pierwsze sześć wierszy dochodzi w tej pozycji):
+
+| Co dodajesz | Gdzie usuwasz |
+|---|---|
+| cmentarz | „Popraw cmentarz” → „Usuń cmentarz” ([[cmentarze]] 15a) — razem z grobami; osoby zostają bez grobu |
+| grób | „Popraw grób” → „Usuń grób” ([[grob]] 3d) — osoby zostają bez grobu |
+| osoba | „Poprawa wpisu” → „Usuń osobę” ([[wpis-osoby]] 12) |
+| osoba w grobie (pochówek) | „Poprawa wpisu” → „Usuń z grobu” ([[wpis-osoby]] 12a) |
+| pinezka grobu | „Popraw pinezkę” → „Usuń pinezkę” ([[cmentarz]] 12b) |
+| ród | ekran „Ród” → „Usuń ród” ([[wieniec]] F7) — wieńce wracają do reguły |
+| związek, partner | arkusz rodziny → „Usuń związek” ([[rodzina]]) |
+| dziecko w rodzinie, rodzice | arkusz rodziny → „Usuń z tej rodziny” ([[rodzina]]) |
+| daty związku | arkusz rodziny — „Usuń” przy dacie, „To nie było małżeństwo” ([[rodzina]]) |
+| miejsce zamieszkania | „Usuń to miejsce” ([[zamieszkanie]] 16) |
+| zdjęcie osoby, tło | „Usuń z tej osoby”, „Usuń z tła” ([[zdjecie]]) — zdjęcie bez nikogo znika |
+| zdjęcie nagrobka, zdjęcie cmentarza | „Usuń zdjęcie” ([[zdjecie]]) |
+| strefa kwatery | „Usuń z planu” ([[cmentarz]]); kwatera bez strefy i bez grobów znika sama |
+| punkt cmentarza na mapie | „Zapisz bez punktu” ([[cmentarze]] 17) |
+| pola: nazwa grobu, adres, „Opłacone do”, daty i „kim była” osoby, nazwisko z domu, miejscowość cmentarza | puste pole i „Zapisz” |
+
+Poza mapą: „ja” się nie usuwa, tylko wskazuje się inną osobę (Ustawienia); plan cmentarza z OpenStreetMap nie jest dodawany ręcznie — znika z cmentarzem.
 
 ## Sunlight — [[NFR-004-czytelnosc-w-sloncu]]
 **Nie sprawdzone.** Test wymaga prawdziwego telefonu, buildu release i pełnego słońca
@@ -683,3 +734,15 @@ telefon) → grubość 400 z zaokrąglonymi końcami, jednym parametrem.
   przeprowadzający się na mapie świecą (pierścień, poświata pod okręgiem i wieńcem, linia pary), jedyna pulsująca — trzy pulsy, potem stała (SC 2.2.2, SC 2.3.1, SC 2.3.3). *Thresholds* →
   tekst dla telewizora bez zmian, ale podpis roku na telewizorze odpadł ([[drzewo]] D72 — linia 14 sp na listwie czytana z telefonu), więc próg 28 sp dla zdań nie ma dziś instancji. Tokeny bez
   zmian; pary przeliczone z `theme.dart` 2026-10-19: akcent 8,81 / 8,04, tekst 10,98 / 10,02, tekst pomocniczy 5,50 / 5,01 (na tle / na powierzchni).
+- 2026-10-23 — **v1.49** (przed planem [[ISSUE-053-delete-cemetery-grave-person]]): reguła 16 — usuwanie z poprawy, przycisk w kolorze tekstu, fakt
+  zamiast przycisku, okno „co zniknie i co zostaje”, pasek z „Cofnij” (K2, do decyzji na stopie #1).
+- 2026-10-23 — **v1.50** (ta sama pozycja, decyzje autora przed stopem #1 [[ISSUE-053-delete-cemetery-grave-person]]: *„zrobiłbym od razu wszystko”*):
+  reguła 16 — mapa usuwania (spis z kodu: nie dało się usunąć osoby z grobu, pinezki ani rodu), lżejsze obok cięższego, tytuły bez odmiany imion; przykład
+  „nie da się” to teraz „ja”, bo cmentarz z grobami da się usunąć. Tokeny bez zmian.
+- 2026-10-23 — **v1.51** (stop #1 runda 2 [[ISSUE-053-delete-cemetery-grave-person]]): reguła 16 — pasek „Cofnij” przyjęty (K2), znika po 4 s (*„tak K2 4s”*).
+- 2026-10-23 — **v1.52** (przegląd `ui` zbudowanej [[ISSUE-053-delete-cemetery-grave-person]], odstępstwa 1 i 2 `dev` przyjęte): reguła 16 — pasek „Cofnij”
+  pływający, na powierzchni z obrysem (na domyślnym jasnym pasku akcent ma 1,25:1); przy „Czasie na działanie” trwa tyle, ile zaleca system, jak natywny
+  Snackbar ([[drzewo]] D43), przy czytniku nie znika sam (SC 2.2.1 „Adjust”, cytat); w oknie „Usuń …” w osobnej, pierwszej linii przycisków
+  ([[cmentarze]] D41, [[grob]] D30). *Token roles* → powierzchnia: pasek z „Cofnij”. *Measurement*: wiersz paska. Tokeny bez zmian; pary przeliczone z
+  `theme.dart` 2026-10-23: tekst na powierzchni 10,02, akcent na powierzchni 8,04, obrys 3,40 / 3,10 (na tle / na powierzchni), tekst pomocniczy 5,50 /
+  5,01. Tytuł pliku poprawiony z v1.48 (v1.49–v1.51 go nie podniosły).

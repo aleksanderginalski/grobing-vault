@@ -3,7 +3,7 @@ title: "Grobing — Current State"
 type: meta
 status: active
 created: 2026-10-05
-updated: 2026-10-22
+updated: 2026-10-23
 ---
 
 # Grobing — Current State
@@ -24,10 +24,14 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
      z ponawianiem, **pobieranie także przy zamkniętej aplikacji** (B1), stan planu w arkuszu i na liście. **Do wysłania: `1.0.1+4`** (paczka poza repo —
      *Autor, poza sesją*); potem w domu, na Wi-Fi: cmentarze z listy wyjazdowej i lista bez „· bez planu” ([[ISSUE-032-mvp-install]] → lista A). Plan
      zarządcy jako obraz i plany wbudowane — **po wizycie**, decyzja autora; zrzut mapy zarządcy w galerii to falsyfikator;
-  2. **„Połącz dwie osoby” i obrót** (do rozpisania przez `docs` przed `ui`): „Od” = osoba zaznaczona na drzewie; przybliżanie dwoma palcami nie kończy
+  2. ~~[[ISSUE-053-delete-cemetery-grave-person]]~~ — **zamknięte 2026-10-23**: *„wszystko, co można dodać, można też usunąć”* — cmentarz (z grobami), grób
+     (z osobami — zostają bez grobu), osoba z grobu, osoba, pinezka, ród; okno „co zniknie” i pasek „Cofnij” przez 4 s ([[ADR-022-deletion-with-undo-snapshot]]).
+     **Do wysłania: `1.0.2+5`** (zawiera `1.0.1+4`; paczka poza repo — *Autor, poza sesją*);
+  3. **[[ISSUE-054-merge-two-people]]** (`draft`) — scalenie dwóch wpisów tej samej osoby (B — duplikat); `ui` w trybie discovery;
+  4. **„Połącz dwie osoby” i obrót** (do rozpisania przez `docs` przed `ui`): „Od” = osoba zaznaczona na drzewie; przybliżanie dwoma palcami nie kończy
      ścieżki; ścieżka zostaje do „×” albo gestu wstecz; w trakcie ścieżki samo drzewo, bez suwaka czasu; przycisk pion/poziom w drzewie i na mapie migracji
      (cała aplikacja idzie na telewizor — autor: *„to nie bug, tylko feature”*). Odwraca decyzje [[ISSUE-039-connect-two-people]] (koniec podświetlenia);
-  3. **czytelność linii przy dużej rodzinie** (do rozpisania): *„linie się przecinają i nie wiem, kto jest synem kogo”* — `ui` w trybie discovery,
+  5. **czytelność linii przy dużej rodzinie** (do rozpisania): *„linie się przecinają i nie wiem, kto jest synem kogo”* — `ui` w trybie discovery,
      klikalny prototyp; kandydaci z `/pm`: mniej przecięć kolejnością w rzędzie, mostki nad liniami, kolor linii na parę rodziców, podświetlenie linii
      dotkniętej osoby ([[drzewo]]: „każda kolejność w rzędzie coś krzyżuje”).
 - **Po [[2026-10-16-retro-04]] (R1–R7, decyzja autora 2026-10-16) — kolejka przed instalacją MVP**, ustalona w `/pm` tego dnia (retro 4 →
@@ -118,9 +122,13 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     w trybie discovery, potem pozycje. **Po instalacji MVP** (decyzja autora 2026-10-14). Wieniec (d) przeszedł 2026-10-16 do kolejki jako
     [[ISSUE-044-family-wreaths]] (zamknięte 2026-10-17); „następne zdarzenie” z c) — 2026-10-18 jako [[ISSUE-050-next-event]]; animacje i zbliżenia zostają;
   - ~~[[ISSUE-026-link-existing-photo-to-person]]~~ — **wchłonięta 2026-10-18 przez [[ISSUE-048-portrait-photos]]** (AC-4, AC-5 tam) — zbudowane 2026-10-19;
-  - **usuwanie pustego grobu i pochówku** — w aplikacji nie ma usuwania grobów, osób ani pochówków (brief G7/C5). Od [[ISSUE-047-grave-first-then-people]]
+  - ~~**usuwanie pustego grobu i pochówku**~~ — **zaczęło przeszkadzać 2026-10-23 → [[ISSUE-053-delete-cemetery-grave-person]]**; w aplikacji nie ma usuwania grobów, osób ani pochówków (brief G7/C5). Od [[ISSUE-047-grave-first-then-people]]
     pusty grób z pomyłki zostaje na liście, a osoby z grobem nie da się dodać do drugiego (napis symboliczny). Kandydat na małą pozycję, gdy któreś zacznie
     przeszkadzać przy prawdziwych danych ([[cmentarz]] D38 *Obali* 2, [[grob]] D23 *Obali*);
+  - **z przeglądu `ui` [[ISSUE-053-delete-cemetery-grave-person]]** (kandydaci na drobne pozycje): pasek „Cofnij” przez 4 s nad przypiętym przyciskiem ekranu
+    (MINOR 2 — lista B w [[ISSUE-032-mvp-install]]); twarda spacja przed „—” w całej aplikacji (myślnik nie zaczyna linii); ✎ arkusza cmentarza na mapie przy
+    tekście 200% na 360 dp chowa się pod wyszukiwarką (arkusz wyższy niż miejsce — wejście do poprawy wtedy przez ekran cmentarza); „Cofnij” dla „Usuń związek”
+    (spójność z [[ADR-022-deletion-with-undo-snapshot]]);
   - [[NT-001-photograph-the-notes]]: zdjęcia zrobione (33). Zostało: zaszyfrowane miejsce, sprawdzenie
     kopii w WhatsAppie i otwarcie kopii — *Resolution*;
   - **wyszukiwanie w bazie cmentarzy — tematy do decyzji autora** ([[ISSUE-015-add-cemetery-from-database]] →
@@ -241,6 +249,11 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     `%TEMP%\claude\c--Programowanie-Grobing-grobing-agents\9a0adb1f-…\scratchpad\` — zrzuty `emu052\shots\` (publiczne cmentarze z bazy i cmentarz wsi z
     Twojej listy), stan emulatora `stan-po-052.tar` (dane testowe z Twoimi wpisami z emulatora), APK i dane demo sprzed pozycji (już wgrane z powrotem),
     skrypty pomiaru (`precheck.py` i `precheck.out` mają **nazwy Twoich cmentarzy**), logi — wszystko do kosza;
+  - **po ISSUE-053 (2026-10-23):** paczka do Play Console `C:\Programowanie\Grobing\_paczki\grobing-1.0.2+5.aab` — wgraj na testy wewnętrzne (README
+    `grobing-code` → *Wydanie*), potem aktualizuj na telefonie; jeśli `1.0.1+4` jeszcze nie poszła, wystarczy ta (ma wszystko z `1.0.1`); katalog sesji
+    `%TEMP%\claude\c--Programowanie-Grobing-grobing-agents\caa33748-…\scratchpad\` — makieta `makieta-053.html`, `emu053\` (zrzuty `shots\` z wymyślonymi
+    danymi — na kilku są **Twoje wpisy z emulatora**: 10, 30, 34, 35, 54; `stan-po-053.tar` — dane testowe z Twoimi wpisami z emulatora; `stan-przed-053.*` —
+    demo, już wgrane z powrotem), skrypty i logi testów — wszystko do kosza;
   - **repo nie mają pliku `LICENSE`** — kod można oglądać, ale nie wolno go używać. Licencję można dodać później.
 - **Emulatory (po ISSUE-033):** `Medium_Phone` — release v12 na danych testowych autora, kopia skonfigurowana od nowa z hasłem
   testowym (wymyślone, z sesji ISSUE-029), pliki `grobing-klucz-029.age` i `grobing-kopia-029.age` w Pobranych; grób „Jozef” ma
@@ -285,7 +298,10 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   `_pokaz` bez zmian. **Od instalacji prawdziwe dane żyją na telefonie — emulatory zostają na wymyślonych.** **Po ISSUE-052:** `Grobing_Restore` — z powrotem
   **demo** (APK `0.9.0`, 4001, i dane zapisane przed pozycją); na czas pozycji stan sprzed demo z `_pokaz` z buildem `1.0.1` i cmentarzami z bazy dodanymi przy przejściu
   (6 publicznych przez agenta, cmentarz wsi przez autora na stopie #2) — zapisany w katalogu sesji, plik w `_pokaz` bez zmian. Na API 36 `am kill` zapisuje wyjście jako „USER REQUESTED” i WorkManager
-  przestawia wtedy zadania przy następnym starcie — tak wyszło zamrożenie pracy w tle (README `grobing-code` → *Mapa cmentarza i sieć*).
+  przestawia wtedy zadania przy następnym starcie — tak wyszło zamrożenie pracy w tle (README `grobing-code` → *Mapa cmentarza i sieć*). **Po ISSUE-053:**
+  `Grobing_Restore` — z powrotem **demo** (APK `0.9.0`, 4001, i dane z 21.10); na czas pozycji stan sprzed demo z `_pokaz` z buildem `1.0.2` i wymyślonymi
+  partiami 2–4, częściowo usuniętymi testami i na stopie #2 — zapisany w katalogu sesji (`stan-po-053.tar`), plik w `_pokaz` bez zmian; „Czas na działanie”,
+  tekst i ekran domyślne.
 - **[[EPIC-002-wizyta]] gotowy do rozpisania na US** — pytanie „jak znaleźć grób bez pinezki” ma kierunek autora
   (2026-10-08): adres z wyszukiwarki zarządcy → kwatera zaznaczona według planu zarządcy → na miejscu plan offline i
   GPS → pinezka. Wejście do pierwszej US (mapa cmentarza): EPIC-002 → *Input from SPIKE-001*. Ekran: `ui` →
@@ -302,7 +318,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   paczki (decyzja autora 2026-10-07); treść wychodzących zmian sprawdza strażnik treści ([[ISSUE-020-content-guard]]) przy każdym `git add`/`commit`.
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **12** (ostatnie retro: [[2026-10-16-retro-04]]). **Retro 5 odłożone decyzją autora 2026-10-21 w `/pm`**
+- Zamknięte pozycje od ostatniego retro: **13** (ostatnie retro: [[2026-10-16-retro-04]]). **Retro 5 odłożone decyzją autora 2026-10-21 w `/pm`**
   (*„nie chcę robić retro”*) — licznik rośnie dalej, `pm` wraca z propozycją, gdy autor zechce. Co **10** → retro + pytanie o 3–5
   nośnych faktów (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**; podbija go `docs` przy zamknięciu, a zeruje go retro.
 - Do retro (zebrane po drodze, bez decyzji):
@@ -357,6 +373,15 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   - **Pierwsze wdrożenie testów wewnętrznych — „nie znaleziono elementu” przez ok. 30 min** ([[ISSUE-032-mvp-install]] → *Verification* → *Notes*):
     zgodne z Pomocą Play (link testera działa po kilku godzinach przy pierwszym wdrożeniu); konto i lista testerów były dobre. Kandydat na zdanie w README
     `grobing-code` → *Wydanie* (pisze `dev`) — przyda się przy drugim telefonie albo nowym testerze.
+  - **Zachowanie SDK inne niż w jego opisie** ([[ISSUE-053-delete-cemetery-grave-person]] → *Dev report* → *Found*): we Flutterze 3.41.1 `SnackBar` z akcją nie
+    znika wcale (`persist` domyślnie `true`), a opis klasy mówi tylko o TalkBack — wyszło na emulatorze, gdy pasek wisiał ponad minutę. Kandydat: przy nowym
+    widżecie SDK przejście `dev` mierzy jego czas i znikanie, zanim zaufa opisowi.
+  - **Test zależny od długości formularza** ([[ISSUE-053-delete-cemetery-grave-person]] → *Verification*): test dostępności zamieszkań przeciągał listę o 6 dp,
+    żeby przycisk nie był ucięty krawędzią; po dwóch przyciskach na końcu formularza przeciągnięcie zaczęło się na „Dodaj partnera” i otworzyło arkusz.
+    Kandydat: testy wytycznych dotyku na ekranie wysokim na całą treść, bez przewijania do „dobrego” miejsca.
+  - **MAJOR przy 200% z klawiaturą złapał dopiero przegląd `ui`** ([[ISSUE-053-delete-cemetery-grave-person]] → *Verification*): przejście `dev` przy 200% robiło
+    zrzut okna cmentarza bez klawiatury i z nią, ale nie spojrzało na zrzut z klawiaturą, a przyciski leżały na polach. Kandydat: na stałej liście przejścia
+    `dev` (retro 3, R3) „200% z klawiaturą” jako osobny stan każdego okna z polem.
 
 ## Parked (waiting on someone outside the session)
 - **cmentarz (którykolwiek z cmentarzy autora)** · przy 3 grobach, które autor zna: (a) dokładność GPS telefonu
@@ -376,6 +401,19 @@ Format wpisu: `źródło (babcia / cmentarz X) · pytanie bez danych rodziny · 
 ## Recently done
 > Tylko wpisy od ostatniego retro ([[2026-10-16-retro-04]]; zasada R5 z retro 3). Starsze są w plikach retro → *Archive*:
 > [[2026-10-16-retro-04]] · [[2026-10-13-retro-03]] · [[2026-10-08-retro-02]] · [[2026-10-06-retro-01]].
+
+- 2026-10-23 — [[ISSUE-053-delete-cemetery-grave-person]] zamknięte. **Wszystko, co można dodać, można też usunąć** (pytanie autora w trakcie wpisywania
+  prawdziwych danych; `/pm` 2026-10-23, dwie sesje):
+  - stop #1 runda 1 — K1/K2 bez odpowiedzi, uwaga autora do makiety (*„wszystko, co można dodać, można też usunąć”*) i zasada „jedna sesja — jedno zadanie”;
+    druga sesja: *„zrobiłbym od razu wszystko”*, *„gdy usuwamy grób to te osoby nie są usuwane a raczej tracą przypisany grób”*; spis z kodu — brakowało
+    usuwania osoby z grobu, pinezki i rodu ([[style-b]] reguła 16 → mapa usuwania); stop #1 runda 2 — *„tak K2 4s”*;
+  - [[ADR-022-deletion-with-undo-snapshot]] (mechanizm H: usunięcie z migawką, „Cofnij” przez 4 s, bez kosza); **bez zmiany bazy** (v15), `1.0.2+5`;
+    [[cmentarze]] v3.2 (D40, D41), [[grob]] v10.2 (D28–D30), [[wpis-osoby]] v7.2, [[cmentarz]] v9.3 (D43), [[wieniec]] v1.4 (D21, D22), [[style-b]] v1.52;
+  - przejście `dev` znalazło 3 usterki (pasek z akcją nie znikał we Flutterze 3.41, przyciski okna z prawej, „razem z planem” bez planu); przegląd `ui`:
+    1 MAJOR (okno cmentarza przy 200% z klawiaturą) i 4 MINOR poprawione przed stopem, MINOR 2 — lista B; „Cofnij” nie kładzie osoby w dwóch grobach (D23);
+  - stop #2 *„ok”* — kroki 1 i 3 ze śladem na emulatorze, krok 2 bez śladu; „Cofnij” autor pominął (agent i testy — odcisk identyczny).
+
+  Lista A i B w [[ISSUE-032-mvp-install]] → *Hand checks*. Testy: 1044 zielone. Werdykt `qa`: APPROVED (self-check, z uwagami). Licznik retro: 12 → 13.
 
 - 2026-10-23 — [[ISSUE-052-cemetery-search-and-patient-plan]] zamknięte. **Cmentarze, które da się znaleźć, i plan, który schodzi** (pierwsze użycie MVP:
   *„w ogóle nie zadziałała”*; `/pm` 2026-10-22):

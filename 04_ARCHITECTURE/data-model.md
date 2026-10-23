@@ -4,9 +4,9 @@ type: data-model
 status: active
 source: "PROJECT_BRIEF §Architecture → Data model (accepted by the author, 2026-10-05)"
 FR: ["[[FR-001-provenance]]", "[[FR-002-rodzina-jako-rekord]]", "[[FR-003-wiele-osob-w-grobie]]", "[[FR-004-data-z-dopiskiem]]", "[[FR-005-nazwisko-rodowe]]"]
-ADR: ["[[ADR-001-local-first]]", "[[ADR-006-claimed-value-separate-structures]]", "[[ADR-011-relation-claims-family-and-child-link]]", "[[ADR-012-person-sex-and-union-timeline]]", "[[ADR-013-person-background-on-photo-link]]", "[[ADR-014-cemetery-photo-on-media]]", "[[ADR-015-cemetery-plan-in-database]]", "[[ADR-016-sector-record-and-grave-link]]", "[[ADR-017-location-from-gnss-only]]", "[[ADR-020-residences-place-in-the-row]]", "[[ADR-021-clans-choice-at-the-person]]"]
+ADR: ["[[ADR-001-local-first]]", "[[ADR-006-claimed-value-separate-structures]]", "[[ADR-011-relation-claims-family-and-child-link]]", "[[ADR-012-person-sex-and-union-timeline]]", "[[ADR-013-person-background-on-photo-link]]", "[[ADR-014-cemetery-photo-on-media]]", "[[ADR-015-cemetery-plan-in-database]]", "[[ADR-016-sector-record-and-grave-link]]", "[[ADR-017-location-from-gnss-only]]", "[[ADR-020-residences-place-in-the-row]]", "[[ADR-021-clans-choice-at-the-person]]", "[[ADR-022-deletion-with-undo-snapshot]]"]
 created: 2026-10-05
-updated: 2026-10-22
+updated: 2026-10-23
 ---
 
 # Grobing — Data model
@@ -95,6 +95,8 @@ erDiagram
   spowolniłoby przepisywanie ~100 osób (G6).
 - **Gdzie żyje:** lokalny SQLite + zdjęcia w prywatnym magazynie aplikacji ([[ADR-001-local-first]]);
   kopia — [[ADR-004-backup-format-encryption-destination]]; eksportem danych jest kopia ([[ADR-018-export-is-the-backup]], 2026-10-16).
+- **Usuwanie** ([[ADR-022-deletion-with-undo-snapshot]], 2026-10-23) = wiersze skasowane w jednej transakcji z migawką do „Cofnij”, **bez kosza i bez
+  zmiany schematu**. Grób i cmentarz zabierają pochówki, nie osoby; osoba zabiera to, co jej (związek bez dwóch osób znika cały); „ja” się nie usuwa.
 
 ## In code
 
@@ -166,6 +168,10 @@ erDiagram
   koloru) i `persons.clan_id`, `persons.no_wreath`. Migracja v14→v15 to `createTable` + dwa `addColumn` — kopie v14 odtwarzają się bez rodów i bez
   wieńców. Wybór rodu i ród zapisują się od razu z wiersza „Wieniec rodu” w poprawie osoby, nie z „Zapisz” ([[wieniec]] D16); wieniec liczy
   `WreathGraph` (`lib/data/wreaths.dart`) przy odczycie drzewa. **Usuwania rodu nie ma** (D16).
+- **2026-10-23 — usuwanie, bez zmiany schematu** ([[ISSUE-053-delete-cemetery-grave-person]], [[ADR-022-deletion-with-undo-snapshot]]):
+  `lib/data/deletion.dart` usuwa cmentarz (z grobami), grób (z pochówkami), pochówek osoby, osobę, pinezkę i **ród** (od teraz jest — wieńce wracają
+  do reguły, [[wieniec]] D21); każde usunięcie zwraca migawkę, którą „Cofnij” wstawia z tymi samymi `id`. Kopia bez zmian formatu: usunięte wiersze
+  po prostu w niej nie występują.
 
 ## Known consequence — not a model change
 

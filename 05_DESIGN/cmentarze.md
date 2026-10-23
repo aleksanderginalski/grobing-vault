@@ -1,6 +1,6 @@
 ---
 screen: "Ekran główny — mapa Polski z cmentarzami rodziny"
-items: ["[[ISSUE-012-transcribe-grave-screen]]", "[[ISSUE-014-home-map-of-poland]]", "[[ISSUE-015-add-cemetery-from-database]]", "[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-022-app-skeleton-tabs-people-settings]]", "[[ISSUE-023-poland-map-r1-cemetery-photo]]", "[[ISSUE-027-cemetery-map-plan-photo-states]]", "[[ISSUE-052-cemetery-search-and-patient-plan]]"]
+items: ["[[ISSUE-012-transcribe-grave-screen]]", "[[ISSUE-014-home-map-of-poland]]", "[[ISSUE-015-add-cemetery-from-database]]", "[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-022-app-skeleton-tabs-people-settings]]", "[[ISSUE-023-poland-map-r1-cemetery-photo]]", "[[ISSUE-027-cemetery-map-plan-photo-states]]", "[[ISSUE-052-cemetery-search-and-patient-plan]]", "[[ISSUE-053-delete-cemetery-grave-person]]"]
 us: "[[US-002-przepisanie-grobu]]"
 journey-step: "UJ-001 · 1 (widok 1, M2) · warunek kroku 1: dodanie cmentarza (M1)"
 mockup: "katalog tymczasowy sesji 2026-10-06: makieta-mapa-polski.html (ramki 1–10, wersja 2 po stopie #1) · 2026-10-08: grobing-prototyp.html (SPIKE-004, klikalny)"
@@ -100,6 +100,19 @@ updated: 2026-10-23
 >   czytała się jak dwie miejscowości (element 12; `dev` → *Found on the emulator*). Nazwa, która razem z „· przy:” nie mieści się w linii,
 >   łamie się między swoimi słowami, nigdy w środku słowa.
 
+>
+> **Wersja 3.0 (2026-10-23, przed planem [[ISSUE-053-delete-cemetery-grave-person]]) — usuwanie pustego cmentarza.** Autor w `/pm`: *„gdzie ja mogę teraz usuwać cmentarze lub
+> osoby? (jeżeli się okaże, że się pomyliłem)”*, cel A — pusty cmentarz (*„oba”*). Element **15a**, D39; **K1/K2 → ✅ K2, pasek „Cofnij” przez 4 s** (stop #1 runda 2, decyzja autora: *„tak K2 4s”*; niżej warianty sprzed decyzji): **K1** — samo okno „Usunąć …?”, jak dziś „Usuń związek” ([[rodzina]]); **K2** — okno, a po usunięciu pasek „Usunięto …” z „Cofnij” przez ok. 8 s ([[style-b]] reguła 16). Rekomendacja `ui`: **K2**. Makieta: `makieta-053.html`, panele 1–3.
+>
+> **Wersja 3.1 (2026-10-23, ta sama pozycja — decyzje autora w `/pm` przed stopem #1):** *„zrobiłbym od razu wszystko”* — zasada *„wszystko, co można
+> dodać, można też usunąć”* ([[style-b]] reguła 16, mapa usuwania) — i *„gdy usuwamy grób to te osoby nie są usuwane a raczej tracą przypisany grób”*.
+> **„Usuń cmentarz” przy każdym cmentarzu** (15a, D40 zastępuje D39): groby znikają razem z pochówkami, a ich osoby zostają w aplikacji bez grobu.
+> K1/K2 → ✅ **K2, 4 s** (stop #1 runda 2, *„tak K2 4s”*). Makieta: `makieta-053.html` (sesja 2026-10-23), panele 1–3.
+>
+> **Wersja 3.2 (2026-10-23, przegląd `ui` zbudowanego ekranu [[ISSUE-053-delete-cemetery-grave-person]]):** odstępstwo 2 `dev` przyjęte — przyciski
+> okna poprawy **zawsze w dwóch liniach**: „Usuń cmentarz” w pierwszej z lewej, „Anuluj” · „Dalej” pod nią z prawej (15a, D41). Wygląd paska i jego
+> czas przy „Czasie na działanie” — [[style-b]] v1.52, reguła 16.
+
 ## Purpose
 Zbierający otwiera aplikację i widzi, **na których cmentarzach w Polsce leży jego rodzina**, ze zniczem na
 każdym. Wybiera, dokąd jechać albo który cmentarz przepisywać (UJ-001 krok 1, M2). Nowy cmentarz **wybiera
@@ -178,6 +191,7 @@ a cmentarze z OpenStreetMap są wbudowane w aplikację.
 | # | Element | Typ | Klawiatura / akcja | Domyślnie | Walidacja | Źródło |
 |---|---|---|---|---|---|---|
 | 15 | **Okno** „Nowy cmentarz” / „Popraw cmentarz”, z bazy nad podglądem (14), ręcznie i przy poprawie nad mapą: **Nazwa** (wielka litera na początku słów, `next`), **Miejscowość** (opcjonalna, `done`). Przyciski: z bazy „Anuluj” · **„Zapisz”** (punkt jest z bazy); ręcznie i przy poprawie „Anuluj” · **„Dalej”** → wskazanie. Fokus w pierwszym pustym polu, a gdy oba są wypełnione — w nazwie | okno dialogowe, pola z ramką w kolorze obrysu | „Zapisz” → zapis → mapa z nowym zniczem i arkuszem; błąd zapisu z bazy → podgląd (14) z komunikatem, a okno wraca z wpisanymi wartościami (D23); „Dalej” → 16; „Anuluj” → widok pod oknem (*Navigation*) | **z bazy:** nazwa i miejscowość z bazy, miejscowość **bez dzielnicy** („Warszawa”, a nie „Warszawa (Żoliborz)”: dzielnica rozróżnia wyniki, a w oknie jest Twój zapis); cmentarz bez nazwy → pusta nazwa z podpowiedzią „np. Cmentarz parafialny”. **Ręcznie:** nazwa z wyszukiwarki (wielka litera na początku słów). **Poprawa:** obecne wartości | nazwa wymagana: „Podaj nazwę cmentarza.” (kolor błędu + `error_outline`), okno zostaje | *What to build* 3 · D6, D20, D23 |
+| 15a | **„Usuń cmentarz” (v3.1)** — w oknie „Popraw cmentarz”, **przy każdym cmentarzu** (v3.0: tylko bez grobów — D40): przycisk tekstowy z ikoną `delete` w kolorze tekstu; przyciski okna **zawsze w dwóch liniach** (v3.2, D41): „Usuń cmentarz” w pierwszej **z lewej**, „Anuluj” · „Dalej” pod nią z prawej | przycisk tekstowy | → okno „Usunąć cmentarz?” ([[style-b]] reguła 16). **Bez grobów:** „„<nazwa>” zniknie z mapy razem ze swoim planem, kwaterami i zdjęciem.” (tylko to, co cmentarz ma). **Z grobami:** „„<nazwa>” zniknie z mapy razem z:” i lista tego, co ma — „N grobami, z ich zdjęciami, pinezkami i adresami”, „planem i kwaterami”, „zdjęciem cmentarza”; pod listą „Osoby z tych grobów (M) zostają w aplikacji — bez grobu.” (14 sp, tekst pomocniczy). „Anuluj” · „Usuń” → okno poprawy i arkusz się zamykają, mapa bez znicza; **K2:** pasek „Usunięto cmentarz „<nazwa>”.” + „Cofnij” → znicz, arkusz, groby z osobami, plan, kwatery i zdjęcia wracają. Błąd usunięcia → w oknie `error_outline` + „Nie udało się usunąć. Spróbuj jeszcze raz.”, okno zostaje | — | — | ISSUE-053 AC-1, AC-2 · [[style-b]] reguła 16 · D40 |
 | 16 | **Tryb wskazania:** pasek „Wskaż cmentarz na mapie” z `close` (→ okno 15); u góry karta: „Dotknij miejsca, gdzie leży <nazwa>. Mapę możesz przybliżyć.” (tekst pomocniczy). **Dotknięcie mapy stawia znicz w stylu wybranego, kolejne go przesuwa.** **Zapisane znicze są widoczne w zwykłym wyglądzie i nieaktywne**, żeby dało się postawić cmentarz obok innego (D21; przegląd `ui`, 2026-10-06). Wyszukiwarki nie ma | mapa w trybie wyboru | gesty jak 3 | przy poprawie: obecny znicz | — | *What to build* 3 |
 | 17 | Dół, na powierzchni: **„Zapisz bez punktu”** (tekstowy) · **„Zapisz”** (wypełniony; aktywny po postawieniu znicza, przy poprawie z punktem od razu). Przy poprawie „Zapisz bez punktu” zdejmuje znicz z mapy | przyciski | zapis przez API danych → mapa z wybranym zniczem (bez punktu: sam arkusz) | — | błąd zapisu: „Nie udało się zapisać. Spróbuj jeszcze raz.” (kolor błędu + ikona); tryb zostaje | DoD (kopia w tle) · [[style-b]] reguła 10 |
 
@@ -323,6 +337,8 @@ Ekran do wybierania; wpisywanie jest rzadkie. Rekordem jest **cmentarz**: ok. 10
 | (ISSUE-023) AC-4 — kopia sprzed zmiany schematu: dane pełne, cmentarze bez zdjęć | 6a · stan „wybrany” | po odtworzeniu kopii v8 każdy arkusz ma pole „Dodaj zdjęcie”; liczby i dane bez zmian sprawdza test |
 | (ISSUE-052) AC-1 — wynik przez okoliczną miejscowość mówi „przy: …” i stoi pod trafieniami w miejscowość karty | 12 · D35, D36 | „wymyslow” → karta „Cmentarz parafialny · Zmyślonka · przy: Wymyślów…”; cmentarze z miejscowością „Wymyślów” nad nią; „Wymyślów” wpisane w całości stawia całe słowo przed rdzeniem („Wymyślowice”) |
 | (ISSUE-052, decyzja projektowa) — przed wyjazdem widać, które cmentarze mają plan w telefonie | 6, 11 · D37 | wyszukiwarka z pustym tekstem → karty bez planu mają „· bez planu”; arkusz → „Plan offline” albo linia z powodem braku |
+| (ISSUE-053) AC-1 — pusty cmentarz usunięty razem z planem i zdjęciem; „Cofnij” przywraca | 15a · 4, 6, 11 · D39 | „Popraw cmentarz” → „Usuń cmentarz” → okno → „Usuń” → brak znicza i karty w „Twoich cmentarzach”; K2: „Cofnij” → znicz i arkusz z „Plan offline” i zdjęciem |
+| (ISSUE-053) AC-2 — cmentarz z grobami usunięty, osoby z grobów zostają bez grobu (v3.1) | 15a · D40 | Cmentarz Testowy z 2 grobami i 3 osobami → „Popraw cmentarz” → „Usuń cmentarz” → okno: „2 grobami, z ich zdjęciami, pinezkami i adresami” i „Osoby z tych grobów (3) zostają w aplikacji — bez grobu.” → „Usuń” → w Osobach te trzy osoby „bez grobu”, ich daty i rodzina bez zmian; K2: „Cofnij” → cmentarz z oboma grobami i osobami w nich |
 
 ## Decisions
 - **D1 — plik przepisany w miejscu**, nazwa zostaje (linki w zamkniętych pozycjach).
@@ -591,6 +607,20 @@ Ekran do wybierania; wpisywanie jest rzadkie. Rekordem jest **cmentarz**: ok. 10
     miejscowości w bazie ma ponad 12 znaków (pomiar przeglądu na wbudowanej bazie). Dlatego nazwa, która razem z „· przy:” nie mieści się w
     linii, łamie się między swoimi słowami — nigdy w środku słowa. *Obali:* autor przy dużym tekście nie łączy nazwy złamanej między słowami z
     „przy:” — wtedy „przy: …” w osobnej linii karty.
+- ~~**D39 — usuwanie tylko pustego cmentarza, z poprawy** (v3.0)~~ — **zastąpione w v3.1 przez D40** (decyzja autora przed stopem #1). Z D39 zostaje
+  jedno wejście pod ✎ ([[style-b]] reguła 15) i okno, które mówi, co zniknie. *Obali* D39 trafione: autor chce usuwać także cmentarz z grobami.
+- **D40 — usuwanie każdego cmentarza; osoby zostają bez grobu** (v3.1, 2026-10-23, ISSUE-053; autor w `/pm`: *„zrobiłbym od razu wszystko”* i *„gdy
+  usuwamy grób to te osoby nie są usuwane a raczej tracą przypisany grób”*). Cmentarz z grobami usuwa się jak grób z osobami ([[grob]] D28): znikają
+  groby z pochówkami, zdjęciami, pinezkami i adresami oraz plan, kwatery i zdjęcie cmentarza, a osoby z datami, rodziną i zdjęciami zostają — w Osobach
+  „bez grobu”, gotowe do „Dodaj osobę” w innym grobie ([[grob]] D22). Brief G7/C5 (*„a mis-tap at the cemetery must not erase a person”*) dalej jest
+  spełniony, bo osoba nie znika; grobów pilnuje okno z liczbami i „Cofnij” (K2). *Obali:* ten sam cmentarz dodany dwa razy, a autor woli przenieść
+  groby, niż wpisywać je od nowa — wtedy „Przenieś groby do…”, osobną pozycją.
+- **D41 — „Usuń cmentarz” w osobnej linii nad „Anuluj” · „Dalej”** (v3.2, 2026-10-23, przegląd `ui` [[ISSUE-053-delete-cemetery-grave-person]] —
+  odstępstwo 2 `dev` przyjęte). v3.1 stawiała trzy przyciski w jednym wierszu i zawijała go dopiero przy 200%, ale na emulatorze nie zmieściły się już
+  przy 100% na 411 dp, a zawinięty wiersz (`OverflowBar`) stawiał „Usuń cmentarz” z prawej, nad „Dalej”. Dwie linie zawsze trzymają usunięcie z lewej i
+  z dala od działania okna, przy każdym rozmiarze tekstu, i wyglądają tak samo w każdym oknie z usuwaniem ([[grob]] D30, [[style-b]] reguła 16).
+  Koszt: okno jest wyższe o jedną linię przycisków (48 dp), więc przy 200% z klawiaturą treść okna musi się przewijać. *Obali:* na stopie #2 autor
+  bierze osobną linię „Usuń cmentarz” za część treści okna, nie za przycisk — wtedy linia podziału nad przyciskami.
 
 ## Open
 brak. Rundy prototypu ([[SPIKE-004-mvp-flow-prototype]]) rozstrzygnęły zdjęcie w arkuszu (D28) i mapę (D29, D30).

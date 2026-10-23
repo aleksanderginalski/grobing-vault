@@ -1,16 +1,25 @@
 ---
 screen: "Wieniec rodu — wieniec przy portrecie i na drzewie, wybór rodu w „Popraw wpis”, ród (nazwa, kolor, wzór)"
-items: ["[[ISSUE-044-family-wreaths]]"]
+items: ["[[ISSUE-044-family-wreaths]]", "[[ISSUE-053-delete-cemetery-grave-person]]"]
 us: "n/a — pozycja z pomysłu autora ([[2026-10-14-opowiesc-rodziny-i-wieniec]] → d), bez US"
 journey-step: "UJ-001 · 5 (widok osoby, R4 prawy) · widok 5 (drzewo, tryb prezentacji)"
 mockup: "2026-10-16: wience-044.html (ISSUE-044, discovery: panele 1–6 — kształt K0–K3, linie L1–L2, kobieta po ślubie Ś1–Ś2, wybór rodu i O1–O2, gdzie widać G1–G3, rysunek T1–T2; paleta kolorów rodu) — katalog tymczasowy sesji `2aa5d062-…\\scratchpad` · 2026-10-17: pilot-grid.png (laur i dąb z DALL-E w kolorach rodu wokół portretu 104 dp i 44 dp, w pikselach telefonu) i wience-044-b.html (panele 7–9: 19 wzorów we wspólnym kadrze, Ś1/Ś3, kolor C0–C3) — katalog tymczasowy sesji `3c71c787-…\\scratchpad`"
-updated: 2026-10-17
+updated: 2026-10-23
 ---
 
 # Wieniec rodu — specyfikacja
 
 > Żywy plik: `ui` aktualizuje go przy każdej pozycji, która zmienia wieniec. Prawdą jest ten plik; prototyp i obrazy z DALL-E to
 > podgląd. Wytyczne: [[style-b]] (v1.33) · referencja: [[references]] → **R4 prawy** (gałązki wokół portretu).
+>
+> **v1.3 (2026-10-23, przed planem [[ISSUE-053-delete-cemetery-grave-person]]) — „Usuń ród”.** Zasada autora *„wszystko, co można dodać, można też
+> usunąć”* (*„zrobiłbym od razu wszystko”*, [[style-b]] reguła 16): ród dało się założyć i poprawić, ale nie usunąć — przy osobie było tylko „Bez
+> wieńca” i „Wróć do wieńca po ojcu”. Element **F7**, D21, *Navigation*. K1/K2 → ✅ **K2, 4 s** (stop #1 runda 2, *„tak K2 4s”*). Makieta: `makieta-053.html` (sesja
+> 2026-10-23), panele 16–18.
+>
+> **v1.4 (2026-10-23, przegląd `ui` zbudowanej [[ISSUE-053-delete-cemetery-grave-person]]):** odstępstwo 3 `dev` przyjęte — po „Usuń ród” zamyka się
+> też arkusz „Wieniec rodu”, a pasek „Cofnij” jest na formularzu poprawy wpisu, nad wierszem „Wieniec rodu”, który już pokazuje wieniec z reguły (F7,
+> *Navigation*, D22).
 >
 > **v1.2 (2026-10-17, stop #2 [[ISSUE-044-family-wreaths]] — decyzja autora D20):** ród odróżnia **para wzór + kolor**, nie sam wzór. „też: …” na kaflu
 > wzoru (F4) tylko wtedy, gdy inny ród ma ten wzór **w wybranym kolorze**; domyślny wzór nowego rodu, gdy każdy wzór ma już ród — pierwszy, którego nikt nie ma
@@ -48,7 +57,9 @@ Kobieta po ślubie nosi pół wieńca swojego rodu i pół rodu męża (D14).
     „Ród”** (F, poprawa rodu); „Bez wieńca” → zapis od razu, arkusz się zamyka;
   - „Zapisz ród” na ekranie „Nowy ród” → ród powstaje, ta osoba go dostaje, powrót do formularza (arkusz zamknięty); „Zapisz” na ekranie „Ród” →
     powrót do arkusza;
-  - „Wróć do wieńca po ojcu” (w wierszu) → zapis od razu.
+  - „Wróć do wieńca po ojcu” (w wierszu) → zapis od razu;
+  - „Usuń ród” na ekranie „Ród” (F7, v1.3) → okno → ~~powrót do arkusza E, bez tego rodu~~ **ekran „Ród” i arkusz E się zamykają, powrót do
+    formularza** z paskiem „Cofnij” (v1.4, D22); wiersz „Wieniec rodu” pokazuje to, co daje reguła bez niego.
 - Wstecz z arkusza i z ekranów F — bez zmian.
 
 ## Elements in order
@@ -130,6 +141,7 @@ węźle przycisk scalał się z tekstem i tracił cel 48 dp (*Dev report* → *Z
 | F4 | **Wzór** — etykieta „Wzór”; **siatka 3 kolumn**, 19 kafli (obrys 1 dp, promień 12 dp, ≥ 104 dp szerokie; wysokość z treści, rząd tak wysoki jak najwyższy kafel — v1.1, ok. 100 dp bez „też”; **tekst ≥ 150% — 2 kolumny**, nazwa wzoru i każda nazwa rodu w „też” w jednej linii, raczej trochę mniejsza niż złamana w środku słowa — v1.1, odstępstwo 2, D19); treść kafla wyśrodkowana: znak wieńca 72 dp w wybranym kolorze (A, z C3) · nazwa wzoru (13 sp, tekst) · „też: Zmyśleńscy” (13 sp, tekst pomocniczy), gdy inny ród ma ten wzór **w wybranym kolorze** (v1.2, D20; zmiana koloru w F3 przelicza „też”). Wybrany: obrys 2 dp w akcencie i `check` w akcencie w rogu, stan „zaznaczone” | wybór jednokrotny | dotknięcie → wybór | **pierwszy wzór, którego nie ma żaden ród**; gdy każdy wzór ma już ród — pierwszy, którego żaden ród nie ma w kolorze z F3 (v1.2, D20) | — |
 | F5 | **Kogo dotyczy** (14 sp, tekst pomocniczy): nowy — „Wieniec dostanie Jan Wymyślski, a po nim, po linii ojca, 4 osoby: Maria, Kasia, Tomek i Zosia.” (do 4 imion, potem „i N innych”; bez potomków — samo „Wieniec dostanie Jan Wymyślski.”); poprawa — „Zmiana dotyczy 7 osób.” (osoby z tym rodem w wieńcu, także w połowie) | tekst | — | — | — |
 | F6 | **„Zapisz ród”** (nowy) / **„Zapisz”** (poprawa) — przycisk wypełniony, przypięty na dole nad klawiaturą | przycisk | zapis od razu (ród, a przy nowym — także wybór dla tej osoby), powrót (*Navigation*) | — | błąd F2 → komunikat pod polem, fokus |
+| F7 | **„Usuń ród”** (v1.3) — tylko na ekranie „Ród” (poprawa), **ostatni element przewijanej treści**, pod F5, daleko od przypiętego „Zapisz”: przycisk tekstowy z ikoną `delete` w kolorze tekstu, cel ≥ 48 dp | przycisk tekstowy | → okno „Usunąć ród „<nazwa>”?” ([[style-b]] reguła 16): „Wieniec tego rodu zniknie u N osób (także jako połowa wieńca po ślubie). Kto go wybrał, dostanie wieniec po ojcu albo żaden.”; ród bez osób — „Nikt jeszcze nie ma tego wieńca.” · „Anuluj” · „Usuń” → ekran „Ród” i arkusz E się zamykają, powrót do formularza (v1.4, D22; v1.3: do arkusza E); **K2:** na formularzu pasek „Usunięto ród „<nazwa>”.” + „Cofnij” → ród i wybory osób wracają | — | błąd → w oknie „Nie udało się usunąć. Spróbuj jeszcze raz.”, okno zostaje |
 
 **Usuwania rodu nie ma** (D16). Błąd zapisu (E, F): komunikat u dołu ekranu „Nie udało się zapisać wieńca. Spróbuj jeszcze raz.”, nic się nie zmienia.
 
@@ -244,6 +256,7 @@ AC-1…AC-3 z [[ISSUE-044-family-wreaths]]; AC-4…AC-6 — **propozycje `ui` z 
 | AC-4 *(propozycja)* — kobieta po ślubie: pół panieński, pół po mężu | B4–B6 · A6 · C2 | Anna z d. Zmyśleńska, ślub z Józefem: lewa połowa laur w patynie, prawa dąb w starym złocie, „Ród: Zmyśleńscy · po mężu Wymyślscy”; jej syn Jan — cały dąb |
 | AC-5 *(propozycja)* — wieńce na drzewie i w trybie prezentacji, pary się nie nakładają | D1–D3 | drzewo z wieńcami: 96 dp na osobę, linia pary widoczna między wieńcami; tryb prezentacji — te same wieńce |
 | AC-6 *(propozycja)* — zmiana koloru albo wzoru rodu zmienia go u wszystkich | F (poprawa) · E2 ✎ | ✎ przy Wymyślscy → kolor Miedź → „Zmiana dotyczy 7 osób.” → u Józefa, Jana i połowie Anny dąb w miedzi |
+| ISSUE-053 AC-8 — ród usunięty: wieńce wracają do reguły; „Cofnij” przywraca (v1.3) | F7 · E2 · B2 · D21 | ród Przykładowscy wybrany u Antoniego, wieniec u 3 osób → arkusz E → ✎ przy rodzie → „Usuń ród” → „Wieniec tego rodu zniknie u 3 osób…” → „Usuń” → w arkuszu nie ma Przykładowskich; Antoni i jego dzieci z wieńcem po ojcu Antoniego albo bez; K2: „Cofnij” → ród i te same wieńce |
 
 ## Decisions
 - **D1 — rysunki wieńców z DALL-E** (2026-10-16, decyzja autora; było już w [[ISSUE-044-family-wreaths]] → *What to build*). Autor: *„to ma
@@ -310,6 +323,16 @@ AC-1…AC-3 z [[ISSUE-044-family-wreaths]]; AC-4…AC-6 — **propozycje `ui` z 
   jak w heraldyce jeden herb różnych rodzin (D2). Domyślny wybór nowego rodu dalej zaczyna od koloru i wzoru, których nie ma nikt (więcej różnorodności na
   drzewie); dopiero gdy wzory się skończą, bierze pierwszy wolny w danym kolorze. Tej samej pary aplikacja nie blokuje — „też” zostaje ostrzeżeniem, jak
   w D2. *Obali:* dwa rody z tym samym wzorem w podobnych kolorach (np. brąz i miedź) mylą się na drzewie — wtedy „też” także przy kolorze sąsiednim.
+- **D21 — ród usuwa się na ekranie „Ród”; osoby wracają do reguły** (2026-10-23, v1.3, ISSUE-053; zasada autora). Ród to wybór zapisany przy osobach, a
+  wieniec liczy się z drzewa ([[ADR-021-clans-choice-at-the-person]]), więc usunięcie rodu zdejmuje tylko ten wybór: każda osoba dostaje to, co dałaby
+  reguła bez niego (po ojcu albo nic), a „Bez wieńca” wybrane przy osobie zostaje. Przypadek: ród założony przez pomyłkę albo dwa razy (literówka w
+  nazwie). Wejście tylko z poprawy rodu, jak edycja ([[style-b]] reguła 15). *Obali:* autor chce połączyć dwa rody w jeden — wtedy „Połącz z…”, osobną
+  pozycją.
+- **D22 — po „Usuń ród” zamyka się też arkusz; pasek na formularzu** (v1.4, 2026-10-23, przegląd `ui` [[ISSUE-053-delete-cemetery-grave-person]] —
+  odstępstwo 3 `dev` przyjęte). Arkusz E jest modalny: pasek pokazany na ekranie pod nim leżałby pod arkuszem i „Cofnij” byłoby niewidoczne, a bez
+  widocznego „Cofnij” K2 nie działa. Na formularzu widać od razu skutek — wiersz „Wieniec rodu” z wieńcem z reguły albo „Brak” — więc „Cofnij” ma przy
+  czym stać. Koszt: kto po usunięciu rodu-duplikatu chce wybrać właściwy ród, otwiera arkusz jeszcze raz (+1 dotknięcie). *Obali:* autor na stopie #2
+  po usunięciu rodu za każdym razem od razu otwiera arkusz ponownie — wtedy arkusz zostaje otwarty, a pasek w samym arkuszu.
 
 ## Open
 **Pytań do autora o ekran — brak.** Punkty dla `planning` niżej — **wszystkie rozstrzygnięte** (v1.2, [[ISSUE-044-family-wreaths]]): obrazy — droga R

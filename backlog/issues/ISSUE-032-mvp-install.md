@@ -93,6 +93,8 @@ Warunki — każdy ma swój dom, tutaj tylko lista:
 - **gotowość na wyjazd:** cmentarze z listy wyjazdowej dodane w domu na Wi-Fi, aplikacja zamknięta; po kilkunastu minutach „Twoje cmentarze” bez
   „· bez planu”, tryb samolotowy → dwa z nich → plan jest — na telefonie niezrobione (na emulatorze przeszło dwa razy przy zamkniętej aplikacji)
   ([[ISSUE-052-cemetery-search-and-patient-plan]] → *Verification*; agent może sprawdzić przez USB, tylko odczyt).
+- aktualizacja do `1.0.2+5` ze sklepu na telefonie (zawiera `1.0.1+4`) — dane i odcisk bez zmian, bez zmiany schematu
+  ([[ISSUE-053-delete-cemetery-grave-person]] → *Verification*).
 
 ### B — odczucie (w trakcie używania, bez bramki)
 
@@ -224,6 +226,19 @@ Warunki — każdy ma swój dom, tutaj tylko lista:
   `GrobingIcon.weight` 300 → 400; 9 ikon z arkusza autora (w tym trzy zakładki) i znicz — `THICKEN` w `tool/icons/build_symbols.py` i przebudowa fontu;
 - ikona aplikacji (znicz L1) na Motoroli — launcher producenta (maska, motyw) może różnić się od Pixel Launchera na emulatorze — nieprzetestowane na żywo.
 
+**Cmentarze — pobieranie planu** ([[ISSUE-052-cemetery-search-and-patient-plan]] → *Verification* → *Hand checks*)
+- praca w tle po **przesunięciu aplikacji z ostatnich** na telefonie — na emulatorze sprawdzona po zabiciu procesu; kiedy system uruchomi gotowe zadanie,
+  decyduje Android (raz 6+ min po ponowieniu);
+- przy tekście 200% na wąskim telefonie zaślepka planu pokazuje tylko „Pobieram plan cmentarza…” — znana luka ekranu (*Poza tą kolejnością* w
+  `CURRENT_STATE.md`); czy przeszkadza w ręce.
+
+**Usuwanie i „Cofnij”** ([[ISSUE-053-delete-cemetery-grave-person]] → *Verification* → *Stop #2*)
+- przeniesienie osoby do innego grobu („Usuń z grobu”, potem „Dodaj osobę” w dobrym grobie) — stop #2, krok 2: **ok bez śladu na urządzeniu**;
+- „Cofnij” w ręce — na stopie #2 nie dotknięte (agent na emulatorze i testy — tak, odcisk identyczny);
+- pasek „Cofnij” przy TalkBack (nie znika sam) — nieprzetestowane na żywo, tylko test widżetu;
+- pasek przez 4 s nad przypiętym przyciskiem ekranu („Dodaj grób”, przycisk arkusza grobu, „Zapisz” poprawy — MINOR przeglądu `ui`) — czy przeszkadza
+  w ręce.
+
 **Do decyzji autora, gdy zobaczy swoje cmentarze** (nie sprawdzenie, tylko wybór): grubość alejek i znicze, które nachodzą na
 siebie ([[cmentarz]] → *Open*, [[ISSUE-030-sector-on-a-visit]]).
 
@@ -238,12 +253,6 @@ siebie ([[cmentarz]] → *Open*, [[ISSUE-030-sector-on-a-visit]]).
 > **poza tą pozycją** — `pm` pyta o nie, gdy sklep zadziała; przyjdą jako aktualizacja ze sklepu przed wyjazdem.
 >
 > **Stop #1 — 2026-10-21, autor: *„tak”*:** D1 (najpierw wersja ze schematem v14), D2–D4 jak niżej, cztery zagrożenia (a)–(d) bez zmian.
-
-**Cmentarze — pobieranie planu** ([[ISSUE-052-cemetery-search-and-patient-plan]] → *Verification* → *Hand checks*)
-- praca w tle po **przesunięciu aplikacji z ostatnich** na telefonie — na emulatorze sprawdzona po zabiciu procesu; kiedy system uruchomi gotowe zadanie,
-  decyduje Android (raz 6+ min po ponowieniu);
-- przy tekście 200% na wąskim telefonie zaślepka planu pokazuje tylko „Pobieram plan cmentarza…” — znana luka ekranu (*Poza tą kolejnością* w
-  `CURRENT_STATE.md`); czy przeszkadza w ręce.
 
 ### Acceptance (z *Before install* i listy A — bez nowych decyzji)
 - **AC-1** (z [[ISSUE-041-google-play-and-safe-update]]) *Given* aplikacja ze sklepu z wymyślonymi danymi *When* aktualizacja ze sklepu bez zmiany
