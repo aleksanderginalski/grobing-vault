@@ -21,21 +21,20 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
 - **Po instalacji — pierwsze użycie z prawdziwymi danymi** (`/pm` 2026-10-22): drzewo przy rodzinie *„działało bardzo płynnie”*, cmentarze *„w ogóle
   nie zadziałały”*. Kolejka do wyjazdu na Wszystkie Święte (aktualizacje ze sklepu, bez zmiany bazy; decyzja autora — *„ok jestem ok z tym co piszesz”*):
   1. ~~[[ISSUE-052-cemetery-search-and-patient-plan]]~~ — **zamknięte 2026-10-23**: „· przy: …” i nowa kolejność w bazie cmentarzy, cierpliwe pobieranie
-     z ponawianiem, **pobieranie także przy zamkniętej aplikacji** (B1), stan planu w arkuszu i na liście. **Do wysłania: `1.0.1+4`** (paczka poza repo —
-     *Autor, poza sesją*); potem w domu, na Wi-Fi: cmentarze z listy wyjazdowej i lista bez „· bez planu” ([[ISSUE-032-mvp-install]] → lista A). Plan
+     z ponawianiem, **pobieranie także przy zamkniętej aplikacji** (B1), stan planu w arkuszu i na liście. **Wysłane w `1.0.4+7`** (2026-10-23); potem w domu, na Wi-Fi: cmentarze z listy wyjazdowej i lista bez „· bez planu” ([[ISSUE-032-mvp-install]] → lista A). Plan
      zarządcy jako obraz i plany wbudowane — **po wizycie**, decyzja autora; zrzut mapy zarządcy w galerii to falsyfikator;
   2. ~~[[ISSUE-053-delete-cemetery-grave-person]]~~ — **zamknięte 2026-10-23**: *„wszystko, co można dodać, można też usunąć”* — cmentarz (z grobami), grób
      (z osobami — zostają bez grobu), osoba z grobu, osoba, pinezka, ród; okno „co zniknie” i pasek „Cofnij” przez 4 s ([[ADR-022-deletion-with-undo-snapshot]]).
-     **Do wysłania: `1.0.2+5`** (zawiera `1.0.1+4`; paczka poza repo — *Autor, poza sesją*);
+     **Wysłane w `1.0.4+7`** (2026-10-23);
   3. ~~[[ISSUE-054-merge-two-people]]~~ — **wycofane 2026-10-23** (autor na panelu 1 discovery `ui`: *„nie nie robimy scalania - nie potrzebuje tego”*);
      nic nie zbudowano; wraca, gdy duplikat osoby przeszkodzi przy prawdziwych danych;
   4. ~~[[ISSUE-055-connect-from-the-tree-and-rotate]]~~ — **zamknięte 2026-10-23**: „Od” = osoba w środku, ścieżka zostaje do gestu wstecz (bez „×”), w trakcie
-     samo drzewo z banerem, po wyjściu rok sprzed ścieżki; przycisk „Obróć” i układ poziomy bez zakładek dla drzewa i mapy ([[drzewo]] D76–D82). **Do wysłania:
-     `1.0.3+6`** (zawiera `1.0.1+4` i `1.0.2+5`; paczka poza repo — *Autor, poza sesją*);
+     samo drzewo z banerem, po wyjściu rok sprzed ścieżki; przycisk „Obróć” i układ poziomy bez zakładek dla drzewa i mapy ([[drzewo]] D76–D82). **Wysłane w
+     `1.0.4+7`** (2026-10-23);
   5. ~~[[ISSUE-056-tree-lines-readable]]~~ — **zamknięte 2026-10-23**: czytelność linii przy dużej rodzinie (*„linie się przecinają i nie wiem, kto jest
      synem kogo”*, cel „całe drzewo”) — **mostek łukiem** w każdym przecięciu kreski z cudzą szyną, piętra szyn według przecięć, nikt się nie przesuwa
-     ([[drzewo]] D83–D86; autor na prototypie: *„mostków - łuk, bez osobnych kolorów dla rodzin”*). **Do wysłania: `1.0.4+7`** (zawiera `1.0.1`–`1.0.3`;
-     paczka poza repo — *Autor, poza sesją*);
+     ([[drzewo]] D83–D86; autor na prototypie: *„mostków - łuk, bez osobnych kolorów dla rodzin”*). **`1.0.4+7` w Play Console 2026-10-23** (zawiera
+     `1.0.1`–`1.0.3`; autor: *„ok zrobione”* — wgranie i aktualizacja na telefonie, bez śladu po stronie agenta);
   6. **opowieść rodziny na drzewie** — animacje i zbliżenia z [[2026-10-14-opowiesc-rodziny-i-wieniec]] (INBOX; wieniec i „następne zdarzenie” już zbudowane);
      najpierw prototyp `ui` w trybie discovery, potem pozycje.
 
@@ -184,8 +183,8 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   autor wpisuje w trakcie wyjazdu na Wszystkie Święte. Do 2026-10-16 obowiązywało „budowa bez terminu” (2026-10-05); przy wizytach autor robi zdjęcia nagrobków z lokalizacją →
   `TRACEABILITY.md` → *Open gaps* 2.
 - **Weryfikacja na emulatorze do MVP** (decyzja autora 2026-10-05). Na telefon trafi dopiero MVP, jako build **ze sklepu** (Google Play, testy
-  wewnętrzne — [[ISSUE-041-google-play-and-safe-update]]); wyjątki są w `DEFINITION_OF_DONE.md`. **Od 2026-10-22 na telefonie autora jest Grobing
-  1.0.0 (`versionCode` 3) ze sklepu** — następna wysyłka ma numer 4 lub wyższy (README `grobing-code` → *Wydanie*); w Play Console jest aplikacja
+  wewnętrzne — [[ISSUE-041-google-play-and-safe-update]]); wyjątki są w `DEFINITION_OF_DONE.md`. **Od 2026-10-23 w Play Console jest Grobing
+  1.0.4 (`versionCode` 7)** — autor: *„ok zrobione”* (2026-10-22 na telefon poszła 1.0.0, `versionCode` 3); następna wysyłka ma numer 8 lub wyższy (README `grobing-code` → *Wydanie*); w Play Console jest aplikacja
   `com.grobing.app` w stanie „wersja robocza” z samymi testami wewnętrznymi, autor jedynym testerem.
 - **Autor, poza sesją:**
   - kopia klucza wydania (`.jks` + oba hasła) w zaszyfrowanym miejscu — **po [[ISSUE-041-google-play-and-safe-update]] nie blokuje** (retro 4): klucz
@@ -250,24 +249,20 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     `%TEMP%\claude\c--Programowanie-Grobing-grobing-agents\c601027a-…\scratchpad\` — zrzuty `shots032\` (emulator i telefon; na zrzutach z telefonu i z
     „Zdjęć w aplikacji” są **Twoje wpisy**), `emu032\` (APK i dane demo sprzed pozycji, kopia próbna `*-032.age` z hasłem testowym — wymyślone dane i
     Twoje wpisy z emulatora), skrypty i logi — wszystko do kosza; na telefonie możesz wyłączyć *Opcje programisty → Debugowanie USB*;
-  - **po ISSUE-052 (2026-10-23):** paczka do Play Console `C:\Programowanie\Grobing\_paczki\grobing-1.0.1+4.aab` — wgraj na testy wewnętrzne
-    (README `grobing-code` → *Wydanie*), potem aktualizuj na telefonie; katalog sesji
+  - **po ISSUE-052 (2026-10-23):** paczka `grobing-1.0.1+4.aab` — niepotrzebna (wysłana `1.0.4+7`), do kosza; katalog sesji
     `%TEMP%\claude\c--Programowanie-Grobing-grobing-agents\9a0adb1f-…\scratchpad\` — zrzuty `emu052\shots\` (publiczne cmentarze z bazy i cmentarz wsi z
     Twojej listy), stan emulatora `stan-po-052.tar` (dane testowe z Twoimi wpisami z emulatora), APK i dane demo sprzed pozycji (już wgrane z powrotem),
     skrypty pomiaru (`precheck.py` i `precheck.out` mają **nazwy Twoich cmentarzy**), logi — wszystko do kosza;
-  - **po ISSUE-053 (2026-10-23):** paczka do Play Console `C:\Programowanie\Grobing\_paczki\grobing-1.0.2+5.aab` — wgraj na testy wewnętrzne (README
-    `grobing-code` → *Wydanie*), potem aktualizuj na telefonie; jeśli `1.0.1+4` jeszcze nie poszła, wystarczy ta (ma wszystko z `1.0.1`); katalog sesji
+  - **po ISSUE-053 (2026-10-23):** paczka `grobing-1.0.2+5.aab` — niepotrzebna (wysłana `1.0.4+7`), do kosza; katalog sesji
     `%TEMP%\claude\c--Programowanie-Grobing-grobing-agents\caa33748-…\scratchpad\` — makieta `makieta-053.html`, `emu053\` (zrzuty `shots\` z wymyślonymi
     danymi — na kilku są **Twoje wpisy z emulatora**: 10, 30, 34, 35, 54; `stan-po-053.tar` — dane testowe z Twoimi wpisami z emulatora; `stan-przed-053.*` —
     demo, już wgrane z powrotem), skrypty i logi testów — wszystko do kosza;
-  - **po ISSUE-055 (2026-10-23):** paczka do Play Console `C:\Programowanie\Grobing\_paczki\grobing-1.0.3+6.aab` — wgraj na testy wewnętrzne (README
-    `grobing-code` → *Wydanie*), potem aktualizuj na telefonie; zawiera wszystko z `1.0.1` i `1.0.2`, więc wystarczy ta jedna. Katalog sesji
+  - **po ISSUE-055 (2026-10-23):** paczka `grobing-1.0.3+6.aab` — niepotrzebna (wysłana `1.0.4+7`), do kosza. Katalog sesji
     `%TEMP%\claude\c--Programowanie-Grobing-grobing-agents\8d325e2e-…\scratchpad\` — prototyp `prototyp-055.html`, `emu055\` (zrzuty z wymyślonymi danymi — na
     `19` i `22` nazwa miasta z danych demo, na `12a` **Twój wpis z emulatora**; `stan-po-055.tar` — dane testowe sprzed demo z przejścia; `stan-przed-055-demo.*` —
     demo, już wgrane z powrotem), `fb\` (próbna przebudowa fontu), skrypty — wszystko do kosza;
-  - **po ISSUE-056 (2026-10-23):** paczka do Play Console `C:\Programowanie\Grobing\_paczki\grobing-1.0.4+7.aab` — wgraj na testy wewnętrzne (README
-    `grobing-code` → *Wydanie*), potem aktualizuj na telefonie; zawiera wszystko z `1.0.1`–`1.0.3`, więc wystarczy ta jedna (wcześniejsze `.aab` z `_paczki` — do kosza po
-    wgraniu). Katalog sesji `%TEMP%\claude\c--Programowanie-Grobing-grobing-agents\6d4e489c-…\` — **`images\` ma Twój zrzut drzewa z telefonu z prawdziwą rodziną**
+  - **po ISSUE-056 (2026-10-23):** paczka `grobing-1.0.4+7.aab` — **wgrana do Play Console** (autor: *„ok zrobione”*); w `_paczki` możesz ją zostawić jako
+    ostatnią wysłaną, starsze `.aab` — do kosza. Katalog sesji `%TEMP%\claude\c--Programowanie-Grobing-grobing-agents\6d4e489c-…\` — **`images\` ma Twój zrzut drzewa z telefonu z prawdziwą rodziną**
     (imiona, profilowe); w `scratchpad\`: prototyp `prototyp-056.html`, sonda `probe056\` (wymyślona rodzina), `emu056\` (APK, stan demo sprzed pozycji — już wgrany z
     powrotem; `stan-po-056.tar` — dane testowe z Twoimi wpisami z emulatora; zrzuty — na `10-list.png` **Twoje imię i nazwisko z wpisu na emulatorze**), `shots056\`,
     `uirev056\`, `chr056\`, `ref\` — wszystko do kosza;
