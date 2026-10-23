@@ -247,6 +247,10 @@ Warunki — każdy ma swój dom, tutaj tylko lista:
   `MainActivity`, sprawdzone tylko na emulatorze — 12 z 12) — nieprzetestowane na żywo;
 - TalkBack: ścieżka bez „×”, wyjście „wstecz” czytnika — nieprzetestowane na żywo.
 
+**Mostki na liniach drzewa** ([[ISSUE-056-tree-lines-readable]] → *Verification* → *For ISSUE-032 → Hand checks*)
+- telefon, prawdziwa rodzina, po aktualizacji `1.0.4+7`: miejsce ze zrzutu z 2026-10-23 (niebieskie linie przez cudze szyny) — czy z mostkami wiesz, kto jest czyim
+  dzieckiem — krok z telefonem, poza stopem #2 (na emulatorze „tak widać” ze śladem).
+
 **Do decyzji autora, gdy zobaczy swoje cmentarze** (nie sprawdzenie, tylko wybór): grubość alejek i znicze, które nachodzą na
 siebie ([[cmentarz]] → *Open*, [[ISSUE-030-sector-on-a-visit]]).
 

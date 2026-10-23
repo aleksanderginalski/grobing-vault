@@ -1,5 +1,5 @@
 ---
-title: "Style B — visual guidelines (v1.54)"
+title: "Style B — visual guidelines (v1.55)"
 type: design-guidelines
 status: active
 owner: ui
@@ -36,7 +36,7 @@ autor, też używają znicza (reguła 8).
 | obrys *(nowy — wchodzi z [[ISSUE-014-home-map-of-poland]], zaproponowany przy [[ISSUE-012-transcribe-grave-screen]])* | proponowany `GrobingColors.outline` | ramka pola wpisu, przycisk z obrysem, linia podziału, granica na mapie (reguła 13) | tekst |
 | błąd *(nowy — wchodzi z ISSUE-014)* | proponowany `GrobingColors.error` | komunikat błędu pod polem, jego ikona, ramka pola z błędem | cokolwiek poza błędem |
 | woda *(nowa, v1.13 — [[SPIKE-004-mvp-flow-prototype]] D6, [[cmentarze]] D29)* | `GrobingColors.water` (morze, jeziora) i `GrobingColors.waterLine` (rzeki) — w `theme.dart` od [[ISSUE-023-poland-map-r1-cemetery-photo]] (v1.20) | woda na mapie Polski jak w R1 | cokolwiek poza mapą; nośnik znaczenia (to dekoracja — brzeg niesie granica) |
-| relacje w drzewie *(nowa, v1.16 — [[SPIKE-004-mvp-flow-prototype]] D20, [[drzewo]] D3)* | proponowane `GrobingColors.relParentChild` (`#8FB3C9`, rodzic–dziecko) i `GrobingColors.relPartners` (`#D39BB0`, partnerzy: ciągła — małżeństwo, przerywana — razem); **do `theme.dart` wchodzą z [[ISSUE-024-person-view]]** (mini-drzewo w [[osoba]] — pierwsze użycie, v1.18) | linie relacji w drzewie i mini-drzewie; **ślad dalszej rodziny** w drzewie — te same kolory przy kryciu 60%, kreska przerywana 3/3, 14 dp ([[drzewo]] D9, v1.24) | jedyny nośnik rodzaju relacji — kształt i styl linii niosą go też (SC 1.4.1); **bez legendy** (decyzja autora, SPIKE-004 D25); cokolwiek poza liniami relacji |
+| relacje w drzewie *(nowa, v1.16 — [[SPIKE-004-mvp-flow-prototype]] D20, [[drzewo]] D3)* | proponowane `GrobingColors.relParentChild` (`#8FB3C9`, rodzic–dziecko) i `GrobingColors.relPartners` (`#D39BB0`, partnerzy: ciągła — małżeństwo, przerywana — razem); **do `theme.dart` wchodzą z [[ISSUE-024-person-view]]** (mini-drzewo w [[osoba]] — pierwsze użycie, v1.18) | linie relacji w drzewie i mini-drzewie; **ślad dalszej rodziny** w drzewie — te same kolory przy kryciu 60%, kreska przerywana 3/3, 14 dp ([[drzewo]] D9, v1.24); **mostek** — pionowa kreska rodzic–dziecko przeskakuje cudzą szynę łukiem 4 dp, w swoim kolorze i grubości; przecięcie to nie połączenie ([[drzewo]] D83, v1.55) | jedyny nośnik rodzaju relacji — kształt i styl linii niosą go też (SC 1.4.1); **bez legendy** (decyzja autora, SPIKE-004 D25); cokolwiek poza liniami relacji |
 | kolory rodu *(nowe, v1.33 — [[wieniec]] D6, D15)* | proponowane, 12 wartości z [[wieniec]] → *Style B rules applied* (stare złoto, brąz, miedź, srebro, kość słoniowa, grafit, patyna, oliwka, błękit, lawenda, wrzos, rubin); **do `theme.dart` wchodzą z [[ISSUE-044-family-wreaths]]** | **wyłącznie wieniec rodu** — wzór w kolorze rodu z cieniowaniem C3 (najciemniej 80% koloru) i obwódką w kolorze tła, w widoku osoby, na drzewie, w znaku wieńca w formularzu, w kole wyboru koloru | działania, tekst, wybór i fokus (to akcent); jedyny nośnik rodu — niesie go wzór i podpis „Ród: …” (SC 1.4.1); kolor dowolny spoza palety |
 
 ### State colours — beyond the accent
@@ -754,3 +754,6 @@ telefon) → grubość 400 z zaokrąglonymi końcami, jednym parametrem.
   jako zapis tego, co zbudowano.
 - 2026-10-23 — **v1.54** ([[ISSUE-055-connect-from-the-tree-and-rotate]], decyzja autora na prototypie — L4): reguła 12 — dolny pasek ukryty na drzewie i mapie migracji
   w poziomie; przełącznik i ikony nad drzewem ([[drzewo]] 12, D77).
+- 2026-10-23 — **v1.55** ([[ISSUE-056-tree-lines-readable]], decyzja autora na prototypie — *„mostków - łuk, bez osobnych kolorów dla rodzin”*): rola linii relacji —
+  **mostek**: pionowa kreska rodzic–dziecko przeskakuje cudzą szynę łukiem 4 dp ([[drzewo]] D83); kolor linii dalej niesie rodzaj relacji, nie rodzinę (D85). Tokeny bez
+  zmian.

@@ -32,13 +32,14 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   4. ~~[[ISSUE-055-connect-from-the-tree-and-rotate]]~~ — **zamknięte 2026-10-23**: „Od” = osoba w środku, ścieżka zostaje do gestu wstecz (bez „×”), w trakcie
      samo drzewo z banerem, po wyjściu rok sprzed ścieżki; przycisk „Obróć” i układ poziomy bez zakładek dla drzewa i mapy ([[drzewo]] D76–D82). **Do wysłania:
      `1.0.3+6`** (zawiera `1.0.1+4` i `1.0.2+5`; paczka poza repo — *Autor, poza sesją*);
-  5. **czytelność linii przy dużej rodzinie** (do rozpisania): *„linie się przecinają i nie wiem, kto jest synem kogo”* — `ui` w trybie discovery,
-     klikalny prototyp; kandydaci z `/pm`: mniej przecięć kolejnością w rzędzie, mostki nad liniami, kolor linii na parę rodziców, podświetlenie linii
-     dotkniętej osoby ([[drzewo]]: „każda kolejność w rzędzie coś krzyżuje”);
+  5. ~~[[ISSUE-056-tree-lines-readable]]~~ — **zamknięte 2026-10-23**: czytelność linii przy dużej rodzinie (*„linie się przecinają i nie wiem, kto jest
+     synem kogo”*, cel „całe drzewo”) — **mostek łukiem** w każdym przecięciu kreski z cudzą szyną, piętra szyn według przecięć, nikt się nie przesuwa
+     ([[drzewo]] D83–D86; autor na prototypie: *„mostków - łuk, bez osobnych kolorów dla rodzin”*). **Do wysłania: `1.0.4+7`** (zawiera `1.0.1`–`1.0.3`;
+     paczka poza repo — *Autor, poza sesją*);
   6. **opowieść rodziny na drzewie** — animacje i zbliżenia z [[2026-10-14-opowiesc-rodziny-i-wieniec]] (INBOX; wieniec i „następne zdarzenie” już zbudowane);
      najpierw prototyp `ui` w trybie discovery, potem pozycje.
 
-  **Kolejność autora 2026-10-23** (`/pm` po wycofaniu ISSUE-054): ~~4~~ → **5 → 6**. Reszta (ISSUE-051, rodzeństwo przyrodnie, drobne z przeglądów niżej) —
+  **Kolejność autora 2026-10-23** (`/pm` po wycofaniu ISSUE-054): ~~4~~ → ~~5~~ → **6**. Reszta (ISSUE-051, rodzeństwo przyrodnie, drobne z przeglądów niżej) —
   *Poza tą kolejnością*, bez miejsca. **Tekst 200% pomijamy** (autor: *„tak na prawdę możemy ignorować te teksty 200%”*) — kandydaci o 200% skreśleni niżej, a od wariantu **B**
   (decyzja autora tego dnia) także przejście `dev` i przegląd `ui` nie sprawdzają 200% ([[style-b]] v1.53 → *Thresholds*).
 - **Po [[2026-10-16-retro-04]] (R1–R7, decyzja autora 2026-10-16) — kolejka przed instalacją MVP**, ustalona w `/pm` tego dnia (retro 4 →
@@ -90,9 +91,9 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
 - **Agent `architect` — nie teraz** (retro 4, R7): sygnał „pierwszy ADR zastąpiony” ([[ADR-018-export-is-the-backup]]) rozliczony; nowy warunek w `CLAUDE.md` →
   *Na sygnał*.
 
-  Specyfikacja: [[drzewo]] v1.30, [[osoba]] v2.9, [[wpis-osoby]] v6, [[wieniec]] v1.2, [[zamieszkanie]] v1.4, [[mapa-migracji]] v1.7, [[grob]] v9.1,
+  Specyfikacja: [[drzewo]] v1.31, [[osoba]] v2.9, [[wpis-osoby]] v6, [[wieniec]] v1.2, [[zamieszkanie]] v1.4, [[mapa-migracji]] v1.7, [[grob]] v9.1,
   [[cmentarz]] v8, [[osoby]] v3.1, [[rodzina]] v2.2, [[zdjecia-osoby]] v1.6, [[zdjecie]] v1.7, [[kadr-profilowego]] v1.3, [[zdjecia-w-aplikacji]] v1.2,
-  [[style-b]] v1.54.
+  [[style-b]] v1.55.
 - **Prawdziwe dane rodziny dopiero po instalacji MVP** (decyzja autora 2026-10-08 w `/pm`): budujemy produkt gotowy do
   instalacji na telefonie (MVP = brief §5, M1–M11); do tego czasu autor ocenia aplikację na wymyślonych danych. **Instalacja zrobiona 2026-10-22**
   ([[ISSUE-032-mvp-install]]) — od teraz prawdziwe dane są w telefonie, a emulatory dalej tylko na wymyślonych. Rozmowa z babcią
@@ -264,6 +265,12 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     `%TEMP%\claude\c--Programowanie-Grobing-grobing-agents\8d325e2e-…\scratchpad\` — prototyp `prototyp-055.html`, `emu055\` (zrzuty z wymyślonymi danymi — na
     `19` i `22` nazwa miasta z danych demo, na `12a` **Twój wpis z emulatora**; `stan-po-055.tar` — dane testowe sprzed demo z przejścia; `stan-przed-055-demo.*` —
     demo, już wgrane z powrotem), `fb\` (próbna przebudowa fontu), skrypty — wszystko do kosza;
+  - **po ISSUE-056 (2026-10-23):** paczka do Play Console `C:\Programowanie\Grobing\_paczki\grobing-1.0.4+7.aab` — wgraj na testy wewnętrzne (README
+    `grobing-code` → *Wydanie*), potem aktualizuj na telefonie; zawiera wszystko z `1.0.1`–`1.0.3`, więc wystarczy ta jedna (wcześniejsze `.aab` z `_paczki` — do kosza po
+    wgraniu). Katalog sesji `%TEMP%\claude\c--Programowanie-Grobing-grobing-agents\6d4e489c-…\` — **`images\` ma Twój zrzut drzewa z telefonu z prawdziwą rodziną**
+    (imiona, profilowe); w `scratchpad\`: prototyp `prototyp-056.html`, sonda `probe056\` (wymyślona rodzina), `emu056\` (APK, stan demo sprzed pozycji — już wgrany z
+    powrotem; `stan-po-056.tar` — dane testowe z Twoimi wpisami z emulatora; zrzuty — na `10-list.png` **Twoje imię i nazwisko z wpisu na emulatorze**), `shots056\`,
+    `uirev056\`, `chr056\`, `ref\` — wszystko do kosza;
   - **repo nie mają pliku `LICENSE`** — kod można oglądać, ale nie wolno go używać. Licencję można dodać później.
 - **Emulatory (po ISSUE-033):** `Medium_Phone` — release v12 na danych testowych autora, kopia skonfigurowana od nowa z hasłem
   testowym (wymyślone, z sesji ISSUE-029), pliki `grobing-klucz-029.age` i `grobing-kopia-029.age` w Pobranych; grób „Jozef” ma
@@ -312,7 +319,8 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   `Grobing_Restore` — z powrotem **demo** (APK `0.9.0`, 4001, i dane z 21.10); na czas pozycji stan sprzed demo z `_pokaz` z buildem `1.0.2` i wymyślonymi
   partiami 2–4, częściowo usuniętymi testami i na stopie #2 — zapisany w katalogu sesji (`stan-po-053.tar`), plik w `_pokaz` bez zmian; „Czas na działanie”,
   tekst i ekran domyślne. **Po ISSUE-055:** `Grobing_Restore` — z powrotem **demo** (APK `0.9.0`, 4001, i dane z 21.10), autoobracanie włączone jak przed pozycją;
-  na czas pozycji stan sprzed demo z `_pokaz` z buildem `1.0.3` — zapisany w katalogu sesji (`stan-po-055.tar`), plik w `_pokaz` bez zmian.
+  na czas pozycji stan sprzed demo z `_pokaz` z buildem `1.0.3` — zapisany w katalogu sesji (`stan-po-055.tar`), plik w `_pokaz` bez zmian. **Po ISSUE-056:** `Grobing_Restore` — z powrotem **demo** (APK `0.9.0`, 4001, i dane z
+  21.10); na czas pozycji stan sprzed demo z `_pokaz` z buildem `1.0.4` (profile, `FRAME_LOG`) — zapisany w katalogu sesji (`stan-po-056.tar`), plik w `_pokaz` bez zmian.
 - **[[EPIC-002-wizyta]] gotowy do rozpisania na US** — pytanie „jak znaleźć grób bez pinezki” ma kierunek autora
   (2026-10-08): adres z wyszukiwarki zarządcy → kwatera zaznaczona według planu zarządcy → na miejscu plan offline i
   GPS → pinezka. Wejście do pierwszej US (mapa cmentarza): EPIC-002 → *Input from SPIKE-001*. Ekran: `ui` →
@@ -329,7 +337,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   paczki (decyzja autora 2026-10-07); treść wychodzących zmian sprawdza strażnik treści ([[ISSUE-020-content-guard]]) przy każdym `git add`/`commit`.
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **14** (ostatnie retro: [[2026-10-16-retro-04]]). **Retro 5 odłożone decyzją autora 2026-10-21 w `/pm`**
+- Zamknięte pozycje od ostatniego retro: **15** (ostatnie retro: [[2026-10-16-retro-04]]). **Retro 5 odłożone decyzją autora 2026-10-21 w `/pm`**
   (*„nie chcę robić retro”*) — licznik rośnie dalej, `pm` wraca z propozycją, gdy autor zechce. Co **10** → retro + pytanie o 3–5
   nośnych faktów (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**; podbija go `docs` przy zamknięciu, a zeruje go retro.
 - Do retro (zebrane po drodze, bez decyzji):
@@ -409,6 +417,13 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   - **Prototyp odwrócił „poziomo” przed kodem** ([[ISSUE-055-connect-from-the-tree-and-rotate]]): pytanie o cel obrotu (trzy odpowiedzi autora) zamieniło
     „przycisk” w „układ poziomy”, a panel z podglądem telewizora — L1 na L4 (*„więcej miejsca na drzewo”*). Pięć paneli i siedem decyzji w jednej sesji
     przed planem; potwierdza R6 z retro 2 i R1 z retro 4.
+  - **Miara algorytmu ≠ to, co widzi oko** ([[ISSUE-056-tree-lines-readable]] → *Open for `ui`* 1): układ drzewa od SPIKE-002 zmniejszał przecięcia prostych od
+    rodziców do dziecka, a ekran rysował szyny — na „Linii krwi” 3 vs 9. Złapała to sonda na kodzie aplikacji jako pierwszy krok `ui`, przed prototypem. Kandydat: gdy
+    algorytm optymalizuje jakąś liczbę, test liczy też to, co rysuje ekran.
+  - **Wersja w dwóch miejscach** ([[ISSUE-056-tree-lines-readable]] → *Dev report*): `dev` podbił `pubspec.yaml`, a `appVersion` w „O aplikacji” został na starej; złapał
+    test `qa`. Kandydat: README *Wydanie* wymienia obie linie albo `appVersion` bierze wersję z pakietu.
+  - **Angielskie etykiety w czacie** (stop #1 [[ISSUE-056-tree-lines-readable]]): autor — *„pisz do mnie po polsku nie angielsku”*; odpowiedzi miały angielskie nagłówki i
+    dziennik („Chain log”, „Scope diff”). Zapisane w pamięci agenta.
 
 ## Parked (waiting on someone outside the session)
 - **cmentarz (którykolwiek z cmentarzy autora)** · przy 3 grobach, które autor zna: (a) dokładność GPS telefonu
@@ -428,6 +443,19 @@ Format wpisu: `źródło (babcia / cmentarz X) · pytanie bez danych rodziny · 
 ## Recently done
 > Tylko wpisy od ostatniego retro ([[2026-10-16-retro-04]]; zasada R5 z retro 3). Starsze są w plikach retro → *Archive*:
 > [[2026-10-16-retro-04]] · [[2026-10-13-retro-03]] · [[2026-10-08-retro-02]] · [[2026-10-06-retro-01]].
+
+- 2026-10-23 — [[ISSUE-056-tree-lines-readable]] zamknięte. **Mostki na liniach drzewa** (uwaga autora po pierwszym pokazie drzewa rodzinie: *„linie się
+  przecinają i nie wiem, kto jest synem kogo”*; pozycja 5 kolejki; cel z pytania R1 — „całe drzewo”, zrzut z telefonu → w pozycji tylko struktura):
+  - sonda `ui` na kodzie aplikacji: algorytm liczył 3 / 14 / 26 przecięć (proste od rodziców), ekran rysował 9 / 19 / 27 (szyny); wymyślona rodzina odtworzyła 4 szyny
+    ze zrzutu; prior art — zasady rysowania rodowodów (Tores, Barillot 2000), liczenie przecięć przy szynach (Kiel 2014), *line jumps* (draw.io, Visio);
+  - prototyp `prototyp-056.html` (dziś, mostki, kolor rodziny, nowa kolejność, telefon i telewizor); **autor: *„mostków - łuk, bez osobnych kolorów dla rodzin”*** —
+    [[drzewo]] v1.31 (D83–D86), [[style-b]] v1.55; nowa kolejność bez wyboru (przesuwała 12–35 osób);
+  - kod: piętra szyn według przecięć liczone raz na drzewo (suwak ich nie zmienia), łuk 4 dp nad cudzą szyną, jeden nad sąsiednimi, ścieżka tym samym łukiem;
+    `drawnCrossings` 9 / 17 / 22, miejsca osób bez zmian; **bez zmiany bazy** (v15), `1.0.4+7`;
+  - przegląd `ui`: 0 BLOCKER / 0 MAJOR / 2 MINOR (łuk ścieżki przy małej skali — przyjęty, D83 *Nie da*; zrzuty w przybliżeniu i przy 4 szynach — dorobione); klatki
+    bez regresji; stop #2 *„tak widać”* ze śladem na emulatorze.
+
+  Lista B w [[ISSUE-032-mvp-install]] → *Hand checks*. Testy: 1055 zielonych. Werdykt `qa`: APPROVED (self-check, z uwagami). Licznik retro: 14 → 15.
 
 - 2026-10-23 — [[ISSUE-055-connect-from-the-tree-and-rotate]] zamknięte. **„Połącz dwie osoby” od osoby z drzewa i obrót** (uwagi autora po pierwszym pokazie
   drzewa rodzinie, `/pm` 2026-10-22; pozycja 4 kolejki):
