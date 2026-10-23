@@ -27,7 +27,8 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   2. ~~[[ISSUE-053-delete-cemetery-grave-person]]~~ — **zamknięte 2026-10-23**: *„wszystko, co można dodać, można też usunąć”* — cmentarz (z grobami), grób
      (z osobami — zostają bez grobu), osoba z grobu, osoba, pinezka, ród; okno „co zniknie” i pasek „Cofnij” przez 4 s ([[ADR-022-deletion-with-undo-snapshot]]).
      **Do wysłania: `1.0.2+5`** (zawiera `1.0.1+4`; paczka poza repo — *Autor, poza sesją*);
-  3. **[[ISSUE-054-merge-two-people]]** (`draft`) — scalenie dwóch wpisów tej samej osoby (B — duplikat); `ui` w trybie discovery;
+  3. ~~[[ISSUE-054-merge-two-people]]~~ — **wycofane 2026-10-23** (autor na panelu 1 discovery `ui`: *„nie nie robimy scalania - nie potrzebuje tego”*);
+     nic nie zbudowano; wraca, gdy duplikat osoby przeszkodzi przy prawdziwych danych;
   4. **„Połącz dwie osoby” i obrót** (do rozpisania przez `docs` przed `ui`): „Od” = osoba zaznaczona na drzewie; przybliżanie dwoma palcami nie kończy
      ścieżki; ścieżka zostaje do „×” albo gestu wstecz; w trakcie ścieżki samo drzewo, bez suwaka czasu; przycisk pion/poziom w drzewie i na mapie migracji
      (cała aplikacja idzie na telewizor — autor: *„to nie bug, tylko feature”*). Odwraca decyzje [[ISSUE-039-connect-two-people]] (koniec podświetlenia);
@@ -382,6 +383,11 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   - **MAJOR przy 200% z klawiaturą złapał dopiero przegląd `ui`** ([[ISSUE-053-delete-cemetery-grave-person]] → *Verification*): przejście `dev` przy 200% robiło
     zrzut okna cmentarza bez klawiatury i z nią, ale nie spojrzało na zrzut z klawiaturą, a przyciski leżały na polach. Kandydat: na stałej liście przejścia
     `dev` (retro 3, R3) „200% z klawiaturą” jako osobny stan każdego okna z polem.
+  - **Zgoda na opcję agenta wzięta za cel — drugi raz po [[ISSUE-040-export-is-the-backup]]** ([[ISSUE-054-merge-two-people]], wycofana 2026-10-23): w `/pm`
+    przy ISSUE-053 autor wybrał „B — duplikat” z opcji `pm` (*„to co piszesz”*); `docs` zapisał pozycję, a w następnej sesji `pm` pominął pytanie o cel
+    (retro 4, R1), bo „cel już padł”. `ui` zbudował prototyp z 4 panelami i specyfikację; autor przy panelu 1: *„nie potrzebuje tego”*. Kandydat: gdy
+    źródłem pozycji jest zgoda autora na opcję zaproponowaną przez agenta, `pm` przed `ui` pyta raz, czy to już się zdarzyło albo jest potrzebne przed
+    najbliższym terminem — także gdy pozycja mówi, że cel padł.
 
 ## Parked (waiting on someone outside the session)
 - **cmentarz (którykolwiek z cmentarzy autora)** · przy 3 grobach, które autor zna: (a) dokładność GPS telefonu
@@ -401,6 +407,10 @@ Format wpisu: `źródło (babcia / cmentarz X) · pytanie bez danych rodziny · 
 ## Recently done
 > Tylko wpisy od ostatniego retro ([[2026-10-16-retro-04]]; zasada R5 z retro 3). Starsze są w plikach retro → *Archive*:
 > [[2026-10-16-retro-04]] · [[2026-10-13-retro-03]] · [[2026-10-08-retro-02]] · [[2026-10-06-retro-01]].
+
+- 2026-10-23 — [[ISSUE-054-merge-two-people]] **wycofane** decyzją autora na panelu 1 discovery `ui` (*„nie nie robimy scalania - nie potrzebuje tego”*). Nic
+  nie zbudowano, specyfikację i prototyp `ui` usunął przed zapisem; *Do retro* — zgoda na opcję agenta wzięta za cel. Licznik retro bez zmian (wycofanie to nie
+  zamknięcie).
 
 - 2026-10-23 — [[ISSUE-053-delete-cemetery-grave-person]] zamknięte. **Wszystko, co można dodać, można też usunąć** (pytanie autora w trakcie wpisywania
   prawdziwych danych; `/pm` 2026-10-23, dwie sesje):

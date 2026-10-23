@@ -1,7 +1,7 @@
 ---
 title: "ISSUE-054 — Merge two entries of the same person into one, keeping what was filled in at each"
 type: issue
-status: draft
+status: withdrawn
 delivery-style: task-level
 priority: SHOULD
 ideal_days: null
@@ -14,6 +14,11 @@ updated: 2026-10-23
 ---
 
 # ISSUE-054 — Scal dwa wpisy tej samej osoby
+
+> **Wycofana 2026-10-23 decyzją autora** — na panelu 1 prototypu `ui` (discovery, start z `/pm` tego dnia): *„nie nie robimy scalania - nie potrzebuje
+> tego”*. Nic nie zbudowano; specyfikację i prototyp `ui` usunął przed zapisem. Źródłem pozycji była zgoda autora na opcję zaproponowaną przez `pm`
+> (*„to co piszesz”*), nie potrzeba z używania — `CURRENT_STATE.md` → *Do retro*. **Wraca, gdy** duplikat osoby przeszkodzi przy prawdziwych danych
+> albo autor zacznie usuwać kopię osoby, żeby się jej pozbyć ([[wpis-osoby]] → *Decisions* → „Usuwanie osoby”, *Obali*). Treść niżej bez zmian.
 
 > Ta sama osoba wpisana dwa razy (np. raz z notatek, raz z drzewa przy rodzinie) — usunięcie jednej kopii ([[ISSUE-053-delete-cemetery-grave-person]])
 > skasowałoby to, co przy niej uzupełniono. Autor 2026-10-23: B — *„to co piszesz”*.
