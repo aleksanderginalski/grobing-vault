@@ -1,10 +1,10 @@
 ---
 screen: "Ekran główny — mapa Polski z cmentarzami rodziny"
-items: ["[[ISSUE-012-transcribe-grave-screen]]", "[[ISSUE-014-home-map-of-poland]]", "[[ISSUE-015-add-cemetery-from-database]]", "[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-022-app-skeleton-tabs-people-settings]]", "[[ISSUE-023-poland-map-r1-cemetery-photo]]", "[[ISSUE-027-cemetery-map-plan-photo-states]]"]
+items: ["[[ISSUE-012-transcribe-grave-screen]]", "[[ISSUE-014-home-map-of-poland]]", "[[ISSUE-015-add-cemetery-from-database]]", "[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-022-app-skeleton-tabs-people-settings]]", "[[ISSUE-023-poland-map-r1-cemetery-photo]]", "[[ISSUE-027-cemetery-map-plan-photo-states]]", "[[ISSUE-052-cemetery-search-and-patient-plan]]"]
 us: "[[US-002-przepisanie-grobu]]"
 journey-step: "UJ-001 · 1 (widok 1, M2) · warunek kroku 1: dodanie cmentarza (M1)"
 mockup: "katalog tymczasowy sesji 2026-10-06: makieta-mapa-polski.html (ramki 1–10, wersja 2 po stopie #1) · 2026-10-08: grobing-prototyp.html (SPIKE-004, klikalny)"
-updated: 2026-10-12
+updated: 2026-10-23
 ---
 
 # Ekran główny — mapa Polski — specyfikacja
@@ -83,6 +83,22 @@ updated: 2026-10-12
 > z bazy, „Zapisz” w trybie wskazania 17) i zmiana punktu przy poprawie **uruchamiają pobieranie planu cmentarza**
 > ([[ADR-003-map-source-offline]] pkt 1). Na tym ekranie nic się nie zmienia: postęp i braki planu widać w [[cmentarz]] (element
 > 2a), a nie w arkuszu (D34).
+>
+> **Wersja 2.8 (2026-10-22, przed planem [[ISSUE-052-cemetery-search-and-patient-plan]]) — pierwsze użycie z prawdziwymi cmentarzami.**
+> Autor nie znalazł cmentarza parafialnego we wsi, który jest w bazie: OSM przypisał go do przysiółka, a nazwa wsi była tylko wśród
+> okolicznych miejscowości (pomiar: pozycja → *Why*). Zmiany:
+> - **karta wyniku z bazy mówi „przy: <miejscowość>”**, gdy słowo trafiło tylko w okoliczną miejscowość (element 12, D35);
+> - **nowa kolejność wyników z bazy:** całe słowa przed rdzeniami, potem nazwa → miejscowość z karty → okolica → środek słowa, potem
+>   mniej pól, potem alfabet (element 12, D36);
+> - **stan planu w arkuszu i na liście „Twoje cmentarze”** — „Plan offline” albo brak z powodem; spełnia *Obali* D34 (element 6, 11, D37,
+>   decyzja projektowa — autor: *„aby na 100% mieć je na wyjazd”*).
+>
+> **Wersja 2.9 (2026-10-23, przegląd `ui` zbudowanego ekranu [[ISSUE-052-cemetery-search-and-patient-plan]]):** przyjęte z budowy (D38):
+> - **ikona linii planu w arkuszu 18 dp**, jak ikona linii liczb (element 6) — v2.8 mówiło naraz „jak linia liczb” i „20 dp” (odstępstwo 2
+>   `dev`);
+> - **„przy: <miejscowość>” to jedna całość** — twarda spacja po „przy:” i między słowami nazwy, żeby dwuczłonowa nazwa przy dużym tekście nie
+>   czytała się jak dwie miejscowości (element 12; `dev` → *Found on the emulator*). Nazwa, która razem z „· przy:” nie mieści się w linii,
+>   łamie się między swoimi słowami, nigdy w środku słowa.
 
 ## Purpose
 Zbierający otwiera aplikację i widzi, **na których cmentarzach w Polsce leży jego rodzina**, ze zniczem na
@@ -131,7 +147,7 @@ a cmentarze z OpenStreetMap są wbudowane w aplikację.
 
 | # | Element | Typ | Klawiatura / akcja | Domyślnie | Walidacja | Źródło |
 |---|---|---|---|---|---|---|
-| 6 | **Nazwa** (tekst, 18 sp, półgruby, do 2 linii) · **miejscowość** (tekst pomocniczy, 14 sp) · ikona `people_outline` + **„6 grobów · 14 osób”** (tekst pomocniczy, odmiana — [[style-b]] reguła 6). Bez punktu: ikona `location_off_outlined` + „Bez punktu na mapie” | tekst | — | — | — | R1 · *What to build* 4 · AC-4 · D13 |
+| 6 | **Nazwa** (tekst, 18 sp, półgruby, do 2 linii) · **miejscowość** (tekst pomocniczy, 14 sp) · ikona `people_outline` + **„6 grobów · 14 osób”** (tekst pomocniczy, odmiana — [[style-b]] reguła 6). Bez punktu: ikona `location_off_outlined` + „Bez punktu na mapie”. **Pod liczbami linia planu (v2.8, D37)**, jak linia liczb: 14 sp, tekst pomocniczy, ikona 18 dp jak przy liczbach, rosnąca z tekstem (v2.9, D38): plan zapisany → `offline_pin_outlined` + **„Plan offline”** (te same słowa co plakietka w [[cmentarz]]); pobieranie trwa → `cloud_download_outlined` + „Pobieram plan…”; bez internetu → `cloud_download_outlined` + „Plan pobierze się, gdy będzie internet.”; serwer nie odpowiedział albo nic jeszcze nie próbowało → `cloud_off_outlined` + „Bez planu — pobierze się sam.”; brak obrysu w OSM → `not_listed_location_outlined` + „W OpenStreetMap nie ma planu.”. Bez punktu linii planu nie ma (jest „Bez punktu na mapie”) | tekst | — | — | — | R1 · *What to build* 4 · AC-4 · D13 · D37 |
 | 6a | **Zdjęcie cmentarza (v2.4, D28)** z lewej, przed nazwą: zaokrąglony prostokąt **96 × 80 dp**, promień 12 dp, przycięty ze środka ([[style-b]] reguła 14). Nazwa, miejscowość i liczby stoją obok: **nazwa zaczyna się przy górze miniatury, a ✎ (8) stoi w prawym górnym rogu, w linii pierwszej linii nazwy** (v2.6, D33). Opis dla czytnika: „Zdjęcie cmentarza — otwórz”. **Bez zdjęcia:** w tym samym miejscu pole **„Dodaj zdjęcie”** — obrys, ikona `add_a_photo_outlined` w akcencie, podpis 12 sp półgruby (wyjątek w [[style-b]] *Thresholds*, v1.20; reguła 14: puste miejsce tylko jako przycisk); z dużym tekstem pole rośnie (podpis w dwóch liniach). Dla czytnika pole i miniatura to osobne przyciski z akcją dotknięcia, a nie część arkusza. Zdjęcie robi autor; to treść użytkownika, bez filtrów | zdjęcie / przycisk | zdjęcie → zdjęcie cmentarza na pełnym ekranie ze „Zmień zdjęcie” i „Usuń zdjęcie”, jak [[zdjecie]] przy nagrobku (tryb cmentarza, v1.6); „Dodaj zdjęcie” → wybór źródła „Zdjęcie cmentarza”: „Wybierz z galerii” · „Zrób zdjęcie” ([[zdjecie]] A) → zapis od razu → zdjęcie w arkuszu. **Zapis:** w miejscu pola wskaźnik postępu bez słów (nie mieszczą się w 96 × 80), a czytnik słyszy „Zapisuję zdjęcie…”. **Błąd zapisu:** pod wierszem `error_outline` + „Nie udało się zapisać zdjęcia. Spróbuj jeszcze raz.” (kolor błędu, jak w [[grob]]); pole zostaje | brak zdjęcia | — | R1 (miniatura w arkuszu) · **decyzja autora** (SPIKE-004 D5) · D28 · ISSUE-023 D3 · D33 |
 | 7 | **„Otwórz cmentarz”** — wypełniony, pełna szerokość karty, z ikoną znicza (kolor tła), ≥ 52 dp | przycisk główny | → [[cmentarz]] | — | — | R1 · ISSUE-012 (D5) |
 | 8 | **Ikonka edycji** w prawym górnym rogu arkusza, w linii nazwy: `edit_outlined` w akcencie, cel 48 × 48 dp, `tooltip` „Popraw cmentarz”. Nazwa zawija się przed ikonką | przycisk-ikona | → okno „Popraw cmentarz” (15) | — | — | **decyzja autora** (stop #1, runda 1) · D7 |
@@ -147,8 +163,8 @@ a cmentarze z OpenStreetMap są wbudowane w aplikację.
 | # | Element | Typ | Klawiatura / akcja | Domyślnie | Walidacja | Źródło |
 |---|---|---|---|---|---|---|
 | 10 | Pasek: wstecz + **pole wyszukiwania** z fokusem i klawiaturą od razu; `close` czyści tekst | pole tekstowe, bez wielkiej litery | `search` = zamknij klawiaturę | pusto | — | *What to build* 3 |
-| 11 | **Pusty tekst:** sekcja **„Twoje cmentarze”** — wszystkie zapisane jako karty (nazwa 16 sp półgruby · „Miejscowość · 3 groby · 6 osób”, a bez punktu „· bez punktu na mapie” · chevron). Bez zapisanych cmentarzy: „Wpisz nazwę cmentarza albo miejscowość.” (tekst pomocniczy) | lista kart | karta → mapa: wyjście z wyszukiwania, przybliżenie do znicza, arkusz otwarty | alfabetycznie, polskie sortowanie | — | AC-2 · D4 |
-| 12 | **Wyniki (od 2 znaków)** w dwóch sekcjach. **„Twoje cmentarze”** — karty jak w 11, które pasują; bez trafień tej sekcji nie ma, także nagłówka. **„Z bazy cmentarzy”** — karty: **nazwa** (16 sp, półgruby; brak nazwy → „Cmentarz bez nazwy” w kolorze pomocniczym) · **„Miejscowość · woj. mazowieckie”**, w mieście albo miasteczku z dzielnicą w nawiasie (D16), i „· rzymskokatolicki”, gdy baza zna wyznanie (tekst pomocniczy) · chevron. Części linii łączy „ · ” ze spacją twardą po kropce, więc zawinięta linia zaczyna się od „·” i żadna nie kończy się kropką (D25). Cmentarz z bazy, który już jest u Ciebie (punkt bliżej niż 100 m), ma zamiast chevronu „Dodany” (tekst pomocniczy, wyrównany do kolumny chevronów) i prowadzi do jego arkusza. Najwyżej 30 wyników z bazy; przy większej liczbie **pod nagłówkiem sekcji, nad pierwszą kartą**, stoi „Pokazuję 30 z 214 — dopisz miejscowość.” (14 sp, tekst pomocniczy, D24). Pod sekcją: „Dane: © autorzy OpenStreetMap (ODbL)” (13 sp, tekst pomocniczy). Na końcu przycisk tekstowy **„Nie ma go w bazie — dodaj ręcznie”**. Między sekcjami 24 dp ([[style-b]] reguła 5) | dwie listy kart + przycisk tekstowy | karta z bazy → podgląd (14); „dodaj ręcznie” → okno (15) z nazwą = tekst | twoje alfabetycznie; z bazy: najpierw trafienia w nazwie, potem w miejscowości, w grupie alfabetycznie | — | AC-3 · D3, D16, D17, D24, D25 |
+| 11 | **Pusty tekst:** sekcja **„Twoje cmentarze”** — wszystkie zapisane jako karty (nazwa 16 sp półgruby · „Miejscowość · 3 groby · 6 osób”, a bez punktu „· bez punktu na mapie” · chevron). **Cmentarz z punktem bez zapisanego planu ma „· bez planu”**, a z zapisanym „brak obrysu w OSM” — „· bez planu w OSM” (v2.8, D37); z planem nic nie dochodzi, więc lista przed wyjazdem pokazuje braki bez otwierania każdego arkusza. Bez zapisanych cmentarzy: „Wpisz nazwę cmentarza albo miejscowość.” (tekst pomocniczy) | lista kart | karta → mapa: wyjście z wyszukiwania, przybliżenie do znicza, arkusz otwarty | alfabetycznie, polskie sortowanie | — | AC-2 · D4 |
+| 12 | **Wyniki (od 2 znaków)** w dwóch sekcjach. **„Twoje cmentarze”** — karty jak w 11, które pasują; bez trafień tej sekcji nie ma, także nagłówka. **„Z bazy cmentarzy”** — karty: **nazwa** (16 sp, półgruby; brak nazwy → „Cmentarz bez nazwy” w kolorze pomocniczym) · **„Miejscowość · woj. mazowieckie”**, w mieście albo miasteczku z dzielnicą w nawiasie (D16), i „· rzymskokatolicki”, gdy baza zna wyznanie (tekst pomocniczy) · chevron. **„· przy: Wymyślów” (v2.8, D35)** — zaraz za miejscowością (i dzielnicą), przed województwem — gdy któreś słowo nie zaczyna żadnego słowa nazwy, miejscowości ani dzielnicy karty, a zaczyna słowo okolicznej miejscowości: pokazana jest ta okoliczna miejscowość, w którą trafia najwięcej takich słów (przy remisie pierwsza z listy bazy), jedna, w mianowniku z bazy; „przy:” i nazwa to jedna całość (twarde spacje), a nazwa dłuższa niż linia łamie się tylko między swoimi słowami (v2.9, D38). Części linii łączy „ · ” ze spacją twardą po kropce, więc zawinięta linia zaczyna się od „·” i żadna nie kończy się kropką (D25). Cmentarz z bazy, który już jest u Ciebie (punkt bliżej niż 100 m), ma zamiast chevronu „Dodany” (tekst pomocniczy, wyrównany do kolumny chevronów) i prowadzi do jego arkusza. Najwyżej 30 wyników z bazy; przy większej liczbie **pod nagłówkiem sekcji, nad pierwszą kartą**, stoi „Pokazuję 30 z 214 — dopisz miejscowość.” (14 sp, tekst pomocniczy, D24). Pod sekcją: „Dane: © autorzy OpenStreetMap (ODbL)” (13 sp, tekst pomocniczy). Na końcu przycisk tekstowy **„Nie ma go w bazie — dodaj ręcznie”**. Między sekcjami 24 dp ([[style-b]] reguła 5) | dwie listy kart + przycisk tekstowy | karta z bazy → podgląd (14); „dodaj ręcznie” → okno (15) z nazwą = tekst | twoje alfabetycznie; **z bazy (v2.8, D36), po kolei:** (1) więcej słów wpisanych w całości (bez obcięcia końcówki) jako całe słowo w nazwie, miejscowości, dzielnicy albo okolicy; (2) najdalsze miejsce, którego wymaga któreś słowo: nazwa → miejscowość i dzielnica karty → okolica → tylko w środku słowa; (3) mniej pól, które razem mieszczą wszystkie słowa (cała nazwa miejscowości w jednym polu przed słowami rozrzuconymi); (4) alfabetycznie jak dotąd. Zbiór wyników się nie zmienia — tylko kolejność (D3 zostaje) | — | AC-3 · D3, D16, D17, D24, D25, D35, D36, D38 |
 | 13 | **Brak wyników w obu sekcjach:** „Nie ma cmentarza „<tekst>” ani u Ciebie, ani w bazie.” (tekst pomocniczy) + **wypełniony „Dodaj ręcznie”** | tekst + przycisk główny | → okno (15) z nazwą = tekst | — | — | AC-3 |
 
 **Podgląd cmentarza z bazy** — przed dodaniem
@@ -223,6 +239,16 @@ grobów; tak samo osoba / osoby / osób i cmentarz / cmentarze / cmentarzy.
 │  Mapa      Osoby      Drzewo     │  ├──────────────────────────────────┤
 └──────────────────────────────────┘  └──────────────────────────────────┘
 ```
+v2.8 — wynik przez okoliczną miejscowość (D35) i linia planu w arkuszu (D37):
+```
+ „wymyslow” — karta z bazy                arkusz: plan zapisany · plan jeszcze nie
+╭──────────────────────────────────╮  │ Cmentarz Wymyślony             ✎ │
+│ Cmentarz parafialny            › │  │ Zmyślonka                        │
+│ Zmyślonka · przy: Wymyślów       │  │ 👥 2 groby · 3 osoby             │
+│ · woj. małopolskie               │  │ ⊙ Plan offline                   │
+│ · rzymskokatolicki               │  │   (albo: ☁ Bez planu — pobierze  │
+╰──────────────────────────────────╯  │    się sam.)                     │
+```
 Czego szkic nie pokazuje:
 - „Cmentarz bez nazwy” w kolorze pomocniczym i „Dodany” zamiast chevronu (element 12);
 - brak sekcji „Twoje cmentarze”, gdy nic u Ciebie nie pasuje: bez nagłówka i bez „(brak)”;
@@ -295,6 +321,8 @@ Ekran do wybierania; wpisywanie jest rzadkie. Rekordem jest **cmentarz**: ok. 10
 | (ISSUE-023) AC-2 — mapa jedzie nad arkusz i wraca na środek | 3, 4 · D26, D30 | bez arkusza środek Polski w środku obszaru mapy; znicz → płynna jazda, Polska nad arkuszem (na krótkim ekranie: wybrany znicz nad arkuszem); dotknięcie mapy, przeciągnięcie, wstecz → środek |
 | (ISSUE-023) AC-3 — miniatura, podgląd ze zmianą i usunięciem | 6a · [[zdjecie]] (tryb cmentarza) · D33 | „Dodaj zdjęcie” → galeria → miniatura 96 × 80; miniatura → podgląd „Zdjęcie cmentarza” → „Zmień zdjęcie” → nowa; „Usuń zdjęcie” → okno C1 → arkusz z „Dodaj zdjęcie” |
 | (ISSUE-023) AC-4 — kopia sprzed zmiany schematu: dane pełne, cmentarze bez zdjęć | 6a · stan „wybrany” | po odtworzeniu kopii v8 każdy arkusz ma pole „Dodaj zdjęcie”; liczby i dane bez zmian sprawdza test |
+| (ISSUE-052) AC-1 — wynik przez okoliczną miejscowość mówi „przy: …” i stoi pod trafieniami w miejscowość karty | 12 · D35, D36 | „wymyslow” → karta „Cmentarz parafialny · Zmyślonka · przy: Wymyślów…”; cmentarze z miejscowością „Wymyślów” nad nią; „Wymyślów” wpisane w całości stawia całe słowo przed rdzeniem („Wymyślowice”) |
+| (ISSUE-052, decyzja projektowa) — przed wyjazdem widać, które cmentarze mają plan w telefonie | 6, 11 · D37 | wyszukiwarka z pustym tekstem → karty bez planu mają „· bez planu”; arkusz → „Plan offline” albo linia z powodem braku |
 
 ## Decisions
 - **D1 — plik przepisany w miejscu**, nazwa zostaje (linki w zamkniętych pozycjach).
@@ -516,7 +544,53 @@ Ekran do wybierania; wpisywanie jest rzadkie. Rekordem jest **cmentarz**: ok. 10
 - **D34 — pobieranie planu bez śladu na mapie Polski** (v2.7, [[cmentarz]] D18, D20). Zapis cmentarza z punktem albo zmiana
   punktu uruchamia pobieranie planu, ale arkusz i znicz wyglądają jak dotąd. Mapa Polski służy do wyboru, dokąd jechać, a
   plan jest potrzebny dopiero w cmentarzu, gdzie [[cmentarz]] 2a mówi, co się z nim dzieje. *Obali:* autor dodaje cmentarz
-  bez zasięgu i chce wiedzieć, czy plan już jest — wtedy w arkuszu linia „Plan offline” z ikoną.
+  bez zasięgu i chce wiedzieć, czy plan już jest — wtedy w arkuszu linia „Plan offline” z ikoną. **Obalone 2026-10-22 → D37.**
+- **D35 — „przy: …”, gdy słowo trafiło tylko w okolicę** (v2.8, [[ISSUE-052-cemetery-search-and-patient-plan]]; propozycja `ui` z
+  [[ISSUE-015-add-cemetery-from-database]] → *Notes*). OSM przypisuje cmentarz do najbliższego miejsca według rangi (ISSUE-014 D9), więc
+  cmentarz parafialny we wsi miał na karcie nazwę przysiółka, a wsi, którą autor wpisał, nie było nigdzie na ekranie — przy 51 wynikach
+  nie dało się go rozpoznać. Pokazana jest **jedna** miejscowość, ta, w którą trafia najwięcej słów spoza karty: pierwsza wersja pomiaru
+  brała pierwszą z listy z jednym trafionym słowem i pokazała sąsiednią wieś o podobnym początku zamiast tej wpisanej. Mianownik z bazy i
+  dwukropek, bo „przy” z nazwą wymagałoby odmiany. *Obali:* autor czyta „przy:” jako „obok cmentarza stoi miejscowość X” i myli się co do
+  miejsca — wtedy „okolica: …”.
+- **D36 — kolejność wyników: całe słowa, potem bliskość pola, potem zwartość** (v2.8). Zbiór wyników bez zmian (D3), zmienia się kolejność.
+  Kanon wyszukiwania: dokładne trafienie przed prefiksem, prefiks przed środkiem słowa, trafienie w jednym polu przed rozrzuconym (tak
+  punktuje wyszukiwanie pełnotekstowe — dopasowanie frazy wyżej niż pojedyncze słowa). Pomiar na wbudowanej bazie 2026-10-22, pozycja
+  przed → po (w 30 pokazanych?):
+
+  | Zapytanie (opis — nazwy cmentarzy autora nie trafiają do vaulta) | Wyników | Przed | Po |
+  |---|---|---|---|
+  | wieś autora w mianowniku (cmentarz przypisany do przysiółka) | 51 | 25 | **2** |
+  | ta sama wieś w miejscowniku, jak w nazwie parafii | 855 | 402 (nie) | **27** |
+  | „parafialny” + wieś w miejscowniku | 339 | 86 (nie) | **13** |
+  | „parafialny” + wieś w mianowniku | 22 | 4 | **1** |
+  | wieś, której nazwa po obcięciu końcówki daje 3 litery | 186 | 102 (nie) | **4** |
+  | miasto wojewódzkie, cmentarz z ulicą w nazwie, samo miasto | 60 | 47 (nie) | **14** |
+  | ten cmentarz, sama ulica w mianowniku | 88 | 3 | 24 |
+  | 8 cmentarzy autora, najprostsze słowo dla każdego | — | 6 z 8 w 30 | **8 z 8** |
+  | regresja: „krakow” — cmentarze Krakowa przed „…Krakowcu” | 111 | — | Kraków pierwszy |
+  | regresja: „powazki” | 5 | — | Powązkowski w Warszawie przed tym w Marczowie (dotąd odwrotnie) |
+  | regresja: „parafialny” | 3740 | — | bez zmiany pierwszego wyniku |
+
+  Koszt: ulica wpisana w mianowniku, a w nazwie odmieniona („przy ul. …ej”), spada z 3. na 24. miejsce, bo całe słowo trafia w wieś o tej
+  nazwie; z nazwą miasta albo w miejscowniku jest pierwsza. *Obali:* przy prawdziwym cmentarzu wynik znów jest poza 30 — wtedy odmiana nazw
+  miejscowości w bazie (miejscownik z wyciągu), osobną pozycją.
+- **D37 — stan planu widać przed wejściem w cmentarz** (v2.8, decyzja projektowa w [[ISSUE-052-cemetery-search-and-patient-plan]]; spełnia
+  *Obali* D34). Autor chce *„na 100% mieć je na wyjazd”*, a dziś sprawdziłby to tylko, otwierając każdy cmentarz. Arkusz mówi „Plan offline”
+  albo powód braku tymi samymi słowami co [[cmentarz]] 2a; lista „Twoje cmentarze” mówi tylko o braku („· bez planu”), jak „· bez punktu na
+  mapie” — lista ma pokazywać, co zostało do zrobienia. Stan „pobieram” i „bez internetu” są w pamięci aplikacji, więc po ponownym starcie
+  arkusz bez zapisanego planu mówi „Bez planu — pobierze się sam.”, dopóki pobieranie nie ruszy. *Obali:* linia w arkuszu przeszkadza przy
+  wyborze cmentarza, gdy wszystkie mają plan — wtedy w arkuszu tylko brak, jak na liście.
+- **D38 — szczegóły z budowy [[ISSUE-052-cemetery-search-and-patient-plan]]** (v2.9, przegląd `ui` 2026-10-23):
+  - **ikona linii planu 18 dp** (odstępstwo 2 `dev`). Linia planu stoi pod linią liczb i ma wyglądać jak ona, a ikona liczb ma 18 dp — v2.8
+    podało przy tym 20 dp, czyli samo sobie przeczyło. Dwie ikony różnej wielkości jedna pod drugą wyglądałyby jak pomyłka; obie rosną z
+    tekstem ([[style-b]] reguła 3);
+  - **„przy: <miejscowość>” trzyma się razem** (`dev` → *Found on the emulator*: przy 200% dwuczłonowa nazwa łamała się w środku, a
+    „przy: Wymyślona⏎Wola” czyta się jak dwie miejscowości). Twarda spacja po „przy:” trzyma dopisek przy nazwie ([[style-b]] reguła 6,
+    v1.32), a twarde spacje między słowami — nazwę w jednej linii. **Granica:** napis bez miejsca na złamanie, dłuższy niż linia, Flutter łamie
+    w środku słowa. Przy 200% na 360 dp w linii karty mieści się ok. 20 znaków (zrzut przeglądu), a ok. jedna czwarta z 29 164 nazw okolicznych
+    miejscowości w bazie ma ponad 12 znaków (pomiar przeglądu na wbudowanej bazie). Dlatego nazwa, która razem z „· przy:” nie mieści się w
+    linii, łamie się między swoimi słowami — nigdy w środku słowa. *Obali:* autor przy dużym tekście nie łączy nazwy złamanej między słowami z
+    „przy:” — wtedy „przy: …” w osobnej linii karty.
 
 ## Open
 brak. Rundy prototypu ([[SPIKE-004-mvp-flow-prototype]]) rozstrzygnęły zdjęcie w arkuszu (D28) i mapę (D29, D30).

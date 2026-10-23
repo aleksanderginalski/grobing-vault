@@ -18,6 +18,18 @@ updated: 2026-10-22
 MVP — od startu, cały produkt (Meta-decyzja 4).
 
 ## In progress
+- **Po instalacji — pierwsze użycie z prawdziwymi danymi** (`/pm` 2026-10-22): drzewo przy rodzinie *„działało bardzo płynnie”*, cmentarze *„w ogóle
+  nie zadziałały”*. Kolejka do wyjazdu na Wszystkie Święte (aktualizacje ze sklepu, bez zmiany bazy; decyzja autora — *„ok jestem ok z tym co piszesz”*):
+  1. ~~[[ISSUE-052-cemetery-search-and-patient-plan]]~~ — **zamknięte 2026-10-23**: „· przy: …” i nowa kolejność w bazie cmentarzy, cierpliwe pobieranie
+     z ponawianiem, **pobieranie także przy zamkniętej aplikacji** (B1), stan planu w arkuszu i na liście. **Do wysłania: `1.0.1+4`** (paczka poza repo —
+     *Autor, poza sesją*); potem w domu, na Wi-Fi: cmentarze z listy wyjazdowej i lista bez „· bez planu” ([[ISSUE-032-mvp-install]] → lista A). Plan
+     zarządcy jako obraz i plany wbudowane — **po wizycie**, decyzja autora; zrzut mapy zarządcy w galerii to falsyfikator;
+  2. **„Połącz dwie osoby” i obrót** (do rozpisania przez `docs` przed `ui`): „Od” = osoba zaznaczona na drzewie; przybliżanie dwoma palcami nie kończy
+     ścieżki; ścieżka zostaje do „×” albo gestu wstecz; w trakcie ścieżki samo drzewo, bez suwaka czasu; przycisk pion/poziom w drzewie i na mapie migracji
+     (cała aplikacja idzie na telewizor — autor: *„to nie bug, tylko feature”*). Odwraca decyzje [[ISSUE-039-connect-two-people]] (koniec podświetlenia);
+  3. **czytelność linii przy dużej rodzinie** (do rozpisania): *„linie się przecinają i nie wiem, kto jest synem kogo”* — `ui` w trybie discovery,
+     klikalny prototyp; kandydaci z `/pm`: mniej przecięć kolejnością w rzędzie, mostki nad liniami, kolor linii na parę rodziców, podświetlenie linii
+     dotkniętej osoby ([[drzewo]]: „każda kolejność w rzędzie coś krzyżuje”).
 - **Po [[2026-10-16-retro-04]] (R1–R7, decyzja autora 2026-10-16) — kolejka przed instalacją MVP**, ustalona w `/pm` tego dnia (retro 4 →
   *Product decisions*). **Instalacja ze sklepu najpóźniej 2026-10-29**; prawdziwe dane autor wpisuje w trakcie wyjazdu na Wszystkie Święte:
   1. ~~[[ISSUE-041-google-play-and-safe-update]]~~ — **zamknięte 2026-10-16** w części kodu: migawka bazy przed migracją, numer wersji, README *Wydanie*,
@@ -114,7 +126,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   - **wyszukiwanie w bazie cmentarzy — tematy do decyzji autora** ([[ISSUE-015-add-cemetery-from-database]] →
     *Notes*): literówki z OSM zajmują pierwsze miejsca, skracanie słów łapie podobne nazwy („krakow” →
     „…Krakowskie”), w bazie są cmentarze dla zwierząt, a wynik znaleziony przez okoliczną miejscowość nie
-    mówi, przez którą. Kandydat na małą pozycję, gdy zacznie przeszkadzać przy prawdziwych cmentarzach;
+    mówi, przez którą — **ten ostatni przeszkodził przy prawdziwym cmentarzu 2026-10-22 → [[ISSUE-052-cemetery-search-and-patient-plan]]**;
   - **odświeżenie bazy cmentarzy OSM zostanie odrzucone przez strażnika treści** ([[ISSUE-020-content-guard]] →
     *Verification*): wyciąg to jeden wiersz JSON z nazwami miejscowości z listy rdzeni. Przy pierwszym odświeżeniu —
     wyjątek dla ścieżki tego pliku jako osobna pozycja, decyzja autora;
@@ -224,6 +236,11 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     `%TEMP%\claude\c--Programowanie-Grobing-grobing-agents\c601027a-…\scratchpad\` — zrzuty `shots032\` (emulator i telefon; na zrzutach z telefonu i z
     „Zdjęć w aplikacji” są **Twoje wpisy**), `emu032\` (APK i dane demo sprzed pozycji, kopia próbna `*-032.age` z hasłem testowym — wymyślone dane i
     Twoje wpisy z emulatora), skrypty i logi — wszystko do kosza; na telefonie możesz wyłączyć *Opcje programisty → Debugowanie USB*;
+  - **po ISSUE-052 (2026-10-23):** paczka do Play Console `C:\Programowanie\Grobing\_paczki\grobing-1.0.1+4.aab` — wgraj na testy wewnętrzne
+    (README `grobing-code` → *Wydanie*), potem aktualizuj na telefonie; katalog sesji
+    `%TEMP%\claude\c--Programowanie-Grobing-grobing-agents\9a0adb1f-…\scratchpad\` — zrzuty `emu052\shots\` (publiczne cmentarze z bazy i cmentarz wsi z
+    Twojej listy), stan emulatora `stan-po-052.tar` (dane testowe z Twoimi wpisami z emulatora), APK i dane demo sprzed pozycji (już wgrane z powrotem),
+    skrypty pomiaru (`precheck.py` i `precheck.out` mają **nazwy Twoich cmentarzy**), logi — wszystko do kosza;
   - **repo nie mają pliku `LICENSE`** — kod można oglądać, ale nie wolno go używać. Licencję można dodać później.
 - **Emulatory (po ISSUE-033):** `Medium_Phone` — release v12 na danych testowych autora, kopia skonfigurowana od nowa z hasłem
   testowym (wymyślone, z sesji ISSUE-029), pliki `grobing-klucz-029.age` i `grobing-kopia-029.age` w Pobranych; grób „Jozef” ma
@@ -265,7 +282,10 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   domyślne. **Emulator zawiesił się raz** (wątki QEMU bez odpowiedzi): po buildzie zostało ok. 0,9 GB wolnej pamięci — po każdym `flutter build` zatrzymać demony
   Gradle (`android\gradlew --stop`), zanim emulator dostanie zadania. **Po ISSUE-032:** `Grobing_Restore` — z powrotem **demo** (APK `0.9.0`, 4001, i dane
   zapisane 2026-10-21 przed pozycją, 41 osób); na czas pozycji stan sprzed demo z `_pokaz` z buildem `0.9.1` — z niego kopia próbna na telefon; plik w
-  `_pokaz` bez zmian. **Od instalacji prawdziwe dane żyją na telefonie — emulatory zostają na wymyślonych.**
+  `_pokaz` bez zmian. **Od instalacji prawdziwe dane żyją na telefonie — emulatory zostają na wymyślonych.** **Po ISSUE-052:** `Grobing_Restore` — z powrotem
+  **demo** (APK `0.9.0`, 4001, i dane zapisane przed pozycją); na czas pozycji stan sprzed demo z `_pokaz` z buildem `1.0.1` i cmentarzami z bazy dodanymi przy przejściu
+  (6 publicznych przez agenta, cmentarz wsi przez autora na stopie #2) — zapisany w katalogu sesji, plik w `_pokaz` bez zmian. Na API 36 `am kill` zapisuje wyjście jako „USER REQUESTED” i WorkManager
+  przestawia wtedy zadania przy następnym starcie — tak wyszło zamrożenie pracy w tle (README `grobing-code` → *Mapa cmentarza i sieć*).
 - **[[EPIC-002-wizyta]] gotowy do rozpisania na US** — pytanie „jak znaleźć grób bez pinezki” ma kierunek autora
   (2026-10-08): adres z wyszukiwarki zarządcy → kwatera zaznaczona według planu zarządcy → na miejscu plan offline i
   GPS → pinezka. Wejście do pierwszej US (mapa cmentarza): EPIC-002 → *Input from SPIKE-001*. Ekran: `ui` →
@@ -282,7 +302,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   paczki (decyzja autora 2026-10-07); treść wychodzących zmian sprawdza strażnik treści ([[ISSUE-020-content-guard]]) przy każdym `git add`/`commit`.
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **11** (ostatnie retro: [[2026-10-16-retro-04]]). **Retro 5 odłożone decyzją autora 2026-10-21 w `/pm`**
+- Zamknięte pozycje od ostatniego retro: **12** (ostatnie retro: [[2026-10-16-retro-04]]). **Retro 5 odłożone decyzją autora 2026-10-21 w `/pm`**
   (*„nie chcę robić retro”*) — licznik rośnie dalej, `pm` wraca z propozycją, gdy autor zechce. Co **10** → retro + pytanie o 3–5
   nośnych faktów (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**; podbija go `docs` przy zamknięciu, a zeruje go retro.
 - Do retro (zebrane po drodze, bez decyzji):
@@ -320,6 +340,20 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     pierwszej wysyłce starej wersji (D1) i przy drodze z notki (krok 12); D1 po wyjaśnieniu zostało, krok 12 autor odłożył (*„tamte działały”*). Powód
     i zagrożenie były na stopie #1 („przed czym chronimy?”), ale nie w chwili kroku. Kandydat: krok z listy A dostaje w instrukcji jedno zdanie „po co i
     co się stanie bez niego”, a krok, który sprawdza ludzką pomyłkę (hasło), mówi to wprost — mechanizm już działa.
+  - **Praca w tle zamrożona przez Androida — złapana dopiero na emulatorze** ([[ISSUE-052-cemetery-search-and-patient-plan]] → *Dev report* →
+    *Found*): testy i pierwsze przejście były zielone, a po zabiciu procesu planista WorkManagera uruchamiał pracę w procesie bez zadania systemu i Android
+    zamrażał go po 10 s — plan nigdy nie schodził. Kandydat: przy pracy w tle przejście `dev` obejmuje „aplikacja zamknięta” (wyjście + zabity proces +
+    sieć) z `dumpsys jobscheduler` i logiem `freezing`, zanim pozycja pójdzie do `qa`; ta sama ekspozycja `BackupWorker` — do sprawdzenia.
+  - **Nazwy miejsc autora w komentarzach kodu** ([[ISSUE-052-cemetery-search-and-patient-plan]] → *Verification* → *Family data*): pomiary w czacie na
+    prawdziwych cmentarzach autora, a `dev` przepisał trzy nazwy do przykładów w komentarzach; skan zmian `qa` złapał je przed `git add` (strażnik treści
+    mógłby nie złapać — miejscowości spoza listy rdzeni). Kandydat: po pomiarze na danych autora skan diffu po jego nazwach jest stałym krokiem `dev`, nie
+    tylko `qa` ([[grobing-scan-after-reading-family-data]] w pamięci mówi to o `family_data_dir`, nie o czacie).
+  - **Lista *Hand checks* w zamkniętej pozycji** ([[ISSUE-032-mvp-install]], `done` od 2026-10-22): `docs` dopisuje do niej przy każdym zamknięciu, a
+    `vault-as-sot.md` pkt 5 każe przed edycją pozycji `done` cofnąć status. Kandydat: lista we własnym pliku w `00_START_HERE/` albo wyjątek w regule.
+  - **Granice czasu sieci z jednego dobrego dnia** ([[ISSUE-052-cemetery-search-and-patient-plan]] → *Why*): [[ISSUE-027-cemetery-map-plan-photo-states]]
+    ustawiła 30 s na zapytanie i 60 s łącznie, gdy obrys przychodził w 3 s; przy pierwszym prawdziwym użyciu serwer odpowiadał po 30–43 s i plan nie
+    schodził. Testy i emulator tego nie złapały (serwer w testach jest podstawiony). Kandydat: przy cudzym serwerze granica z pomiaru w kilku porach dnia
+    i ponawianie bez udziału człowieka, zanim pozycja wyjdzie na telefon.
   - **Pierwsze wdrożenie testów wewnętrznych — „nie znaleziono elementu” przez ok. 30 min** ([[ISSUE-032-mvp-install]] → *Verification* → *Notes*):
     zgodne z Pomocą Play (link testera działa po kilku godzinach przy pierwszym wdrożeniu); konto i lista testerów były dobre. Kandydat na zdanie w README
     `grobing-code` → *Wydanie* (pisze `dev`) — przyda się przy drugim telefonie albo nowym testerze.
@@ -342,6 +376,18 @@ Format wpisu: `źródło (babcia / cmentarz X) · pytanie bez danych rodziny · 
 ## Recently done
 > Tylko wpisy od ostatniego retro ([[2026-10-16-retro-04]]; zasada R5 z retro 3). Starsze są w plikach retro → *Archive*:
 > [[2026-10-16-retro-04]] · [[2026-10-13-retro-03]] · [[2026-10-08-retro-02]] · [[2026-10-06-retro-01]].
+
+- 2026-10-23 — [[ISSUE-052-cemetery-search-and-patient-plan]] zamknięte. **Cmentarze, które da się znaleźć, i plan, który schodzi** (pierwsze użycie MVP:
+  *„w ogóle nie zadziałała”*; `/pm` 2026-10-22):
+  - pomiar przed planem: cmentarz wsi z Grobonetu był w bazie, ale 25. z 51 pod nazwą przysiółka; serwer Overpass odpowiadał po 22–47 s, a aplikacja
+    czekała 30 s / 60 s — ze starymi granicami plan zeszedłby dla 1–2 z 13 obrysów cmentarzy autora, z nowymi dla 13 z 13;
+  - stop #1 *„B1”*: pobieranie także przy zamkniętej aplikacji; [[cmentarze]] v2.8–v2.9 (D35–D38), [[cmentarz]] v9–v9.1 (D39–D42);
+  - kod: kolejność całe słowa → pole → zwartość, „· przy: …” (8 z 8 cmentarzy autora w pierwszych 30, dziś 6), 120 s / 5 min, ponawianie 2/5/10/15 min,
+    stan „wolno” po 15 s, `PlanWorker` (WorkManager, sieć) z bramką „start tylko z rąk systemu” po zamrożeniu znalezionym na emulatorze, stan planu w
+    arkuszu i na liście; **bez zmiany bazy** (v15), `1.0.1+4`;
+  - przegląd `ui`: 0 BLOCKER / 0 MAJOR / 4 MINOR (łamanie linii) — poprawione przed stopem; stop #2 *„ok”* ze śladem na emulatorze (plan zapisany w tle).
+
+  Lista A i B w [[ISSUE-032-mvp-install]] → *Hand checks*. Testy: 1016 zielonych. Werdykt `qa`: APPROVED (self-check, z uwagami). Licznik retro: 11 → 12.
 
 - 2026-10-22 — [[ISSUE-032-mvp-install]] zamknięte. **MVP zainstalowane ze sklepu na telefonie autora** (start z `/pm` 2026-10-21; retro 5 odłożone
   decyzją autora):

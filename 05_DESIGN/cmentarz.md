@@ -1,10 +1,10 @@
 ---
 screen: "Cmentarz — groby na cmentarzu"
-items: ["[[ISSUE-012-transcribe-grave-screen]]", "[[ISSUE-016-photos-grave-and-person]]", "[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-024-person-view]]", "[[ISSUE-027-cemetery-map-plan-photo-states]]", "[[ISSUE-028-cemetery-sectors]]", "[[ISSUE-029-pin-on-site-gps]]", "[[ISSUE-047-grave-first-then-people]]"]
+items: ["[[ISSUE-012-transcribe-grave-screen]]", "[[ISSUE-016-photos-grave-and-person]]", "[[SPIKE-004-mvp-flow-prototype]]", "[[ISSUE-024-person-view]]", "[[ISSUE-027-cemetery-map-plan-photo-states]]", "[[ISSUE-028-cemetery-sectors]]", "[[ISSUE-029-pin-on-site-gps]]", "[[ISSUE-047-grave-first-then-people]]", "[[ISSUE-052-cemetery-search-and-patient-plan]]"]
 us: "[[US-002-przepisanie-grobu]] · [[US-005-zdjecia]] · [[US-007-mapa-cmentarza]] · [[US-008-pinezka-na-miejscu]]"
 journey-step: "n/a — M1 (warunek kroku 1 UJ-001); docelowo mapa cmentarza z arkuszem grobu (R2, krok 2 UJ-001, M3)"
 mockup: "katalog tymczasowy sesji 2026-10-07: makieta-cmentarz-grob-osoba.html (ramki 1–2, 8, ISSUE-012) · makieta-zdjecia.html (ramka 9, ISSUE-016) · 2026-10-08: grobing-prototyp.html (SPIKE-004, panel 2) · 2026-10-12: issue-027-mapa-cmentarza.html (stany planu, warianty NFR-004) · 2026-10-12: issue-028-kwatery.html (klikalny: kwatery na planie, tryb „Kwatery”, kandydaci K1–K3, adres grobu W-a/W-b) · 2026-10-12: issue-029-pinezka.html (klikalny: „gdzie jestem”, tryb D, kandydaci P1/P2, poprawa, słaby sygnał; katalog tymczasowy sesji `8b388e89-…`) · 2026-10-18: makieta-047.html (ISSUE-047 — „Dodaj grób” → okno „Nowy grób”, ekrany 1–2)"
-updated: 2026-10-18
+updated: 2026-10-23
 ---
 
 # Cmentarz — specyfikacja
@@ -165,6 +165,19 @@ updated: 2026-10-18
 >   wpisanych osób”, jak dotąd (D38);
 > - *Tempo*: nowy grób z pierwszą osobą to 4 dotknięcia zamiast 1 (D38). Makieta: `makieta-047.html`, ekrany 1–2.
 >
+> **Wersja 9 (2026-10-22, przed planem [[ISSUE-052-cemetery-search-and-patient-plan]]) — plan, który schodzi przy wolnym serwerze.** Przy
+> pierwszym prawdziwym użyciu duży cmentarz miejski skończył na (c) „serwer map nie odpowiada” po ok. minucie, choć serwer odpowiadał —
+> po 37 s i 43 s (pozycja → *Why*). Zmiany w 2a:
+> - **(a) mówi, że to może potrwać i że plan zostanie w telefonie** (D39, D41);
+> - **(c) mówi „przeciążony” i że aplikacja spróbuje sama** — bo spróbuje: ponawianie z przerwami aż do skutku (D40);
+> - **B1 — pobieranie idzie także przy zamkniętej aplikacji** (D40, *Open*; autor na stopie #1: „B1”) — w 2a obowiązują teksty B1.
+> Stan planu przed wejściem w cmentarz — [[cmentarze]] D37.
+>
+> **Wersja 9.1 (2026-10-23, przegląd `ui` zbudowanego ekranu [[ISSUE-052-cemetery-search-and-patient-plan]]):** odstępstwo 1 `dev`
+> przyjęte — w (a) po ok. 15 s zdanie D41 ustępuje jednemu zdaniu o wolnym serwerze, zamiast dochodzić jako trzecia linia (element 2a,
+> D42). Odstępstwo 3 (opóźnienie startu pracy w tle i bramka startu w procesie) ekranu nie zmienia: obietnice (a) i (c) w wariancie B1
+> dalej są prawdą (pomiar `dev`: 3,5 min od zapisu do planu przy zamkniętej aplikacji, bez obietnicy czasu w tekstach).
+>
 ## Purpose
 Cmentarz rodziny **jako mapa** (UJ-001 krok 2, M3, M7): plan schematyczny bez sieci albo zdjęcie z góry z siecią,
 kwatery zaznaczone przez autora i znicze grobów z pinezką. Stąd autor idzie do **jednego grobu** (znicz) albo do
@@ -214,7 +227,7 @@ kwatery i pinezkę (US-002 AC-5), i pokazuje, dokąd doszło przepisywanie.
 |---|---|---|---|---|---|---|
 | 1 | **Pasek:** wstecz + **nazwa cmentarza** (18 sp, półgruby, do 2 linii), pod nią miejscowość (13 sp, tekst pomocniczy; bez miejscowości brak linii); po prawej ✎ (`edit_outlined`, akcent, `tooltip` „Popraw cmentarz”) | pasek | wstecz (*Navigation*); ✎ → okno | — | — | R2 (nagłówek) · [[style-b]] reguła 15 |
 | 2 | **Plan schematyczny** na całą szerokość pod paskiem, także pod arkuszami: obrys cmentarza i alejki z OSM, pobrane przy dodaniu cmentarza ([[style-b]] reguła 13: teren — powierzchnia z obrysem, alejki — obrys 4 i 2 dp). Wyśrodkowany w wolnym miejscu między plakietkami (3) a paskiem grobów (6); w stanie B przesuwa się płynnie nad arkusz (jak [[cmentarze]] D30). Podpis „© OpenStreetMap” (11 sp, tekst pomocniczy) pod plakietką. **Kadr (v5):** na starcie cały obrys z marginesem 16 dp w wolnym miejscu; to też najmniejsze przybliżenie, a największe to z19 (granica zdjęcia z góry, [[ADR-003-map-source-offline]] pkt 2). Przesuwanie ograniczone do obrysu z marginesem, więc cmentarz nigdy nie znika z ekranu. Teren poza obrysem w kolorze tła. **Dla czytnika** plan to jeden węzeł „Plan cmentarza” (alejek nie czyta), a każdy znicz (5) to osobny przycisk. **Bez planu → 2a** | mapa | szczypanie, przeciąganie, podwójne dotknięcie; bez obrotu | cały cmentarz, północ u góry | — | [[ADR-003-map-source-offline]] pkt 1 · D10 |
-| 2a | **Zaślepka planu (v5, D17)** w miejscu planu, wyśrodkowana w wolnym miejscu. Ikona 32 dp w kolorze tekstu pomocniczego, pod nią fakt i droga naprzód (oba 14 sp, kolor tekstu — W2, *Open*), niżej przycisk tekstowy w akcencie, cel ≥ 48 dp. Pięć wariantów: **(a) pobieranie** — wskaźnik postępu (kołowy, akcent) zamiast ikony, „Pobieram plan cmentarza…”, bez przycisku; **(b) bez internetu** — `cloud_download`, „Plan tego cmentarza pobierze się, gdy będzie internet.” · „Groby są na liście — pasek na dole.” · **„Pobierz teraz”**; **(c) serwer nie odpowiada** (po ponowieniach) — `cloud_off`, „Nie udało się pobrać planu — serwer map nie odpowiada.” · „Spróbuję znowu później. Groby są na liście.” · **„Pobierz teraz”**; **(d) brak obrysu w OSM** — `not_listed_location`, „W OpenStreetMap nie ma planu tego cmentarza.” · „Z internetem zobaczysz go na zdjęciu z góry.” · **„Pokaż zdjęcie z góry”** (tylko z siecią; bez sieci bez przycisku); **(e) bez punktu** — `location_off_outlined`, „Plan pobierze się, gdy wskażesz cmentarz na mapie.” · **„Wskaż na mapie”**. Plakietka „Plan offline” i podpis „© OpenStreetMap” znikają w każdym wariancie; przełącznik Plan · Zdjęcie (3) zostaje w (a)–(d), a w (e) znika, bo zdjęcie nie ma środka | stan planu | „Pobierz teraz” → (a); bez sieci zamiast tego pasek komunikatu „Bez internetu. Plan pobierze się, gdy będzie zasięg.” (zaślepka zostaje); „Pokaż zdjęcie z góry” → warstwa „Zdjęcie”, środek w punkcie cmentarza, z17; „Wskaż na mapie” → tryb wskazania ([[cmentarze]] 16) dla tego cmentarza; po „Zapisz” powrót tutaj w (a) | według stanu pobierania | — | [[ADR-003-map-source-offline]] pkt 1 („ponawianie i zaślepka są warunkiem”) · US-007 AC-5 · [[style-b]] reguła 7 · D17–D19 |
+| 2a | **Zaślepka planu (v5, D17)** w miejscu planu, wyśrodkowana w wolnym miejscu. Ikona 32 dp w kolorze tekstu pomocniczego, pod nią fakt i droga naprzód (oba 14 sp, kolor tekstu — W2, *Open*), niżej przycisk tekstowy w akcencie, cel ≥ 48 dp. Pięć wariantów: **(a) pobieranie** — wskaźnik postępu (kołowy, akcent) zamiast ikony, „Pobieram plan cmentarza…” · **„Plan zostanie w telefonie — na cmentarzu zasięg nie będzie potrzebny.”** (v9, D41), bez przycisku; **po ok. 15 s** zdanie D41 ustępuje jednemu zdaniu (v9.1, D42): **„Serwer map odpowiada dziś wolno. Plan zapisze się sam i zostanie w telefonie — możesz zamknąć aplikację.”** (B1; v9, D39, D40 — w v9 jako trzecia linia „…Plan zapisze się sam — możesz zamknąć aplikację.”, a w niezbudowanym B2 „…póki aplikacja jest otwarta.”); **(b) bez internetu** — `cloud_download`, „Plan tego cmentarza pobierze się, gdy będzie internet.” (B1; B2 — „…gdy otworzysz aplikację z internetem.”, D18 *Obali*) · „Groby są na liście — pasek na dole.” · **„Pobierz teraz”**; **(c) serwer przeciążony** (po próbie z granicami z D39) — `cloud_off`, **„Serwer map jest teraz przeciążony.”** · B1 — „Spróbuję sam, także gdy zamkniesz aplikację. Groby są na liście.”, B2 — „Spróbuję sam za kilka minut. Groby są na liście.” · **„Pobierz teraz”** (v9, D40); w czasie kolejnej próby zaślepka wraca do (a); **(d) brak obrysu w OSM** — `not_listed_location`, „W OpenStreetMap nie ma planu tego cmentarza.” · „Z internetem zobaczysz go na zdjęciu z góry.” · **„Pokaż zdjęcie z góry”** (tylko z siecią; bez sieci bez przycisku); **(e) bez punktu** — `location_off_outlined`, „Plan pobierze się, gdy wskażesz cmentarz na mapie.” · **„Wskaż na mapie”**. Plakietka „Plan offline” i podpis „© OpenStreetMap” znikają w każdym wariancie; przełącznik Plan · Zdjęcie (3) zostaje w (a)–(d), a w (e) znika, bo zdjęcie nie ma środka | stan planu | „Pobierz teraz” → (a); bez sieci zamiast tego pasek komunikatu „Bez internetu. Plan pobierze się, gdy będzie zasięg.” (zaślepka zostaje); „Pokaż zdjęcie z góry” → warstwa „Zdjęcie”, środek w punkcie cmentarza, z17; „Wskaż na mapie” → tryb wskazania ([[cmentarze]] 16) dla tego cmentarza; po „Zapisz” powrót tutaj w (a) | według stanu pobierania | — | [[ADR-003-map-source-offline]] pkt 1 („ponawianie i zaślepka są warunkiem”) · US-007 AC-5 · [[style-b]] reguła 7 · D17–D19 · D39–D42 |
 | 3 | **Plakietki na planie**, na powierzchni, wys. 32 dp, margines 12 dp. Z lewej **„Plan offline”** z ikoną `offline_pin` w zieleni stanu (propozycja `#8CC084`, [[style-b]] *State colours*). Z prawej przełącznik segmentowy **Plan · Zdjęcie** (ikony `map_outlined`, `satellite_alt`; aktywny segment w akcencie). „Zdjęcie” to ortofotomapa GUGiK, tylko online, nic nie zapisuje w telefonie; plakietka zmienia się na „tylko z internetem” z ikoną `wifi` (tekst pomocniczy), a podpis na „Ortofotomapa: GUGiK”. Kafelki zdjęcia ładują się na tle w kolorze powierzchni, bez wskaźnika; nic nie trafia do pamięci telefonu poza pamięcią podręczną w RAM (pkt 2). Wygląd „Zdjęcia” bez sieci → 13. **Duży tekst (v5, D22):** plakietki to kontrolki, więc rosną w pełni; gdy z przełącznikiem nie mieszczą się w jednym rzędzie, „Plan offline” schodzi pod przełącznik, z lewej. Przełącznik dla czytnika: dwa przyciski ze stanem „wybrany” | plakietka + przełącznik | segment → warstwa | Plan | — | [[ADR-003-map-source-offline]] pkt 2 · D10 |
 | 4 | **Kwatery autora:** przerywana linia 1,5 dp (tekst, krycie 75% — 6,16:1 na powierzchni, kreska 5/4), **bez wypełnienia** (D28), i nazwa „Kwatera A” (12 sp, półgruba, kolor tekstu, obwódka 3 dp w kolorze powierzchni planu) w dolnym lewym rogu strefy: przy rogu strefy położonym najbardziej w lewo i w dół (największe „y − x” na ekranie), 6 dp nad rogiem, **w stronę wnętrza strefy** — na prawo od rogu, a na lewo, gdy na prawo byłaby poza strefą (v6.1); przy pochyłym boku litery mogą przeciąć linię — przykrywa ją obwódka; rośnie z tekstem najwyżej do 1,3× ([[style-b]] reguła 13). Na zdjęciu z góry tak samo, a pod linią strefy leży linia w kolorze tła 3,5 dp (pod wybraną 5 dp) — reguły 13, 14 (v6.1). Kwatera bez strefy jest tylko w adresach grobów (i na liście 17a). **W stanach A i B strefy nie reagują na dotyk** (D29), a dla czytnika są częścią węzła „Plan cmentarza”. **Kwatera wybrana (tryb E, v6):** linia 2,5 dp w akcencie, nazwa w akcencie (8,04:1) | strefy | w trybie E dotknięcie strefy → kwatera wybrana (17b) | — | — | [[ADR-003-map-source-offline]] pkt 3 · D13 · US-007 AC-4 |
 | 5 | **Znicze grobów z pinezką:** znicz-pinezka 28 × 35 dp, cel dotyku ≥ 48 dp; wybrany 38 × 47 dp z poświatą ([[style-b]] reguła 13). Grób bez pinezki nie ma znicza | znaczniki | dotknięcie → stan B | — | — | R2 · D11 |
@@ -442,6 +455,9 @@ Rekordem jest **grób**: ok. 50 na całe notatki (G6, [[NT-002-transcribe-the-no
 | US-008 AC-3 — popraw pinezkę | 11 → 12, 12a | grób z pinezką: znicz → B → „Popraw pinezkę” → ten sam tryb, start w zapisanym miejscu, „Teraz: …”; po zmianie „Zapisz pinezkę” zapisuje nowe miejsce |
 | US-008 AC-4 — bez internetu | 10, 12, 13 | w trybie samolotowym: kropka, koło i tryb D działają na planie offline; „Zdjęcie” mówi „bez internetu” (13) |
 | ISSUE-029 — pinezka z datą wraca po odtworzeniu | 5, 14 → [[grob]] 4 | po odtworzeniu ten sam znicz i ta sama linia „Pinezka: …” z datą — sprawdza `qa` (dane, nie ekran) |
+| ISSUE-052 AC-2 — wolny serwer: plan schodzi, ekran mówi, że trwa | 2a (a) · D39, D41, D42 | serwer odpowiada po 45 s na każde zapytanie → przez cały czas (a); po ok. 15 s w miejscu zdania D41 zdanie „Serwer map odpowiada dziś wolno…”; potem plan i „Plan offline” |
+| ISSUE-052 AC-3 — serwer nie odpowiada: (c) i ponowienie samo | 2a (c) · D40 | brak odpowiedzi do granicy → (c) „Serwer map jest teraz przeciążony.”; serwer wraca → plan bez dotknięcia, także po wyjściu z ekranu (B1: także po zamknięciu aplikacji) |
+| ISSUE-052 AC-4 — plan zapisany działa bez sieci (regresja) | 2, 3 | jak US-007 AC-1 |
 
 ## Decisions
 - **D1 — „jak R2 bez satelity” = arkusz grobów na cały ekran, bez pola mapy.** *(Zastąpione w v4 przez D10–D11.)* Groby z notatek nie mają
@@ -619,8 +635,44 @@ Rekordem jest **grób**: ok. 50 na całe notatki (G6, [[NT-002-transcribe-the-no
   *Decisions* → „Bez usuwania osoby”; brief G7/C5). D36 obowiązuje dalej: widok nowego grobu leży nad tym ekranem tak jak dotąd po formularzu.
   *Obali:* (1) przy przepisywaniu notatek trzy dotknięcia przeszkadzają — wtedy po „Zapisz” w oknie od razu wybór osoby ([[grob]] 8–12) nad pustym
   grobem; (2) puste groby z pomyłek zaśmiecają listę — wtedy „Usuń grób” tylko dla grobu bez osób, osobną pozycją.
+- **D39 — (a) mówi, że to może potrwać** (v9, [[ISSUE-052-cemetery-search-and-patient-plan]]). Granice czasu rosną z 30 s / 60 s do minut
+  (liczby z pomiaru wybiera `planning`), więc sam wskaźnik przez dwie minuty wyglądałby jak zawieszenie. Linia po ok. 15 s: w dobry dzień obrys
+  przychodził w ok. 3 s (pomiar ISSUE-027), więc 15 s to już wyraźnie wolny serwer, a każda odpowiedź z 2026-10-22 trwała ponad 30 s. Ton faktu, bez przeprosin ([[style-b]]
+  reguła 7). *Obali:* serwer znów odpowiada w kilka sekund — linia się nie pokaże, nic nie tracimy.
+- **D40 — (c) to „przeciążony” i obietnica, którą aplikacja spełnia** (v9). Przy pomiarze serwer odpowiadał, tylko wolno — „nie odpowiada”
+  było nieprawdą, a „spróbuję znowu później” — obietnicą bez mechanizmu: dziś kolejna próba jest dopiero przy następnym starcie, powrocie,
+  otwarciu cmentarza albo „Pobierz teraz” ([[ISSUE-027-cemetery-map-plan-photo-states]] D3). Teraz ponawianie z przerwami aż do skutku albo
+  do (d). **Gdzie ono działa — ⚠️ OPEN B1/B2** (*Open*), bo od tego zależą teksty (a)–(c). Zmienia D18 (wariant B1 spełnia go w całości).
+  *Obali:* przy ponawianiu serwer odrzuca telefon za częste pytania (429) — wtedy przerwy dłuższe, a tekst bez „za kilka minut”.
+- **D41 — „dodaj w domu na Wi-Fi” powiedziane faktem w (a)** (v9). Zasada z `/pm` 2026-10-22 dla autora; w aplikacji jedna linia w (a): plan
+  zostanie w telefonie, a na cmentarzu zasięg nie będzie potrzebny. Bez nakazu w podglądzie dodania ([[cmentarze]] 14) — tam autor wybiera
+  cmentarz i każde dodatkowe zdanie jest szumem. *Obali:* autor dodaje cmentarz dopiero na miejscu i liczy na plan — wtedy zdanie w podglądzie
+  przed „Dodaj ten cmentarz”. **v9.1:** po 15 s przy wolnym serwerze to zdanie ustępuje zdaniu z D42.
+- **D42 — po 15 s jedno zdanie zamiast trzeciej linii** (v9.1, przegląd `ui` 2026-10-23; odstępstwo 1 `dev` —
+  [[ISSUE-052-cemetery-search-and-patient-plan]] → *Dev report* → *Deviations*). W (a) przy wolnym serwerze zdanie D41 ustępuje zdaniu
+  „Serwer map odpowiada dziś wolno. Plan zapisze się sam i zostanie w telefonie — możesz zamknąć aplikację.”, zamiast dochodzić jako trzecia
+  linia. Powody:
+  - zaślepka ma w obu fazach dwa akapity, więc tekst nie rośnie w trakcie czekania i nie przesuwa się spod oka;
+  - przy 200% na 360 × 640 dp w wolnym miejscu mieszczą się ok. dwie linie, a trzecia na pewno trafiłaby pod pasek grobów (zrzut przeglądu:
+    dziś widać tam tylko pierwszy akapit — znana luka ekranu przy dużym tekście, `CURRENT_STATE.md` → *Poza tą kolejnością*);
+  - po 15 s ważniejsze jest „możesz zamknąć aplikację” niż zasada wyjazdu, a jej rdzeń („zostanie w telefonie”) zostaje w nowym zdaniu.
+
+  Koszt: „na cmentarzu zasięg nie będzie potrzebny” widać tylko w pierwszych 15 s. Czytnik słyszy zmianę (region na żywo, jak w v9).
+  *Obali:* na stopie #2 (krok odczucia 2) autor po zdaniu o wolnym serwerze nie wie, czy plan zadziała bez zasięgu — wtedy zdanie mówi to
+  wprost („…zostanie w telefonie, także bez zasięgu — …”).
 
 ## Open
+- ✅ **Rozstrzygnięte 2026-10-22 na stopie #1 [[ISSUE-052-cemetery-search-and-patient-plan]] (autor: „B1”)** — plan pobiera się także przy
+  zamkniętej aplikacji; w 2a obowiązują teksty wariantu B1. Pierwotny opis pytania (D40):
+  - **B1 — dodajesz cmentarze i zamykasz aplikację; plany schodzą same, gdy telefon ma internet, także przy zamkniętej aplikacji** — jak kopia na
+    Dysku. Arkusz i lista ([[cmentarze]] D37) pokażą, kiedy wszystkie są w telefonie. Koszt: zadanie w tle (mechanizm kopii już jest), zmienia
+    [[ISSUE-027-cemetery-map-plan-photo-states]] D3; `planning` podaje koszt;
+  - **B2 — plany schodzą, gdy aplikacja jest otwarta** (na dowolnym ekranie), jeden po drugim. Przy 8 cmentarzach i dzisiejszym serwerze to ok.
+    10 min z otwartą aplikacją albo kilka powrotów do niej. Koszt: tylko granice czasu i ponawianie.
+
+  **Rekomendacja `ui`: B1** — usuwa jedyny krok, który przed wyjazdem może jeszcze zawieść bez wiedzy autora (zamknięta aplikacja w środku
+  kolejki), a obietnica (b) „gdy będzie internet” staje się prawdą. *Obali:* zadanie w tle kosztuje więcej niż reszta pozycji — wtedy B2 (D18
+  *Obali*).
 - ✅ **Rozstrzygnięte 2026-10-12 na stopie #1 [[ISSUE-029-pin-on-site-gps]] (autor: „ok”): P2** — celownik, plan pod zniczem.
   Element 12 obowiązuje w wariancie P2, a teksty karty i 12a — w wariancie P2. Decyzje D31–D33, D35–D37 potwierdzone. Pierwotne
   pytanie: **gdzie się dotyka w trybie D** (D34). Klikalny prototyp `issue-029-pinezka.html`, panel 2:

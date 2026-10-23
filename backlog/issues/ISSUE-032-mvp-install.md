@@ -89,6 +89,10 @@ Warunki — każdy ma swój dom, tutaj tylko lista:
 - ✅ 2026-10-22 (przed i po aktualizacji do 1.0.0) — po zmianie danych pojawia się „(w tle)” — w AOT sprawdzał to tylko build profile ([[ISSUE-010-background-backup]]);
 - ✅ 2026-10-22 („· Dysk Google” w Ustawieniach) — rozpoznanie „Dysk Google” w wierszu kopii — tylko test ([[ISSUE-022-app-skeleton-tabs-people-settings]]);
 - ⏸ odłożone decyzją autora 2026-10-22 ([[NT-007-hand-over-note]] → *Input from ISSUE-032*) — kopia z telefonu otwiera się drogą z notki przekazania ([[NT-007-hand-over-note]]) albo odtwarza na emulatorze ([[NFR-002-odtworzenie-na-nowym-telefonie]]).
+- aktualizacja do `1.0.1+4` ze sklepu na telefonie — dane i odcisk bez zmian, bez zmiany schematu ([[ISSUE-052-cemetery-search-and-patient-plan]] → *Verification*);
+- **gotowość na wyjazd:** cmentarze z listy wyjazdowej dodane w domu na Wi-Fi, aplikacja zamknięta; po kilkunastu minutach „Twoje cmentarze” bez
+  „· bez planu”, tryb samolotowy → dwa z nich → plan jest — na telefonie niezrobione (na emulatorze przeszło dwa razy przy zamkniętej aplikacji)
+  ([[ISSUE-052-cemetery-search-and-patient-plan]] → *Verification*; agent może sprawdzić przez USB, tylko odczyt).
 
 ### B — odczucie (w trakcie używania, bez bramki)
 
@@ -234,6 +238,12 @@ siebie ([[cmentarz]] → *Open*, [[ISSUE-030-sector-on-a-visit]]).
 > **poza tą pozycją** — `pm` pyta o nie, gdy sklep zadziała; przyjdą jako aktualizacja ze sklepu przed wyjazdem.
 >
 > **Stop #1 — 2026-10-21, autor: *„tak”*:** D1 (najpierw wersja ze schematem v14), D2–D4 jak niżej, cztery zagrożenia (a)–(d) bez zmian.
+
+**Cmentarze — pobieranie planu** ([[ISSUE-052-cemetery-search-and-patient-plan]] → *Verification* → *Hand checks*)
+- praca w tle po **przesunięciu aplikacji z ostatnich** na telefonie — na emulatorze sprawdzona po zabiciu procesu; kiedy system uruchomi gotowe zadanie,
+  decyduje Android (raz 6+ min po ponowieniu);
+- przy tekście 200% na wąskim telefonie zaślepka planu pokazuje tylko „Pobieram plan cmentarza…” — znana luka ekranu (*Poza tą kolejnością* w
+  `CURRENT_STATE.md`); czy przeszkadza w ręce.
 
 ### Acceptance (z *Before install* i listy A — bez nowych decyzji)
 - **AC-1** (z [[ISSUE-041-google-play-and-safe-update]]) *Given* aplikacja ze sklepu z wymyślonymi danymi *When* aktualizacja ze sklepu bez zmiany
