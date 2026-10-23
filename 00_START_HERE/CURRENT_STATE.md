@@ -39,7 +39,8 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
      najpierw prototyp `ui` w trybie discovery, potem pozycje.
 
   **Kolejność autora 2026-10-23** (`/pm` po wycofaniu ISSUE-054): **4 → 5 → 6**. Reszta (ISSUE-051, rodzeństwo przyrodnie, drobne z przeglądów niżej) —
-  *Poza tą kolejnością*, bez miejsca. **Tekst 200% pomijamy** (autor: *„tak na prawdę możemy ignorować te teksty 200%”*) — kandydaci o 200% skreśleni niżej.
+  *Poza tą kolejnością*, bez miejsca. **Tekst 200% pomijamy** (autor: *„tak na prawdę możemy ignorować te teksty 200%”*) — kandydaci o 200% skreśleni niżej, a od wariantu **B**
+  (decyzja autora tego dnia) także przejście `dev` i przegląd `ui` nie sprawdzają 200% ([[style-b]] v1.53 → *Thresholds*).
 - **Po [[2026-10-16-retro-04]] (R1–R7, decyzja autora 2026-10-16) — kolejka przed instalacją MVP**, ustalona w `/pm` tego dnia (retro 4 →
   *Product decisions*). **Instalacja ze sklepu najpóźniej 2026-10-29**; prawdziwe dane autor wpisuje w trakcie wyjazdu na Wszystkie Święte:
   1. ~~[[ISSUE-041-google-play-and-safe-update]]~~ — **zamknięte 2026-10-16** w części kodu: migawka bazy przed migracją, numer wersji, README *Wydanie*,
@@ -347,6 +348,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     przyciski. Kandydat: gdy wcześniejsze odrzucenie jest powodem wyboru, jedno pytanie, co dokładnie było nie tak, zanim wypadnie cała rodzina wariantów.
   - **Pomiar w specyfikacji z innego ekranu niż zapisany** (przegląd `ui` rundy 2 [[ISSUE-049-tree-levels-and-zoom]]): *States* mówiły „emulator 360 dp” przy
     zrzucie z ekranu 411 dp (bez `wm size` / `wm density`). Kandydat: przy pomiarze „200% na 360 dp” zapis podaje `wm size` i gęstość z tej samej chwili.
+    **Nieaktualne dla 200%** od 2026-10-23 (200% bez sprawdzania — [[style-b]] v1.53); zostaje dla każdego pomiaru „na 360 dp”.
   - **Zmiana na stopie #2 po „tak” na makiecie — drugi raz z rzędu** ([[ISSUE-050-next-event]] → *Stop #2 — runda 1*): P1 (podpis 28 sp pod rokiem na
     telewizorze) przyjęte na stopie #1; na emulatorze autor chciał podpisu „na telefonie”, a na telewizorze podświetlenia osób. Ograniczenie „w trybie
     prezentacji telewizor dostaje kopię ekranu telefonu” znała specyfikacja (D11, D29), ale nie padło na stopie #1, a makieta pokazywała telewizor bez telefonu
@@ -385,7 +387,8 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     Kandydat: testy wytycznych dotyku na ekranie wysokim na całą treść, bez przewijania do „dobrego” miejsca.
   - **MAJOR przy 200% z klawiaturą złapał dopiero przegląd `ui`** ([[ISSUE-053-delete-cemetery-grave-person]] → *Verification*): przejście `dev` przy 200% robiło
     zrzut okna cmentarza bez klawiatury i z nią, ale nie spojrzało na zrzut z klawiaturą, a przyciski leżały na polach. Kandydat: na stałej liście przejścia
-    `dev` (retro 3, R3) „200% z klawiaturą” jako osobny stan każdego okna z polem.
+    `dev` (retro 3, R3) „200% z klawiaturą” jako osobny stan każdego okna z polem. **Rozliczone 2026-10-23:** 200% bez sprawdzania (decyzja autora, [[style-b]]
+    v1.53) — kandydat odpada.
   - **Zgoda na opcję agenta wzięta za cel — drugi raz po [[ISSUE-040-export-is-the-backup]]** ([[ISSUE-054-merge-two-people]], wycofana 2026-10-23): w `/pm`
     przy ISSUE-053 autor wybrał „B — duplikat” z opcji `pm` (*„to co piszesz”*); `docs` zapisał pozycję, a w następnej sesji `pm` pominął pytanie o cel
     (retro 4, R1), bo „cel już padł”. `ui` zbudował prototyp z 4 panelami i specyfikację; autor przy panelu 1: *„nie potrzebuje tego”*. Kandydat: gdy
