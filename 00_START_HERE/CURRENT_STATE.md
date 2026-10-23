@@ -29,16 +29,16 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
      **Do wysłania: `1.0.2+5`** (zawiera `1.0.1+4`; paczka poza repo — *Autor, poza sesją*);
   3. ~~[[ISSUE-054-merge-two-people]]~~ — **wycofane 2026-10-23** (autor na panelu 1 discovery `ui`: *„nie nie robimy scalania - nie potrzebuje tego”*);
      nic nie zbudowano; wraca, gdy duplikat osoby przeszkodzi przy prawdziwych danych;
-  4. **„Połącz dwie osoby” i obrót** (do rozpisania przez `docs` przed `ui`): „Od” = osoba zaznaczona na drzewie; przybliżanie dwoma palcami nie kończy
-     ścieżki; ścieżka zostaje do „×” albo gestu wstecz; w trakcie ścieżki samo drzewo, bez suwaka czasu; przycisk pion/poziom w drzewie i na mapie migracji
-     (cała aplikacja idzie na telewizor — autor: *„to nie bug, tylko feature”*). Odwraca decyzje [[ISSUE-039-connect-two-people]] (koniec podświetlenia);
+  4. ~~[[ISSUE-055-connect-from-the-tree-and-rotate]]~~ — **zamknięte 2026-10-23**: „Od” = osoba w środku, ścieżka zostaje do gestu wstecz (bez „×”), w trakcie
+     samo drzewo z banerem, po wyjściu rok sprzed ścieżki; przycisk „Obróć” i układ poziomy bez zakładek dla drzewa i mapy ([[drzewo]] D76–D82). **Do wysłania:
+     `1.0.3+6`** (zawiera `1.0.1+4` i `1.0.2+5`; paczka poza repo — *Autor, poza sesją*);
   5. **czytelność linii przy dużej rodzinie** (do rozpisania): *„linie się przecinają i nie wiem, kto jest synem kogo”* — `ui` w trybie discovery,
      klikalny prototyp; kandydaci z `/pm`: mniej przecięć kolejnością w rzędzie, mostki nad liniami, kolor linii na parę rodziców, podświetlenie linii
      dotkniętej osoby ([[drzewo]]: „każda kolejność w rzędzie coś krzyżuje”);
   6. **opowieść rodziny na drzewie** — animacje i zbliżenia z [[2026-10-14-opowiesc-rodziny-i-wieniec]] (INBOX; wieniec i „następne zdarzenie” już zbudowane);
      najpierw prototyp `ui` w trybie discovery, potem pozycje.
 
-  **Kolejność autora 2026-10-23** (`/pm` po wycofaniu ISSUE-054): **4 → 5 → 6**. Reszta (ISSUE-051, rodzeństwo przyrodnie, drobne z przeglądów niżej) —
+  **Kolejność autora 2026-10-23** (`/pm` po wycofaniu ISSUE-054): ~~4~~ → **5 → 6**. Reszta (ISSUE-051, rodzeństwo przyrodnie, drobne z przeglądów niżej) —
   *Poza tą kolejnością*, bez miejsca. **Tekst 200% pomijamy** (autor: *„tak na prawdę możemy ignorować te teksty 200%”*) — kandydaci o 200% skreśleni niżej, a od wariantu **B**
   (decyzja autora tego dnia) także przejście `dev` i przegląd `ui` nie sprawdzają 200% ([[style-b]] v1.53 → *Thresholds*).
 - **Po [[2026-10-16-retro-04]] (R1–R7, decyzja autora 2026-10-16) — kolejka przed instalacją MVP**, ustalona w `/pm` tego dnia (retro 4 →
@@ -90,9 +90,9 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
 - **Agent `architect` — nie teraz** (retro 4, R7): sygnał „pierwszy ADR zastąpiony” ([[ADR-018-export-is-the-backup]]) rozliczony; nowy warunek w `CLAUDE.md` →
   *Na sygnał*.
 
-  Specyfikacja: [[drzewo]] v1.25, [[osoba]] v2.9, [[wpis-osoby]] v6, [[wieniec]] v1.2, [[zamieszkanie]] v1.4, [[mapa-migracji]] v1.4, [[grob]] v9.1,
+  Specyfikacja: [[drzewo]] v1.30, [[osoba]] v2.9, [[wpis-osoby]] v6, [[wieniec]] v1.2, [[zamieszkanie]] v1.4, [[mapa-migracji]] v1.7, [[grob]] v9.1,
   [[cmentarz]] v8, [[osoby]] v3.1, [[rodzina]] v2.2, [[zdjecia-osoby]] v1.6, [[zdjecie]] v1.7, [[kadr-profilowego]] v1.3, [[zdjecia-w-aplikacji]] v1.2,
-  [[style-b]] v1.46.
+  [[style-b]] v1.54.
 - **Prawdziwe dane rodziny dopiero po instalacji MVP** (decyzja autora 2026-10-08 w `/pm`): budujemy produkt gotowy do
   instalacji na telefonie (MVP = brief §5, M1–M11); do tego czasu autor ocenia aplikację na wymyślonych danych. **Instalacja zrobiona 2026-10-22**
   ([[ISSUE-032-mvp-install]]) — od teraz prawdziwe dane są w telefonie, a emulatory dalej tylko na wymyślonych. Rozmowa z babcią
@@ -259,6 +259,11 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     `%TEMP%\claude\c--Programowanie-Grobing-grobing-agents\caa33748-…\scratchpad\` — makieta `makieta-053.html`, `emu053\` (zrzuty `shots\` z wymyślonymi
     danymi — na kilku są **Twoje wpisy z emulatora**: 10, 30, 34, 35, 54; `stan-po-053.tar` — dane testowe z Twoimi wpisami z emulatora; `stan-przed-053.*` —
     demo, już wgrane z powrotem), skrypty i logi testów — wszystko do kosza;
+  - **po ISSUE-055 (2026-10-23):** paczka do Play Console `C:\Programowanie\Grobing\_paczki\grobing-1.0.3+6.aab` — wgraj na testy wewnętrzne (README
+    `grobing-code` → *Wydanie*), potem aktualizuj na telefonie; zawiera wszystko z `1.0.1` i `1.0.2`, więc wystarczy ta jedna. Katalog sesji
+    `%TEMP%\claude\c--Programowanie-Grobing-grobing-agents\8d325e2e-…\scratchpad\` — prototyp `prototyp-055.html`, `emu055\` (zrzuty z wymyślonymi danymi — na
+    `19` i `22` nazwa miasta z danych demo, na `12a` **Twój wpis z emulatora**; `stan-po-055.tar` — dane testowe sprzed demo z przejścia; `stan-przed-055-demo.*` —
+    demo, już wgrane z powrotem), `fb\` (próbna przebudowa fontu), skrypty — wszystko do kosza;
   - **repo nie mają pliku `LICENSE`** — kod można oglądać, ale nie wolno go używać. Licencję można dodać później.
 - **Emulatory (po ISSUE-033):** `Medium_Phone` — release v12 na danych testowych autora, kopia skonfigurowana od nowa z hasłem
   testowym (wymyślone, z sesji ISSUE-029), pliki `grobing-klucz-029.age` i `grobing-kopia-029.age` w Pobranych; grób „Jozef” ma
@@ -306,7 +311,8 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   przestawia wtedy zadania przy następnym starcie — tak wyszło zamrożenie pracy w tle (README `grobing-code` → *Mapa cmentarza i sieć*). **Po ISSUE-053:**
   `Grobing_Restore` — z powrotem **demo** (APK `0.9.0`, 4001, i dane z 21.10); na czas pozycji stan sprzed demo z `_pokaz` z buildem `1.0.2` i wymyślonymi
   partiami 2–4, częściowo usuniętymi testami i na stopie #2 — zapisany w katalogu sesji (`stan-po-053.tar`), plik w `_pokaz` bez zmian; „Czas na działanie”,
-  tekst i ekran domyślne.
+  tekst i ekran domyślne. **Po ISSUE-055:** `Grobing_Restore` — z powrotem **demo** (APK `0.9.0`, 4001, i dane z 21.10), autoobracanie włączone jak przed pozycją;
+  na czas pozycji stan sprzed demo z `_pokaz` z buildem `1.0.3` — zapisany w katalogu sesji (`stan-po-055.tar`), plik w `_pokaz` bez zmian.
 - **[[EPIC-002-wizyta]] gotowy do rozpisania na US** — pytanie „jak znaleźć grób bez pinezki” ma kierunek autora
   (2026-10-08): adres z wyszukiwarki zarządcy → kwatera zaznaczona według planu zarządcy → na miejscu plan offline i
   GPS → pinezka. Wejście do pierwszej US (mapa cmentarza): EPIC-002 → *Input from SPIKE-001*. Ekran: `ui` →
@@ -323,7 +329,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
   paczki (decyzja autora 2026-10-07); treść wychodzących zmian sprawdza strażnik treści ([[ISSUE-020-content-guard]]) przy każdym `git add`/`commit`.
 
 ## Retro / fact-confirmation counter
-- Zamknięte pozycje od ostatniego retro: **13** (ostatnie retro: [[2026-10-16-retro-04]]). **Retro 5 odłożone decyzją autora 2026-10-21 w `/pm`**
+- Zamknięte pozycje od ostatniego retro: **14** (ostatnie retro: [[2026-10-16-retro-04]]). **Retro 5 odłożone decyzją autora 2026-10-21 w `/pm`**
   (*„nie chcę robić retro”*) — licznik rośnie dalej, `pm` wraca z propozycją, gdy autor zechce. Co **10** → retro + pytanie o 3–5
   nośnych faktów (Meta-dec. 3g, 3h SC-16, A3). Licznik żyje **tylko tutaj**; podbija go `docs` przy zamknięciu, a zeruje go retro.
 - Do retro (zebrane po drodze, bez decyzji):
@@ -340,8 +346,9 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     były zielone, a drugie dotknięcie okręgu w trakcie przygotowania zdjęć otwierało drugi szkic, którego zapis całej listy zdejmował zdjęcia pierwszego. Ten
     sam mechanizm co D25 (otwarta poprawa). Kandydat: przy każdym zapisie „od razu” w specyfikacji stan „w toku” i pytanie o drugie wejście, zanim przyjdzie
     przegląd.
-  - **„ok” na stopie #2 bez śladu dla jednego kroku** — po [[ISSUE-045-migration-map]] (krok 2) znów w [[ISSUE-048-portrait-photos]] (krok 3); pozostałe kroki ze
-    śladem. Zapisane jak „pomiń” → lista B.
+  - **„ok” na stopie #2 bez śladu dla jednego kroku** — po [[ISSUE-045-migration-map]] (krok 2) znów w [[ISSUE-048-portrait-photos]] (krok 3), w
+    [[ISSUE-053-delete-cemetery-grave-person]] (krok 2) i w [[ISSUE-055-connect-from-the-tree-and-rotate]] (krok 1); pozostałe kroki ze śladem. Zapisane jak
+    „pomiń” → lista B.
   - **Zmiana sterowania na stopie #2 po „tak” na klikalnej makiecie** ([[ISSUE-049-tree-levels-and-zoom]] → *Stop #2 — runda 1*): P2 (etykieta „Linia krwi ▾” z
     listą) przyjęte na stopie #1; zbudowane, na emulatorze autor zamienił je na proste + / − i usunął przyciski przybliżania — runda `ui`, `dev`, `qa`.
     Specyfikacja omijała + / −, bo autor nazwał nieestetycznym „− Poziom 2 +” ([[SPIKE-004-mvp-flow-prototype]] D25), a chodziło mu chyba o napis, nie o
@@ -394,6 +401,14 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     (retro 4, R1), bo „cel już padł”. `ui` zbudował prototyp z 4 panelami i specyfikację; autor przy panelu 1: *„nie potrzebuje tego”*. Kandydat: gdy
     źródłem pozycji jest zgoda autora na opcję zaproponowaną przez agenta, `pm` przed `ui` pyta raz, czy to już się zdarzyło albo jest potrzebne przed
     najbliższym terminem — także gdy pozycja mówi, że cel padł.
+  - **Wyścig w silniku Fluttera 3.41.1 przy obrocie** ([[ISSUE-055-connect-from-the-tree-and-rotate]] → *Dev report* → *Found* a): po „Obróć” aplikacja
+    rysowała się w starym rozmiarze w obróconym oknie (8 z 8); przyczyna w źródłach silnika w SDK (`resizeEngineView` przypina powierzchni rozmiar klatki
+    sprzed obrotu), obejście w `MainActivity` (12 z 12). Dwie sondy na ślepo (`[]` przed obrotem, `requestLayout`) nie pomogły — pomógł dopiero
+    `dumpsys activity top` (widok vs powierzchnia) i źródło. Najpewniej ten sam wyścig co „6 z 8” w [[ISSUE-034-tree-presentation-mode]], wtedy obejście
+    na objawie. Kandydat: przy zawieszeniu rozmiaru po obrocie najpierw rozmiary widoków w `dumpsys activity top`, potem źródło silnika z SDK.
+  - **Prototyp odwrócił „poziomo” przed kodem** ([[ISSUE-055-connect-from-the-tree-and-rotate]]): pytanie o cel obrotu (trzy odpowiedzi autora) zamieniło
+    „przycisk” w „układ poziomy”, a panel z podglądem telewizora — L1 na L4 (*„więcej miejsca na drzewo”*). Pięć paneli i siedem decyzji w jednej sesji
+    przed planem; potwierdza R6 z retro 2 i R1 z retro 4.
 
 ## Parked (waiting on someone outside the session)
 - **cmentarz (którykolwiek z cmentarzy autora)** · przy 3 grobach, które autor zna: (a) dokładność GPS telefonu
@@ -413,6 +428,19 @@ Format wpisu: `źródło (babcia / cmentarz X) · pytanie bez danych rodziny · 
 ## Recently done
 > Tylko wpisy od ostatniego retro ([[2026-10-16-retro-04]]; zasada R5 z retro 3). Starsze są w plikach retro → *Archive*:
 > [[2026-10-16-retro-04]] · [[2026-10-13-retro-03]] · [[2026-10-08-retro-02]] · [[2026-10-06-retro-01]].
+
+- 2026-10-23 — [[ISSUE-055-connect-from-the-tree-and-rotate]] zamknięte. **„Połącz dwie osoby” od osoby z drzewa i obrót** (uwagi autora po pierwszym pokazie
+  drzewa rodzinie, `/pm` 2026-10-22; pozycja 4 kolejki):
+  - pytanie `ui` o cel obrotu: w trybie prezentacji brak ścieżki, przesyłanie z szybkich ustawień zostawia pion, *„chcę poziomo z przyciskami”* (D76);
+    prior art — Android sam proponuje obrót, ale w poziomie na drzewo zostawało ok. 80 dp, więc rzecz w układzie;
+  - prototyp `prototyp-055.html`, decyzje autora na panelach: „Od” = osoba w środku (D78), **bez „×” — koniec gestem wstecz** (D79), baner do końca, samo
+    drzewo (D80), po wyjściu rok sprzed ścieżki i „Od” w środku (D81), **L4 „bez zakładek”** po odrzuceniu L1 (D77; mapa — D31); [[drzewo]] v1.29–v1.30,
+    [[mapa-migracji]] v1.7, [[style-b]] v1.54 (reguła 12); **bez zmiany bazy** (v15), `1.0.3+6`;
+  - kod: przycisk „Obróć” (glif `screen_rotation` dołożony do fontu), `tree_orientation.dart`, układ poziomy (`_WideTop`, karta w jednym rzędzie);
+    na emulatorze **wyścig silnika Fluttera 3.41.1** — aplikacja w starym rozmiarze po obrocie (8 z 8) — obejście w `MainActivity` (12 z 12, README);
+  - przegląd `ui`: 1 MINOR (pasek w poziomie nad krawędzią) poprawiony, 2 odstępstwa przyjęte; stop #2 *„ok”* — krok 2 ze śladem, krok 1 bez śladu.
+
+  Lista B w [[ISSUE-032-mvp-install]] → *Hand checks*. Testy: 1051 zielonych. Werdykt `qa`: APPROVED (self-check, z uwagami). Licznik retro: 13 → 14.
 
 - 2026-10-23 — [[ISSUE-054-merge-two-people]] **wycofane** decyzją autora na panelu 1 discovery `ui` (*„nie nie robimy scalania - nie potrzebuje tego”*). Nic
   nie zbudowano, specyfikację i prototyp `ui` usunął przed zapisem; *Do retro* — zgoda na opcję agenta wzięta za cel. Licznik retro bez zmian (wycofanie to nie

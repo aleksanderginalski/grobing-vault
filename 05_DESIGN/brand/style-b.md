@@ -1,5 +1,5 @@
 ---
-title: "Style B — visual guidelines (v1.53)"
+title: "Style B — visual guidelines (v1.54)"
 type: design-guidelines
 status: active
 owner: ui
@@ -224,6 +224,9 @@ zostaje bez zmian.
     - **pasek jest ukryty w formularzach, oknach i trybach wyboru** (wpis osoby, arkusz rodziny, wyszukiwanie,
       wskazanie punktu) **i na zdjęciu na pełnym ekranie** (podgląd, kadr). Tam liczy się jedno zadanie, a powrót
       daje „wstecz”;
+    - **pasek jest ukryty na drzewie i mapie migracji w poziomie** (v1.54, [[drzewo]] D77 — decyzja autora: *„więcej miejsca na drzewo a mniej
+      na »interface«”*): przełącznik „Drzewo · Mapa” i ikony stoją nad drzewem na powierzchni z obrysem, karta z czasem w dolnym pasku
+      ([[drzewo]] 12); zakładki wracają w pionie („Obróć”) albo po „wstecz”;
     - **każda zakładka szuka swojego** (D3): wyszukiwarka na mapie szuka tylko cmentarzy, a osób — zakładka Osoby.
       To odstępstwo od R1 („Szukaj osoby lub cmentarza”).
 
@@ -749,3 +752,5 @@ telefon) → grubość 400 z zaokrąglonymi końcami, jednym parametrem.
 - 2026-10-23 — **v1.53** (decyzja autora w `/pm`, wariant B: *„tak na prawdę możemy ignorować te teksty 200%”*): *Thresholds* → rozmiar kontrolki z tekstem —
   bez sprawdzania przy 200% w przejściu `dev` i przeglądzie `ui`; kontrolki dalej rosną z tekstem. Wcześniejsze wpisy o 200% w regułach i specyfikacjach zostają
   jako zapis tego, co zbudowano.
+- 2026-10-23 — **v1.54** ([[ISSUE-055-connect-from-the-tree-and-rotate]], decyzja autora na prototypie — L4): reguła 12 — dolny pasek ukryty na drzewie i mapie migracji
+  w poziomie; przełącznik i ikony nad drzewem ([[drzewo]] 12, D77).

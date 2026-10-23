@@ -1,10 +1,10 @@
 ---
 screen: "Mapa migracji — gdzie kto mieszkał w danym roku i jak się przemieszczał (część „Mapa” zakładki Drzewo, w telefonie i na telewizorze)"
-items: ["[[ISSUE-045-migration-map]]", "[[ISSUE-050-next-event]]"]
+items: ["[[ISSUE-045-migration-map]]", "[[ISSUE-050-next-event]]", "[[ISSUE-055-connect-from-the-tree-and-rotate]]"]
 us: "n/a — pozycja z `/pm` 2026-10-16 ([[2026-10-16-retro-04]] → *Product decisions*), bez US; [[EPIC-003-zrozumienie]] (widok 5 — czas, M10)"
 journey-step: "widok 5 (M10 — czas); dane z [[zamieszkanie]]"
 mockup: "2026-10-19: mapa-050.html (ISSUE-050: ⏭ i podpis przeprowadzki, M1–M2; mapa z makiety ISSUE-045 w stanie po v1.4 — bez nazw, bez śladu, K2, kadr z gestów; z mapa-045.js, mapa-050-add.js i world.js obok) — katalog tymczasowy sesji `ef3f4405-…\\scratchpad`, obok drzewo-050.html; 2026-10-17: mapa-045.html (z mapa-045.js i world.js obok) — katalog tymczasowy sesji `40086651-…\\scratchpad`; link file:/// w ISSUE-045 → Implementation plan; zrzuty `shots\\`. Kandydaci v1: W1–W2, K1–K2, O1–O2, D1–D2, R1–R3 na wymyślonej rodzinie (16 osób). Wybrane O3 i R4 (v1.1) są tylko w tej specyfikacji — makieta pokazuje W2, K2 i D2"
-updated: 2026-10-19
+updated: 2026-10-23
 ---
 
 # Mapa migracji — specyfikacja
@@ -56,6 +56,10 @@ updated: 2026-10-19
 > znika z listwą po 5 s ([[drzewo]] D72 — pod rokiem nic nie stoi); na telefonie dymek bez zmian. **Przeprowadzający się świecą** — pierścień w akcencie i poświata pod okręgiem, trzy pulsy,
 > potem stała, dopóki stoi podpis; w stosie idą na przód, więc świecą ich własne okręgi, a „+N” świeci tylko przy więcej niż trzech (D30). Elementy 13 i 15, *States*, *Style B rules applied*, *AC → element*.
 
+> **Wersja 1.7 (2026-10-23, `ui` przed planem [[ISSUE-055-connect-from-the-tree-and-rotate]]; decyzja autora na prototypie — panel 5, *„tak”*):** część „Mapa” dostaje
+> przycisk **„Obróć”** w pasku i ten sam **układ poziomy L4 „bez zakładek”** co drzewo ([[drzewo]] 12, D76, D77, D82): przełącznik i ikony w górnym rzędzie nad mapą, karta
+> z linią „gdzie” i czasem w dolnym pasku, bez zakładek (D31). Zmienione: element 1, *States*. Tryb prezentacji (13) bez zmian.
+
 ## Purpose
 Zbierający pokazuje rodzinie, **gdzie kto mieszkał w wybranym roku** i **jak się przemieszczał**: przeprowadzki i wyjazdy za granicę. Robi to tym samym
 suwakiem lat, tempem i trybem prezentacji co historia na drzewie ([[US-010-czas-na-drzewie]], [[ISSUE-038-history-on-tv-and-tempo]]). Przybliża to,
@@ -96,7 +100,7 @@ w danym roku, czyli o co zapytać babcię.
 ## Elements in order
 | # | Element | Typ | Klawiatura / akcja | Domyślnie | Walidacja | Źródło |
 |---|---|---|---|---|---|---|
-| 1 | **Pasek:** przełącznik segmentowy **„Drzewo” · „Mapa”** (`account_tree_outlined` · `public_outlined` — v1.2, reguła 3; wysokość 40 dp, cel 48 dp; aktywna część z obrysem 2 dp i ikoną w akcencie, jak segment z R3; czytnik: „Drzewo, zaznaczone” / „Mapa”) · po prawej **„Przesyłaj na telewizor”** jak w [[drzewo]] 1. Przy części „Mapa” bez „Połącz dwie osoby”. **Tekst ≥ 150%:** przełącznik same ikony z `tooltip` i czytnikiem, gdy napisy nie mieszczą się w pasku części „Drzewo” (z „Połącz dwie osoby” i „Przesyłaj”). **Ten sam kształt w obu częściach** (v1.2, D20): część „Mapa” liczy miejsce tak jak „Drzewo”, więc przełącznik nie zmienia się pod palcem, który właśnie zmienił część | pasek + przełącznik + przycisk-ikona | część → zmiana części · cast → [[drzewo]] *Navigation* | część z wejścia | — | R3 · W2 (autor) |
+| 1 | **Pasek:** przełącznik segmentowy **„Drzewo” · „Mapa”** (`account_tree_outlined` · `public_outlined` — v1.2, reguła 3; wysokość 40 dp, cel 48 dp; aktywna część z obrysem 2 dp i ikoną w akcencie, jak segment z R3; czytnik: „Drzewo, zaznaczone” / „Mapa”) · po prawej **„Przesyłaj na telewizor”** jak w [[drzewo]] 1. Przy części „Mapa” bez „Połącz dwie osoby”. **Od v1.7 (D31):** na lewo od „Przesyłaj” — **„Obróć”** jak w [[drzewo]] 1 (D82); w poziomie przełącznik i ikony stoją w górnym rzędzie nad mapą ([[drzewo]] 12). **Tekst ≥ 150%:** przełącznik same ikony z `tooltip` i czytnikiem, gdy napisy nie mieszczą się w pasku części „Drzewo” (z „Połącz dwie osoby” i „Przesyłaj”). **Ten sam kształt w obu częściach** (v1.2, D20): część „Mapa” liczy miejsce tak jak „Drzewo”, więc przełącznik nie zmienia się pod palcem, który właśnie zmienił część | pasek + przełącznik + przycisk-ikona | część → zmiana części · cast → [[drzewo]] *Navigation* | część z wejścia | — | R3 · W2 (autor) |
 | 2 | **Mapa świata bez sieci:** Natural Earth, kraje (dzisiejsze granice), rzut jak mapa Polski (Web Mercator `flutter_map`, bez kafelków). **Ląd** — powierzchnia, **morze** — woda, **granice i brzegi** — obrys przy kryciu 70%, 0,7 dp (dekoracja). ~~Nazwy krajów z danymi~~ — **v1.2 (D18, autor): bez nazw krajów** — kraj rozpoznaje się po konturze. Przeciąganie przesuwa, dwa palce przybliżają, **podwójne dotknięcie pustego miejsca przybliża o jeden poziom mapy (×2), jak mapa Polski i plan cmentarza** (v1.2, D23; + / − zostają ×1,45 — 11) | mapa | gesty · + / − (11) | kadr (10) | — | ISSUE-045 AC-4 · [[style-b]] reguła 13 · D1, D14, D18, D23 |
 | 3 | **Pigułka u góry mapy:** „W 1950 na mapie: 9 osób · 3 bez miejsca” · „Dziś na mapie: 6 osób” (13 sp, tekst, powierzchnia, 12 dp od góry; bez działania). „Na mapie” to osoby żyjące w tym roku i mające miejsce (także poza kadrem). „Bez miejsca” to osoby żyjące bez miejsca na ten rok; ta część znika przy zerze. Odmiana liczby jak w [[style-b]] reguła 6. Czytnik czyta ją jako region na żywo po zatrzymaniu ▶ i po zmianie roku palcem, jak rok. **Nie ma jej na telewizorze** (13). **v1.5:** gdy stoi podpis roku po ⏭ (15), pigułki nie ma — podpis stoi w jej miejscu, a pigułka wraca, gdy podpis znika | tekst | — | — | — | D7 |
 | 4 | **Osoba żyjąca w roku Y w swoim miejscu:** okrąg 32 dp na powierzchni z obrysem 1,5 dp, z profilowym w kadrze albo inicjałami (12 sp, półgrube, **tekst** — v1.2: kolor jak w węźle drzewa, 10,02:1; najwyżej 1,3×); **„Ja”** — jak każdy: profilowe albo inicjały (v1.4, D26 — decyzja autora; ~~znak „Ja” jak w drzewie, [[drzewo]] D14~~); kim jest „ja”, mówi karta („to ja”) i czytnik, a w rozsunięciu imię „Ja” pod okręgiem (9). **Osoba w środku** — pierścień 2,5 dp w akcencie i delikatna poświata ([[style-b]] reguła 2), zawsze na wierzchu. **Okno niepewnej daty** urodzenia albo śmierci (jak N3 w drzewie): przerywany obrys (kreska 4/3); **u osoby w środku przerywany pierścień w akcencie** (v1.2, jak w drzewie). Punkt to środek miejscowości albo, przy samym kraju, punkt jego nazwy (6) — z [[zamieszkanie]], `residences.lat/lon`. ~~Podpis miejsca pod okręgiem~~ — **v1.2 (D18, autor): bez podpisu miejsca**; gdzie osoba jest, mówi karta (12) i czytnik. **Kilka osób w jednym miejscu — stos:** do 3 okręgów co 22 dp (osoba w środku pierwsza, dalej według roku urodzenia) i plakietka „+N” (11 sp, powierzchnia z obrysem). **Cel dotyku:** okrąg 48 dp; stos to jeden cel na całą szerokość. **Dotknięcie osoby w środku** → jej widok (v1.2, D21; nie w trybie prezentacji). Czytnik: „Zofia Wymyślona, Moja prababcia, w 1930 Zmyślin, Polska, dziś Ukraina — w środek” (osoba w środku: „— otwórz”); stos: „Zmyślin: 4 osoby — rozsuń”; kolejność według położenia, z góry i od lewej | znacznik | dotknięcie → osoba w środek · osoba w środku → jej widok · stos → rozsunięcie (9) | — | — | AC-1 · D2, D3, D4, D18, D21 |
@@ -143,6 +147,7 @@ w danym roku, czyli o co zapytać babcię.
 | tekst 200% / 360 dp | 1 — przełącznik same ikony, gdy napisy nie mieszczą się w części „Drzewo”, i tak samo w części „Mapa” (D20); 4 — inicjały i „+N” najwyżej 1,3×, 9 — imiona najwyżej 1,3×; 3 zawija się do dwóch linii, łamie się przed „·”; 12 — jak karta drzewa przy 200% ([[drzewo]] D20) |
 | tryb prezentacji | 13; rok w rogu, gdy nie jest „dziś”, i zawsze ze sterowaniem; przełącznik na środku miejsca między rokiem a „Zakończ prezentację” (D24) — przy 100% na 914 dp ok. 40 dp na lewo od środka ekranu, przy 200% na 800 dp z napisami (267 dp), 29 dp przed „Zakończ” |
 | wczytywanie · błąd odczytu | jak w [[drzewo]] (mapa świata jest w aplikacji, więc zwykle niewidoczne) |
+| poziomo (v1.7) | jak [[drzewo]] *States* „poziomo” — mapa w miejscu drzewa, górny rząd nad mapą, dolny pasek z kartą (linia „gdzie”) i czasem, bez zakładek (D31) |
 
 ## Sketch
 ```
@@ -351,6 +356,10 @@ n/a — ekran do oglądania.
   pokazuje z kanapy, kto się przeprowadził. Najpierw (v1.6, przed przejściem `dev`) kolejność miała zostać, a świecić miał sam „+N” — na emulatorze przy kadrze rodziny na dwóch kontynentach
   przeprowadzka z Litwy skończyła się w skupieniu 14 osób i świecił tylko „+11”, czyli żadna twarz. **Nie da:** spokojnego stosu — przy ⏭ i przy zmianie roku pozostałe okręgi
   przesuwają się o jedno miejsce. *Obali:* rodzina gubi, kto jest w stosie, bo kolejność skacze — wtedy na przód tylko przy ⏭, a po zmianie roku zostaje.
+- **D31 — mapa poziomo: układ L4 jak drzewo** (v1.7, [[ISSUE-055-connect-from-the-tree-and-rotate]]; **decyzja autora na prototypie — panel 5, *„tak”***). Gdy ekran stoi
+  poziomo — z „Obróć” albo z obracania telefonu — część „Mapa” ma ten sam układ co drzewo ([[drzewo]] 12, D77): bez dolnego paska zakładek, przełącznik i ikony („Obróć”,
+  „Przesyłaj na telewizor”) w górnym rzędzie nad mapą, karta (12) z linią „gdzie” i czasem w dolnym pasku. Przełącznik „Drzewo · Mapa” zostawia obrót. **Nie da:** zakładek
+  w poziomie. *Obali:* jak [[drzewo]] D77.
 
 ## Open
 > **v1.1 — rozstrzygnięte na stopie #1 (2026-10-17, autor):** W2, K2, O3, D2, R4. Zapis kandydatów v1:

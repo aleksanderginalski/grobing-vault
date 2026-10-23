@@ -239,6 +239,14 @@ Warunki — każdy ma swój dom, tutaj tylko lista:
 - pasek przez 4 s nad przypiętym przyciskiem ekranu („Dodaj grób”, przycisk arkusza grobu, „Zapisz” poprawy — MINOR przeglądu `ui`) — czy przeszkadza
   w ręce.
 
+**„Od” z drzewa, ścieżka do wstecz, obrót** ([[ISSUE-055-connect-from-the-tree-and-rotate]] → *Verification* → *For ISSUE-032 → Hand checks (B)*)
+- ścieżka do gestu wstecz na prawdziwych danych: przybliżanie, przesuwanie, dotknięcia w trakcie, wyjście wstecz — stop #2, krok 1: **ok bez śladu na urządzeniu**;
+- telewizor: przesyłanie z szybkich ustawień, drzewo poziomo („Obróć”, układ bez zakładek) ze ścieżką — czy rodzina widzi drzewo i nazwę — krok z
+  telewizorem, poza stopem #2;
+- „Obróć” kilka razy i obrót z czujnika na Twoim telefonie (Android 13): aplikacja wypełnia ekran po obrocie (obejście wyścigu silnika Fluttera w
+  `MainActivity`, sprawdzone tylko na emulatorze — 12 z 12) — nieprzetestowane na żywo;
+- TalkBack: ścieżka bez „×”, wyjście „wstecz” czytnika — nieprzetestowane na żywo.
+
 **Do decyzji autora, gdy zobaczy swoje cmentarze** (nie sprawdzenie, tylko wybór): grubość alejek i znicze, które nachodzą na
 siebie ([[cmentarz]] → *Open*, [[ISSUE-030-sector-on-a-visit]]).
 
