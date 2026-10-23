@@ -34,7 +34,12 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
      (cała aplikacja idzie na telewizor — autor: *„to nie bug, tylko feature”*). Odwraca decyzje [[ISSUE-039-connect-two-people]] (koniec podświetlenia);
   5. **czytelność linii przy dużej rodzinie** (do rozpisania): *„linie się przecinają i nie wiem, kto jest synem kogo”* — `ui` w trybie discovery,
      klikalny prototyp; kandydaci z `/pm`: mniej przecięć kolejnością w rzędzie, mostki nad liniami, kolor linii na parę rodziców, podświetlenie linii
-     dotkniętej osoby ([[drzewo]]: „każda kolejność w rzędzie coś krzyżuje”).
+     dotkniętej osoby ([[drzewo]]: „każda kolejność w rzędzie coś krzyżuje”);
+  6. **opowieść rodziny na drzewie** — animacje i zbliżenia z [[2026-10-14-opowiesc-rodziny-i-wieniec]] (INBOX; wieniec i „następne zdarzenie” już zbudowane);
+     najpierw prototyp `ui` w trybie discovery, potem pozycje.
+
+  **Kolejność autora 2026-10-23** (`/pm` po wycofaniu ISSUE-054): **4 → 5 → 6**. Reszta (ISSUE-051, rodzeństwo przyrodnie, drobne z przeglądów niżej) —
+  *Poza tą kolejnością*, bez miejsca. **Tekst 200% pomijamy** (autor: *„tak na prawdę możemy ignorować te teksty 200%”*) — kandydaci o 200% skreśleni niżej.
 - **Po [[2026-10-16-retro-04]] (R1–R7, decyzja autora 2026-10-16) — kolejka przed instalacją MVP**, ustalona w `/pm` tego dnia (retro 4 →
   *Product decisions*). **Instalacja ze sklepu najpóźniej 2026-10-29**; prawdziwe dane autor wpisuje w trakcie wyjazdu na Wszystkie Święte:
   1. ~~[[ISSUE-041-google-play-and-safe-update]]~~ — **zamknięte 2026-10-16** w części kodu: migawka bazy przed migracją, numer wersji, README *Wydanie*,
@@ -76,7 +81,7 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
      (odcisk zgodny), aktualizacja do 1.0.0 bez zmiany odcisku, kopia w tle przed i po aktualizacji; audyt pól modelu bez luki przed instalacją. Zostało:
      [[NT-007-hand-over-note]] — droga z notki **odłożona decyzją autora** (*Input from ISSUE-032*) i sama notka dla rodziny;
   12. **dalej, do wyjazdu — aktualizacje ze sklepu bez zmiany bazy:** kandydaci z `/pm` 2026-10-21 — rodzeństwo przyrodnie w słowniku,
-     [[ISSUE-051-wedding-changes-wreath-and-surname]], mapa cmentarza przy 200% (*Poza tą kolejnością*); `pm` pyta autora, które wchodzą.
+     [[ISSUE-051-wedding-changes-wreath-and-surname]], ~~mapa cmentarza przy 200%~~ (*Poza tą kolejnością*); `pm` pyta autora, które wchodzą.
 
   **Zasady terminu:** przed instalacją wszystko, co zmienia bazę; widoki bez zmiany bazy (5, 6) mogą przyjść później jako aktualizacja ze sklepu; **w trakcie
   wyjazdu żadnych aktualizacji** — dlatego 7–10, potrzebne na wyjeździe, idą przed instalacją. Wszystkie US [[EPIC-001-zabezpiecz-i-przepisz]] i [[EPIC-003-zrozumienie]] zamknięte (EPIC-i zostają `draft` do instalacji —
@@ -120,15 +125,15 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     po ślubie pół na pół, po rozwodzie znowu swój — odwraca [[wieniec]] B7) i nazwisko (pytanie przy ślubie i przy końcu związku, na suwaku nazwisko z
     danego roku); bez zmiany bazy. Rekomendacja `pm`: pierwsza aktualizacja po instalacji — **miejsce w kolejce czeka na autora** (⚠️ OPEN w pozycji);
   - **opowieść rodziny na drzewie** — pomysł autora ze stopu #2 ISSUE-037 (c) w [[2026-10-14-opowiesc-rodziny-i-wieniec]] (INBOX): najpierw prototyp `ui`
-    w trybie discovery, potem pozycje. **Po instalacji MVP** (decyzja autora 2026-10-14). Wieniec (d) przeszedł 2026-10-16 do kolejki jako
+    w trybie discovery, potem pozycje. **Po instalacji MVP** (decyzja autora 2026-10-14) — **od 2026-10-23 w kolejce jako 6** (*In progress*). Wieniec (d) przeszedł 2026-10-16 do kolejki jako
     [[ISSUE-044-family-wreaths]] (zamknięte 2026-10-17); „następne zdarzenie” z c) — 2026-10-18 jako [[ISSUE-050-next-event]]; animacje i zbliżenia zostają;
   - ~~[[ISSUE-026-link-existing-photo-to-person]]~~ — **wchłonięta 2026-10-18 przez [[ISSUE-048-portrait-photos]]** (AC-4, AC-5 tam) — zbudowane 2026-10-19;
   - ~~**usuwanie pustego grobu i pochówku**~~ — **zaczęło przeszkadzać 2026-10-23 → [[ISSUE-053-delete-cemetery-grave-person]]**; w aplikacji nie ma usuwania grobów, osób ani pochówków (brief G7/C5). Od [[ISSUE-047-grave-first-then-people]]
     pusty grób z pomyłki zostaje na liście, a osoby z grobem nie da się dodać do drugiego (napis symboliczny). Kandydat na małą pozycję, gdy któreś zacznie
     przeszkadzać przy prawdziwych danych ([[cmentarz]] D38 *Obali* 2, [[grob]] D23 *Obali*);
   - **z przeglądu `ui` [[ISSUE-053-delete-cemetery-grave-person]]** (kandydaci na drobne pozycje): pasek „Cofnij” przez 4 s nad przypiętym przyciskiem ekranu
-    (MINOR 2 — lista B w [[ISSUE-032-mvp-install]]); twarda spacja przed „—” w całej aplikacji (myślnik nie zaczyna linii); ✎ arkusza cmentarza na mapie przy
-    tekście 200% na 360 dp chowa się pod wyszukiwarką (arkusz wyższy niż miejsce — wejście do poprawy wtedy przez ekran cmentarza); „Cofnij” dla „Usuń związek”
+    (MINOR 2 — lista B w [[ISSUE-032-mvp-install]]); twarda spacja przed „—” w całej aplikacji (myślnik nie zaczyna linii); ~~✎ arkusza cmentarza na mapie przy
+    tekście 200% na 360 dp chowa się pod wyszukiwarką~~ (200% pomijamy — decyzja autora 2026-10-23); „Cofnij” dla „Usuń związek”
     (spójność z [[ADR-022-deletion-with-undo-snapshot]]);
   - [[NT-001-photograph-the-notes]]: zdjęcia zrobione (33). Zostało: zaszyfrowane miejsce, sprawdzenie
     kopii w WhatsAppie i otwarcie kopii — *Resolution*;
@@ -153,9 +158,8 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     wszystkich ekranów z osobami i ich testów. Kandydat na małą pozycję;
   - **„Stan danych” mówi „Zapisana w Dysku na telefonie” także przy kopii w Pobranych** (ISSUE-022, B6) — jedna linia z
     `backupPlace`, poza zakresem ISSUE-022.
-  - **mapa cmentarza przy tekście 200% na 360 × 640 dp** ([[ISSUE-029-pin-on-site-gps]] → *Verification*, przegląd `ui` m8): plan w A
-    jest bardzo niski, „Kwatery” przykrywa „Plan offline” i „© OpenStreetMap” — z [[ISSUE-027-cemetery-map-plan-photo-states]] (D14 →
-    *Obali*) i [[ISSUE-028-cemetery-sectors]]. Kandydat na małą pozycję **przed instalacją MVP**;
+  - ~~**mapa cmentarza przy tekście 200% na 360 × 640 dp**~~ — **odrzucone 2026-10-23** (autor: *„możemy ignorować te teksty 200%”*) ([[ISSUE-029-pin-on-site-gps]] →
+    *Verification*, przegląd `ui` m8): plan w A jest bardzo niski, „Kwatery” przykrywa „Plan offline” i „© OpenStreetMap”;
   - [[ISSUE-030-sector-on-a-visit]] (`draft`) — „Pokaż kwaterę”, lista grobów kwatery, nachodzące znicze; **czeka na wizytę** (D5 stopu #1
     ISSUE-029);
   - **tabliczka imienia zasłania ślad dalszej rodziny w dół przy oddaleniu** ([[ISSUE-035-tree-names-shrink-my-voice]] → *Verification*, przegląd
@@ -168,9 +172,8 @@ MVP — od startu, cały produkt (Meta-decyzja 4).
     ([[ISSUE-025-gender-kinship-together-since]] D2) nie ma „przyrodni”. Kandydat na małą pozycję, przed prawdziwymi danymi (powtórne związki są w notatkach);
   - **komunikat błędu pod polem nie jest ogłaszany przez czytnik ekranu** ([[ISSUE-043-grave-paid-until]] → *Verification*, przegląd `ui`): `ErrorLine` nie
     jest regionem na żywo — ten sam wzorzec w bloku daty osoby i w oknie „Popraw grób”. Kandydat na drobną pozycję dla całej aplikacji (TalkBack);
-  - **imiona przy ścieżce przy tekście 200%** ([[ISSUE-039-connect-two-people]] → *Verification*, obserwacja): przy długiej ścieżce w skali ok. 0,17 imiona dwóch osób
-    ścieżki chowają się (nachodzą na inne imiona ścieżki), a wyszarzone imię spoza ścieżki, które na nic nie nachodzi, zostaje. Do oceny autora — np. bez imion
-    wyszarzonych w trakcie podświetlenia.
+  - ~~**imiona przy ścieżce przy tekście 200%**~~ — **odrzucone 2026-10-23** (200% pomijamy — decyzja autora) ([[ISSUE-039-connect-two-people]] → *Verification*,
+    obserwacja): przy długiej ścieżce w skali ok. 0,17 imiona dwóch osób ścieżki chowają się.
 - **Przed pierwszymi prawdziwymi danymi w aplikacji:** warunki z [[ISSUE-032-mvp-install]] → *Before install* spełnione 2026-10-22 poza jednym —
   **droga z notki na kopii docelowej odłożona decyzją autora** (*„tamte działały”*). Do czasu sprawdzenia: hasło zapisane do notki różne od wpisanego
   w telefonie albo brak pliku klucza na Dysku = kopia, której nie da się otworzyć. Komendy i `age` w `C:\Programowanie\Grobing\_notka\` —
